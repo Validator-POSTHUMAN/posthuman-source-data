@@ -317,8 +317,8 @@
       "grpc": "https://grpc.kyve.posthuman.digital",
       "peer": ""
     },
-    "generatedServices": ["installation-guide", "state-sync"],
-    "services": ["snapshots"]
+    "generatedServices": ["installation-guide", "genesis-file", "addr-book", "snapshot-service", "state-sync"],
+    "services": []
   },
   {
     "name": "babylon-testnet",
