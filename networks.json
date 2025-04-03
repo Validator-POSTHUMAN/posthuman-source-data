@@ -307,7 +307,7 @@
     "website": "https://kyve.network/",
     "twitter": "https://twitter.com/KYVENetwork",
     "discord": "https://discord.gg/sTfnADUj",
-    "icon": "https://github.com/cosmos/chain-registry/blob/master/kyve/images/kyve.svg",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/kyve/images/kyve.svg",
     "stake": "https://explorer.posthuman.digital/kyve/staking/kyvevaloper16hnse4c852xg4vxjnqhx648e02z32n72l66nv7",
     "explorer": "https://explorer.posthuman.digital/kyve",
     "chain_id": "kyve-1",
