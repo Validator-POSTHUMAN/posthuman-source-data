@@ -305,7 +305,7 @@
     "type": "mainnet",
     "title": "Kyve",
     "website": "https://kyve.network/",
-    "twitter": "https://twitter.com/KYVENetwork",
+    "twitter": "https://x.com/KYVENetwork",
     "discord": "https://discord.gg/sTfnADUj",
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/kyve/images/kyve.svg",
     "stake": "https://explorer.posthuman.digital/kyve/staking/kyvevaloper16hnse4c852xg4vxjnqhx648e02z32n72l66nv7",
@@ -315,10 +315,93 @@
       "rpc": "https://rpc.kyve.posthuman.digital",
       "rest": "https://rest.kyve.posthuman.digital",
       "grpc": "https://grpc.kyve.posthuman.digital",
-      "peer": ""
+      "peer": "cdac5f97b512287daf89f928a89da9cf3344830b@8.52.247.252:35656"
     },
     "generatedServices": ["installation-guide", "genesis-file", "addr-book", "snapshot-service", "state-sync"],
     "services": []
+  },
+  {
+    "name": "sidechain",
+    "type": "mainnet",
+    "title": "SideChain",
+    "website": "https://www.side.one/",
+    "twitter": "https://x.com/SideProtocol",
+    "discord": "https://discord.com/invite/sideprotocol",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/sidechain/images/side.svg",
+    "stake": "https://explorer.posthuman.digital/side/staking/sidevaloper1qqwp68scpqz3qrq3ru8p5rsuzsy3w9caqgqp2zchpqf32zsdqgt3z75w685",
+    "explorer": "https://explorer.posthuman.digital/side",
+    "chain_id": "sidechain-1",
+    "endpoints": {
+      "rpc": "https://rpc.sidechain.posthuman.digital",
+      "rest": "https://rest.sidechain.posthuman.digital",
+      "grpc": "https://grpc.sidechain.posthuman.digital",
+	  "peer": "8637f913efc3282ffb36be05d4f7ab2b1f705316@8.52.247.236:21956"
+    },
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
+  },
+  {
+    "name": "oraichain",
+    "type": "mainnet",
+    "title": "Oraichain",
+    "website": "https://orai.io/",
+    "twitter": "https://x.com/oraichain",
+    "discord": "https://discord.com/invite/oraichain",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/oraichain/images/orai.svg",
+    "stake": "https://explorer.posthuman.digital/oraichain/staking/oraivaloper1gvk3caqtdnwhff60ndm29tp0m7p8e57zgx588h",
+    "explorer": "https://explorer.posthuman.digital/oraichain",
+    "chain_id": "Oraichain",
+    "endpoints": {
+      "rpc": "https://rpc.oraichain.posthuman.digital",
+      "rest": "https://rest.oraichain.posthuman.digital",
+      "grpc": "https://grpc.oraichain.posthuman.digital",
+	  "peer": "07dde93a5ea10fc4623ef421d0de0e2b5b556e80@157.180.4.156:36657"
+    },
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
+  },
+  {
+    "name": "zetachain",
+    "type": "mainnet",
+    "title": "Zetachain",
+    "website": "https://www.zetachain.com/",
+    "twitter": "https://x.com/zetablockchain",
+    "discord": "https://discord.gg/zetachain",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/zetachain/images/zetachain.svg",
+    "stake": "https://explorer.posthuman.digital/zetachain/staking/zetavaloper1mj5uvv4703fwvna0t622yj9386cfwavr2hl6q4",
+    "explorer": "https://explorer.posthuman.digital/zetachain",
+    "chain_id": "zetachain_7000-1",
+    "endpoints": {
+      "rpc": "https://rpc.zetachain.posthuman.digital",
+      "rpc_ws": "wss://rpc.zetachain.posthuman.digital/websocket",
+      "rest": "https://rest.zetachain.posthuman.digital",
+      "grpc": "https://grpc.zetachain.posthuman.digital",
+      "evm_json_rpc": "https://evm.zetachain.posthuman.digital",
+      "evm_json_rpc_ws": "wss://wss.zetachain.posthuman.digital",
+      "peer": "adcc85296ada06f1b8de81e7b26e063ff1474760@157.180.4.156:26656"
+    },
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
+  },
+  {
+    "name": "nillion",
+    "type": "mainnet",
+    "title": "nillion",
+    "website": "https://nillion.com/",
+    "twitter": "https://x.com/nillionnetwork",
+    "discord": "https://discord.gg/nillionnetwork",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/nillion/images/nil.svg",
+    "stake": "https://explorer.posthuman.digital/nillion",
+    "explorer": "https://explorer.posthuman.digital/nillion",
+    "chain_id": "nillion-1",
+    "endpoints": {
+      "rpc": "https://rpc.nillion.posthuman.digital",
+      "rest": "https://rest.nillion.posthuman.digital",
+      "grpc": "https://grpc.nillion.posthuman.digital",
+	  "peer": "dd46a0e919753c2bc199a3c99cb463a55dc01290@157.180.4.156:56657"
+     },
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "babylon-testnet",
