@@ -424,6 +424,46 @@
     "services": ["snapshots"]
   },
   {
+    "name": "juno",
+    "type": "testnet",
+    "title": "Juno",
+    "website": "https://junonetwork.io/",
+    "twitter": "https://x.com/JunoNetwork",
+    "discord": "https://discord.com/invite/caEBtA4QDb",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/juno.svg",
+    "stake": "https://explorer.posthuman.digital/juno-testnet/staking/",
+    "explorer": "https://explorer.posthuman.digital/juno-testnet/",
+    "chain_id": "uni-7",
+    "endpoints": {
+      "rpc": "https://rpc.juno.posthuman.digital",
+      "rest": "https://rest.juno.posthuman.digital",
+      "grpc": "https://grpc.juno.posthuman.digital",
+	  "peer": "ea35c818280a6ac5d1d2a987d8d60f4bd76f4e06@141.95.34.193:16656"
+    },
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
+  },
+  {
+    "name": "juno",
+    "type": "mainnet",
+    "title": "Juno",
+    "website": "https://junonetwork.io/",
+    "twitter": "https://x.com/JunoNetwork",
+    "discord": "https://discord.com/invite/caEBtA4QDb",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/juno.svg",
+    "stake": "https://explorer.posthuman.digital/juno/staking/junovaloper1e8238v24qccht9mqc2w0r4luq462yxttjzn7qt",
+    "explorer": "https://explorer.posthuman.digital/juno/",
+    "chain_id": "juno-1",
+    "endpoints": {
+      "rpc": "https://rpc.juno-testnet.posthuman.digital",
+      "rest": "https://rest.elys-testnet.posthuman.digital",
+      "grpc": "https://grpc.elys-testnet.posthuman.digital",
+	  "peer": "207af6940b54d2e2702c87d3457705aa180a33c4@141.95.34.193:51656"
+    },
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
+  },
+  {
     "name": "elys-testnet",
     "type": "testnet",
     "title": "Elys",
