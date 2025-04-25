@@ -424,7 +424,7 @@
     "services": ["snapshots"]
   },
   {
-    "name": "juno",
+    "name": "juno-testnet",
     "type": "testnet",
     "title": "Juno",
     "website": "https://junonetwork.io/",
