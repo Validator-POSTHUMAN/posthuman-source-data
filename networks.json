@@ -435,9 +435,9 @@
     "explorer": "https://explorer.posthuman.digital/juno-testnet/",
     "chain_id": "uni-7",
     "endpoints": {
-      "rpc": "https://rpc.juno.posthuman.digital",
-      "rest": "https://rest.juno.posthuman.digital",
-      "grpc": "https://grpc.juno.posthuman.digital",
+      "rpc": "https://rpc.juno-testnet.posthuman.digital",
+      "rest": "https://rest.juno-testnet.posthuman.digital",
+      "grpc": "https://grpc.juno-testnet.posthuman.digital",
 	  "peer": "ea35c818280a6ac5d1d2a987d8d60f4bd76f4e06@141.95.34.193:16656"
     },
     "generatedServices": ["installation-guide", "state-sync"],
@@ -455,9 +455,9 @@
     "explorer": "https://explorer.posthuman.digital/juno/",
     "chain_id": "juno-1",
     "endpoints": {
-      "rpc": "https://rpc.juno-testnet.posthuman.digital",
-      "rest": "https://rest.elys-testnet.posthuman.digital",
-      "grpc": "https://grpc.elys-testnet.posthuman.digital",
+      "rpc": "https://rpc.juno.posthuman.digital",
+      "rest": "https://rest.juno.posthuman.digital",
+      "grpc": "https://grpc.juno.posthuman.digital",
 	  "peer": "207af6940b54d2e2702c87d3457705aa180a33c4@141.95.34.193:51656"
     },
     "generatedServices": ["installation-guide", "state-sync"],
