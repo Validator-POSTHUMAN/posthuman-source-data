@@ -166,7 +166,7 @@
     "name": "initia-testnet",
     "type": "testnet",
     "title": "Initia",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/initia-testnet/initia.svg",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/initia-testnet/initia.svg",
     "stake": "https://explorer.posthuman.digital/initia-testnet",
     "explorer": "https://explorer.posthuman.digital/initia-testnet",
     "chain_id": "nitiation-1",
