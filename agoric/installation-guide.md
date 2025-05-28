@@ -5,15 +5,7 @@ This guide outlines how to set up an Agoric node on the `agoric-3` chain using `
 
 ---
 
-## 1. Set Validator Name
-Replace `YOUR_MONIKER_GOES_HERE` with your validator name:
-```bash
-MONIKER="YOUR_MONIKER_GOES_HERE"
-```
-
----
-
-## 2. Install Dependencies
+## Install Dependencies
 
 ### Add Node.js Repository
 ```bash
@@ -51,10 +43,8 @@ source $HOME/.profile
 ### Clone Project Repository
 ```bash
 cd $HOME
-rm -rf agoric-upgrade-18
 git clone https://github.com/Agoric/agoric-sdk.git agoric-upgrade-18
-cd agoric-upgrade-18
-git checkout agoric-upgrade-18
+cd agoric
 ```
 
 ### Build JavaScript Packages
@@ -69,22 +59,17 @@ yarn install && yarn build
 
 ---
 
-## 5. Prepare Binaries for Cosmovisor
+## Prepare Binaries for Cosmovisor
 
 ### Setup Genesis and Upgrade Binaries
 ```bash
 mkdir -p $HOME/.agoric/cosmovisor/genesis/bin
-mkdir -p $HOME/.agoric/cosmovisor/upgrades/agoric-upgrade-18-mainnet/bin
-
-ln -sf $HOME/agoric-upgrade-18/bin/agd $HOME/.agoric/cosmovisor/genesis/bin/agd
-ln -sf $HOME/agoric-upgrade-18/bin/agd $HOME/.agoric/cosmovisor/upgrades/agoric-upgrade-18-mainnet/bin/agd
-
+ln -sf $HOME/agoric/bin/agd $HOME/.agoric/cosmovisor/genesis/bin/agd
 ln -sf $HOME/.agoric/cosmovisor/genesis $HOME/.agoric/cosmovisor/current
 ```
 
 ### Create Global Symlink
 ```bash
-sudo rm -f /usr/local/bin/agd
 sudo tee /usr/local/bin/agd > /dev/null << EOF
 #!/bin/bash
 exec $HOME/.agoric/cosmovisor/current/bin/agd "\$@"
@@ -94,7 +79,7 @@ sudo chmod 777 /usr/local/bin/agd
 
 ---
 
-## 6. Install and Configure Cosmovisor
+## Install and Configure Cosmovisor
 
 ### Install Cosmovisor
 ```bash
@@ -129,14 +114,12 @@ sudo systemctl enable agoric.service
 
 ---
 
-## 7. Initialize the Node
-
 ### Configure Node
 ```bash
 agd config chain-id agoric-3
 agd config keyring-backend file
-agd config node tcp://localhost:25757
 ```
+
 
 ### Initialize Node
 ```bash
@@ -144,80 +127,25 @@ agd init $MONIKER --chain-id agoric-3
 ```
 
 ---
-
-## 8. Enable State-Sync Using Posthuman or use snapshot service
-
-### Stop the service
-```
-sudo systemctl stop agoric
-```
-### Backup priv_validator_state.json
-```
-cp ~/.agoric/data/priv_validator_state.json ~/.agoric/priv_validator_state.json.backup
-```
-### Remove old data
-```
-rm -rf ~/.agoric/data
-```
-### Download and Extract the snapshot
-```
-curl https://snapshots.agoric.posthuman.digital/data_latest.lz4 | lz4 -dc - | tar -xf - -C ~/.agoric/
-```
-### Restore priv_validator_state.json
-```
-mv ~/.agoric/priv_validator_state.json.backup ~/.agoric/data/priv_validator_state.json
-```
-
-### Restart the service
-```
-sudo systemctl start agoric && sudo journalctl -u agoric -f
-```
-
-## Configure State-Sync(optional)
-Create a script called `state_sync.sh`:
+## For Agoric nodes, make sure you set in app.toml.
 ```bash
-#!/bin/bash
-
-SNAP_RPC="https://rpc.agoric.posthuman.digital:443"
-
-LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-
-sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.agoric/config/config.toml
+iavl-disable-fastnode = true 
 ```
 
-Grant execute permissions and run:
-```bash
-chmod 700 state_sync.sh
-./state_sync.sh
-```
+## Use State-Sync or snapshot service
+ - [State Sync](https://nodes.posthuman.digital/chains/agoric?tab=state-sync)
+ - [Snapshot Service](https://nodes.posthuman.digital/chains/agoric?tab=snapshot-service)
 
----
 
-## 9. Reset and Restart the Node
-
-### Stop the Node
-```bash
-sudo systemctl stop agoric.service
-```
-
-### Reset the Node in case you use statesync
-```bash
-agd tendermint unsafe-reset-all --home $HOME/.agoric --keep-addr-book
-```
-
-### Restart the Node
+### Start the Node
 ```bash
 sudo systemctl start agoric.service
 ```
 
 ---
 
-## 10. Verify Syncing
-If configured correctly, your node should start syncing within 10 minutes. Use the following command to monitor logs:
+## Verify Syncing
+If configured correctly, your node should start syncing. Use the following command to monitor logs:
 ```bash
 sudo journalctl -u agoric.service -f --no-hostname -o cat
-```
-## 11. For Agoric nodes, make sure you set in app.toml.
-```bash
-iavl-disable-fastnode = true 
 ```
