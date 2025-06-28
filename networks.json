@@ -504,6 +504,26 @@
     "services": ["snapshots"]
   },
   {
+    "name": "fuel",
+    "type": "mainnet",
+    "title": "Fuel",
+    "website": "https://fuel.network/",
+    "twitter": "https://x.com/fuel_network",
+    "discord": "https://discord.com/invite/xfpK4Pe",
+    "icon": "https://raw.githubusercontent.com/FuelLabs/docs-hub/refs/heads/master/public/favicon.ico",
+    "stake": "https://app.fuel.network/staking/on-ethereum/validators",
+    "explorer": "https://app.fuel.network/staking/on-ethereum/validators",
+    "chain_id": "seq-mainnet-1",
+    "endpoints": {
+      "rpc": "https://rpc.fuel.posthuman.digital",
+      "rest": "https://rest.fuel.posthuman.digital",
+      "grpc": "https://grpc.fuel.posthuman.digital",
+      "peer": "0e71ad72133cb332ed09c98d5fe74eac345c1105@148.251.234.12:61656"
+    },
+    "generatedServices": [],
+    "services": []
+  },
+  {
     "name": "babylon-testnet",
     "type": "testnet",
     "title": "Babylon",
