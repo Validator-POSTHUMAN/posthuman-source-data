@@ -521,7 +521,7 @@
       "peer": "0e71ad72133cb332ed09c98d5fe74eac345c1105@148.251.234.12:61656"
     },
     "generatedServices": [],
-    "services": []
+    "services": ["snapshots"]
   },
   {
     "name": "babylon-testnet",
