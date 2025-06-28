@@ -510,7 +510,7 @@
     "website": "https://fuel.network/",
     "twitter": "https://x.com/fuel_network",
     "discord": "https://discord.com/invite/xfpK4Pe",
-    "icon": "https://raw.githubusercontent.com/FuelLabs/docs-hub/refs/heads/master/public/favicon.ico",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/fuel/fuel.png",
     "stake": "https://app.fuel.network/staking/on-ethereum/validators",
     "explorer": "https://app.fuel.network/staking/on-ethereum/validators",
     "chain_id": "seq-mainnet-1",
