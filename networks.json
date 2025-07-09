@@ -17,6 +17,28 @@
     "services": []
   },
   {
+    "name": "cosmos",
+    "type": "mainnet",
+    "title": "CosmosHub",
+    "website": "https://cosmos.network/",
+    "twitter": "https://x.com/cosmos",
+    "discord": "https://discord.com/invite/interchain",
+    "github": "https://github.com/cosmos",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/cosmoshub/images/atom.svg",
+    "stake": "https://explorer.posthuman.digital/cosmos/staking/cosmosvaloper157v7tczs40axfgejp2m43kwuzqe0wsy0rv8puv",
+    "explorer": "https://explorer.posthuman.digital/cosmos/staking",
+    "chain_id": "cosmoshub-1",
+    "endpoints": {
+      "rpc": "https://rpc.cosmos.posthuman.digital",
+      "rest": "https://rest.cosmos.posthuman.digital",
+      "grpc": "https://grpc.cosmos.posthuman.digital",
+      "seed-node": "6d581e53245f7f81c24a20392b60256a7e59de59@135.181.227.236:26656"
+    },
+	"contributions": "cosmos",
+    "generatedServices": ["state-sync", "peers"],
+    "services": ["install-guide", "ibc-relayers", links]
+  },
+  {
     "name": "dymension",
     "type": "mainnet",
     "title": "Dymension Hub",
