@@ -34,7 +34,7 @@
       "grpc": "https://grpc.cosmos.posthuman.digital",
       "seed-node": "6d581e53245f7f81c24a20392b60256a7e59de59@135.181.227.236:26656"
     },
-	"contributions": "cosmos",
+    "contributions": "cosmos",
     "generatedServices": ["state-sync", "peers"],
     "services": ["install-guide", "ibc-relayers", "links"]
   },
