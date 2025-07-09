@@ -36,7 +36,7 @@
     },
 	"contributions": "cosmos",
     "generatedServices": ["state-sync", "peers"],
-    "services": ["install-guide", "ibc-relayers", links]
+    "services": ["install-guide", "ibc-relayers", "links"]
   },
   {
     "name": "dymension",
