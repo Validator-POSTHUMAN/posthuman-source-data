@@ -493,6 +493,7 @@
     "twitter": "https://x.com/RippleXDev",
     "discord": "https://discord.com/invite/xrplevm",
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/xrplevm/images/xrplevm.svg",
+    "explorer": "https://explorer.posthuman.digital/",
     "chain_id": "xrplevm_1449000-1",
     "endpoints": {
       "rpc": "https://rpc.exrp-testnet.posthuman.digital",
@@ -512,6 +513,7 @@
     "twitter": "https://x.com/RippleXDev",
     "discord": "https://discord.com/invite/xrplevm",
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/xrplevm/images/xrplevm.svg",
+    "explorer": "https://explorer.posthuman.digital/",
     "chain_id": "xrplevm_144000-1",
     "endpoints": {
       "rpc": "https://rpc.exrp.posthuman.digital",
