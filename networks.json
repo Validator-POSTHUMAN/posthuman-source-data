@@ -486,6 +486,46 @@
     "services": ["snapshots"]
   },
   {
+    "name": "exrp-testnet",
+    "type": "testnet",
+    "title": "XRPL EVM testnet",
+    "website": "https://xrpl.org/",
+    "twitter": "https://x.com/RippleXDev",
+    "discord": "https://discord.com/invite/xrplevm",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/exrp/images/exrp.svg",
+    "stake": "https://explorer.posthuman.digital/exrp-testnet/staking/exrpvaloper1w6phv0xwya5p2sql4qzlh7h2hdeszf49d9t2gr",
+    "explorer": "https://explorer.posthuman.digital/exrp-testnet/",
+    "chain_id": "xrplevm_1449000-1",
+    "endpoints": {
+      "rpc": "https://rpc.exrp-testnet.posthuman.digital",
+      "rest": "https://rest.exrp-testnet.posthuman.digital",
+      "grpc": "https://grpc.exrp-testnet.posthuman.digital",
+	  "json": "https://json.exrp-testnet.posthuman.digital",
+	  "peer": "e80a91daedb88e1dc429ab60036b3819bb48057d@135.181.227.236:62656"
+    },
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
+ },
+ {
+    "name": "exrp",
+    "type": "mainnet",
+    "title": "XRPL EVM",
+    "website": "https://xrpl.org/",
+    "twitter": "https://x.com/RippleXDev",
+    "discord": "https://discord.com/invite/xrplevm",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/exrp/images/exrp.svg",
+    "chain_id": "xrplevm_144000-1",
+    "endpoints": {
+      "rpc": "https://rpc.exrp.posthuman.digital",
+      "rest": "https://rest.exrp.posthuman.digital",
+      "grpc": "https://grpc.exrp.posthuman.digital",
+	  "json": "https://json.exrp-testnet.posthuman.digital",
+	  "peer": "522e624a77123c67762b5c1ff70ac20d377b0179@135.181.227.236:61656"
+    },
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
+  },
+  {
     "name": "elys-testnet",
     "type": "testnet",
     "title": "Elys",
@@ -493,8 +533,6 @@
     "twitter": "https://x.com/elys_network",
     "discord": "https://discord.com/invite/elys-network",
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/elys/images/elys.svg",
-    "stake": "https://explorer.posthuman.digital/elys-testnet/staking/elysvaloper1w6phv0xwya5p2sql4qzlh7h2hdeszf49d9t2gr",
-    "explorer": "https://explorer.posthuman.digital/elys-testnet/",
     "chain_id": "elysicstestnet-1",
     "endpoints": {
       "rpc": "https://rpc.elys-testnet.posthuman.digital",
