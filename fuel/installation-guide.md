@@ -1,72 +1,76 @@
-Запустить узел
-Получить двоичный файл и генезис из этого репозитория:
+Run Sequencer Node
 
-Двоичный файл из:
-https://github.com/FuelLabs/fuel-sequencer-deployments/releases/tag/seq-mainnet-1.3.2
-Значок ссылки
+Prerequisites
 
-fuelsequencerd-seq-mainnet-1.3.2-darwin-amd64для Linux x64
-Генезис из:
-https://github.com/FuelLabs/fuel-sequencer-deployments/blob/main/seq-mainnet-1/genesis.json
-Значок ссылки
-Загрузите нужный двоичный файл, соответствующий вашей архитектуре, $GOPATH/bin/с именем fuelsequencerd:
+This guide assumes that Golang is installed to run Cosmovisor. We recommend using version 1.21 or later. You can download it here https://go.dev/dl/.
 
-echo $GOPATHЧтобы убедиться, что он существует. Если нет, goвозможно, он не установлен.
-Убедитесь, что GOPATHнастройки в файле .bashrcили установлены правильно .zshrc. Запустите source ~/.bashrcили source ~/.zshrc, чтобы применить изменения.
+Run the Node
+
+Obtain binary and genesis from this repository:
+
+Binary from: https://github.com/FuelLabs/fuel-sequencer-deployments/releases/tag/seq-mainnet-1.3.2
+Icon Link
+For example:
+fuelsequencerd-seq-mainnet-1.3.2-darwin-arm64 for Apple Silicon
+fuelsequencerd-seq-mainnet-1.3.2-darwin-amd64 for Linux x64
+Genesis from: https://github.com/FuelLabs/fuel-sequencer-deployments/blob/main/seq-mainnet-1/genesis.json
+Icon Link
+Download the right binary based on your architecture to $GOPATH/bin/ with the name fuelsequencerd:
+
+echo $GOPATH to ensure it exists. If not, go might not be installed.
+Make sure that your GOPATH is set properly in your .bashrc or .zshrc file. Run source ~/.bashrc or source ~/.zshrc to apply the changes.
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-Значок буфера обмена Текст
-mkdir $GOPATH/bin/, если каталог не существует.
-wget <url/to/binary> для загрузки бинарного файла или любого другого аналогичного подхода. Например:
+Icon ClipboardText
+mkdir $GOPATH/bin/ if the directory does not exist.
+wget <url/to/binary> to download the binary, or any equivalent approach. For example:
 wget https://github.com/FuelLabs/fuel-sequencer-deployments/releases/download/seq-mainnet-1.3.2/fuelsequencerd-seq-mainnet-1.3.2-darwin-arm64
 
-Значок буфера обмена Текст
-cp <binary> $GOPATH/bin/fuelsequencerdчтобы скопировать двоичный файл в GOPATH/bin/каталог.
-chmod +x $GOPATH/bin/fuelsequencerdчтобы сделать двоичный файл исполняемым.
-fuelsequencerd versionдля проверки работоспособности двоичного файла.
-Попробуйте двоичный файл:
+Icon ClipboardText
+cp <binary> $GOPATH/bin/fuelsequencerd to copy the binary to the GOPATH/bin/ directory.
+chmod +x $GOPATH/bin/fuelsequencerd to make the binary executable.
+fuelsequencerd version to verify that the binary is working.
+Try the binary:
 
 fuelsequencerd version  # expect seq-mainnet-1.3.2
 
-Значок буфера обмена Текст
-Инициализируйте каталог узла, дав вашему узлу осмысленное имя:
+Icon ClipboardText
+Initialise the node directory, giving your node a meaningful name:
 
 fuelsequencerd init <node-name> --chain-id seq-mainnet-1
 
-Значок буфера обмена Текст
-Скопируйте загруженный файл генезиса в ~/.fuelsequencer/config/genesis.json:
+Icon ClipboardText
+Copy the downloaded genesis file to ~/.fuelsequencer/config/genesis.json:
 
 cp <path/to/genesis.json> ~/.fuelsequencer/config/genesis.json
 
-Значок буфера обмена Текст
-Настройте узел (часть 1 ~/.fuelsequencer/config/app.toml:):
+Icon ClipboardText
+Configure the node (part 1: ~/.fuelsequencer/config/app.toml):
 
-Набор minimum-gas-prices = "10fuel".
-Настроить [sidecar]:
-Убедитесь, что enabled = false.
-Настройте узел (часть 2 ~/.fuelsequencer/config/config.toml:):
+Set minimum-gas-prices = "10fuel".
+Configure [sidecar]:
+Ensure that enabled = false.
+Configure the node (part 2: ~/.fuelsequencer/config/config.toml):
 
-Настроить [p2p]:
-Набор persistent_peers = "fc5fd264190e4a78612ec589994646268b81f14e@80.64.208.207:26656".
-Настроить [mempool]:
-Установить max_tx_bytes = 1258291(1,2 МБ)
-Установить max_txs_bytes = 23068672(22МиБ)
-Настроить [rpc]:
-Установить max_body_bytes = 1153434(необязательно - актуально для публичного RPC).
-Значок InfoCircle
-Примечание: Для снижения задержек транзакций важно обеспечить согласованность параметров пула памяти CometBFT на всех узлах сети. Это включает в себя mempool.size, mempool.max_txs_bytes, mempool.max_tx_bytesи
-config.toml
-Значок ссылки
-и minimum-gas-pricesв
-приложение.toml
-Значок ссылки
-, как указано выше.
+Configure [p2p]:
+Set persistent_peers = "fc5fd264190e4a78612ec589994646268b81f14e@80.64.208.207:26656".
+Configure [mempool]:
+Set max_tx_bytes = 1258291 (1.2MiB)
+Set max_txs_bytes = 23068672 (22MiB)
+Configure [rpc]:
+Set max_body_bytes = 1153434 (optional - relevant for public RPC).
+Icon InfoCircle
+Note: Ensuring consistent CometBFT mempool parameters across all network nodes is important to reduce transaction delays. This includes mempool.size, mempool.max_txs_bytes, and mempool.max_tx_bytes in config.toml
+Icon Link
+ and minimum-gas-prices in app.toml
+Icon Link
+, as pointed out above.
 
-Установить Космовизор
-Чтобы установить Cosmovisor, запуститеgo install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
+Install Cosmovisor
+To install Cosmovisor, run go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
 
-Установите переменные среды:
+Set the environment variables:
 
 echo "# Setup Cosmovisor" >> ~/.zshrc
 echo "export DAEMON_NAME=fuelsequencerd" >> ~/.zshrc
@@ -79,8 +83,8 @@ echo "export DAEMON_SHUTDOWN_GRACE=15s" >> ~/.zshrc
 
 # You can check https://docs.cosmos.network/main/tooling/cosmovisor for more configuration options.
 
-Значок буфера обмена Текст
-Применить к текущему сеансу:source ~/.zshrc
+Icon ClipboardText
+Apply to your current session: source ~/.zshrc
 
 echo "# Setup Cosmovisor" >> ~/.bashrc
 echo "export DAEMON_NAME=fuelsequencerd" >> ~/.bashrc
@@ -93,46 +97,45 @@ echo "export DAEMON_SHUTDOWN_GRACE=15s" >> ~/.bashrc
 
 # You can check https://docs.cosmos.network/main/tooling/cosmovisor for more configuration options.
 
-Значок буфера обмена Текст
-Применить к текущему сеансу:source ~/.bashrc
+Icon ClipboardText
+Apply to your current session: source ~/.bashrc
 
-Теперь вы можете проверить, что Космовизор установлен правильно:
+You can now test that cosmovisor was installed properly:
 
 cosmovisor version
 
-Значок буфера обмена Текст
-Инициализируйте каталоги Cosmovisor (подсказка: whereis fuelsequencerdдля пути):
+Icon ClipboardText
+Initialise Cosmovisor directories (hint: whereis fuelsequencerd for the path):
 
 cosmovisor init <path/to/fuelsequencerd>
 
-Значок буфера обмена Текст
-На этом этапе cosmovisor runбудет выполнено действие, эквивалентное запуску fuelsequencerd, однако на данный момент вам не следует запускать узел.
+Icon ClipboardText
+At this point cosmovisor run will be the equivalent of running fuelsequencerd, however you should not run the node for now.
 
-Настроить синхронизацию состояний
-State Sync позволяет узлу быстро синхронизироваться.
+Configure State Sync
+State Sync allows a node to get synced up quickly.
 
-Чтобы настроить синхронизацию состояний, вам необходимо установить следующие значения в ~/.fuelsequencer/config/config.tomlразделе [statesync]:
+To configure State Sync, you will need to set these values in ~/.fuelsequencer/config/config.toml under [statesync]:
 
-enable = trueдля включения синхронизации состояния
+enable = true to enable State Sync
 rpc_servers = ...
 trust_height = ...
 trust_hash = ...
-Последние три значения можно получить из
-исследователь
-Значок ссылки
+The last three values can be obtained from the explorer
+Icon Link
 .
 
-Вам потребуется указать как минимум два RPC-сервера, разделённых запятыми rpc_servers. Вы можете либо обратиться к списку альтернативных RPC-серверов выше, либо использовать один и тот же сервер дважды.
+You will need to specify at least two comma-separated RPC servers in rpc_servers. You can either refer to the list of alternate RPC servers above or use the same one twice.
 
-Запуск секвенсора
-На этом этапе вы уже должны быть готовы cosmovisor run startзапустить секвенсор. Однако настоятельно рекомендуется запустить секвенсор в фоновом режиме .
+Running the Sequencer
+At this point you should already be able to run cosmovisor run start to run the Sequencer. However, it is highly recommended to run the Sequencer as a background service.
 
-Ниже приведены примеры для Linux и Mac. Вам потребуется реплицировать переменные окружения, заданные при настройке Cosmovisor.
+Some examples are provided below for Linux and Mac. You will need to replicate the environment variables defined when setting up Cosmovisor.
 
-Линукс
-В Linux вы можете использовать его systemdдля запуска секвенсора в фоновом режиме. systemdПредполагается, что вы знаете, как им пользоваться.
+Linux
+On Linux, you can use systemd to run the Sequencer in the background. Knowledge of how to use systemd is assumed here.
 
-Вот пример файла службы с некоторыми <...>значениями-заполнителями ( ), которые необходимо заполнить:
+Here's an example service file with some placeholder (<...>) values that must be filled-in:
 
 [Unit]
 Description=Sequencer Node
@@ -156,3 +159,6 @@ Environment="DAEMON_SHUTDOWN_GRACE=15s"
 
 [Install]
 WantedBy=multi-user.target
+
+Icon ClipboardText
+M
