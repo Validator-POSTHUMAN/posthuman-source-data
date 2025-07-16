@@ -1,20 +1,16 @@
-Run Sequencer Node
+# Run Sequencer Node
 
-Prerequisites
+# Prerequisites
 
 This guide assumes that Golang is installed to run Cosmovisor. We recommend using version 1.21 or later. You can download it here https://go.dev/dl/.
 
-Run the Node
+# Run the Node
 
 Obtain binary and genesis from this repository:
 
 Binary from: https://github.com/FuelLabs/fuel-sequencer-deployments/releases/tag/seq-mainnet-1.3.2
-Icon Link
-For example:
-fuelsequencerd-seq-mainnet-1.3.2-darwin-arm64 for Apple Silicon
-fuelsequencerd-seq-mainnet-1.3.2-darwin-amd64 for Linux x64
 Genesis from: https://github.com/FuelLabs/fuel-sequencer-deployments/blob/main/seq-mainnet-1/genesis.json
-Icon Link
+
 Download the right binary based on your architecture to $GOPATH/bin/ with the name fuelsequencerd:
 
 echo $GOPATH to ensure it exists. If not, go might not be installed.
