@@ -1,6 +1,6 @@
 # 🚀 Restore XRPL EVM Node from [Posthuman](https://snapshots.exrp.posthuman.digital/) Snapshots
 
-This guide explains how to restore your Kyve node using a snapshot from **Posthuman**.
+This guide explains how to restore your XRPL EVM node using a snapshot from **Posthuman**.
 
 ---
 
