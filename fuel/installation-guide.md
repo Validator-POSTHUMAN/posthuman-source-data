@@ -30,7 +30,7 @@ fuelsequencerd version  # expect seq-mainnet-1.3.2
 
 Initialise the node directory, giving your node a meaningful name:
 
-* * fuelsequencerd init <node-name> --chain-id seq-mainnet-1
+> fuelsequencerd init <node-name> --chain-id seq-mainnet-1
 
 Copy the downloaded genesis file to ~/.fuelsequencer/config/genesis.json:
 
