@@ -18,28 +18,23 @@ Make sure that your GOPATH is set properly in your .bashrc or .zshrc file. Run s
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-Icon ClipboardText
 mkdir $GOPATH/bin/ if the directory does not exist.
 wget <url/to/binary> to download the binary, or any equivalent approach. For example:
 wget https://github.com/FuelLabs/fuel-sequencer-deployments/releases/download/seq-mainnet-1.3.2/fuelsequencerd-seq-mainnet-1.3.2-darwin-arm64
 
-Icon ClipboardText
 cp <binary> $GOPATH/bin/fuelsequencerd to copy the binary to the GOPATH/bin/ directory.
 chmod +x $GOPATH/bin/fuelsequencerd to make the binary executable.
 fuelsequencerd version to verify that the binary is working.
-Try the binary:
 
 fuelsequencerd version  # expect seq-mainnet-1.3.2
 
-Icon ClipboardText
 Initialise the node directory, giving your node a meaningful name:
 
-fuelsequencerd init <node-name> --chain-id seq-mainnet-1
+* * fuelsequencerd init <node-name> --chain-id seq-mainnet-1
 
-Icon ClipboardText
 Copy the downloaded genesis file to ~/.fuelsequencer/config/genesis.json:
 
-cp <path/to/genesis.json> ~/.fuelsequencer/config/genesis.json
+* * cp <path/to/genesis.json> ~/.fuelsequencer/config/genesis.json
 
 Icon ClipboardText
 Configure the node (part 1: ~/.fuelsequencer/config/app.toml):
