@@ -15,6 +15,7 @@ Download the right binary based on your architecture to $GOPATH/bin/ with the na
 
 echo $GOPATH to ensure it exists. If not, go might not be installed.
 Make sure that your GOPATH is set properly in your .bashrc or .zshrc file. Run source ~/.bashrc or source ~/.zshrc to apply the changes.
+
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
@@ -26,7 +27,7 @@ cp <binary> $GOPATH/bin/fuelsequencerd to copy the binary to the GOPATH/bin/ dir
 chmod +x $GOPATH/bin/fuelsequencerd to make the binary executable.
 fuelsequencerd version to verify that the binary is working.
 
-fuelsequencerd version  # expect seq-mainnet-1.3.2
+> fuelsequencerd version  # expect seq-mainnet-1.3.2
 
 Initialise the node directory, giving your node a meaningful name:
 
@@ -36,7 +37,6 @@ Copy the downloaded genesis file to ~/.fuelsequencer/config/genesis.json:
 
 * * cp <path/to/genesis.json> ~/.fuelsequencer/config/genesis.json
 
-Icon ClipboardText
 Configure the node (part 1: ~/.fuelsequencer/config/app.toml):
 
 Set minimum-gas-prices = "10fuel".
