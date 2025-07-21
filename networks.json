@@ -203,6 +203,26 @@
     "services": ["installation-guide"]
   },
   {
+    "name": "initia",
+    "type": "mainnet",
+    "title": "Initia",
+    "website": "https://initia.xyz",
+    "github": "https://github.com/initia-labs/initia",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/initia/images/INIT.svg",
+    "stake": "https://explorer.posthuman.digital/initia",
+    "explorer": "https://explorer.posthuman.digital/initia",
+    "chain_id": "interwoven-1",
+    "endpoints": {
+      "rpc": "https://rpc.initia.posthuman.digital",
+      "rest": "https://rest.initia.posthuman.digital",
+      "grpc": "grpc.initia.posthuman.digital",
+      "peer": "@135.181.227.236:11656"
+    },
+    "contributions": "initia",
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
+  },
+  {
     "name": "story-testnet",
     "type": "testnet",
     "title": "Story",
@@ -480,7 +500,7 @@
       "rpc": "https://rpc.juno.posthuman.digital",
       "rest": "https://rest.juno.posthuman.digital",
       "grpc": "https://grpc.juno.posthuman.digital",
-	  "peer": "207af6940b54d2e2702c87d3457705aa180a33c4@141.95.34.193:51656"
+      "peer": "207af6940b54d2e2702c87d3457705aa180a33c4@141.95.34.193:51656"
     },
     "generatedServices": ["installation-guide", "state-sync"],
     "services": ["snapshots"]
@@ -585,6 +605,27 @@
       "peer": "0e71ad72133cb332ed09c98d5fe74eac345c1105@148.251.234.12:61656"
     },
     "generatedServices": ["installation-guide"],
+    "services": ["snapshots"]
+  },
+  {
+    "name": "neutron",
+    "type": "mainnet",
+    "title": "Initia",
+    "website": "https://neutron.org/",
+    "twitter": "https://twitter.com/Neutron_org",
+    "github": "https://github.com/neutron-org/neutron",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/neutron/images/ntrn.svg",
+    "stake": "https://explorer.posthuman.digital/initia",
+    "explorer": "https://explorer.posthuman.digital/initia",
+    "chain_id": "neutron-1",
+    "endpoints": {
+      "rpc": "https://rpc.neutron.posthuman.digital",
+      "rest": "https://rest.neutron.posthuman.digital",
+      "grpc": "grpc.neutron.posthuman.digital",
+      "peer": "@135.181.227.236:10656"
+    },
+    "contributions": "neutron",
+    "generatedServices": ["installation-guide", "state-sync"],
     "services": ["snapshots"]
   },
   {
