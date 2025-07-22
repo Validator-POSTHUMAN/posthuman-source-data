@@ -216,7 +216,7 @@
       "rpc": "https://rpc.initia.posthuman.digital",
       "rest": "https://rest.initia.posthuman.digital",
       "grpc": "grpc.initia.posthuman.digital",
-      "peer": "@135.181.227.236:11656"
+      "peer": "defc7a18318d5a1586ed4a0fa48092e30840ca86@135.181.227.236:11656"
     },
     "contributions": "initia",
     "generatedServices": ["installation-guide", "state-sync"],
@@ -622,7 +622,7 @@
       "rpc": "https://rpc.neutron.posthuman.digital",
       "rest": "https://rest.neutron.posthuman.digital",
       "grpc": "grpc.neutron.posthuman.digital",
-      "peer": "@135.181.227.236:10656"
+      "peer": "61965e8e9a775f590726f14ab18bc7b7e6d3346a@135.181.227.236:10656"
     },
     "contributions": "neutron",
     "generatedServices": ["installation-guide", "state-sync"],
