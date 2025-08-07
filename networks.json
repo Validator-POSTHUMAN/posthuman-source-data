@@ -19,13 +19,13 @@
   {
     "name": "starknet",
     "type": "mainnet",
-    "title": "Starknet under construction",
+    "title": "Starknet 				under construction",
      "services": ["instalation-guide"]
   },
   {
     "name": "ethereum",
     "type": "mainnet",
-    "title": "Ethereum under construction",
+    "title": "Ethereum 				under construction",
      "services": ["instalation-guide"]
   },
   {
