@@ -357,6 +357,26 @@
     "services": ["oracle-slinky-setup-guide", "snapshots"]
   },
   {
+    "name": "0G",
+    "type": "testnet",
+    "title": "0G Chain",
+	"website": "https://0g.ai",
+    "twitter": "hhttps://x.com/0G_labs",
+    "discord": "https://discord.com/invite/0glabs",
+	"icon": "",
+    "stake": "",
+    "explorer": "",
+	"chain_id": "cosmoshub-1",
+    "endpoints": {
+      "rpc": "https://rpc.0g.posthuman.digital",
+      "rest": "https://rest-api.0g.posthuman.digital",
+      "grpc": "https://grpc.0g.posthuman.digital",
+      "seed-node": "@135.181.227.236:47656"
+    },
+    "generatedServices": ["installation-guide", "state-sync", "peers"],
+    "services": ["Storage node", "DA node", "DA client"]
+  },
+  {
     "name": "kyve",
     "type": "mainnet",
     "title": "Kyve",
