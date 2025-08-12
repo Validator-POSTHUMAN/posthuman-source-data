@@ -1,22 +1,5 @@
 [
   {
-    "name": "source",
-    "type": "mainnet",
-    "title": "Source Protocol",
-    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/source/images/source.svg",
-    "stake": "https://explorer.posthuman.digital/source/staking/sourcevaloper1srwjhdup98l35vruhyagvmyqpu6cgrhmqystgp",
-    "explorer": "https://explorer.posthuman.digital/source",
-    "endpoints": {
-      "rpc": "https://rpc.source.posthuman.digital",
-      "wss": "wss://rpc.source.posthuman.digital",
-      "rest": "https://rest.source.posthuman.digital",
-      "grpc": "https://grpc.source.posthuman.digital",
-      "seed-node": "82a81ed97ee8fe5a8bfa26446737865333eadca1@46.39.246.50:46656"
-    },
-    "generatedServices": ["installation-guide", "state-sync", "peers"],
-    "services": []
-  },
-  {
     "name": "starknet",
     "type": "mainnet",
 	"title": "Starknet          under construction",
@@ -94,23 +77,6 @@
     ]
   },
   {
-    "name": "govgen",
-    "type": "mainnet",
-    "title": "GovGen",
-    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/govgen/images/govgen.svg",
-    "stake": "https://explorer.posthuman.digital/govgen/staking/govgenvaloper17hkyrkexpzrd2u3erplve4z5am6e0yvhsuyzcn",
-    "explorer": "https://explorer.posthuman.digital/govgen",
-    "endpoints": {
-      "rpc": "https://rpc.govgen.posthuman.digital:443",
-      "rest": "https://rest.govgen.posthuman.digital:443",
-      "grpc": "https://grpc.govgen.posthuman.digital:443",
-      "seed-node": "16bd427bd598e25c9d78e60e6b9c12d7cc8eeb84@46.39.246.50:56656"
-    },
-    "contributions": "atomone",
-    "generatedServices": ["installation-guide", "state-sync", "peers"],
-    "services": []
-  },
-  {
     "name": "atomone",
     "type": "mainnet",
     "title": "AtomOne",
@@ -177,24 +143,6 @@
     "contributions": "namada",
     "generatedServices": [],
     "services": ["installation-guide", "genesis-file", "addr-book", "snapshot-service"]
-  },
-  {
-    "name": "crossfi-testnet",
-    "type": "archive",
-    "title": "Crossfi",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/crossfi-testnet/big-logo.svg",
-    "stake": "https://explorer.posthuman.digital/crossfi-testnet",
-    "explorer": "https://explorer.posthuman.digital/crossfi-testnet",
-    "chain_id": "crossfi-evm-testnet-1",
-    "endpoints": {
-      "rpc": "https://rpc.crossfi-testnet.posthuman.digital:443",
-      "rest": "https://rest.crossfi-testnet.posthuman.digital",
-      "peer": "d3d6b82ba6500bef124b73b0db8c067673ba9259@95.165.149.118:26656",
-      "snapshots": "https://snapshots.crossfi-testnet.posthuman.digital/"
-    },
-    "contributions": "crossfi-testnet",
-    "generatedServices": [],
-    "services": ["installation-guide", "genesis-file", "addr-book", "snapshot-service", "state-sync"]
   },
   {
     "name": "initia-testnet",
