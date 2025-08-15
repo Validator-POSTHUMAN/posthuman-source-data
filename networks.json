@@ -317,7 +317,7 @@
       "rpc": "https://rpc.0g.posthuman.digital",
       "rest": "https://rest-api.0g.posthuman.digital",
       "grpc": "https://grpc.0g.posthuman.digital",
-      "seed-node": "@135.181.227.236:47656"
+      "seed-node": "4df9e460d919835a0d74413481b40357e5c4f070@135.181.227.236:47656"
     },
     "generatedServices": [],
     "services": ["setup-storage-node", "installation-guide", "setup-DA-node", "setup-DA-client"]
