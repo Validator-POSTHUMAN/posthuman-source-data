@@ -60,7 +60,7 @@ Add the following content to the file, adjusting values as needed:
 
 *signer_bls_private_key = ""*
 
-*signer eth account private key:*
+#### signer eth account private key:
 
 *signer_eth_private_key = ""*
 
