@@ -320,7 +320,7 @@
       "seed-node": "4df9e460d919835a0d74413481b40357e5c4f070@135.181.227.236:47656"
     },
     "generatedServices": [],
-    "services": ["setup-storage-node", "installation-guide", "setup-DA-node", "setup-DA-client"]
+    "services": ["setup-storage-node", "installation-guide", "setup-da-node", "setup-da-client"]
   },
   {
     "name": "kyve",
