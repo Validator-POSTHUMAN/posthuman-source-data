@@ -303,7 +303,7 @@
     "services": ["oracle-slinky-setup-guide", "snapshots"]
   },
   {
-    "name": "0g",
+    "name": "0g-testnet",
     "type": "testnet",
     "title": "0G Chain",
 	"website": "https://0g.ai",
