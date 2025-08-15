@@ -42,9 +42,9 @@ Below is just an example configuration for illustration purposes. For official d
 *network_boot_nodes = []*
 
 #### Contract addresses
-*log_contract_address = "CONTRACT_ADDRESS"* ##### flow contract address, see testnet information*
+*log_contract_address = "CONTRACT_ADDRESS"*      # flow contract address, see testnet information
 
-*mine_contract_address = "CONTRACT_ADDRESS"* #Address of the smart contract on the host blockhain that manages mining.
+*mine_contract_address = "CONTRACT_ADDRESS"*     # Address of the smart contract on the host blockhain that manages mining.
 
 #### L1 host blockchain RPC endpoint URL. See testnet information page for RPC endpoints
 *blockchain_rpc_endpoint = "RPC_ENDPOINT"*
