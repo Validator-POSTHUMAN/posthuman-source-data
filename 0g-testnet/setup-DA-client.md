@@ -1,5 +1,7 @@
-Setting up a DA Client node
-Install Docker:
+# Setting up a DA Client node
+
+#### Install Docker:
+```bash
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -7,21 +9,31 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
 sudo apt update
 sudo apt install docker-ce
 sudo systemctl status docker
-Add permissions:
+```
+#### Add permissions:
+```bash
 sudo groupadd docker
 sudo usermod -aG docker $USER
 exit
-Clone the DA Client Node repo:
+```
+#### Clone the DA Client Node repo:
+```bash
 cd $HOME
 rm -rf 0g-da-client
 git clone https://github.com/0glabs/0g-da-client.git
-Build the Docker Image:
+```
+#### Build the Docker Image:
+```bash
 cd 0g-da-client
 docker build -t 0g-da-client -f combined.Dockerfile .
-Create envfile.env:
+```
+#### Create envfile.env:
+```bash
 nano envfile.env
-Add the following content to the file with YOUR_PRIVATE_KEY:
-# envfile.env
+```
+#### Add the following content to the file with YOUR_PRIVATE_KEY:
+##### envfile.env
+```bash
 COMBINED_SERVER_CHAIN_RPC=https://evmrpc-testnet.0g.ai
 COMBINED_SERVER_PRIVATE_KEY=YOUR_PRIVATE_KEY
 ENTRANCE_CONTRACT_ADDR=0x857C0A28A8634614BB2C96039Cf4a20AFF709Aa9
@@ -50,7 +62,12 @@ BATCHER_ENCODING_TIMEOUT=300s
 BATCHER_SIGNING_TIMEOUT=60s
 BATCHER_CHAIN_READ_TIMEOUT=12s
 BATCHER_CHAIN_WRITE_TIMEOUT=13s
-Run node:
+```
+#### Run node:
+```bash
 docker run -d --env-file envfile.env --name 0g-da-client --restart always -v ./run:/runtime -p 51001:51001 0g-da-client combined
-Check logs:
+```
+#### Check logs:
+```bash
 docker logs 0g-da-client -fn 100
+```
