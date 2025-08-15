@@ -319,8 +319,8 @@
       "grpc": "https://grpc.0g.posthuman.digital",
       "seed-node": "@135.181.227.236:47656"
     },
-    "generatedServices": ["installation-guide", "state-sync", "peers"],
-    "services": ["setup-storage-node", "setup-DA-node", "setup-DA-client"]
+    "generatedServices": [],
+    "services": ["setup-storage-node", "installation-guide", "setup-DA-node", "setup-DA-client"]
   },
   {
     "name": "kyve",
