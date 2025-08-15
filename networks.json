@@ -312,7 +312,7 @@
 	"icon": "",
     "stake": "",
     "explorer": "",
-	"chain_id": "cosmoshub-1",
+	"chain_id": "0gchain-16601",
     "endpoints": {
       "rpc": "https://rpc.0g.posthuman.digital",
       "rest": "https://rest-api.0g.posthuman.digital",
@@ -320,7 +320,7 @@
       "seed-node": "@135.181.227.236:47656"
     },
     "generatedServices": ["installation-guide", "state-sync", "peers"],
-    "services": ["Storage node", "DA node", "DA client"]
+    "services": ["setup-storage-node", "setup-DA-node", "setup-DA-client"]
   },
   {
     "name": "kyve",
