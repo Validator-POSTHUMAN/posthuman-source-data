@@ -3,13 +3,22 @@
     "name": "starknet",
     "type": "mainnet",
 	"title": "Starknet          under construction",
-     "services": ["instalation-guide"]
+    "services": ["instalation-guide"]
   },
   {
     "name": "ethereum",
     "type": "mainnet",
-	 "title": "Ethereum          under construction",
-     "services": ["installation-guide"]
+	"title": "Ethereum",
+	"website": "https://ethereum.org/",
+    "twitter": "https://x.com/ethdotorg",
+    "discord": "https://discord.gg/ethereum-org",
+    "github": "https://github.com/ethereum",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/ethereum/eth.svg",
+    "chain_id": "1(0x1)",
+    "endpoints": {
+      "jspn-rpc": "",
+	},
+    "services": ["installation-guide"]
   },
   {
     "name": "cosmoshub",
