@@ -15,7 +15,14 @@
     "github": "https://github.com/ethereum",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/ethereum/eth.svg",
     "chain_id": "1",
-    "services": ["installation-guide"]
+	"endpoints": {
+      "rpc": "",
+      "rest": "",
+      "grpc": "",
+      "seed-node": ""
+    },
+	"generatedServices": [],
+    "services": ["install-guide"]
   },
   {
     "name": "cosmoshub",
