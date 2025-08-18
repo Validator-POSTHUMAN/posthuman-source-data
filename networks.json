@@ -9,7 +9,7 @@
     "name": "ethereum",
     "type": "mainnet",
 	 "title": "Ethereum          under construction",
-     "services": ["instalation-guide"]
+     "services": ["installation-guide"]
   },
   {
     "name": "cosmoshub",
