@@ -16,7 +16,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/ethereum/eth.svg",
     "chain_id": "1(0x1)",
     "endpoints": {
-      "jspn-rpc": "",
+      "jspn-rpc": ""
 	},
     "services": ["installation-guide"]
   },
