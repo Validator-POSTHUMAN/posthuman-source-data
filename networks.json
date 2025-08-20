@@ -389,7 +389,7 @@
     "website": "https://orai.io/",
     "twitter": "https://x.com/oraichain",
     "discord": "https://discord.com/invite/oraichain",
-    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/oraichain/images/orai.svg",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/oraichain/logomark-dark.png",
     "stake": "https://explorer.posthuman.digital/oraichain/staking/oraivaloper1gvk3caqtdnwhff60ndm29tp0m7p8e57zgx588h",
     "explorer": "https://explorer.posthuman.digital/oraichain",
     "chain_id": "Oraichain",
