@@ -1,9 +1,19 @@
 [
   {
-    "name": "starknet",
+    ""name": "starknet",
     "type": "mainnet",
-	"title": "Starknet          under construction",
-    "services": ["instalation-guide"]
+	"title": "Starknet",
+	"website": "https://estarknet.io",
+    "twitter": "https://x.com/Starknet",
+    "discord": "https://discord.gg/starknet-community",
+    "github": "https://github.com/starknet-io",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/starknet/strk-logo.svg",
+    "chain_id": "Starknet v0.13.6",
+	"endpoints": {
+      "rpc": ""
+    },
+	"generatedServices": [],
+    "services": ["installation-guide"]
   },
   {
     "name": "ethereum",
@@ -16,10 +26,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/ethereum/eth.svg",
     "chain_id": "1",
 	"endpoints": {
-      "rpc": "",
-      "rest": "",
-      "grpc": "",
-      "seed-node": ""
+      "jsonrpc": ""
     },
 	"generatedServices": [],
     "services": ["install-guide"]
