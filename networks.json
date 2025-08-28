@@ -1,5 +1,18 @@
 [
   {
+    "name": "iotex",
+    "type": "mainnet",
+	"title": "Iotex",
+	"website": "https://iotex.io/",
+    "twitter": "https://x.com/iotex_io",
+    "discord": "https://discord.com/invite/iotex",
+    "github": "https://github.com/iotexproject",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/iotex/color_icon.svg",
+    "chain_id": "MainNet: v2.2.1",
+	"generatedServices": [],
+    "services": ["installation-guide"]
+  },
+  {
     "name": "starknet",
     "type": "mainnet",
 	"title": "Starknet",
