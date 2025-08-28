@@ -1,13 +1,13 @@
 # IoTeX Delegate Manual
 
 
-## <a name="status"/>Release Status
+## Release Status
 
 Here are the software versions we use:
 
 - MainNet: v2.2.1
 
-## <a name="mainnet"/>Join MainNet
+## Join MainNet
 This is the recommended way to start an IoTeX node
 
 > All the steps have written in scripts/all_in_one_mainnet.sh, you can directly run `sh scripts/all_in_one_mainnet.sh`
@@ -76,7 +76,7 @@ tar -xzf $IOTEX_HOME/data.tar.gz -C $IOTEX_HOME/data/ && tar -xzf $IOTEX_HOME/in
 
 For advanced users, there are three options to consider:
 
-- Option 1: If you plan to run your node as a [gateway](#gateway), please use the snapshot with index data:
+- Option 1: If you plan to run your node as a gateway, please use the snapshot with index data:
 https://t.iotex.me/mainnet-data-with-idx-latest.
 
   or download from another website:
@@ -112,7 +112,7 @@ docker run -d --restart on-failure --name iotex \
 
 Now your node should be started successfully.
 
-If you want to also make your node be a [gateway](#gateway), which could process API requests from users, use the following command instead:
+If you want to also make your node be a gateway, which could process API requests from users, use the following command instead:
 
 ```
 docker run -d --restart on-failure --name iotex \
@@ -136,88 +136,3 @@ docker run -d --restart on-failure --name iotex \
 - `14014` for the IoTeX native gRPC API
 - `15014` for the Ethereum JSON API
 - `16014` for the Ethereum WebSocket
-
-## <a name="mainnet_native"/>Join Mainnet without using Docker
-This is not the preferred way to start an IoTeX node
-
-1. Set the environment with the following commands:
-
-Same as [Join MainNet](#mainnet) step 2
-
-2. Build server binary:
-
-```
-git clone https://github.com/iotexproject/iotex-core.git
-cd iotex-core
-git checkout v2.2.1
-
-// optional
-export GOPROXY=https://goproxy.io
-go mod download
-make clean build-all
-cp ./bin/server $IOTEX_HOME/iotex-server
-```
-
-3. Edit configs
-
-Same as [Join MainNet](#mainnet) step 3. Also make sure you update all db paths in config.yaml to correct location if you don't put them under `/var/data/`
-
-4. Start from a snapshot
-
-Same as [Join MainNet](#mainnet) step 4
-
-5. Run the following command to start a node:
-
-```
-nohup $IOTEX_HOME/iotex-server \
-        -config-path=$IOTEX_HOME/etc/config.yaml \
-        -genesis-path=$IOTEX_HOME/etc/genesis.yaml &
-```
-
-Now your node should be started successfully.
-
-If you want to also make your node be a [gateway](#gateway), which could process API requests from users, use the following command instead:
-
-```
-nohup $IOTEX_HOME/iotex-server \
-        -config-path=$IOTEX_HOME/etc/config.yaml \
-        -genesis-path=$IOTEX_HOME/etc/genesis.yaml \
-        -plugin=gateway &
-```
-
-6. Make sure TCP ports 4689, 8080 (also 14014 if used) are open on your firewall and load balancer (if any).
-
-## <a name="ioctl"/>Interact with Blockchain
-
-### ioctl
-
-You can install `ioctl` (a command-line interface for interacting with IoTeX blockchain)
-
-```
-curl https://raw.githubusercontent.com/iotexproject/iotex-core/master/install-cli.sh | sh
-```
-
-You can point `ioctl` to your node (if you enable the [gateway](#gateway) plugin):
-
-```
-ioctl config set endpoint localhost:14014 --insecure
-```
-
-Or you can point it to our API nodes:
-
-- MainNet secure: `api.iotex.one:443`
-- MainNet insecure: `api.iotex.one:80`
-
-If you want to set an insecure endpoint, you need to add `--insecure` option.
-
-Generate key:
-```
-ioctl account create
-```
-
-Get consensus delegates of current epoch:
-```
-ioctl node delegate
-```
-
-Refer to [CLI document](https://github.com/iotexproject/iotex-core/blob/master/ioctl/README.md) for more details.
