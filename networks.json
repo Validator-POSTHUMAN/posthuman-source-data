@@ -9,6 +9,9 @@
     "github": "https://github.com/iotexproject",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/iotex/color_icon.svg",
     "chain_id": "MainNet: v2.2.1",
+	"endpoints": {
+      "rpc": ""
+    },
 	"generatedServices": [],
     "services": ["installation-guide"]
   },
