@@ -1,5 +1,21 @@
 [
   {
+    "name": "aztec",
+    "type": "testnet",
+	"title": "Aztec",
+	"website": "https://aztec.network/",
+    "twitter": "https://twitter.com/aztecnetwork",
+    "discord": "https://discord.gg/srQ2Zddm",
+    "github": "https://github.com/AztecProtocol",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/aztec/aztec-logo.svg",
+    "chain_id": "testnet",
+	"endpoints": {
+      "rpc": ""
+    },
+	"generatedServices": [],
+    "services": ["installation-guide"]
+  },
+  {
     "name": "iotex",
     "type": "mainnet",
 	"title": "Iotex",
