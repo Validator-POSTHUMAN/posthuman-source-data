@@ -1,28 +1,11 @@
 # IoTeX Delegate Manual
-<a href="https://iotex.io/devdiscord" target="_blank">
-  <img src="https://github.com/iotexproject/halogrants/blob/880eea4af074b082a75608c7376bd7a8eaa1ac21/img/btn-discord.svg" height="36px">
-</a>
 
-## Index
-
-- [Release Status](#status)
-- [Join MainNet](#mainnet)
-- [Join Mainnet without using Docker](#mainnet_native)
-- [Join TestNet](#testnet)
-- [Interact with Blockchain](#ioctl)
-- [Enable Logrotate](#log)
-- [Operate Your Node](#ops)
-- [Upgrade Your Node（One Line Upgrader）](#upgrade)
-- [Q&A](#qa)
 
 ## <a name="status"/>Release Status
 
 Here are the software versions we use:
 
 - MainNet: v2.2.1
-
-## <a name="testnet"/>Join TestNet
-To start and run a testnet node, please click [**Join Testnet**](https://github.com/iotexproject/iotex-bootstrap/blob/master/README_testnet.md)
 
 ## <a name="mainnet"/>Join MainNet
 This is the recommended way to start an IoTeX node
