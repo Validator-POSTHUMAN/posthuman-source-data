@@ -13,7 +13,7 @@
       "rpc": ""
     },
 	"generatedServices": [],
-    "services": ["installation-guide"]
+    "services": ["installation-guide", "validator-attestation"]
   },
   {
     "name": "ethereum",
