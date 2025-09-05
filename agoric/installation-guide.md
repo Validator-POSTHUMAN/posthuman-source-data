@@ -40,10 +40,12 @@ source $HOME/.profile
 
 ## 4. Download and Build Binaries
 
-### Clone Project Repository
+### Clone Project Repository but check new [version](https://github.com/Agoric/agoric-sdk/releases) 
 ```bash
+export version=agoric-upgrade-21
 cd $HOME
-git clone https://github.com/Agoric/agoric-sdk.git agoric-upgrade-18
+git clone https://github.com/Agoric/agoric-sdk.git agoric
+git checkout $version
 cd agoric
 ```
 
@@ -51,6 +53,10 @@ cd agoric
 ```bash
 yarn install && yarn build
 ```
+make sure you have:
+✅ Node.js → 20.19.5
+✅ Yarn → 4.9.1 with Corepack
+✅ Go → 1.23.3
 
 ### Build Cosmos SDK Support
 ```bash
