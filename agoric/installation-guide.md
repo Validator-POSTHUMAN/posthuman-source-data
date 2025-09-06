@@ -44,7 +44,7 @@ source $HOME/.profile
 ```bash
 export version=agoric-upgrade-21
 cd $HOME
-git clone https://github.com/Agoric/agoric-sdk.git agoric
+git clone https://github.com/Agoric/agoric-sdk.git $version
 git checkout $version
 cd agoric
 ```
