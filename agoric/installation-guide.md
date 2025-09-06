@@ -46,7 +46,7 @@ export version=agoric-upgrade-21
 cd $HOME
 git clone https://github.com/Agoric/agoric-sdk.git $version
 git checkout $version
-cd agoric
+cd $version
 ```
 
 ### Build JavaScript Packages
