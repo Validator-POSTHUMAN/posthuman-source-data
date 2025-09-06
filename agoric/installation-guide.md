@@ -70,8 +70,10 @@ make sure you have:
 ### Setup Genesis and Upgrade Binaries
 ```bash
 mkdir -p $HOME/.agoric/cosmovisor/genesis/bin
-ln -sf $HOME/agoric/bin/agd $HOME/.agoric/cosmovisor/genesis/bin/agd
-ln -sf $HOME/.agoric/cosmovisor/genesis $HOME/.agoric/cosmovisor/current
+ln -s $HOME/$version/bin/agd $HOME/.agoric/cosmovisor/upgrades/$version/bin/agd
+
+# Create application symlinks
+ln -s $HOME/.agoric/cosmovisor/genesis $HOME/.agoric/cosmovisor/current -f
 ```
 
 ### Create Global Symlink
@@ -81,9 +83,6 @@ sudo tee /usr/local/bin/agd > /dev/null << EOF
 exec $HOME/.agoric/cosmovisor/current/bin/agd "\$@"
 EOF
 sudo chmod 777 /usr/local/bin/agd
-```
-```bash
-ln -sfn ~/.agoric/cosmovisor/upgrades/agoric-upgrade-21 ~/.agoric/cosmovisor/current
 ```
 ---
 
