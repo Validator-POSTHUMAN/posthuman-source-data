@@ -82,7 +82,9 @@ exec $HOME/.agoric/cosmovisor/current/bin/agd "\$@"
 EOF
 sudo chmod 777 /usr/local/bin/agd
 ```
-
+```bash
+ln -sfn ~/.agoric/cosmovisor/upgrades/agoric-upgrade-21 ~/.agoric/cosmovisor/current
+```
 ---
 
 ## Install and Configure Cosmovisor
