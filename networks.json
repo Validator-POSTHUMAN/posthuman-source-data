@@ -142,8 +142,8 @@
       "seed-node": "9aa69d667da6dd43ba82110b4ff290ac38d68976@135.181.227.236:61656"
     },
     "contributions": "atomone",
-    "generatedServices": ["installation-guide", "state-sync", "peers"],
-    "services": ["IBC-Relayers", "genesis-and-addrbook", "snapshot-service", "one-liner"]
+    "generatedServices": ["installation-guide"],
+    "services": ["snapshot-service"]
   },
   {
     "name": "atomone",
