@@ -135,6 +135,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/atomone/atomone.svg",
     "stake": "https://explorer.posthuman.digital/atomone/staking/atonevaloper1vcp7pkg8sk0n8ylhezxxs8qqrnwfld4dsv2sew",
     "explorer": "https://explorer.posthuman.digital/atomone-testnet",
+	"chain_id": "atomone-testnet-1",
     "endpoints": {
       "rpc": "https://rpc.atomone-testnet.posthuman.digital:443",
       "rest": "https://rest.atomone-testnet.posthuman.digital:443",
@@ -152,6 +153,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/atomone/atomone.svg",
     "stake": "https://explorer.posthuman.digital/atomone/staking/atonevaloper1vcp7pkg8sk0n8ylhezxxs8qqrnwfld4dsv2sew",
     "explorer": "https://explorer.posthuman.digital/atomone",
+	"chain_id": "atomone-1",
     "endpoints": {
       "rpc": "https://rpc.atomone.posthuman.digital:443",
       "rest": "https://rest.atomone.posthuman.digital:443",
