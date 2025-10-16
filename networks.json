@@ -189,10 +189,8 @@
     "explorer": "https://thegraph.com/explorer",
     "endpoints": {
       "rpc": "",
-      "rpc_ws": "",
       "rest": "",
-      "evm_json_rpc": "",
-      "evm_ws": "",
+      "json_rpc": "",
       "peer": ""
     },
     "generatedServices": [],
