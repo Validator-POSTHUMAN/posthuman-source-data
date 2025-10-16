@@ -193,6 +193,7 @@
       "json_rpc": "",
       "peer": ""
     },
+	"chain_id": "ethereum",
     "generatedServices": [],
     "services": ["installation-guide"]
   },
