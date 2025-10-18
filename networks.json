@@ -645,8 +645,8 @@
     "twitter": "https://twitter.com/Neutron_org",
     "github": "https://github.com/neutron-org/neutron",
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/neutron/images/ntrn.svg",
-    "stake": "https://explorer.posthuman.digital/initia",
-    "explorer": "https://explorer.posthuman.digital/initia",
+    "stake": "https://explorer.posthuman.digital/neutron",
+    "explorer": "https://explorer.posthuman.digital/neutron",
     "chain_id": "neutron-1",
     "endpoints": {
       "rpc": "https://rpc.neutron.posthuman.digital",
