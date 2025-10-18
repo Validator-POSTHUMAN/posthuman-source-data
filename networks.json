@@ -413,26 +413,6 @@
     "services": ["snapshots"]
   },
   {
-    "name": "sidechain",
-    "type": "mainnet",
-    "title": "SideChain",
-    "website": "https://www.side.one/",
-    "twitter": "https://x.com/SideProtocol",
-    "discord": "https://discord.com/invite/sideprotocol",
-    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/sidechain/images/side.svg",
-    "stake": "https://explorer.posthuman.digital/side/staking/sidevaloper1qqwp68scpqz3qrq3ru8p5rsuzsy3w9caqgqp2zchpqf32zsdqgt3z75w685",
-    "explorer": "https://explorer.posthuman.digital/side",
-    "chain_id": "sidechain-1",
-    "endpoints": {
-      "rpc": "https://rpc.sidechain.posthuman.digital",
-      "rest": "https://rest.sidechain.posthuman.digital",
-      "grpc": "https://grpc.sidechain.posthuman.digital",
-	  "peer": "8637f913efc3282ffb36be05d4f7ab2b1f705316@8.52.247.236:21956"
-    },
-    "generatedServices": ["installation-guide", "state-sync"],
-    "services": ["snapshots"]
-  },
-  {
     "name": "oraichain",
     "type": "mainnet",
     "title": "Oraichain",
