@@ -285,8 +285,11 @@
     "chain_id": "celestia",
     "endpoints": {
       "rpc": "https://rpc.celestia-mainnet.posthuman.digital",
-      "rest": "https://rest.celestia-mainnet.posthuman.digital",
+      "rpc-arch": "https://rpc.celestia-mainnet-archive.posthuman.digital",
+	  "rest": "https://rest.celestia-mainnet.posthuman.digital",
+	  "rest-arch": "https://rest.celestia-mainnet-archive.posthuman.digital",
       "grpc": "https://grpc.celestia-mainnet.posthuman.digital",
+      "grpc-arch": "https://grpc.celestia-mainnet-archive.posthuman.digital",
       "peer": "cd9f852141cd6f78e9443cea389911a6f0a5df72@8.52.247.252:26656"
     },
     "contributions": "Celestia",
@@ -318,8 +321,11 @@
     "chain_id": "mocha-4",
     "endpoints": {
       "rpc": "https://rpc.celestia-testnet.posthuman.digital",
+	  "rpc-arch": "https://rpc.celestia-testnet-archive.posthuman.digital",
       "rest": "https://rest.celestia-testnet.posthuman.digital",
+	  "rest-arch": "https://rpc.celestia-testnet-archive.posthuman.digital",
       "grpc": "https://grpc.celestia-testnet.posthuman.digital",
+	  "grpc-arch": "https://rpc.celestia-testnet-archive.posthuman.digital",
       "peer": "f57805e824e984467f8b1f2560a5ef4c80077ed5@207.121.49.100:11656"
     },
     "generatedServices": ["installation-guide", "state-sync"],
