@@ -15,17 +15,19 @@ sudo apt install curl git wget htop tmux build-essential jq make gcc tar clang p
 ### Install Go
 ```sh
 cd ~
-! [ -x "$(command -v go)" ] && {
-VER="1.23.1"
-wget "https://golang.org/dl/go$VER.linux-amd64.tar.gz"
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf "go$VER.linux-amd64.tar.gz"
-rm "go$VER.linux-amd64.tar.gz"
-[ ! -f ~/.bash_profile ] && touch ~/.bash_profile
-echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile
-source ~/.bash_profile
-}
-[ ! -d ~/go/bin ] && mkdir -p ~/go/bin
+if ! command -v go >/dev/null 2>&1; then
+  VER="1.24.1"
+  wget "https://golang.org/dl/go${VER}.linux-amd64.tar.gz"
+  sudo rm -rf /usr/local/go
+  sudo tar -C /usr/local -xzf "go${VER}.linux-amd64.tar.gz"
+  rm "go${VER}.linux-amd64.tar.gz"
+fi
+
+[ -d "$HOME/go/bin" ] || mkdir -p "$HOME/go/bin"
+if ! grep -q "/usr/local/go/bin" "$HOME/.bash_profile" 2>/dev/null; then
+  echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> "$HOME/.bash_profile"
+fi
+source "$HOME/.bash_profile" 2>/dev/null || true
 go version
 ```
 
@@ -43,7 +45,7 @@ make cel-key
 
 ### Configure and Initialize the Application
 ```sh
-celestia bridge init --core.ip <RPC_NODE_IP> --p2p.network mocha
+celestia bridge init --core.ip https://rpc.celestia-testnet.posthuman.digital --p2p.network mocha
 ```
 Once started, a wallet key is generated. You need to fund this address with testnet tokens.
 Find your wallet address:

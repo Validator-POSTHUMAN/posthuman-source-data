@@ -6,19 +6,23 @@ sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bs
 ```
 
 
-## Install Go 
-Replace `VERSION` with the desired Go version
+## Install Go (if needed)
 ```bash
-VERSION="1.22.3"
 cd $HOME
-wget "https://golang.org/dl/go$VERSION.linux-amd64.tar.gz"
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf "go$VERSION.linux-amd64.tar.gz"
-rm "go$VERSION.linux-amd64.tar.gz"
+if ! command -v go >/dev/null 2>&1; then
+  VER="1.24.1"
+  wget "https://golang.org/dl/go${VER}.linux-amd64.tar.gz"
+  sudo rm -rf /usr/local/go
+  sudo tar -C /usr/local -xzf "go${VER}.linux-amd64.tar.gz"
+  rm "go${VER}.linux-amd64.tar.gz"
+fi
 
-# Set Go environment variables
-echo "export PATH=\$PATH:/usr/local/go/bin:\$HOME/go/bin" >> ~/.bash_profile
-source ~/.bash_profile
+[ -d "$HOME/go/bin" ] || mkdir -p "$HOME/go/bin"
+if ! grep -q "/usr/local/go/bin" "$HOME/.bash_profile" 2>/dev/null; then
+  echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> "$HOME/.bash_profile"
+fi
+source "$HOME/.bash_profile" 2>/dev/null || true
+go version
 ```
 
 
@@ -26,11 +30,12 @@ source ~/.bash_profile
 
 ```
 cd $HOME
-mkdir src
+mkdir -p src
 cd src
 git clone {{codebase.git_repo}}
 cd {{chain_name}}
-git checkout {{codebase.recommended_version}}
+VERSION="{{codebase.recommended_version}}"
+git checkout "tags/$VERSION"
 make install
 {{daemon_name}} version
 ```
@@ -55,73 +60,32 @@ curl -Ls {{codebase.genesis.genesis_url}} > $HOME/.{{daemon_name}}/config/genesi
 curl -Ls {{addrbookUrl}} > $HOME/.{{daemon_name}}/config/addrbook.json
 ```
 
-### Create Service
-
-#### Cosmovisor:
-
-If you haven't cosmovisor, you should install it
+### Create systemd service
 
 ```
-go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
-```
-
-You can find cosmovisor biniry in `~/go/bin/` folder. After that you should create
-
-```
-mkdir -p ~/.{{chain_name}}/cosmovisor/genesis/bin && mkdir -p ~/.{{chain_name}}/cosmovisor/upgrades
-```
-
-Set up service:
-
-```
-sudo nano /etc/systemd/system/{{daemon_name}}.service
-```
-
-Replace <your_user>
-
-```
+sudo tee /etc/systemd/system/{{daemon_name}}.service > /dev/null <<'EOF'
 [Unit]
-Description={{daemon_name}} Daemon cosmovisor
+Description={{daemon_name}} daemon
 After=network-online.target
 
 [Service]
 User=<your_user>
-ExecStart=/home/<your_user>/go/bin/cosmovisor run start
-Restart=always
-RestartSec=3
-LimitNOFILE=4096
-Environment="DAEMON_NAME={{daemon_name}}"
-Environment="DAEMON_HOME=/home/<your_user>/.{{daemon_name}}"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
-Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-Environment="DAEMON_LOG_BUFFER_SIZE=512"
-
-[Install]
-WantedBy=multi-user.target
-```
-
-#### Simple service file:
-
-Set up service:
-
-```
-sudo nano /etc/systemd/system/{{daemon_name}}.service
-```
-
-Replace <your_user>
-
-```
-[Unit]
-Description={{daemon_name}} Daemon
-After=network-online.target
-[Service]
-User=<your_user>
-ExecStart=/home/<your_user>/go/bin/{{daemon_name}} start
+ExecStart=$(which {{daemon_name}}) start
 Restart=always
 RestartSec=3
 LimitNOFILE=65535
+
 [Install]
 WantedBy=multi-user.target
+EOF
+```
+
+Replace `<your_user>` with the account that owns the node files, then enable the service:
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable {{daemon_name}}.service
+sudo systemctl start {{daemon_name}}.service
 ```
 
 ### Sync node:

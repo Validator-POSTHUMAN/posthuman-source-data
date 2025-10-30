@@ -282,6 +282,14 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-source-data/refs/heads/main/celestia/celestia.svg",
     "stake": "https://explorer.posthuman.digital/celestia/staking",
     "explorer": "https://celestia-explorer.posthuman.digital",
+    "daemon_name": "celestia-appd",
+    "codebase": {
+      "git_repo": "https://github.com/celestiaorg/celestia-app",
+      "recommended_version": "v5.0.11",
+      "compatible_versions": [
+        "v5.0.11"
+      ]
+    },
     "chain_id": "celestia",
     "endpoints": {
       "rpc": "https://rpc.celestia-mainnet.posthuman.digital",
@@ -290,11 +298,11 @@
 	  "rest-arch": "https://rest.celestia-mainnet-archive.posthuman.digital",
       "grpc": "https://grpc.celestia-mainnet.posthuman.digital",
       "grpc-arch": "https://grpc.celestia-mainnet-archive.posthuman.digital",
-      "peer": "cd9f852141cd6f78e9443cea389911a6f0a5df72@8.52.247.252:26656"
+      "peer": "cd9f852141cd6f78e9443cea389911a6f0a5df72@peer.celestia-mainnet.posthuman.digital:26656"
     },
     "contributions": "Celestia",
     "generatedServices": ["installation-guide", "state-sync"],
-    "services": ["bridge-node-setup", "full-node-setup", "light-node-setup", "snapshots","one-liner"]
+    "services": ["bridge-node-setup", "full-node-setup", "light-node-setup", "snapshots", "one-liner", "links"]
   },
   {
     "name": "celestia-testnet",
@@ -303,15 +311,12 @@
     "website": "https://celestia.org/",
     "codebase": {
       "git_repo": "https://github.com/celestiaorg/celestia-app",
-      "recommended_version": "v2.3.0-mocha",
+      "recommended_version": "v6.2.0-mocha",
       "compatible_versions": [
-        "v2.0.0",
-        "v2.1.0",
-        "v2.1.1",
-        "v2.1.2"
-    ]
-  },
-  "chain_name": "celestia-app",
+        "v6.2.0-mocha"
+      ]
+    },
+    "chain_name": "celestia-app",
     "title": "Celestia",
     "twitter": "https://x.com/CelestiaOrg",
     "discord": "https://discord.com/invite/celestiacommunity",
@@ -326,10 +331,10 @@
 	  "rest-arch": "https://rpc.celestia-testnet-archive.posthuman.digital",
       "grpc": "https://grpc.celestia-testnet.posthuman.digital",
 	  "grpc-arch": "https://rpc.celestia-testnet-archive.posthuman.digital",
-      "peer": "f57805e824e984467f8b1f2560a5ef4c80077ed5@207.121.49.100:11656"
+      "peer": "f57805e824e984467f8b1f2560a5ef4c80077ed5@peer.celestia-testnet.posthuman.digital:11656"
     },
     "generatedServices": ["installation-guide", "state-sync"],
-    "services": ["full-node-setup","light-node-setup","bridge-node-setup","snapshots","one-liner"]
+    "services": ["full-node-setup", "light-node-setup", "bridge-node-setup", "snapshots", "one-liner", "links"]
   },
   {
     "name": "agoric",
