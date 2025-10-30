@@ -1,5 +1,3 @@
-# Celestia Mainnet • POSTHUMAN endpoints
-
 - **RPC**: https://rpc-celestia-mainnet.posthuman.digital  
 - **RPC (archive)**: https://rpc-celestia-mainnet-archive.posthuman.digital  
 - **REST**: https://rest-celestia-mainnet.posthuman.digital  
@@ -9,5 +7,3 @@
 - **Bridge RPC**: https://bridge-celestia-mainnet.posthuman.digital  
 - **Snapshots**: https://snapshots.posthuman.digital/celestia-mainnet/  
 - **Peer**: `2cc7330049bc02e4276668c414222593d52eb718@peer-celestia-mainnet.posthuman.digital:40656`
-
-> POSTHUMAN exposes these services through Cloudflare; if you switch to a direct Tendermint endpoint, adjust the hostnames and ports accordingly.
