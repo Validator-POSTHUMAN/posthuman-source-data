@@ -1,66 +1,111 @@
-# 🚀 Restore Celestia Node from [Posthuman](https://posthuman.digital/) TESTNET Snapshots
+# Restore Celestia Testnet (Mocha-4) from POSTHUMAN Snapshots
 
-This guide explains how to restore your Celestia node using a snapshot from **Posthuman**.
+POSTHUMAN rebuilds Celestia testnet (mocha-4) snapshots every 24 hours on production hardware. Files are distributed through Cloudflare R2 at [`https://snapshots.posthuman.digital/celestia-testnet/`](https://snapshots.posthuman.digital/celestia-testnet/).
 
----
+## Snapshot endpoints
 
-## **🛑 Step 1: Stop Celestia Node**
-Before restoring, stop the Celestia process to prevent database corruption:
+| Purpose            | URL |
+| ------------------ | --- |
+| Latest archive     | `https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.zst` |
+| Metadata (height, checksum) | `https://snapshots.posthuman.digital/celestia-testnet/snapshot.json` |
+| Addrbook           | `https://snapshots.posthuman.digital/celestia-testnet/addrbook.json` |
+| Genesis            | `https://snapshots.posthuman.digital/celestia-testnet/genesis.json` |
+
+## Prerequisites
+
+- `zstd`, `curl`, and `jq` installed
+- Default home: `$HOME/.celestia-app`
+- Systemd unit name assumed to be `celestia-appd`; adjust if you run a different service file.
+
+Set some helper variables:
 
 ```bash
-sudo systemctl stop celestia-appd
+export CELESTIA_HOME="$HOME/.celestia-app"
+export SERVICE_NAME="celestia-appd"
+```
+
+## 1. Stop the node
+
+```bash
+sudo systemctl stop "${SERVICE_NAME}"
+```
+
+## 2. Back up the validator state
+
+```bash
+cp "${CELESTIA_HOME}/data/priv_validator_state.json" \
+   "${CELESTIA_HOME}/priv_validator_state.json.backup"
+```
+
+## 3. Remove previous data
+
+```bash
+rm -rf "${CELESTIA_HOME}/data"
+```
+
+## 4. Download the latest snapshot and metadata
+
+```bash
+curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.zst \
+  -o /tmp/celestia-testnet-snapshot.tar.zst
+
+curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot.json \
+  -o /tmp/celestia-testnet-snapshot.json
+```
+
+Optional: inspect the metadata before extracting.
+
+```bash
+jq '{chain_id, height, created_at, checksum}' /tmp/celestia-testnet-snapshot.json
+```
+
+## 5. Verify the checksum (recommended)
+
+```bash
+SNAP_CHECKSUM=$(jq -r '.checksum' /tmp/celestia-testnet-snapshot.json)
+echo "${SNAP_CHECKSUM}  /tmp/celestia-testnet-snapshot.tar.zst" | sha256sum --check
+```
+
+Continue only when the checksum shows `OK`.
+
+## 6. Extract the snapshot
+
+```bash
+tar -I zstd -xf /tmp/celestia-testnet-snapshot.tar.zst -C "${CELESTIA_HOME}"
+```
+
+The archive includes the `data/` folder so it lands directly under `${CELESTIA_HOME}`.
+
+## 7. Restore validator state and sync helpers
+
+```bash
+mv "${CELESTIA_HOME}/priv_validator_state.json.backup" \
+   "${CELESTIA_HOME}/data/priv_validator_state.json"
+
+curl -fL https://snapshots.posthuman.digital/celestia-testnet/addrbook.json \
+  -o "${CELESTIA_HOME}/config/addrbook.json"
+```
+
+Refresh the genesis file if required:
+
+```bash
+curl -fL https://snapshots.posthuman.digital/celestia-testnet/genesis.json \
+  -o "${CELESTIA_HOME}/config/genesis.json"
+```
+
+## 8. Start the node and tail logs
+
+```bash
+sudo systemctl start "${SERVICE_NAME}"
+sudo journalctl -u "${SERVICE_NAME}" -f
+```
+
+Once the node is running, you can delete the downloaded artifacts:
+
+```bash
+rm /tmp/celestia-testnet-snapshot.tar.zst /tmp/celestia-testnet-snapshot.json
 ```
 
 ---
 
-## **📌 Step 2: Backup Validator State (IMPORTANT)**
-To avoid double signing issues, **backup your validator state file**:
-
-```bash
-cp $HOME/.celestia-app/data/priv_validator_state.json $HOME/.celestia-app/priv_validator_state.json.backup
-```
-
----
-
-## **🗑 Step 3: Remove Old Blockchain Data**
-Delete the old data to **free space** and **prevent conflicts**:
-
-```bash
-rm -rf $HOME/.celestia-app/data
-```
-
----
-
-## **📥 Step 4: Download & Extract the Latest Posthuman Snapshot**
-> **Note:** Since Posthuman updates snapshots **every 48 hours**, use the latest one:
-
-```bash
-curl -L https://snapshots.celestia-testnet.posthuman.digital/data_latest.lz4 | lz4 -dc - | tar -xf - -C $HOME/.celestia-app
-```
-
-
-
----
-
-## **📂 Step 5: Restore Validator State**
-Move back the **backup validator state file**:
-
-```bash
-mv $HOME/.celestia-app/priv_validator_state.json.backup $HOME/.celestia-app/data/priv_validator_state.json
-```
-
----
-
-## **▶️ Step 6: Restart Celestia Node & Monitor Logs**
-Now, restart the service and monitor its logs:
-
-```bash
-sudo systemctl restart celestia-appd
-sudo journalctl -u celestia-appd -fo cat
-```
-
----
-
-## **✅ Done!**
-Your node should now sync from the restored **Posthuman snapshot**. 🚀 
-
+Need a different height or older archive? Browse the directory listing at [https://snapshots.posthuman.digital/celestia-testnet/](https://snapshots.posthuman.digital/celestia-testnet/).
