@@ -302,7 +302,7 @@
     },
     "contributions": "Celestia",
     "generatedServices": ["installation-guide", "state-sync"],
-    "services": ["bridge-node-setup", "full-node-setup", "light-node-setup", "snapshots", "one-liner", "links"]
+    "services": ["bridge-node-setup", "full-node-setup", "light-node-setup", "snapshots", "one-liner"]
   },
   {
     "name": "celestia-testnet",
@@ -334,7 +334,7 @@
       "peer": "c5bc6e85bf763c5a08ed08a238028afe3c18fc4b@peer-celestia-testnet.posthuman.digital:39656"
     },
     "generatedServices": ["installation-guide", "state-sync"],
-    "services": ["full-node-setup", "light-node-setup", "bridge-node-setup", "snapshots", "one-liner", "links"]
+    "services": ["full-node-setup", "light-node-setup", "bridge-node-setup", "snapshots", "one-liner"]
   },
   {
     "name": "agoric",
