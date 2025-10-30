@@ -1,4 +1,4 @@
-# Celestia Mainnet Snapshot (POSTHUMAN)
+# Celestia Mainnet Snapshot
 
 **Type:** pruned consensus node (goleveldb)  
 **Cadence:** refreshed around every 24 h, served 24/7 from Cloudflare R2  
