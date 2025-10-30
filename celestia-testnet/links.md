@@ -8,6 +8,6 @@
 - **gRPC (archive)**: https://grpc-celestia-testnet-archive.posthuman.digital  
 - **Bridge RPC**: https://bridge-celestia-testnet.posthuman.digital  
 - **Snapshots**: https://snapshots.posthuman.digital/celestia-testnet/  
-- **Peer**: `f57805e824e984467f8b1f2560a5ef4c80077ed5@peer-celestia-testnet.posthuman.digital:11656`
+- **Peer**: `c5bc6e85bf763c5a08ed08a238028afe3c18fc4b@peer-celestia-testnet.posthuman.digital:39656`
 
 > POSTHUMAN fronts these endpoints with Cloudflare; switch hosts/ports if you connect directly to a Tendermint peer.
