@@ -68,7 +68,7 @@ make cel-key
 
 ## **4. Configure and Initialize the Bridge Node**
 ```sh
-celestia bridge init --core.ip https://rpc.celestia-mainnet.posthuman.digital --p2p.network celestia
+celestia bridge init --core.ip https://rpc-celestia-mainnet.posthuman.digital --p2p.network celestia
 ```
 
 After starting the Bridge Node, a wallet key will be generated. You need to fund this address with Mainnet tokens for PayForBlob transactions. Retrieve your wallet address using:

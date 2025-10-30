@@ -52,7 +52,7 @@ make cel-key
 ## 4. Initialize the light node
 ```bash
 celestia light init \
-  --core.ip https://rpc.celestia-mainnet.posthuman.digital \
+  --core.ip https://rpc-celestia-mainnet.posthuman.digital \
   --p2p.network celestia
 ```
 
@@ -87,7 +87,7 @@ After=network-online.target
 [Service]
 User=$USER
 ExecStart=$(which celestia) light start \
-  --core.ip https://rpc.celestia-mainnet.posthuman.digital \
+  --core.ip https://rpc-celestia-mainnet.posthuman.digital \
   --core.rpc.port 443 \
   --core.grpc.port 443 \
   --keyring.accname my_celes_key \

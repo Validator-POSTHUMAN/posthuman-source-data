@@ -292,13 +292,13 @@
     },
     "chain_id": "celestia",
     "endpoints": {
-      "rpc": "https://rpc.celestia-mainnet.posthuman.digital",
-      "rpc-arch": "https://rpc.celestia-mainnet-archive.posthuman.digital",
-	  "rest": "https://rest.celestia-mainnet.posthuman.digital",
-	  "rest-arch": "https://rest.celestia-mainnet-archive.posthuman.digital",
-      "grpc": "https://grpc.celestia-mainnet.posthuman.digital",
-      "grpc-arch": "https://grpc.celestia-mainnet-archive.posthuman.digital",
-      "peer": "cd9f852141cd6f78e9443cea389911a6f0a5df72@peer.celestia-mainnet.posthuman.digital:26656"
+      "rpc": "https://rpc-celestia-mainnet.posthuman.digital",
+      "rpc-arch": "https://rpc-celestia-mainnet-archive.posthuman.digital",
+	  "rest": "https://rest-celestia-mainnet.posthuman.digital",
+	  "rest-arch": "https://rest-celestia-mainnet-archive.posthuman.digital",
+      "grpc": "https://grpc-celestia-mainnet.posthuman.digital",
+      "grpc-arch": "https://grpc-celestia-mainnet-archive.posthuman.digital",
+      "peer": "cd9f852141cd6f78e9443cea389911a6f0a5df72@peer-celestia-mainnet.posthuman.digital:26656"
     },
     "contributions": "Celestia",
     "generatedServices": ["installation-guide", "state-sync"],
@@ -325,13 +325,13 @@
     "explorer": "https://www.mintscan.io/celestia-testnet",
     "chain_id": "mocha-4",
     "endpoints": {
-      "rpc": "https://rpc.celestia-testnet.posthuman.digital",
-	  "rpc-arch": "https://rpc.celestia-testnet-archive.posthuman.digital",
-      "rest": "https://rest.celestia-testnet.posthuman.digital",
-	  "rest-arch": "https://rpc.celestia-testnet-archive.posthuman.digital",
-      "grpc": "https://grpc.celestia-testnet.posthuman.digital",
-	  "grpc-arch": "https://rpc.celestia-testnet-archive.posthuman.digital",
-      "peer": "f57805e824e984467f8b1f2560a5ef4c80077ed5@peer.celestia-testnet.posthuman.digital:11656"
+      "rpc": "https://rpc-celestia-testnet.posthuman.digital",
+	  "rpc-arch": "https://rpc-celestia-testnet-archive.posthuman.digital",
+      "rest": "https://rest-celestia-testnet.posthuman.digital",
+	  "rest-arch": "https://rest-celestia-testnet-archive.posthuman.digital",
+      "grpc": "https://grpc-celestia-testnet.posthuman.digital",
+	  "grpc-arch": "https://grpc-celestia-testnet-archive.posthuman.digital",
+      "peer": "f57805e824e984467f8b1f2560a5ef4c80077ed5@peer-celestia-testnet.posthuman.digital:11656"
     },
     "generatedServices": ["installation-guide", "state-sync"],
     "services": ["full-node-setup", "light-node-setup", "bridge-node-setup", "snapshots", "one-liner", "links"]

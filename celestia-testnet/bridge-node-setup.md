@@ -58,7 +58,7 @@ make cel-key
 
 ### Configure and Initialize the Application
 ```sh
-celestia bridge init --core.ip https://rpc.celestia-testnet.posthuman.digital --p2p.network mocha
+celestia bridge init --core.ip https://rpc-celestia-testnet.posthuman.digital --p2p.network mocha
 ```
 Once started, a wallet key is generated. You need to fund this address with testnet tokens.
 Find your wallet address:
