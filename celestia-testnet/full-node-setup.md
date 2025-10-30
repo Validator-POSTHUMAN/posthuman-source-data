@@ -4,8 +4,21 @@ This guide will help you set up a **Celestia Full Storage Node** using PostHuman
 
 ---
 
-## 🔧 Hardware Requirements
-Ensure your server meets the minimum requirements for running a Celestia full storage node.
+## 🔧 Hardware Requirements (data availability)
+
+### Non-archival
+| Node type  | Memory | CPU     | Disk       | Bandwidth |
+|------------|--------|---------|------------|-----------|
+| Full store | 64 GB  | 8 cores | 8 TiB NVME | 1 Gbps    |
+| Bridge     | 64 GB  | 8 cores | 8 TiB NVME | 1 Gbps    |
+
+### Archival
+| Node type  | Memory | CPU     | Disk         | Bandwidth |
+|------------|--------|---------|--------------|-----------|
+| Full store | 64 GB  | 8 cores | 160 TiB NVME | 1 Gbps    |
+| Bridge     | 64 GB  | 8 cores | 160 TiB NVME | 1 Gbps    |
+
+> Figures mirror Celestia’s official mocha-4 guidance (v6 throughput assumptions).
 
 ---
 
@@ -40,11 +53,12 @@ go version
 
 ## 📥 3. Install Celestia Node
 ```bash
-cd $HOME
+cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node/
-git checkout tags/v0.21.5
+cd celestia-node
+NODE_VERSION="v0.26.4"
+git checkout "tags/${NODE_VERSION}"
 make build
 sudo make install
 make cel-key
@@ -190,11 +204,12 @@ sudo systemctl stop celestia-full
 
 ### 📥 Download Latest Version
 ```bash
-cd $HOME
+cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node/
-git checkout tags/v0.21.5
+cd celestia-node
+NODE_VERSION="v0.26.4"
+git checkout "tags/${NODE_VERSION}"
 make build
 sudo make install
 make cel-key
@@ -222,19 +237,4 @@ rm -rf $HOME/celestia-node $HOME/.celestia-app $HOME/.celestia-full
 
 ---
 
-## 🔍 12. External Explorer
-View node information here:
-🔗 **Celestia PostHuman Explorer**
-
-This guide is customized for **PostHuman Celestia Mainnet** using the following endpoints:
-
-- **Mainnet Type:** mainnet
-- **Chain ID:** celestia
-- **RPC:** https://rpc.celestia-mainnet.posthuman.digital
-- **REST:** https://rest.celestia-mainnet.posthuman.digital
-- **gRPC:** https://grpc.celestia-mainnet.posthuman.digital
-- **Peer:** cd9f852141cd6f78e9443cea389911a6f0a5df72@8.52.247.252:26656
-
-🚀 **Your Celestia Full Storage Node is now up and running on PostHuman infrastructure!**
-
-**POSTHUMAN © 2025. All Rights Reserved.**
+🚀 **Your Celestia Full Storage Node is now up and running.**

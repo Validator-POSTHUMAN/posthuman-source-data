@@ -2,12 +2,15 @@
 
 Deploy a production-ready Celestia light node that connects to POSTHUMAN consensus endpoints and publishes metrics for monitoring.
 
-## Hardware Requirements
-- 4 CPU cores  
-- 4 GB RAM  
-- 120 GB SSD  
-- 100 Mbps symmetric bandwidth
+## Hardware Requirements (non-archival)
+| Resource  | Requirement |
+|-----------|-------------|
+| CPU       | 1 core |
+| Memory    | 500 MB |
+| Disk      | 20 GB SSD |
+| Bandwidth | 56 Kbps |
 
+> For archival (unpruned header) light nodes, plan for roughly 111 KB of storage per block while CPU/RAM/bandwidth remain the same (see Celestia docs).
 ## 1. Update packages and install dependencies
 ```bash
 sudo apt update && sudo apt upgrade -y

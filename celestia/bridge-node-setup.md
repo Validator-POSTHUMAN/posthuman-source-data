@@ -4,12 +4,21 @@ This guide will help you set up a Celestia bridge node using PostHuman infrastru
 
 ---
 
-## **Hardware Requirements**
-| Node Type           | Memory       | Disk        |
-|---------------------|-------------|------------|
-| Light node        | 500 MB RAM   | 100 GB SSD  |
-| Bridge node       | 64 GB RAM    | 5 TiB NVME  |
-| Full storage node | 64 GB RAM    | 5 TiB NVME  |
+## **Hardware Requirements (data availability)**
+
+### Non-archival
+| Node type   | Memory | CPU      | Disk       | Bandwidth |
+|-------------|--------|----------|------------|-----------|
+| Light       | 500 MB | 1 core   | 20 GB SSD  | 56 Kbps   |
+| Bridge      | 64 GB  | 8 cores  | 8 TiB NVME | 1 Gbps    |
+| Full store  | 64 GB  | 8 cores  | 8 TiB NVME | 1 Gbps    |
+
+### Archival
+| Node type   | Memory | CPU      | Disk         | Bandwidth |
+|-------------|--------|----------|--------------|-----------|
+| Light (unpruned headers) | 500 MB | 1 core | ~111 KB per block | 56 Kbps |
+| Bridge      | 64 GB  | 8 cores  | 160 TiB NVME | 1 Gbps    |
+| Full store  | 64 GB  | 8 cores  | 160 TiB NVME | 1 Gbps    |
 
 ---
 
@@ -44,11 +53,12 @@ go version
 
 ## **3. Install Celestia Node**
 ```sh
-cd $HOME
+cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node/
-git checkout tags/v0.21.5
+cd celestia-node
+NODE_VERSION="v0.26.4"
+git checkout "tags/${NODE_VERSION}"
 make build
 sudo make install
 make cel-key
@@ -58,7 +68,7 @@ make cel-key
 
 ## **4. Configure and Initialize the Bridge Node**
 ```sh
-celestia bridge init --core.ip https://rpc.celestia-mainnet.posthuman.digital
+celestia bridge init --core.ip https://rpc.celestia-mainnet.posthuman.digital --p2p.network celestia
 ```
 
 After starting the Bridge Node, a wallet key will be generated. You need to fund this address with Mainnet tokens for PayForBlob transactions. Retrieve your wallet address using:
@@ -80,6 +90,7 @@ After=network-online.target
 [Service]
 User=$USER
 ExecStart=$(which celestia) bridge start --archival \
+--p2p.network celestia \
 --metrics.tls=true --metrics --metrics.endpoint otel.celestia.observer
 Restart=on-failure
 RestartSec=3
@@ -186,11 +197,12 @@ sudo systemctl stop celestia-bridge
 
 ### **Download Latest Version**
 ```sh
-cd $HOME
+cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node/
-git checkout tags/v0.21.5
+cd celestia-node
+NODE_VERSION="v0.26.4"
+git checkout "tags/${NODE_VERSION}"
 make build
 sudo make install
 make cel-key
@@ -218,21 +230,4 @@ rm -rf $HOME/celestia-node $HOME/.celestia-bridge
 
 ---
 
-## **11. External Explorer**
-View node information here:  
-🔗 **[Celestia PostHuman Explorer](https://celestia.posthuman.digital/chains/celestia)**
-
----
-
-This guide is customized for **PostHuman Celestia Mainnet** using the following endpoints:
-
-- **Mainnet Type:** `mainnet`
-- **Chain ID:** `celestia`
-- **RPC:** `https://rpc.celestia-mainnet.posthuman.digital`
-- **REST:** `https://rest.celestia-mainnet.posthuman.digital`
-- **gRPC:** `https://grpc.celestia-mainnet.posthuman.digital`
-- **Peer:** `cd9f852141cd6f78e9443cea389911a6f0a5df72@8.52.247.252:26656`
-
----
-
-🚀 **Your Celestia Bridge Node is now set up and running on PostHuman infrastructure!**
+🚀 **Your Celestia Bridge Node is now set up and running.**

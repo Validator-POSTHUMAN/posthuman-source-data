@@ -1,8 +1,20 @@
 # Posthuman Service Bridge Node Setup for Mocha Testnet (mocha-4)
 
-## Hardware Requirements
+## Hardware Requirements (mocha data availability)
 
-Ensure your system meets the hardware requirements before proceeding.
+### Non-archival
+| Node type  | Memory | CPU     | Disk       | Bandwidth |
+|------------|--------|---------|------------|-----------|
+| Light      | 500 MB | 1 core  | 20 GB SSD  | 56 Kbps   |
+| Bridge     | 64 GB  | 8 cores | 8 TiB NVME | 1 Gbps    |
+| Full store | 64 GB  | 8 cores | 8 TiB NVME | 1 Gbps    |
+
+### Archival
+| Node type  | Memory | CPU     | Disk         | Bandwidth |
+|------------|--------|---------|--------------|-----------|
+| Light (unpruned) | 500 MB | 1 core | ~111 KB per block | 56 Kbps |
+| Bridge     | 64 GB  | 8 cores | 160 TiB NVME | 1 Gbps    |
+| Full store | 64 GB  | 8 cores | 160 TiB NVME | 1 Gbps    |
 
 ## Setting Up a Posthuman Service Node
 
@@ -33,13 +45,14 @@ go version
 
 ### Install Celestia-Node
 ```sh
-cd $HOME
+cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node/
-git checkout tags/v0.21.5-mocha 
-make build 
-sudo make install 
+cd celestia-node
+NODE_VERSION="v0.26.4"
+git checkout "tags/${NODE_VERSION}"
+make build
+sudo make install
 make cel-key
 ```
 
@@ -155,13 +168,14 @@ sudo systemctl stop celestia-bridge
 
 ### Download and Install Latest Version
 ```sh
-cd $HOME
+cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node/
-git checkout tags/v0.21.5-mocha 
-make build 
-sudo make install 
+cd celestia-node
+NODE_VERSION="v0.26.4"
+git checkout "tags/${NODE_VERSION}"
+make build
+sudo make install
 make cel-key
 ```
 

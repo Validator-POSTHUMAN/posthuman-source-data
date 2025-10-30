@@ -1,13 +1,16 @@
 # Celestia Light Node (Mocha-4 Testnet) — POSTHUMAN
 
-Run a Celestia mocha-4 light node backed by POSTHUMAN RPC/gRPC endpoints. The instructions mirror Celestia’s quick-start flow while injecting POSTHUMAN infrastructure specifics.
+Run a Celestia mocha-4 light node backed by POSTHUMAN RPC/gRPC endpoints. The instructions mirror Celestia’s quick-start flow while exposing POSTHUMAN public services ready for production use.
 
-## Hardware Requirements
-- 2 CPU cores  
-- 2 GB RAM  
-- 80 GB SSD  
-- 50 Mbps symmetric bandwidth
+## Hardware Requirements (non-archival)
+| Resource  | Requirement |
+|-----------|-------------|
+| CPU       | 1 core |
+| Memory    | 500 MB |
+| Disk      | 20 GB SSD |
+| Bandwidth | 56 Kbps |
 
+> Archival (unpruned header) light nodes on mocha-4 follow the same CPU/RAM/bandwidth profile but require ~111 KB of disk per block.
 ## 1. Update packages and install dependencies
 ```bash
 sudo apt update && sudo apt upgrade -y
