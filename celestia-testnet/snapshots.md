@@ -1,4 +1,4 @@
-# Celestia Testnet Snapshot (POSTHUMAN)
+# Celestia Testnet Snapshot
 
 **Network:** Mocha-4 pruned consensus node  
 **Cadence:** refreshed around every 24 h, available 24/7 via Cloudflare R2  
