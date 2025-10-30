@@ -589,46 +589,6 @@
     "services": ["snapshots"]
   },
   {
-    "name": "elys-testnet",
-    "type": "testnet",
-    "title": "Elys",
-    "website": "https://elys.network/",
-    "twitter": "https://x.com/elys_network",
-    "discord": "https://discord.com/invite/elys-network",
-    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/elys/images/elys.svg",
-    "stake": "https://explorer.posthuman.digital/elys-testnet/staking/",
-    "explorer": "https://explorer.posthuman.digital/elys-testnet/",
-    "chain_id": "elysicstestnet-1",
-    "endpoints": {
-      "rpc": "https://rpc.elys-testnet.posthuman.digital",
-      "rest": "https://rest.elys-testnet.posthuman.digital",
-      "grpc": "https://grpc.elys-testnet.posthuman.digital",
-	  "peer": "cfd13ad9b18914791ed70d71884abf5cc13f0ddb@213.239.207.165:31656"
-    },
-    "generatedServices": ["installation-guide", "state-sync"],
-    "services": ["snapshots"]
- },
- {
-    "name": "elys",
-    "type": "mainnet",
-    "title": "Elys",
-    "website": "https://elys.network/",
-    "twitter": "https://x.com/elys_Nntwork",
-    "discord": "https://discord.com/invite/elys-network",
-    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/elys/images/elys.svg",
-    "stake": "https://explorer.posthuman.digital/elys/staking/elysvaloper1w6phv0xwya5p2sql4qzlh7h2hdeszf49d9t2gr",
-    "explorer": "https://explorer.posthuman.digital/elys/",
-    "chain_id": "elys-1",
-    "endpoints": {
-      "rpc": "https://rpc.elys.posthuman.digital",
-      "rest": "https://rest.elys.posthuman.digital",
-      "grpc": "https://grpc.elys.posthuman.digital",
-	  "peer": "dc92b6eb65a8e392135d0de154df57ec1c2d374b@213.239.207.165:41656"
-    },
-    "generatedServices": ["installation-guide", "state-sync"],
-    "services": ["snapshots"]
-  },
-  {
     "name": "fuel",
     "type": "mainnet",
     "title": "Fuel",
