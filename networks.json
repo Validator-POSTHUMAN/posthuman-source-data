@@ -298,7 +298,7 @@
 	  "rest-arch": "https://rest-celestia-mainnet-archive.posthuman.digital",
       "grpc": "https://grpc-celestia-mainnet.posthuman.digital",
       "grpc-arch": "https://grpc-celestia-mainnet-archive.posthuman.digital",
-      "peer": "cd9f852141cd6f78e9443cea389911a6f0a5df72@peer-celestia-mainnet.posthuman.digital:26656"
+      "peer": "2cc7330049bc02e4276668c414222593d52eb718@peer-celestia-mainnet.posthuman.digital:40656"
     },
     "contributions": "Celestia",
     "generatedServices": ["installation-guide", "state-sync"],
@@ -331,7 +331,7 @@
 	  "rest-arch": "https://rest-celestia-testnet-archive.posthuman.digital",
       "grpc": "https://grpc-celestia-testnet.posthuman.digital",
 	  "grpc-arch": "https://grpc-celestia-testnet-archive.posthuman.digital",
-      "peer": "f57805e824e984467f8b1f2560a5ef4c80077ed5@peer-celestia-testnet.posthuman.digital:11656"
+      "peer": "c5bc6e85bf763c5a08ed08a238028afe3c18fc4b@peer-celestia-testnet.posthuman.digital:39656"
     },
     "generatedServices": ["installation-guide", "state-sync"],
     "services": ["full-node-setup", "light-node-setup", "bridge-node-setup", "snapshots", "one-liner", "links"]
