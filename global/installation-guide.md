@@ -2,13 +2,14 @@
 Ensure your system is up to date and has all the necessary tools for the installation:
 ```bash
 sudo apt update && sudo apt upgrade -y
-sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
+sudo apt install -y curl tar wget clang pkg-config libssl-dev jq build-essential \
+  bsdmainutils git make ncdu gcc chrony liblz4-tool
 ```
 
 
 ## Install Go (if needed)
 ```bash
-cd $HOME
+cd "$HOME"
 if ! command -v go >/dev/null 2>&1; then
   VER="1.24.1"
   wget "https://golang.org/dl/go${VER}.linux-amd64.tar.gz"
@@ -29,47 +30,49 @@ go version
 ### Install node
 
 ```
-cd $HOME
-mkdir -p src
-cd src
+cd "$HOME"
+REPO_DIR=$(basename {{codebase.git_repo}} .git)
+rm -rf "$REPO_DIR"
 git clone {{codebase.git_repo}}
-cd {{chain_name}}
+cd "$REPO_DIR"
 VERSION="{{codebase.recommended_version}}"
 git checkout "tags/$VERSION"
+make build
 make install
 {{daemon_name}} version
 ```
 
 ### Initialize Node
 
-Replace <node_name>
+Replace `<node_name>` with your moniker.
 
 ```
-~/go/bin/.{{daemon_name}} init <node_name> --chain-id="{{chain_id}}"
+{{daemon_name}} init <node_name> --chain-id "{{chain_id}}"
 ```
 
 ### Download genesis.json
 
 ```
-curl -Ls {{codebase.genesis.genesis_url}} > $HOME/.{{daemon_name}}/config/genesis.json
+curl -Ls {{codebase.genesis.genesis_url}} > "$HOME/.{{chain_name}}/config/genesis.json"
 ```
 
 ### Download addrbook.json
 
 ```
-curl -Ls {{addrbookUrl}} > $HOME/.{{daemon_name}}/config/addrbook.json
+curl -Ls {{addrbookUrl}} > "$HOME/.{{chain_name}}/config/addrbook.json"
 ```
 
 ### Create systemd service
 
 ```
-sudo tee /etc/systemd/system/{{daemon_name}}.service > /dev/null <<'EOF'
+NODE_USER=$(whoami)
+sudo tee /etc/systemd/system/{{daemon_name}}.service > /dev/null <<EOF
 [Unit]
 Description={{daemon_name}} daemon
 After=network-online.target
 
 [Service]
-User=<your_user>
+User=${NODE_USER}
 ExecStart=$(which {{daemon_name}}) start
 Restart=always
 RestartSec=3
@@ -79,8 +82,6 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 ```
-
-Replace `<your_user>` with the account that owns the node files, then enable the service:
 
 ```
 sudo systemctl daemon-reload
