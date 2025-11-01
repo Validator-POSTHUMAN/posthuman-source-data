@@ -19,8 +19,7 @@ Comprehensive guide for installing and running a Celestia node on the Mocha-4 te
 
 ```bash
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y curl tar wget clang pkg-config libssl-dev jq build-essential \
-  bsdmainutils git make ncdu gcc chrony liblz4-tool
+sudo apt install -y curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc chrony liblz4-tool
 ```
 
 ---
@@ -100,8 +99,6 @@ This creates: `~/.celestia-app/`
 **Important**: Download from Posthuman testnet infrastructure:
 
 ```bash
-# Backup existing config (optional)
-# mv ~/.celestia-app ~/.celestia-app.bak
 
 # Download genesis.json
 curl -Ls https://snapshots.posthuman.digital/celestia-testnet/genesis.json \
@@ -151,7 +148,7 @@ sed -i -e 's|prometheus = false|prometheus = true|' "$HOME/.celestia-app/config/
 
 ```bash
 # Posthuman testnet peer
-PEERS="your_peer_from_posthuman_testnet@peer-celestia-testnet.posthuman.digital:port"
+PEERS="c5bc6e85bf763c5a08ed08a238028afe3c18fc4b@peer-celestia-testnet.posthuman.digital:39656"
 
 # Update config (adjust as needed based on available peers)
 sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" \
@@ -198,8 +195,7 @@ celestia-appd tendermint unsafe-reset-all --home "$HOME/.celestia-app" --keep-ad
 
 # Download and extract
 cd "$HOME"
-curl -L https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.zst \
-  | zstd -d | tar -xf - -C "$HOME/.celestia-app"
+curl -L https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.zst | zstd -d | tar -xf - -C "$HOME/.celestia-app"
 
 # Verify
 ls -lh "$HOME/.celestia-app/data/"
@@ -305,30 +301,6 @@ celestia-appd tx staking create-validator \
   --gas=300000 \
   --fees=2000utia \
   --from="$WALLET"
-```
-
----
-
-## Troubleshooting
-
-### REST API Issues
-
-If REST fails, use gRPC (port 9090) as fallback:
-
-```bash
-grpcurl -plaintext localhost:9090 list
-```
-
-### Check Logs
-
-```bash
-sudo journalctl -u celestia-appd-testnet -f --no-hostname -o cat
-```
-
-### Restart Service
-
-```bash
-sudo systemctl restart celestia-appd-testnet
 ```
 
 ---
