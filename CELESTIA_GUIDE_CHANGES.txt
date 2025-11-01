@@ -1,0 +1,203 @@
+═══════════════════════════════════════════════════════════════════════
+  CELESTIA INSTALLATION GUIDES — SUMMARY OF CHANGES
+═══════════════════════════════════════════════════════════════════════
+
+📅 Date: 2025-01-11
+🎯 Goal: Убрать автогенерацию, использовать Posthuman infrastructure
+✅ Status: COMPLETED
+
+───────────────────────────────────────────────────────────────────────
+1. FILES CREATED / MODIFIED
+───────────────────────────────────────────────────────────────────────
+
+✨ NEW:  celestia/installation-guide.md              (9.4 KB)
+✨ NEW:  celestia-testnet/installation-guide.md      (8.2 KB)
+✨ NEW:  celestia/INSTALLATION_UPDATES.md
+✨ NEW:  CELESTIA_GUIDE_CHANGES.txt (this file)
+🔧 MOD:  networks.json
+
+───────────────────────────────────────────────────────────────────────
+2. NETWORKS.JSON CHANGES
+───────────────────────────────────────────────────────────────────────
+
+BEFORE (celestia):
+  "generatedServices": ["installation-guide", "state-sync"]
+  "services": ["bridge-node-setup", "full-node-setup", ...]
+
+AFTER (celestia):
+  "generatedServices": ["state-sync"]  ← убрали installation-guide
+  "services": ["installation-guide", "bridge-node-setup", ...]  ← добавили
+
+BEFORE (celestia-testnet):
+  No installation-guide at all
+
+AFTER (celestia-testnet):
+  "generatedServices": ["state-sync"]
+  "services": ["installation-guide", ...]  ← добавили новый guide
+
+───────────────────────────────────────────────────────────────────────
+3. CONTENT IMPROVEMENTS
+───────────────────────────────────────────────────────────────────────
+
+┌─────────────────────┬──────────────────────┬──────────────────────┐
+│ Feature             │ OLD                  │ NEW                  │
+├─────────────────────┼──────────────────────┼──────────────────────┤
+│ Genesis source      │ <genesis_url>        │ snapshots.posthuman  │
+│ Addrbook source     │ <addrbook_url>       │ snapshots.posthuman  │
+│ Snapshot            │ Not mentioned        │ Integrated ✓         │
+│ Backup method       │ tar.gz archive       │ mv (rename) ✓        │
+│ Structure           │ Simple list          │ Numbered sections ✓  │
+│ Troubleshooting     │ None                 │ REST→gRPC fallback ✓ │
+│ Security section    │ Minimal              │ Detailed ✓           │
+│ Testnet guide       │ None                 │ Separate file ✓      │
+│ Useful commands     │ Few                  │ Comprehensive ✓      │
+└─────────────────────┴──────────────────────┴──────────────────────┘
+
+───────────────────────────────────────────────────────────────────────
+4. MAINNET GUIDE STRUCTURE (celestia/installation-guide.md)
+───────────────────────────────────────────────────────────────────────
+
+1.  Update System and Install Build Tools
+2.  Install Go
+3.  Build and Install celestia-appd (v5.0.11)
+4.  Initialize the Node
+5.  Download Genesis and Address Book ← Posthuman URLs
+6.  Configure Node Settings
+    6.1 Minimum Gas Price
+    6.2 Pruning
+    6.3 Disable Indexer
+    6.4 Prometheus
+    6.5 Seeds and Peers
+7.  Create Systemd Service
+8.  Download and Apply Snapshot ← Posthuman snapshot
+9.  Start the Node
+10. Verify Node Status
+11. Create or Restore Wallet
+12. Check Wallet Balance
+13. Create Validator
+
++ Troubleshooting (REST API → gRPC)
++ Useful Commands
++ Security Recommendations
++ Uninstall Instructions
++ Resources (all Posthuman links)
+
+───────────────────────────────────────────────────────────────────────
+5. TESTNET GUIDE (celestia-testnet/installation-guide.md)
+───────────────────────────────────────────────────────────────────────
+
+• Version: v6.2.0-mocha
+• Chain ID: mocha-4
+• Separate systemd service: celestia-appd-testnet
+• Uses Posthuman testnet infrastructure:
+  - genesis.json from snapshots.posthuman.digital/celestia-testnet/
+  - addrbook.json from snapshots.posthuman.digital/celestia-testnet/
+  - snapshot from snapshots.posthuman.digital/celestia-testnet/
+• Includes faucet instructions (Discord)
+• Smaller hardware requirements
+• All same features as mainnet guide
+
+───────────────────────────────────────────────────────────────────────
+6. KEY IMPROVEMENTS OVER ITROCKET
+───────────────────────────────────────────────────────────────────────
+
+✓ Uses Posthuman infrastructure (your own servers!)
+✓ Detailed step-by-step explanations
+✓ Troubleshooting section for common issues
+✓ Security best practices
+✓ Separate mainnet/testnet guides
+✓ Manual control (no auto-generated placeholders)
+✓ Snapshot integration for fast sync
+✓ Comprehensive monitoring commands
+✓ REST API fallback to gRPC documented
+
+───────────────────────────────────────────────────────────────────────
+7. DIRECT LINKS USED
+───────────────────────────────────────────────────────────────────────
+
+MAINNET:
+  https://snapshots.posthuman.digital/celestia-mainnet/genesis.json
+  https://snapshots.posthuman.digital/celestia-mainnet/addrbook.json
+  https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.zst
+
+TESTNET:
+  https://snapshots.posthuman.digital/celestia-testnet/genesis.json
+  https://snapshots.posthuman.digital/celestia-testnet/addrbook.json
+  https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.zst
+
+ENDPOINTS (mainnet):
+  RPC:  https://rpc-celestia-mainnet.posthuman.digital
+  REST: https://rest-celestia-mainnet.posthuman.digital
+  gRPC: https://grpc-celestia-mainnet.posthuman.digital
+  Peer: 2cc7330049bc02e4276668c414222593d52eb718@peer-celestia-mainnet.posthuman.digital:40656
+
+───────────────────────────────────────────────────────────────────────
+8. VERIFICATION COMMANDS
+───────────────────────────────────────────────────────────────────────
+
+# Check file sizes
+ls -lh ~/posthuman-source-data/celestia*/installation-guide.md
+
+# View mainnet guide
+cat ~/posthuman-source-data/celestia/installation-guide.md
+
+# View testnet guide
+cat ~/posthuman-source-data/celestia-testnet/installation-guide.md
+
+# Check networks.json changes
+jq '.[] | select(.name | startswith("celestia")) | 
+    {name, generatedServices, services}' \
+  ~/posthuman-source-data/networks.json
+
+# Verify URLs in guides
+grep "snapshots.posthuman.digital" \
+  ~/posthuman-source-data/celestia*/installation-guide.md
+
+───────────────────────────────────────────────────────────────────────
+9. GIT COMMIT COMMAND
+───────────────────────────────────────────────────────────────────────
+
+cd ~/posthuman-source-data
+
+git add celestia/installation-guide.md \
+        celestia-testnet/installation-guide.md \
+        celestia/INSTALLATION_UPDATES.md \
+        networks.json
+
+git commit -m "feat(celestia): replace auto-generated guides with Posthuman infra
+
+- Remove installation-guide from generatedServices
+- Add manual comprehensive guides for mainnet and testnet
+- Use direct links to snapshots.posthuman.digital for genesis/addrbook
+- Add snapshot integration for fast sync
+- Include troubleshooting section (REST API → gRPC fallback)
+- Add security recommendations and useful commands
+- Mainnet: v5.0.11 / Chain ID: celestia
+- Testnet: v6.2.0-mocha / Chain ID: mocha-4"
+
+git push origin main
+
+───────────────────────────────────────────────────────────────────────
+10. NEXT MAINTENANCE STEPS
+───────────────────────────────────────────────────────────────────────
+
+When new versions released:
+1. Update VERSION= in step 3 of guides
+2. Test installation on clean server
+3. Update "Last Updated" footer
+4. Update networks.json recommended_version
+5. Verify snapshot URLs still work
+6. Update changelog/release notes
+
+───────────────────────────────────────────────────────────────────────
+
+✅ TASK COMPLETED SUCCESSFULLY
+
+Гайды теперь:
+• Подробные и понятные (13 шагов с пояснениями)
+• Используют Posthuman infrastructure
+• Технологичные (snapshot, systemd, monitoring)
+• С troubleshooting и security
+• Без лишнего (focused, efficient)
+
+═══════════════════════════════════════════════════════════════════════
