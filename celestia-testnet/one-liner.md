@@ -8,25 +8,25 @@ Automated installation and management for Celestia nodes (Mainnet & Testnet) by 
 
 **One-liner (recommended):**
 ```bash
-curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh | bash
-```
-
-**Download and run:**
-```bash
 curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh > celestia-manager.sh && chmod +x celestia-manager.sh && ./celestia-manager.sh
 ```
 
 **With screen (persistent session):**
 ```bash
-screen -S celestia bash -c "curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh | bash"
+curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh > celestia-manager.sh && chmod +x celestia-manager.sh && screen -S celestia ./celestia-manager.sh
 ```
 
-**Simple run (no tmux):**
+**Quick run (auto-cleanup):**
 ```bash
-curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh > celestia-manager.sh && chmod +x celestia-manager.sh && ./celestia-manager.sh
+bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh)"
 ```
 
 **Current Versions:**
+- 🌐 Mainnet: `v5.0.11` (chain-id: `celestia`)
+- 🧪 Testnet: `v6.2.0-mocha` (chain-id: `mocha-4`)
+- 🔧 Go: `1.24.1`
+
+---
 - 🌐 Mainnet: `v5.0.11` (chain-id: `celestia`)
 - 🧪 Testnet: `v6.2.0-mocha` (chain-id: `mocha-4`)
 - 🔧 Go: `1.24.1`
