@@ -16,8 +16,7 @@ Comprehensive guide for installing and running a Celestia validator/full node on
 
 ```bash
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y curl tar wget clang pkg-config libssl-dev jq build-essential \
-  bsdmainutils git make ncdu gcc chrony liblz4-tool
+sudo apt install -y curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc chrony liblz4-tool
 ```
 
 ---
@@ -97,9 +96,6 @@ This creates the default directory: `~/.celestia-app/`
 **Important**: Download the official genesis and address book from Posthuman infrastructure:
 
 ```bash
-# Backup existing config (optional, for fresh install not needed)
-# mv ~/.celestia-app ~/.celestia-app.bak
-
 # Download genesis.json (required for network participation)
 curl -Ls https://snapshots.posthuman.digital/celestia-mainnet/genesis.json \
   -o "$HOME/.celestia-app/config/genesis.json"
@@ -163,7 +159,6 @@ sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peer
 Create a service file to run the node as a system daemon:
 
 ```bash
-# Replace <YOUR_USER> with your actual username (e.g., valoper)
 sudo tee /etc/systemd/system/celestia-appd.service > /dev/null <<EOF
 [Unit]
 Description=Celestia Node (Mainnet)
@@ -308,32 +303,6 @@ celestia-appd tx staking create-validator \
   --fees=2000utia \
   --from="$WALLET"
 ```
-
----
-
-## Troubleshooting
-
-### REST API Not Working
-
-If the REST API (port 1317) fails to start, you can use the **gRPC endpoint** as a fallback:
-
-- **gRPC**: Port 9090 (default) or configured custom port
-- Test with: `grpcurl -plaintext localhost:9090 list`
-
-Consider setting up a gRPC-to-REST gateway using tools like Envoy or grpc-gateway.
-
-### Check Logs for Errors
-
-```bash
-sudo journalctl -u celestia-appd -f --no-hostname -o cat
-```
-
-### Restart Service
-
-```bash
-sudo systemctl restart celestia-appd
-```
-
 ---
 
 ## Useful Commands
