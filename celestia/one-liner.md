@@ -20,12 +20,6 @@ screen -S celestia-manager
 - 🌐 Mainnet: `v5.0.11` (chain-id: `celestia`)
 - 🧪 Testnet: `v6.2.0-mocha` (chain-id: `mocha-4`)
 - 🔧 Go: `1.24.1`
-
----
-- 🌐 Mainnet: `v5.0.11` (chain-id: `celestia`)
-- 🧪 Testnet: `v6.2.0-mocha` (chain-id: `mocha-4`)
-- 🔧 Go: `1.24.1`
-
 ---
 
 ## 📋 Features
