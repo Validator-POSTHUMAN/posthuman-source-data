@@ -8,12 +8,12 @@ Automated installation and management for Celestia nodes (Mainnet & Testnet) by 
 
 **Auto-start in tmux session (recommended):**
 ```bash
-curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh -o celestia-manager.sh && chmod +x celestia-manager.sh && tmux new-session -d -s celestia './celestia-manager.sh' && tmux attach-session -t celestia
+curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh > celestia-manager.sh && chmod +x celestia-manager.sh && tmux new-session -d -s celestia './celestia-manager.sh' && tmux attach-session -t celestia
 ```
 
 **Simple run (no tmux):**
 ```bash
-curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh -o celestia-manager.sh && chmod +x celestia-manager.sh && ./celestia-manager.sh
+curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh > celestia-manager.sh && chmod +x celestia-manager.sh && ./celestia-manager.sh
 ```
 
 **Current Versions:**
