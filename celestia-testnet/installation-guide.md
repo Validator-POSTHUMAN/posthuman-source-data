@@ -6,9 +6,12 @@ Comprehensive guide for installing and running a Celestia node on the Mocha-4 te
 
 ## Prerequisites
 
-- **Hardware**: 4+ CPU cores, 8GB+ RAM, 250GB+ NVMe SSD
+**For Validator/Consensus Node** (official requirements):
+- **Hardware**: 16 cores, 32 GB RAM, 2 TiB NVMe SSD, 1 Gbps bandwidth
 - **OS**: Ubuntu 20.04+ or similar Linux distribution
 - **Network**: Stable internet connection
+
+**Note**: These are official requirements for validators. For non-validator full nodes, lower specs may work but are not recommended for production.
 
 ---
 

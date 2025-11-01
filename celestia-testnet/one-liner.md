@@ -211,12 +211,14 @@ sudo journalctl -u celestia-appd -f --no-hostname -o cat
 
 ## 📊 System Requirements
 
-### Testnet Validator / Full Node
-- **CPU**: 4+ cores (6+ recommended)
-- **RAM**: 8 GB minimum (16 GB recommended)
-- **Disk**: 250 GB NVMe SSD (500 GB for safety)
-- **Network**: 100 Mbps+ connection
+### Testnet Validator / Consensus Node (Official)
+- **CPU**: 16 cores
+- **RAM**: 32 GB
+- **Disk**: 2 TiB NVMe SSD
+- **Network**: 1 Gbps connection
 - **OS**: Ubuntu 20.04+ or similar Linux
+
+**Note**: Testnet uses same requirements as mainnet. Lower specs may work for testing but are not recommended.
 
 **Testnet requirements are lighter than mainnet** — great for testing on modest hardware!
 
