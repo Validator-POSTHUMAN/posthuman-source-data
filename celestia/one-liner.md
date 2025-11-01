@@ -6,7 +6,6 @@ Automated installation and management for Celestia nodes (Mainnet & Testnet) by 
 
 ## 🚀 One-Liner Install & Run
 
-**One-liner (recommended):**
 ```bash
 curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh > celestia-manager.sh && chmod +x celestia-manager.sh && ./celestia-manager.sh
 ```
