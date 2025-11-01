@@ -6,20 +6,14 @@ Automated installation and management for Celestia nodes (Mainnet & Testnet) by 
 
 ## 🚀 One-Liner Install & Run
 
-```bash
-curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh > celestia-manager.sh && chmod +x celestia-manager.sh && ./celestia-manager.sh
-```
-
-**With screen (persistent session):**
-```bash
-curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh > celestia-manager.sh && chmod +x celestia-manager.sh && screen -S celestia ./celestia-manager.sh
-```
-
 **Quick run (auto-cleanup):**
 ```bash
 bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh)"
 ```
-
+**With screen (persistent session):**
+```bash
+ screen -S celestia-manager
+```
 **Current Versions:**
 - 🌐 Mainnet: `v5.0.11` (chain-id: `celestia`)
 - 🧪 Testnet: `v6.2.0-mocha` (chain-id: `mocha-4`)
