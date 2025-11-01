@@ -361,9 +361,7 @@
       "peer": "2cc7330049bc02e4276668c414222593d52eb718@peer-celestia-mainnet.posthuman.digital:40656"
     },
     "contributions": "Celestia",
-    "generatedServices": [
-      "state-sync"
-    ],
+    "generatedServices": [],
     "services": [
       "installation-guide",
       "bridge-node-setup",
@@ -402,9 +400,7 @@
       "grpc-arch": "https://grpc-celestia-testnet-archive.posthuman.digital",
       "peer": "c5bc6e85bf763c5a08ed08a238028afe3c18fc4b@peer-celestia-testnet.posthuman.digital:39656"
     },
-    "generatedServices": [
-      "state-sync"
-    ],
+    "generatedServices": [],
     "services": [
       "installation-guide",
       "bridge-node-setup",
