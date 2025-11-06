@@ -473,31 +473,6 @@
     ]
   },
   {
-    "name": "0g-testnet",
-    "type": "testnet",
-    "title": "0G Chain",
-    "website": "https://0g.ai",
-    "twitter": "hhttps://x.com/0G_labs",
-    "discord": "https://discord.com/invite/0glabs",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/0g-testnet/0g.svg",
-    "stake": "",
-    "explorer": "",
-    "chain_id": "0gchain-16601",
-    "endpoints": {
-      "rpc": "https://rpc.0g.posthuman.digital",
-      "rest": "https://rest-api.0g.posthuman.digital",
-      "grpc": "https://grpc.0g.posthuman.digital",
-      "seed-node": "4df9e460d919835a0d74413481b40357e5c4f070@135.181.227.236:47656"
-    },
-    "generatedServices": [],
-    "services": [
-      "setup-storage-node",
-      "installation-guide",
-      "setup-DA-node",
-      "setup-DA-client"
-    ]
-  },
-  {
     "name": "kyve",
     "type": "mainnet",
     "title": "Kyve",
