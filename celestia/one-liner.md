@@ -61,7 +61,7 @@ One-click update with version selection.
 **PostHuman Snapshots:**
 - 📍 Mainnet: https://snapshots.posthuman.digital/celestia-mainnet/
 - 📍 Testnet: https://snapshots.posthuman.digital/celestia-testnet/
-- ⏱️ Updated every 24 hours
+- ⏱️ Updated roughly every 4 hours
 - 🌐 Fast worldwide via Cloudflare R2
 
 **Manual snapshot restore:**
