@@ -16,7 +16,7 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 ```
 **Current Versions:**
 - 🌐 Mainnet: `v5.0.11` (chain-id: `celestia`)
-- 🧪 Testnet: `v6.2.0-mocha` (chain-id: `mocha-4`)
+- 🧪 Testnet: `v6.2.2-mocha` (chain-id: `mocha-4`)
 - 🔧 Go: `1.24.1`
 
 ## 📋 Features
@@ -58,7 +58,7 @@ One-click update with version selection.
 **PostHuman Snapshots:**
 - 📍 Mainnet: https://snapshots.posthuman.digital/celestia-mainnet/
 - 📍 Testnet: https://snapshots.posthuman.digital/celestia-testnet/
-- ⏱️ Updated every 24 hours
+- ⏱️ Updated roughly every 4 hours
 - 🌐 Fast worldwide via Cloudflare R2
 
 **Manual snapshot restore:**

@@ -62,7 +62,7 @@ git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app
 
 # Checkout testnet version
-VERSION="v6.2.0-mocha"
+VERSION="v6.2.2-mocha"
 git checkout "tags/$VERSION"
 
 # Build and install
@@ -73,7 +73,7 @@ make install
 celestia-appd version
 ```
 
-Expected output: `v6.2.0-mocha`
+Expected output: `v6.2.2-mocha`
 
 ---
 
@@ -184,7 +184,7 @@ EOF
 
 ## 8. Download and Apply Snapshot
 
-Testnet snapshots are smaller (~1-2 GB) and updated daily:
+Testnet snapshots are pruned (~1-2 GB) and updated every ~4 hours:
 
 ```bash
 # Stop service if running
@@ -378,4 +378,4 @@ sed -i '/WALLET_ADDRESS_TESTNET/d' "$HOME/.bash_profile"
 
 ---
 
-**Last Updated**: v6.2.0-mocha | Chain ID: mocha-4
+**Last Updated**: v6.2.2-mocha | Chain ID: mocha-4

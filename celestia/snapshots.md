@@ -1,7 +1,7 @@
 # Celestia Mainnet Snapshot
 
 **Type:** pruned consensus node (goleveldb)  
-**Cadence:** refreshed around every 24 h, served 24/7 from Cloudflare R2  
+**Cadence:** refreshed around every 4 h, served 24/7 from Cloudflare R2  
 **Download:** `https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.zst`
 
 > Latest height, build time, and checksum are published alongside the archive at `snapshot.json`.
