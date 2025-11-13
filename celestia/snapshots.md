@@ -24,3 +24,5 @@ sudo systemctl restart "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}"
 ```
 
 The archive already contains the `data/` directory, so extraction straight into `$CELESTIA_HOME` brings the node back with the pruned state. Snapshots remain available in the public index at [https://snapshots.posthuman.digital/celestia-mainnet/](https://snapshots.posthuman.digital/celestia-mainnet/).
+
+Automated archives are produced on POSTHUMAN bare-metal nodes, pruned with `cosmprund`, and distributed globally via Cloudflare R2 + Workers for consistent low-latency access.

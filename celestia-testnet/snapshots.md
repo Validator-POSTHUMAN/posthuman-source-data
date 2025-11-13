@@ -24,3 +24,5 @@ sudo systemctl restart "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}"
 ```
 
 The pipeline keeps the archive pruned and ready for rapid validator or full-node recovery. Browse historical builds at [https://snapshots.posthuman.digital/celestia-testnet/](https://snapshots.posthuman.digital/celestia-testnet/).
+
+Each bundle is generated automatically on POSTHUMAN bare-metal infrastructure, pruned via `cosmprund`, and delivered worldwide through Cloudflare R2 + Workers.

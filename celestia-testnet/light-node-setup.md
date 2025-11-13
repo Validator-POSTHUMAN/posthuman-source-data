@@ -42,7 +42,7 @@ cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-NODE_VERSION="v0.26.4"
+NODE_VERSION="v0.28.2-mocha"
 git checkout "tags/${NODE_VERSION}"
 make build
 sudo make install
@@ -159,7 +159,7 @@ cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-NODE_VERSION="v0.26.4"
+NODE_VERSION="v0.28.2-mocha"
 git checkout "tags/${NODE_VERSION}"
 make build
 sudo make install
