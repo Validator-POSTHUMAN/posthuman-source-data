@@ -62,7 +62,7 @@ git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app
 
 # Checkout the recommended version
-VERSION="v5.0.11"
+VERSION="v6.2.5"
 git checkout "tags/$VERSION"
 
 # Build and install
@@ -73,7 +73,7 @@ make install
 celestia-appd version
 ```
 
-Expected output: `v5.0.11`
+Expected output: `v6.2.5`
 
 ---
 
@@ -390,4 +390,4 @@ sed -i '/WALLET_ADDRESS/d' "$HOME/.bash_profile"
 
 ---
 
-**Last Updated**: v5.0.11 | Chain ID: celestia
+**Last Updated**: v6.2.5 | Chain ID: celestia
