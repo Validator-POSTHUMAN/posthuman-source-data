@@ -4,21 +4,53 @@ This guide will help you set up a Celestia bridge node using PostHuman infrastru
 
 ---
 
-## **Hardware Requirements (data availability)**
+## **Hardware Requirements**
 
-### Non-archival
-| Node type   | Memory | CPU      | Disk       | Bandwidth |
-|-------------|--------|----------|------------|-----------|
-| Light       | 500 MB | 1 core   | 20 GB SSD  | 56 Kbps   |
-| Bridge      | 64 GB  | 8 cores  | 8 TiB NVME | 1 Gbps    |
-| Full store  | 64 GB  | 8 cores  | 8 TiB NVME | 1 Gbps    |
+Bridge nodes are part of the **Data Availability** layer. Below are the official requirements from Celestia docs.
 
-### Archival
-| Node type   | Memory | CPU      | Disk         | Bandwidth |
-|-------------|--------|----------|--------------|-----------|
-| Light (unpruned headers) | 500 MB | 1 core | ~111 KB per block | 56 Kbps |
-| Bridge      | 64 GB  | 8 cores  | 160 TiB NVME | 1 Gbps    |
-| Full store  | 64 GB  | 8 cores  | 160 TiB NVME | 1 Gbps    |
+### **Non-Archival Data Availability Nodes**
+
+**Light Node:**
+- Memory: 500 MB RAM
+- CPU: Single core
+- Disk: 20 GB SSD
+- Bandwidth: 56 Kbps
+
+**Bridge Node (recommended for this guide):**
+- Memory: 64 GB RAM
+- CPU: 8 cores
+- Disk: 8 TiB NVMe
+- Bandwidth: 1 Gbps
+
+**Full Storage Node:**
+- Memory: 64 GB RAM
+- CPU: 8 cores
+- Disk: 8 TiB NVMe
+- Bandwidth: 1 Gbps
+
+### **Archival Data Availability Nodes**
+
+**Light Node (unpruned headers):**
+- Memory: 500 MB RAM
+- CPU: Single core
+- Disk: ~111.7 KB per block
+- Bandwidth: 56 Kbps
+
+**Bridge Node (archival):**
+- Memory: 64 GB RAM
+- CPU: 8 cores
+- Disk: 160 TiB NVMe*
+- Bandwidth: 1 Gbps
+
+**Full Storage Node (archival):**
+- Memory: 64 GB RAM
+- CPU: 8 cores
+- Disk: 160 TiB NVMe*
+- Bandwidth: 1 Gbps
+
+*Archival disk requirement is based on current v6 32MB/6s throughput at maximum capacity. In reality the requirement can be much lower. We advise regularly checking disk usage and having at least 1 month worth of max throughput of extra disk space (8 TiB).
+
+**Note:** This guide focuses on setting up a **non-archival Bridge Node** with standard requirements (64 GB RAM, 8 cores, 8 TiB NVMe).
 
 ---
 

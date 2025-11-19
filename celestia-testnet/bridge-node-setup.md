@@ -3,19 +3,6 @@
 ## Hardware Requirements (mocha data availability)
 
 ### Non-archival
-| Node type  | Memory | CPU     | Disk       | Bandwidth |
-|------------|--------|---------|------------|-----------|
-| Light      | 500 MB | 1 core  | 20 GB SSD  | 56 Kbps   |
-| Bridge     | 64 GB  | 8 cores | 8 TiB NVME | 1 Gbps    |
-| Full store | 64 GB  | 8 cores | 8 TiB NVME | 1 Gbps    |
-
-### Archival
-| Node type  | Memory | CPU     | Disk         | Bandwidth |
-|------------|--------|---------|--------------|-----------|
-| Light (unpruned) | 500 MB | 1 core | ~111 KB per block | 56 Kbps |
-| Bridge     | 64 GB  | 8 cores | 160 TiB NVME | 1 Gbps    |
-| Full store | 64 GB  | 8 cores | 160 TiB NVME | 1 Gbps    |
-
 ## Setting Up a Posthuman Service Node
 
 ### Update Packages and Install Dependencies
