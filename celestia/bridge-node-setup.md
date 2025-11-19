@@ -6,51 +6,26 @@ This guide will help you set up a Celestia bridge node using PostHuman infrastru
 
 ## **Hardware Requirements**
 
-Bridge nodes are part of the **Data Availability** layer. Below are the official requirements from Celestia docs.
+**For Bridge Node (this guide):**
+- **Memory:** 64 GB RAM
+- **CPU:** 8 cores
+- **Disk:** 8 TiB NVMe (non-archival) or 160 TiB NVMe (archival)
+- **Bandwidth:** 1 Gbps
 
-### **Non-Archival Data Availability Nodes**
+<details>
+<summary>Other Data Availability node types</summary>
 
 **Light Node:**
-- Memory: 500 MB RAM
-- CPU: Single core
-- Disk: 20 GB SSD
-- Bandwidth: 56 Kbps
-
-**Bridge Node (recommended for this guide):**
-- Memory: 64 GB RAM
-- CPU: 8 cores
-- Disk: 8 TiB NVMe
-- Bandwidth: 1 Gbps
+- Memory: 500 MB RAM | CPU: 1 core | Disk: 20 GB SSD | Bandwidth: 56 Kbps
 
 **Full Storage Node:**
-- Memory: 64 GB RAM
-- CPU: 8 cores
-- Disk: 8 TiB NVMe
-- Bandwidth: 1 Gbps
+- Memory: 64 GB RAM | CPU: 8 cores | Disk: 8 TiB NVMe (non-archival) or 160 TiB NVMe (archival) | Bandwidth: 1 Gbps
 
-### **Archival Data Availability Nodes**
+*Archival nodes store full history. For most users, non-archival (8 TiB) is sufficient.*
 
-**Light Node (unpruned headers):**
-- Memory: 500 MB RAM
-- CPU: Single core
-- Disk: ~111.7 KB per block
-- Bandwidth: 56 Kbps
+</details>
 
-**Bridge Node (archival):**
-- Memory: 64 GB RAM
-- CPU: 8 cores
-- Disk: 160 TiB NVMe*
-- Bandwidth: 1 Gbps
-
-**Full Storage Node (archival):**
-- Memory: 64 GB RAM
-- CPU: 8 cores
-- Disk: 160 TiB NVMe*
-- Bandwidth: 1 Gbps
-
-*Archival disk requirement is based on current v6 32MB/6s throughput at maximum capacity. In reality the requirement can be much lower. We advise regularly checking disk usage and having at least 1 month worth of max throughput of extra disk space (8 TiB).
-
-**Note:** This guide focuses on setting up a **non-archival Bridge Node** with standard requirements (64 GB RAM, 8 cores, 8 TiB NVMe).
+**Source:** [Celestia Official Docs](https://docs.celestia.org/how-to-guides/nodes-overview)
 
 ---
 
@@ -89,7 +64,7 @@ cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-NODE_VERSION="v0.26.4"
+NODE_VERSION="v0.28.2"
 git checkout "tags/${NODE_VERSION}"
 make build
 sudo make install
@@ -233,7 +208,7 @@ cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-NODE_VERSION="v0.26.4"
+NODE_VERSION="v0.28.2"
 git checkout "tags/${NODE_VERSION}"
 make build
 sudo make install
