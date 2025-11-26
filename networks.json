@@ -13,9 +13,7 @@
       "rpc": ""
     },
     "generatedServices": [],
-    "services": [
-      "installation-guide"
-    ]
+    "services": ["installation-guide"]
   },
   {
     "name": "iotex",
@@ -31,9 +29,7 @@
       "rpc": ""
     },
     "generatedServices": [],
-    "services": [
-      "installation-guide"
-    ]
+    "services": ["installation-guide"]
   },
   {
     "name": "starknet",
@@ -49,10 +45,7 @@
       "rpc": ""
     },
     "generatedServices": [],
-    "services": [
-      "installation-guide",
-      "validator-attestation"
-    ]
+    "services": ["installation-guide", "validator-attestation"]
   },
   {
     "name": "ethereum",
@@ -68,9 +61,7 @@
       "jsonrpc": ""
     },
     "generatedServices": [],
-    "services": [
-      "install-guide"
-    ]
+    "services": ["install-guide"]
   },
   {
     "name": "cosmoshub",
@@ -91,15 +82,8 @@
       "seed-node": "6d581e53245f7f81c24a20392b60256a7e59de59@135.181.227.236:26656"
     },
     "contributions": "cosmos",
-    "generatedServices": [
-      "state-sync",
-      "peers"
-    ],
-    "services": [
-      "install-guide",
-      "ibc-relayers",
-      "links"
-    ]
+    "generatedServices": ["state-sync", "peers"],
+    "services": ["install-guide", "ibc-relayers", "links"]
   },
   {
     "name": "dymension",
@@ -118,11 +102,7 @@
       "evm-rpc": "https://evm-rpc.dymension.posthuman.digital",
       "seed-node": "82a81ed97ee8fe5a8bfa26446737865333eadca1@46.39.246.50:36656"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync",
-      "peers"
-    ],
+    "generatedServices": ["installation-guide", "state-sync", "peers"],
     "services": []
   },
   {
@@ -140,11 +120,7 @@
       "seed-node": "589eaa7656ff1af6c50f32d7b63dda1cf83c7906@46.39.246.50:26656"
     },
     "contributions": "humans_ai",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync",
-      "peers"
-    ],
+    "generatedServices": ["installation-guide", "state-sync", "peers"],
     "services": [],
     "images": [
       {
@@ -167,12 +143,8 @@
       "seed-node": "9aa69d667da6dd43ba82110b4ff290ac38d68976@135.181.227.236:61656"
     },
     "contributions": "atomone",
-    "generatedServices": [
-      "installation-guide"
-    ],
-    "services": [
-      "snapshot-service"
-    ]
+    "generatedServices": ["installation-guide"],
+    "services": ["snapshot-service"]
   },
   {
     "name": "atomone",
@@ -189,17 +161,8 @@
       "seed-node": "494f6198020d91571f75b4f208b739e2da50578e@135.181.227.236:63656"
     },
     "contributions": "atomone",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync",
-      "peers"
-    ],
-    "services": [
-      "IBC-Relayers",
-      "genesis-and-addrbook",
-      "snapshot-service",
-      "one-liner"
-    ]
+    "generatedServices": ["installation-guide", "state-sync", "peers"],
+    "services": ["IBC-Relayers", "genesis-and-addrbook", "snapshot-service", "one-liner"]
   },
   {
     "name": "stargaze",
@@ -214,11 +177,7 @@
       "grpc": "https://grpc.stargaze.posthuman.digital:443",
       "seed-node": "e87e6dc4a941f35b2ad39a75a18fefbccf5d9072@46.39.246.50:10656"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync",
-      "peers"
-    ],
+    "generatedServices": ["installation-guide", "state-sync", "peers"],
     "services": []
   },
   {
@@ -236,9 +195,7 @@
     },
     "chain_id": "ethereum",
     "generatedServices": [],
-    "services": [
-      "installation-guide"
-    ]
+    "services": ["installation-guide"]
   },
   {
     "name": "namada",
@@ -255,12 +212,7 @@
     },
     "contributions": "namada",
     "generatedServices": [],
-    "services": [
-      "installation-guide",
-      "genesis-file",
-      "addr-book",
-      "snapshot-service"
-    ]
+    "services": ["installation-guide", "genesis-file", "addr-book", "snapshot-service"]
   },
   {
     "name": "initia-testnet",
@@ -278,9 +230,7 @@
     },
     "contributions": "initia-testnet",
     "generatedServices": [],
-    "services": [
-      "installation-guide"
-    ]
+    "services": ["installation-guide"]
   },
   {
     "name": "initia",
@@ -299,13 +249,8 @@
       "peer": "defc7a18318d5a1586ed4a0fa48092e30840ca86@135.181.227.236:11656"
     },
     "contributions": "initia",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "story-testnet",
@@ -325,12 +270,7 @@
     },
     "contributions": "story-testnet",
     "generatedServices": [],
-    "services": [
-      "installation-guide",
-      "genesis-and-addrbook",
-      "snapshot-service",
-      "one-liner"
-    ]
+    "services": ["installation-guide", "genesis-and-addrbook", "snapshot-service", "one-liner"]
   },
   {
     "name": "celestia",
@@ -346,9 +286,7 @@
     "codebase": {
       "git_repo": "https://github.com/celestiaorg/celestia-app",
       "recommended_version": "v5.0.11",
-      "compatible_versions": [
-        "v5.0.11"
-      ]
+      "compatible_versions": ["v5.0.11"]
     },
     "chain_id": "celestia",
     "endpoints": {
@@ -379,9 +317,7 @@
     "codebase": {
       "git_repo": "https://github.com/celestiaorg/celestia-app",
       "recommended_version": "v6.2.0-mocha",
-      "compatible_versions": [
-        "v6.2.0-mocha"
-      ]
+      "compatible_versions": ["v6.2.0-mocha"]
     },
     "chain_name": "celestia-app",
     "title": "Celestia",
@@ -429,10 +365,7 @@
       "peer": "a31df340e2a186a0541cdb5099a1cca6eab67c75@135.181.61.154:12756"
     },
     "contributions": "Agoric",
-    "generatedServices": [
-      "state-sync",
-      "peers"
-    ],
+    "generatedServices": ["state-sync", "peers"],
     "services": [
       "installation-guide",
       "IBC-Relayers",
@@ -463,14 +396,8 @@
       "grpc": "https://grpc.warden-testnet.posthuman.digital",
       "peer": "4ba715e890aeceb9fef100c7c404004d1d711f37@46.4.52.158:656"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "oracle-slinky-setup-guide",
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["oracle-slinky-setup-guide", "snapshots"]
   },
   {
     "name": "kyve",
@@ -489,13 +416,8 @@
       "grpc": "https://grpc.kyve.posthuman.digital",
       "peer": "cdac5f97b512287daf89f928a89da9cf3344830b@8.52.247.252:35656"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "oraichain",
@@ -514,13 +436,8 @@
       "grpc": "https://grpc.oraichain.posthuman.digital",
       "peer": "07dde93a5ea10fc4623ef421d0de0e2b5b556e80@157.180.4.156:36657"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "zetachain",
@@ -542,13 +459,8 @@
       "evm_json_rpc_ws": "wss://wss.zetachain.posthuman.digital",
       "peer": "adcc85296ada06f1b8de81e7b26e063ff1474760@157.180.4.156:26656"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "nillion",
@@ -567,13 +479,8 @@
       "grpc": "https://grpc.nillion.posthuman.digital",
       "peer": "dd46a0e919753c2bc199a3c99cb463a55dc01290@157.180.4.156:56657"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "pell-testnet",
@@ -592,13 +499,8 @@
       "grpc": "https://grpc.pell-testnet.posthuman.digital",
       "peer": "eb520fcedddaa6236e9ef886c1f475b1c49849cd@8.52.247.252:29057"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "juno-testnet",
@@ -617,13 +519,8 @@
       "grpc": "https://grpc.juno-testnet.posthuman.digital",
       "peer": "ea35c818280a6ac5d1d2a987d8d60f4bd76f4e06@141.95.34.193:16656"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "juno",
@@ -642,13 +539,8 @@
       "grpc": "https://grpc.juno.posthuman.digital",
       "peer": "113a11ad866cddddea40ddf9b56fde43f03d7499@135.181.227.236:12656"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "exrp-testnet",
@@ -668,13 +560,8 @@
       "json": "https://json.exrp-testnet.posthuman.digital",
       "peer": "e80a91daedb88e1dc429ab60036b3819bb48057d@135.181.227.236:62656"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "exrp",
@@ -694,13 +581,8 @@
       "json": "https://json.exrp-testnet.posthuman.digital",
       "peer": "522e624a77123c67762b5c1ff70ac20d377b0179@135.181.227.236:61656"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "fuel",
@@ -719,12 +601,8 @@
       "grpc": "https://grpc.fuel.posthuman.digital",
       "peer": "0e71ad72133cb332ed09c98d5fe74eac345c1105@148.251.234.12:61656"
     },
-    "generatedServices": [
-      "installation-guide"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide"],
+    "services": ["snapshots"]
   },
   {
     "name": "neutron",
@@ -744,13 +622,8 @@
       "peer": "61965e8e9a775f590726f14ab18bc7b7e6d3346a@135.181.227.236:10656"
     },
     "contributions": "neutron",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "babylon-testnet",
@@ -772,11 +645,6 @@
     },
     "contributions": "babylon",
     "generatedServices": [],
-    "services": [
-      "installation-guide",
-      "genesis-and-addrbook",
-      "snapshot-service",
-      "one-liner"
-    ]
+    "services": ["installation-guide", "genesis-and-addrbook", "snapshot-service", "one-liner"]
   }
 ]
