@@ -20,12 +20,12 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 ### Hardware
 
-| Component | Minimum | Recommended |
-|-----------|---------|-------------|
-| CPU | 4 cores | 8 cores |
-| RAM | 8 GB | 16 GB |
-| Storage | 100 GB SSD | 250 GB NVMe |
-| Network | 100 Mbps | 1 Gbps |
+| Component | Minimum      | Recommended  |
+|-----------|--------------|--------------|
+| CPU       | 4 cores      | 8 cores      |
+| RAM       | 8 GB         | 16 GB        |
+| Storage   | 100 GB SSD   | 250 GB NVMe  |
+| Network   | 100 Mbps     | 1 Gbps       |
 
 ### Software
 

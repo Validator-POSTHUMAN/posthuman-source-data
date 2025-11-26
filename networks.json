@@ -780,25 +780,46 @@
     ]
   },
   {
-    "name": "canton",
+    "name": "canton-testnet",
     "type": "testnet",
-    "title": "Canton Network",
+    "title": "Canton Network TestNet",
     "website": "https://www.canton.network/",
     "twitter": "https://twitter.com/CantonNetwork",
-    "discord": "",
+    "discord": "https://discord.gg/cantonnetwork",
     "github": "https://github.com/digital-asset/decentralized-canton-sync",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
     "stake": "",
-    "explorer": "https://lighthouse.cantonloop.com/",
-    "chain_id": "DevNet: 0.5.3 | TestNet: 0.4.22 | MainNet: 0.4.25",
+    "explorer": "https://lighthouse.devnet.cantonloop.com/",
+    "version": "DevNet: 0.5.3 | TestNet: 0.4.22",
     "endpoints": {
-      "scan": "https://scan.sv-1.global.canton.network.sync.global"
+      "explorer": "https://scan.sv-1.dev.global.canton.network.sync.global"
     },
     "contributions": [],
     "generatedServices": [],
     "services": [
       "devnet-installation-guide",
       "testnet-installation-guide",
+      "one-liner"
+    ]
+  },
+  {
+    "name": "canton-mainnet",
+    "type": "mainnet",
+    "title": "Canton Network",
+    "website": "https://www.canton.network/",
+    "twitter": "https://twitter.com/CantonNetwork",
+    "discord": "https://discord.gg/cantonnetwork",
+    "github": "https://github.com/digital-asset/decentralized-canton-sync",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
+    "stake": "",
+    "explorer": "https://lighthouse.cantonloop.com/",
+    "version": "0.4.25",
+    "endpoints": {
+      "explorer": "https://scan.sv-1.global.canton.network.sync.global"
+    },
+    "contributions": [],
+    "generatedServices": [],
+    "services": [
       "mainnet-installation-guide",
       "one-liner"
     ]
