@@ -1,29 +1,5 @@
 [
   {
-    "name": "shentu",
-    "type": "mainnet",
-    "title": "Shentu",
-    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/shentu/images/ctk.svg",
-    "stake": "https://explorer.posthuman.digital/shentu",
-    "explorer": "https://explorer.posthuman.digital/shentu",
-    "chain_id": "shentu-2.2",
-    "endpoints": {
-      "rpc": "https://rpc.shentu.posthuman.digital:443",
-	  "rest": "https://rest.shentu.posthuman.digital:443",
-      "grpc": "https://grpc.shentu.posthuman.digital:443"
-      "peer": "77f21eee88ff4f895ff79dbdabb3e726c3f5eba5@peer.shentu.posthuman.digital:50656",
-      "snapshots": "https://snapshots.shentu.posthuman.digital/"
-    },
-    "contributions": "shentu",
-    "generatedServices": [],
-    "services": [
-      "installation-guide",
-      "genesis-file",
-      "addr-book",
-      "snapshot-service"
-    ]
-  },
-  {
     "name": "aztec",
     "type": "testnet",
     "title": "Aztec",
