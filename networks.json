@@ -10,7 +10,7 @@
     "endpoints": {
       "rpc": "https://rpc.shentu.posthuman.digital:443",
 	  "rest": "https://rest.shentu.posthuman.digital:443",
-      "grpc": "https://grpc.shentu.posthuman.digital:443"
+      "grpc": "https://grpc.shentu.posthuman.digital:443",
       "peer": "77f21eee88ff4f895ff79dbdabb3e726c3f5eba5@peer.shentu.posthuman.digital:50656",
       "snapshots": "https://snapshots.shentu.posthuman.digital:443"
     },
