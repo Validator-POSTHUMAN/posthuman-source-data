@@ -22,7 +22,7 @@
 	  "installation-guide",
       "state-sync"
 	],
-    "services": []
+    "services": ["snapshots"]
   },
   {
     "name": "aztec",
