@@ -3,6 +3,10 @@
     "name": "shentu",
     "type": "mainnet",
     "title": "Shentu",
+    "website": "https://www.shentu.org/",
+    "twitter": "https://x.com/ShentuChain",
+    "discord": "https://discord.com/invite/6nfAk956NH",
+    "github": "https://github.com/ShentuChain",
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/shentu/images/ctk.svg",
     "stake": "https://explorer.posthuman.digital/shentu",
     "explorer": "https://explorer.posthuman.digital/shentu",
@@ -16,14 +20,9 @@
     },
     "generatedServices": [
 	  "installation-guide",
-      "state-sync",
-      "peers"
+      "state-sync"
 	],
-    "services": [
-      "genesis-file",
-      "addr-book",
-      "snapshot-service"
-    ]
+    "services": []
   },
   {
     "name": "aztec",
