@@ -12,7 +12,7 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: DevNet
-- Version: 0.5.4
+- Version: 0.5.3
 - Migration ID: 1
 - Purpose: Testing and development
 
@@ -45,7 +45,7 @@ sudo apt update && sudo apt install -y curl jq docker.io docker-compose
 curl -s https://docs.dev.global.canton.network.sync.global/info | jq '.'
 
 # Create directory
-VERSION="0.5.4"
+VERSION="0.5.3"
 MIGRATION_ID="1"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
@@ -102,7 +102,7 @@ curl -s https://docs.dev.global.canton.network.sync.global/info | jq '.'
 #### 3. Download Canton Node
 
 ```bash
-VERSION="0.5.4"
+VERSION="0.5.3"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
 
@@ -121,9 +121,9 @@ curl -X POST https://sv.sv-1.dev.global.canton.network.sync.global/api/sv/v0/dev
 #### 5. Start Validator
 
 ```bash
-cd ~/.canton/0.5.4/splice-node/docker-compose/validator
+cd ~/.canton/0.5.3/splice-node/docker-compose/validator
 
-export IMAGE_TAG=0.5.4
+export IMAGE_TAG=0.5.3
 
 ./start.sh \
   -s "https://sv.sv-1.dev.global.canton.network.sync.global" \
@@ -159,15 +159,15 @@ docker ps --filter "name=splice-validator-validator" --format "{{.Names}}: {{.St
 ### Stop
 
 ```bash
-cd ~/.canton/0.5.4/splice-node/docker-compose/validator
+cd ~/.canton/0.5.3/splice-node/docker-compose/validator
 ./stop.sh
 ```
 
 ### Restart
 
 ```bash
-cd ~/.canton/0.5.4/splice-node/docker-compose/validator
-export IMAGE_TAG=0.5.4
+cd ~/.canton/0.5.3/splice-node/docker-compose/validator
+export IMAGE_TAG=0.5.3
 
 ./start.sh \
   -s "https://sv.sv-1.dev.global.canton.network.sync.global" \
@@ -180,7 +180,7 @@ export IMAGE_TAG=0.5.4
 ### View Logs
 
 ```bash
-cd ~/.canton/0.5.4/splice-node/docker-compose/validator
+cd ~/.canton/0.5.3/splice-node/docker-compose/validator
 
 # All containers
 docker compose logs -f

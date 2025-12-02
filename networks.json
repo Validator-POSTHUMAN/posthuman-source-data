@@ -817,7 +817,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
     "stake": "",
     "explorer": "https://lighthouse.devnet.cantonloop.com/",
-    "version": "DevNet: 0.5.3 | TestNet: 0.4.22",
+    "version": "DevNet: 0.5.4 | TestNet: 0.4.22",
     "endpoints": {
       "explorer": "https://scan.sv-1.dev.global.canton.network.sync.global"
     },
