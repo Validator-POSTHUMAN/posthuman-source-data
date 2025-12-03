@@ -12,8 +12,8 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: TestNet
-- Version: 0.4.22
-- Migration ID: 0
+- Version: 0.5.1
+- Migration ID: 1
 - Purpose: Pre-production testing
 
 ## Requirements
@@ -100,7 +100,7 @@ curl -s https://docs.test.global.canton.network.sync.global/info | jq '.'
 #### 3. Download Canton Node
 
 ```bash
-VERSION="0.4.22"
+VERSION="0.5.1"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
 
@@ -112,15 +112,15 @@ cd splice-node/docker-compose/validator
 #### 4. Start Validator
 
 ```bash
-cd ~/.canton/0.4.22/splice-node/docker-compose/validator
+cd ~/.canton/0.5.1/splice-node/docker-compose/validator
 
-export IMAGE_TAG=0.4.22
+export IMAGE_TAG=0.5.1
 
 ./start.sh \
   -s "https://sv.sv-1.test.global.canton.network.sync.global" \
   -o "YOUR_ONBOARDING_SECRET_FROM_SV" \
   -p "YOUR_VALIDATOR_NAME" \
-  -m "0" \
+  -m "1" \
   -w
 ```
 
@@ -128,7 +128,7 @@ Parameters:
 - `-s` - Sponsor SV URL
 - `-o` - Onboarding secret from SV sponsor (use `""` after first start)
 - `-p` - Party hint (validator name)
-- `-m` - Migration ID (0 for TestNet)
+- `-m` - Migration ID (1 for TestNet)
 - `-w` - Enable wallet
 
 #### 5. Check Status
@@ -150,28 +150,28 @@ docker ps --filter "name=splice-validator-validator" --format "{{.Names}}: {{.St
 ### Stop
 
 ```bash
-cd ~/.canton/0.4.22/splice-node/docker-compose/validator
+cd ~/.canton/0.5.1/splice-node/docker-compose/validator
 ./stop.sh
 ```
 
 ### Restart
 
 ```bash
-cd ~/.canton/0.4.22/splice-node/docker-compose/validator
-export IMAGE_TAG=0.4.22
+cd ~/.canton/0.5.1/splice-node/docker-compose/validator
+export IMAGE_TAG=0.5.1
 
 ./start.sh \
   -s "https://sv.sv-1.test.global.canton.network.sync.global" \
   -o "" \
   -p "YOUR_VALIDATOR_NAME" \
-  -m "0" \
+  -m "1" \
   -w
 ```
 
 ### View Logs
 
 ```bash
-cd ~/.canton/0.4.22/splice-node/docker-compose/validator
+cd ~/.canton/0.5.1/splice-node/docker-compose/validator
 
 # All containers
 docker compose logs -f
@@ -216,7 +216,7 @@ By default, wallet UI is publicly accessible. Secure it:
 **Option 1:** Change to localhost-only
 
 ```bash
-cd ~/.canton/0.4.22/splice-node/docker-compose/validator
+cd ~/.canton/0.5.1/splice-node/docker-compose/validator
 nano compose.yaml
 
 # Find and change:

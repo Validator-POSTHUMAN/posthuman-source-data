@@ -13,18 +13,18 @@
     "chain_id": "shentu-2.2",
     "endpoints": {
       "rpc": "https://rpc.shentu.posthuman.digital:443",
-	  "rest": "https://rest.shentu.posthuman.digital:443",
+      "rest": "https://rest.shentu.posthuman.digital:443",
       "grpc": "https://grpc.shentu.posthuman.digital:443",
       "peer": "77f21eee88ff4f895ff79dbdabb3e726c3f5eba5@peer.shentu.posthuman.digital:50656",
       "snapshots": "https://snapshots.shentu.posthuman.digital:443"
     },
     "generatedServices": [
-	  "installation-guide",
+      "installation-guide",
       "state-sync"
-	],
+    ],
     "services": [
-		"snapshots"
-	]
+      "snapshots"
+    ]
   },
   {
     "name": "aztec",
@@ -817,7 +817,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
     "stake": "",
     "explorer": "https://lighthouse.devnet.cantonloop.com/",
-    "version": "DevNet: 0.5.4 | TestNet: 0.4.22",
+    "version": "DevNet: 0.5.4 | TestNet: 0.5.1",
     "endpoints": {
       "explorer": "https://scan.sv-1.dev.global.canton.network.sync.global"
     },

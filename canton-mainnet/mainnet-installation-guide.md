@@ -13,7 +13,7 @@ Canton Network is the first public permissionless blockchain platform designed f
 **Network Details:**
 - Network: MainNet
 - Version: 0.4.25
-- Migration ID: 0
+- Migration ID: 3
 - Purpose: Production network
 
 **Participants:**
@@ -133,7 +133,7 @@ export IMAGE_TAG=0.4.25
   -s "https://sv.sv-1.global.canton.network.sync.global" \
   -o "YOUR_ONBOARDING_SECRET_FROM_SV" \
   -p "YOUR_VALIDATOR_NAME" \
-  -m "0" \
+  -m "3" \
   -w
 ```
 
@@ -141,7 +141,7 @@ Parameters:
 - `-s` - Sponsor SV URL
 - `-o` - Onboarding secret from SV sponsor (use `""` after first start)
 - `-p` - Party hint (validator name)
-- `-m` - Migration ID (0 for MainNet)
+- `-m` - Migration ID (3 for MainNet)
 - `-w` - Enable wallet
 
 #### 5. Check Status
@@ -177,7 +177,7 @@ export IMAGE_TAG=0.4.25
   -s "https://sv.sv-1.global.canton.network.sync.global" \
   -o "" \
   -p "YOUR_VALIDATOR_NAME" \
-  -m "0" \
+  -m "3" \
   -w
 ```
 
@@ -228,7 +228,7 @@ export IMAGE_TAG=${NEW_VERSION}
   -s "https://sv.sv-1.global.canton.network.sync.global" \
   -o "" \
   -p "YOUR_VALIDATOR_NAME" \
-  -m "0" \
+  -m "3" \
   -w
 
 # 6. Check logs
