@@ -1,5 +1,32 @@
 [
   {
+    "name": "axelar",
+    "type": "mainnet",
+    "title": "Axelar",
+    "website": "https://www.axelar.network/",
+    "twitter": "https://x.com/axelar",
+    "discord": "https://discord.com/invite/aRZ3Ra6f7D",
+    "github": "https://github.com/axelarnetwork",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/axelar/images/axelar-chain-logo.svg",
+    "stake": "https://explorer.posthuman.digital/axelar/staking/axelarvaloper1ftqma496np33y054x6gjeh2maxy00e00p2nl9l",
+    "explorer": "https://explorer.posthuman.digital/axelar",
+    "chain_id": "axelar-dojo-1",
+    "endpoints": {
+      "rpc": "https://rpc.axelar.posthuman.digital/:443",
+      "rest": "https://rest.axelar.posthuman.digital:443",
+      "grpc": "https://grpc.axelar.posthuman.digital:443",
+      "peer": "77f21eee88ff4f895ff79dbdabb3e726c3f5eba5@peer.axelar.posthuman.digital:50656",
+      "snapshots": "https://snapshots.axelar.posthuman.digital:443"
+    },
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
     "name": "shentu",
     "type": "mainnet",
     "title": "Shentu",
