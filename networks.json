@@ -15,7 +15,7 @@
       "rpc": "https://rpc.axelar.posthuman.digital:443",
       "rest": "https://rest.axelar.posthuman.digital:443",
       "grpc": "https://grpc.axelar.posthuman.digital:443",
-      "peer": "adece904395c55d4fd1c2581b0d7a9be899f5a9d@peer.axelar.posthuman.digital:50656",
+      "peer": "adece904395c55d4fd1c2581b0d7a9be899f5a9d@peer.axelar.posthuman.digital:64656",
       "snapshots": "https://snapshots.axelar.posthuman.digital:443"
     },
     "generatedServices": [
