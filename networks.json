@@ -68,7 +68,9 @@
     },
     "generatedServices": [],
     "services": [
-      "validators"
+      "validators",
+      "blockchain",
+      "validator-kit"
     ]
   },
   {
