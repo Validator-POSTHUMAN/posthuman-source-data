@@ -65,9 +65,7 @@
     "chain_id": "lumen",
     "generatedServices": [],
     "services": [
-      "validators",
-	  "blockchain",
-	  "validator-kit"
+      "validators"
     ]
   },
   {
