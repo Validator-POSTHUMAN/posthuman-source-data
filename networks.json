@@ -54,6 +54,23 @@
     ]
   },
   {
+    "name": "lumen",
+    "type": "mainnet",
+    "title": "Lumen",
+    "website": "https://lumen-network.org/",
+    "twitter": "https://twitter.com/aztecnetwork",
+    "discord": "https://discord.com/invite/DwK6V9shKc",
+    "github": "https://github.com/network-lumen/",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/lumen/LUMEN.svg",
+    "chain_id": "lumen",
+    "generatedServices": [],
+    "services": [
+      "validators",
+	  "blockchain",
+	  "validator-kit"
+    ]
+  },
+  {
     "name": "aztec",
     "type": "testnet",
     "title": "Aztec",
