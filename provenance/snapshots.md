@@ -1,4 +1,4 @@
-# 🚀 Restore Provenanced Node from [Posthuman](https://snapshots.provenanced.posthuman.digital/) Snapshots
+# 🚀 Restore Provenance Node from [Posthuman](https://snapshots.provenanced.posthuman.digital/) Snapshots
 
 This guide explains how to restore your provenance node using a snapshot from **Posthuman**.
 
