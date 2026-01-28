@@ -62,4 +62,4 @@ sudo journalctl -u provenanced -fo cat
 ---
 
 ## **✅ Done!**
-Your node should now sync from the restored **Posthuman[Posthuman](https://snapshots.provenance.posthuman.digital/) snapshot**. 🚀 
+Your node should now sync from the restored **[Posthuman](https://snapshots.provenance.posthuman.digital/) snapshot**. 🚀 
