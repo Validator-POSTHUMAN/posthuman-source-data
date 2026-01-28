@@ -1,4 +1,4 @@
-# 🚀 Restore Provenance Node from [Posthuman](https://snapshots.provenanced.posthuman.digital/) Snapshots
+# 🚀 Restore Provenance Node from [Posthuman](https://snapshots.provenance.posthuman.digital/) Snapshots
 
 This guide explains how to restore your provenance node using a snapshot from **Posthuman**.
 
@@ -35,7 +35,7 @@ rm -rf $HOME/.provenanced/data
 > **Note:** Since Posthuman updates snapshots **every 24 hours**, use the latest one:
 
 ```bash
-curl -L https://snapshots.provenanced.posthuman.digital/data_latest.lz4 | lz4 -dc - | tar -xf - -C $HOME/.provenanced
+curl -L https://snapshots.provenance.posthuman.digital/data_latest.lz4 | lz4 -dc - | tar -xf - -C $HOME/.provenanced
 ```
 
 
@@ -62,4 +62,4 @@ sudo journalctl -u provenanced -fo cat
 ---
 
 ## **✅ Done!**
-Your node should now sync from the restored **Posthuman snapshot**. 🚀 
+Your node should now sync from the restored **Posthuman[Posthuman](https://snapshots.provenance.posthuman.digital/) snapshot**. 🚀 
