@@ -27,6 +27,33 @@
     ]
   },
   {
+    "name": "provenance",
+    "type": "mainnet",
+    "title": "Provenance",
+    "website": "https://provenance.io/",
+    "twitter": "https://x.com/provenancefdn",
+    "discord": "https://discord.com/invite/provenance",
+    "github": "https://github.com/provenance-io/",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/provenance/images/prov.svg",
+    "stake": "",
+    "explorer": "",
+    "chain_id": "pio-mainnet-1",
+    "endpoints": {
+      "rpc": "https://rpc.provenance.posthuman.digital:443",
+      "rest": "https://rest.provenance.posthuman.digital:443",
+      "grpc": "https://grpc.provenance.posthuman.digital:443",
+      "peer": "7bf1c608994f3f0b6b65aa52072d164c9d8a7f4d@peer.provenance.posthuman.digital:44656",
+      "snapshots": "https://snapshots.provenance.posthuman.digital:443"
+    },
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
     "name": "shentu",
     "type": "mainnet",
     "title": "Shentu",
