@@ -933,17 +933,17 @@
     "twitter": "https://x.com/monad",
     "discord": "https://discord.gg/monad",
     "github": "https://github.com/monad-xyz",
-    "icon": "https://docs.monad.xyz/img/monad_logo.png",
+    "icon": "Logomark.svg",
     "stake": "",
     "explorer": "https://monadvision.com",
     "chain_id": "143",
     "endpoints": {
       "rpc": "https://rpc.monad.xyz"
     },
-    "generatedServices": [
+    "generatedServices": [],
+    "services": [
       "installation-guide"
-    ],
-    "services": []
+    ]
   },
   {
     "name": "monad-testnet",
@@ -953,16 +953,16 @@
     "twitter": "https://x.com/monad",
     "discord": "https://discord.gg/monad",
     "github": "https://github.com/monad-xyz",
-    "icon": "https://docs.monad.xyz/img/monad_logo.png",
+    "icon": "Logomark.svg",
     "stake": "",
     "explorer": "",
     "chain_id": "10143",
     "endpoints": {
       "rpc": ""
     },
-    "generatedServices": [
+    "generatedServices": [],
+    "services": [
       "installation-guide"
-    ],
-    "services": []
+    ]
   }
 ]
