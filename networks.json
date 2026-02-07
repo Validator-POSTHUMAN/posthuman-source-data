@@ -933,7 +933,7 @@
     "twitter": "https://x.com/monad",
     "discord": "https://discord.gg/monad",
     "github": "https://github.com/monad-xyz",
-    "icon": "Logomark.svg",
+    "icon": "https://github.com/Validator-POSTHUMAN/posthuman-source-data/monad/Logomark.svg",
     "stake": "",
     "explorer": "https://monadvision.com",
     "chain_id": "143",
@@ -942,7 +942,7 @@
     },
     "generatedServices": [],
     "services": [
-      "installation-guide"
+      "install-guide"
     ]
   },
   {
@@ -953,7 +953,7 @@
     "twitter": "https://x.com/monad",
     "discord": "https://discord.gg/monad",
     "github": "https://github.com/monad-xyz",
-    "icon": "Logomark.svg",
+    "icon": "https://github.com/Validator-POSTHUMAN/posthuman-source-data/monad/Logomark.svg",
     "stake": "",
     "explorer": "",
     "chain_id": "10143",
@@ -962,7 +962,7 @@
     },
     "generatedServices": [],
     "services": [
-      "installation-guide"
+      "install-guide"
     ]
   }
 ]
