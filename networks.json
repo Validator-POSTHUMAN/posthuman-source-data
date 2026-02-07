@@ -924,5 +924,45 @@
       "mainnet-installation-guide",
       "one-liner"
     ]
+  },
+  {
+    "name": "monad",
+    "type": "mainnet",
+    "title": "Monad",
+    "website": "https://monad.xyz/",
+    "twitter": "https://x.com/monad",
+    "discord": "https://discord.gg/monad",
+    "github": "https://github.com/monad-xyz",
+    "icon": "https://docs.monad.xyz/img/monad_logo.png",
+    "stake": "",
+    "explorer": "https://monadvision.com",
+    "chain_id": "143",
+    "endpoints": {
+      "rpc": "https://rpc.monad.xyz"
+    },
+    "generatedServices": [
+      "installation-guide"
+    ],
+    "services": []
+  },
+  {
+    "name": "monad-testnet",
+    "type": "testnet",
+    "title": "Monad Testnet",
+    "website": "https://monad.xyz/",
+    "twitter": "https://x.com/monad",
+    "discord": "https://discord.gg/monad",
+    "github": "https://github.com/monad-xyz",
+    "icon": "https://docs.monad.xyz/img/monad_logo.png",
+    "stake": "",
+    "explorer": "",
+    "chain_id": "10143",
+    "endpoints": {
+      "rpc": ""
+    },
+    "generatedServices": [
+      "installation-guide"
+    ],
+    "services": []
   }
 ]
