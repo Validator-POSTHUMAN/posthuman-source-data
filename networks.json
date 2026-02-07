@@ -942,7 +942,9 @@
     },
     "generatedServices": [],
     "services": [
-      "install-guide"
+      "install-guide",
+      "monitoring",
+      "decentralize-map"
     ]
   },
   {
@@ -962,7 +964,9 @@
     },
     "generatedServices": [],
     "services": [
-      "install-guide"
+      "install-guide",
+      "monitoring",
+      "decentralize-map"
     ]
   }
 ]
