@@ -37,4 +37,4 @@ The Decentralize Map will include:
 
 ---
 
-> 📢 This feature is under active development by the Posthuman team. Follow our [Twitter](https://x.com/posthumaborator) for updates.
+> 📢 This feature is under active development by the Posthuman team. Follow our [Twitter](https://x.com/POSTHUMAN_DVS) for updates.
