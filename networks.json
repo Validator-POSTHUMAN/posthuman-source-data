@@ -958,7 +958,7 @@
     "explorer": "",
     "chain_id": "10143",
     "endpoints": {
-      "rpc": ""
+      "rpc": "https://rpc-monad-testnet.posthuman.digital:443"
     },
     "generatedServices": [],
     "services": [
