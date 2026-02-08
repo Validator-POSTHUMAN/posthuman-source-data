@@ -101,42 +101,6 @@
     ]
   },
   {
-    "name": "aztec",
-    "type": "testnet",
-    "title": "Aztec",
-    "website": "https://aztec.network/",
-    "twitter": "https://twitter.com/aztecnetwork",
-    "discord": "https://discord.gg/srQ2Zddm",
-    "github": "https://github.com/AztecProtocol",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/aztec/aztec-logo.svg",
-    "chain_id": "testnet",
-    "endpoints": {
-      "rpc": ""
-    },
-    "generatedServices": [],
-    "services": [
-      "installation-guide"
-    ]
-  },
-  {
-    "name": "iotex",
-    "type": "mainnet",
-    "title": "IoTeX",
-    "website": "https://iotex.io/",
-    "twitter": "https://x.com/iotex_io",
-    "discord": "https://discord.com/invite/iotex",
-    "github": "https://github.com/iotexproject",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/iotex/color_icon.svg",
-    "chain_id": "MainNet: v2.2.1",
-    "endpoints": {
-      "rpc": ""
-    },
-    "generatedServices": [],
-    "services": [
-      "installation-guide"
-    ]
-  },
-  {
     "name": "starknet",
     "type": "mainnet",
     "title": "Starknet",
@@ -361,51 +325,6 @@
       "genesis-file",
       "addr-book",
       "snapshot-service"
-    ]
-  },
-  {
-    "name": "initia-testnet",
-    "type": "testnet",
-    "title": "Initia",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/initia-testnet/initia.svg",
-    "stake": "https://explorer.posthuman.digital/initia-testnet",
-    "explorer": "https://explorer.posthuman.digital/initia-testnet",
-    "chain_id": "nitiation-1",
-    "endpoints": {
-      "rpc": "https://rpc-public.initia.posthuman.digital",
-      "rest": "https://rest.initia.posthuman.digital",
-      "grpc": "grpc.initia.posthuman.digital",
-      "peer": "ce895c7e7bca10a581b132be91fbf119eb8981bc@46.39.246.50:16656"
-    },
-    "contributions": "initia-testnet",
-    "generatedServices": [],
-    "services": [
-      "installation-guide"
-    ]
-  },
-  {
-    "name": "initia",
-    "type": "mainnet",
-    "title": "Initia",
-    "website": "https://initia.xyz",
-    "github": "https://github.com/initia-labs/initia",
-    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/initia/images/INIT.svg",
-    "stake": "https://explorer.posthuman.digital/initia",
-    "explorer": "https://explorer.posthuman.digital/initia",
-    "chain_id": "interwoven-1",
-    "endpoints": {
-      "rpc": "https://rpc.initia.posthuman.digital",
-      "rest": "https://rest.initia.posthuman.digital",
-      "grpc": "grpc.initia.posthuman.digital",
-      "peer": "defc7a18318d5a1586ed4a0fa48092e30840ca86@135.181.227.236:11656"
-    },
-    "contributions": "initia",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
     ]
   },
   {
@@ -642,31 +561,6 @@
       "evm_json_rpc": "https://evm.zetachain.posthuman.digital",
       "evm_json_rpc_ws": "wss://wss.zetachain.posthuman.digital",
       "peer": "adcc85296ada06f1b8de81e7b26e063ff1474760@157.180.4.156:26656"
-    },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
-  },
-  {
-    "name": "nillion",
-    "type": "mainnet",
-    "title": "Nillion",
-    "website": "https://nillion.com/",
-    "twitter": "https://x.com/nillionnetwork",
-    "discord": "https://discord.gg/nillionnetwork",
-    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/nillion/images/nil.svg",
-    "stake": "https://explorer.posthuman.digital/nillion",
-    "explorer": "https://explorer.posthuman.digital/nillion",
-    "chain_id": "nillion-1",
-    "endpoints": {
-      "rpc": "https://rpc.nillion.posthuman.digital",
-      "rest": "https://rest.nillion.posthuman.digital",
-      "grpc": "https://grpc.nillion.posthuman.digital",
-      "peer": "dd46a0e919753c2bc199a3c99cb463a55dc01290@157.180.4.156:56657"
     },
     "generatedServices": [
       "installation-guide",
