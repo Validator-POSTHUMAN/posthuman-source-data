@@ -871,7 +871,7 @@
     "twitter": "https://x.com/nearprotocol",
     "discord": "https://discord.com/invite/nearprotocol",
     "github": "https://github.com/near/nearcore",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/near/14446201.png",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/near/near-logo.svg",
     "stake": "https://nearblocks.io/address/posthuman.poolv1.near",
     "explorer": "https://nearblocks.io",
     "chain_id": "mainnet",
