@@ -12,7 +12,7 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: TestNet
-- Version: 0.5.1
+- Version: 0.5.6
 - Migration ID: 1
 - Purpose: Pre-production testing
 
@@ -100,7 +100,7 @@ curl -s https://docs.test.global.canton.network.sync.global/info | jq '.'
 #### 3. Download Canton Node
 
 ```bash
-VERSION="0.5.1"
+VERSION="0.5.6"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
 
@@ -112,9 +112,12 @@ cd splice-node/docker-compose/validator
 #### 4. Start Validator
 
 ```bash
-cd ~/.canton/0.5.1/splice-node/docker-compose/validator
+cd ~/.canton/0.5.6/splice-node/docker-compose/validator
 
-export IMAGE_TAG=0.5.1
+# Enable unsafe auth (if needed for scripts/monitoring)
+# echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
+
+export IMAGE_TAG=0.5.6
 
 ./start.sh \
   -s "https://sv.sv-1.test.global.canton.network.sync.global" \
@@ -145,20 +148,32 @@ docker ps --filter "name=splice-validator-validator" --format "{{.Names}}: {{.St
 # Should show: Up X minutes (healthy)
 ```
 
+### Unsafe Auth Mode (Optional)
+
+If you need to disable authentication for local scripts or monitoring (NOT recommended for production exposed ports):
+
+```bash
+# Add override file to .env
+echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
+
+# Restart validator
+./stop.sh && ./start.sh ...
+```
+
 ## Management
 
 ### Stop
 
 ```bash
-cd ~/.canton/0.5.1/splice-node/docker-compose/validator
+cd ~/.canton/0.5.6/splice-node/docker-compose/validator
 ./stop.sh
 ```
 
 ### Restart
 
 ```bash
-cd ~/.canton/0.5.1/splice-node/docker-compose/validator
-export IMAGE_TAG=0.5.1
+cd ~/.canton/0.5.6/splice-node/docker-compose/validator
+export IMAGE_TAG=0.5.6
 
 ./start.sh \
   -s "https://sv.sv-1.test.global.canton.network.sync.global" \
@@ -171,7 +186,7 @@ export IMAGE_TAG=0.5.1
 ### View Logs
 
 ```bash
-cd ~/.canton/0.5.1/splice-node/docker-compose/validator
+cd ~/.canton/0.5.6/splice-node/docker-compose/validator
 
 # All containers
 docker compose logs -f
@@ -207,7 +222,50 @@ Canton exports metrics on port **10013**:
 docker exec splice-validator-validator-1 curl -s http://localhost:10013/metrics | head -20
 ```
 
+### Alerting
+
+Set up monitoring alerts for:
+- Container health status
+- Database availability
+- Disk space usage
+- Network connectivity
+- Sync status
+
+Example Telegram alert:
+
+```bash
+cat > /root/canton_testnet_monitor.sh << 'SCRIPT'
+#!/bin/bash
+BOT_TOKEN="YOUR_BOT_TOKEN"
+CHAT_ID="YOUR_CHAT_ID"
+
+MONIKER="CANTON - POSTHUMAN-TestNet-Validator"
+
+if ! docker ps --format '{{.Names}} {{.Status}}' | grep -q 'splice-validator-validator.*healthy'; then
+    curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+        -d chat_id="${CHAT_ID}" \
+        -d text="🔴 ${MONIKER} DOWN - $(hostname)"
+fi
+SCRIPT
+
+chmod +x /root/canton_testnet_monitor.sh
+
+# Add to cron (every 5 minutes)
+(crontab -l; echo "*/5 * * * * /root/canton_testnet_monitor.sh") | crontab -
+```
+
 ## Security
+
+### Firewall Configuration
+
+```bash
+# Allow only necessary ports
+ufw allow 22/tcp      # SSH
+ufw allow 443/tcp     # HTTPS
+# Allow Docker network internal communication
+ufw insert 1 allow out to 172.19.0.0/16
+ufw enable
+```
 
 ### Restrict Web UI Access
 
@@ -216,22 +274,22 @@ By default, wallet UI is publicly accessible. Secure it:
 **Option 1:** Change to localhost-only
 
 ```bash
-cd ~/.canton/0.5.1/splice-node/docker-compose/validator
+cd ~/.canton/0.5.6/splice-node/docker-compose/validator
 nano compose.yaml
 
-# Find and change:
+# Find and change (use port 8888 to avoid conflicts):
 ports:
-  - "127.0.0.1:8080:80"  # instead of "80:80"
+  - "127.0.0.1:8888:80"  # instead of "80:80"
 ```
 
 **Option 2:** SSH tunnel access
 
 ```bash
 # From local machine
-ssh -L 8080:127.0.0.1:8080 user@validator_ip -N
+ssh -L 8888:127.0.0.1:8888 user@validator_ip -N
 
 # Then open in browser
-http://localhost:8080
+http://localhost:8888
 ```
 
 ## Useful Links

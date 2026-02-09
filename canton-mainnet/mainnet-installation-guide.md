@@ -12,7 +12,7 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: MainNet
-- Version: 0.4.25
+- Version: 0.5.6
 - Migration ID: 3
 - Purpose: Production network
 
@@ -113,7 +113,7 @@ curl -s https://docs.global.canton.network.sync.global/info | jq '.'
 #### 3. Download Canton Node
 
 ```bash
-VERSION="0.4.25"
+VERSION="0.5.6"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
 
@@ -125,9 +125,12 @@ cd splice-node/docker-compose/validator
 #### 4. Start Validator
 
 ```bash
-cd ~/.canton/0.4.25/splice-node/docker-compose/validator
+cd ~/.canton/0.5.6/splice-node/docker-compose/validator
 
-export IMAGE_TAG=0.4.25
+# Enable unsafe auth (if needed for scripts/monitoring)
+# echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
+
+export IMAGE_TAG=0.5.6
 
 ./start.sh \
   -s "https://sv.sv-1.global.canton.network.sync.global" \
@@ -158,20 +161,32 @@ docker ps --filter "name=splice-validator-validator" --format "{{.Names}}: {{.St
 # Should show: Up X minutes (healthy)
 ```
 
+### Unsafe Auth Mode (Optional)
+
+If you need to disable authentication for local scripts or monitoring (NOT recommended for production exposed ports):
+
+```bash
+# Add override file to .env
+echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
+
+# Restart validator
+./stop.sh && ./start.sh ...
+```
+
 ## Management
 
 ### Stop
 
 ```bash
-cd ~/.canton/0.4.25/splice-node/docker-compose/validator
+cd ~/.canton/0.5.6/splice-node/docker-compose/validator
 ./stop.sh
 ```
 
 ### Restart
 
 ```bash
-cd ~/.canton/0.4.25/splice-node/docker-compose/validator
-export IMAGE_TAG=0.4.25
+cd ~/.canton/0.5.6/splice-node/docker-compose/validator
+export IMAGE_TAG=0.5.6
 
 ./start.sh \
   -s "https://sv.sv-1.global.canton.network.sync.global" \
@@ -184,7 +199,7 @@ export IMAGE_TAG=0.4.25
 ### View Logs
 
 ```bash
-cd ~/.canton/0.4.25/splice-node/docker-compose/validator
+cd ~/.canton/0.5.6/splice-node/docker-compose/validator
 
 # All containers
 docker compose logs -f
@@ -207,7 +222,7 @@ docker logs splice-validator-validator-1 --tail 100
 curl -s https://docs.global.canton.network.sync.global/info | jq '.sv.version'
 
 # 2. Stop current node
-cd ~/.canton/0.4.25/splice-node/docker-compose/validator
+cd ~/.canton/0.5.6/splice-node/docker-compose/validator
 ./stop.sh
 
 # 3. Backup database
@@ -215,7 +230,7 @@ docker run --rm -v splice-validator_postgres-splice:/data -v $(pwd):/backup \
   ubuntu tar czf /backup/mainnet_backup_$(date +%Y%m%d).tar.gz /data
 
 # 4. Download new version
-NEW_VERSION="0.4.26"  # example
+NEW_VERSION="0.5.7"  # example
 mkdir -p ~/.canton/${NEW_VERSION}
 cd ~/.canton/${NEW_VERSION}
 wget https://github.com/digital-asset/decentralized-canton-sync/releases/download/v${NEW_VERSION}/${NEW_VERSION}_splice-node.tar.gz
@@ -240,7 +255,7 @@ docker compose logs -f validator
 ### Backup Identity
 
 ```bash
-cd ~/.canton/0.4.25/splice-node/docker-compose/validator
+cd ~/.canton/0.5.6/splice-node/docker-compose/validator
 
 # Get token
 TOKEN=$(python3 get-token.py administrator)
@@ -316,10 +331,12 @@ cat > /root/canton_mainnet_monitor.sh << 'SCRIPT'
 BOT_TOKEN="YOUR_BOT_TOKEN"
 CHAT_ID="YOUR_CHAT_ID"
 
+MONIKER="CANTON - POSTHUMAN-MainNet-Validator"
+
 if ! docker ps --format '{{.Names}} {{.Status}}' | grep -q 'splice-validator-validator.*healthy'; then
     curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
         -d chat_id="${CHAT_ID}" \
-        -d text="🔴 Canton MainNet Validator DOWN - $(hostname)"
+        -d text="🔴 ${MONIKER} DOWN - $(hostname)"
 fi
 SCRIPT
 
@@ -338,6 +355,8 @@ chmod +x /root/canton_mainnet_monitor.sh
 # Allow only necessary ports
 ufw allow 22/tcp      # SSH
 ufw allow 443/tcp     # HTTPS
+# Allow Docker network internal communication
+ufw insert 1 allow out to 172.19.0.0/16
 ufw enable
 ```
 
@@ -345,20 +364,20 @@ ufw enable
 
 Change to localhost-only:
 ```bash
-cd ~/.canton/0.4.25/splice-node/docker-compose/validator
+cd ~/.canton/0.5.6/splice-node/docker-compose/validator
 nano compose.yaml
 
-# Change nginx ports:
+# Change nginx ports (localhost only, port 8888):
 ports:
-  - "127.0.0.1:8080:80"
+  - "127.0.0.1:8888:80"
 ```
 
 3. **SSH Tunnel for UI Access**
 ```bash
 # From local machine
-ssh -L 8080:127.0.0.1:8080 user@validator_ip -N
+ssh -L 8888:127.0.0.1:8888 user@validator_ip -N
 
-# Access via: http://localhost:8080
+# Access via: http://localhost:8888
 ```
 
 4. **Regular Updates**
@@ -378,7 +397,7 @@ Validators earn Canton Coin (CC) for:
 - Traffic generation
 - Featured app participation
 
-Check balance: http://localhost:8080 (wallet UI)
+Check balance: http://localhost:8888 (wallet UI)
 
 ## Useful Links
 
