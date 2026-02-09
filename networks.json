@@ -862,5 +862,26 @@
       "monitoring",
       "decentralize-map"
     ]
+  },
+  {
+    "name": "near",
+    "type": "mainnet",
+    "title": "NEAR",
+    "website": "https://near.org/",
+    "twitter": "https://x.com/nearprotocol",
+    "discord": "https://discord.gg/UY9Xf2k",
+    "github": "https://github.com/near/nearcore",
+    "icon": "",
+    "stake": "https://nearblocks.io/address/posthuman.poolv1.near",
+    "explorer": "https://nearblocks.io",
+    "chain_id": "mainnet",
+    "endpoints": {
+      "rpc": "http://localhost:3030"
+    },
+    "generatedServices": [],
+    "services": [
+      "install-guide",
+      "monitoring"
+    ]
   }
 ]
