@@ -12,7 +12,7 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: DevNet
-- Version: 0.5.6
+- Version: 0.5.10
 - Migration ID: 1
 - Purpose: Testing and development
 
@@ -45,7 +45,7 @@ sudo apt update && sudo apt install -y curl jq docker.io docker-compose
 curl -s https://docs.dev.global.canton.network.sync.global/info | jq '.'
 
 # Create directory
-VERSION="0.5.6"
+VERSION="0.5.10"
 MIGRATION_ID="1"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
@@ -95,17 +95,21 @@ chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
-#### 2. Check Network Status
+#### 2. Check Network Status & IP
 
 ```bash
 # Get current version and migration ID
 curl -s https://docs.dev.global.canton.network.sync.global/info | jq '.'
+
+# Verify IP connectivity (whitelist check)
+curl -s -m 5 https://scan.sv-1.dev.global.canton.network.sync.global/api/scan/version
+# Should return version (e.g. {"version":"0.5.10"...}), NOT timeout
 ```
 
 #### 3. Download Canton Node
 
 ```bash
-VERSION="0.5.6"
+VERSION="0.5.10"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
 
@@ -124,12 +128,12 @@ curl -X POST https://sv.sv-1.dev.global.canton.network.sync.global/api/sv/v0/dev
 #### 5. Start Validator
 
 ```bash
-cd ~/.canton/0.5.6/splice-node/docker-compose/validator
+cd ~/.canton/0.5.10/splice-node/docker-compose/validator
 
 # Enable unsafe auth (if needed for scripts/monitoring)
 # echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
 
-export IMAGE_TAG=0.5.6
+export IMAGE_TAG=0.5.10
 
 ./start.sh \
   -s "https://sv.sv-1.dev.global.canton.network.sync.global" \
@@ -177,15 +181,15 @@ echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
 ### Stop
 
 ```bash
-cd ~/.canton/0.5.6/splice-node/docker-compose/validator
+cd ~/.canton/0.5.10/splice-node/docker-compose/validator
 ./stop.sh
 ```
 
 ### Restart
 
 ```bash
-cd ~/.canton/0.5.6/splice-node/docker-compose/validator
-export IMAGE_TAG=0.5.6
+cd ~/.canton/0.5.10/splice-node/docker-compose/validator
+export IMAGE_TAG=0.5.10
 
 ./start.sh \
   -s "https://sv.sv-1.dev.global.canton.network.sync.global" \
@@ -198,7 +202,7 @@ export IMAGE_TAG=0.5.6
 ### View Logs
 
 ```bash
-cd ~/.canton/0.5.6/splice-node/docker-compose/validator
+cd ~/.canton/0.5.10/splice-node/docker-compose/validator
 
 # All containers
 docker compose logs -f
@@ -272,7 +276,7 @@ By default, wallet UI is publicly accessible. Secure it:
 **Option 1:** Change to localhost-only
 
 ```bash
-cd ~/.canton/0.5.6/splice-node/docker-compose/validator
+cd ~/.canton/0.5.10/splice-node/docker-compose/validator
 nano compose.yaml
 
 # Find and change (use port 8888 to avoid conflicts):

@@ -12,8 +12,8 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: MainNet
-- Version: 0.5.6
-- Migration ID: 3
+- Version: 0.5.8
+- Migration ID: 4
 - Purpose: Production network
 
 **Participants:**
@@ -113,7 +113,7 @@ curl -s https://docs.global.canton.network.sync.global/info | jq '.'
 #### 3. Download Canton Node
 
 ```bash
-VERSION="0.5.6"
+VERSION="0.5.8"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
 
@@ -125,18 +125,18 @@ cd splice-node/docker-compose/validator
 #### 4. Start Validator
 
 ```bash
-cd ~/.canton/0.5.6/splice-node/docker-compose/validator
+cd ~/.canton/0.5.8/splice-node/docker-compose/validator
 
 # Enable unsafe auth (if needed for scripts/monitoring)
 # echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
 
-export IMAGE_TAG=0.5.6
+export IMAGE_TAG=0.5.8
 
 ./start.sh \
   -s "https://sv.sv-1.global.canton.network.sync.global" \
   -o "YOUR_ONBOARDING_SECRET_FROM_SV" \
   -p "YOUR_VALIDATOR_NAME" \
-  -m "3" \
+  -m "4" \
   -w
 ```
 
@@ -178,28 +178,28 @@ echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
 ### Stop
 
 ```bash
-cd ~/.canton/0.5.6/splice-node/docker-compose/validator
+cd ~/.canton/0.5.8/splice-node/docker-compose/validator
 ./stop.sh
 ```
 
 ### Restart
 
 ```bash
-cd ~/.canton/0.5.6/splice-node/docker-compose/validator
-export IMAGE_TAG=0.5.6
+cd ~/.canton/0.5.8/splice-node/docker-compose/validator
+export IMAGE_TAG=0.5.8
 
 ./start.sh \
   -s "https://sv.sv-1.global.canton.network.sync.global" \
   -o "" \
   -p "YOUR_VALIDATOR_NAME" \
-  -m "3" \
+  -m "4" \
   -w
 ```
 
 ### View Logs
 
 ```bash
-cd ~/.canton/0.5.6/splice-node/docker-compose/validator
+cd ~/.canton/0.5.8/splice-node/docker-compose/validator
 
 # All containers
 docker compose logs -f
@@ -222,7 +222,7 @@ docker logs splice-validator-validator-1 --tail 100
 curl -s https://docs.global.canton.network.sync.global/info | jq '.sv.version'
 
 # 2. Stop current node
-cd ~/.canton/0.5.6/splice-node/docker-compose/validator
+cd ~/.canton/0.5.8/splice-node/docker-compose/validator
 ./stop.sh
 
 # 3. Backup database
@@ -243,7 +243,7 @@ export IMAGE_TAG=${NEW_VERSION}
   -s "https://sv.sv-1.global.canton.network.sync.global" \
   -o "" \
   -p "YOUR_VALIDATOR_NAME" \
-  -m "3" \
+  -m "4" \
   -w
 
 # 6. Check logs
@@ -255,7 +255,7 @@ docker compose logs -f validator
 ### Backup Identity
 
 ```bash
-cd ~/.canton/0.5.6/splice-node/docker-compose/validator
+cd ~/.canton/0.5.8/splice-node/docker-compose/validator
 
 # Get token
 TOKEN=$(python3 get-token.py administrator)
@@ -364,7 +364,7 @@ ufw enable
 
 Change to localhost-only:
 ```bash
-cd ~/.canton/0.5.6/splice-node/docker-compose/validator
+cd ~/.canton/0.5.8/splice-node/docker-compose/validator
 nano compose.yaml
 
 # Change nginx ports (localhost only, port 8888):
