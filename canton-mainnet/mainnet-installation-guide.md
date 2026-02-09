@@ -110,9 +110,12 @@ docker-compose --version
 curl -s https://docs.global.canton.network.sync.global/info | jq '.'
 ```
 
+Note the `version` and `migration_id` from the output — you will need them below.
+
 #### 3. Download Canton Node
 
 ```bash
+# Use the version from step 2
 VERSION="0.5.8"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
@@ -125,27 +128,54 @@ cd splice-node/docker-compose/validator
 #### 4. Start Validator
 
 ```bash
-cd ~/.canton/0.5.8/splice-node/docker-compose/validator
+cd ~/.canton/${VERSION}/splice-node/docker-compose/validator
 
-# Enable unsafe auth (if needed for scripts/monitoring)
-# echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
-
-export IMAGE_TAG=0.5.8
+export IMAGE_TAG=${VERSION}
 
 ./start.sh \
-  -s "https://sv.sv-1.global.canton.network.sync.global" \
+  -s "https://sv.sv-2.global.canton.network.digitalasset.com" \
   -o "YOUR_ONBOARDING_SECRET_FROM_SV" \
   -p "YOUR_VALIDATOR_NAME" \
   -m "4" \
   -w
 ```
 
+> ⚠️ **If sv-2 is unavailable**, try other SVs or specify scan separately with `-c`:
+> ```bash
+> ./start.sh \
+>   -s "https://sv.sv-1.global.canton.network.digitalasset.com" \
+>   -c "https://scan.sv-2.global.canton.network.digitalasset.com" \
+>   -o "YOUR_ONBOARDING_SECRET_FROM_SV" \
+>   -p "YOUR_VALIDATOR_NAME" \
+>   -m "4" \
+>   -w
+> ```
+
 Parameters:
-- `-s` - Sponsor SV URL
+- `-s` - Sponsor SV URL (try sv-2 first; sv-1 can be unstable)
+- `-c` - Scan address (optional, use if SV scan is down but another SV's scan works)
 - `-o` - Onboarding secret from SV sponsor (use `""` after first start)
 - `-p` - Party hint (validator name)
-- `-m` - Migration ID (3 for MainNet)
+- `-m` - Migration ID (4 for MainNet)
 - `-w` - Enable wallet
+
+> ⚠️ **SV Fallback:** If sv-2 is unavailable, try other SVs:
+> - `https://sv.sv-1.global.canton.network.digitalasset.com`
+> - `https://sv.sv-2.global.canton.network.digitalasset.com`
+> - `https://sv.sv-1.global.canton.network.sync.global`
+>
+> You can also specify the scan address separately with `-c` flag if the SV endpoint works but its scan is down:
+> ```bash
+> ./start.sh \
+>   -s "https://sv.sv-1.global.canton.network.digitalasset.com" \
+>   -c "https://scan.sv-2.global.canton.network.digitalasset.com" \
+>   -o "" -p "YOUR_VALIDATOR_NAME" -m "4" -w
+> ```
+>
+> Check SV health before starting:
+> ```bash
+> curl -s --max-time 5 "https://scan.sv-2.global.canton.network.digitalasset.com/api/scan/v0/splice-instance-names"
+> ```
 
 #### 5. Check Status
 
@@ -161,16 +191,77 @@ docker ps --filter "name=splice-validator-validator" --format "{{.Names}}: {{.St
 # Should show: Up X minutes (healthy)
 ```
 
-### Unsafe Auth Mode (Optional)
+### Unsafe Auth Mode (Disable Authentication)
 
-If you need to disable authentication for local scripts or monitoring (NOT recommended for production exposed ports):
+If you need to disable authentication for local access (e.g. scripts, monitoring):
 
 ```bash
-# Add override file to .env
-echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
+cd ~/.canton/${VERSION}/splice-node/docker-compose/validator
+```
 
-# Restart validator
-./stop.sh && ./start.sh ...
+**1. Add compose override to `.env`:**
+```bash
+echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
+```
+
+**2. Set required environment variables in `.env`:**
+
+Even with auth disabled, the Wallet UI **requires valid URLs** in its config — otherwise you get a Zod validation error (`Invalid url` for `auth.authority` / `networkFaviconUrl`).
+
+Add these to `.env`:
+```bash
+AUTH_URL=https://unsafe.auth
+SPLICE_APP_UI_NETWORK_FAVICON_URL=https://www.canton.network/hubfs/cn-favicon-05%201-1.png
+SPLICE_APP_UI_NETWORK_NAME="Canton Network"
+```
+
+**3. Restart:**
+```bash
+./stop.sh && ./start.sh \
+  -s "https://sv.sv-2.global.canton.network.digitalasset.com" \
+  -o "" -p "YOUR_VALIDATOR_NAME" -m "4" -w
+```
+
+> ⚠️ Without valid `AUTH_URL` and `SPLICE_APP_UI_NETWORK_FAVICON_URL`, the Wallet UI will crash with:
+> ```
+> Error when parsing config: ZodError — Invalid url for auth.authority / networkFaviconUrl
+> ```
+
+## Accessing Wallet UI
+
+The nginx proxy binds to `127.0.0.1:8888` (localhost only, not exposed externally).
+
+Nginx uses **virtual hosts** and **basic auth** (`.htpasswd`). You cannot access it by IP — you need the correct `Host` header.
+
+### 1. Set up SSH tunnel (from your local machine)
+
+```bash
+ssh -L 8888:127.0.0.1:8888 user@YOUR_SERVER_IP -N
+```
+
+### 2. Add to `/etc/hosts` on your local machine
+
+```
+127.0.0.1 wallet.localhost ans.localhost
+```
+
+### 3. Open in browser
+
+- Wallet: `http://wallet.localhost:8888`
+- ANS: `http://ans.localhost:8888`
+
+The browser will prompt for basic auth credentials (login/password from `.htpasswd`).
+
+### Setting up `.htpasswd`
+
+```bash
+cd ~/.canton/${VERSION}/splice-node/docker-compose/validator/nginx
+
+# Install htpasswd utility
+apt install -y apache2-utils
+
+# Create credentials
+htpasswd -c .htpasswd YOUR_USERNAME
 ```
 
 ## Management
@@ -178,18 +269,18 @@ echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
 ### Stop
 
 ```bash
-cd ~/.canton/0.5.8/splice-node/docker-compose/validator
+cd ~/.canton/${VERSION}/splice-node/docker-compose/validator
 ./stop.sh
 ```
 
 ### Restart
 
 ```bash
-cd ~/.canton/0.5.8/splice-node/docker-compose/validator
-export IMAGE_TAG=0.5.8
+cd ~/.canton/${VERSION}/splice-node/docker-compose/validator
+export IMAGE_TAG=${VERSION}
 
 ./start.sh \
-  -s "https://sv.sv-1.global.canton.network.sync.global" \
+  -s "https://sv.sv-2.global.canton.network.digitalasset.com" \
   -o "" \
   -p "YOUR_VALIDATOR_NAME" \
   -m "4" \
@@ -199,7 +290,7 @@ export IMAGE_TAG=0.5.8
 ### View Logs
 
 ```bash
-cd ~/.canton/0.5.8/splice-node/docker-compose/validator
+cd ~/.canton/${VERSION}/splice-node/docker-compose/validator
 
 # All containers
 docker compose logs -f
@@ -219,34 +310,36 @@ docker logs splice-validator-validator-1 --tail 100
 
 ```bash
 # 1. Check new version
-curl -s https://docs.global.canton.network.sync.global/info | jq '.sv.version'
+curl -s https://docs.global.canton.network.sync.global/info | jq '.'
 
 # 2. Stop current node
-cd ~/.canton/0.5.8/splice-node/docker-compose/validator
+cd ~/.canton/${CURRENT_VERSION}/splice-node/docker-compose/validator
 ./stop.sh
 
 # 3. Backup database
-docker run --rm -v splice-validator_postgres-splice:/data -v $(pwd):/backup \
-  ubuntu tar czf /backup/mainnet_backup_$(date +%Y%m%d).tar.gz /data
+docker exec splice-validator-postgres-splice-1 pg_dump -U cnadmin validator | gzip > ~/mainnet_backup_$(date +%Y%m%d).sql.gz
 
 # 4. Download new version
-NEW_VERSION="0.5.7"  # example
+NEW_VERSION="X.Y.Z"  # from step 1
 mkdir -p ~/.canton/${NEW_VERSION}
 cd ~/.canton/${NEW_VERSION}
 wget https://github.com/digital-asset/decentralized-canton-sync/releases/download/v${NEW_VERSION}/${NEW_VERSION}_splice-node.tar.gz
 tar xzf ${NEW_VERSION}_splice-node.tar.gz
 cd splice-node/docker-compose/validator
 
-# 5. Start with new version
+# 5. Copy your .env (adjust if needed)
+cp ~/.canton/${CURRENT_VERSION}/splice-node/docker-compose/validator/.env .env
+
+# 6. Start with new version
 export IMAGE_TAG=${NEW_VERSION}
 ./start.sh \
-  -s "https://sv.sv-1.global.canton.network.sync.global" \
+  -s "https://sv.sv-2.global.canton.network.digitalasset.com" \
   -o "" \
   -p "YOUR_VALIDATOR_NAME" \
   -m "4" \
   -w
 
-# 6. Check logs
+# 7. Check logs
 docker compose logs -f validator
 ```
 
@@ -255,7 +348,7 @@ docker compose logs -f validator
 ### Backup Identity
 
 ```bash
-cd ~/.canton/0.5.8/splice-node/docker-compose/validator
+cd ~/.canton/${VERSION}/splice-node/docker-compose/validator
 
 # Get token
 TOKEN=$(python3 get-token.py administrator)
@@ -269,9 +362,8 @@ curl --fail -sS "http://localhost:5003/api/validator/v0/admin/participant/identi
 ### Backup Database
 
 ```bash
-# PostgreSQL dump
-docker exec splice-validator-postgres-splice-1 pg_dump -U cnadmin validator \
-  > ~/canton_mainnet_db_$(date +%Y%m%d).sql
+# PostgreSQL dump (compressed)
+docker exec splice-validator-postgres-splice-1 pg_dump -U cnadmin validator | gzip > ~/canton_mainnet_db_$(date +%Y%m%d).sql.gz
 
 # Full volume backup
 docker run --rm -v splice-validator_postgres-splice:/data -v $(pwd):/backup \
@@ -289,10 +381,7 @@ DATE=$(date +%Y%m%d_%H%M%S)
 
 # DB backup
 docker exec splice-validator-postgres-splice-1 pg_dump -U cnadmin validator \
-  > ${BACKUP_DIR}/mainnet_db_${DATE}.sql
-
-# Compress and upload to remote storage (S3/backup server)
-gzip ${BACKUP_DIR}/mainnet_db_${DATE}.sql
+  | gzip > ${BACKUP_DIR}/mainnet_db_${DATE}.sql.gz
 
 # Remove old backups (>7 days)
 find ${BACKUP_DIR} -name "mainnet_db_*.sql.gz" -mtime +7 -delete
@@ -301,7 +390,7 @@ SCRIPT
 chmod +x /root/canton_mainnet_backup.sh
 
 # Add to cron (every 6 hours)
-(crontab -l; echo "0 */6 * * * /root/canton_mainnet_backup.sh") | crontab -
+(crontab -l 2>/dev/null; echo "0 */6 * * * /root/canton_mainnet_backup.sh") | crontab -
 ```
 
 ## Monitoring
@@ -315,15 +404,6 @@ docker exec splice-validator-validator-1 curl -s http://localhost:10013/metrics 
 ```
 
 ### Alerting
-
-Set up monitoring alerts for:
-- Container health status
-- Database availability
-- Disk space usage
-- Network connectivity
-- Sync status
-
-Example Telegram alert:
 
 ```bash
 cat > /root/canton_mainnet_monitor.sh << 'SCRIPT'
@@ -343,7 +423,7 @@ SCRIPT
 chmod +x /root/canton_mainnet_monitor.sh
 
 # Add to cron (every 5 minutes)
-(crontab -l; echo "*/5 * * * * /root/canton_mainnet_monitor.sh") | crontab -
+(crontab -l 2>/dev/null; echo "*/5 * * * * /root/canton_mainnet_monitor.sh") | crontab -
 ```
 
 ## Security
@@ -352,43 +432,37 @@ chmod +x /root/canton_mainnet_monitor.sh
 
 1. **Firewall Configuration**
 ```bash
-# Allow only necessary ports
 ufw allow 22/tcp      # SSH
 ufw allow 443/tcp     # HTTPS
-# Allow Docker network internal communication
-ufw insert 1 allow out to 172.19.0.0/16
+ufw insert 1 allow out to 172.19.0.0/16  # Docker internal
 ufw enable
 ```
 
-2. **Restrict Web UI Access**
-
-Change to localhost-only:
-```bash
-cd ~/.canton/0.5.8/splice-node/docker-compose/validator
-nano compose.yaml
-
-# Change nginx ports (localhost only, port 8888):
-ports:
-  - "127.0.0.1:8888:80"
-```
+2. **Wallet UI is localhost-only by default** — nginx binds to `127.0.0.1:8888`. Access via SSH tunnel only.
 
 3. **SSH Tunnel for UI Access**
-```bash
-# From local machine
-ssh -L 8888:127.0.0.1:8888 user@validator_ip -N
 
-# Access via: http://localhost:8888
+The Wallet UI nginx uses virtual hosts. You need to access it via `wallet.localhost` (not `127.0.0.1`):
+
+```bash
+# From local machine — forward port
+ssh -L 8888:127.0.0.1:8888 user@validator_ip -N
 ```
 
-4. **Regular Updates**
-- Monitor Canton Network announcements
-- Apply security patches promptly
-- Test upgrades on TestNet first
+Add to `/etc/hosts` on your **local machine** (where the browser runs):
+```
+127.0.0.1 wallet.localhost ans.localhost
+```
 
-5. **Access Control**
+Then open in browser:
+- Wallet: `http://wallet.localhost:8888` (will ask for basic auth login/password from `.htpasswd`)
+- ANS: `http://ans.localhost:8888`
+
+4. **Recommendations**
 - Use SSH keys (disable password auth)
 - Implement fail2ban
-- Regular security audits
+- Store secrets (onboarding secret, bot token, DB password) outside of plain `.env` where possible
+- Rotate credentials if exposed
 
 ## Rewards
 
@@ -397,7 +471,7 @@ Validators earn Canton Coin (CC) for:
 - Traffic generation
 - Featured app participation
 
-Check balance: http://localhost:8888 (wallet UI)
+Check balance: `http://wallet.localhost:8888` (via SSH tunnel)
 
 ## Useful Links
 
@@ -411,40 +485,67 @@ Check balance: http://localhost:8888 (wallet UI)
 
 ## Troubleshooting
 
+### `503` / Failed to fetch `splice_instance_names`
+
+The SV endpoint is down. Try a different SV:
+
+```bash
+# Check which SVs are alive
+for i in 1 2; do
+  echo -n "sv-$i digitalasset.com: "
+  curl -s --max-time 5 "https://scan.sv-$i.global.canton.network.digitalasset.com/api/scan/version" 2>&1 || echo "DOWN"
+done
+```
+
+Use a working SV with `-s` flag, or specify scan separately with `-c`:
+```bash
+./start.sh \
+  -s "https://sv.sv-2.global.canton.network.digitalasset.com" \
+  -c "https://scan.sv-2.global.canton.network.digitalasset.com" \
+  -o "" -p "YOUR_VALIDATOR_NAME" -m "4" -w
+```
+
+### Zod Validation Error (Wallet UI)
+
+```
+Error when parsing config: ZodError — Invalid url for auth.authority / networkFaviconUrl
+```
+
+**Cause:** Empty or missing `AUTH_URL` / `SPLICE_APP_UI_NETWORK_FAVICON_URL` in `.env` when using `compose-disable-auth.yaml`.
+
+**Fix:** Add valid values to `.env`:
+```bash
+AUTH_URL=https://unsafe.auth
+SPLICE_APP_UI_NETWORK_FAVICON_URL=https://www.canton.network/hubfs/cn-favicon-05%201-1.png
+SPLICE_APP_UI_NETWORK_NAME="Canton Network"
+```
+
+Then restart.
+
+### 401 Authorization Required (Wallet UI)
+
+**Cause:** Nginx uses virtual hosts. Accessing by IP (`127.0.0.1:8888`) without the correct `Host` header hits basic auth.
+
+**Fix:** Add `127.0.0.1 wallet.localhost` to `/etc/hosts` on your local machine and access via `http://wallet.localhost:8888`.
+
 ### IP Whitelist Verification Failed
 
 ```bash
-# Check if your IP can reach SV endpoints
 curl -s https://scan.sv-1.global.canton.network.sync.global/api/scan/version
-
 # Should return version, not error/timeout
 ```
-
-### Onboarding Secret Issues
-
-- Secret expired? Request new one from SV sponsor
-- Invalid secret? Double-check the string (48h validity)
 
 ### Container Health Issues
 
 ```bash
-# Detailed logs
 docker logs splice-validator-validator-1 --tail 200
-
-# Check resource usage
 docker stats splice-validator-validator-1
-
-# Verify network connectivity
-docker exec splice-validator-validator-1 ping -c 3 sv.sv-1.global.canton.network.sync.global
 ```
 
 ### Database Issues
 
 ```bash
-# Check PostgreSQL status
 docker exec splice-validator-postgres-splice-1 psql -U cnadmin -d validator -c "SELECT version();"
-
-# Check disk space
 df -h
 ```
 
