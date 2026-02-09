@@ -875,9 +875,7 @@
     "stake": "https://nearblocks.io/address/posthuman.poolv1.near",
     "explorer": "https://nearblocks.io",
     "chain_id": "mainnet",
-    "endpoints": {
-      "rpc": "http://localhost:3030"
-    },
+    "endpoints": {},
     "generatedServices": [],
     "services": [
       "install-guide",
