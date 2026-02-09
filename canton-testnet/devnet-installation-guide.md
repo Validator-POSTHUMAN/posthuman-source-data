@@ -150,6 +150,14 @@ Parameters:
 - `-m` - Migration ID
 - `-w` - Enable wallet
 
+> ⚠️ **If sv-1 is unavailable**, use sv-2:
+> ```bash
+> ./start.sh \
+>   -s "https://sv.sv-2.dev.global.canton.network.sync.global" \
+>   -c "https://scan.sv-2.dev.global.canton.network.sync.global" \
+>   -o "${SECRET}" -p "YOUR_VALIDATOR_NAME" -m "1" -w
+> ```
+
 #### 6. Check Status
 
 ```bash
@@ -166,15 +174,24 @@ docker ps --filter "name=splice-validator-validator" --format "{{.Names}}: {{.St
 
 ### Unsafe Auth Mode (Optional)
 
-If you need to disable authentication for local scripts or monitoring (NOT recommended for production exposed ports):
-
 ```bash
-# Add override file to .env
-echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
-
-# Restart validator
-./stop.sh && ./start.sh ...
+cat >> .env << 'EOF'
+COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml
+AUTH_URL=https://unsafe.auth
+SPLICE_APP_UI_NETWORK_FAVICON_URL=https://www.canton.network/hubfs/cn-favicon-05%201-1.png
+SPLICE_APP_UI_NETWORK_NAME="Canton Network"
+EOF
 ```
+
+> ⚠️ Even with `compose-disable-auth.yaml`, Wallet UI validates `AUTH_URL` and `NETWORK_FAVICON_URL` as URLs. Empty/missing values cause a Zod validation error.
+
+### Wallet UI Access
+
+Nginx uses virtual hosts + basic auth:
+
+1. `/etc/hosts` on local machine: `127.0.0.1 wallet.localhost ans.localhost`
+2. SSH tunnel: `ssh -L 8888:127.0.0.1:8888 user@validator_ip -N`
+3. Open `http://wallet.localhost:8888`, enter basic auth credentials
 
 ## Management
 

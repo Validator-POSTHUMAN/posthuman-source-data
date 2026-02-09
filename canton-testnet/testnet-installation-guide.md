@@ -134,6 +134,14 @@ Parameters:
 - `-m` - Migration ID (1 for TestNet)
 - `-w` - Enable wallet
 
+> ⚠️ **If sv-1 is unavailable**, use sv-2:
+> ```bash
+> ./start.sh \
+>   -s "https://sv.sv-2.test.global.canton.network.sync.global" \
+>   -c "https://scan.sv-2.test.global.canton.network.sync.global" \
+>   -o "YOUR_ONBOARDING_SECRET_FROM_SV" -p "YOUR_VALIDATOR_NAME" -m "1" -w
+> ```
+
 #### 5. Check Status
 
 ```bash
@@ -153,12 +161,18 @@ docker ps --filter "name=splice-validator-validator" --format "{{.Names}}: {{.St
 If you need to disable authentication for local scripts or monitoring (NOT recommended for production exposed ports):
 
 ```bash
-# Add override file to .env
-echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
+cat >> .env << 'EOF'
+COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml
+AUTH_URL=https://unsafe.auth
+SPLICE_APP_UI_NETWORK_FAVICON_URL=https://www.canton.network/hubfs/cn-favicon-05%201-1.png
+SPLICE_APP_UI_NETWORK_NAME="Canton Network"
+EOF
 
 # Restart validator
 ./stop.sh && ./start.sh ...
 ```
+
+> ⚠️ Even with `compose-disable-auth.yaml`, Wallet UI validates `AUTH_URL` and `NETWORK_FAVICON_URL` as URLs. Empty/missing values cause a Zod validation error.
 
 ## Management
 
@@ -271,26 +285,17 @@ ufw enable
 
 By default, wallet UI is publicly accessible. Secure it:
 
-**Option 1:** Change to localhost-only
-
-```bash
-cd ~/.canton/0.5.9/splice-node/docker-compose/validator
-nano compose.yaml
-
-# Find and change (use port 8888 to avoid conflicts):
+**Step 1:** Bind to localhost only (in compose.yaml nginx ports):
+```
 ports:
-  - "127.0.0.1:8888:80"  # instead of "80:80"
+  - "127.0.0.1:8888:80"
 ```
 
-**Option 2:** SSH tunnel access
+**Step 2:** Nginx uses virtual hosts + basic auth. Access via:
 
-```bash
-# From local machine
-ssh -L 8888:127.0.0.1:8888 user@validator_ip -N
-
-# Then open in browser
-http://localhost:8888
-```
+1. `/etc/hosts` on local machine: `127.0.0.1 wallet.localhost ans.localhost`
+2. SSH tunnel: `ssh -L 8888:127.0.0.1:8888 user@validator_ip -N`
+3. Open `http://wallet.localhost:8888`, enter basic auth credentials
 
 ## Useful Links
 
