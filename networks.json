@@ -155,7 +155,7 @@
       "grpc": "https://grpc.cosmos.posthuman.digital",
       "seed-node": "6d581e53245f7f81c24a20392b60256a7e59de59@135.181.227.236:26656"
     },
-    "contributions": "cosmos",
+    "contributions": "Cosmos",
     "generatedServices": [
       "state-sync",
       "peers"
@@ -204,7 +204,7 @@
       "evm-rpc": "https://evm.humans.posthuman.digital",
       "seed-node": "589eaa7656ff1af6c50f32d7b63dda1cf83c7906@46.39.246.50:26656"
     },
-    "contributions": "humans_ai",
+    "contributions": "Humans_ai",
     "generatedServices": [
       "installation-guide",
       "state-sync",
@@ -231,7 +231,7 @@
       "grpc": "https://grpc.atomone-testnet.posthuman.digital:443",
       "seed-node": "9aa69d667da6dd43ba82110b4ff290ac38d68976@135.181.227.236:61656"
     },
-    "contributions": "atomone",
+    "contributions": "Atomone",
     "generatedServices": [
       "installation-guide"
     ],
@@ -253,7 +253,7 @@
       "grpc": "https://grpc.atomone.posthuman.digital:443",
       "seed-node": "494f6198020d91571f75b4f208b739e2da50578e@135.181.227.236:63656"
     },
-    "contributions": "atomone",
+    "contributions": "Atomone",
     "generatedServices": [
       "installation-guide",
       "state-sync",
@@ -318,7 +318,7 @@
       "peer": "67cdb666f68cfefcd799ac589b2a9b005c067ef3@peer.namada.posthuman.digital:26656",
       "snapshots": "https://snapshots.namada.posthuman.digital/"
     },
-    "contributions": "namada",
+    "contributions": "Namada",
     "generatedServices": [],
     "services": [
       "installation-guide",
@@ -343,7 +343,7 @@
       "evm_ws": "wss://wss.story.posthuman.digital",
       "peer": "8a69935f34827dd81c721c63c69bfc54c849d028@46.4.52.158:26656"
     },
-    "contributions": "story-testnet",
+    "contributions": "Story",
     "generatedServices": [],
     "services": [
       "installation-guide",
@@ -738,7 +738,7 @@
       "grpc": "grpc.neutron.posthuman.digital",
       "peer": "61965e8e9a775f590726f14ab18bc7b7e6d3346a@135.181.227.236:10656"
     },
-    "contributions": "neutron",
+    "contributions": "Neutron",
     "generatedServices": [
       "installation-guide",
       "state-sync"
@@ -765,7 +765,7 @@
       "grpc": "https://grpc.babylon.posthuman.digital",
       "peer": "70d302558183535e220a725d463597ade72e130d@95.217.229.104:60656"
     },
-    "contributions": "babylon",
+    "contributions": "Babylon",
     "generatedServices": [],
     "services": [
       "installation-guide",
@@ -789,7 +789,7 @@
     "endpoints": {
       "explorer": "https://scan.sv-1.dev.global.canton.network.sync.global"
     },
-    "contributions": "canton",
+    "contributions": "Canton",
     "generatedServices": [],
     "services": [
       "devnet-installation-guide",
@@ -812,7 +812,7 @@
     "endpoints": {
       "explorer": "https://scan.sv-1.global.canton.network.sync.global"
     },
-    "contributions": "canton",
+    "contributions": "Canton",
     "generatedServices": [],
     "services": [
       "mainnet-installation-guide",
@@ -835,7 +835,7 @@
       "rpc": "https://rpc.monad.xyz"
     },
     "generatedServices": [],
-    "contributions": "monad",
+    "contributions": "Monad",
     "services": [
       "install-guide",
       "monitoring",
