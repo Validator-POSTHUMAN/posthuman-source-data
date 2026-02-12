@@ -1,4 +1,4 @@
-[
+612,000 GRT**[
   {
     "name": "axelar",
     "type": "mainnet",
@@ -789,7 +789,7 @@
     "endpoints": {
       "explorer": "https://scan.sv-1.dev.global.canton.network.sync.global"
     },
-    "contributions": [],
+    "contributions": [canton],
     "generatedServices": [],
     "services": [
       "devnet-installation-guide",
@@ -835,6 +835,7 @@
       "rpc": "https://rpc.monad.xyz"
     },
     "generatedServices": [],
+    "contributions": "monad",
     "services": [
       "install-guide",
       "monitoring",
