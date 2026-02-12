@@ -812,7 +812,7 @@
     "endpoints": {
       "explorer": "https://scan.sv-1.global.canton.network.sync.global"
     },
-    "contributions": [],
+    "contributions": "canton",
     "generatedServices": [],
     "services": [
       "mainnet-installation-guide",
