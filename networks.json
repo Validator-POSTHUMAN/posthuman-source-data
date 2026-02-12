@@ -789,7 +789,7 @@
     "endpoints": {
       "explorer": "https://scan.sv-1.dev.global.canton.network.sync.global"
     },
-    "contributions": [canton],
+    "contributions": "canton",
     "generatedServices": [],
     "services": [
       "devnet-installation-guide",
