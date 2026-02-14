@@ -18,6 +18,7 @@
       "peer": "adece904395c55d4fd1c2581b0d7a9be899f5a9d@peer.axelar.posthuman.digital:64656",
       "snapshots": "https://snapshots.axelar.posthuman.digital:443"
     },
+    "contributions": "Axelar",
     "generatedServices": [
       "installation-guide",
       "state-sync"
@@ -113,6 +114,7 @@
     "endpoints": {
       "rpc": ""
     },
+    "contributions": "Starknet",
     "generatedServices": [],
     "services": [
       "installation-guide",
@@ -183,6 +185,7 @@
       "evm-rpc": "https://evm-rpc.dymension.posthuman.digital",
       "seed-node": "82a81ed97ee8fe5a8bfa26446737865333eadca1@46.39.246.50:36656"
     },
+    "contributions": "Dymension",
     "generatedServices": [
       "installation-guide",
       "state-sync",
@@ -279,6 +282,7 @@
       "grpc": "https://grpc.stargaze.posthuman.digital:443",
       "seed-node": "e87e6dc4a941f35b2ad39a75a18fefbccf5d9072@46.39.246.50:10656"
     },
+    "contributions": "Stargaze",
     "generatedServices": [
       "installation-guide",
       "state-sync",
@@ -483,6 +487,7 @@
       "grpc": "https://grpc.warden-testnet.posthuman.digital",
       "peer": "4ba715e890aeceb9fef100c7c404004d1d711f37@46.4.52.158:656"
     },
+    "contributions": "Warden",
     "generatedServices": [
       "installation-guide",
       "state-sync"
@@ -509,6 +514,7 @@
       "grpc": "https://grpc.kyve.posthuman.digital",
       "peer": "cdac5f97b512287daf89f928a89da9cf3344830b@8.52.247.252:35656"
     },
+    "contributions": "Kyve",
     "generatedServices": [
       "installation-guide",
       "state-sync"
@@ -534,6 +540,7 @@
       "grpc": "https://grpc.oraichain.posthuman.digital",
       "peer": "07dde93a5ea10fc4623ef421d0de0e2b5b556e80@157.180.4.156:36657"
     },
+    "contributions": "Orai",
     "generatedServices": [
       "installation-guide",
       "state-sync"
@@ -562,6 +569,7 @@
       "evm_json_rpc_ws": "wss://wss.zetachain.posthuman.digital",
       "peer": "adcc85296ada06f1b8de81e7b26e063ff1474760@157.180.4.156:26656"
     },
+    "contributions": "Zetachain",
     "generatedServices": [
       "installation-guide",
       "state-sync"
@@ -587,6 +595,7 @@
       "grpc": "https://grpc.pell-testnet.posthuman.digital",
       "peer": "eb520fcedddaa6236e9ef886c1f475b1c49849cd@8.52.247.252:29057"
     },
+    "contributions": "Pell",
     "generatedServices": [
       "installation-guide",
       "state-sync"
@@ -612,6 +621,7 @@
       "grpc": "https://grpc.juno-testnet.posthuman.digital",
       "peer": "ea35c818280a6ac5d1d2a987d8d60f4bd76f4e06@141.95.34.193:16656"
     },
+    "contributions": "JunoNetwork",
     "generatedServices": [
       "installation-guide",
       "state-sync"
@@ -637,6 +647,7 @@
       "grpc": "https://grpc.juno.posthuman.digital",
       "peer": "113a11ad866cddddea40ddf9b56fde43f03d7499@135.181.227.236:12656"
     },
+    "contributions": "JunoNetwork",
     "generatedServices": [
       "installation-guide",
       "state-sync"
@@ -663,6 +674,7 @@
       "json": "https://json.exrp-testnet.posthuman.digital",
       "peer": "e80a91daedb88e1dc429ab60036b3819bb48057d@135.181.227.236:62656"
     },
+    "contributions": "XRPL",
     "generatedServices": [
       "installation-guide",
       "state-sync"
@@ -689,6 +701,7 @@
       "json": "https://json.exrp-testnet.posthuman.digital",
       "peer": "522e624a77123c67762b5c1ff70ac20d377b0179@135.181.227.236:61656"
     },
+    "contributions": "XRPL",
     "generatedServices": [
       "installation-guide",
       "state-sync"
@@ -714,6 +727,7 @@
       "grpc": "https://grpc.fuel.posthuman.digital",
       "peer": "0e71ad72133cb332ed09c98d5fe74eac345c1105@148.251.234.12:61656"
     },
+    "contributions": "Fuel",
     "generatedServices": [
       "installation-guide"
     ],
@@ -857,6 +871,7 @@
     "endpoints": {
       "rpc": "https://rpc-monad-testnet.posthuman.digital:443"
     },
+    "contributions": "Monad",
     "generatedServices": [],
     "services": [
       "install-guide",
