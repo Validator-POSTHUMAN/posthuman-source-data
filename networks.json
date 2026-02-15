@@ -567,7 +567,7 @@
       "grpc": "https://grpc.zetachain.posthuman.digital",
       "evm_json_rpc": "https://evm.zetachain.posthuman.digital",
       "evm_json_rpc_ws": "wss://wss.zetachain.posthuman.digital",
-      "peer": "adcc85296ada06f1b8de81e7b26e063ff1474760@157.180.4.156:26656"
+      "peer": "21cc2d900409df3612d4b00537c9ebaf09fab2f6@peer.zetachain.posthuman.digital:31656"
     },
     "contributions": "Zetachain",
     "generatedServices": [
