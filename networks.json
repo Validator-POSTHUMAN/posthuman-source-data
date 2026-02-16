@@ -155,7 +155,7 @@
       "rpc": "https://rpc.cosmos.posthuman.digital",
       "rest": "https://rest.cosmos.posthuman.digital",
       "grpc": "https://grpc.cosmos.posthuman.digital",
-      "seed-node": "6d581e53245f7f81c24a20392b60256a7e59de59@135.181.227.236:26656"
+      "seed-node": "6d581e53245f7f81c24a20392b60256a7e59de59@peer.cosmos.posthuman.digital:26656"
     },
     "contributions": "Cosmos",
     "generatedServices": [
@@ -183,7 +183,7 @@
       "rest": "https://rest.dymension.posthuman.digital",
       "grpc": "https://grpc.dymension.posthuman.digital",
       "evm-rpc": "https://evm-rpc.dymension.posthuman.digital",
-      "seed-node": "82a81ed97ee8fe5a8bfa26446737865333eadca1@46.39.246.50:36656"
+      "seed-node": "7f5862bc6b2a13fee3a1928c2c7aed33edb711a2@peer.dymension.posthuman.digital:25656"
     },
     "contributions": "Dymension",
     "generatedServices": [
@@ -205,7 +205,7 @@
       "rest": "https://rest.humans.posthuman.digital",
       "wss": "wss://rpc.humans.posthuman.digital",
       "evm-rpc": "https://evm.humans.posthuman.digital",
-      "seed-node": "589eaa7656ff1af6c50f32d7b63dda1cf83c7906@46.39.246.50:26656"
+      "seed-node": "7f5862bc6b2a13fee3a1928c2c7aed33edb711a2@peer.humans.posthuman.digital:27656"
     },
     "contributions": "Humans_ai",
     "generatedServices": [
@@ -232,7 +232,7 @@
       "rpc": "https://rpc.atomone-testnet.posthuman.digital:443",
       "rest": "https://rest.atomone-testnet.posthuman.digital:443",
       "grpc": "https://grpc.atomone-testnet.posthuman.digital:443",
-      "seed-node": "9aa69d667da6dd43ba82110b4ff290ac38d68976@135.181.227.236:61656"
+      "seed-node": "9aa69d667da6dd43ba82110b4ff290ac38d68976@135.181.227.236:60656"
     },
     "contributions": "Atomone",
     "generatedServices": [
@@ -280,7 +280,7 @@
       "rpc": "https://rpc.stargaze.posthuman.digital:443",
       "rest": "https://rest.stargaze.posthuman.digital:443",
       "grpc": "https://grpc.stargaze.posthuman.digital:443",
-      "seed-node": "e87e6dc4a941f35b2ad39a75a18fefbccf5d9072@46.39.246.50:10656"
+      "seed-node": "ea4ac95dd628844361cdee9b33e4c5db085d70e7@peer.stargaze.posthuman.digital:32656"
     },
     "contributions": "Stargaze",
     "generatedServices": [
@@ -538,7 +538,7 @@
       "rpc": "https://rpc.oraichain.posthuman.digital",
       "rest": "https://rest.oraichain.posthuman.digital",
       "grpc": "https://grpc.oraichain.posthuman.digital",
-      "peer": "07dde93a5ea10fc4623ef421d0de0e2b5b556e80@157.180.4.156:36657"
+      "peer": "07dde93a5ea10fc4623ef421d0de0e2b5b556e80@peer.oraichain.posthuman.digital:55656"
     },
     "contributions": "Orai",
     "generatedServices": [
@@ -672,7 +672,7 @@
       "rest": "https://rest.exrp-testnet.posthuman.digital",
       "grpc": "https://grpc.exrp-testnet.posthuman.digital",
       "json": "https://json.exrp-testnet.posthuman.digital",
-      "peer": "e80a91daedb88e1dc429ab60036b3819bb48057d@135.181.227.236:62656"
+      "peer": "e80a91daedb88e1dc429ab60036b3819bb48057d@peer.exrp.posthuman.digital:62656"
     },
     "contributions": "XRPL",
     "generatedServices": [
@@ -699,7 +699,7 @@
       "rest": "https://rest.exrp.posthuman.digital",
       "grpc": "https://grpc.exrp.posthuman.digital",
       "json": "https://json.exrp-testnet.posthuman.digital",
-      "peer": "522e624a77123c67762b5c1ff70ac20d377b0179@135.181.227.236:61656"
+      "peer": "522e624a77123c67762b5c1ff70ac20d377b0179@peer.exrp.posthuman.digital:61656"
     },
     "contributions": "XRPL",
     "generatedServices": [
@@ -725,7 +725,7 @@
       "rpc": "https://rpc.fuel.posthuman.digital",
       "rest": "https://rest.fuel.posthuman.digital",
       "grpc": "https://grpc.fuel.posthuman.digital",
-      "peer": "0e71ad72133cb332ed09c98d5fe74eac345c1105@148.251.234.12:61656"
+      "peer": "59047d7c1202593de3f4a71c767276094700d38c@peer.fuel.posthuman.digital:10656"
     },
     "contributions": "Fuel",
     "generatedServices": [
@@ -750,7 +750,7 @@
       "rpc": "https://rpc.neutron.posthuman.digital",
       "rest": "https://rest.neutron.posthuman.digital",
       "grpc": "grpc.neutron.posthuman.digital",
-      "peer": "61965e8e9a775f590726f14ab18bc7b7e6d3346a@135.181.227.236:10656"
+      "peer": "d5ce5e05dad8d5ed75709e2e4c591e088ade8dd5@peer.neutron.posthuman.digital:13656"
     },
     "contributions": "Neutron",
     "generatedServices": [
