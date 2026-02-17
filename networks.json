@@ -512,7 +512,7 @@
       "rpc": "https://rpc.kyve.posthuman.digital",
       "rest": "https://rest.kyve.posthuman.digital",
       "grpc": "https://grpc.kyve.posthuman.digital",
-      "peer": "cdac5f97b512287daf89f928a89da9cf3344830b@8.52.247.252:35656"
+      "peer": "b9d43e8179f17410abce8279a750d4945d8524c7@peer.kyve.posthuman.digital:33656"
     },
     "contributions": "Kyve",
     "generatedServices": [
