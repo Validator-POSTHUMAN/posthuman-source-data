@@ -13,7 +13,8 @@ cd gno
 git checkout chain/test11
 make install_gnokey
 make -C gno.land install.gnoland && make -C contribs/gnogenesis install
-
+```
+```bash
 cd $HOME
 gnoland secrets init
 gnoland config init
@@ -25,7 +26,9 @@ gnoland config set p2p.persistent_peers g1vgvqg94xy8qj23dc8zpw6wns7q0hj9g8mx03ha
 gnoland config set p2p.seeds g1vgvqg94xy8qj23dc8zpw6wns7q0hj9g8mx03ha@gno-core-sen-01.test11.testnets.gno.land:26656
 cd ~/gnoland-data/config
 wget -O genesis.json https://gno-testnets-genesis.s3.eu-central-1.amazonaws.com/test11/genesis.json
-
+```
+## Create service file
+```bash
 sudo tee /etc/systemd/system/gnoland.service > /dev/null <<EOF
 [Unit]
 Description=Gnoland node
@@ -40,17 +43,23 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
-
+```
+```bash
 sudo systemctl daemon-reload
 sudo systemctl restart gnoland && sudo journalctl -u gnoland -f
+```
 
-Create wallet
+## Create wallet
+```bash
 gnokey add $WALLET -home /home/gnoland/gnoland-data/
-
-Get validator address and public key:
+```
+## Get validator address and public key:
+```bash
 VAL_ADDRESS=$(gnoland secrets get validator_key | jq -r '.address')
 VAL_PUB_KEY=$(gnoland secrets get validator_key | jq -r '.pub_key')
-
+```
+## Create validator
+```bash
 gnokey maketx call \
     -pkgpath "gno.land/r/gnops/valopers" \
     -func "Register" \
@@ -65,5 +74,4 @@ gnokey maketx call \
     -args "$VAL_PUB_KEY" \
     -remote "https://rpc.test11.testnets.gno.land:443" \
     $WALLET
-
-
+```
