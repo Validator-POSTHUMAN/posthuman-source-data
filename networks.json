@@ -28,6 +28,20 @@
     ]
   },
   {
+    "name": "gno",
+    "type": "testnet",
+    "title": "GNO",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/gno/75237105.svg",
+    "chain_id": "test11",
+    "endpoints": {
+      "rpc": "https://rpc.gno.posthuman.digital:443",
+	},
+    "generatedServices": [],
+    "services": [
+      "installation-guide",
+    ]
+  },
+  {
     "name": "provenance",
     "type": "mainnet",
     "title": "Provenance",
