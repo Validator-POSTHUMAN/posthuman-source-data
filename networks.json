@@ -34,7 +34,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/gno/75237105.svg",
     "chain_id": "test11",
     "endpoints": {
-      "rpc": "https://rpc.gno.posthuman.digital:443",
+      "rpc": "https://rpc.gno.posthuman.digital:443"
 	},
     "generatedServices": [],
     "services": [
