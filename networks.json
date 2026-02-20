@@ -19,13 +19,8 @@
       "snapshots": "https://snapshots.axelar.posthuman.digital:443"
     },
     "contributions": "Axelar",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "gno",
@@ -35,11 +30,9 @@
     "chain_id": "test11",
     "endpoints": {
       "rpc": "https://rpc.gno.posthuman.digital:443"
-	},
+    },
     "generatedServices": [],
-    "services": [
-      "installation-guide"
-    ]
+    "services": ["installation-guide"]
   },
   {
     "name": "provenance",
@@ -60,13 +53,8 @@
       "peer": "7bf1c608994f3f0b6b65aa52072d164c9d8a7f4d@peer.provenance.posthuman.digital:44656",
       "snapshots": "https://snapshots.provenance.posthuman.digital:443"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "shentu",
@@ -87,13 +75,8 @@
       "peer": "77f21eee88ff4f895ff79dbdabb3e726c3f5eba5@peer.shentu.posthuman.digital:50656",
       "snapshots": "https://snapshots.shentu.posthuman.digital:443"
     },
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "lumen",
@@ -109,11 +92,7 @@
       "rpc": ""
     },
     "generatedServices": [],
-    "services": [
-      "validators",
-      "blockchain",
-      "validator-kit"
-    ]
+    "services": ["validators", "blockchain", "validator-kit"]
   },
   {
     "name": "starknet",
@@ -130,10 +109,7 @@
     },
     "contributions": "Starknet",
     "generatedServices": [],
-    "services": [
-      "installation-guide",
-      "validator-attestation"
-    ]
+    "services": ["installation-guide", "validator-attestation"]
   },
   {
     "name": "ethereum",
@@ -149,9 +125,7 @@
       "jsonrpc": ""
     },
     "generatedServices": [],
-    "services": [
-      "install-guide"
-    ]
+    "services": ["install-guide"]
   },
   {
     "name": "cosmoshub",
@@ -172,15 +146,8 @@
       "seed-node": "6d581e53245f7f81c24a20392b60256a7e59de59@peer.cosmos.posthuman.digital:26656"
     },
     "contributions": "Cosmos",
-    "generatedServices": [
-      "state-sync",
-      "peers"
-    ],
-    "services": [
-      "install-guide",
-      "ibc-relayers",
-      "links"
-    ]
+    "generatedServices": ["state-sync", "peers"],
+    "services": ["install-guide", "ibc-relayers", "links"]
   },
   {
     "name": "dymension",
@@ -200,11 +167,7 @@
       "seed-node": "7f5862bc6b2a13fee3a1928c2c7aed33edb711a2@peer.dymension.posthuman.digital:25656"
     },
     "contributions": "Dymension",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync",
-      "peers"
-    ],
+    "generatedServices": ["installation-guide", "state-sync", "peers"],
     "services": []
   },
   {
@@ -222,11 +185,7 @@
       "seed-node": "7f5862bc6b2a13fee3a1928c2c7aed33edb711a2@peer.humans.posthuman.digital:27656"
     },
     "contributions": "Humans_ai",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync",
-      "peers"
-    ],
+    "generatedServices": ["installation-guide", "state-sync", "peers"],
     "services": [],
     "images": [
       {
@@ -249,12 +208,8 @@
       "seed-node": "9aa69d667da6dd43ba82110b4ff290ac38d68976@135.181.227.236:60656"
     },
     "contributions": "Atomone",
-    "generatedServices": [
-      "installation-guide"
-    ],
-    "services": [
-      "snapshot-service"
-    ]
+    "generatedServices": ["installation-guide"],
+    "services": ["snapshot-service"]
   },
   {
     "name": "atomone",
@@ -271,17 +226,8 @@
       "seed-node": "494f6198020d91571f75b4f208b739e2da50578e@135.181.227.236:63656"
     },
     "contributions": "Atomone",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync",
-      "peers"
-    ],
-    "services": [
-      "IBC-Relayers",
-      "genesis-and-addrbook",
-      "snapshot-service",
-      "one-liner"
-    ]
+    "generatedServices": ["installation-guide", "state-sync", "peers"],
+    "services": ["IBC-Relayers", "genesis-and-addrbook", "snapshot-service", "one-liner"]
   },
   {
     "name": "stargaze",
@@ -297,11 +243,7 @@
       "seed-node": "ea4ac95dd628844361cdee9b33e4c5db085d70e7@peer.stargaze.posthuman.digital:32656"
     },
     "contributions": "Stargaze",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync",
-      "peers"
-    ],
+    "generatedServices": ["installation-guide", "state-sync", "peers"],
     "services": []
   },
   {
@@ -319,9 +261,7 @@
     },
     "chain_id": "ethereum",
     "generatedServices": [],
-    "services": [
-      "installation-guide"
-    ]
+    "services": ["installation-guide"]
   },
   {
     "name": "namada",
@@ -338,12 +278,7 @@
     },
     "contributions": "Namada",
     "generatedServices": [],
-    "services": [
-      "installation-guide",
-      "genesis-file",
-      "addr-book",
-      "snapshot-service"
-    ]
+    "services": ["installation-guide", "genesis-file", "addr-book", "snapshot-service"]
   },
   {
     "name": "story-testnet",
@@ -363,12 +298,7 @@
     },
     "contributions": "Story",
     "generatedServices": [],
-    "services": [
-      "installation-guide",
-      "genesis-and-addrbook",
-      "snapshot-service",
-      "one-liner"
-    ]
+    "services": ["installation-guide", "genesis-and-addrbook", "snapshot-service", "one-liner"]
   },
   {
     "name": "celestia",
@@ -384,9 +314,7 @@
     "codebase": {
       "git_repo": "https://github.com/celestiaorg/celestia-app",
       "recommended_version": "v5.0.11",
-      "compatible_versions": [
-        "v5.0.11"
-      ]
+      "compatible_versions": ["v5.0.11"]
     },
     "chain_id": "celestia",
     "endpoints": {
@@ -417,9 +345,7 @@
     "codebase": {
       "git_repo": "https://github.com/celestiaorg/celestia-app",
       "recommended_version": "v6.2.0-mocha",
-      "compatible_versions": [
-        "v6.2.0-mocha"
-      ]
+      "compatible_versions": ["v6.2.0-mocha"]
     },
     "chain_name": "celestia-app",
     "title": "Celestia",
@@ -467,10 +393,7 @@
       "peer": "a31df340e2a186a0541cdb5099a1cca6eab67c75@135.181.61.154:12756"
     },
     "contributions": "Agoric",
-    "generatedServices": [
-      "state-sync",
-      "peers"
-    ],
+    "generatedServices": ["state-sync", "peers"],
     "services": [
       "installation-guide",
       "IBC-Relayers",
@@ -502,14 +425,8 @@
       "peer": "4ba715e890aeceb9fef100c7c404004d1d711f37@46.4.52.158:656"
     },
     "contributions": "Warden",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "oracle-slinky-setup-guide",
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["oracle-slinky-setup-guide", "snapshots"]
   },
   {
     "name": "kyve",
@@ -529,13 +446,8 @@
       "peer": "b9d43e8179f17410abce8279a750d4945d8524c7@peer.kyve.posthuman.digital:33656"
     },
     "contributions": "Kyve",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "oraichain",
@@ -555,13 +467,8 @@
       "peer": "07dde93a5ea10fc4623ef421d0de0e2b5b556e80@peer.oraichain.posthuman.digital:55656"
     },
     "contributions": "Orai",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "zetachain",
@@ -584,13 +491,8 @@
       "peer": "21cc2d900409df3612d4b00537c9ebaf09fab2f6@peer.zetachain.posthuman.digital:31656"
     },
     "contributions": "Zetachain",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "pell-testnet",
@@ -610,13 +512,8 @@
       "peer": "eb520fcedddaa6236e9ef886c1f475b1c49849cd@8.52.247.252:29057"
     },
     "contributions": "Pell",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "juno-testnet",
@@ -636,13 +533,8 @@
       "peer": "ea35c818280a6ac5d1d2a987d8d60f4bd76f4e06@141.95.34.193:16656"
     },
     "contributions": "JunoNetwork",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "juno",
@@ -662,13 +554,8 @@
       "peer": "113a11ad866cddddea40ddf9b56fde43f03d7499@135.181.227.236:12656"
     },
     "contributions": "JunoNetwork",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "exrp-testnet",
@@ -689,13 +576,8 @@
       "peer": "e80a91daedb88e1dc429ab60036b3819bb48057d@peer.exrp.posthuman.digital:62656"
     },
     "contributions": "XRPL",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "exrp",
@@ -716,13 +598,8 @@
       "peer": "522e624a77123c67762b5c1ff70ac20d377b0179@peer.exrp.posthuman.digital:61656"
     },
     "contributions": "XRPL",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "fuel",
@@ -742,12 +619,8 @@
       "peer": "59047d7c1202593de3f4a71c767276094700d38c@peer.fuel.posthuman.digital:10656"
     },
     "contributions": "Fuel",
-    "generatedServices": [
-      "installation-guide"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide"],
+    "services": ["snapshots"]
   },
   {
     "name": "neutron",
@@ -767,13 +640,8 @@
       "peer": "d5ce5e05dad8d5ed75709e2e4c591e088ade8dd5@peer.neutron.posthuman.digital:13656"
     },
     "contributions": "Neutron",
-    "generatedServices": [
-      "installation-guide",
-      "state-sync"
-    ],
-    "services": [
-      "snapshots"
-    ]
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
   },
   {
     "name": "babylon-testnet",
@@ -795,12 +663,7 @@
     },
     "contributions": "Babylon",
     "generatedServices": [],
-    "services": [
-      "installation-guide",
-      "genesis-and-addrbook",
-      "snapshot-service",
-      "one-liner"
-    ]
+    "services": ["installation-guide", "genesis-and-addrbook", "snapshot-service", "one-liner"]
   },
   {
     "name": "canton-testnet",
@@ -812,18 +675,14 @@
     "github": "https://github.com/digital-asset/decentralized-canton-sync",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
     "stake": "",
-    "explorer": "https://lighthouse.devnet.cantonloop.com/",
-    "version": "DevNet: 0.5.4 | TestNet: 0.5.1",
+    "explorer": "https://lighthouse.testnet.cantonloop.com/",
+    "version": "DevNet: 0.5.11 | TestNet: 0.5.10",
     "endpoints": {
-      "explorer": "https://scan.sv-1.dev.global.canton.network.sync.global"
+      "explorer": "https://lighthouse.devnet.cantonloop.com/"
     },
     "contributions": "Canton",
     "generatedServices": [],
-    "services": [
-      "devnet-installation-guide",
-      "testnet-installation-guide",
-      "one-liner"
-    ]
+    "services": ["devnet-installation-guide", "testnet-installation-guide", "one-liner"]
   },
   {
     "name": "canton-mainnet",
@@ -836,16 +695,13 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
     "stake": "",
     "explorer": "https://lighthouse.cantonloop.com/",
-    "version": "0.4.25",
+    "version": "0.5.9",
     "endpoints": {
-      "explorer": "https://scan.sv-1.global.canton.network.sync.global"
+      "explorer": "https://lighthouse.cantonloop.com/"
     },
     "contributions": "Canton",
     "generatedServices": [],
-    "services": [
-      "mainnet-installation-guide",
-      "one-liner"
-    ]
+    "services": ["mainnet-installation-guide", "one-liner"]
   },
   {
     "name": "monad",
@@ -864,11 +720,7 @@
     },
     "generatedServices": [],
     "contributions": "Monad",
-    "services": [
-      "install-guide",
-      "monitoring",
-      "decentralize-map"
-    ]
+    "services": ["install-guide", "monitoring", "decentralize-map"]
   },
   {
     "name": "monad-testnet",
@@ -887,11 +739,7 @@
     },
     "contributions": "Monad",
     "generatedServices": [],
-    "services": [
-      "install-guide",
-      "monitoring",
-      "decentralize-map"
-    ]
+    "services": ["install-guide", "monitoring", "decentralize-map"]
   },
   {
     "name": "near",
@@ -907,9 +755,6 @@
     "chain_id": "mainnet",
     "endpoints": {},
     "generatedServices": [],
-    "services": [
-      "install-guide",
-      "monitoring"
-    ]
+    "services": ["install-guide", "monitoring"]
   }
 ]

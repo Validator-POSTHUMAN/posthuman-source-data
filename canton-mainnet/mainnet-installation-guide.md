@@ -12,7 +12,7 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: MainNet
-- Version: 0.5.8
+- Version: 0.5.9
 - Migration ID: 4
 - Purpose: Production network
 
@@ -107,7 +107,10 @@ docker-compose --version
 
 ```bash
 # Get current version and migration ID
-curl -s https://docs.global.canton.network.sync.global/info | jq '.'
+curl -s "https://lighthouse.cantonloop.com/api/stats" | jq '{version, migration}'
+
+# Or from /info endpoint (may show target version ahead of actual):
+# curl -s https://docs.global.canton.network.sync.global/info | jq '.'
 ```
 
 Note the `version` and `migration_id` from the output — you will need them below.
@@ -116,7 +119,7 @@ Note the `version` and `migration_id` from the output — you will need them bel
 
 ```bash
 # Use the version from step 2
-VERSION="0.5.8"
+VERSION="0.5.9"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
 
@@ -134,13 +137,14 @@ export IMAGE_TAG=${VERSION}
 
 ./start.sh \
   -s "https://sv.sv-2.global.canton.network.digitalasset.com" \
+  -c "https://scan.sv-2.global.canton.network.digitalasset.com" \
   -o "YOUR_ONBOARDING_SECRET_FROM_SV" \
   -p "YOUR_VALIDATOR_NAME" \
   -m "4" \
   -w
 ```
 
-> ⚠️ **If sv-2 is unavailable**, try other SVs or specify scan separately with `-c`:
+> ⚠️ **If sv-2 is unavailable**, try sv-1 or specify scan separately with `-c`:
 > ```bash
 > ./start.sh \
 >   -s "https://sv.sv-1.global.canton.network.digitalasset.com" \
@@ -152,19 +156,18 @@ export IMAGE_TAG=${VERSION}
 > ```
 
 Parameters:
-- `-s` - Sponsor SV URL (try sv-2 first; sv-1 can be unstable)
-- `-c` - Scan address (optional, use if SV scan is down but another SV's scan works)
+- `-s` - Sponsor SV URL (use sv-2 `.digitalasset.com`; sv-1 can be unstable)
+- `-c` - Scan address (use if SV scan is down but another SV's scan works)
 - `-o` - Onboarding secret from SV sponsor (use `""` after first start)
 - `-p` - Party hint (validator name)
 - `-m` - Migration ID (4 for MainNet)
 - `-w` - Enable wallet
 
 > ⚠️ **SV Fallback:** If sv-2 is unavailable, try other SVs:
+> - `https://sv.sv-2.global.canton.network.digitalasset.com` (preferred)
 > - `https://sv.sv-1.global.canton.network.digitalasset.com`
-> - `https://sv.sv-2.global.canton.network.digitalasset.com`
-> - `https://sv.sv-1.global.canton.network.sync.global`
 >
-> You can also specify the scan address separately with `-c` flag if the SV endpoint works but its scan is down:
+> You can specify the scan address separately with `-c` flag if the SV endpoint works but its scan is down:
 > ```bash
 > ./start.sh \
 >   -s "https://sv.sv-1.global.canton.network.digitalasset.com" \
@@ -174,7 +177,7 @@ Parameters:
 >
 > Check SV health before starting:
 > ```bash
-> curl -s --max-time 5 "https://scan.sv-2.global.canton.network.digitalasset.com/api/scan/v0/splice-instance-names"
+> curl -s --max-time 5 "https://scan.sv-2.global.canton.network.digitalasset.com/api/scan/version"
 > ```
 
 #### 5. Check Status
@@ -281,6 +284,7 @@ export IMAGE_TAG=${VERSION}
 
 ./start.sh \
   -s "https://sv.sv-2.global.canton.network.digitalasset.com" \
+  -c "https://scan.sv-2.global.canton.network.digitalasset.com" \
   -o "" \
   -p "YOUR_VALIDATOR_NAME" \
   -m "4" \
@@ -309,17 +313,13 @@ docker logs splice-validator-validator-1 --tail 100
 ### Process
 
 ```bash
-# 1. Check new version
-curl -s https://docs.global.canton.network.sync.global/info | jq '.'
+# 1. Check new version (Lighthouse = same as explorer)
+curl -s "https://lighthouse.cantonloop.com/api/stats" | jq '{version, migration}'
 
-# 2. Stop current node
-cd ~/.canton/${CURRENT_VERSION}/splice-node/docker-compose/validator
-./stop.sh
-
-# 3. Backup database
+# 2. Backup database
 docker exec splice-validator-postgres-splice-1 pg_dump -U cnadmin validator | gzip > ~/mainnet_backup_$(date +%Y%m%d).sql.gz
 
-# 4. Download new version
+# 3. Download new version
 NEW_VERSION="X.Y.Z"  # from step 1
 mkdir -p ~/.canton/${NEW_VERSION}
 cd ~/.canton/${NEW_VERSION}
@@ -327,19 +327,32 @@ wget https://github.com/digital-asset/decentralized-canton-sync/releases/downloa
 tar xzf ${NEW_VERSION}_splice-node.tar.gz
 cd splice-node/docker-compose/validator
 
-# 5. Copy your .env (adjust if needed)
+# 4. Copy your .env and nginx config
 cp ~/.canton/${CURRENT_VERSION}/splice-node/docker-compose/validator/.env .env
+cp ~/.canton/${CURRENT_VERSION}/splice-node/docker-compose/validator/nginx.conf nginx.conf 2>/dev/null
+cp -r ~/.canton/${CURRENT_VERSION}/splice-node/docker-compose/validator/nginx/ nginx/ 2>/dev/null
+sed -i "s/IMAGE_TAG=.*/IMAGE_TAG=${NEW_VERSION}/" .env
 
-# 6. Start with new version
+# 5. Pre-pull images (while old version still running — minimizes downtime!)
+export IMAGE_TAG=${NEW_VERSION}
+docker compose --env-file .env pull
+
+# 6. Stop current node
+cd ~/.canton/${CURRENT_VERSION}/splice-node/docker-compose/validator
+./stop.sh
+
+# 7. Start new version (fast — images already cached)
+cd ~/.canton/${NEW_VERSION}/splice-node/docker-compose/validator
 export IMAGE_TAG=${NEW_VERSION}
 ./start.sh \
   -s "https://sv.sv-2.global.canton.network.digitalasset.com" \
+  -c "https://scan.sv-2.global.canton.network.digitalasset.com" \
   -o "" \
   -p "YOUR_VALIDATOR_NAME" \
   -m "4" \
   -w
 
-# 7. Check logs
+# 8. Check logs
 docker compose logs -f validator
 ```
 

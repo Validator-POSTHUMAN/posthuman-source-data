@@ -12,7 +12,7 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: TestNet
-- Version: 0.5.9
+- Version: 0.5.10
 - Migration ID: 1
 - Purpose: Pre-production testing
 
@@ -52,7 +52,7 @@ https://sync.global/validator-request/
 
 ```bash
 bash -c 'CURL="curl -fsS -m 5 --connect-timeout 5"
-for url in $($CURL https://scan.sv-1.test.global.canton.network.sync.global/api/scan/v0/scans | jq -r ".scans[].scans[].publicUrl"); do
+for url in $($CURL https://scan.sv-2.test.global.canton.network.digitalasset.com/api/scan/v0/scans | jq -r ".scans[].scans[].publicUrl"); do
   echo -n "$url: "
   $CURL "$url"/api/scan/version | jq -r ".version" 2>&1 || echo "TIMEOUT"
 done'
@@ -93,14 +93,17 @@ docker-compose --version
 #### 2. Check Network Status
 
 ```bash
-# Get current version and migration ID
+# Get current version from Lighthouse explorer API (actual network version)
+curl -s "https://lighthouse.testnet.cantonloop.com/api/stats" | jq '{version, migration}'
+
+# Or from /info endpoint (target version — may be ahead of actual)
 curl -s https://docs.test.global.canton.network.sync.global/info | jq '.'
 ```
 
 #### 3. Download Canton Node
 
 ```bash
-VERSION="0.5.9"
+VERSION="0.5.10"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
 
@@ -112,15 +115,16 @@ cd splice-node/docker-compose/validator
 #### 4. Start Validator
 
 ```bash
-cd ~/.canton/0.5.9/splice-node/docker-compose/validator
+cd ~/.canton/0.5.10/splice-node/docker-compose/validator
 
 # Enable unsafe auth (if needed for scripts/monitoring)
 # echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
 
-export IMAGE_TAG=0.5.9
+export IMAGE_TAG=0.5.10
 
 ./start.sh \
-  -s "https://sv.sv-1.test.global.canton.network.sync.global" \
+  -s "https://sv.sv-2.test.global.canton.network.digitalasset.com" \
+  -c "https://scan.sv-2.test.global.canton.network.digitalasset.com" \
   -o "YOUR_ONBOARDING_SECRET_FROM_SV" \
   -p "YOUR_VALIDATOR_NAME" \
   -m "1" \
@@ -134,11 +138,12 @@ Parameters:
 - `-m` - Migration ID (1 for TestNet)
 - `-w` - Enable wallet
 
-> ⚠️ **If sv-1 is unavailable**, use sv-2:
+> ⚠️ **Important:** Always use `.digitalasset.com` domain for TestNet sv-2 — the `.sync.global` domain has a **broken SSL certificate**.
+>
+> If sv-2 is unavailable, try sv-1:
 > ```bash
 > ./start.sh \
->   -s "https://sv.sv-2.test.global.canton.network.sync.global" \
->   -c "https://scan.sv-2.test.global.canton.network.sync.global" \
+>   -s "https://sv.sv-1.test.global.canton.network.sync.global" \
 >   -o "YOUR_ONBOARDING_SECRET_FROM_SV" -p "YOUR_VALIDATOR_NAME" -m "1" -w
 > ```
 
@@ -179,18 +184,19 @@ EOF
 ### Stop
 
 ```bash
-cd ~/.canton/0.5.9/splice-node/docker-compose/validator
+cd ~/.canton/0.5.10/splice-node/docker-compose/validator
 ./stop.sh
 ```
 
 ### Restart
 
 ```bash
-cd ~/.canton/0.5.9/splice-node/docker-compose/validator
-export IMAGE_TAG=0.5.9
+cd ~/.canton/0.5.10/splice-node/docker-compose/validator
+export IMAGE_TAG=0.5.10
 
 ./start.sh \
-  -s "https://sv.sv-1.test.global.canton.network.sync.global" \
+  -s "https://sv.sv-2.test.global.canton.network.digitalasset.com" \
+  -c "https://scan.sv-2.test.global.canton.network.digitalasset.com" \
   -o "" \
   -p "YOUR_VALIDATOR_NAME" \
   -m "1" \
@@ -200,7 +206,7 @@ export IMAGE_TAG=0.5.9
 ### View Logs
 
 ```bash
-cd ~/.canton/0.5.9/splice-node/docker-compose/validator
+cd ~/.canton/0.5.10/splice-node/docker-compose/validator
 
 # All containers
 docker compose logs -f
@@ -310,10 +316,10 @@ ports:
 ### IP Whitelist Issues
 
 ```bash
-# Verify your IP is whitelisted
-curl -s https://scan.sv-1.test.global.canton.network.sync.global/api/scan/version
+# Verify your IP is whitelisted (use .digitalasset.com — .sync.global has broken SSL)
+curl -s https://scan.sv-2.test.global.canton.network.digitalasset.com/api/scan/version
 
-# Should return version number, not error
+# Should return version number, not error/403
 ```
 
 ### Onboarding Secret Expired

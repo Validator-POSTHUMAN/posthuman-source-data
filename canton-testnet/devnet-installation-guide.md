@@ -12,7 +12,7 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: DevNet
-- Version: 0.5.10
+- Version: 0.5.11
 - Migration ID: 1
 - Purpose: Testing and development
 
@@ -41,11 +41,14 @@ Canton Network is the first public permissionless blockchain platform designed f
 # Install dependencies
 sudo apt update && sudo apt install -y curl jq docker.io docker-compose
 
-# Check current network version
+# Check current network version (Lighthouse API — same as explorer)
+curl -s "https://lighthouse.devnet.cantonloop.com/api/stats" | jq '{version, migration}'
+
+# Or via /info endpoint (may show target version ahead of actual)
 curl -s https://docs.dev.global.canton.network.sync.global/info | jq '.'
 
 # Create directory
-VERSION="0.5.10"
+VERSION="0.5.11"
 MIGRATION_ID="1"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
@@ -56,7 +59,7 @@ tar xzf ${VERSION}_splice-node.tar.gz
 cd splice-node/docker-compose/validator
 
 # Get onboarding secret (valid for 1 hour)
-SECRET=$(curl -X POST https://sv.sv-1.dev.global.canton.network.sync.global/api/sv/v0/devnet/onboard/validator/prepare)
+SECRET=$(curl -X POST https://sv.sv-2.dev.global.canton.network.digitalasset.com/api/sv/v0/devnet/onboard/validator/prepare)
 
 # Start validator
 # Enable unsafe auth (if needed for scripts/monitoring)
@@ -64,7 +67,8 @@ SECRET=$(curl -X POST https://sv.sv-1.dev.global.canton.network.sync.global/api/
 
 export IMAGE_TAG=${VERSION}
 ./start.sh \
-  -s "https://sv.sv-1.dev.global.canton.network.sync.global" \
+  -s "https://sv.sv-2.dev.global.canton.network.digitalasset.com" \
+  -c "https://scan.sv-2.dev.global.canton.network.digitalasset.com" \
   -o "${SECRET}" \
   -p "YOUR_VALIDATOR_NAME" \
   -m "${MIGRATION_ID}" \
@@ -98,18 +102,17 @@ docker-compose --version
 #### 2. Check Network Status & IP
 
 ```bash
-# Get current version and migration ID
-curl -s https://docs.dev.global.canton.network.sync.global/info | jq '.'
+# Check current network version (Lighthouse API — same as explorer)
+curl -s "https://lighthouse.devnet.cantonloop.com/api/stats" | jq '{version, migration}'
 
-# Verify IP connectivity (whitelist check)
-curl -s -m 5 https://scan.sv-1.dev.global.canton.network.sync.global/api/scan/version
-# Should return version (e.g. {"version":"0.5.10"...}), NOT timeout
+# Or via /info endpoint
+curl -s https://docs.dev.global.canton.network.sync.global/info | jq '.'
 ```
 
 #### 3. Download Canton Node
 
 ```bash
-VERSION="0.5.10"
+VERSION="0.5.11"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
 
@@ -122,21 +125,22 @@ cd splice-node/docker-compose/validator
 
 DevNet onboarding secret (auto-generated, valid for 1 hour):
 ```bash
-curl -X POST https://sv.sv-1.dev.global.canton.network.sync.global/api/sv/v0/devnet/onboard/validator/prepare
+curl -X POST https://sv.sv-2.dev.global.canton.network.digitalasset.com/api/sv/v0/devnet/onboard/validator/prepare
 ```
 
 #### 5. Start Validator
 
 ```bash
-cd ~/.canton/0.5.10/splice-node/docker-compose/validator
+cd ~/.canton/0.5.11/splice-node/docker-compose/validator
 
 # Enable unsafe auth (if needed for scripts/monitoring)
 # echo "COMPOSE_FILE=compose.yaml:compose-disable-auth.yaml" >> .env
 
-export IMAGE_TAG=0.5.10
+export IMAGE_TAG=0.5.11
 
 ./start.sh \
-  -s "https://sv.sv-1.dev.global.canton.network.sync.global" \
+  -s "https://sv.sv-2.dev.global.canton.network.digitalasset.com" \
+  -c "https://scan.sv-2.dev.global.canton.network.digitalasset.com" \
   -o "YOUR_ONBOARDING_SECRET" \
   -p "YOUR_VALIDATOR_NAME" \
   -m "1" \
@@ -150,11 +154,11 @@ Parameters:
 - `-m` - Migration ID
 - `-w` - Enable wallet
 
-> ⚠️ **If sv-1 is unavailable**, use sv-2:
+> ⚠️ **If sv-2 is unavailable**, try sv-1:
 > ```bash
 > ./start.sh \
->   -s "https://sv.sv-2.dev.global.canton.network.sync.global" \
->   -c "https://scan.sv-2.dev.global.canton.network.sync.global" \
+>   -s "https://sv.sv-1.dev.global.canton.network.sync.global" \
+>   -c "https://scan.sv-1.dev.global.canton.network.sync.global" \
 >   -o "${SECRET}" -p "YOUR_VALIDATOR_NAME" -m "1" -w
 > ```
 
@@ -198,18 +202,19 @@ Nginx uses virtual hosts + basic auth:
 ### Stop
 
 ```bash
-cd ~/.canton/0.5.10/splice-node/docker-compose/validator
+cd ~/.canton/0.5.11/splice-node/docker-compose/validator
 ./stop.sh
 ```
 
 ### Restart
 
 ```bash
-cd ~/.canton/0.5.10/splice-node/docker-compose/validator
-export IMAGE_TAG=0.5.10
+cd ~/.canton/0.5.11/splice-node/docker-compose/validator
+export IMAGE_TAG=0.5.11
 
 ./start.sh \
-  -s "https://sv.sv-1.dev.global.canton.network.sync.global" \
+  -s "https://sv.sv-2.dev.global.canton.network.digitalasset.com" \
+  -c "https://scan.sv-2.dev.global.canton.network.digitalasset.com" \
   -o "" \
   -p "YOUR_VALIDATOR_NAME" \
   -m "1" \
@@ -219,7 +224,7 @@ export IMAGE_TAG=0.5.10
 ### View Logs
 
 ```bash
-cd ~/.canton/0.5.10/splice-node/docker-compose/validator
+cd ~/.canton/0.5.11/splice-node/docker-compose/validator
 
 # All containers
 docker compose logs -f
@@ -293,7 +298,7 @@ By default, wallet UI is publicly accessible. Secure it:
 **Option 1:** Change to localhost-only
 
 ```bash
-cd ~/.canton/0.5.10/splice-node/docker-compose/validator
+cd ~/.canton/0.5.11/splice-node/docker-compose/validator
 nano compose.yaml
 
 # Find and change (use port 8888 to avoid conflicts):
@@ -314,9 +319,11 @@ http://localhost:8888
 ## Useful Links
 
 - **DevNet Explorer:** https://lighthouse.devnet.cantonloop.com/
-- **Documentation:** https://docs.dev.sync.global/
+- **Documentation:** https://docs.sync.global/
 - **GitHub:** https://github.com/digital-asset/decentralized-canton-sync
+- **Releases:** https://github.com/digital-asset/decentralized-canton-sync/releases
 - **Validator Form:** https://sync.global/validator-request/
+- **Network Status:** https://sync.global/sv-network/
 
 ---
 
