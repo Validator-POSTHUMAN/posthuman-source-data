@@ -1,9 +1,11 @@
 # set vars
+```bash
 export WALLET="wallet"          <-- Change
 export MONIKER="test"           <-- Change
 export GNOLAND_CHAIN_ID="test11"
 export GNOLAND_PORT="54"        <-- Change
-
+```
+```bash
 cd $HOME
 rm -rf gno
 git clone https://github.com/gnolang/gno.git
