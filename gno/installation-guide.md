@@ -1,10 +1,11 @@
-# set vars
+## Set vars
 ```bash
 export WALLET="wallet"          <-- Change
 export MONIKER="test"           <-- Change
 export GNOLAND_CHAIN_ID="test11"
 export GNOLAND_PORT="54"        <-- Change
 ```
+## Install package
 ```bash
 cd $HOME
 rm -rf gno
@@ -14,6 +15,7 @@ git checkout chain/test11
 make install_gnokey
 make -C gno.land install.gnoland && make -C contribs/gnogenesis install
 ```
+## Config 
 ```bash
 cd $HOME
 gnoland secrets init
@@ -44,6 +46,7 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 ```
+## Start service
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl restart gnoland && sudo journalctl -u gnoland -f
