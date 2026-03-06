@@ -40,7 +40,7 @@
       "compatible_versions": ["v0.0.18"]
     },	
     "chain_id": "push_42101-1",
-	"genesis_ulr": "https://snapshots.push.posthuman.digital/genesis.json",
+	"genesis_url": "https://snapshots.push.posthuman.digital/genesis.json",
 	"addrbookUrl": "https://snapshots.push.posthuman.digital/addrbook.json",
     "endpoints": {
       "rpc": "https://rpc.push.posthuman.digital:443",
