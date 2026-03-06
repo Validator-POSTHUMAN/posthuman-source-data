@@ -64,6 +64,7 @@
     "endpoints": {
       "rpc": "https://rpc.gno.posthuman.digital:443"
     },
+	"contributions": "gno-land",
     "generatedServices": [],
     "services": ["installation-guide"]
   },
@@ -86,6 +87,7 @@
       "peer": "7bf1c608994f3f0b6b65aa52072d164c9d8a7f4d@peer.provenance.posthuman.digital:44656",
       "snapshots": "https://snapshots.provenance.posthuman.digital:443"
     },
+	"contributions": "Provenance",
     "generatedServices": ["installation-guide", "state-sync"],
     "services": ["snapshots"]
   },
@@ -108,6 +110,7 @@
       "peer": "77f21eee88ff4f895ff79dbdabb3e726c3f5eba5@peer.shentu.posthuman.digital:50656",
       "snapshots": "https://snapshots.shentu.posthuman.digital:443"
     },
+	"contributions": "",
     "generatedServices": ["installation-guide", "state-sync"],
     "services": ["snapshots"]
   },
@@ -124,6 +127,7 @@
     "endpoints": {
       "rpc": ""
     },
+	"contributions": "",
     "generatedServices": [],
     "services": ["validators", "blockchain", "validator-kit"]
   },
