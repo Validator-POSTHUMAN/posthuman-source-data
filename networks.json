@@ -34,8 +34,9 @@
     "stake": "",
     "explorer": "",
 	"daemon_name": "pchaind",
+	"node_name": "NodeName",
     "codebase": {
-	  "git_repo": "https://github.com/pushchain/push-chain-node",
+	  "git_repo": "https://github.com/pushchain/push-chain-node.git",
       "recommended_version": "v0.0.18",
       "compatible_versions": ["v0.0.18"]
     },	
