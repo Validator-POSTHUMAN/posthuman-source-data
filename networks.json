@@ -34,6 +34,11 @@
     "stake": "",
     "explorer": "",
 	"daemon_name": "pchaind",
+    "codebase": {
+	  "git_repo": "https://github.com/pushchain/push-chain-node",
+      "recommended_version": "v0.0.18",
+      "compatible_versions": ["v0.0.18"]
+    },	
     "chain_id": "push_42101-1",
 	"genesis_ulr": "https://snapshots.push.posthuman.digital/genesis.json",
 	"addrbookUrl": "https://snapshots.push.posthuman.digital/addrbook.json",
@@ -45,6 +50,7 @@
       "peer": "7bf1c608994f3f0b6b65aa52072d164c9d8a7f4d@peer.push.posthuman.digital:50656",
       "snapshots": "https://snapshots.push.posthuman.digital:443"
     },
+	"contributions": "push",
     "generatedServices": ["installation-guide", "state-sync"],
     "services": ["snapshots"]
   },
