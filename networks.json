@@ -802,7 +802,7 @@
     "twitter": "https://x.com/EspressoNetwork",
     "discord": "https://discord.gg/espresso",
     "github": "https://github.com/EspressoSystems",
-    "icon": "https://espresso.network/favicon.ico",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/espresso/espresso-logo.png",
     "stake": "",
     "explorer": "",
     "chain_id": "espresso-mainnet",
