@@ -793,5 +793,28 @@
     "endpoints": {},
     "generatedServices": [],
     "services": ["install-guide", "monitoring"]
+  },
+  {
+    "name": "espresso",
+    "type": "mainnet",
+    "title": "Espresso",
+    "website": "https://espresso.network/",
+    "twitter": "https://x.com/EspressoNetwork",
+    "discord": "https://discord.gg/espresso",
+    "github": "https://github.com/EspressoSystems",
+    "icon": "https://espresso.network/favicon.ico",
+    "stake": "",
+    "explorer": "",
+    "chain_id": "espresso-mainnet",
+    "endpoints": {
+      "rpc": "https://rpc.espresso.network",
+      "rest": "https://rest.espresso.network",
+      "grpc": "https://grpc.espresso.network",
+      "peer": "",
+      "snapshots": ""
+    },
+    "contributions": "Espresso",
+    "generatedServices": ["installation-guide"],
+    "services": ["snapshots"]
   }
 ]
