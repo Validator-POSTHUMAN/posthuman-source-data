@@ -6,7 +6,6 @@ It is written for:
 - **full node mode**
 - **GenLayer Asimov testnet**
 - **Docker-based setup**
-- **GitHub copy/paste usage**
 
 ---
 
@@ -306,11 +305,13 @@ docker run --rm \
 
 If you use the local binary instead of Docker, remember that .env is not automatically loaded into your current shell:
 
+```bash
 cd ~/genlayer
 set -a
 source .env
 set +a
 ./bin/genlayernode doctor
+```
 
 ## 12. Firewall recommendations
 
@@ -325,7 +326,7 @@ sudo ufw status
 
 Recommended:
 
-expose 9151/tcp only if you want external RPC
-keep 9153/tcp private
-do not expose 4444/tcp publicly
+  - expose 9151/tcp only if you want external RPC
+  - keep 9153/tcp private
+  - do not expose 4444/tcp publicly
 
