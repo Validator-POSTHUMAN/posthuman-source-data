@@ -13,7 +13,7 @@
     "endpoints": {},
     "contributions": "",
     "generatedServices": [],
-    "services": []
+    "services": ["install-guide","troubleshooting","useful-commands"]
   },
   {
     "name": "axelar",
