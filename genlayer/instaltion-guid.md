@@ -280,6 +280,7 @@ npm install -g genlayer
 genlayer network set testnet-asimov
 genlayer network info
 genlayer config get network
+```
 
 ## 11. Optional: run doctor
 
