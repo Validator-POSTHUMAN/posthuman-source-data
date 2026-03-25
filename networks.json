@@ -10,6 +10,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/genlayer/genlayer-logo.svg",
     "stake": "",
     "explorer": "",
+	"chain_id": "asimov-phase5",
     "endpoints": {},
     "contributions": "",
     "generatedServices": [],
