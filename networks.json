@@ -1,4 +1,20 @@
 [
+    {
+    "name": "genlayer",
+    "type": "testnet",
+    "title": "GenLayer",
+    "website": "https://genlayer.com",
+    "twitter": "https://x.com/GenLayer",
+    "discord": "https://discord.com/invite/genlayerlabs",
+    "github": "https://github.com/genlayerlabs",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/genlayer/genlayer-logo.svg",
+    "stake": "",
+    "explorer": "",
+    "endpoints": {},
+    "contributions": "",
+    "generatedServices": [],
+    "services": []
+  },
   {
     "name": "axelar",
     "type": "mainnet",
