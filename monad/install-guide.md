@@ -739,7 +739,6 @@ systemctl restart monad-bft monad-execution monad-rpc
 
 ### Stay Updated
 
-- Join the [Monad Node Announcements](https://t.me/monad_node_announcements) Telegram group
 - Join the [Monad Developer Discord](https://discord.gg/monad) → `#mainnet-fullnode-announcements` channel
 
 ---
