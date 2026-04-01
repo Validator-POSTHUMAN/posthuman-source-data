@@ -142,6 +142,8 @@ mkdir -p /home/monad/monad-bft/config \
          /home/monad/monad-bft/ledger \
          /home/monad/monad-bft/config/forkpoint \
          /home/monad/monad-bft/config/validators
+
+chown -R monad:monad /home/monad/
 ````
 
 ### Step 4 — Configure TrieDB Device
@@ -160,7 +162,9 @@ Look for a drive with **no mountpoints**. Your OS drive will show `/`, `/boot`, 
 Set up the partition:
 
 ````bash
-TRIEDB_DRIVE=/dev/nvme1n1  # ← CHANGE THIS TO YOUR DRIVE
+# Identify the drive with NO mountpoints — that's your TrieDB drive.
+# Example: if OS is on nvme1n1 and nvme0n1 is empty:
+TRIEDB_DRIVE=/dev/nvme0n1  # ← CHANGE THIS TO YOUR EMPTY DRIVE
 
 parted $TRIEDB_DRIVE mklabel gpt
 parted $TRIEDB_DRIVE mkpart triedb 0% 100%
@@ -214,18 +218,23 @@ ufw enable
 ufw status
 ````
 
-Anti-spam rule for UDP:
+Anti-spam rule for UDP (drop small packets on port 8000):
+
+> ⚠️ **Do not use `iptables-persistent`** — it conflicts with `ufw` and removes it.
+> Instead, add the rule to `/etc/ufw/before.rules` so it persists across reboots.
 
 ````bash
-iptables -I INPUT -p udp --dport 8000 -m length --length 0:1400 -j DROP
+# Add anti-spam DROP rule to ufw before.rules (inserted right after *filter line)
+sed -i '/^\*filter/a # Anti-spam: drop small UDP packets on port 8000\n-A ufw-before-input -p udp --dport 8000 -m length --length 0:1400 -j DROP' /etc/ufw/before.rules
+
+ufw reload
 ````
 
-Persist iptables rules:
+Verify the rule is active:
 
 ````bash
-echo iptables-persistent iptables-persistent/autosave_v4 boolean true | debconf-set-selections
-echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-set-selections
-DEBIAN_FRONTEND=noninteractive apt install -y iptables-persistent
+iptables -L -n | grep "udp dpt:8000"
+# Expected: DROP ... udp dpt:8000 length 0:1400
 ````
 
 Verify outbound connectivity:
@@ -288,35 +297,38 @@ echo "Keystore password: ${KEYSTORE_PASSWORD}" > /opt/monad/backup/keystore-pass
 
 ### Step 9 — Generate Keystores
 
+First, verify that keys do not already exist:
+
 ````bash
-bash <<'EOF'
-set -e
+ls /home/monad/monad-bft/config/id-secp /home/monad/monad-bft/config/id-bls 2>/dev/null \
+  && echo "Keys already exist! Skipping." && exit 1
+````
 
+Generate secp256k1 key:
+
+````bash
 source /home/monad/.env
-
-if [[ -z "$KEYSTORE_PASSWORD" || \
-      -f /home/monad/monad-bft/config/id-secp || \
-      -f /home/monad/monad-bft/config/id-bls ]]; then
-  echo "Skipping: missing KEYSTORE_PASSWORD or keys already exist."
-  exit 1
-fi
-
 monad-keystore create \
   --key-type secp \
   --keystore-path /home/monad/monad-bft/config/id-secp \
-  --password "${KEYSTORE_PASSWORD}" > /opt/monad/backup/secp-backup
+  --password "${KEYSTORE_PASSWORD}" | tee /opt/monad/backup/secp-backup
+````
 
+Generate BLS key:
+
+````bash
+source /home/monad/.env
 monad-keystore create \
   --key-type bls \
   --keystore-path /home/monad/monad-bft/config/id-bls \
-  --password "${KEYSTORE_PASSWORD}" > /opt/monad/backup/bls-backup
+  --password "${KEYSTORE_PASSWORD}" | tee /opt/monad/backup/bls-backup
+````
 
+Verify and save public keys:
+
+````bash
 grep "public key" /opt/monad/backup/secp-backup /opt/monad/backup/bls-backup \
   | tee /home/monad/pubkey-secp-bls
-
-echo "Success: New keystores generated"
-
-EOF
 ````
 
 > 🔐 **CRITICAL — Back up these files externally** (password manager, secrets vault, offline storage):
