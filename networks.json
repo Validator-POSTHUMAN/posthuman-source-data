@@ -23,7 +23,7 @@
     "website": "https://www.fetch.ai/",
     "twitter": "https://x.com/Fetch_ai",
     "github": "https://github.com/fetchai/",
-    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/fetchhub/images/fet.svg",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/fetchhub/images/fet_white.svg",
 	"stake": "",
     "explorer": "",
 	"daemon_name": "fetchd",
