@@ -26,7 +26,7 @@
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/firmachain/images/fct.svg",
 	"stake": "",
     "explorer": "",
-	"daemon_name": "firmachaind,
+	"daemon_name": "firmachaind",
     "codebase": {
 	  "git_repo": "https://github.com/firmachain/firmachain",
       "recommended_version": "v0.5.1-patch2",
