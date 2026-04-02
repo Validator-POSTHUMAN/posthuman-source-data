@@ -17,6 +17,36 @@
     "services": ["install-guide","troubleshooting","useful-commands"]
   },
  {
+    "name": "firmachain",
+    "type": "mainnet",
+    "title": "FirmaChain",
+    "website": "https://firmachain.org/",
+    "twitter": "https://x.com/FirmaChain",
+    "github": "https://github.com/FirmaChain/",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/firmachain/images/fct.svg",
+	"stake": "",
+    "explorer": "",
+	"daemon_name": "firmachaind,
+    "codebase": {
+	  "git_repo": "https://github.com/firmachain/firmachain",
+      "recommended_version": "v0.5.1-patch2",
+      "compatible_versions": ["v0.5.1-patch2"]
+	  },	
+    "chain_id": "colosseum-1",
+	"genesis_ulr": "https://snapshots.firmachain.posthuman.digital/genesis.json",
+	"addrbookUrl": "https://snapshots.firmachain.posthuman.digital/addrbook.json",
+    "endpoints": {
+      "rpc": "https://rpc.firmachain.posthuman.digital:443",
+      "rest": "https://rest.firmachain.posthuman.digital:443",
+      "grpc": "https://grpc.firmachain.posthuman.digital:443",
+      "peer": "3168796330fb85ab21f797f0e2df84e7a98e1983@peer.firmachain.posthuman.digital:49656",
+      "snapshots": "https://fetch.firmachain.posthuman.digital:443"
+    },
+	"contributions": "FirmaChain",
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
+  },
+ {
     "name": "fetchhub",
     "type": "mainnet",
     "title": "Fetch.ai",
@@ -40,7 +70,7 @@
       "rest": "https://rest.fetch.posthuman.digital:443",
       "grpc": "https://grpc.fetch.posthuman.digital:443",
       "peer": "0584f51f43be88dec1f9790b1321975af2e6606c@peer.fetch.posthuman.digital:43656",
-      "snapshots": "https://fetch.push.posthuman.digital:443"
+      "snapshots": "https://snapshots.fetch.posthuman.digital:443"
     },
 	"contributions": "FetchAI",
     "generatedServices": ["installation-guide", "state-sync"],
