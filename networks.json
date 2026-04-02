@@ -16,6 +16,36 @@
     "generatedServices": [],
     "services": ["install-guide","troubleshooting","useful-commands"]
   },
+ {
+    "name": "fetchhub",
+    "type": "mainnet",
+    "title": "Fetch.ai",
+    "website": "https://www.fetch.ai/",
+    "twitter": "https://x.com/Fetch_ai",
+    "github": "https://github.com/fetchai/",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/fetchhub/images/fet.svg",
+	"stake": "",
+    "explorer": "",
+	"daemon_name": "fetchd",
+    "codebase": {
+	  "git_repo": "https://github.com/fetchai/fetchd",
+      "recommended_version": "v0.14.1",
+      "compatible_versions": ["v0.14.1"]
+	  },	
+    "chain_id": "fetchhub-4",
+	"genesis_ulr": "https://snapshots.fetch.posthuman.digital/genesis.json",
+	"addrbookUrl": "https://snapshots.fetch.posthuman.digital/addrbook.json",
+    "endpoints": {
+      "rpc": "https://rpc.fetch.posthuman.digital:443",
+      "rest": "https://rest.fetch.posthuman.digital:443",
+      "grpc": "https://grpc.fetch.posthuman.digital:443",
+      "peer": "7bf1c608994f3f0b6b65aa52072d164c9d8a7f4d@peer.fetch.posthuman.digital:50656",
+      "snapshots": "https://fetch.push.posthuman.digital:443"
+    },
+	"contributions": "FetchAI",
+    "generatedServices": ["installation-guide", "state-sync"],
+    "services": ["snapshots"]
+  },
   {
     "name": "axelar",
     "type": "mainnet",
