@@ -39,7 +39,7 @@
       "rpc": "https://rpc.fetch.posthuman.digital:443",
       "rest": "https://rest.fetch.posthuman.digital:443",
       "grpc": "https://grpc.fetch.posthuman.digital:443",
-      "peer": "7bf1c608994f3f0b6b65aa52072d164c9d8a7f4d@peer.fetch.posthuman.digital:50656",
+      "peer": "0584f51f43be88dec1f9790b1321975af2e6606c@peer.fetch.posthuman.digital:43656",
       "snapshots": "https://fetch.push.posthuman.digital:443"
     },
 	"contributions": "FetchAI",
