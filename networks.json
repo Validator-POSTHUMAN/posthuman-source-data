@@ -395,26 +395,6 @@
     "services": ["installation-guide", "genesis-file", "addr-book", "snapshot-service"]
   },
   {
-    "name": "story-testnet",
-    "type": "testnet",
-    "title": "Story",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/story-testnet/Story_Protocol_Icon.svg",
-    "stake": "https://testnet.storyscan.app/validators/storyvaloper1daxk0lukad4950ga6t2nc939gjvpwranre5dd4",
-    "explorer": "https://testnet.storyscan.app",
-    "chain_id": "odyssey-0",
-    "endpoints": {
-      "rpc": "https://rpc.story.posthuman.digital",
-      "rpc_ws": "wss://rpc.story.posthuman.digital/websocket",
-      "rest": "https://rest.story.posthuman.digital",
-      "evm_json_rpc": "https://evm.story.posthuman.digital",
-      "evm_ws": "wss://wss.story.posthuman.digital",
-      "peer": "8a69935f34827dd81c721c63c69bfc54c849d028@46.4.52.158:26656"
-    },
-    "contributions": "Story",
-    "generatedServices": [],
-    "services": ["installation-guide", "genesis-and-addrbook", "snapshot-service", "one-liner"]
-  },
-  {
     "name": "celestia",
     "type": "mainnet",
     "title": "Celestia",
@@ -605,27 +585,6 @@
       "peer": "21cc2d900409df3612d4b00537c9ebaf09fab2f6@peer.zetachain.posthuman.digital:31656"
     },
     "contributions": "Zetachain",
-    "generatedServices": ["installation-guide", "state-sync"],
-    "services": ["snapshots"]
-  },
-  {
-    "name": "pell-testnet",
-    "type": "testnet",
-    "title": "Pell",
-    "website": "https://pell.network/",
-    "twitter": "https://x.com/Pell_Network",
-    "discord": "https://discord.com/invite/pell-network",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/pell-testnet/pell.svg",
-    "stake": "https://explorer.posthuman.digital/pell-testnet/staking/pellvaloper1mcstdyw9hwvwwgtxcmpmke6hf8ufes0xkh3wm2",
-    "explorer": "https://explorer.posthuman.digital/pell-testnet",
-    "chain_id": "ignite_186-1",
-    "endpoints": {
-      "rpc": "https://rpc.pell-testnet.posthuman.digital",
-      "rest": "https://rest.pell-testnet.posthuman.digital",
-      "grpc": "https://grpc.pell-testnet.posthuman.digital",
-      "peer": "eb520fcedddaa6236e9ef886c1f475b1c49849cd@8.52.247.252:29057"
-    },
-    "contributions": "Pell",
     "generatedServices": ["installation-guide", "state-sync"],
     "services": ["snapshots"]
   },
