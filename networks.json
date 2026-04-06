@@ -107,7 +107,7 @@
     "twitter": "https://x.com/PushChain/",
     "discord": "https://discord.com/invite/pushchain/",
     "github": "https://github.com/pushchain/",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/push/pushLogo.svg",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/push/push-logo.svg",
     "stake": "",
     "explorer": "",
 	"daemon_name": "pchaind",
