@@ -741,7 +741,7 @@
   {
     "name": "canton-testnet",
     "type": "testnet",
-    "title": "Canton Network TestNet",
+    "title": "Canton Network",
     "website": "https://www.canton.network/",
     "twitter": "https://twitter.com/CantonNetwork",
     "discord": "https://discord.gg/cantonnetwork",
