@@ -537,7 +537,7 @@
       "rpc": "https://rpc.kyve.posthuman.digital",
       "rest": "https://rest.kyve.posthuman.digital",
       "grpc": "https://grpc.kyve.posthuman.digital",
-      "peer": "b9d43e8179f17410abce8279a750d4945d8524c7@peer.kyve.posthuman.digital:33656"
+      "peer": "b9d43e8179f17410abce8279a750d4945d8524c7@135.181.227.236:33656"
     },
     "contributions": "Kyve",
     "generatedServices": ["installation-guide", "state-sync"],
@@ -558,7 +558,7 @@
       "rpc": "https://rpc.oraichain.posthuman.digital",
       "rest": "https://rest.oraichain.posthuman.digital",
       "grpc": "https://grpc.oraichain.posthuman.digital",
-      "peer": "07dde93a5ea10fc4623ef421d0de0e2b5b556e80@peer.oraichain.posthuman.digital:55656"
+      "peer": "07dde93a5ea10fc4623ef421d0de0e2b5b556e80@135.181.227.236:55656"
     },
     "contributions": "Orai",
     "generatedServices": ["installation-guide", "state-sync"],
@@ -582,7 +582,7 @@
       "grpc": "https://grpc.zetachain.posthuman.digital",
       "evm_json_rpc": "https://evm.zetachain.posthuman.digital",
       "evm_json_rpc_ws": "wss://wss.zetachain.posthuman.digital",
-      "peer": "21cc2d900409df3612d4b00537c9ebaf09fab2f6@peer.zetachain.posthuman.digital:31656"
+      "peer": "21cc2d900409df3612d4b00537c9ebaf09fab2f6@135.181.227.236:31656"
     },
     "contributions": "Zetachain",
     "generatedServices": ["installation-guide", "state-sync"],
