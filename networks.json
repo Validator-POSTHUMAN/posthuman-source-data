@@ -11,7 +11,10 @@
     "stake": "",
     "explorer": "",
 	"chain_id": "asimov-phase5",
-    "endpoints": {},
+    "endpoints": {
+		"rpc": "https://rpc.genlayer.posthuman.digital:443",
+		"snapshots": "https://snapshots.genlayer.posthuman.digital:443"
+	},
     "contributions": "",
     "generatedServices": [],
     "services": ["install-guide","troubleshooting","useful-commands"]
@@ -40,7 +43,7 @@
       "rest": "https://rest.firmachain.posthuman.digital:443",
       "grpc": "https://grpc.firmachain.posthuman.digital:443",
       "peer": "3168796330fb85ab21f797f0e2df84e7a98e1983@peer.firmachain.posthuman.digital:49656",
-      "snapshots": "https://fetch.firmachain.posthuman.digital:443"
+      "snapshots": "https://snapshots.firmachain.posthuman.digital:443"
     },
 	"contributions": "FirmaChain",
     "generatedServices": ["installation-guide", "state-sync"],
