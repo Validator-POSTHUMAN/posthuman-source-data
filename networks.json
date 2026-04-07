@@ -15,7 +15,7 @@
 		"rpc": "https://rpc.genlayer.posthuman.digital:443",
 		"snapshots": "https://snapshots.genlayer.posthuman.digital:443"
 	},
-    "contributions": "",
+    "contributions": "Genlayer",
     "generatedServices": [],
     "services": ["install-guide","troubleshooting","useful-commands"]
   },
