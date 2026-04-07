@@ -139,12 +139,12 @@
     "name": "gno",
     "type": "testnet",
     "title": "GNO",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/gno/75237105.svg",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/gno/gno-logo.svg",
     "chain_id": "test11",
     "endpoints": {
       "rpc": "https://rpc.gno.posthuman.digital:443"
     },
-	"contributions": "gno-land",
+	"contributions": "Gno-land",
     "generatedServices": [],
     "services": ["installation-guide"]
   },
