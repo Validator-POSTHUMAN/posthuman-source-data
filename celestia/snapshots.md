@@ -1,8 +1,8 @@
 # Celestia Mainnet Snapshot
 
 **Type:** pruned consensus node (goleveldb)  
-**Cadence:** refreshed around every 4 h, served 24/7 from Cloudflare R2  
-**Download:** `https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.zst`
+**Cadence:** refreshed around every 4 h, served 24/7 from Cloudflare R2  
+**Download:** `https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4`
 
 > Latest height, build time, and checksum are published alongside the archive at `snapshot.json`.
 
@@ -16,8 +16,8 @@ sudo systemctl stop "${SERVICE_NAME}"
 cp "${CELESTIA_HOME}/data/priv_validator_state.json" "${CELESTIA_HOME}/priv_validator_state.json.backup"
 rm -rf "${CELESTIA_HOME}/data"
 
-curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.zst | \
-  tar -I zstd -xf - -C "${CELESTIA_HOME}"
+curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
+  lz4 -dc | tar -xf - -C "${CELESTIA_HOME}"
 
 mv "${CELESTIA_HOME}/priv_validator_state.json.backup" "${CELESTIA_HOME}/data/priv_validator_state.json"
 sudo systemctl restart "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}" -f
