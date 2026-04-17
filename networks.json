@@ -849,21 +849,4 @@
     "generatedServices": ["installation-guide"],
     "services": ["snapshots"]
   }
-  ,
-  {
-    "name": "arc-testnet",
-    "type": "testnet",
-    "title": "Arc Network Testnet",
-    "website": "https://www.arc.network/",
-    "twitter": "https://x.com/circle",
-    "discord": "https://discord.gg/circle",
-    "github": "https://github.com/circlefin/arc-node",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/arc-testnet/arc-testnet-logo.svg",
-    "stake": "",
-    "explorer": "",
-    "endpoints": {},
-    "contributions": "Arc",
-    "generatedServices": [],
-    "services": ["installation-guide"]
-  }
 ]
