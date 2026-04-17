@@ -1039,6 +1039,7 @@
     "generatedServices": [],
     "services": [
       "install-guide"
-    ]
+    ],
+    "chain_id": "5042002"
   }
 ]
