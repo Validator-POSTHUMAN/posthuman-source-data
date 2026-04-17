@@ -1,38 +1,37 @@
-# DEPLOY FLOW — Как добавить новую сеть на nodes.posthuman.digital
+# DEPLOY FLOW — How to Add a New Network to nodes.posthuman.digital
 
-## Обзор стека
+## Stack Overview
 
-- **Репо с данными:** https://github.com/Validator-POSTHUMAN/posthuman-source-data
-- **Сайт (Next.js):** `valoper@65.21.7.184` → `/srv/data/apps/posthuman-source-2`
-- **Process manager:** PM2, процесс называется `nodes`
-- **Локальная рабочая копия:** `~/.openclaw/workspace/posthuman-source-data/`
-- **Данные читаются с:** `https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main`
-
----
-
-## ⚠️ ВАЖНЫЕ ПРАВИЛА
-
-1. **Сайт читает ТОЛЬКО `networks.json`** — без записи там сеть не появится
-2. **НИКОГДА не использовать `json.dump` / `python3 json.load+dump`** для редактирования `networks.json` — это переформатирует файл и ломает сайт. Только `sed -i` или ручное редактирование
-3. **Иконки — только SVG** (не PNG, не JPG). Сайт не рендерит другие форматы
-4. **Не-Cosmos сети** (Espresso, Ethereum, Near, Monad и т.д.) — `"endpoints": {}`, без rpc/rest/grpc/peer
-5. **Cosmos сети** — полный набор endpoints: rpc, rest, grpc, peer, snapshots
+- **Data Repository:** https://github.com/Validator-POSTHUMAN/posthuman-source-data
+- **Website:** Next.js application
+- **Process Manager:** PM2
+- **Data Source:** `https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main`
 
 ---
 
-## Полный флоу: добавить сеть
+## ⚠️ IMPORTANT RULES
 
-### Шаг 1 — Создать директорию сети
+1. **The website reads ONLY `networks.json`** — networks won't appear without an entry there
+2. **NEVER use `json.dump` / `python3 json.load+dump`** to edit `networks.json` — it reformats the file and breaks the site. Use `sed -i` or manual editing only
+3. **Icons must be SVG** (not PNG, not JPG). The site doesn't render other formats
+4. **Non-Cosmos networks** (Espresso, Ethereum, Near, Monad, etc.) — use `"endpoints": {}`, without rpc/rest/grpc/peer
+5. **Cosmos networks** — full endpoint set: rpc, rest, grpc, peer, snapshots
+
+---
+
+## Complete Flow: Add a Network
+
+### Step 1 — Create Network Directory
 
 ```bash
 mkdir posthuman-source-data/<name>/
 ```
 
-### Шаг 2 — Добавить иконку (круглую SVG)
+### Step 2 — Add Icon (Circular SVG)
 
-**Вариант A — обернуть существующую SVG в круг:**
+**Option A — Wrap existing SVG in circle:**
 ```bash
-BASE="https://raw.githubusercontent.com/..."  # URL оригинальной иконки
+BASE="https://raw.githubusercontent.com/..."  # Original icon URL
 
 cat > <name>/<name>-logo.svg << EOF
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="256" height="256">
@@ -46,9 +45,9 @@ cat > <name>/<name>-logo.svg << EOF
 EOF
 ```
 
-**Вариант B — получена PNG из чата, конвертировать:**
+**Option B — Convert PNG to circular SVG:**
 ```bash
-# Обрезать до квадрата, сделать круглой маской, сохранить PNG
+# Crop to square, apply circular mask, save as PNG
 convert input.jpg \
   -gravity Center -crop MINxMIN+0+0 +repage -resize 256x256 \
   ( +clone -alpha extract \
@@ -58,27 +57,27 @@ convert input.jpg \
   ) \
   -alpha off -compose CopyOpacity -composite PNG32:output.png
 
-# Обернуть PNG в SVG (embed base64)
+# Embed PNG in SVG (base64)
 B64=$(base64 -w 0 output.png)
 echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256"><image href="data:image/png;base64,'$B64'" x="0" y="0" width="256" height="256"/></svg>' > <name>/<name>-logo.svg
 ```
 
-Ссылка на иконку:
+Icon URL format:
 ```
 https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/<name>/<name>-logo.svg
 ```
 
-### Шаг 3 — Добавить install-guide.md (если нужен)
+### Step 3 — Add install-guide.md (If Needed)
 
-Файл: `<name>/install-guide.md`
+File: `<name>/install-guide.md`
 
-Изучить официальную документацию проекта и написать гайд по установке.
+Study the project's official documentation and write an installation guide.
 
-### Шаг 4 — Добавить запись в `networks.json`
+### Step 4 — Add Entry to `networks.json`
 
-**Только через ручное редактирование или sed!** Вставить перед последним `]`:
+**Manual editing or sed only!** Insert before the last `]`:
 
-**Шаблон для Cosmos сети:**
+**Template for Cosmos Network:**
 ```json
   {
     "name": "chainname",
@@ -105,7 +104,7 @@ https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs
   }
 ```
 
-**Шаблон для не-Cosmos сети (EVM, L2, другие):**
+**Template for Non-Cosmos Network (EVM, L2, Other):**
 ```json
   {
     "name": "chainname",
@@ -125,11 +124,11 @@ https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs
   }
 ```
 
-**Поля `generatedServices`** — генерируются автоматически из шаблонов:
-- `installation-guide` — автогенерация гайда
-- `state-sync` — автогенерация state-sync инструкций
+**Field `generatedServices`** — auto-generated from templates:
+- `installation-guide` — auto-generate installation guide
+- `state-sync` — auto-generate state-sync instructions
 
-**Поля `services`** — ссылаются на статичные файлы в директории сети:
+**Field `services`** — reference static files in network directory:
 - `installation-guide` → `<name>/install-guide.md`
 - `snapshots`
 - `bridge-node-setup`
@@ -138,7 +137,7 @@ https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs
 - `one-liner`
 - `monitoring`
 
-### Шаг 5 — Закоммитить и запушить
+### Step 5 — Commit and Push
 
 ```bash
 cd ~/.openclaw/workspace/posthuman-source-data
@@ -147,48 +146,38 @@ git commit -m "feat: add <NetworkName> network"
 git push
 ```
 
-**Credentials:** настроены через `~/.git-credentials` (user: `web3validator`)
+### Step 6 — Deploy Website
 
-### Шаг 6 — Деплой сайта
+Rebuild the Next.js application according to your internal deployment procedures.
 
-```bash
-ssh valoper@65.21.7.184 "cd /srv/data/apps/posthuman-source-2 && sudo rm -rf .next/ && sudo yarn build && pm2 restart nodes"
-```
-
-**Что делает каждая команда:**
-- `rm -rf .next/` — удаляет кеш сборки
-- `yarn build` — пересобирает Next.js (занимает ~45-50 сек)
-- `pm2 restart nodes` — перезапускает процесс сайта
+The network will appear at: `https://nodes.posthuman.digital/chains/<chainname>`
 
 ---
 
-## Быстрая памятка
+## Quick Reference
 
 ```
-1. mkdir <name>/               ← директория
-2. <name>/<name>-logo.svg      ← круглая SVG иконка
-3. <name>/install-guide.md     ← гайд (если нужен)
-4. networks.json               ← добавить запись (sed или вручную!)
+1. mkdir <name>/               ← directory
+2. <name>/<name>-logo.svg      ← circular SVG icon
+3. <name>/install-guide.md     ← guide (if needed)
+4. networks.json               ← add entry (sed or manual!)
 5. git add . && git commit && git push
-6. ssh rebuild (rm .next + yarn build + pm2 restart nodes)
+6. Deploy according to internal procedures
 ```
 
 ---
 
-## Сервер сайта
+## Website Infrastructure
 
-| Параметр | Значение |
-|----------|----------|
-| Host | `valoper@65.21.7.184` |
-| App dir | `/srv/data/apps/posthuman-source-2` |
-| PM2 process | `nodes` |
+| Parameter | Details |
+|-----------|---------|
 | Framework | Next.js 14.1 |
-| Package manager | yarn |
-| Backup build | `backup.next/` (используй если сайт упал) |
+| Package Manager | yarn |
 
-## Восстановление из бэкапа
+## Restore from Backup
 
-Если сайт упал после rebuild:
-```bash
-ssh valoper@65.21.7.184 "cd /srv/data/apps/posthuman-source-2 && sudo rm -rf .next && sudo cp -r backup.next .next && pm2 restart nodes"
-```
+If the site crashes after rebuild, restore from backup according to your internal recovery procedures.
+
+---
+
+*This is internal documentation for POSTHUMAN validator operations.*
