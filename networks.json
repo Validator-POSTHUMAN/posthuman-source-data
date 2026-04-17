@@ -1041,5 +1041,24 @@
       "install-guide"
     ],
     "chain_id": "5042002"
+  },
+  {
+    "name": "logos-testnet",
+    "type": "testnet",
+    "title": "Logos Blockchain Testnet",
+    "website": "https://logos.co/",
+    "twitter": "https://x.com/logosnetwork",
+    "discord": "https://discord.com/channels/973324189794697286/1468535289604735038",
+    "github": "https://github.com/logos-blockchain/logos-blockchain",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/logos-testnet/logos-testnet-logo.svg",
+    "stake": "",
+    "explorer": "",
+    "chain_id": "logos-testnet",
+    "endpoints": {},
+    "contributions": "Logos",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
   }
 ]
