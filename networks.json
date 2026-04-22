@@ -1067,7 +1067,7 @@
     "title": "Sahara AI Testnet",
     "website": "https://saharaai.com",
     "github": "https://github.com/SaharaLabsAI",
-    "icon": "https://avatars.githubusercontent.com/u/162394033?v=4",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/sahara-testnet/logo.svg",
     "chain_id": "sahara-test-1",
     "endpoints": {
       "rpc": "https://testnet-cos-rpc1.saharalabs.ai:443",
