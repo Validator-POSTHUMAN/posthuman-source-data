@@ -1060,5 +1060,22 @@
     "services": [
       "install-guide"
     ]
+  },
+  {
+    "name": "sahara-testnet",
+    "type": "testnet",
+    "title": "Sahara AI Testnet",
+    "website": "https://saharaai.com",
+    "github": "https://github.com/SaharaLabsAI",
+    "icon": "",
+    "chain_id": "sahara-test-1",
+    "endpoints": {
+      "rpc": "https://testnet-cos-rpc1.saharalabs.ai:443",
+      "peer": "53198df19b9c1841a008d5588e1d6ff3457284fc@144.76.98.52:26656"
+    },
+    "generatedServices": [
+      "installation-guide"
+    ],
+    "services": []
   }
 ]
