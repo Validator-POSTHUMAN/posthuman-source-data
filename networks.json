@@ -466,6 +466,28 @@
     ]
   },
   {
+    "name": "namada",
+    "type": "mainnet",
+    "title": "Namada",
+    "icon": "https://github.com/Validator-POSTHUMAN/posthuman-source-data/raw/main/namada/namada.svg",
+    "stake": "https://shielded.live/validators/0E3AB495DEC6558008A6CD962FFCBDA749CF475CAE21932AC1C6A9F4A8368550",
+    "explorer": "https://shielded.live/",
+    "chain_id": "namada.5f5de2dd1b88cba30586420",
+    "endpoints": {
+      "rpc": "https://rpc.namada.posthuman.digital:443",
+      "peer": "67cdb666f68cfefcd799ac589b2a9b005c067ef3@peer.namada.posthuman.digital:26656",
+      "snapshots": "https://snapshots.namada.posthuman.digital/"
+    },
+    "contributions": "Namada",
+    "generatedServices": [],
+    "services": [
+      "installation-guide",
+      "genesis-file",
+      "addr-book",
+      "snapshot-service"
+    ]
+  },
+  {
     "name": "celestia",
     "type": "mainnet",
     "title": "Celestia",
@@ -607,6 +629,32 @@
     ]
   },
   {
+    "name": "kyve",
+    "type": "mainnet",
+    "title": "Kyve",
+    "website": "https://kyve.network/",
+    "twitter": "https://x.com/KYVENetwork",
+    "discord": "https://discord.gg/sTfnADUj",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/kyve/kyve-logo.svg",
+    "stake": "https://explorer.posthuman.digital/kyve/staking/kyvevaloper16hnse4c852xg4vxjnqhx648e02z32n72l66nv7",
+    "explorer": "https://explorer.posthuman.digital/kyve",
+    "chain_id": "kyve-1",
+    "endpoints": {
+      "rpc": "https://rpc.kyve.posthuman.digital",
+      "rest": "https://rest.kyve.posthuman.digital",
+      "grpc": "https://grpc.kyve.posthuman.digital",
+      "peer": "b9d43e8179f17410abce8279a750d4945d8524c7@135.181.227.236:33656"
+    },
+    "contributions": "Kyve",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
     "name": "oraichain",
     "type": "mainnet",
     "title": "Oraichain",
@@ -624,6 +672,35 @@
       "peer": "07dde93a5ea10fc4623ef421d0de0e2b5b556e80@135.181.227.236:55656"
     },
     "contributions": "Orai",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "zetachain",
+    "type": "mainnet",
+    "title": "Zetachain",
+    "website": "https://www.zetachain.com/",
+    "twitter": "https://x.com/zetablockchain",
+    "discord": "https://discord.gg/zetachain",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/zetachain/images/zetachain.svg",
+    "stake": "https://explorer.posthuman.digital/zetachain/staking/zetavaloper1mj5uvv4703fwvna0t622yj9386cfwavr2hl6q4",
+    "explorer": "https://explorer.posthuman.digital/zetachain",
+    "chain_id": "zetachain_7000-1",
+    "endpoints": {
+      "rpc": "https://rpc.zetachain.posthuman.digital",
+      "rpc_ws": "wss://rpc.zetachain.posthuman.digital/websocket",
+      "rest": "https://rest.zetachain.posthuman.digital",
+      "grpc": "https://grpc.zetachain.posthuman.digital",
+      "evm_json_rpc": "https://evm.zetachain.posthuman.digital",
+      "evm_json_rpc_ws": "wss://wss.zetachain.posthuman.digital",
+      "peer": "21cc2d900409df3612d4b00537c9ebaf09fab2f6@135.181.227.236:31656"
+    },
+    "contributions": "Zetachain",
     "generatedServices": [
       "installation-guide",
       "state-sync"
@@ -966,63 +1043,54 @@
     "chain_id": "5042002"
   },
   {
-    "name": "logos-testnet",
+    "name": "pharos-testnet",
     "type": "testnet",
-    "title": "Logos Blockchain Testnet",
-    "website": "https://logos.co/",
-    "twitter": "https://x.com/logosnetwork",
-    "discord": "https://discord.com/channels/973324189794697286/1468535289604735038",
-    "github": "https://github.com/logos-blockchain/logos-blockchain",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/logos-testnet/logos-testnet-logo.jpg",
+    "title": "Pharos Atlantic Testnet",
+    "website": "https://pharosnetwork.xyz/",
+    "twitter": "https://x.com/PharosNetwork",
+    "discord": "https://discord.gg/pharosnetwork",
+    "github": "https://github.com/pharosnetwork",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/pharos/pharos-logo.svg",
     "stake": "",
     "explorer": "",
-    "chain_id": "logos-testnet",
     "endpoints": {},
-    "contributions": "Logos",
+    "contributions": "Pharos",
     "generatedServices": [],
-    "services": [
-      "install-guide"
-    ]
+    "services": [],
+    "chain_id": ""
   },
   {
     "name": "sahara-testnet",
     "type": "testnet",
     "title": "Sahara AI Testnet",
-    "website": "https://saharaai.com",
+    "website": "https://saharalabs.ai/",
+    "twitter": "https://x.com/SaharaLabsAI",
+    "discord": "https://discord.gg/saharalabsai",
     "github": "https://github.com/SaharaLabsAI",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/sahara-testnet/logo.png",
-    "chain_id": "sahara-test-1",
-    "endpoints": {
-      "rpc": "https://testnet-cos-rpc1.saharalabs.ai:443",
-      "peer": "53198df19b9c1841a008d5588e1d6ff3457284fc@144.76.98.52:26656"
-    },
-    "generatedServices": [],
-    "services": [
-      "installation-guide",
-      "links",
-      "snapshots"
-    ]
-  },
-  {
-    "name": "pharos",
-    "type": "testnet",
-    "title": "Pharos Atlantic",
-    "website": "https://pharosnetwork.xyz/",
-    "twitter": "",
-    "discord": "",
-    "github": "https://github.com/PharosNetwork",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/pharos/pharos-logo.png",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/sahara-testnet/sahara-testnet-logo.svg",
     "stake": "",
     "explorer": "",
-    "chain_id": "atlantic",
-    "endpoints": {
-      "rpc": "http://107.155.103.210:18100",
-      "websocket": "ws://107.155.103.210:18200"
-    },
-    "contributions": "Pharos",
+    "endpoints": {},
+    "contributions": "Sahara",
     "generatedServices": [],
-    "services": [
-      "installation-guide"
-    ]
+    "services": [],
+    "chain_id": ""
+  },
+  {
+    "name": "logos-testnet",
+    "type": "testnet",
+    "title": "Logos Testnet",
+    "website": "https://logos.co/",
+    "twitter": "https://x.com/Logos_State",
+    "discord": "https://discord.gg/logos",
+    "github": "https://github.com/logos-co",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/logos-testnet/logos-testnet-logo.svg",
+    "stake": "",
+    "explorer": "",
+    "endpoints": {},
+    "contributions": "Logos",
+    "generatedServices": [],
+    "services": [],
+    "chain_id": ""
   }
 ]
