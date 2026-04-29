@@ -1004,48 +1004,25 @@
     ]
   },
   {
-    "id": "pharos",
-    "name": "Pharos",
-    "prettyName": "Pharos Atlantic",
-    "network": "testnet",
-    "chainId": "atlantic",
-    "bech32Prefix": null,
-    "slip44": 60,
-    "nativeDenom": "PHAR",
-    "logo": "/logos/pharos.svg",
+    "name": "pharos",
+    "type": "testnet",
+    "title": "Pharos Atlantic",
     "website": "https://pharosnetwork.xyz/",
-    "docs": "https://docs.pharos.xyz/",
-    "explorer": null,
+    "twitter": "",
+    "discord": "",
     "github": "https://github.com/PharosNetwork",
-    "twitter": null,
-    "telegram": null,
-    "discord": null,
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/pharos/pharos.svg",
+    "stake": "",
+    "explorer": "",
+    "chain_id": "atlantic",
     "endpoints": {
       "rpc": "http://107.155.103.210:18100",
-      "api": null,
-      "grpc": null
+      "websocket": "ws://107.155.103.210:18200"
     },
-    "services": {
-      "rpc": [
-        {
-          "url": "http://107.155.103.210:18100",
-          "provider": "POSTHUMAN"
-        }
-      ],
-      "api": [],
-      "grpc": [],
-      "websocket": [
-        {
-          "url": "ws://107.155.103.210:18200",
-          "provider": "POSTHUMAN"
-        }
-      ],
-      "p2p": [
-        {
-          "address": "107.155.103.210:19000",
-          "provider": "POSTHUMAN"
-        }
-      ]
-    }
+    "contributions": "Pharos",
+    "generatedServices": [],
+    "services": [
+      "installation-guide"
+    ]
   }
 ]
