@@ -7,7 +7,7 @@
   "bech32Prefix": null,
   "slip44": 60,
   "nativeDenom": "PHAR",
-  "logo": "/logos/pharos-logo.png",
+  "logo": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/pharos/pharos-logo.png",
   "website": "https://pharosnetwork.xyz/",
   "docs": "https://docs.pharos.xyz/",
   "explorer": null,
