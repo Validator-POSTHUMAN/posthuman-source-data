@@ -1002,5 +1002,50 @@
       "links",
       "snapshots"
     ]
+  },
+  {
+    "id": "pharos",
+    "name": "Pharos",
+    "prettyName": "Pharos Atlantic",
+    "network": "testnet",
+    "chainId": "atlantic",
+    "bech32Prefix": null,
+    "slip44": 60,
+    "nativeDenom": "PHAR",
+    "logo": "/logos/pharos.svg",
+    "website": "https://pharosnetwork.xyz/",
+    "docs": "https://docs.pharos.xyz/",
+    "explorer": null,
+    "github": "https://github.com/PharosNetwork",
+    "twitter": null,
+    "telegram": null,
+    "discord": null,
+    "endpoints": {
+      "rpc": "http://107.155.103.210:18100",
+      "api": null,
+      "grpc": null
+    },
+    "services": {
+      "rpc": [
+        {
+          "url": "http://107.155.103.210:18100",
+          "provider": "POSTHUMAN"
+        }
+      ],
+      "api": [],
+      "grpc": [],
+      "websocket": [
+        {
+          "url": "ws://107.155.103.210:18200",
+          "provider": "POSTHUMAN"
+        }
+      ],
+      "p2p": [
+        {
+          "address": "107.155.103.210:19000",
+          "provider": "POSTHUMAN"
+        }
+      ]
+    }
   }
 ]
