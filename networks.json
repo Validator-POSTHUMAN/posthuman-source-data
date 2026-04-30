@@ -1,0 +1,1104 @@
+[
+  {
+    "name": "genlayer",
+    "type": "testnet",
+    "title": "GenLayer",
+    "website": "https://genlayer.com",
+    "twitter": "https://x.com/GenLayer",
+    "discord": "https://discord.com/invite/genlayerlabs",
+    "github": "https://github.com/genlayerlabs",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/genlayer/genlayer-logo.svg",
+    "stake": "",
+    "explorer": "",
+    "chain_id": "asimov-phase5",
+    "endpoints": {
+      "rpc": "https://rpc.genlayer.posthuman.digital:443",
+      "snapshots": "https://snapshots.genlayer.posthuman.digital:443"
+    },
+    "contributions": "Genlayer",
+    "generatedServices": [],
+    "services": [
+      "install-guide",
+      "troubleshooting",
+      "useful-commands"
+    ]
+  },
+  {
+    "name": "firmachain",
+    "type": "mainnet",
+    "title": "FirmaChain",
+    "website": "https://firmachain.org/",
+    "twitter": "https://x.com/FirmaChain",
+    "github": "https://github.com/FirmaChain/",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/firmachain/images/fct.svg",
+    "stake": "",
+    "explorer": "",
+    "daemon_name": "firmachaind",
+    "codebase": {
+      "git_repo": "https://github.com/firmachain/firmachain",
+      "recommended_version": "v0.5.1-patch2",
+      "compatible_versions": [
+        "v0.5.1-patch2"
+      ]
+    },
+    "chain_id": "colosseum-1",
+    "genesis_ulr": "https://snapshots.firmachain.posthuman.digital/genesis.json",
+    "addrbookUrl": "https://snapshots.firmachain.posthuman.digital/addrbook.json",
+    "endpoints": {
+      "rpc": "https://rpc.firmachain.posthuman.digital:443",
+      "rest": "https://rest.firmachain.posthuman.digital:443",
+      "grpc": "https://grpc.firmachain.posthuman.digital:443",
+      "peer": "3168796330fb85ab21f797f0e2df84e7a98e1983@peer.firmachain.posthuman.digital:49656",
+      "snapshots": "https://snapshots.firmachain.posthuman.digital:443"
+    },
+    "contributions": "FirmaChain",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "fetchhub",
+    "type": "mainnet",
+    "title": "Fetch.ai",
+    "website": "https://www.fetch.ai/",
+    "twitter": "https://x.com/Fetch_ai",
+    "github": "https://github.com/fetchai/",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/fetchhub/images/fet_white.svg",
+    "stake": "",
+    "explorer": "",
+    "daemon_name": "fetchd",
+    "codebase": {
+      "git_repo": "https://github.com/fetchai/fetchd",
+      "recommended_version": "v0.14.1",
+      "compatible_versions": [
+        "v0.14.1"
+      ]
+    },
+    "chain_id": "fetchhub-4",
+    "genesis_ulr": "https://snapshots.fetch.posthuman.digital/genesis.json",
+    "addrbookUrl": "https://snapshots.fetch.posthuman.digital/addrbook.json",
+    "endpoints": {
+      "rpc": "https://rpc.fetch.posthuman.digital:443",
+      "rest": "https://rest.fetch.posthuman.digital:443",
+      "grpc": "https://grpc.fetch.posthuman.digital:443",
+      "peer": "0584f51f43be88dec1f9790b1321975af2e6606c@peer.fetch.posthuman.digital:43656",
+      "snapshots": "https://snapshots.fetch.posthuman.digital:443"
+    },
+    "contributions": "FetchAI",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "axelar",
+    "type": "mainnet",
+    "title": "Axelar",
+    "website": "https://www.axelar.network/",
+    "twitter": "https://x.com/axelar",
+    "discord": "https://discord.com/invite/aRZ3Ra6f7D",
+    "github": "https://github.com/axelarnetwork",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/axelar/axelar-logo.svg",
+    "stake": "https://explorer.posthuman.digital/axelar/staking/axelarvaloper1ftqma496np33y054x6gjeh2maxy00e00p2nl9l",
+    "explorer": "https://explorer.posthuman.digital/axelar",
+    "chain_id": "axelar-dojo-1",
+    "endpoints": {
+      "rpc": "https://rpc.axelar.posthuman.digital:443",
+      "rest": "https://rest.axelar.posthuman.digital:443",
+      "grpc": "https://grpc.axelar.posthuman.digital:443",
+      "peer": "adece904395c55d4fd1c2581b0d7a9be899f5a9d@peer.axelar.posthuman.digital:64656",
+      "snapshots": "https://snapshots.axelar.posthuman.digital:443"
+    },
+    "contributions": "Axelar",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "pchain",
+    "type": "testnet",
+    "title": "Push Chain",
+    "website": "https://push.org/",
+    "twitter": "https://x.com/PushChain/",
+    "discord": "https://discord.com/invite/pushchain/",
+    "github": "https://github.com/pushchain/",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/push/push-logo.svg",
+    "stake": "",
+    "explorer": "",
+    "daemon_name": "pchaind",
+    "node_name": "NodeName",
+    "codebase": {
+      "git_repo": "https://github.com/pushchain/push-chain-node.git",
+      "recommended_version": "v0.0.18",
+      "compatible_versions": [
+        "v0.0.18"
+      ]
+    },
+    "chain_id": "push_42101-1",
+    "genesis_url": "https://snapshots.push.posthuman.digital/genesis.json",
+    "addrbookUrl": "https://snapshots.push.posthuman.digital/addrbook.json",
+    "endpoints": {
+      "rpc": "https://rpc.push.posthuman.digital:443",
+      "rest": "https://rest.push.posthuman.digital:443",
+      "grpc": "https://grpc.push.posthuman.digital:443",
+      "json-rpc": "https://json-rpc.push.posthuman.digital:443",
+      "peer": "7bf1c608994f3f0b6b65aa52072d164c9d8a7f4d@peer.push.posthuman.digital:50656",
+      "snapshots": "https://snapshots.push.posthuman.digital:443"
+    },
+    "contributions": "PushChain",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "gno",
+    "type": "testnet",
+    "title": "GNO",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/gno/gno-logo.svg",
+    "chain_id": "test11",
+    "endpoints": {
+      "rpc": "https://rpc.gno.posthuman.digital:443"
+    },
+    "contributions": "Gno-land",
+    "generatedServices": [],
+    "services": [
+      "installation-guide"
+    ]
+  },
+  {
+    "name": "provenance",
+    "type": "mainnet",
+    "title": "Provenance",
+    "website": "https://provenance.io/",
+    "twitter": "https://x.com/provenancefdn",
+    "discord": "https://discord.com/invite/provenance",
+    "github": "https://github.com/provenance-io/",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/provenance/images/prov.svg",
+    "stake": "",
+    "explorer": "",
+    "chain_id": "pio-mainnet-1",
+    "endpoints": {
+      "rpc": "https://rpc.provenance.posthuman.digital:443",
+      "rest": "https://rest.provenance.posthuman.digital:443",
+      "grpc": "https://grpc.provenance.posthuman.digital:443",
+      "peer": "7bf1c608994f3f0b6b65aa52072d164c9d8a7f4d@peer.provenance.posthuman.digital:44656",
+      "snapshots": "https://snapshots.provenance.posthuman.digital:443"
+    },
+    "contributions": "Provenance",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "shentu",
+    "type": "mainnet",
+    "title": "Shentu",
+    "website": "https://www.shentu.org/",
+    "twitter": "https://x.com/ShentuChain",
+    "discord": "https://discord.com/invite/6nfAk956NH",
+    "github": "https://github.com/ShentuChain",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/shentu/images/ctk.svg",
+    "stake": "https://explorer.posthuman.digital/shentu",
+    "explorer": "https://explorer.posthuman.digital/shentu",
+    "chain_id": "shentu-2.2",
+    "endpoints": {
+      "rpc": "https://rpc.shentu.posthuman.digital:443",
+      "rest": "https://rest.shentu.posthuman.digital:443",
+      "grpc": "https://grpc.shentu.posthuman.digital:443",
+      "peer": "77f21eee88ff4f895ff79dbdabb3e726c3f5eba5@peer.shentu.posthuman.digital:50656",
+      "snapshots": "https://snapshots.shentu.posthuman.digital:443"
+    },
+    "contributions": "",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "lumen",
+    "type": "mainnet",
+    "title": "Lumen",
+    "website": "https://lumen-network.org/",
+    "twitter": "https://x.com/LumenStack",
+    "discord": "https://discord.com/invite/DwK6V9shKc",
+    "github": "https://github.com/network-lumen/",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/lumen/lumen-logo.svg",
+    "chain_id": "lumen",
+    "endpoints": {
+      "rpc": ""
+    },
+    "contributions": "",
+    "generatedServices": [],
+    "services": [
+      "validators",
+      "blockchain",
+      "validator-kit"
+    ]
+  },
+  {
+    "name": "starknet",
+    "type": "mainnet",
+    "title": "Starknet",
+    "website": "https://estarknet.io",
+    "twitter": "https://x.com/Starknet",
+    "discord": "https://discord.gg/starknet-community",
+    "github": "https://github.com/starknet-io",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/starknet/strk-logo.svg",
+    "chain_id": "Starknet v0.13.6",
+    "endpoints": {
+      "rpc": ""
+    },
+    "contributions": "Starknet",
+    "generatedServices": [],
+    "services": [
+      "installation-guide",
+      "validator-attestation"
+    ]
+  },
+  {
+    "name": "ethereum",
+    "type": "mainnet",
+    "title": "Ethereum",
+    "website": "https://ethereum.org",
+    "twitter": "https://x.com/ethdotorg",
+    "discord": "https://discord.gg/ethereum-org",
+    "github": "https://github.com/ethereum",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/ethereum/eth.svg",
+    "chain_id": "1",
+    "endpoints": {
+      "jsonrpc": ""
+    },
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
+  },
+  {
+    "name": "cosmoshub",
+    "type": "mainnet",
+    "title": "CosmosHub",
+    "website": "https://cosmos.network/",
+    "twitter": "https://x.com/cosmos",
+    "discord": "https://discord.com/invite/interchain",
+    "github": "https://github.com/cosmos",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/cosmoshub/images/atom.svg",
+    "stake": "https://explorer.posthuman.digital/cosmos/staking/cosmosvaloper157v7tczs40axfgejp2m43kwuzqe0wsy0rv8puv",
+    "explorer": "https://explorer.posthuman.digital/cosmos/staking",
+    "chain_id": "cosmoshub-1",
+    "endpoints": {
+      "rpc": "https://rpc.cosmos.posthuman.digital",
+      "rest": "https://rest.cosmos.posthuman.digital",
+      "grpc": "https://grpc.cosmos.posthuman.digital",
+      "seed-node": "6d581e53245f7f81c24a20392b60256a7e59de59@peer.cosmos.posthuman.digital:26656"
+    },
+    "contributions": "Cosmos",
+    "generatedServices": [
+      "state-sync",
+      "peers"
+    ],
+    "services": [
+      "install-guide",
+      "ibc-relayers",
+      "links"
+    ]
+  },
+  {
+    "name": "dymension",
+    "type": "mainnet",
+    "title": "Dymension Hub",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/dymension/images/dymension-logo.svg",
+    "stake": "https://wallet.keplr.app/chains/dymension?modal=staking&chain=dymension_1100-1&validator_address=dymvaloper1lsjs7pwll7pqm40namkyx3e5qdwg0v0swrshud&step_id=2",
+    "explorer": "https://explorer.posthuman.digital/dymension",
+    "node_home": "$HOME/.dymension",
+    "addrbookUrl": "123",
+    "endpoints": {
+      "rpc": "https://rpc.dymension.posthuman.digital",
+      "wss": "wss://rpc.dymension.posthuman.digital",
+      "rest": "https://rest.dymension.posthuman.digital",
+      "grpc": "https://grpc.dymension.posthuman.digital",
+      "evm-rpc": "https://evm-rpc.dymension.posthuman.digital",
+      "seed-node": "7f5862bc6b2a13fee3a1928c2c7aed33edb711a2@peer.dymension.posthuman.digital:25656"
+    },
+    "contributions": "Dymension",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync",
+      "peers"
+    ],
+    "services": []
+  },
+  {
+    "name": "humans",
+    "type": "mainnet",
+    "title": "Humans AI",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/humans/images/heart-dark-mode.svg",
+    "stake": "https://explorer.posthuman.digital/humans/staking/humanvaloper1ndnf0cd75nvz56feqy23um3mq22nlhe9ggu0uh",
+    "explorer": "https://explorer.posthuman.digital/humans",
+    "endpoints": {
+      "rpc": "https://rpc.humans.posthuman.digital",
+      "rest": "https://rest.humans.posthuman.digital",
+      "wss": "wss://rpc.humans.posthuman.digital",
+      "evm-rpc": "https://evm.humans.posthuman.digital",
+      "seed-node": "7f5862bc6b2a13fee3a1928c2c7aed33edb711a2@peer.humans.posthuman.digital:27656"
+    },
+    "contributions": "Humans_ai",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync",
+      "peers"
+    ],
+    "services": [],
+    "images": [
+      {
+        "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/humans/images/heart-dark-mode.png"
+      }
+    ]
+  },
+  {
+    "name": "atomone-testnet",
+    "type": "testnet",
+    "title": "AtomOne",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/atomone/atomone.svg",
+    "stake": "https://explorer.posthuman.digital/atomone/staking/atonevaloper1vcp7pkg8sk0n8ylhezxxs8qqrnwfld4dsv2sew",
+    "explorer": "https://explorer.posthuman.digital/atomone-testnet",
+    "chain_id": "atomone-testnet-1",
+    "endpoints": {
+      "rpc": "https://rpc.atomone-testnet.posthuman.digital:443",
+      "rest": "https://rest.atomone-testnet.posthuman.digital:443",
+      "grpc": "https://grpc.atomone-testnet.posthuman.digital:443",
+      "seed-node": "9aa69d667da6dd43ba82110b4ff290ac38d68976@135.181.227.236:60656"
+    },
+    "contributions": "Atomone",
+    "generatedServices": [
+      "installation-guide"
+    ],
+    "services": [
+      "snapshot-service"
+    ]
+  },
+  {
+    "name": "atomone",
+    "type": "mainnet",
+    "title": "AtomOne",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/atomone/atomone.svg",
+    "stake": "https://explorer.posthuman.digital/atomone/staking/atonevaloper1vcp7pkg8sk0n8ylhezxxs8qqrnwfld4dsv2sew",
+    "explorer": "https://explorer.posthuman.digital/atomone",
+    "chain_id": "atomone-1",
+    "endpoints": {
+      "rpc": "https://rpc.atomone.posthuman.digital:443",
+      "rest": "https://rest.atomone.posthuman.digital:443",
+      "grpc": "https://grpc.atomone.posthuman.digital:443",
+      "seed-node": "494f6198020d91571f75b4f208b739e2da50578e@135.181.227.236:63656"
+    },
+    "contributions": "Atomone",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync",
+      "peers"
+    ],
+    "services": [
+      "IBC-Relayers",
+      "genesis-and-addrbook",
+      "snapshot-service",
+      "one-liner"
+    ]
+  },
+  {
+    "name": "stargaze",
+    "type": "mainnet",
+    "title": "Stargaze",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/stargaze/images/stars.svg",
+    "stake": "https://explorer.posthuman.digital/stargaze/staking/starsvaloper14ftwwcfvhnp3qvxawesjan5duh8rmrkrzdvquy",
+    "explorer": "https://explorer.posthuman.digital/stargaze",
+    "endpoints": {
+      "rpc": "https://rpc.stargaze.posthuman.digital:443",
+      "rest": "https://rest.stargaze.posthuman.digital:443",
+      "grpc": "https://grpc.stargaze.posthuman.digital:443",
+      "seed-node": "ea4ac95dd628844361cdee9b33e4c5db085d70e7@peer.stargaze.posthuman.digital:32656"
+    },
+    "contributions": "Stargaze",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync",
+      "peers"
+    ],
+    "services": []
+  },
+  {
+    "name": "the-graph",
+    "type": "mainnet",
+    "title": "TheGraph",
+    "icon": "https://raw.githubusercontent.com/web3validator/TheGraph-Indexer-Setup/main/the-graph-grt-logo.svg",
+    "stake": "https://thegraph.com/explorer/profile/0x047739cb42c227489cccd11aa5f28aa4eb46d2cf?view=Indexing&chain=arbitrum-one",
+    "explorer": "https://thegraph.com/explorer",
+    "endpoints": {
+      "rpc": "",
+      "rest": "",
+      "json_rpc": "",
+      "peer": ""
+    },
+    "chain_id": "ethereum",
+    "generatedServices": [],
+    "services": [
+      "installation-guide"
+    ]
+  },
+  {
+    "name": "namada",
+    "type": "mainnet",
+    "title": "Namada",
+    "icon": "https://github.com/Validator-POSTHUMAN/posthuman-source-data/raw/main/namada/namada.svg",
+    "stake": "https://shielded.live/validators/0E3AB495DEC6558008A6CD962FFCBDA749CF475CAE21932AC1C6A9F4A8368550",
+    "explorer": "https://shielded.live/",
+    "chain_id": "namada.5f5de2dd1b88cba30586420",
+    "endpoints": {
+      "rpc": "https://rpc.namada.posthuman.digital:443",
+      "peer": "67cdb666f68cfefcd799ac589b2a9b005c067ef3@peer.namada.posthuman.digital:26656",
+      "snapshots": "https://snapshots.namada.posthuman.digital/"
+    },
+    "contributions": "Namada",
+    "generatedServices": [],
+    "services": [
+      "installation-guide",
+      "genesis-file",
+      "addr-book",
+      "snapshot-service"
+    ]
+  },
+  {
+    "name": "celestia",
+    "type": "mainnet",
+    "title": "Celestia",
+    "website": "https://celestia.org/",
+    "twitter": "https://x.com/CelestiaOrg",
+    "discord": "https://discord.com/invite/celestiacommunity",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-source-data/refs/heads/main/celestia/celestia.svg",
+    "stake": "https://explorer.posthuman.digital/celestia/staking",
+    "explorer": "https://celestia-explorer.posthuman.digital",
+    "daemon_name": "celestia-appd",
+    "codebase": {
+      "git_repo": "https://github.com/celestiaorg/celestia-app",
+      "recommended_version": "v5.0.11",
+      "compatible_versions": [
+        "v5.0.11"
+      ]
+    },
+    "chain_id": "celestia",
+    "endpoints": {
+      "rpc": "https://rpc-celestia-mainnet.posthuman.digital",
+      "rpc-arch": "https://rpc-celestia-mainnet-archive.posthuman.digital",
+      "rest": "https://rest-celestia-mainnet.posthuman.digital",
+      "rest-arch": "https://rest-celestia-mainnet-archive.posthuman.digital",
+      "grpc": "https://grpc-celestia-mainnet.posthuman.digital",
+      "grpc-arch": "https://grpc-celestia-mainnet-archive.posthuman.digital",
+      "peer": "2cc7330049bc02e4276668c414222593d52eb718@peer-celestia-mainnet.posthuman.digital:40656"
+    },
+    "contributions": "Celestia",
+    "generatedServices": [],
+    "services": [
+      "installation-guide",
+      "bridge-node-setup",
+      "full-node-setup",
+      "light-node-setup",
+      "snapshots",
+      "one-liner"
+    ]
+  },
+  {
+    "name": "celestia-testnet",
+    "type": "testnet",
+    "daemon_name": "celestia-appd",
+    "website": "https://celestia.org/",
+    "codebase": {
+      "git_repo": "https://github.com/celestiaorg/celestia-app",
+      "recommended_version": "v6.2.0-mocha",
+      "compatible_versions": [
+        "v6.2.0-mocha"
+      ]
+    },
+    "chain_name": "celestia-app",
+    "title": "Celestia",
+    "twitter": "https://x.com/CelestiaOrg",
+    "discord": "https://discord.com/invite/celestiacommunity",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-source-data/refs/heads/main/celestia/celestia.svg",
+    "stake": "https://explorer.posthuman.digital/celestia-testnet/staking/celestiavaloper1sa5mgyskjzpx6znnd6jxkn59g02hm6c4p8a59v",
+    "explorer": "https://www.mintscan.io/celestia-testnet",
+    "chain_id": "mocha-4",
+    "endpoints": {
+      "rpc": "https://rpc-celestia-testnet.posthuman.digital",
+      "rpc-arch": "https://rpc-celestia-testnet-archive.posthuman.digital",
+      "rest": "https://rest-celestia-testnet.posthuman.digital",
+      "rest-arch": "https://rest-celestia-testnet-archive.posthuman.digital",
+      "grpc": "https://grpc-celestia-testnet.posthuman.digital",
+      "grpc-arch": "https://grpc-celestia-testnet-archive.posthuman.digital",
+      "peer": "c5bc6e85bf763c5a08ed08a238028afe3c18fc4b@peer-celestia-testnet.posthuman.digital:39656"
+    },
+    "generatedServices": [],
+    "services": [
+      "installation-guide",
+      "bridge-node-setup",
+      "full-node-setup",
+      "light-node-setup",
+      "snapshots",
+      "one-liner"
+    ]
+  },
+  {
+    "name": "agoric",
+    "type": "mainnet",
+    "title": "Agoric",
+    "website": "https://agoric.com/",
+    "twitter": "https://x.com/agoric",
+    "discord": "https://discord.com/invite/qDW8DRes4s",
+    "github": "https://github.com/agoric",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/agoric/images/bld.svg",
+    "stake": "https://explorer.posthuman.digital/agoric/staking/agoricvaloper13yy5mk8ek8p5kk3e8nleucw003nt2vmzxrdx36",
+    "explorer": "https://explorer.posthuman.digital/agoric",
+    "chain_id": "agoric-3",
+    "endpoints": {
+      "rpc": "https://rpc.agoric.posthuman.digital",
+      "rest": "https://rest.agoric.posthuman.digital",
+      "grpc": "https://grpc.agoric.posthuman.digital",
+      "peer": "a31df340e2a186a0541cdb5099a1cca6eab67c75@135.181.61.154:12756"
+    },
+    "contributions": "Agoric",
+    "generatedServices": [
+      "state-sync",
+      "peers"
+    ],
+    "services": [
+      "installation-guide",
+      "IBC-Relayers",
+      "genesis-and-addrbook",
+      "snapshot-service",
+      "one-liner"
+    ]
+  },
+  {
+    "name": "warden-testnet",
+    "type": "testnet",
+    "daemon_name": "wardend",
+    "website": "https://wardenprotocol.org/",
+    "discord": "https://discord.com/invite/wardenprotocol",
+    "twitter": "https://x.com/wardenprotocol",
+    "codebase": {
+      "git_repo": "https://github.com/warden-protocol/wardenprotocol",
+      "recommended_version": "v0.5.2"
+    },
+    "title": "Warden",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/warden-testnet/warden.svg",
+    "stake": "https://explorer.posthuman.digital/warden-testnet/staking/wardenvaloper12de4mzezcvhauqxcszrhkdagwv8lwqs9uvla75",
+    "explorer": "https://explorer.posthuman.digital/warden-testnet",
+    "chain_id": "chiado_10010-1",
+    "endpoints": {
+      "rpc": "https://rpc.warden-testnet.posthuman.digital",
+      "rest": "https://rest.warden-testnet.posthuman.digital",
+      "grpc": "https://grpc.warden-testnet.posthuman.digital",
+      "peer": "4ba715e890aeceb9fef100c7c404004d1d711f37@46.4.52.158:656"
+    },
+    "contributions": "Warden",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "oracle-slinky-setup-guide",
+      "snapshots"
+    ]
+  },
+  {
+    "name": "kyve",
+    "type": "mainnet",
+    "title": "Kyve",
+    "website": "https://kyve.network/",
+    "twitter": "https://x.com/KYVENetwork",
+    "discord": "https://discord.gg/sTfnADUj",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/kyve/kyve-logo.svg",
+    "stake": "https://explorer.posthuman.digital/kyve/staking/kyvevaloper16hnse4c852xg4vxjnqhx648e02z32n72l66nv7",
+    "explorer": "https://explorer.posthuman.digital/kyve",
+    "chain_id": "kyve-1",
+    "endpoints": {
+      "rpc": "https://rpc.kyve.posthuman.digital",
+      "rest": "https://rest.kyve.posthuman.digital",
+      "grpc": "https://grpc.kyve.posthuman.digital",
+      "peer": "b9d43e8179f17410abce8279a750d4945d8524c7@135.181.227.236:33656"
+    },
+    "contributions": "Kyve",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "oraichain",
+    "type": "mainnet",
+    "title": "Oraichain",
+    "website": "https://orai.io/",
+    "twitter": "https://x.com/oraichain",
+    "discord": "https://discord.com/invite/oraichain",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/07ce295b35b8988ff36a6846a22e69db09a3cd7c/oraichain/orai_logo_round.svg",
+    "stake": "https://explorer.posthuman.digital/oraichain/staking/oraivaloper1gvk3caqtdnwhff60ndm29tp0m7p8e57zgx588h",
+    "explorer": "https://explorer.posthuman.digital/oraichain",
+    "chain_id": "Oraichain",
+    "endpoints": {
+      "rpc": "https://rpc.oraichain.posthuman.digital",
+      "rest": "https://rest.oraichain.posthuman.digital",
+      "grpc": "https://grpc.oraichain.posthuman.digital",
+      "peer": "07dde93a5ea10fc4623ef421d0de0e2b5b556e80@135.181.227.236:55656"
+    },
+    "contributions": "Orai",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "zetachain",
+    "type": "mainnet",
+    "title": "Zetachain",
+    "website": "https://www.zetachain.com/",
+    "twitter": "https://x.com/zetablockchain",
+    "discord": "https://discord.gg/zetachain",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/zetachain/images/zetachain.svg",
+    "stake": "https://explorer.posthuman.digital/zetachain/staking/zetavaloper1mj5uvv4703fwvna0t622yj9386cfwavr2hl6q4",
+    "explorer": "https://explorer.posthuman.digital/zetachain",
+    "chain_id": "zetachain_7000-1",
+    "endpoints": {
+      "rpc": "https://rpc.zetachain.posthuman.digital",
+      "rpc_ws": "wss://rpc.zetachain.posthuman.digital/websocket",
+      "rest": "https://rest.zetachain.posthuman.digital",
+      "grpc": "https://grpc.zetachain.posthuman.digital",
+      "evm_json_rpc": "https://evm.zetachain.posthuman.digital",
+      "evm_json_rpc_ws": "wss://wss.zetachain.posthuman.digital",
+      "peer": "21cc2d900409df3612d4b00537c9ebaf09fab2f6@135.181.227.236:31656"
+    },
+    "contributions": "Zetachain",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "juno-testnet",
+    "type": "testnet",
+    "title": "Juno",
+    "website": "https://junonetwork.io/",
+    "twitter": "https://x.com/JunoNetwork",
+    "discord": "https://discord.com/invite/caEBtA4QDb",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/juno.svg",
+    "stake": "https://explorer.posthuman.digital/juno-testnet/staking/",
+    "explorer": "https://explorer.posthuman.digital/juno-testnet/",
+    "chain_id": "uni-7",
+    "endpoints": {
+      "rpc": "https://rpc.juno-testnet.posthuman.digital",
+      "rest": "https://rest.juno-testnet.posthuman.digital",
+      "grpc": "https://grpc.juno-testnet.posthuman.digital",
+      "peer": "ea35c818280a6ac5d1d2a987d8d60f4bd76f4e06@141.95.34.193:16656"
+    },
+    "contributions": "JunoNetwork",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "juno",
+    "type": "mainnet",
+    "title": "Juno",
+    "website": "https://junonetwork.io/",
+    "twitter": "https://x.com/JunoNetwork",
+    "discord": "https://discord.com/invite/caEBtA4QDb",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/juno.svg",
+    "stake": "https://explorer.posthuman.digital/juno/staking/junovaloper1e8238v24qccht9mqc2w0r4luq462yxttjzn7qt",
+    "explorer": "https://explorer.posthuman.digital/juno/",
+    "chain_id": "juno-1",
+    "endpoints": {
+      "rpc": "https://rpc.juno.posthuman.digital",
+      "rest": "https://rest.juno.posthuman.digital",
+      "grpc": "https://grpc.juno.posthuman.digital",
+      "peer": "113a11ad866cddddea40ddf9b56fde43f03d7499@135.181.227.236:12656"
+    },
+    "contributions": "JunoNetwork",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "exrp-testnet",
+    "type": "testnet",
+    "title": "XRPL EVM testnet",
+    "website": "https://xrpl.org/",
+    "twitter": "https://x.com/RippleXDev",
+    "discord": "https://discord.com/invite/xrplevm",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/xrplevm/images/xrplevm.svg",
+    "stake": "https://explorer.posthuman.digital/",
+    "explorer": "https://explorer.posthuman.digital/",
+    "chain_id": "xrplevm_1449000-1",
+    "endpoints": {
+      "rpc": "https://rpc.exrp-testnet.posthuman.digital",
+      "rest": "https://rest.exrp-testnet.posthuman.digital",
+      "grpc": "https://grpc.exrp-testnet.posthuman.digital",
+      "json": "https://json.exrp-testnet.posthuman.digital",
+      "peer": "e80a91daedb88e1dc429ab60036b3819bb48057d@peer.exrp.posthuman.digital:62656"
+    },
+    "contributions": "XRPL",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "exrp",
+    "type": "mainnet",
+    "title": "XRPL EVM",
+    "website": "https://xrpl.org/",
+    "twitter": "https://x.com/RippleXDev",
+    "discord": "https://discord.com/invite/xrplevm",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/xrplevm/images/xrplevm.svg",
+    "stake": "https://explorer.posthuman.digital/",
+    "explorer": "https://explorer.posthuman.digital/",
+    "chain_id": "xrplevm_144000-1",
+    "endpoints": {
+      "rpc": "https://rpc.exrp.posthuman.digital",
+      "rest": "https://rest.exrp.posthuman.digital",
+      "grpc": "https://grpc.exrp.posthuman.digital",
+      "json": "https://json.exrp-testnet.posthuman.digital",
+      "peer": "522e624a77123c67762b5c1ff70ac20d377b0179@peer.exrp.posthuman.digital:61656"
+    },
+    "contributions": "XRPL",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "fuel",
+    "type": "mainnet",
+    "title": "Fuel",
+    "website": "https://fuel.network/",
+    "twitter": "https://x.com/fuel_network",
+    "discord": "https://discord.com/invite/xfpK4Pe",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/07ce295b35b8988ff36a6846a22e69db09a3cd7c/fuel/fuel_logo_round.svg",
+    "stake": "https://app.fuel.network/staking/on-ethereum/validators",
+    "explorer": "https://app.fuel.network/staking/on-ethereum/validators",
+    "chain_id": "seq-mainnet-1",
+    "endpoints": {
+      "rpc": "https://rpc.fuel.posthuman.digital",
+      "rest": "https://rest.fuel.posthuman.digital",
+      "grpc": "https://grpc.fuel.posthuman.digital",
+      "peer": "59047d7c1202593de3f4a71c767276094700d38c@peer.fuel.posthuman.digital:10656"
+    },
+    "contributions": "Fuel",
+    "generatedServices": [
+      "installation-guide"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "neutron",
+    "type": "mainnet",
+    "title": "Neutron",
+    "website": "https://neutron.org/",
+    "twitter": "https://twitter.com/Neutron_org",
+    "github": "https://github.com/neutron-org/neutron",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/neutron/images/ntrn.svg",
+    "stake": "https://explorer.posthuman.digital/neutron",
+    "explorer": "https://explorer.posthuman.digital/neutron",
+    "chain_id": "neutron-1",
+    "endpoints": {
+      "rpc": "https://rpc.neutron.posthuman.digital",
+      "rest": "https://rest.neutron.posthuman.digital",
+      "grpc": "grpc.neutron.posthuman.digital",
+      "peer": "d5ce5e05dad8d5ed75709e2e4c591e088ade8dd5@peer.neutron.posthuman.digital:13656"
+    },
+    "contributions": "Neutron",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "babylon-testnet",
+    "type": "testnet",
+    "title": "Babylon",
+    "website": "https://babylonlabs.io",
+    "twitter": "https://x.com/babylonlabs_io",
+    "github": "https://github.com/babylonlabs-io",
+    "discord": "https://discord.com/invite/babylonglobal",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/babylon-testnet/babylon.svg",
+    "stake": "https://explorer.posthuman.digital/babylon-testnet/staking/bbnvaloper1thsqam9as5sxzj8c8cmkdrgtc5gmlxn0nxuypf",
+    "explorer": "https://explorer.posthuman.digital/babylon-testnet",
+    "chain_id": "bbn-test-5",
+    "endpoints": {
+      "rpc": "https://rpc.babylon.posthuman.digital",
+      "rest": "https://rest-api.babylon.posthuman.digital",
+      "grpc": "https://grpc.babylon.posthuman.digital",
+      "peer": "70d302558183535e220a725d463597ade72e130d@95.217.229.104:60656"
+    },
+    "contributions": "Babylon",
+    "generatedServices": [],
+    "services": [
+      "installation-guide",
+      "genesis-and-addrbook",
+      "snapshot-service",
+      "one-liner"
+    ]
+  },
+  {
+    "name": "canton-testnet",
+    "type": "testnet",
+    "title": "Canton Network",
+    "website": "https://www.canton.network/",
+    "twitter": "https://twitter.com/CantonNetwork",
+    "discord": "https://discord.gg/cantonnetwork",
+    "github": "https://github.com/digital-asset/decentralized-canton-sync",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
+    "stake": "",
+    "explorer": "https://lighthouse.testnet.cantonloop.com/",
+    "version": "DevNet: 0.5.11 | TestNet: 0.5.10",
+    "endpoints": {
+      "explorer": "https://lighthouse.devnet.cantonloop.com/"
+    },
+    "contributions": "Canton",
+    "generatedServices": [],
+    "services": [
+      "devnet-installation-guide",
+      "testnet-installation-guide",
+      "one-liner"
+    ]
+  },
+  {
+    "name": "canton-mainnet",
+    "type": "mainnet",
+    "title": "Canton Network",
+    "website": "https://www.canton.network/",
+    "twitter": "https://twitter.com/CantonNetwork",
+    "discord": "https://discord.gg/cantonnetwork",
+    "github": "https://github.com/digital-asset/decentralized-canton-sync",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
+    "stake": "",
+    "explorer": "https://lighthouse.cantonloop.com/",
+    "version": "0.5.9",
+    "endpoints": {
+      "explorer": "https://lighthouse.cantonloop.com/"
+    },
+    "contributions": "Canton",
+    "generatedServices": [],
+    "services": [
+      "mainnet-installation-guide",
+      "one-liner"
+    ]
+  },
+  {
+    "name": "monad",
+    "type": "mainnet",
+    "title": "Monad",
+    "website": "https://monad.xyz/",
+    "twitter": "https://x.com/monad",
+    "discord": "https://discord.gg/monad",
+    "github": "https://github.com/monad-xyz",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/monad-testnet/Logomark.svg",
+    "stake": "",
+    "explorer": "https://monadvision.com",
+    "chain_id": "143",
+    "endpoints": {
+      "rpc": "https://rpc.monad.xyz"
+    },
+    "generatedServices": [],
+    "contributions": "Monad",
+    "services": [
+      "install-guide",
+      "monitoring",
+      "decentralize-map"
+    ]
+  },
+  {
+    "name": "monad-testnet",
+    "type": "testnet",
+    "title": "Monad Testnet",
+    "website": "https://monad.xyz/",
+    "twitter": "https://x.com/monad",
+    "discord": "https://discord.gg/monad",
+    "github": "https://github.com/monad-xyz",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/monad-testnet/Logomark.svg",
+    "stake": "",
+    "explorer": "",
+    "chain_id": "10143",
+    "endpoints": {
+      "rpc": "https://rpc-monad-testnet.posthuman.digital:443"
+    },
+    "contributions": "Monad",
+    "generatedServices": [],
+    "services": [
+      "install-guide",
+      "monitoring",
+      "decentralize-map"
+    ]
+  },
+  {
+    "name": "near",
+    "type": "mainnet",
+    "title": "NEAR",
+    "website": "https://near.org/",
+    "twitter": "https://x.com/nearprotocol",
+    "discord": "https://discord.com/invite/nearprotocol",
+    "github": "https://github.com/near/nearcore",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/near/near-logo.svg",
+    "stake": "https://nearblocks.io/address/posthuman.poolv1.near",
+    "explorer": "https://nearblocks.io",
+    "chain_id": "mainnet",
+    "endpoints": {},
+    "generatedServices": [],
+    "services": [
+      "install-guide",
+      "monitoring"
+    ]
+  },
+  {
+    "name": "espresso",
+    "type": "mainnet",
+    "title": "Espresso",
+    "website": "https://www.espressosys.com",
+    "twitter": "https://x.com/EspressoSys",
+    "discord": "https://discord.com/invite/DRfcHRnnBz",
+    "github": "https://github.com/EspressoSystems",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/espresso/espresso-logo.svg",
+    "stake": "",
+    "explorer": "",
+    "endpoints": {},
+    "contributions": "Espresso",
+    "generatedServices": [
+      "installation-guide"
+    ],
+    "services": [
+      "snapshots"
+    ]
+  },
+  {
+    "name": "arc-testnet",
+    "type": "testnet",
+    "title": "Arc Network Testnet",
+    "website": "https://www.arc.network/",
+    "twitter": "https://x.com/circle",
+    "discord": "https://discord.gg/circle",
+    "github": "https://github.com/circlefin/arc-node",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/arc-testnet/arc-testnet-logo.svg",
+    "stake": "",
+    "explorer": "",
+    "endpoints": {},
+    "contributions": "Arc",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ],
+    "chain_id": "5042002"
+  },
+  {
+    "name": "pharos-testnet",
+    "type": "testnet",
+    "title": "Pharos Atlantic Testnet",
+    "website": "https://pharosnetwork.xyz/",
+    "twitter": "https://x.com/PharosNetwork",
+    "discord": "https://discord.gg/pharosnetwork",
+    "github": "https://github.com/pharosnetwork",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/pharos-testnet/pharos-logo.svg",
+    "stake": "",
+    "explorer": "",
+    "endpoints": {},
+    "contributions": "Pharos",
+    "generatedServices": [],
+    "services": [
+      "installation-guide"
+    ],
+    "chain_id": ""
+  },
+  {
+    "name": "sahara-testnet",
+    "type": "testnet",
+    "title": "Sahara AI Testnet",
+    "website": "https://saharalabs.ai/",
+    "twitter": "https://x.com/SaharaLabsAI",
+    "discord": "https://discord.gg/saharalabsai",
+    "github": "https://github.com/SaharaLabsAI",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/sahara-testnet/sahara-testnet-logo.svg",
+    "stake": "",
+    "explorer": "",
+    "endpoints": {},
+    "contributions": "Sahara",
+    "generatedServices": [],
+    "services": [
+      "installation-guide",
+      "links",
+      "snapshots"
+    ],
+    "chain_id": ""
+  },
+  {
+    "name": "logos-testnet",
+    "type": "testnet",
+    "title": "Logos Testnet",
+    "website": "https://logos.co/",
+    "twitter": "https://x.com/Logos_State",
+    "discord": "https://discord.gg/logos",
+    "github": "https://github.com/logos-co",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/logos-testnet/logos-testnet-logo.svg",
+    "stake": "",
+    "explorer": "",
+    "endpoints": {},
+    "contributions": "Logos",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ],
+    "chain_id": ""
+  }
+]
