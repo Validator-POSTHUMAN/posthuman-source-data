@@ -1,4 +1,3 @@
-
 # POSTHUMAN snapshot service for Atomone
 
 ## Stop the service
@@ -15,7 +14,7 @@ rm -rf ~/.atomone/data
 ```
 ## Download and Extract the snapshot
 ```
-curl https://snapshots.atomone.posthuman.digital/data_latest.lz4 | lz4 -dc - | tar -xf - -C ~/.atomone/
+curl https://snapshots.atomone.posthuman.digital/data_latest.zst | zstd -dc - | tar -xf - -C ~/.atomone/
 ```
 ## Restore priv_validator_state.json
 ```
