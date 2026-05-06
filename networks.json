@@ -474,7 +474,7 @@
   },
   {
     "name": "namada",
-    "type": "mainnet",
+    "type": "archive",
     "title": "Namada",
     "icon": "https://github.com/Validator-POSTHUMAN/posthuman-source-data/raw/main/namada/namada.svg",
     "stake": "https://shielded.live/validators/0E3AB495DEC6558008A6CD962FFCBDA749CF475CAE21932AC1C6A9F4A8368550",
@@ -492,8 +492,7 @@
       "genesis-file",
       "addr-book",
       "snapshot-service"
-    ],
-    "status": "archive"
+    ]
   },
   {
     "name": "celestia",
@@ -690,7 +689,7 @@
   },
   {
     "name": "zetachain",
-    "type": "mainnet",
+    "type": "archive",
     "title": "Zetachain",
     "website": "https://www.zetachain.com/",
     "twitter": "https://x.com/zetablockchain",
@@ -715,8 +714,7 @@
     ],
     "services": [
       "snapshots"
-    ],
-    "status": "archive"
+    ]
   },
   {
     "name": "juno-testnet",
@@ -1053,7 +1051,7 @@
   },
   {
     "name": "pharos-testnet",
-    "type": "testnet",
+    "type": "archive",
     "title": "Pharos Atlantic Testnet",
     "website": "https://pharosnetwork.xyz/",
     "twitter": "https://x.com/PharosNetwork",
@@ -1068,8 +1066,7 @@
     "services": [
       "installation-guide"
     ],
-    "chain_id": "",
-    "status": "archive"
+    "chain_id": ""
   },
   {
     "name": "sahara-testnet",
