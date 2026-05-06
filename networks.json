@@ -492,7 +492,8 @@
       "genesis-file",
       "addr-book",
       "snapshot-service"
-    ]
+    ],
+    "status": "archive"
   },
   {
     "name": "celestia",
@@ -714,7 +715,8 @@
     ],
     "services": [
       "snapshots"
-    ]
+    ],
+    "status": "archive"
   },
   {
     "name": "juno-testnet",
@@ -1066,7 +1068,8 @@
     "services": [
       "installation-guide"
     ],
-    "chain_id": ""
+    "chain_id": "",
+    "status": "archive"
   },
   {
     "name": "sahara-testnet",
