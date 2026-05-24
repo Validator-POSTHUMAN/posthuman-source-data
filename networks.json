@@ -233,7 +233,8 @@
       "state-sync"
     ],
     "services": [
-      "snapshots"
+      "snapshots",
+      "skill"
     ]
   },
   {
