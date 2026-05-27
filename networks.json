@@ -967,7 +967,8 @@
     "services": [
       "install-guide",
       "monitoring",
-      "decentralize-map"
+      "decentralize-map",
+      "skill"
     ]
   },
   {
@@ -990,7 +991,8 @@
     "services": [
       "install-guide",
       "monitoring",
-      "decentralize-map"
+      "decentralize-map",
+      "skill"
     ]
   },
   {
