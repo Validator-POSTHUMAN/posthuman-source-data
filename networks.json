@@ -276,7 +276,8 @@
     "generatedServices": [],
     "services": [
       "installation-guide",
-      "validator-attestation"
+      "validator-attestation",
+      "skill"
     ]
   },
   {
