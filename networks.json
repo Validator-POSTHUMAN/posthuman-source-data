@@ -844,10 +844,9 @@
       "peer": "59047d7c1202593de3f4a71c767276094700d38c@peer.fuel.posthuman.digital:10656"
     },
     "contributions": "Fuel",
-    "generatedServices": [
-      "installation-guide"
-    ],
+    "generatedServices": [],
     "services": [
+      "installation-guide",
       "snapshots",
       "skill"
     ]
