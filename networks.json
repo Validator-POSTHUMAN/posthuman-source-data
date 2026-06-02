@@ -830,6 +830,7 @@
     "type": "mainnet",
     "title": "Fuel",
     "website": "https://fuel.network/",
+    "github": "https://github.com/FuelLabs/fuel-core",
     "twitter": "https://x.com/fuel_network",
     "discord": "https://discord.com/invite/xfpK4Pe",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/07ce295b35b8988ff36a6846a22e69db09a3cd7c/fuel/fuel_logo_round.svg",
@@ -847,7 +848,8 @@
       "installation-guide"
     ],
     "services": [
-      "snapshots"
+      "snapshots",
+      "skill"
     ]
   },
   {
