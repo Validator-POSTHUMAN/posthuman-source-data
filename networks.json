@@ -669,6 +669,7 @@
     "type": "mainnet",
     "title": "Oraichain",
     "website": "https://orai.io/",
+    "github": "https://github.com/oraichain/orai",
     "twitter": "https://x.com/oraichain",
     "discord": "https://discord.com/invite/oraichain",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/07ce295b35b8988ff36a6846a22e69db09a3cd7c/oraichain/orai_logo_round.svg",
@@ -687,7 +688,8 @@
       "state-sync"
     ],
     "services": [
-      "snapshots"
+      "snapshots",
+      "skill"
     ]
   },
   {
