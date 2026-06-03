@@ -17,6 +17,17 @@ Use the Posthuman Monad snapshot to speed up node recovery or bootstrap a new fu
 
 ---
 
+## 0. Install Download Tools
+
+```bash
+apt update
+apt install -y curl jq aria2 lz4
+```
+
+`aria2c` should use a single connection with this Worker-backed endpoint.
+
+---
+
 ## 1. Stop Monad Services
 
 ```bash
@@ -75,7 +86,7 @@ SNAPSHOT_HEIGHT=$(jq -r '.height' latest.json)
 ## 5. Download and Verify Snapshot
 
 ```bash
-aria2c -x 8 -s 8 --continue=true "$SNAPSHOT_URL"
+aria2c -x 1 -s 1 --continue=true "$SNAPSHOT_URL"
 curl -fsSL "$CHECKSUM_URL" -o "${SNAPSHOT_FILE}.sha256"
 sha256sum -c "${SNAPSHOT_FILE}.sha256"
 ```
