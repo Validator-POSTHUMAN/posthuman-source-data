@@ -111,3 +111,31 @@ This feed can be converted into an interactive map layer. Coordinates are approx
 - Public RPC/WSS endpoints are safe to display and copy.
 - Geo markers are approximate and service-oriented.
 - Testnet WSS is verified through POSTHUMAN domain before publication.
+
+---
+
+## Snapshot Layer
+
+POSTHUMAN Monad testnet snapshots are served through the shared snapshot gateway:
+
+| Field | Value |
+|-------|-------|
+| Snapshot index | `https://snapshots.posthuman.digital/monad/` |
+| Testnet metadata | `https://snapshots.posthuman.digital/monad/testnet/latest.json` |
+| Latest height | `https://snapshots.posthuman.digital/monad/testnet/latest-height.txt` |
+| Format | `tar.lz4` |
+| Checksum | `sha256` per release |
+| Retention | Latest 3 local releases, mirrored to R2 with deletion sync |
+
+Map data feed:
+
+```json
+{
+  "network_id": "monad-testnet",
+  "node_type": "snapshot_mirror",
+  "operator": "Posthuman",
+  "status": "healthy",
+  "metadata_url": "https://snapshots.posthuman.digital/monad/testnet/latest.json",
+  "privacy": "public snapshot endpoint"
+}
+```

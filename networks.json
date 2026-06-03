@@ -964,7 +964,8 @@
     "explorer": "https://monadvision.com",
     "chain_id": "143",
     "endpoints": {
-      "rpc": "https://rpc-monad.posthuman.digital"
+      "rpc": "https://rpc-monad.posthuman.digital",
+      "snapshots": "https://snapshots.posthuman.digital/monad/mainnet"
     },
     "generatedServices": [],
     "contributions": "Monad",
@@ -972,7 +973,8 @@
       "install-guide",
       "monitoring",
       "decentralize-map",
-      "skill"
+      "skill",
+      "snapshots"
     ]
   },
   {
@@ -989,7 +991,8 @@
     "chain_id": "10143",
     "endpoints": {
       "rpc": "https://rpc-monad-testnet.posthuman.digital",
-      "wss": "wss://rpc-monad-testnet.posthuman.digital"
+      "wss": "wss://rpc-monad-testnet.posthuman.digital",
+      "snapshots": "https://snapshots.posthuman.digital/monad/testnet"
     },
     "contributions": "Monad",
     "generatedServices": [],
@@ -997,7 +1000,8 @@
       "install-guide",
       "monitoring",
       "decentralize-map",
-      "skill"
+      "skill",
+      "snapshots"
     ]
   },
   {

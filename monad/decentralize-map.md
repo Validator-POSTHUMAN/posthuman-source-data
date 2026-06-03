@@ -107,3 +107,31 @@ This feed can be converted into an interactive map layer. Coordinates are approx
 - Public RPC endpoints are safe to display and copy.
 - Geo markers are approximate and service-oriented.
 - Mainnet WSS is not shown until a healthy upstream is selected and verified.
+
+---
+
+## Snapshot Layer
+
+POSTHUMAN Monad snapshots are served through the shared snapshot gateway:
+
+| Field | Value |
+|-------|-------|
+| Snapshot index | `https://snapshots.posthuman.digital/monad/` |
+| Mainnet metadata | `https://snapshots.posthuman.digital/monad/mainnet/latest.json` |
+| Latest height | `https://snapshots.posthuman.digital/monad/mainnet/latest-height.txt` |
+| Format | `tar.lz4` |
+| Checksum | `sha256` per release |
+| Retention | Latest 3 local releases, mirrored to R2 with deletion sync |
+
+Map data feed:
+
+```json
+{
+  "network_id": "monad-mainnet",
+  "node_type": "snapshot_mirror",
+  "operator": "Posthuman",
+  "status": "healthy",
+  "metadata_url": "https://snapshots.posthuman.digital/monad/mainnet/latest.json",
+  "privacy": "public snapshot endpoint"
+}
+```
