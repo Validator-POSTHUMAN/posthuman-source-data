@@ -964,7 +964,7 @@
     "explorer": "https://monadvision.com",
     "chain_id": "143",
     "endpoints": {
-      "rpc": "https://rpc.monad.xyz"
+      "rpc": "https://rpc-monad.posthuman.digital"
     },
     "generatedServices": [],
     "contributions": "Monad",
@@ -988,7 +988,8 @@
     "explorer": "",
     "chain_id": "10143",
     "endpoints": {
-      "rpc": "https://rpc-monad-testnet.posthuman.digital:443"
+      "rpc": "https://rpc-monad-testnet.posthuman.digital",
+      "wss": "wss://rpc-monad-testnet.posthuman.digital"
     },
     "contributions": "Monad",
     "generatedServices": [],
