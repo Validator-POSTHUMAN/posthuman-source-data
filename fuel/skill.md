@@ -15,6 +15,17 @@ defaults.
 - Example inventory: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/main/fuel/examples/inventory.example.json
 - Healthcheck script: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/main/fuel/scripts/fuel-healthcheck.sh
 
+## Related Cosmos Hub Skill
+
+The Cosmos Hub Gaia skill is separate from the Fuel skill and is useful for
+operators who also run cosmoshub-4 infrastructure:
+
+- Cosmos Hub skill page: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/tree/main/cosmoshub
+- Cosmos Hub raw SKILL.md: https://raw.githubusercontent.com/Validator-POSTHUMAN/AI-skills-for-networks/main/cosmoshub/SKILL.md
+
+Use the Fuel skill for Fuel Ignition or Fuel Sequencer. Use the Cosmos Hub
+skill for Gaia and cosmoshub-4.
+
 ## What It Helps Agents Do
 
 - Operate Fuel Ignition fuel-core full nodes and public/private GraphQL APIs.
