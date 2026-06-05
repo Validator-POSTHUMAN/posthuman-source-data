@@ -14,10 +14,11 @@ This tab links the Monad-specific AI-agent skill for validator and full-node ope
 ## What It Helps Agents Do
 
 - Operate Monad validators and full nodes on mainnet and testnet.
+- Configure and verify execution events and local WebSocket support when required by release notes.
 - Monitor `monad-bft`, `monad-execution`, `monad-rpc`, OTel metrics, disk pressure, TrieDB, and JSON-RPC health.
 - Confirm `eth_chainId`, local/public height gap, sync state, and recent fatal log patterns.
 - Triage RPC, BFT, execution, statesync, TrieDB, staking, and alert-routing issues.
-- Prepare and verify upgrades.
+- Prepare and verify upgrades, including release-specific RPC feature requirements.
 - Recover safely from local node, snapshot, or storage failures.
 - Use Solonet only for disposable rehearsal and development workflows.
 - Write concise operator reports.
@@ -28,6 +29,9 @@ This tab links the Monad-specific AI-agent skill for validator and full-node ope
 - Testnet chain ID: 10143
 - Token: MON
 - Default JSON-RPC port in official node-ops docs: 8080
+- Default WebSocket port when `monad-rpc --ws-enabled` is used: 8081
+- Execution events are required for WebSocket subscriptions and for `eth_sendRawTransactionSync` support in releases that route that method through execution events, such as testnet v0.14.5
+- Default execution-events directory: `/var/lib/hugetlbfs/user/monad/pagesize-2MB/event-rings`
 - Mainnet public RPC examples: https://rpc.monad.xyz and https://rpc-mainnet.monadinfra.com
 - Testnet public RPC examples: https://testnet-rpc.monad.xyz and https://rpc-testnet.monadinfra.com
 - Main services: `monad-bft`, `monad-execution`, `monad-rpc`, `monad-mpt`, `monad-cruft`, `otelcol`
@@ -54,7 +58,7 @@ For tempnet or Solonet, agents must ask for operator-provided chain ID, RPC, ser
 
 Yes, monitoring is part of the skill.
 
-The skill includes a monitoring setup workflow and `scripts/monad-healthcheck.sh`. The helper supports SSH mode and local mode, custom service names, `--network mainnet`, `--network testnet`, expected chain ID checks, default public RPC selection for mainnet/testnet, height comparison, OTel metrics probing, disk/TrieDB checks, recent log scanning, version checks, and optional staking CLI validator queries.
+The skill includes a monitoring setup workflow and `scripts/monad-healthcheck.sh`. The helper supports SSH mode and local mode, custom service names, `--network mainnet`, `--network testnet`, expected chain ID checks, default public RPC selection for mainnet/testnet, height comparison, OTel metrics probing, disk/TrieDB checks, recent log scanning, version checks, execution-events/WebSocket checks with `--check-exec-events`, and optional staking CLI validator queries.
 
 Minimum monitoring coverage:
 
@@ -64,6 +68,7 @@ Minimum monitoring coverage:
 - fatal/error patterns in BFT, execution, and RPC logs
 - root, home, ledger, and TrieDB storage pressure
 - OTel `/metrics` availability when Prometheus scraping is expected
+- execution-events and WebSocket wiring when release notes require it
 - optional staking CLI validator status when validator ID and CLI inventory are available
 
 Monitoring credentials must stay outside the repository and outside the skill files. Use environment files or the operator's secret manager for Telegram, Slack, webhook, Prometheus, or OTel credentials.
@@ -75,6 +80,8 @@ The skill requires agents to verify live state before claiming health or taking 
 The skill treats `/dev/triedb`, NVMe formatting, `reset-workspace.sh`, hard reset, and snapshot import as destructive. It requires key/config backups and explicit operator approval before data deletion or recovery.
 
 It also warns agents not to use Cosmos SDK assumptions for Monad. There is no Cosmos `unjail`, `valoper`, Tendermint RPC path, or CometBFT missed-signature workflow unless an operator's own tooling explicitly provides an equivalent.
+
+For execution-events/WebSocket enablement, the skill requires backing up `monad-execution` and `monad-rpc` systemd state first, preserving local-only validator exposure by default, and denying external `8081/tcp` unless public WSS was explicitly requested. The expected setup includes a persistent `hugetlbfs` mount, an event-rings directory, `--exec-event-ring` on execution, and `--exec-event-path --ws-enabled` on RPC.
 
 ## How to Use
 
@@ -120,7 +127,8 @@ monad-healthcheck.sh \
   --host <user>@<host> \
   --network testnet \
   --rpc http://127.0.0.1:8080 \
-  --public-rpc https://testnet-rpc.monad.xyz
+  --public-rpc https://testnet-rpc.monad.xyz \
+  --check-exec-events
 ~~~
 
 If you are already on the target host, use local mode:
@@ -135,5 +143,4 @@ monad-healthcheck.sh \
 ## Current Publication
 
 - Repository: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks
-- Current Monad skill package commit: 5b6e94748912a9e56b3301bf5222ac1045ff29da
-
+- Current Monad skill package commit: b49a3982302a1442774841a5bc4eda98c49e787c
