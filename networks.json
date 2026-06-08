@@ -544,9 +544,9 @@
     "website": "https://celestia.org/",
     "codebase": {
       "git_repo": "https://github.com/celestiaorg/celestia-app",
-      "recommended_version": "v6.2.0-mocha",
+      "recommended_version": "v9.0.2-mocha",
       "compatible_versions": [
-        "v6.2.0-mocha"
+        "v9.0.2-mocha"
       ]
     },
     "chain_name": "celestia-app",
@@ -559,11 +559,7 @@
     "chain_id": "mocha-4",
     "endpoints": {
       "rpc": "https://rpc-celestia-testnet.posthuman.digital",
-      "rpc-arch": "https://rpc-celestia-testnet-archive.posthuman.digital",
-      "rest": "https://rest-celestia-testnet.posthuman.digital",
-      "rest-arch": "https://rest-celestia-testnet-archive.posthuman.digital",
-      "grpc": "https://grpc-celestia-testnet.posthuman.digital",
-      "grpc-arch": "https://grpc-celestia-testnet-archive.posthuman.digital",
+      "snapshots": "https://snapshots.posthuman.digital/celestia-testnet/",
       "peer": "c5bc6e85bf763c5a08ed08a238028afe3c18fc4b@peer-celestia-testnet.posthuman.digital:39656"
     },
     "generatedServices": [],

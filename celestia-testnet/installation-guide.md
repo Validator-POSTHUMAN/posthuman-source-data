@@ -61,8 +61,8 @@ rm -rf celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app
 
-# Checkout testnet version
-VERSION="v6.2.5-mocha"
+# Checkout current Mocha testnet version
+VERSION="v9.0.2-mocha"
 git checkout "tags/$VERSION"
 
 # Build and install
@@ -73,7 +73,7 @@ make install
 celestia-appd version
 ```
 
-Expected output: `v6.2.5-mocha`
+Expected output: `9.0.2-mocha`
 
 ---
 
@@ -184,18 +184,34 @@ EOF
 
 ## 8. Download and Apply Snapshot
 
-Testnet snapshots are pruned (~1-2 GB) and updated every ~4 hours:
+Testnet snapshots are pruned and updated roughly every 4 hours. Check the
+current height and build time before restoring:
+
+```bash
+curl -fsSL https://snapshots.posthuman.digital/celestia-testnet/snapshot.json | jq
+```
 
 ```bash
 # Stop service if running
 sudo systemctl stop celestia-appd-testnet 2>/dev/null || true
 
-# Reset data
-celestia-appd tendermint unsafe-reset-all --home "$HOME/.celestia-app" --keep-addr-book
+# Preserve validator signer state if this node has ever signed.
+if [ -f "$HOME/.celestia-app/data/priv_validator_state.json" ]; then
+  cp "$HOME/.celestia-app/data/priv_validator_state.json" "$HOME/.celestia-app/priv_validator_state.json.backup"
+fi
+
+# Replace data with the snapshot
+rm -rf "$HOME/.celestia-app/data"
 
 # Download and extract
 cd "$HOME"
-curl -L https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.zst | zstd -d | tar -xf - -C "$HOME/.celestia-app"
+curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
+  lz4 -dc | tar -xf - -C "$HOME/.celestia-app"
+
+# Restore signer state after extraction. This is mandatory for validators.
+if [ -f "$HOME/.celestia-app/priv_validator_state.json.backup" ]; then
+  mv "$HOME/.celestia-app/priv_validator_state.json.backup" "$HOME/.celestia-app/data/priv_validator_state.json"
+fi
 
 # Verify
 ls -lh "$HOME/.celestia-app/data/"
@@ -371,11 +387,9 @@ sed -i '/WALLET_ADDRESS_TESTNET/d' "$HOME/.bash_profile"
 
 - **Posthuman Snapshots**: https://snapshots.posthuman.digital/celestia-testnet/
 - **Posthuman RPC**: https://rpc-celestia-testnet.posthuman.digital
-- **Posthuman REST**: https://rest-celestia-testnet.posthuman.digital
-- **Posthuman gRPC**: https://grpc-celestia-testnet.posthuman.digital
 - **Discord Faucet**: https://discord.com/invite/celestiacommunity
 - **Official Testnet Docs**: https://docs.celestia.org/nodes/mocha-testnet
 
 ---
 
-**Last Updated**: v6.2.5-mocha | Chain ID: mocha-4
+**Last Updated**: v9.0.2-mocha | Chain ID: mocha-4

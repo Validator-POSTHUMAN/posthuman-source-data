@@ -4,7 +4,8 @@
 **Cadence:** refreshed around every 4 h, available 24/7 via Cloudflare R2  
 **Download:** `https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4`
 
-> Up-to-date height, build time, and checksum are published at `snapshot.json` alongside the archive.
+> Up-to-date height, build time, size, and archive name are published at
+> `snapshot.json` alongside the archive.
 
 ## Quick restore
 
@@ -13,15 +14,22 @@ export CELESTIA_HOME="$HOME/.celestia-app"
 export SERVICE_NAME="celestia-appd"
 
 sudo systemctl stop "${SERVICE_NAME}"
-cp "${CELESTIA_HOME}/data/priv_validator_state.json" "${CELESTIA_HOME}/priv_validator_state.json.backup"
+if [ -f "${CELESTIA_HOME}/data/priv_validator_state.json" ]; then
+  cp "${CELESTIA_HOME}/data/priv_validator_state.json" "${CELESTIA_HOME}/priv_validator_state.json.backup"
+fi
 rm -rf "${CELESTIA_HOME}/data"
 
 curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
   lz4 -dc | tar -xf - -C "${CELESTIA_HOME}"
 
-mv "${CELESTIA_HOME}/priv_validator_state.json.backup" "${CELESTIA_HOME}/data/priv_validator_state.json"
+if [ -f "${CELESTIA_HOME}/priv_validator_state.json.backup" ]; then
+  mv "${CELESTIA_HOME}/priv_validator_state.json.backup" "${CELESTIA_HOME}/data/priv_validator_state.json"
+fi
 sudo systemctl restart "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}" -f
 ```
+
+For validator recovery, preserving and restoring `priv_validator_state.json` is
+mandatory. Never replace it with an older value from a snapshot.
 
 The pipeline keeps the archive pruned and ready for rapid validator or full-node recovery. Browse historical builds at [https://snapshots.posthuman.digital/celestia-testnet/](https://snapshots.posthuman.digital/celestia-testnet/).
 

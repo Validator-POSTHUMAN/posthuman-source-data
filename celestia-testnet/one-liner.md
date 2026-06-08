@@ -15,8 +15,8 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
  screen -S celestia-manager
 ```
 **Current Versions:**
-- 🌐 Mainnet: `v6.2.5` (chain-id: `celestia`)
-- 🧪 Testnet: `v6.2.5-mocha` (chain-id: `mocha-4`)
+- 🌐 Mainnet: `v8.0.8` (chain-id: `celestia`)
+- 🧪 Testnet: `v9.0.2-mocha` (chain-id: `mocha-4`)
 - 🔧 Go: `1.24.1`
 
 ## 📋 Features
@@ -64,12 +64,19 @@ One-click update with version selection.
 **Manual snapshot restore:**
 ```bash
 export CELESTIA_HOME="$HOME/.celestia-app"
-sudo systemctl stop celestia-appd
-cp "${CELESTIA_HOME}/data/priv_validator_state.json" "${CELESTIA_HOME}/priv_validator_state.json.backup"
+export SERVICE_NAME="celestia-appd-testnet"
+
+sudo systemctl stop "${SERVICE_NAME}"
+if [ -f "${CELESTIA_HOME}/data/priv_validator_state.json" ]; then
+  cp "${CELESTIA_HOME}/data/priv_validator_state.json" "${CELESTIA_HOME}/priv_validator_state.json.backup"
+fi
 rm -rf "${CELESTIA_HOME}/data"
-curl -L https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.zst | tar -I zstd -xf - -C "${CELESTIA_HOME}"
-mv "${CELESTIA_HOME}/priv_validator_state.json.backup" "${CELESTIA_HOME}/data/priv_validator_state.json"
-sudo systemctl restart celestia-appd && sudo journalctl -u celestia-appd -f
+curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
+  lz4 -dc | tar -xf - -C "${CELESTIA_HOME}"
+if [ -f "${CELESTIA_HOME}/priv_validator_state.json.backup" ]; then
+  mv "${CELESTIA_HOME}/priv_validator_state.json.backup" "${CELESTIA_HOME}/data/priv_validator_state.json"
+fi
+sudo systemctl restart "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}" -f
 ```
 
 ---
@@ -100,9 +107,7 @@ sudo systemctl restart celestia-appd && sudo journalctl -u celestia-appd -f
 
 ### Testnet (mocha-4)
 - 📊 **Explorer**: https://explorer.posthuman.digital/celestia-testnet
-- 🔌 **RPC**: https://celestia-testnet-rpc.posthuman.digital
-- 🔌 **API**: https://celestia-testnet-api.posthuman.digital
-- 🔌 **gRPC**: celestia-testnet-grpc.posthuman.digital:443
+- 🔌 **RPC**: https://rpc-celestia-testnet.posthuman.digital
 - 💾 **Snapshots**: https://snapshots.posthuman.digital/celestia-testnet/
 - 🌐 **Addrbook**: https://snapshots.posthuman.digital/celestia-testnet/addrbook.json
 
@@ -194,6 +199,6 @@ MIT License - [PostHuman Validator](https://posthuman.digital)
 
 ---
 
-**Version:** 1.1.0 | **Last Updated:** 2025-01-11
+**Version:** 1.1.0 | **Last Updated:** 2026-06-08
 
 🚀 **Happy Node Running!**
