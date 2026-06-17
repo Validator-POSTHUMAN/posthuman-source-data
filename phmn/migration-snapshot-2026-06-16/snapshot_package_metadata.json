@@ -9,6 +9,8 @@
     "PHMN_MIGRATION_FINAL_SNAPSHOT_POLICY.md",
     "distribution_status_summary.csv",
     "distribution_status_summary.json",
+    "osmosis_gap_correction.csv",
+    "osmosis_gap_correction.json",
     "osmosis_phmn_holders_for_distribution.csv",
     "osmosis_phmn_holders_for_distribution.json",
     "phmn_address_lookup.csv",
@@ -25,9 +27,9 @@
   "status_summary": [
     {
       "distribution_status": "eligible_snapshot",
-      "rows": "26008",
-      "amount_micro": "70681128200",
-      "amount_phmn": "70681.128200"
+      "rows": "26009",
+      "amount_micro": "70984952788",
+      "amount_phmn": "70984.952788"
     },
     {
       "distribution_status": "excluded_incident",
@@ -38,8 +40,8 @@
     {
       "distribution_status": "quarantined_unresolved_accounting_gap",
       "rows": "1",
-      "amount_micro": "361054688",
-      "amount_phmn": "361.054688"
+      "amount_micro": "57230100",
+      "amount_phmn": "57.230100"
     },
     {
       "distribution_status": "rerouted_to_subdao",
@@ -54,6 +56,7 @@
     "rerouted_to_subdao rows are sent to the listed SubDAO destination, not to the old source address.",
     "excluded_incident rows are not normal holder allocations.",
     "quarantined_unresolved_accounting_gap is not mapped to a user address.",
-    "Transfers after snapshot publication do not change migration allocation."
+    "Transfers after snapshot publication do not change migration allocation.",
+    "2026-06-17 correction: osmo1z0e05ptv5hpfh4lp54373t86zxquv3y5vkfm5p with 303.824588 PHMN was restored from the unresolved Osmosis bank supply gap; remaining unresolved gap is 57.230100 PHMN."
   ]
 }

@@ -51,6 +51,19 @@ Important columns:
 - snapshot_package_metadata.json - machine-readable package metadata.
 - SHA256SUMS - file checksums.
 
+## 2026-06-17 Osmosis Gap Correction
+
+One Osmosis holder was confirmed by live Osmosis bank balances after publication:
+
+- osmo1z0e05ptv5hpfh4lp54373t86zxquv3y5vkfm5p - 303.824588 PHMN
+
+The original Osmosis denom-owner enumeration missed this row and kept it inside
+the unresolved Osmosis bank supply gap. The public lookup now includes this
+address as eligible_snapshot and reduces the remaining unresolved gap to
+57.230100 PHMN.
+
+See osmosis_gap_correction.csv / .json.
+
 ## Snapshot Rule
 
 The snapshot is based on old PHMN ownership across Juno, Osmosis, Neutron, and

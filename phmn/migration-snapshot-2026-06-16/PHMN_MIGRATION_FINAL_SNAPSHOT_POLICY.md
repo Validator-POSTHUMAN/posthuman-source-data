@@ -191,6 +191,20 @@ Do not rely on old PHMN transfers after the final snapshot publication.
 If you transfer old PHMN after the snapshot is published, the new PHMN
 distribution will still use your balance from the published snapshot.
 
+## 2026-06-17 Osmosis Gap Correction
+
+After publication, an Osmosis holder reported that their PHMN balance was visible
+on Mintscan but absent from the public lookup. Live Osmosis bank balance checks
+confirmed:
+
+- Osmosis address: osmo1z0e05ptv5hpfh4lp54373t86zxquv3y5vkfm5p
+- PHMN IBC denom: ibc/D3B574938631B0A1BA704879020C696E514CFADAA7643CDE4BD5EB010BDE327B
+- Amount: 303.824588 PHMN
+
+This amount was part of the unresolved Osmosis bank supply gap caused by an
+incomplete denom-owner enumeration. The public lookup now restores this holder
+row and leaves 57.230100 PHMN in the unresolved Osmosis gap.
+
 ## Published Files
 
 The following files are the current migration accounting artifacts.
