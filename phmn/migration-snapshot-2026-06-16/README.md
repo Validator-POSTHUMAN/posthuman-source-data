@@ -64,6 +64,23 @@ address as eligible_snapshot and reduces the remaining unresolved gap to
 
 See osmosis_gap_correction.csv / .json.
 
+
+## 2026-06-17 Consistency and Osmosis Pool Audit
+
+The 2026-06-17 correction is now reflected consistently in the expanded rows
+and grouped user-attribution files: the restored Osmosis wallet is a normal
+address row there too, and only 57.230100 PHMN remains as an unresolved Osmosis
+accounting gap.
+
+Additional audit files were added:
+
+- osmosis_reconstructed_current_holders.csv / .json - live current-state
+  Osmosis holder audit from denom-owners, PHMN transfer tx candidates, and the
+  confirmed gap correction.
+- osmosis_phmn_pool_liquidity_audit.csv / .json - Osmosis pools currently
+  holding PHMN. These rows identify pool liquidity that needs a reliable gamm
+  share holder export or app-state/indexer scan for full LP owner attribution.
+
 ## Snapshot Rule
 
 The snapshot is based on old PHMN ownership across Juno, Osmosis, Neutron, and

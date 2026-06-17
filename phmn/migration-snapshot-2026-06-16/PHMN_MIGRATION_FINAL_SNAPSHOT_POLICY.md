@@ -205,6 +205,19 @@ This amount was part of the unresolved Osmosis bank supply gap caused by an
 incomplete denom-owner enumeration. The public lookup now restores this holder
 row and leaves 57.230100 PHMN in the unresolved Osmosis gap.
 
+
+## Osmosis Pool and Remaining Gap Audit
+
+The public lookup expands the confirmed 2026-06-17 Osmosis gap holder into a
+normal address row. The expanded rows and grouped user-attribution files now use
+the same correction.
+
+The remaining unresolved Osmosis amount is 57.230100 PHMN. It is not mapped to a
+user address in the public lookup. Osmosis PHMN pool liquidity is listed in
+osmosis_phmn_pool_liquidity_audit.csv; full LP owner attribution requires a
+reliable gamm share holder export or app-state/indexer scan because the public
+denom-owners query did not expose most gamm/pool/* share owners.
+
 ## Published Files
 
 The following files are the current migration accounting artifacts.
