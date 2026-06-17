@@ -1,0 +1,59 @@
+{
+  "snapshot_date": "2026-06-16",
+  "published_package": "phmn/migration-snapshot-2026-06-16",
+  "token": "PHMN",
+  "decimals": 6,
+  "old_token": "Juno CW20 PHMN",
+  "new_token_plan": "Cosmos Hub TokenFactory PHMN",
+  "files": [
+    "PHMN_MIGRATION_FINAL_SNAPSHOT_POLICY.md",
+    "distribution_status_summary.csv",
+    "distribution_status_summary.json",
+    "osmosis_phmn_holders_for_distribution.csv",
+    "osmosis_phmn_holders_for_distribution.json",
+    "phmn_address_lookup.csv",
+    "phmn_address_lookup.json",
+    "phmn_final_snapshot_expanded_rows.csv",
+    "phmn_final_snapshot_expanded_rows.json",
+    "phmn_final_snapshot_user_attribution.csv",
+    "phmn_final_snapshot_user_attribution.json",
+    "special_addresses.csv",
+    "special_addresses.json",
+    "subdao_reroute_adjustments.csv",
+    "subdao_reroute_adjustments.json"
+  ],
+  "status_summary": [
+    {
+      "distribution_status": "eligible_snapshot",
+      "rows": "26008",
+      "amount_micro": "70681128200",
+      "amount_phmn": "70681.128200"
+    },
+    {
+      "distribution_status": "excluded_incident",
+      "rows": "2",
+      "amount_micro": "17132149313",
+      "amount_phmn": "17132.149313"
+    },
+    {
+      "distribution_status": "quarantined_unresolved_accounting_gap",
+      "rows": "1",
+      "amount_micro": "361054688",
+      "amount_phmn": "361.054688"
+    },
+    {
+      "distribution_status": "rerouted_to_subdao",
+      "rows": "18",
+      "amount_micro": "33647667799",
+      "amount_phmn": "33647.667799"
+    }
+  ],
+  "important_notes": [
+    "Search phmn_address_lookup.csv by old Juno/Osmosis/Neutron/BeeZee address.",
+    "eligible_snapshot rows show the snapshot amount attributed to that source address.",
+    "rerouted_to_subdao rows are sent to the listed SubDAO destination, not to the old source address.",
+    "excluded_incident rows are not normal holder allocations.",
+    "quarantined_unresolved_accounting_gap is not mapped to a user address.",
+    "Transfers after snapshot publication do not change migration allocation."
+  ]
+}

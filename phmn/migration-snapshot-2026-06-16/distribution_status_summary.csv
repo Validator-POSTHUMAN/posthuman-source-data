@@ -1,0 +1,5 @@
+distribution_status,rows,amount_micro,amount_phmn
+eligible_snapshot,26008,70681128200,70681.128200
+excluded_incident,2,17132149313,17132.149313
+quarantined_unresolved_accounting_gap,1,361054688,361.054688
+rerouted_to_subdao,18,33647667799,33647.667799
