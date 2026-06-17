@@ -8,6 +8,8 @@ and BeeZee addresses and see the snapshot amount attributed to each address.
 For migration progress and remaining work before new PHMN distribution, see
 MIGRATION_RECOVERY_CHECKLIST.md.
 
+Russian version: MIGRATION_RECOVERY_CHECKLIST_RU.md.
+
 ## How to Check an Address
 
 Use phmn_address_lookup.csv.
@@ -52,6 +54,8 @@ Important columns:
 - distribution_status_summary.csv / .json - totals by distribution status.
 - MIGRATION_RECOVERY_CHECKLIST.md - public progress checklist for the PHMN
   recovery and new-token distribution process.
+- MIGRATION_RECOVERY_CHECKLIST_RU.md - Russian version of the public progress
+  checklist.
 - PHMN_MIGRATION_FINAL_SNAPSHOT_POLICY.md - human-readable migration policy.
 - snapshot_package_metadata.json - machine-readable package metadata.
 - SHA256SUMS - file checksums.
