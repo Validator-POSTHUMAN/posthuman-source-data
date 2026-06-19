@@ -6,6 +6,8 @@ The map intentionally includes only public infrastructure:
 - public JSON-RPC endpoints and their current DNS edge IPs.
 
 Private validator, sentry, and internal topology addresses must not be added.
+Observed peers are imported only from public Monad peer-discovery records and
+filtered to globally routable addresses.
 """
 
 from __future__ import annotations
@@ -15,9 +17,11 @@ import datetime as dt
 import ipaddress
 import json
 import socket
+import subprocess
 import time
 import urllib.error
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 
@@ -31,6 +35,13 @@ NETWORKS: dict[str, dict[str, Any]] = {
         "network_id": "monad-mainnet",
         "chain_id": "143",
         "config_url": "https://bucket.monadinfra.com/config/mainnet/latest/node.toml",
+        "observed_peer_sources": [
+            {
+                "label": "POSTHUMAN mainnet node public peer-discovery cache",
+                "ssh_host": "ubuntu@5.61.208.27",
+                "path": "/home/monad/monad-bft/config/peers.toml",
+            },
+        ],
         "rpc_endpoints": [
             {
                 "name": "Monad official public RPC",
@@ -57,7 +68,19 @@ NETWORKS: dict[str, dict[str, Any]] = {
         "network_id": "monad-testnet",
         "chain_id": "10143",
         "config_url": "https://bucket.monadinfra.com/config/testnet/latest/node.toml",
+        "observed_peer_sources": [
+            {
+                "label": "POSTHUMAN testnet node public peer-discovery cache",
+                "ssh_host": "ubuntu@149.86.227.103",
+                "path": "/home/monad/monad-bft/config/peers.toml",
+            },
+        ],
         "rpc_endpoints": [
+            {
+                "name": "Monad official testnet public RPC",
+                "url": "https://testnet-rpc.monad.xyz",
+                "expected_chain_id": "0x279f",
+            },
             {
                 "name": "POSTHUMAN Monad Testnet RPC Gateway edge",
                 "url": "https://rpc-monad-testnet.posthuman.digital:443",
@@ -78,6 +101,13 @@ NETWORKS: dict[str, dict[str, Any]] = {
 GEO_FIELDS = (
     "status,message,country,countryCode,regionName,city,lat,lon,timezone,isp,as,query"
 )
+
+EXCLUDED_PUBLIC_IPS = {
+    # POSTHUMAN validator hosts. The map should not publish our validator
+    # machine IPs as discovered peer topology.
+    "5.61.208.27",
+    "149.86.227.103",
+}
 
 
 def utc_now() -> str:
@@ -126,6 +156,44 @@ def parse_bootstrap_peers(toml_text: str) -> list[dict[str, str]]:
     return peers
 
 
+def parse_peer_blocks(toml_text: str) -> list[dict[str, str]]:
+    peers: list[dict[str, str]] = []
+    current: dict[str, str] | None = None
+
+    for raw_line in toml_text.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line in {"[[peers]]", "[[bootstrap.peers]]"}:
+            if current and current.get("address"):
+                peers.append(current)
+            current = {}
+            continue
+        if current is None or "=" not in line:
+            continue
+        key, value = [part.strip() for part in line.split("=", 1)]
+        value = value.split("#", 1)[0].strip().strip('"')
+        if key in {"address", "auth_port", "record_seq_num", "secp256k1_pubkey"}:
+            current[key] = value
+
+    if current and current.get("address"):
+        peers.append(current)
+    return peers
+
+
+def fetch_observed_peer_source(source: dict[str, str]) -> str:
+    cmd = [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        source["ssh_host"],
+        f"sudo -n cat {source['path']}",
+    ]
+    return subprocess.check_output(cmd, text=True, timeout=30)
+
+
 def split_endpoint(endpoint: str) -> tuple[str, int]:
     host, port = endpoint.rsplit(":", 1)
     return host.strip("[]"), int(port)
@@ -138,6 +206,14 @@ def tcp_latency_ms(host: str, port: int, timeout: float = 2.5) -> int | None:
             return int((time.perf_counter() - start) * 1000)
     except OSError:
         return None
+
+
+def is_publishable_ip(host: str) -> bool:
+    try:
+        ip = ipaddress.ip_address(host)
+    except ValueError:
+        return False
+    return ip.is_global and host not in EXCLUDED_PUBLIC_IPS
 
 
 def resolve_host(host: str) -> list[str]:
@@ -175,6 +251,42 @@ def rpc_health(url: str, expected_chain_id: str) -> tuple[str, int | None, str |
         return status, latency, result
     except (OSError, urllib.error.URLError, json.JSONDecodeError):
         return "offline", None, None
+
+
+def fetch_geo_batch(ips: list[str]) -> dict[str, dict[str, Any]]:
+    if not ips:
+        return {}
+    url = f"http://ip-api.com/batch?fields={GEO_FIELDS}"
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(ips).encode(),
+        headers={
+            "Content-Type": "application/json",
+            "User-Agent": "POSTHUMAN-monad-map-updater/1.1",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=20) as response:
+            rows = json.loads(response.read().decode("utf-8"))
+    except (OSError, urllib.error.URLError, json.JSONDecodeError):
+        return {}
+    result: dict[str, dict[str, Any]] = {}
+    if not isinstance(rows, list):
+        return result
+    for row in rows:
+        if isinstance(row, dict) and row.get("status") == "success" and row.get("query"):
+            result[str(row["query"])] = row
+    return result
+
+
+def prime_geo_cache(ips: list[str], cache: dict[str, dict[str, Any]]) -> None:
+    missing = [ip for ip in dict.fromkeys(ips) if ip not in cache]
+    for start in range(0, len(missing), 100):
+        chunk = missing[start : start + 100]
+        cache.update(fetch_geo_batch(chunk))
+        if start + 100 < len(missing):
+            time.sleep(1)
 
 
 def geo_lookup(ip: str, cache: dict[str, dict[str, Any]]) -> dict[str, Any]:
@@ -221,15 +333,33 @@ def source_entries(config_url: str, rpc_endpoints: list[dict[str, Any]]) -> list
     return entries
 
 
+def check_peer_latencies(peers: list[dict[str, Any]]) -> dict[str, int | None]:
+    result: dict[str, int | None] = {}
+    with ThreadPoolExecutor(max_workers=64) as executor:
+        futures = {
+            executor.submit(tcp_latency_ms, peer["host"], peer["port"], 1.5): peer["endpoint"]
+            for peer in peers
+        }
+        for future in as_completed(futures):
+            endpoint = futures[future]
+            try:
+                result[endpoint] = future.result()
+            except Exception:
+                result[endpoint] = None
+    return result
+
+
 def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[str, Any]]) -> dict[str, Any]:
     now = utc_now()
     config_text = fetch_text(cfg["config_url"])
     bootstrap_peers = parse_bootstrap_peers(config_text)
     points: list[dict[str, Any]] = []
+    geo_ips: list[str] = []
 
     for idx, peer in enumerate(bootstrap_peers, start=1):
         host, port = split_endpoint(peer["address"])
         latency = tcp_latency_ms(host, port)
+        geo_ips.append(host)
         point = {
             "id": f"{cfg['network_id']}-bootstrap-{idx}",
             "network_id": cfg["network_id"],
@@ -258,6 +388,7 @@ def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[
         if not host:
             continue
         ips = resolve_host(host)
+        geo_ips.extend(ips)
         for ip in ips:
             rpc_count += 1
             point = {
@@ -282,6 +413,59 @@ def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[
             apply_geo(point, ip, geo_cache)
             points.append(point)
 
+    observed_candidates: dict[str, dict[str, Any]] = {}
+    for source in cfg.get("observed_peer_sources", []):
+        try:
+            source_text = fetch_observed_peer_source(source)
+        except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired):
+            continue
+        for peer in parse_peer_blocks(source_text):
+            try:
+                host, port = split_endpoint(peer["address"])
+            except (ValueError, TypeError):
+                continue
+            if not is_publishable_ip(host):
+                continue
+            observed_candidates[peer["address"]] = {
+                "endpoint": peer["address"],
+                "host": host,
+                "port": port,
+                "auth_port": peer.get("auth_port", ""),
+                "record_seq_num": peer.get("record_seq_num", ""),
+                "source_label": source["label"],
+            }
+
+    observed_peers = sorted(observed_candidates.values(), key=lambda item: item["endpoint"])
+    geo_ips.extend(peer["host"] for peer in observed_peers)
+    prime_geo_cache(geo_ips, geo_cache)
+    peer_latencies = check_peer_latencies(observed_peers)
+
+    observed_count = 0
+    for peer in observed_peers:
+        observed_count += 1
+        latency = peer_latencies.get(peer["endpoint"])
+        point = {
+            "id": f"{cfg['network_id']}-observed-peer-{observed_count}",
+            "network_id": cfg["network_id"],
+            "type": "observed_peer",
+            "name": f"Observed public peer {observed_count}",
+            "status": "online" if latency is not None else "observed",
+            "endpoint": peer["endpoint"],
+            "ip": peer["host"],
+            "port": str(peer["port"]),
+            "latency_ms": latency,
+            "source": peer["source_label"],
+            "last_checked_at": now,
+            "description": "Publicly advertised Monad peer discovered through peer discovery. POSTHUMAN validator host IPs and non-global addresses are excluded.",
+            "metadata": {
+                "auth_port": peer["auth_port"],
+                "record_seq_num": peer["record_seq_num"],
+                "collection": "public peer-discovery cache",
+            },
+        }
+        apply_geo(point, peer["host"], geo_cache)
+        points.append(point)
+
     countries = {p.get("country_code") for p in points if p.get("country_code")}
     providers = {p.get("provider") for p in points if p.get("provider")}
     return {
@@ -293,13 +477,15 @@ def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[
         "privacy": {
             "raw_validator_ips": "not published",
             "sentry_topology": "not published",
-            "public_endpoints": "RPC and official bootstrap peers only",
-            "note": "The map uses public RPC DNS and official Monad bootstrap peers. Private validator/sentry IPs from logs are intentionally excluded.",
+            "public_endpoints": "RPC and official bootstrap peers",
+            "observed_public_peers": "globally routable peers from Monad peer-discovery cache",
+            "note": "The map uses public RPC DNS, official Monad bootstrap peers, and globally routable observed peer-discovery records. Private validator/sentry IPs from logs are intentionally excluded.",
         },
         "sources": source_entries(cfg["config_url"], cfg["rpc_endpoints"]),
         "summary": {
             "points": len(points),
             "bootstrap_peers": len(bootstrap_peers),
+            "observed_peers": observed_count,
             "rpc_endpoints": rpc_count,
             "countries": len(countries),
             "providers": len(providers),
@@ -324,6 +510,7 @@ def main() -> int:
             print(
                 f"{name}: points={data['summary']['points']} "
                 f"bootstrap={data['summary']['bootstrap_peers']} "
+                f"observed={data['summary']['observed_peers']} "
                 f"rpc={data['summary']['rpc_endpoints']}"
             )
             continue
