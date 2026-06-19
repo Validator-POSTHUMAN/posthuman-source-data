@@ -42,6 +42,14 @@ NETWORKS: dict[str, dict[str, Any]] = {
                 "path": "/home/monad/monad-bft/config/peers.toml",
             },
         ],
+        "log_peer_sources": [
+            {
+                "label": "POSTHUMAN mainnet monad-bft live log remote_addr endpoints",
+                "ssh_host": "ubuntu@5.61.208.27",
+                "unit": "monad-bft",
+                "lines": 50000,
+            },
+        ],
         "validator_endpoints": [
             {
                 "name": "POSTHUMAN Monad mainnet validator",
@@ -160,6 +168,14 @@ NETWORKS: dict[str, dict[str, Any]] = {
                 "label": "POSTHUMAN testnet node public peer-discovery cache",
                 "ssh_host": "ubuntu@149.86.227.103",
                 "path": "/home/monad/monad-bft/config/peers.toml",
+            },
+        ],
+        "log_peer_sources": [
+            {
+                "label": "POSTHUMAN testnet monad-bft live log remote_addr endpoints",
+                "ssh_host": "ubuntu@149.86.227.103",
+                "unit": "monad-bft",
+                "lines": 50000,
             },
         ],
         "validator_endpoints": [
@@ -316,6 +332,27 @@ def fetch_observed_peer_source(source: dict[str, str]) -> str:
         f"sudo -n cat {source['path']}",
     ]
     return subprocess.check_output(cmd, text=True, timeout=30)
+
+
+def fetch_log_peer_source(source: dict[str, Any]) -> list[str]:
+    unit = source.get("unit", "monad-bft")
+    lines = int(source.get("lines", 50000))
+    remote_cmd = (
+        f"sudo -n journalctl -u {unit} -n {lines} --no-pager 2>/dev/null "
+        r"| grep -Eo '([0-9]{1,3}.){3}[0-9]{1,3}:[0-9]{2,5}' "
+        "| sort -u"
+    )
+    cmd = [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        source["ssh_host"],
+        remote_cmd,
+    ]
+    output = subprocess.check_output(cmd, text=True, timeout=60)
+    return [line.strip() for line in output.splitlines() if line.strip()]
 
 
 def split_endpoint(endpoint: str) -> tuple[str, int]:
@@ -625,6 +662,62 @@ def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[
         apply_geo(point, peer["host"], geo_cache)
         points.append(point)
 
+    existing_endpoints = {point.get("endpoint") for point in points}
+    log_candidates: dict[str, dict[str, Any]] = {}
+    for source in cfg.get("log_peer_sources", []):
+        try:
+            endpoints = fetch_log_peer_source(source)
+        except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired):
+            continue
+        for endpoint in endpoints:
+            if endpoint in existing_endpoints:
+                continue
+            try:
+                host, port = split_endpoint(endpoint)
+            except (ValueError, TypeError):
+                continue
+            try:
+                ip = ipaddress.ip_address(host)
+            except ValueError:
+                continue
+            if not ip.is_global:
+                continue
+            log_candidates[endpoint] = {
+                "endpoint": endpoint,
+                "host": host,
+                "port": port,
+                "source_label": source["label"],
+            }
+
+    log_peers = sorted(log_candidates.values(), key=lambda item: item["endpoint"])
+    geo_ips.extend(peer["host"] for peer in log_peers)
+    prime_geo_cache(geo_ips, geo_cache)
+    log_latencies = check_peer_latencies(log_peers)
+
+    log_observed_count = 0
+    for peer in log_peers:
+        log_observed_count += 1
+        latency = log_latencies.get(peer["endpoint"])
+        point = {
+            "id": f"{cfg['network_id']}-log-observed-peer-{log_observed_count}",
+            "network_id": cfg["network_id"],
+            "type": "log_observed_peer",
+            "name": f"Log observed public peer {log_observed_count}",
+            "status": "online" if latency is not None else "observed",
+            "endpoint": peer["endpoint"],
+            "ip": peer["host"],
+            "port": str(peer["port"]),
+            "latency_ms": latency,
+            "source": peer["source_label"],
+            "last_checked_at": now,
+            "description": "Public endpoint observed in live Monad wireauth logs. Non-global addresses are excluded.",
+            "metadata": {
+                "collection": "public live log remote_addr endpoint",
+            },
+        }
+        apply_geo(point, peer["host"], geo_cache)
+        points.append(point)
+
     countries = {p.get("country_code") for p in points if p.get("country_code")}
     providers = {p.get("provider") for p in points if p.get("provider")}
     return {
@@ -639,7 +732,8 @@ def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[
             "public_endpoints": "RPC and official bootstrap peers",
             "validator_endpoints": "operator-approved public validator p2p endpoints",
             "observed_public_peers": "globally routable peers from Monad peer-discovery cache",
-            "note": "The map uses public RPC DNS, official Monad bootstrap peers, operator-approved public validator endpoints, and globally routable observed peer-discovery records. Non-global addresses are intentionally excluded.",
+            "log_observed_public_peers": "globally routable endpoints extracted from live Monad logs",
+            "note": "The map uses public RPC DNS, official Monad bootstrap peers, operator-approved public validator endpoints, globally routable observed peer-discovery records, and globally routable live log endpoints. Non-global addresses are intentionally excluded.",
         },
         "sources": source_entries(cfg["config_url"], cfg["rpc_endpoints"]),
         "summary": {
@@ -647,6 +741,7 @@ def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[
             "bootstrap_peers": len(bootstrap_peers),
             "validators": validator_count,
             "observed_peers": observed_count,
+            "log_observed_peers": log_observed_count,
             "rpc_endpoints": rpc_count,
             "countries": len(countries),
             "providers": len(providers),
@@ -673,6 +768,7 @@ def main() -> int:
                 f"bootstrap={data['summary']['bootstrap_peers']} "
                 f"validators={data['summary']['validators']} "
                 f"observed={data['summary']['observed_peers']} "
+                f"log_observed={data['summary']['log_observed_peers']} "
                 f"rpc={data['summary']['rpc_endpoints']}"
             )
             continue
