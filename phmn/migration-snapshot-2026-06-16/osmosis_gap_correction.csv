@@ -1,2 +1,0 @@
-source_chain,source_address,normalized_cosmos_address,denom,amount_micro,amount_phmn,evidence,evidence_urls
-osmosis,osmo1z0e05ptv5hpfh4lp54373t86zxquv3y5vkfm5p,cosmos1z0e05ptv5hpfh4lp54373t86zxquv3y5yd6tzn,ibc/D3B574938631B0A1BA704879020C696E514CFADAA7643CDE4BD5EB010BDE327B,303824588,303.824588,live Osmosis bank balances endpoint confirmed on 2026-06-17; original osmosisd denom-owners enumeration missed this holder and included the amount in __OSMOSIS_DENOM_OWNER_GAP__.,https://lcd.osmosis.zone/cosmos/bank/v1beta1/balances/osmo1z0e05ptv5hpfh4lp54373t86zxquv3y5vkfm5p

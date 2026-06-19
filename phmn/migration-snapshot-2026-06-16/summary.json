@@ -1,0 +1,48 @@
+{
+  "source_package": "phmn/migration-snapshot-2026-06-16",
+  "source_git_commit": "95941d5",
+  "version": "v2_olim_excluded",
+  "denom": "DENOM_TBD",
+  "recipient_rows": 23456,
+  "total_micro": "131072000000",
+  "total_phmn": "131072.000000",
+  "expected_cap_micro": "131072000000",
+  "expected_cap_phmn": "131072.000000",
+  "strategic_subdao_recipient": "cosmos146s5j3t7gh2g37ywm47dp8avhesu2htvjjaxq7z55e7xj0rq0k8q5qnjjy",
+  "olim_override_groups": [
+    "olim_linked_juno187",
+    "olim_operator_16ts5_cluster",
+    "olim_operator_cw347_cluster",
+    "olim_operator_f68m5_cluster",
+    "olim_operator_js02_cluster",
+    "olim_operator_mnfft_cluster",
+    "olim_operator_qa5z_cluster",
+    "olim_same_key"
+  ],
+  "olim_override_rows": 1,
+  "olim_override_micro": "300009116",
+  "olim_override_phmn": "300.009116",
+  "olim_override_sources": [
+    {
+      "source_chain": "juno",
+      "source_address": "juno1eltl6qu6y538vhux3mk3pjpn7redx8najm4u3e",
+      "cosmos_address": "cosmos1eltl6qu6y538vhux3mk3pjpn7redx8nayfk8k9",
+      "amount_micro": "300009116",
+      "amount_phmn": "300.009116",
+      "source_type": "das_staked",
+      "original_status": "eligible_snapshot"
+    }
+  ],
+  "rules_applied": [
+    "eligible_snapshot -> effective_destination_cosmos_address, except Olim override",
+    "Olim special-address clusters -> Strategic SubDAO treasury",
+    "rerouted_to_subdao -> effective_destination_cosmos_address",
+    "excluded_incident -> Strategic SubDAO treasury",
+    "quarantined_unresolved_accounting_gap -> Strategic SubDAO treasury",
+    "remaining capacity to 131,072 PHMN -> Strategic SubDAO treasury"
+  ],
+  "warnings": [
+    "DENOM_TBD must be replaced before real broadcast.",
+    "This v2 supersedes the earlier final-candidate package for review because operator confirmed Olim exclusion."
+  ]
+}
