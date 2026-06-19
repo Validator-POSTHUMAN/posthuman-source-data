@@ -21,7 +21,7 @@ English version: [README.md](README.md)
 ## Файлы
 
 - `phmn_final_distribution_broadcast_candidate.csv` - broadcast-shaped distribution candidate с колонками `recipient_address,amount_micro,amount_phmn,denom`.
-- `phmn_final_distribution_broadcast_candidate_breakdown.csv` - человекочитаемая таблица для публичного ревью с колонками `recipient_address,source_addresses,amount_phmn,note`. Суммы показаны в PHMN с 6 знаками после точки, без micro units и без denom placeholders. Колонка `source_addresses` показывает, из какого old PHMN address или addresses получилась recipient row. Колонка `note` пустая для обычных пользовательских строк и объясняет крупные SubDAO treasury строки.
+- `phmn_final_distribution_broadcast_candidate_breakdown.csv` - человекочитаемая таблица для публичного ревью с колонками `source_addresses,recipient_address,amount_phmn,note`. Суммы показаны в PHMN с 6 знаками после точки, без micro units и без denom placeholders. Колонка `source_addresses` показывает, из какого old PHMN address или addresses получилась recipient row. Колонка `note` объясняет строки с несколькими source addresses, все allocations больше 100 PHMN и крупные SubDAO treasury строки.
 - `phmn_old_addresses_not_receiving_new_phmn.csv` - old PHMN source addresses или accounting rows, которые не получают новый PHMN на старый адрес, с причиной и destination/handling.
 - `PHMN_MIGRATION_FINAL_RULES.md` - финальные правила миграции, по которым собран candidate.
 - `summary.json` - machine-readable summary по totals и applied rules.
