@@ -67,8 +67,8 @@ change the PHMN totals.
 Old treasury, SubDAO, and marked core-team source balances are not sent back to
 the old source addresses.
 
-They are rerouted to the new SubDAO treasury addresses listed in the candidate
-breakdown.
+They are rerouted to the new SubDAO treasury addresses listed in the
+distribution candidate and the old-address exclusion/reroute list.
 
 ### 5. Unresolved Osmosis Accounting Gap
 

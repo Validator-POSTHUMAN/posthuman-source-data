@@ -21,7 +21,7 @@ English version: [README.md](README.md)
 ## Файлы
 
 - `phmn_final_distribution_broadcast_candidate.csv` - broadcast-shaped distribution candidate с колонками `recipient_address,amount_micro,amount_phmn,denom`.
-- `phmn_final_distribution_broadcast_candidate_breakdown.csv` - breakdown для проверки: какие source rows и правила привели к итоговым recipient totals.
+- `phmn_final_distribution_broadcast_candidate_breakdown.csv` - человекочитаемая таблица для публичного ревью только с колонками `recipient_address,amount_phmn`. Суммы показаны в PHMN с 6 знаками после точки, без micro units и без denom placeholders.
 - `phmn_old_addresses_not_receiving_new_phmn.csv` - old PHMN source addresses или accounting rows, которые не получают новый PHMN на старый адрес, с причиной и destination/handling.
 - `PHMN_MIGRATION_FINAL_RULES.md` - финальные правила миграции, по которым собран candidate.
 - `summary.json` - machine-readable summary по totals и applied rules.
