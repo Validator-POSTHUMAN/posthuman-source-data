@@ -2,6 +2,8 @@
 
 This directory is the current public review package for the new PHMN migration.
 
+Russian version: [README_RU.md](README_RU.md)
+
 It supersedes the earlier audit-only migration snapshot package. The files here
 are intentionally limited to the final distribution candidate, the review
 breakdown, the old-address exclusion/reroute list, final rules, summary, and
