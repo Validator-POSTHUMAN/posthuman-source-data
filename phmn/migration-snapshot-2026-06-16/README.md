@@ -30,8 +30,10 @@ broadcast.
   distribution candidate with columns:
   `recipient_address,amount_micro,amount_phmn,denom`.
 - `phmn_final_distribution_broadcast_candidate_breakdown.csv` - human-readable
-  public review table with only `recipient_address,amount_phmn`. Amounts are
+  public review table with `recipient_address,amount_phmn,note`. Amounts are
   shown in PHMN with 6 decimal places, without micro units or denom placeholders.
+  The `note` column is blank for normal user rows and explains the large
+  SubDAO treasury rows.
 - `phmn_old_addresses_not_receiving_new_phmn.csv` - old PHMN source addresses
   or accounting rows that do not receive new PHMN on the old address, with the
   reason and destination/handling.
