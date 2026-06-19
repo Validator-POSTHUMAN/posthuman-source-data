@@ -42,10 +42,42 @@ NETWORKS: dict[str, dict[str, Any]] = {
                 "path": "/home/monad/monad-bft/config/peers.toml",
             },
         ],
+        "validator_endpoints": [
+            {
+                "name": "POSTHUMAN Monad mainnet validator",
+                "endpoint": "5.61.208.27:8000",
+                "source": "POSTHUMAN public validator host",
+            },
+        ],
         "rpc_endpoints": [
             {
                 "name": "Monad official public RPC",
                 "url": "https://rpc.monad.xyz",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "Monad official public RPC 1",
+                "url": "https://rpc1.monad.xyz",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "Monad official public RPC 2",
+                "url": "https://rpc2.monad.xyz",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "Monad official public RPC 3",
+                "url": "https://rpc3.monad.xyz",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "Monad official public RPC 4",
+                "url": "https://rpc4.monad.xyz",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "MonadInfra public RPC",
+                "url": "https://rpc-mainnet.monadinfra.com",
                 "expected_chain_id": "0x8f",
             },
             {
@@ -59,6 +91,61 @@ NETWORKS: dict[str, dict[str, Any]] = {
                 "url": "https://publicendpoints.com/evm/evm-143/rpc",
                 "expected_chain_id": "0x8f",
                 "cloudflare_anycast": True,
+            },
+            {
+                "name": "dRPC Monad Mainnet",
+                "url": "https://monad-mainnet.drpc.org",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "OnFinality Monad Mainnet public RPC",
+                "url": "https://monad-mainnet.api.onfinality.io/public",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "Tatum Monad Mainnet gateway",
+                "url": "https://monad-mainnet.gateway.tatum.io",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "Huginn Monad Mainnet RPC",
+                "url": "https://monad-rpc.huginn.tech",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "BloXroute Monad Mainnet RPC",
+                "url": "https://monad.rpc.blxrbdn.com",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "SpiderNode Monad Mainnet RPC",
+                "url": "https://monad-mainnet-rpc.spidernode.net",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "OriginStake Monad Mainnet RPC",
+                "url": "https://infra.originstake.com/monad/evm",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "Sentio Monad Mainnet RPC",
+                "url": "https://monad-mainnet.rpc.sentio.xyz",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "SwiftNodes Monad Mainnet RPC",
+                "url": "https://rpc.swiftnodes.io/rpc/monad",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "SynergyNodes Monad Mainnet RPC",
+                "url": "https://monad-rpc.synergynodes.com",
+                "expected_chain_id": "0x8f",
+            },
+            {
+                "name": "HTW Monad Mainnet RPC",
+                "url": "https://gm.monad.at.htw.tech",
+                "expected_chain_id": "0x8f",
             },
         ],
     },
@@ -75,10 +162,22 @@ NETWORKS: dict[str, dict[str, Any]] = {
                 "path": "/home/monad/monad-bft/config/peers.toml",
             },
         ],
+        "validator_endpoints": [
+            {
+                "name": "POSTHUMAN Monad testnet validator",
+                "endpoint": "149.86.227.103:8000",
+                "source": "POSTHUMAN public validator host",
+            },
+        ],
         "rpc_endpoints": [
             {
                 "name": "Monad official testnet public RPC",
                 "url": "https://testnet-rpc.monad.xyz",
+                "expected_chain_id": "0x279f",
+            },
+            {
+                "name": "MonadInfra testnet public RPC",
+                "url": "https://rpc-testnet.monadinfra.com",
                 "expected_chain_id": "0x279f",
             },
             {
@@ -92,6 +191,31 @@ NETWORKS: dict[str, dict[str, Any]] = {
                 "url": "https://publicendpoints.com/evm/evm-10143/rpc",
                 "expected_chain_id": "0x279f",
                 "cloudflare_anycast": True,
+            },
+            {
+                "name": "dRPC Monad Testnet",
+                "url": "https://monad-testnet.drpc.org",
+                "expected_chain_id": "0x279f",
+            },
+            {
+                "name": "OnFinality Monad Testnet public RPC",
+                "url": "https://monad-testnet.api.onfinality.io/public",
+                "expected_chain_id": "0x279f",
+            },
+            {
+                "name": "Tatum Monad Testnet gateway",
+                "url": "https://monad-testnet.gateway.tatum.io",
+                "expected_chain_id": "0x279f",
+            },
+            {
+                "name": "Huginn Monad Testnet RPC",
+                "url": "https://monad-testnet-rpc.huginn.tech",
+                "expected_chain_id": "0x279f",
+            },
+            {
+                "name": "Ankr Monad Testnet RPC",
+                "url": "https://rpc.ankr.com/monad_testnet",
+                "expected_chain_id": "0x279f",
             },
         ],
     },
@@ -413,6 +537,41 @@ def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[
             apply_geo(point, ip, geo_cache)
             points.append(point)
 
+    validator_count = 0
+    for validator in cfg.get("validator_endpoints", []):
+        try:
+            host, port = split_endpoint(validator["endpoint"])
+        except (ValueError, TypeError):
+            continue
+        try:
+            validator_ip = ipaddress.ip_address(host)
+        except ValueError:
+            continue
+        if not validator_ip.is_global:
+            continue
+        validator_count += 1
+        latency = tcp_latency_ms(host, port)
+        geo_ips.append(host)
+        point = {
+            "id": f"{cfg['network_id']}-validator-{validator_count}",
+            "network_id": cfg["network_id"],
+            "type": "validator",
+            "name": validator["name"],
+            "status": "online" if latency is not None else "unknown",
+            "endpoint": validator["endpoint"],
+            "ip": host,
+            "port": str(port),
+            "latency_ms": latency,
+            "source": validator.get("source", "public validator endpoint"),
+            "last_checked_at": now,
+            "description": "Public validator p2p endpoint added by operator request.",
+            "metadata": {
+                "collection": "public validator endpoint",
+            },
+        }
+        apply_geo(point, host, geo_cache)
+        points.append(point)
+
     observed_candidates: dict[str, dict[str, Any]] = {}
     for source in cfg.get("observed_peer_sources", []):
         try:
@@ -478,13 +637,15 @@ def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[
             "raw_validator_ips": "not published",
             "sentry_topology": "not published",
             "public_endpoints": "RPC and official bootstrap peers",
+            "validator_endpoints": "operator-approved public validator p2p endpoints",
             "observed_public_peers": "globally routable peers from Monad peer-discovery cache",
-            "note": "The map uses public RPC DNS, official Monad bootstrap peers, and globally routable observed peer-discovery records. Private validator/sentry IPs from logs are intentionally excluded.",
+            "note": "The map uses public RPC DNS, official Monad bootstrap peers, operator-approved public validator endpoints, and globally routable observed peer-discovery records. Non-global addresses are intentionally excluded.",
         },
         "sources": source_entries(cfg["config_url"], cfg["rpc_endpoints"]),
         "summary": {
             "points": len(points),
             "bootstrap_peers": len(bootstrap_peers),
+            "validators": validator_count,
             "observed_peers": observed_count,
             "rpc_endpoints": rpc_count,
             "countries": len(countries),
@@ -510,6 +671,7 @@ def main() -> int:
             print(
                 f"{name}: points={data['summary']['points']} "
                 f"bootstrap={data['summary']['bootstrap_peers']} "
+                f"validators={data['summary']['validators']} "
                 f"observed={data['summary']['observed_peers']} "
                 f"rpc={data['summary']['rpc_endpoints']}"
             )
