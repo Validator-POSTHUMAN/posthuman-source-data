@@ -438,7 +438,7 @@
   },
   {
     "name": "stargaze",
-    "type": "mainnet",
+    "type": "archive",
     "title": "Stargaze",
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/stargaze/images/stars.svg",
     "stake": "https://explorer.posthuman.digital/stargaze/staking/starsvaloper14ftwwcfvhnp3qvxawesjan5duh8rmrkrzdvquy",
@@ -637,7 +637,7 @@
   },
   {
     "name": "kyve",
-    "type": "mainnet",
+    "type": "archive",
     "title": "Kyve",
     "website": "https://kyve.network/",
     "twitter": "https://x.com/KYVENetwork",
@@ -1080,7 +1080,7 @@
   },
   {
     "name": "sahara-testnet",
-    "type": "testnet",
+    "type": "archive",
     "title": "Sahara AI Testnet",
     "website": "https://saharalabs.ai/",
     "twitter": "https://x.com/SaharaLabsAI",
