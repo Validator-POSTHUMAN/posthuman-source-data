@@ -512,9 +512,10 @@
     "daemon_name": "celestia-appd",
     "codebase": {
       "git_repo": "https://github.com/celestiaorg/celestia-app",
-      "recommended_version": "v6.2.5",
+      "recommended_version": "v8.0.8",
       "compatible_versions": [
-        "v6.2.5"
+        "v8.0.8",
+        "v9.0.4"
       ]
     },
     "chain_id": "celestia",

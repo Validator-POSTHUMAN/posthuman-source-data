@@ -1,202 +1,115 @@
-# Celestia — One-Liner Setup Script
+# Celestia — One-Liner Manager
 
-Automated installation and management for Celestia nodes (Mainnet & Testnet) by [PostHuman Validator](https://posthuman.digital).
+POSTHUMAN maintains a helper script for installing and managing Celestia
+consensus and Data Availability nodes.
 
----
+## Repository
 
-## 🚀 One-Liner Install & Run
+```text
+https://github.com/Validator-POSTHUMAN/celestia-oneliner
+```
 
-**Quick run (auto-cleanup):**
+Run:
+
 ```bash
 bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh)"
 ```
 
-**Use screen (persistent session):**
+For a persistent terminal:
+
 ```bash
 screen -S celestia-manager
+bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh)"
 ```
 
-**Current Versions:**
-- 🌐 Mainnet: `v6.2.5` (chain-id: `celestia`)
-- 🧪 Testnet: `v6.2.5-mocha` (chain-id: `mocha-4`)
-- 🔧 Go: `1.24.1`
----
+## Current Version Matrix
 
-## 📋 Features
+- Mainnet chain ID: `celestia`
+- Active consensus app version: `v8.0.8`
+- Published app v9 release: `v9.0.4`
+- Signaled app v9 height: `11771698`
+- Celestia DA node version: `v0.31.3`
+- Go: `1.24.1+`
 
-### 1️⃣ Install Node
-**Consensus Nodes:**
-- Pruned Node (Indexer On/Off) — for validators
-- Archive Node (Indexer On/Off) — full history
+Before installing, check whether mainnet has already passed the app v9 upgrade
+height:
 
-### 2️⃣ Update Node
-One-click update with version selection.
+```bash
+curl -fsS https://celestia-rpc.publicnode.com:443/status | \
+  jq -r '.result.sync_info.latest_block_height'
+```
 
-### 3️⃣ Node Operations
-- Node info, snapshot installation
-- Firewall configuration
-- RPC/gRPC/API toggle
-- Delete node
+If the one-liner default version lags behind this page, override versions
+explicitly:
 
-### 4️⃣ Validator Operations
-- Create wallet & validator
-- Check balance & validator info
-- Delegate/Unbond tokens
-- Unjail validator
+```bash
+export NETWORK_TYPE=mainnet
+export APP_VERSION=v8.0.8
+export BRIDGE_VERSION=v0.31.3
 
-### 5️⃣ Data Availability Nodes ⭐
-**NEW: Complete DA Layer Support**
+bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh)"
+```
 
-**Install & Manage:**
-- 🌉 **Bridge Node** — DA layer bridge (requires Core RPC + TIA tokens)
-- 💾 **Full Storage Node** — Complete data storage (requires Core RPC)
-- 💡 **Light Node** — Lightweight verification (no RPC needed)
+After app v9 activates, use:
 
-**Access:** Main Menu → Option 5 → Option 1 (Install DA Node)
+```bash
+export APP_VERSION=v9.0.4
+```
 
----
+## What the Manager Covers
 
-## 💾 Snapshots
+- Consensus node install and update.
+- Pruned or archive node profile.
+- Snapshot restore.
+- RPC/API/gRPC exposure controls.
+- Firewall helper.
+- Validator wallet and validator transaction helpers.
+- Data Availability nodes:
+  - bridge node
+  - full storage node
+  - light node
 
-**PostHuman Snapshots:**
-- 📍 Mainnet: https://snapshots.posthuman.digital/celestia-mainnet/
-- 📍 Testnet: https://snapshots.posthuman.digital/celestia-testnet/
-- ⏱️ Updated roughly every 4 hours
-- 🌐 Fast worldwide via Cloudflare R2
+## POSTHUMAN Mainnet Services
 
-**Manual snapshot restore:**
+- Explorer: https://explorer.posthuman.digital/celestia
+- RPC: https://rpc-celestia-mainnet.posthuman.digital
+- REST: https://rest-celestia-mainnet.posthuman.digital
+- gRPC: https://grpc-celestia-mainnet.posthuman.digital
+- Snapshots: https://snapshots.posthuman.digital/celestia-mainnet/
+- Peer: `2cc7330049bc02e4276668c414222593d52eb718@peer-celestia-mainnet.posthuman.digital:40656`
+- Addrbook: `https://snapshots.posthuman.digital/celestia-mainnet/addrbook.json`
+
+## Manual Snapshot Restore
+
 ```bash
 export CELESTIA_HOME="$HOME/.celestia-app"
-sudo systemctl stop celestia-appd
-cp "${CELESTIA_HOME}/data/priv_validator_state.json" "${CELESTIA_HOME}/priv_validator_state.json.backup"
-rm -rf "${CELESTIA_HOME}/data"
-curl -L https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.zst | tar -I zstd -xf - -C "${CELESTIA_HOME}"
-mv "${CELESTIA_HOME}/priv_validator_state.json.backup" "${CELESTIA_HOME}/data/priv_validator_state.json"
-sudo systemctl restart celestia-appd && sudo journalctl -u celestia-appd -f
+export SERVICE_NAME="celestia-appd"
+
+sudo systemctl stop "$SERVICE_NAME"
+cp "$CELESTIA_HOME/data/priv_validator_state.json" \
+   "$CELESTIA_HOME/priv_validator_state.json.backup" 2>/dev/null || true
+rm -rf "$CELESTIA_HOME/data"
+
+curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
+  lz4 -dc | tar -xf - -C "$CELESTIA_HOME"
+
+if [ -f "$CELESTIA_HOME/priv_validator_state.json.backup" ]; then
+  mv "$CELESTIA_HOME/priv_validator_state.json.backup" \
+     "$CELESTIA_HOME/data/priv_validator_state.json"
+fi
+
+sudo systemctl restart "$SERVICE_NAME"
 ```
 
----
+Validate `snapshot.json` against a trusted live RPC before restore. Do not use
+the consensus snapshot for bridge/full/light node stores.
 
-## 📊 System Requirements
+## Safety Notes
 
-| Node Type | CPU | RAM | Disk | Network |
-|-----------|-----|-----|------|---------|
-| **Validator** | 16 cores | 32 GB | 2 TB NVMe | 1 Gbps |
-| **Archive** | 8+ cores | 24 GB | 3+ TB NVMe | 1 Gbps |
-| **Bridge** | 4+ cores | 8 GB | 500+ GB SSD | 100 Mbps |
-| **Full Storage** | 4+ cores | 8 GB | 500+ GB SSD | 100 Mbps |
-| **Light** | 2+ cores | 2 GB | 50+ GB SSD | 25 Mbps |
-
----
-
-## 🔗 PostHuman Services
-
-### Mainnet (celestia)
-- 🌐 **Website**: https://posthuman.digital
-- 📊 **Explorer**: https://explorer.posthuman.digital/celestia
-- 🔌 **RPC**: https://celestia-rpc.posthuman.digital
-- 🔌 **API**: https://celestia-api.posthuman.digital
-- 🔌 **gRPC**: celestia-grpc.posthuman.digital:443
-- 💾 **Snapshots**: https://snapshots.posthuman.digital/celestia-mainnet/
-- 🌐 **Peer**: `2cc7330049bc02e4276668c414222593d52eb718@celestia-peer.posthuman.digital:26656`
-- 🌐 **Addrbook**: https://snapshots.posthuman.digital/celestia-mainnet/addrbook.json
-
-### Testnet (mocha-4)
-- 📊 **Explorer**: https://explorer.posthuman.digital/celestia-testnet
-- 🔌 **RPC**: https://celestia-testnet-rpc.posthuman.digital
-- 🔌 **API**: https://celestia-testnet-api.posthuman.digital
-- 🔌 **gRPC**: celestia-testnet-grpc.posthuman.digital:443
-- 💾 **Snapshots**: https://snapshots.posthuman.digital/celestia-testnet/
-- 🌐 **Addrbook**: https://snapshots.posthuman.digital/celestia-testnet/addrbook.json
-
----
-
-## 🛡️ Official Celestia
-- 📚 **Docs**: https://docs.celestia.org
-- 💬 **Discord**: https://discord.com/invite/celestiacommunity
-- 🐦 **X**: https://x.com/CelestiaOrg
-- 💻 **GitHub**: https://github.com/celestiaorg/celestia-app
-
----
-
-## 🆕 New Features
-
-### Network Selection
-Supports both Mainnet and Testnet:
-```bash
-export NETWORK_TYPE=testnet  # or mainnet (default)
-./celestia-manager.sh
-```
-
-### Custom Installation Directory
-Install to custom location (e.g., separate disk):
-```bash
-export CELESTIA_HOME=/mnt/data/.celestia-app
-./celestia-manager.sh
-```
-
-Script now checks disk space of selected directory, not just root filesystem.
-
-### DA Nodes Management
-Complete suite for Data Availability nodes:
-- Main Menu → Option 5 (Data Availability Nodes)
-- Option 1 → Install DA Node (submenu for all DA types)
-- Support for Bridge, Full Storage, and Light nodes
-- Unified management interface
-
----
-
-## 🔄 Quick Update
-
-```bash
-./celestia-manager.sh
-# Select: 2 (Update Node) → Press Enter for latest version
-```
-
----
-
-## 🛡️ Security Best Practices
-
-- 🔐 Backup `~/.celestia-app/config/priv_validator_key.json`
-- 🔥 Use script's firewall configuration (Option 3 → 5)
-- 🔑 Enable SSH key-based authentication
-- 👁️ Setup monitoring and alerts
-- 💰 Never share private keys or seed phrases
-
----
-
-## 🐛 Troubleshooting
-
-**Node not syncing?**
-```bash
-sudo journalctl -u celestia-appd -f -n 100
-celestia-appd status 2>&1 | jq .SyncInfo
-```
-
-**Service won't start?**
-```bash
-sudo systemctl status celestia-appd
-sudo journalctl -u celestia-appd -n 50 --no-pager
-```
-
-**Check sync status:**
-```bash
-./celestia-manager.sh
-# Select: 7 (Status & Logs) → 2 (Check Sync Status)
-```
-
----
-
-## 📝 License
-
-MIT License - [PostHuman Validator](https://posthuman.digital)
-
-**Support:**
-- 🐛 GitHub: https://github.com/Validator-POSTHUMAN/celestia-oneliner
-- 💬 Discord: PostHuman Community
-
----
-
-**Version:** 1.1.0 | **Last Updated:** 2025-01-11
-
-🚀 **Happy Node Running!**
+- Back up validator keys and `priv_validator_state.json` before deleting data.
+- Do not broadcast validator, governance, staking, unjail, or PayForBlob
+  transactions without reviewing signer, account, sequence, gas, fees, and
+  messages.
+- Do not expose bridge JSON-RPC publicly unless auth, firewall, proxy, and rate
+  limits are intentionally configured.
+- Verify service health after every install or update.

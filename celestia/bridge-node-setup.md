@@ -1,104 +1,104 @@
-# **PostHuman Celestia Bridge Node Setup Guide**
+# Celestia Bridge Node Setup
 
-This guide will help you set up a Celestia bridge node using PostHuman infrastructure.
+This guide installs a Celestia Data Availability bridge node on mainnet using
+`celestia-node`.
 
----
+## Current Version
 
-## **Hardware Requirements**
+- Celestia node: `v0.31.3`
+- Network: `celestia`
+- Default bridge store: `~/.celestia-bridge`
+- Default local JSON-RPC: `http://127.0.0.1:26658`
+- Trusted core RPC: `https://rpc-celestia-mainnet.posthuman.digital`
+- Metrics collector: `otel.celestia.observer`
 
-**For Bridge Node (this guide):**
-- **Memory:** 64 GB RAM
-- **CPU:** 8 cores
-- **Disk:** 8 TiB NVMe (non-archival) or 160 TiB NVMe (archival)
-- **Bandwidth:** 1 Gbps
+## Requirements
 
-<details>
-<summary>Other Data Availability node types</summary>
+Bridge nodes are heavy DA nodes. Plan for:
 
-**Light Node:**
-- Memory: 500 MB RAM | CPU: 1 core | Disk: 20 GB SSD | Bandwidth: 56 Kbps
+- 8 CPU cores or more
+- 64 GB RAM
+- 8 TiB NVMe for non-archival operation
+- 160 TiB NVMe for archival operation
+- 1 Gbps network
 
-**Full Storage Node:**
-- Memory: 64 GB RAM | CPU: 8 cores | Disk: 8 TiB NVMe (non-archival) or 160 TiB NVMe (archival) | Bandwidth: 1 Gbps
+## 1. Install Packages and Go
 
-*Archival nodes store full history. For most users, non-archival (8 TiB) is sufficient.*
-
-</details>
-
-**Source:** [Celestia Official Docs](https://docs.celestia.org/how-to-guides/nodes-overview)
-
----
-
-## **1. Update Packages and Install Dependencies**
-```sh
+```bash
 sudo apt update && sudo apt upgrade -y
-sudo apt install curl git wget htop tmux build-essential jq make gcc tar clang pkg-config libssl-dev ncdu -y
-```
+sudo apt install -y curl git wget jq tar make gcc build-essential clang \
+  pkg-config libssl-dev ncdu lz4 aria2
 
----
-
-## **2. Install Go**
-```sh
-cd ~
+cd "$HOME"
+GO_VERSION="1.24.1"
 if ! command -v go >/dev/null 2>&1; then
-  VER="1.24.1"
-  wget "https://golang.org/dl/go${VER}.linux-amd64.tar.gz"
+  wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
   sudo rm -rf /usr/local/go
-  sudo tar -C /usr/local -xzf "go${VER}.linux-amd64.tar.gz"
-  rm "go${VER}.linux-amd64.tar.gz"
+  sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
+  rm "go${GO_VERSION}.linux-amd64.tar.gz"
 fi
 
-[ -d "$HOME/go/bin" ] || mkdir -p "$HOME/go/bin"
-if ! grep -q "/usr/local/go/bin" "$HOME/.bash_profile" 2>/dev/null; then
+grep -q "/usr/local/go/bin" "$HOME/.bash_profile" 2>/dev/null || \
   echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> "$HOME/.bash_profile"
-fi
 source "$HOME/.bash_profile" 2>/dev/null || true
 go version
 ```
 
----
+## 2. Build `celestia-node`
 
-## **3. Install Celestia Node**
-```sh
+```bash
 cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-NODE_VERSION="v0.28.2"
+
+NODE_VERSION="v0.31.3"
 git checkout "tags/${NODE_VERSION}"
+
 make build
 sudo make install
 make cel-key
+
+celestia version
+./cel-key version 2>/dev/null || true
 ```
 
----
+## 3. Initialize the Bridge Node
 
-## **4. Configure and Initialize the Bridge Node**
-```sh
-celestia bridge init --core.ip https://rpc-celestia-mainnet.posthuman.digital --p2p.network celestia
+```bash
+celestia bridge init \
+  --core.ip https://rpc-celestia-mainnet.posthuman.digital \
+  --p2p.network celestia
 ```
 
-After starting the Bridge Node, a wallet key will be generated. You need to fund this address with Mainnet tokens for PayForBlob transactions. Retrieve your wallet address using:
+List the generated bridge key:
 
-```sh
-cd $HOME/celestia-node
+```bash
+cd "$HOME/celestia-node"
 ./cel-key list --node.type bridge --keyring-backend test
 ```
 
----
+Fund the bridge wallet with enough TIA for PayForBlob transactions before
+production use.
 
-## **5. Create a Service File for Celestia Bridge**
-```sh
+## 4. Create Systemd Service
+
+```bash
 sudo tee /etc/systemd/system/celestia-bridge.service > /dev/null <<EOF
 [Unit]
-Description=celestia Bridge
+Description=Celestia bridge node
 After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which celestia) bridge start --archival \
---p2p.network celestia \
---metrics.tls=true --metrics --metrics.endpoint otel.celestia.observer
+ExecStart=$(command -v celestia) bridge start \
+  --core.ip https://rpc-celestia-mainnet.posthuman.digital \
+  --core.rpc.port 443 \
+  --core.grpc.port 443 \
+  --p2p.network celestia \
+  --metrics \
+  --metrics.tls=true \
+  --metrics.endpoint otel.celestia.observer
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
@@ -106,135 +106,90 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
-```
 
-Enable and start the service:
-```sh
 sudo systemctl daemon-reload
 sudo systemctl enable celestia-bridge
-sudo systemctl restart celestia-bridge && sudo journalctl -u celestia-bridge -fo cat
+sudo systemctl restart celestia-bridge
+journalctl -u celestia-bridge -f -o cat
 ```
 
----
+Add `--archival` only when you intentionally run an archival bridge node and
+have enough disk.
 
-## **6. Retrieve Node Information**
-After initializing and starting your node, generate an auth token:
-```sh
+## 5. Verify
+
+```bash
+systemctl status celestia-bridge --no-pager
+
+celestia header sync-state --node.store ~/.celestia-bridge
+celestia p2p info --node.store ~/.celestia-bridge
+celestia state balance --node.store ~/.celestia-bridge
+
 NODE_TYPE=bridge
-AUTH_TOKEN=$(celestia $NODE_TYPE auth admin)
+AUTH_TOKEN=$(celestia "$NODE_TYPE" auth admin --node.store ~/.celestia-bridge)
+
+curl -fsS \
+  -H "Authorization: Bearer $AUTH_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":0,"method":"p2p.Info","params":[]}' \
+  http://127.0.0.1:26658 | jq .
 ```
 
-Then, get the peer ID:
-```sh
-curl -X POST      -H "Authorization: Bearer $AUTH_TOKEN"      -H 'Content-Type: application/json'      -d '{"jsonrpc":"2.0","id":0,"method":"p2p.Info","params":[]}'      http://localhost:26658
+## 6. Optional Bridge Store Restore
+
+Bridge-node stores are not consensus snapshots. Do not restore
+`snapshot-latest.tar.lz4` into `~/.celestia-bridge`.
+
+If you use a third-party bridge snapshot, verify the provider, network,
+archive name, checksum or size, and freshness first. ITRocket publishes a
+Celestia bridge-node guide at:
+
+```text
+https://itrocket.net/services/mainnet/celestia/bridge-node/
 ```
 
----
+Safe restore shape:
 
-## **7. Download and Restore Bridge Node Snapshot**
-Installing dependencies:
-```sh
-sudo apt install aria2 jq lz4 unzip -y
-```
-
-Downloading and unpacking the snapshot:
-```sh
-cd $HOME
-aria2c -x 16 -s 16 -o celestia-bridge-snap.tar.lz4 https://server-9.itrocket.net/mainnet/celestia/bridge/null
+```bash
 sudo systemctl stop celestia-bridge
-rm -rf ~/.celestia-bridge/{blocks,data,index,inverted_index,transients,.lock}
-tar -I lz4 -xvf ~/celestia-bridge-snap.tar.lz4 -C ~/.celestia-bridge/
-sudo systemctl restart celestia-bridge && sudo journalctl -u celestia-bridge -fo cat
+
+cp -a ~/.celestia-bridge ~/.celestia-bridge.backup-$(date +%Y%m%d-%H%M%S)
+
+# Replace only bridge-node store data after verifying the selected snapshot.
+# Do not delete keys unless the operator explicitly approves it.
+
+sudo systemctl restart celestia-bridge
+journalctl -u celestia-bridge -f -o cat
 ```
 
-Removing the snapshot file:
-```sh
-rm ~/celestia-bridge-snap.tar.lz4
-```
+## 7. Upgrade
 
----
-
-## **8. Useful Commands (Cheat Sheet)**
-
-### **Check Wallet Balance**
-```sh
-celestia state balance --node.store ~/.celestia-bridge/
-```
-
-### **Get Wallet Address**
-```sh
-cd $HOME/celestia-node
-./cel-key list --node.type bridge --keyring-backend test
-```
-
-### **Restore an Existing Key**
-```sh
-KEY_NAME="my_celes_key"
-cd ~/celestia-node
-./cel-key add $KEY_NAME --keyring-backend test --node.type bridge --recover
-```
-
-### **Check Node Sync Status**
-```sh
-celestia header sync-state --node.store ~/.celestia-bridge/
-```
-
-### **Get Node ID**
-```sh
-celestia p2p info --node.store ~/.celestia-bridge/
-```
-
-### **Add Permissions for Key Transfers**
-```sh
-chmod -R 700 ~/.celestia-bridge
-```
-
-### **Reset Node**
-```sh
-celestia bridge unsafe-reset-store
-```
-
----
-
-## **9. Upgrade Instructions**
-### **Stop Bridge Node**
-```sh
+```bash
 sudo systemctl stop celestia-bridge
-```
 
-### **Download Latest Version**
-```sh
 cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-NODE_VERSION="v0.28.2"
+
+NODE_VERSION="v0.31.3"
 git checkout "tags/${NODE_VERSION}"
 make build
 sudo make install
 make cel-key
-```
 
-### **Update Configuration**
-```sh
 celestia bridge config-update
+sudo systemctl restart celestia-bridge
 ```
 
-### **Restart Bridge Node**
-```sh
-sudo systemctl restart celestia-bridge && sudo journalctl -u celestia-bridge -fo cat
-```
+Verify header sync, p2p info, balance, metrics, and logs after every upgrade.
 
----
+## 8. Remove
 
-## **10. Delete Bridge Node**
-```sh
+```bash
 sudo systemctl stop celestia-bridge
 sudo systemctl disable celestia-bridge
-sudo rm /etc/systemd/system/celestia-bridge*
-rm -rf $HOME/celestia-node $HOME/.celestia-bridge
+sudo rm -f /etc/systemd/system/celestia-bridge.service
+sudo systemctl daemon-reload
+rm -rf "$HOME/celestia-node" "$HOME/.celestia-bridge"
 ```
-
----
-
-🚀 **Your Celestia Bridge Node is now set up and running.**

@@ -44,6 +44,9 @@ credentials, server-provider assumptions, or custody-specific defaults.
 - Consensus daemon: `celestia-appd`.
 - Consensus home: `~/.celestia-app`.
 - Data Availability daemon: `celestia`.
+- Active mainnet consensus app version at guide update time: `v8.0.8`.
+- Published app v9 release: `v9.0.4`, signaled at height `11771698`.
+- Current mainnet `celestia-node` release for DA nodes: `v0.31.3`.
 - Common DA node stores:
   - bridge: `~/.celestia-bridge`
   - full storage: `~/.celestia-full`
@@ -125,6 +128,9 @@ sudo systemctl restart "$SERVICE_NAME"
 
 The public snapshot index is available at
 https://snapshots.posthuman.digital/celestia-mainnet/.
+
+Before restore, compare `snapshot.json` against a trusted live RPC. Stop if
+the snapshot height or chain ID is inconsistent with live network state.
 
 For bridge/full/light nodes, the skill requires separate node-store handling.
 Do not mix consensus snapshots with `~/.celestia-bridge`, `~/.celestia-full`,
