@@ -1,11 +1,13 @@
-# 🚀 Restore Axelar Node from [Posthuman](https://snapshots.axelar.posthuman.digital/) Snapshots
+# 🚀 Restore Axelar Node from [POSTHUMAN](https://snapshots.axelar.posthuman.digital/) Snapshots
 
-This guide explains how to restore your Axelar node using a snapshot from **Posthuman**.
+This guide explains how to restore your Axelar node using a snapshot served by
+**POSTHUMAN**.
 
 ---
 
-## **📥 Step 1: Download the Latest Posthuman Snapshot**
-> **Note:** Since Posthuman updates snapshots **every 24 hours**, use the latest one.
+## **📥 Step 1: Download the Latest POSTHUMAN Snapshot**
+> **Note:** use the latest available snapshot. Check the HTTP `Last-Modified`
+> header before downloading.
 
 Download the snapshot first. Do not stop the node or delete the existing data
 until the file is fully downloaded.
@@ -13,7 +15,9 @@ until the file is fully downloaded.
 ```bash
 SNAP_URL="https://snapshots.axelar.posthuman.digital/data_latest.tar.lz4"
 SNAP_DIR="$HOME/axelar-snapshot"
-SNAP_FILE="$SNAP_DIR/data_latest.tar.lz4"
+SNAP_DATE=$(curl -fsSI "$SNAP_URL" | awk -F': ' 'tolower($1)=="last-modified"{print $2}' | xargs -I{} date -u -d "{}" +%Y-%m-%d)
+SNAP_BASENAME="axelar_${SNAP_DATE}.tar.lz4"
+SNAP_FILE="$SNAP_DIR/$SNAP_BASENAME"
 
 sudo apt update
 sudo apt install -y aria2 lz4
@@ -26,7 +30,7 @@ aria2c --continue=true \
   --min-split-size=64M \
   --file-allocation=none \
   --dir="$SNAP_DIR" \
-  --out=data_latest.tar.lz4 \
+  --out="$SNAP_BASENAME" \
   "$SNAP_URL"
 ```
 
@@ -88,5 +92,4 @@ sudo journalctl -u axelar -fo cat
 ---
 
 ## **✅ Done!**
-Your node should now sync from the restored **Posthuman snapshot**. 🚀
-
+Your node should now sync from the restored **POSTHUMAN snapshot**. 🚀
