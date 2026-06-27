@@ -512,9 +512,9 @@
     "daemon_name": "celestia-appd",
     "codebase": {
       "git_repo": "https://github.com/celestiaorg/celestia-app",
-      "recommended_version": "v5.0.11",
+      "recommended_version": "v6.2.5",
       "compatible_versions": [
-        "v5.0.11"
+        "v6.2.5"
       ]
     },
     "chain_id": "celestia",
@@ -525,7 +525,8 @@
       "rest-arch": "https://rest-celestia-mainnet-archive.posthuman.digital",
       "grpc": "https://grpc-celestia-mainnet.posthuman.digital",
       "grpc-arch": "https://grpc-celestia-mainnet-archive.posthuman.digital",
-      "peer": "2cc7330049bc02e4276668c414222593d52eb718@peer-celestia-mainnet.posthuman.digital:40656"
+      "peer": "2cc7330049bc02e4276668c414222593d52eb718@peer-celestia-mainnet.posthuman.digital:40656",
+      "snapshots": "https://snapshots.posthuman.digital/celestia-mainnet/"
     },
     "contributions": "Celestia",
     "generatedServices": [],
@@ -535,7 +536,8 @@
       "full-node-setup",
       "light-node-setup",
       "snapshots",
-      "one-liner"
+      "one-liner",
+      "skill"
     ]
   },
   {
