@@ -521,11 +521,8 @@
     "chain_id": "celestia",
     "endpoints": {
       "rpc": "https://rpc-celestia-mainnet.posthuman.digital",
-      "rpc-arch": "https://rpc-celestia-mainnet-archive.posthuman.digital",
       "rest": "https://rest-celestia-mainnet.posthuman.digital",
-      "rest-arch": "https://rest-celestia-mainnet-archive.posthuman.digital",
       "grpc": "https://grpc-celestia-mainnet.posthuman.digital",
-      "grpc-arch": "https://grpc-celestia-mainnet-archive.posthuman.digital",
       "peer": "2cc7330049bc02e4276668c414222593d52eb718@peer-celestia-mainnet.posthuman.digital:40656",
       "snapshots": "https://snapshots.posthuman.digital/celestia-mainnet/"
     },
