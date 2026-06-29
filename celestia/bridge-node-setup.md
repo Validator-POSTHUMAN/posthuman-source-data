@@ -140,8 +140,8 @@ curl -fsS \
 Bridge-node stores are not consensus snapshots. Do not restore
 `snapshot-latest.tar.lz4` into `~/.celestia-bridge`.
 
-If you use a third-party bridge snapshot, verify the provider, network,
-archive name, checksum or size, and freshness first. ITRocket publishes a
+If you use a third-party bridge store backup, verify the provider, network,
+file name, checksum or size, and freshness first. ITRocket publishes a
 Celestia bridge-node guide at:
 
 ```text
