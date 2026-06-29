@@ -65,7 +65,7 @@ git push
 The UI reads source-data through `CONFIG_REPO`. After pushing source-data, rebuild and restart the production UI if an immediate refresh is required:
 
 ```bash
-ssh -o BatchMode=yes valoper@65.21.7.184 "cd /srv/data/apps/posthuman-nodes-ui && git pull --ff-only && sudo rm -rf .next && sudo yarn build && sudo pm2 restart nodes"
+ssh -o BatchMode=yes valoper@65.21.7.184 "cd /srv/data/apps/posthuman-nodes-ui && git pull --ff-only && sudo yarn install --frozen-lockfile && sudo rm -rf .next && sudo yarn build && sudo pm2 restart nodes"
 ```
 
 Check the live page:
@@ -90,7 +90,8 @@ The script:
 4. validates Python syntax and JSON;
 5. commits only `celestia/decentralize-map.json` when it changed;
 6. pushes to GitHub;
-7. rebuilds and restarts production `posthuman-nodes-ui` through SSH.
+7. installs UI dependencies with the locked Yarn file;
+8. rebuilds and restarts production `posthuman-nodes-ui` through SSH.
 
 Cron log path used by the current setup:
 

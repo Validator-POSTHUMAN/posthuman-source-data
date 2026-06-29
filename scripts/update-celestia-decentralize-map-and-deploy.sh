@@ -34,4 +34,4 @@ git push
 sleep 10
 
 ssh -o BatchMode=yes "$DEPLOY_HOST" \
-  "cd '$DEPLOY_DIR' && git pull --ff-only && sudo rm -rf .next && sudo yarn build && sudo pm2 restart nodes"
+  "cd '$DEPLOY_DIR' && git pull --ff-only && sudo yarn install --frozen-lockfile && sudo rm -rf .next && sudo yarn build && sudo pm2 restart nodes"
