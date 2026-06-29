@@ -62,7 +62,7 @@ git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app
 
 # Checkout current Mocha testnet version
-VERSION="v9.0.2-mocha"
+VERSION="v9.0.4-mocha"
 git checkout "tags/$VERSION"
 
 # Build and install
@@ -392,4 +392,4 @@ sed -i '/WALLET_ADDRESS_TESTNET/d' "$HOME/.bash_profile"
 
 ---
 
-**Last Updated**: v9.0.2-mocha | Chain ID: mocha-4
+**Last Updated**: v9.0.4-mocha | Chain ID: mocha-4

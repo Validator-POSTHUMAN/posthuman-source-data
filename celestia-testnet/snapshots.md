@@ -1,7 +1,7 @@
 # Celestia Testnet Snapshot
 
 **Network:** Mocha-4 pruned consensus node  
-**Cadence:** refreshed around every 4 h, available 24/7 via Cloudflare R2  
+**Cadence:** refreshed manually while retention/storage is being fixed; available via Cloudflare R2  
 **Download:** `https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4`
 
 > Up-to-date height, build time, size, and archive name are published at
@@ -31,6 +31,6 @@ sudo systemctl restart "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}"
 For validator recovery, preserving and restoring `priv_validator_state.json` is
 mandatory. Never replace it with an older value from a snapshot.
 
-The pipeline keeps the archive pruned and ready for rapid validator or full-node recovery. Browse historical builds at [https://snapshots.posthuman.digital/celestia-testnet/](https://snapshots.posthuman.digital/celestia-testnet/).
+The pipeline keeps the archive pruned and ready for rapid validator or full-node recovery. Browse the current build at [https://snapshots.posthuman.digital/celestia-testnet/](https://snapshots.posthuman.digital/celestia-testnet/).
 
-Each bundle is generated automatically on POSTHUMAN bare-metal infrastructure, pruned via `cosmprund`, and delivered worldwide through Cloudflare R2 + Workers.
+Each bundle is generated on POSTHUMAN bare-metal infrastructure, pruned via `cosmprund`, and delivered worldwide through Cloudflare R2 + Workers.

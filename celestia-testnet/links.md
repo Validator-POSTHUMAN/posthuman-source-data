@@ -1,4 +1,3 @@
 - **RPC**: https://rpc-celestia-testnet.posthuman.digital  
-- **Bridge RPC**: https://bridge-celestia-testnet.posthuman.digital  
 - **Snapshots**: https://snapshots.posthuman.digital/celestia-testnet/  
 - **Peer**: `52d364fac77753f5ab0df76b6b21ad519e759aa9@135.181.227.236:39656`

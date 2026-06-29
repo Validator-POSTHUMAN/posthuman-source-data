@@ -546,9 +546,9 @@
     "website": "https://celestia.org/",
     "codebase": {
       "git_repo": "https://github.com/celestiaorg/celestia-app",
-      "recommended_version": "v9.0.2-mocha",
+      "recommended_version": "v9.0.4-mocha",
       "compatible_versions": [
-        "v9.0.2-mocha"
+        "v9.0.4-mocha"
       ]
     },
     "chain_name": "celestia-app",
