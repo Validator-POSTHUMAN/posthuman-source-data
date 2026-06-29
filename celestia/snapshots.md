@@ -7,11 +7,11 @@ POSTHUMAN provides a pruned Celestia consensus-node snapshot for chain ID
 
 - Index: https://snapshots.posthuman.digital/celestia-mainnet/
 - Metadata: https://snapshots.posthuman.digital/celestia-mainnet/snapshot.json
-- Archive: `https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4`
+- Snapshot file: `https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4`
 - Genesis: `https://snapshots.posthuman.digital/celestia-mainnet/genesis.json`
 - Addrbook: `https://snapshots.posthuman.digital/celestia-mainnet/addrbook.json`
 
-The archive contains the `data/` directory and is extracted directly into
+The snapshot contains the `data/` directory and is extracted directly into
 `$HOME/.celestia-app`.
 
 ## Preflight
@@ -29,7 +29,7 @@ Stop if:
 
 - `chain_id` is not `celestia`;
 - metadata height is far ahead of or inconsistent with trusted RPC height;
-- archive size is unexpectedly small;
+- snapshot file size is unexpectedly small;
 - you cannot preserve keys and validator state.
 
 ## Quick Restore
