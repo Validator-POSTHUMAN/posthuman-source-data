@@ -5,14 +5,16 @@ chain ID `celestia`.
 
 ## Current Versions
 
-- Active mainnet app version: `v8.0.8`
-- Published app v9 release: `v9.0.4`
+- Recommended consensus binary: `v9.0.4`
+- Current protocol app before upgrade activation: `v8`
+- Previous compatible app binary: `v8.0.8`
 - Signaled upgrade height for app v9: `11771698`
 - Go for source builds: `1.24.1+`
-- POSTHUMAN snapshot format: `snapshot-latest.tar.lz4`
+- POSTHUMAN snapshot format: PebbleDB `snapshot-latest.tar.lz4`, refreshed every 4 hours
 
-Use `v8.0.8` until the network reaches the app v9 upgrade height. After the
-upgrade has executed, use `v9.0.4` for new installs and recoveries.
+Use the `v9.0.4` wrapper for new installs and recoveries. Before the
+on-chain app v9 activation height it runs the embedded app v8 child
+automatically, while keeping the node ready for the scheduled upgrade.
 
 Check live network state before choosing the binary:
 
@@ -23,7 +25,8 @@ curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
 
 ## Requirements
 
-- Ubuntu 22.04+ or similar Linux distribution.
+- Ubuntu 24.04+ for the official release binary, or Ubuntu 22.04+ when building
+  `celestia-appd` from source locally.
 - 16 CPU cores, 32 GB RAM, 2 TB NVMe, 1 Gbps network for validator-grade use.
 - Open ports:
   - P2P: `26656/tcp`
@@ -39,11 +42,10 @@ sudo apt install -y curl wget jq tar lz4 git make gcc chrony build-essential \
 
 ## 2. Install `celestia-appd`
 
-Use the current active mainnet binary unless the network has already completed
-the app v9 upgrade.
+Use the current recommended mainnet wrapper binary.
 
 ```bash
-APP_VERSION="v8.0.8"
+APP_VERSION="v9.0.4"
 
 cd "$HOME"
 rm -rf celestia-app-release
@@ -61,8 +63,8 @@ sudo mv celestia-appd /usr/local/bin/celestia-appd
 celestia-appd version
 ```
 
-If the network is already on app v9, set `APP_VERSION="v9.0.4"` and repeat the
-same install flow.
+If the official binary fails with a GLIBC error on Ubuntu 22.04, build
+`celestia-app` from source on the host instead of using the release archive.
 
 ## 3. Initialize
 
@@ -101,6 +103,17 @@ sed -i -e 's|^pruning *=.*|pruning = "custom"|' \
        -e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
   "$CELESTIA_HOME/config/app.toml"
 
+# PebbleDB profile; required for current POSTHUMAN snapshots
+sed -i -e 's|^db_backend *=.*|db_backend = "pebbledb"|' \
+  "$CELESTIA_HOME/config/config.toml"
+
+if grep -q '^app-db-backend' "$CELESTIA_HOME/config/app.toml"; then
+  sed -i 's|^app-db-backend *=.*|app-db-backend = "pebbledb"|' \
+    "$CELESTIA_HOME/config/app.toml"
+else
+  printf '\napp-db-backend = "pebbledb"\n' >> "$CELESTIA_HOME/config/app.toml"
+fi
+
 # Disable transaction indexer unless you need indexed queries
 sed -i 's|^indexer *=.*|indexer = "null"|' \
   "$CELESTIA_HOME/config/config.toml"
@@ -117,7 +130,7 @@ sed -i -e "/^\\[p2p\\]/,/^\\[/{s|^[[:space:]]*persistent_peers *=.*|persistent_p
 
 ## 6. Restore From POSTHUMAN Snapshot
 
-Use a snapshot for faster sync. Verify `snapshot.json` against a trusted
+Use the PebbleDB snapshot for faster sync. Verify `snapshot.json` against a trusted
 reference RPC before using it. If metadata and network height disagree, stop
 and investigate before restore.
 

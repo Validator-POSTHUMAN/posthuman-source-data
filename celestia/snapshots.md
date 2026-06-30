@@ -3,6 +3,10 @@
 POSTHUMAN provides a pruned Celestia consensus-node snapshot for chain ID
 `celestia`.
 
+- DB backend: PebbleDB
+- Cadence: every 4 hours
+- Archive format: `snapshot-latest.tar.lz4`
+
 ## Snapshot Endpoint
 
 - Index: https://snapshots.posthuman.digital/celestia-mainnet/
@@ -12,7 +16,8 @@ POSTHUMAN provides a pruned Celestia consensus-node snapshot for chain ID
 - Addrbook: `https://snapshots.posthuman.digital/celestia-mainnet/addrbook.json`
 
 The snapshot contains the `data/` directory and is extracted directly into
-`$HOME/.celestia-app`.
+`$HOME/.celestia-app`. Configure both CometBFT and app DB backends as
+PebbleDB before starting from this snapshot.
 
 ## Preflight
 
@@ -47,6 +52,16 @@ rm -rf "$CELESTIA_HOME/data"
 
 curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
   lz4 -dc | tar -xf - -C "$CELESTIA_HOME"
+
+sed -i -e 's|^db_backend *=.*|db_backend = "pebbledb"|' \
+  "$CELESTIA_HOME/config/config.toml"
+
+if grep -q '^app-db-backend' "$CELESTIA_HOME/config/app.toml"; then
+  sed -i 's|^app-db-backend *=.*|app-db-backend = "pebbledb"|' \
+    "$CELESTIA_HOME/config/app.toml"
+else
+  printf '\napp-db-backend = "pebbledb"\n' >> "$CELESTIA_HOME/config/app.toml"
+fi
 
 if [ -f "$CELESTIA_HOME/priv_validator_state.json.backup" ]; then
   mv "$CELESTIA_HOME/priv_validator_state.json.backup" \

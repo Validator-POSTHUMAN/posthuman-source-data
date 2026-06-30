@@ -25,9 +25,10 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 ## Current Version Matrix
 
 - Mainnet chain ID: `celestia`
-- Active consensus app version: `v8.0.8`
-- Published app v9 release: `v9.0.4`
+- Recommended consensus wrapper: `v9.0.4`
+- Current protocol app before activation: `v8`
 - Signaled app v9 height: `11771698`
+- POSTHUMAN consensus snapshot DB: PebbleDB
 - Celestia DA node version: `v0.31.3`
 - Go: `1.24.1+`
 
@@ -44,16 +45,10 @@ explicitly:
 
 ```bash
 export NETWORK_TYPE=mainnet
-export APP_VERSION=v8.0.8
+export APP_VERSION=v9.0.4
 export BRIDGE_VERSION=v0.31.3
 
 bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh)"
-```
-
-After app v9 activates, use:
-
-```bash
-export APP_VERSION=v9.0.4
 ```
 
 ## What the Manager Covers
@@ -102,7 +97,9 @@ sudo systemctl restart "$SERVICE_NAME"
 ```
 
 Validate `snapshot.json` against a trusted live RPC before restore. Do not use
-the consensus snapshot for bridge/full/light node stores.
+the consensus snapshot for bridge/full/light node stores. The current
+POSTHUMAN consensus snapshot uses PebbleDB, so the restored node must have
+`db_backend = "pebbledb"` and `app-db-backend = "pebbledb"` configured.
 
 ## Safety Notes
 
