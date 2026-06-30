@@ -571,6 +571,7 @@
       "full-node-setup",
       "light-node-setup",
       "snapshots",
+      "decentralize-map",
       "one-liner"
     ]
   },
