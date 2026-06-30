@@ -523,7 +523,7 @@
       "rpc": "https://rpc-celestia-mainnet.posthuman.digital",
       "rest": "https://rest-celestia-mainnet.posthuman.digital",
       "grpc": "https://grpc-celestia-mainnet.posthuman.digital",
-      "peer": "2cc7330049bc02e4276668c414222593d52eb718@135.181.227.236:40656",
+      "peer": "a22d4de6e29ccf0b8d1a593af111c1b54f221ae7@5.61.208.27:41656",
       "snapshots": "https://snapshots.posthuman.digital/celestia-mainnet/"
     },
     "contributions": "Celestia",
@@ -562,7 +562,7 @@
     "endpoints": {
       "rpc": "https://rpc-celestia-testnet.posthuman.digital",
       "snapshots": "https://snapshots.posthuman.digital/celestia-testnet/",
-      "peer": "52d364fac77753f5ab0df76b6b21ad519e759aa9@135.181.227.236:39656"
+      "peer": "52d364fac77753f5ab0df76b6b21ad519e759aa9@173.208.0.15:39656"
     },
     "generatedServices": [],
     "services": [

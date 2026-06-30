@@ -76,7 +76,7 @@ export APP_VERSION=v9.0.4
 - REST: https://rest-celestia-mainnet.posthuman.digital
 - gRPC: https://grpc-celestia-mainnet.posthuman.digital
 - Snapshots: https://snapshots.posthuman.digital/celestia-mainnet/
-- Peer: `2cc7330049bc02e4276668c414222593d52eb718@135.181.227.236:40656`
+- Peer: `a22d4de6e29ccf0b8d1a593af111c1b54f221ae7@5.61.208.27:41656`
 - Addrbook: `https://snapshots.posthuman.digital/celestia-mainnet/addrbook.json`
 
 ## Manual Snapshot Restore
