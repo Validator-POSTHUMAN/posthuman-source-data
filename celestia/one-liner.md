@@ -35,7 +35,7 @@ Before installing, check whether mainnet has already passed the app v9 upgrade
 height:
 
 ```bash
-curl -fsS https://celestia-rpc.publicnode.com:443/status | \
+curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
   jq -r '.result.sync_info.latest_block_height'
 ```
 

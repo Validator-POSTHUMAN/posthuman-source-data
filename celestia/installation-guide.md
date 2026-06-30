@@ -17,7 +17,7 @@ upgrade has executed, use `v9.0.4` for new installs and recoveries.
 Check live network state before choosing the binary:
 
 ```bash
-curl -fsS https://celestia-rpc.publicnode.com:443/status | \
+curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
   jq -r '.result.node_info.network, .result.sync_info.latest_block_height, .result.sync_info.catching_up'
 ```
 
@@ -123,7 +123,7 @@ and investigate before restore.
 
 ```bash
 curl -fsS https://snapshots.posthuman.digital/celestia-mainnet/snapshot.json | jq .
-curl -fsS https://celestia-rpc.publicnode.com:443/status | \
+curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
   jq -r '.result.sync_info.latest_block_height'
 ```
 
