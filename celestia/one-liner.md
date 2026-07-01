@@ -71,7 +71,7 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 - REST: https://rest-celestia-mainnet.posthuman.digital
 - gRPC: https://grpc-celestia-mainnet.posthuman.digital
 - Snapshots: https://snapshots.posthuman.digital/celestia-mainnet/
-- Peer: `a22d4de6e29ccf0b8d1a593af111c1b54f221ae7@5.61.208.27:41656`
+- Peer: `955c18c98d5012ee510a0485bf1a6c23b18caae4@5.61.208.27:41656`
 - Addrbook: `https://snapshots.posthuman.digital/celestia-mainnet/addrbook.json`
 
 ## Manual Snapshot Restore

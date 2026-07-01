@@ -123,7 +123,7 @@ sed -i 's|prometheus = false|prometheus = true|' \
   "$CELESTIA_HOME/config/config.toml"
 
 # POSTHUMAN persistent peer
-PEERS="a22d4de6e29ccf0b8d1a593af111c1b54f221ae7@5.61.208.27:41656"
+PEERS="955c18c98d5012ee510a0485bf1a6c23b18caae4@5.61.208.27:41656"
 sed -i -e "/^\\[p2p\\]/,/^\\[/{s|^[[:space:]]*persistent_peers *=.*|persistent_peers = \\"$PEERS\\"|}" \
   "$CELESTIA_HOME/config/config.toml"
 ```
