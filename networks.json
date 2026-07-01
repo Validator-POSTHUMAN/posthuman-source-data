@@ -562,7 +562,7 @@
     "endpoints": {
       "rpc": "https://rpc-celestia-testnet.posthuman.digital",
       "snapshots": "https://snapshots.posthuman.digital/celestia-testnet/",
-      "peer": "35a5096e5ab65c0a4ebeb721663e18dc2c51dd85@135.181.227.236:39656"
+      "peer": "35a5096e5ab65c0a4ebeb721663e18dc2c51dd85@173.208.0.15:39656"
     },
     "generatedServices": [],
     "services": [

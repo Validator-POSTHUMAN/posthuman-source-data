@@ -1,3 +1,3 @@
 - **RPC**: https://rpc-celestia-testnet.posthuman.digital  
 - **Snapshots**: https://snapshots.posthuman.digital/celestia-testnet/  
-- **Peer**: `35a5096e5ab65c0a4ebeb721663e18dc2c51dd85@135.181.227.236:39656`
+- **Peer**: `35a5096e5ab65c0a4ebeb721663e18dc2c51dd85@173.208.0.15:39656`

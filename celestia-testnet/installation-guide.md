@@ -148,7 +148,7 @@ sed -i -e 's|prometheus = false|prometheus = true|' "$HOME/.celestia-app/config/
 
 ```bash
 # Posthuman testnet peer
-PEERS="35a5096e5ab65c0a4ebeb721663e18dc2c51dd85@135.181.227.236:39656"
+PEERS="35a5096e5ab65c0a4ebeb721663e18dc2c51dd85@173.208.0.15:39656"
 
 # Update config (adjust as needed based on available peers)
 sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" \
