@@ -15,8 +15,8 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
  screen -S celestia-manager
 ```
 **Current Versions:**
-- 🌐 Mainnet: `v8.0.8` (chain-id: `celestia`)
-- 🧪 Testnet: `v9.0.4-mocha` (chain-id: `mocha-4`)
+- 🌐 Mainnet: `v9.0.4` (chain-id: `celestia`)
+- 🧪 Testnet: `v9.0.4` (chain-id: `mocha-4`)
 - 🔧 Go: `1.24.1`
 
 ## 📋 Features
@@ -58,7 +58,7 @@ One-click update with version selection.
 **PostHuman Snapshots:**
 - 📍 Mainnet: https://snapshots.posthuman.digital/celestia-mainnet/
 - 📍 Testnet: https://snapshots.posthuman.digital/celestia-testnet/
-- ⏱️ Mainnet snapshots are automated; testnet snapshots are refreshed manually while retention/storage is being fixed
+- ⏱️ Mainnet and testnet snapshots are automated every 4 hours
 - 🌐 Fast worldwide via Cloudflare R2
 
 **Manual snapshot restore:**
@@ -73,6 +73,12 @@ fi
 rm -rf "${CELESTIA_HOME}/data"
 curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
   lz4 -dc | tar -xf - -C "${CELESTIA_HOME}"
+sed -i -e 's|^db_backend *=.*|db_backend = "pebbledb"|' "${CELESTIA_HOME}/config/config.toml"
+if grep -q '^app-db-backend' "${CELESTIA_HOME}/config/app.toml"; then
+  sed -i 's|^app-db-backend *=.*|app-db-backend = "pebbledb"|' "${CELESTIA_HOME}/config/app.toml"
+else
+  printf '\napp-db-backend = "pebbledb"\n' >> "${CELESTIA_HOME}/config/app.toml"
+fi
 if [ -f "${CELESTIA_HOME}/priv_validator_state.json.backup" ]; then
   mv "${CELESTIA_HOME}/priv_validator_state.json.backup" "${CELESTIA_HOME}/data/priv_validator_state.json"
 fi

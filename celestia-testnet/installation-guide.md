@@ -62,7 +62,7 @@ git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app
 
 # Checkout current Mocha testnet version
-VERSION="v9.0.4-mocha"
+VERSION="v9.0.4"
 git checkout "tags/$VERSION"
 
 # Build and install
@@ -73,7 +73,7 @@ make install
 celestia-appd version
 ```
 
-Expected output: `9.0.2-mocha`
+Expected output: `9.0.4`
 
 ---
 
@@ -207,6 +207,16 @@ rm -rf "$HOME/.celestia-app/data"
 cd "$HOME"
 curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
   lz4 -dc | tar -xf - -C "$HOME/.celestia-app"
+
+sed -i -e 's|^db_backend *=.*|db_backend = "pebbledb"|' \
+  "$HOME/.celestia-app/config/config.toml"
+
+if grep -q '^app-db-backend' "$HOME/.celestia-app/config/app.toml"; then
+  sed -i 's|^app-db-backend *=.*|app-db-backend = "pebbledb"|' \
+    "$HOME/.celestia-app/config/app.toml"
+else
+  printf '\napp-db-backend = "pebbledb"\n' >> "$HOME/.celestia-app/config/app.toml"
+fi
 
 # Restore signer state after extraction. This is mandatory for validators.
 if [ -f "$HOME/.celestia-app/priv_validator_state.json.backup" ]; then
@@ -392,4 +402,4 @@ sed -i '/WALLET_ADDRESS_TESTNET/d' "$HOME/.bash_profile"
 
 ---
 
-**Last Updated**: v9.0.4-mocha | Chain ID: mocha-4
+**Last Updated**: v9.0.4 | Chain ID: mocha-4
