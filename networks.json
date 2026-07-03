@@ -508,7 +508,7 @@
     "discord": "https://discord.com/invite/celestiacommunity",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/celestia/celestia.svg",
     "stake": "https://explorer.posthuman.digital/celestia/staking",
-    "explorer": "https://celestia-explorer.posthuman.digital",
+    "explorer": "https://explorer.posthuman.digital/celestia",
     "daemon_name": "celestia-appd",
     "codebase": {
       "git_repo": "https://github.com/celestiaorg/celestia-app",
