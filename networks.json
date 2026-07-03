@@ -557,7 +557,7 @@
     "discord": "https://discord.com/invite/celestiacommunity",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/celestia/celestia.svg",
     "stake": "https://explorer.posthuman.digital/celestia-testnet/staking/celestiavaloper1sa5mgyskjzpx6znnd6jxkn59g02hm6c4p8a59v",
-    "explorer": "https://www.mintscan.io/celestia-testnet",
+    "explorer": "https://explorer.posthuman.digital/celestia-testnet",
     "chain_id": "mocha-4",
     "endpoints": {
       "rpc": "https://rpc-celestia-testnet.posthuman.digital",
