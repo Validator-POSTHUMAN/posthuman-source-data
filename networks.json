@@ -1132,7 +1132,7 @@
     "website": "https://posthuman.digital",
     "twitter": "https://x.com/POSTHUMAN_DVS",
     "github": "https://github.com/validator-POSTHUMAN/new-phmn",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/phmn/phmn-logo.png",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/phmn.png",
     "stake": "https://daodao.zone/dao/cosmos1lj6knrgumqr5a9jxmkqeag476gmzgn24mv0w3548tyw6a5ryr7ms6xl599",
     "explorer": "https://explorer.posthuman.digital/cosmoshub",
     "chain_id": "cosmoshub-4",
