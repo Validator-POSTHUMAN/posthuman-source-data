@@ -1124,5 +1124,30 @@
       "install-guide"
     ],
     "chain_id": ""
+  },
+  {
+    "name": "phmn",
+    "type": "mainnet",
+    "title": "PHMN",
+    "website": "https://posthuman.digital",
+    "twitter": "https://x.com/POSTHUMAN_DVS",
+    "github": "https://github.com/validator-POSTHUMAN/new-phmn",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/phmn/phmn-logo.png",
+    "stake": "https://daodao.zone/dao/cosmos1lj6knrgumqr5a9jxmkqeag476gmzgn24mv0w3548tyw6a5ryr7ms6xl599",
+    "explorer": "https://explorer.posthuman.digital/cosmoshub",
+    "chain_id": "cosmoshub-4",
+    "codebase": {
+      "git_repo": "https://github.com/validator-POSTHUMAN/new-phmn"
+    },
+    "endpoints": {
+      "denom": "factory/cosmos146s5j3t7gh2g37ywm47dp8avhesu2htvjjaxq7z55e7xj0rq0k8q5qnjjy/PHMN"
+    },
+    "contributions": "",
+    "generatedServices": [],
+    "services": [
+      "about",
+      "migration",
+      "liquidity-pools"
+    ]
   }
 ]
