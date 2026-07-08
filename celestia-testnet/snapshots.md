@@ -8,6 +8,31 @@
 > Up-to-date height, build time, size, and snapshot file name are published at
 > `snapshot.json` alongside the snapshot file.
 
+## Snapshot Endpoint
+
+- Index: https://snapshots.posthuman.digital/celestia-testnet/
+- Metadata: https://snapshots.posthuman.digital/celestia-testnet/snapshot.json
+- Snapshot file: https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4
+- Genesis: https://snapshots.posthuman.digital/celestia-testnet/genesis.json
+- Addrbook: https://snapshots.posthuman.digital/celestia-testnet/addrbook.json
+
+## Preflight
+
+Always compare snapshot metadata with the live RPC before using the archive:
+
+```bash
+curl -fsS https://snapshots.posthuman.digital/celestia-testnet/snapshot.json | jq .
+curl -fsS https://rpc-celestia-testnet.posthuman.digital/status | \
+  jq '.result.node_info.network, .result.sync_info.latest_block_height, .result.sync_info.catching_up'
+```
+
+Stop and investigate before restoring if:
+
+- `chain_id` is not `mocha-4`.
+- RPC is catching up or the RPC height is behind snapshot metadata.
+- The snapshot file is unexpectedly small or unavailable.
+- You cannot preserve validator keys and `priv_validator_state.json`.
+
 ## Quick restore
 
 ```bash
