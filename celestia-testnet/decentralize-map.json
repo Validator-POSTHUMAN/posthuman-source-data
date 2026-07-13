@@ -3,7 +3,7 @@
   "network": "Celestia Mocha Testnet",
   "network_id": "celestia-testnet-mocha-4",
   "chain_id": "mocha-4",
-  "updated_at": "2026-07-10T04:45:03Z",
+  "updated_at": "2026-07-13T04:45:02Z",
   "privacy": {
     "raw_validator_ips": "not published",
     "sentry_topology": "not published",
@@ -55,13 +55,13 @@
     }
   ],
   "summary": {
-    "points": 130,
+    "points": 143,
     "chain_registry_seeds": 5,
     "chain_registry_peers": 0,
-    "observed_peers": 108,
+    "observed_peers": 121,
     "rpc_endpoints": 17,
     "countries": 19,
-    "providers": 40
+    "providers": 45
   },
   "points": [
     {
@@ -75,7 +75,7 @@
       "port": "26656",
       "latency_ms": 5,
       "source": "https://raw.githubusercontent.com/cosmos/chain-registry/master/testnets/celestiatestnet3/chain.json",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Public seed from cosmos chain-registry.",
       "metadata": {
         "chain_registry_address": "seed.publicnode.com:26656",
@@ -107,7 +107,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://raw.githubusercontent.com/cosmos/chain-registry/master/testnets/celestiatestnet3/chain.json",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Public seed from cosmos chain-registry.",
       "metadata": {
         "chain_registry_address": "seed.celestia.testnet.dteam.tech:26656",
@@ -139,7 +139,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://raw.githubusercontent.com/cosmos/chain-registry/master/testnets/celestiatestnet3/chain.json",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Public seed from cosmos chain-registry.",
       "metadata": {
         "chain_registry_address": "185.144.99.223:26656",
@@ -171,7 +171,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://raw.githubusercontent.com/cosmos/chain-registry/master/testnets/celestiatestnet3/chain.json",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Public seed from cosmos chain-registry.",
       "metadata": {
         "chain_registry_address": "65.108.66.220:26656",
@@ -203,7 +203,7 @@
       "port": "11656",
       "latency_ms": null,
       "source": "https://raw.githubusercontent.com/cosmos/chain-registry/master/testnets/celestiatestnet3/chain.json",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Public seed from cosmos chain-registry.",
       "metadata": {
         "chain_registry_address": "celestia-testnet-seed.itrocket.net:11656",
@@ -233,15 +233,16 @@
       "endpoint": "103.66.180.225:26656",
       "ip": "103.66.180.225",
       "port": "26656",
-      "latency_ms": 164,
-      "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "latency_ms": 158,
+      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "7723832b945caf2762ba9efc6ef2c76c5656f150",
         "version": "0.38.17",
         "listen_addr": "103.66.180.225:26656",
         "net_info_sources": [
+          "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc-mocha.pops.one",
           "https://celestia-testnet-rpc.itrocket.net"
         ],
@@ -261,14 +262,47 @@
       "id": "celestia-testnet-mocha-4-observed_peer-2",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
+      "name": "CT",
+      "status": "online",
+      "endpoint": "104.250.153.242:26656",
+      "ip": "104.250.153.242",
+      "port": "26656",
+      "latency_ms": 138,
+      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "90290256ad526d5004ae8dfedac4d43a24698d45",
+        "version": "0.38.17",
+        "listen_addr": "104.250.153.242:26656",
+        "net_info_sources": [
+          "https://rpc-celestia-testnet.posthuman.digital",
+          "https://celestia-testnet-rpc.itrocket.net"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Salt Lake City",
+      "region": "Utah",
+      "country": "United States",
+      "country_code": "US",
+      "lat": 40.7687,
+      "lon": -111.886,
+      "provider": "GorillaServers, Inc.",
+      "asn": "AS53850 GorillaServers, Inc.",
+      "timezone": "America/Denver"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-3",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
       "name": "stk-619",
       "status": "online",
       "endpoint": "134.119.219.101:26686",
       "ip": "134.119.219.101",
       "port": "26686",
-      "latency_ms": 15,
+      "latency_ms": 11,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "c672d42d40d6d7caeacdafad7adeb1bfe0ef7895",
@@ -292,7 +326,7 @@
       "timezone": "Europe/Paris"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-3",
+      "id": "celestia-testnet-mocha-4-observed_peer-4",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "rpc",
@@ -302,7 +336,7 @@
       "port": "17156",
       "latency_ms": 25,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "1653871100c150b5c8f767b43c03c2bb251759d7",
@@ -324,7 +358,7 @@
       "timezone": "Europe/Helsinki"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-4",
+      "id": "celestia-testnet-mocha-4-observed_peer-5",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "probaT",
@@ -334,7 +368,7 @@
       "port": "39656",
       "latency_ms": 25,
       "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "8a8e7ed15c91f31532d098ae55b0ad9ff5aa5ac1",
@@ -356,7 +390,7 @@
       "timezone": "Europe/Helsinki"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-5",
+      "id": "celestia-testnet-mocha-4-observed_peer-6",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -366,7 +400,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "86015024b4f7cfd27cb90fd4be7d311f09010f33",
@@ -388,7 +422,7 @@
       "timezone": "America/Chicago"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-6",
+      "id": "celestia-testnet-mocha-4-observed_peer-7",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "node-name",
@@ -398,7 +432,7 @@
       "port": "26656",
       "latency_ms": 0,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "a5e986735f487ee72ea209b6d2e1d562c4cf46db",
@@ -420,7 +454,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-7",
+      "id": "celestia-testnet-mocha-4-observed_peer-8",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Anam145",
@@ -428,9 +462,9 @@
       "endpoint": "14.6.2.60:26656",
       "ip": "14.6.2.60",
       "port": "26656",
-      "latency_ms": 233,
+      "latency_ms": 229,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "bb75155e234107ea83ab35d948da5a2bd6eb1afc",
@@ -452,7 +486,7 @@
       "timezone": "Asia/Seoul"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-8",
+      "id": "celestia-testnet-mocha-4-observed_peer-9",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Stakely",
@@ -461,15 +495,15 @@
       "ip": "141.94.138.48",
       "port": "26679",
       "latency_ms": 14,
-      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "f68d156f77b5c81a7c8161938ac598da8cdd0764",
         "version": "0.38.17",
         "listen_addr": "141.94.138.48:26679",
         "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital",
+          "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -485,7 +519,7 @@
       "timezone": "Europe/Paris"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-9",
+      "id": "celestia-testnet-mocha-4-observed_peer-10",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "solva-testnet",
@@ -495,7 +529,7 @@
       "port": "2400",
       "latency_ms": 0,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "67b77ddeea9587aece70026ba169dce08aa4b7ce",
@@ -518,7 +552,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-10",
+      "id": "celestia-testnet-mocha-4-observed_peer-11",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "node-1",
@@ -528,7 +562,7 @@
       "port": "26630",
       "latency_ms": 0,
       "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "9b4aa64e7e67a78ef769c78d3e4c7454d80195a6",
@@ -551,7 +585,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-11",
+      "id": "celestia-testnet-mocha-4-observed_peer-12",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "LiveRaveN",
@@ -561,7 +595,7 @@
       "port": "10156",
       "latency_ms": 6,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "10bbc17170d41be86a96e60a1f43bbf92ac97acc",
@@ -585,7 +619,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-12",
+      "id": "celestia-testnet-mocha-4-observed_peer-13",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "OshVanK",
@@ -595,7 +629,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "ebc170bb102b510ef98e2ff424afd87c83517136",
@@ -618,7 +652,7 @@
       "timezone": "Europe/Warsaw"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-13",
+      "id": "celestia-testnet-mocha-4-observed_peer-14",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "DuskProof",
@@ -628,7 +662,7 @@
       "port": "11656",
       "latency_ms": 21,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "c54b1c53896d4147142ecc6664fce4c226b2e913",
@@ -636,42 +670,6 @@
         "listen_addr": "149.50.110.119:11656",
         "net_info_sources": [
           "https://rpc-celestia-testnet.posthuman.digital",
-          "https://celestia-testnet-rpc.itrocket.net",
-          "https://rpc.celestia.testnet.dteam.tech:443"
-        ],
-        "collection": "public_rpc_net_info"
-      },
-      "city": "Warsaw",
-      "region": "Mazovia",
-      "country": "Poland",
-      "country_code": "PL",
-      "lat": 52.2299,
-      "lon": 21.0093,
-      "provider": "Cogent Communications",
-      "asn": "AS201814 MEVSPACE sp. z o.o.",
-      "timezone": "Europe/Warsaw"
-    },
-    {
-      "id": "celestia-testnet-mocha-4-observed_peer-14",
-      "network_id": "celestia-testnet-mocha-4",
-      "type": "observed_peer",
-      "name": "Unity",
-      "status": "online",
-      "endpoint": "149.86.227.11:44656",
-      "ip": "149.86.227.11",
-      "port": "44656",
-      "latency_ms": 21,
-      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
-      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
-      "metadata": {
-        "node_id": "df1f5d6514fd2ed3c4c7938eedbf59351142e4c7",
-        "version": "0.38.17",
-        "listen_addr": "149.86.227.11:44656",
-        "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital",
-          "https://rpc-mocha.pops.one",
-          "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -690,6 +688,72 @@
       "id": "celestia-testnet-mocha-4-observed_peer-15",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
+      "name": "Unity",
+      "status": "online",
+      "endpoint": "149.86.227.11:44656",
+      "ip": "149.86.227.11",
+      "port": "44656",
+      "latency_ms": 22,
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "df1f5d6514fd2ed3c4c7938eedbf59351142e4c7",
+        "version": "0.38.17",
+        "listen_addr": "149.86.227.11:44656",
+        "net_info_sources": [
+          "https://rpc-mocha.pops.one",
+          "https://celestia-testnet-rpc.itrocket.net",
+          "https://rpc.celestia.testnet.dteam.tech:443"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Warsaw",
+      "region": "Mazovia",
+      "country": "Poland",
+      "country_code": "PL",
+      "lat": 52.2299,
+      "lon": 21.0093,
+      "provider": "Cogent Communications",
+      "asn": "AS201814 MEVSPACE sp. z o.o.",
+      "timezone": "Europe/Warsaw"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-16",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "6kYshr3fwX",
+      "status": "online",
+      "endpoint": "15.235.9.222:26656",
+      "ip": "15.235.9.222",
+      "port": "26656",
+      "latency_ms": 99,
+      "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "c32bee129f0f608b2f3b35cb1d814fd2dc2f47f9",
+        "version": "0.38.17",
+        "listen_addr": "tcp://15.235.9.222:26656",
+        "net_info_sources": [
+          "https://celestia-testnet-rpc.itrocket.net"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Montreal",
+      "region": "Quebec",
+      "country": "Canada",
+      "country_code": "CA",
+      "lat": 45.5029,
+      "lon": -73.5723,
+      "provider": "OVH SAS",
+      "asn": "AS16276 OVH SAS",
+      "timezone": "America/Toronto"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-17",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
       "name": "consensus-full-mocha",
       "status": "online",
       "endpoint": "151.115.60.15:26656",
@@ -697,7 +761,7 @@
       "port": "26656",
       "latency_ms": 20,
       "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "e26506bc1ed8f5ea373e1b8c5bc74551607d78a6",
@@ -719,7 +783,7 @@
       "timezone": "Europe/Warsaw"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-16",
+      "id": "celestia-testnet-mocha-4-observed_peer-18",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Pro-Nodes75_mocha4_bak",
@@ -729,7 +793,7 @@
       "port": "32356",
       "latency_ms": 0,
       "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "4652691d4ba5d3302a9ef6019a8a3cbbf11c5641",
@@ -751,7 +815,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-17",
+      "id": "celestia-testnet-mocha-4-observed_peer-19",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "DSRV",
@@ -760,16 +824,16 @@
       "ip": "161.118.227.135",
       "port": "26656",
       "latency_ms": 160,
-      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "9db782fc1ff916dfdaa6b92d2e0b76271ddd2008",
         "version": "0.38.17",
         "listen_addr": "161.118.227.135:26656",
         "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital",
-          "https://rpc-mocha.pops.one"
+          "https://rpc-mocha.pops.one",
+          "https://celestia-testnet-rpc.itrocket.net"
         ],
         "collection": "public_rpc_net_info"
       },
@@ -784,17 +848,17 @@
       "timezone": "Asia/Singapore"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-18",
+      "id": "celestia-testnet-mocha-4-observed_peer-20",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "cf13ce70-ca7230",
-      "status": "observed",
+      "status": "online",
       "endpoint": "162.55.245.144:2400",
       "ip": "162.55.245.144",
       "port": "2400",
-      "latency_ms": null,
+      "latency_ms": 0,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "85aef6d15d0197baff696b6e31c88e0f21073c59",
@@ -817,7 +881,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-19",
+      "id": "celestia-testnet-mocha-4-observed_peer-21",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "validator-1-mocha",
@@ -825,9 +889,9 @@
       "endpoint": "163.172.145.87:26656",
       "ip": "163.172.145.87",
       "port": "26656",
-      "latency_ms": 23,
+      "latency_ms": 26,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "543ebf4f2b99d1ca0527edf0bc80c322a8c6da79",
@@ -850,7 +914,7 @@
       "timezone": "Europe/Paris"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-20",
+      "id": "celestia-testnet-mocha-4-observed_peer-22",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "hello-celestia-testrelay",
@@ -859,16 +923,16 @@
       "ip": "167.235.178.134",
       "port": "11656",
       "latency_ms": 0,
-      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "c50dcfdf798f0e3b3a3cfc32ad68577fa7fea2a1",
         "version": "0.38.17",
         "listen_addr": "167.235.178.134:11656",
         "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc-mocha.pops.one",
+          "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -884,7 +948,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-21",
+      "id": "celestia-testnet-mocha-4-observed_peer-23",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "comet",
@@ -892,16 +956,15 @@
       "endpoint": "167.88.61.169:26656",
       "ip": "167.88.61.169",
       "port": "26656",
-      "latency_ms": 154,
-      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "latency_ms": 157,
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "8beeeddb7c929c76f9cd1b58427716e246350271",
         "version": "0.38.17",
         "listen_addr": "167.88.61.169:26656",
         "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc-mocha.pops.one"
         ],
         "collection": "public_rpc_net_info"
@@ -917,7 +980,7 @@
       "timezone": "America/Los_Angeles"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-22",
+      "id": "celestia-testnet-mocha-4-observed_peer-24",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "validator",
@@ -927,14 +990,15 @@
       "port": "37656",
       "latency_ms": 155,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "077516801eae2debc4fcc6b597860a3199e56aeb",
         "version": "0.38.17",
         "listen_addr": "167.88.61.38:37656",
         "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital"
+          "https://rpc-celestia-testnet.posthuman.digital",
+          "https://celestia-testnet-rpc.itrocket.net"
         ],
         "collection": "public_rpc_net_info"
       },
@@ -949,7 +1013,7 @@
       "timezone": "America/Los_Angeles"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-23",
+      "id": "celestia-testnet-mocha-4-observed_peer-25",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "wizz",
@@ -959,7 +1023,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "b858b5b5afa5169c2d6265646be9d3529d1628ce",
@@ -981,7 +1045,39 @@
       "timezone": "Africa/Johannesburg"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-24",
+      "id": "celestia-testnet-mocha-4-observed_peer-26",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "celestia-testnet-p2p-0",
+      "status": "online",
+      "endpoint": "170.23.154.1:26656",
+      "ip": "170.23.154.1",
+      "port": "26656",
+      "latency_ms": 13,
+      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "a26f758700be806467d642e29bfc531b2dfd6947",
+        "version": "0.38.17",
+        "listen_addr": "celestia-testnet-p2p-0.tm.p2p.world:26656",
+        "net_info_sources": [
+          "https://rpc-celestia-testnet.posthuman.digital"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Amsterdam",
+      "region": "North Holland",
+      "country": "The Netherlands",
+      "country_code": "NL",
+      "lat": 52.3098,
+      "lon": 4.93535,
+      "provider": "SERVERS-COM-AMS",
+      "asn": "AS7979 Servers.com, Inc.",
+      "timezone": "Europe/Amsterdam"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-27",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -991,7 +1087,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "692d58498e785e35dc2c25a7d3dc941cebda411a",
@@ -1013,7 +1109,7 @@
       "timezone": "America/Phoenix"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-25",
+      "id": "celestia-testnet-mocha-4-observed_peer-28",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -1023,7 +1119,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "1743cfcaf4fc0605ec88b3f124c07eec7d569846",
@@ -1045,7 +1141,7 @@
       "timezone": "America/Chicago"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-26",
+      "id": "celestia-testnet-mocha-4-observed_peer-29",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -1055,7 +1151,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "0a7bbc69bf080a3546cc7f5daea2b41e91835120",
@@ -1077,7 +1173,7 @@
       "timezone": "America/Los_Angeles"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-27",
+      "id": "celestia-testnet-mocha-4-observed_peer-30",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -1087,7 +1183,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "0b1fc6391aa67237e96d111358ecd48469deb658",
@@ -1109,7 +1205,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-28",
+      "id": "celestia-testnet-mocha-4-observed_peer-31",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -1119,7 +1215,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "cc415147a57219d2c56704c26442be3d42e2fecd",
@@ -1141,7 +1237,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-29",
+      "id": "celestia-testnet-mocha-4-observed_peer-32",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Cumulo",
@@ -1151,7 +1247,7 @@
       "port": "26656",
       "latency_ms": 113,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "c7dc0a1d45f062a6f929b98cb14bbc22b58d821b",
@@ -1173,7 +1269,7 @@
       "timezone": "America/Chicago"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-30",
+      "id": "celestia-testnet-mocha-4-observed_peer-33",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "probaT",
@@ -1183,7 +1279,7 @@
       "port": "39656",
       "latency_ms": 105,
       "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "35a5096e5ab65c0a4ebeb721663e18dc2c51dd85",
@@ -1205,7 +1301,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-31",
+      "id": "celestia-testnet-mocha-4-observed_peer-34",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "node-name",
@@ -1215,7 +1311,7 @@
       "port": "26656",
       "latency_ms": 0,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "e4bc0594fe32121cbeab476c1b6586ccd73bbdd3",
@@ -1237,7 +1333,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-32",
+      "id": "celestia-testnet-mocha-4-observed_peer-35",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "node-name",
@@ -1246,15 +1342,17 @@
       "ip": "178.63.89.179",
       "port": "26656",
       "latency_ms": 0,
-      "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "42a56aadd35b9d0b0027594b035da6022fbfbcc9",
         "version": "0.38.17",
         "listen_addr": "tcp://0.0.0.0:26656",
         "net_info_sources": [
-          "https://rpc-mocha.pops.one"
+          "https://rpc-celestia-testnet.posthuman.digital",
+          "https://rpc-mocha.pops.one",
+          "https://celestia-testnet-rpc.itrocket.net"
         ],
         "collection": "public_rpc_net_info"
       },
@@ -1269,7 +1367,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-33",
+      "id": "celestia-testnet-mocha-4-observed_peer-36",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "B-Harvest",
@@ -1277,9 +1375,9 @@
       "endpoint": "180.189.55.7:36656",
       "ip": "180.189.55.7",
       "port": "36656",
-      "latency_ms": 222,
+      "latency_ms": 216,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "221445c940b221b0824b6902b717d69a9330c9c4",
@@ -1287,6 +1385,7 @@
         "listen_addr": "180.189.55.7:36656",
         "net_info_sources": [
           "https://rpc-mocha.pops.one",
+          "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -1302,7 +1401,7 @@
       "timezone": "Asia/Seoul"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-34",
+      "id": "celestia-testnet-mocha-4-observed_peer-37",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "BlockPro",
@@ -1310,47 +1409,14 @@
       "endpoint": "184.107.149.93:36656",
       "ip": "184.107.149.93",
       "port": "36656",
-      "latency_ms": 97,
-      "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "latency_ms": 98,
+      "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "7a649733c5ae1b8bba9a5d855d697811646a0f6a",
         "version": "0.38.17",
         "listen_addr": "184.107.149.93:36656",
-        "net_info_sources": [
-          "https://rpc-mocha.pops.one",
-          "https://rpc.celestia.testnet.dteam.tech:443"
-        ],
-        "collection": "public_rpc_net_info"
-      },
-      "city": "Montreal",
-      "region": "Quebec",
-      "country": "Canada",
-      "country_code": "CA",
-      "lat": 45.469,
-      "lon": -73.5395,
-      "provider": "Leaseweb Canada Inc.",
-      "asn": "AS32613 Leaseweb Canada Inc.",
-      "timezone": "America/Toronto"
-    },
-    {
-      "id": "celestia-testnet-mocha-4-observed_peer-35",
-      "network_id": "celestia-testnet-mocha-4",
-      "type": "observed_peer",
-      "name": "node",
-      "status": "online",
-      "endpoint": "184.107.185.201:6050",
-      "ip": "184.107.185.201",
-      "port": "6050",
-      "latency_ms": 96,
-      "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
-      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
-      "metadata": {
-        "node_id": "825105d9a1e27cbfc4dc8550fe0bb9147e1e4a3c",
-        "version": "0.38.17",
-        "listen_addr": "tcp://0.0.0.0:6050",
         "net_info_sources": [
           "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
@@ -1368,7 +1434,7 @@
       "timezone": "America/Toronto"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-36",
+      "id": "celestia-testnet-mocha-4-observed_peer-38",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "hello-celestia-test",
@@ -1378,7 +1444,7 @@
       "port": "11656",
       "latency_ms": 0,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "39e3cd1581018320ac4f3a5f671cae64a33460f8",
@@ -1402,39 +1468,39 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-37",
+      "id": "celestia-testnet-mocha-4-observed_peer-39",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
-      "name": "01node",
-      "status": "observed",
-      "endpoint": "193.222.57.11:26656",
-      "ip": "193.222.57.11",
-      "port": "26656",
-      "latency_ms": null,
-      "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "name": "node",
+      "status": "online",
+      "endpoint": "193.34.213.77:11007",
+      "ip": "193.34.213.77",
+      "port": "11007",
+      "latency_ms": 21,
+      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
-        "node_id": "d468354f164a374f9560d6ad46572668020a222e",
+        "node_id": "8d8ea488c2d9f0a98f0f0b72bbdb4929c768a8e6",
         "version": "0.38.17",
-        "listen_addr": "tcp://0.0.0.0:26656",
+        "listen_addr": "tcp://0.0.0.0:11007",
         "net_info_sources": [
-          "https://rpc.celestia.testnet.dteam.tech:443"
+          "https://rpc-celestia-testnet.posthuman.digital"
         ],
         "collection": "public_rpc_net_info"
       },
-      "city": "Bucharest",
-      "region": "Bucharest",
-      "country": "Romania",
-      "country_code": "RO",
-      "lat": 44.4268,
-      "lon": 26.1025,
-      "provider": "01node Funding SRL",
-      "asn": "AS41536 01NODE FUNDING SRL",
-      "timezone": "Europe/Bucharest"
+      "city": "Warsaw",
+      "region": "Mazovia",
+      "country": "Poland",
+      "country_code": "PL",
+      "lat": 52.1783,
+      "lon": 21.0602,
+      "provider": "MEVSPACE sp. z o.o",
+      "asn": "AS201814 MEVSPACE sp. z o.o.",
+      "timezone": "Europe/Warsaw"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-38",
+      "id": "celestia-testnet-mocha-4-observed_peer-40",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "hello-world",
@@ -1444,7 +1510,7 @@
       "port": "28656",
       "latency_ms": 5,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "0d49c141eca5dd1d1c7577b61c4408c7a43d929f",
@@ -1467,7 +1533,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-39",
+      "id": "celestia-testnet-mocha-4-observed_peer-41",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "01node",
@@ -1477,7 +1543,7 @@
       "port": "26029",
       "latency_ms": 33,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "bfb4e2b176aca8cf97e79238c013f3bd027a7df4",
@@ -1501,7 +1567,7 @@
       "timezone": "Europe/Bucharest"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-40",
+      "id": "celestia-testnet-mocha-4-observed_peer-42",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "snapshot-mocha",
@@ -1509,16 +1575,15 @@
       "endpoint": "195.154.103.156:26656",
       "ip": "195.154.103.156",
       "port": "26656",
-      "latency_ms": 24,
-      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "latency_ms": 20,
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "a99ea596936acf40d01668f0a0f5b0883f67be40",
         "version": "0.38.17",
         "listen_addr": "tcp://0.0.0.0:26656",
         "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc-mocha.pops.one",
           "https://celestia-testnet-rpc.itrocket.net"
         ],
@@ -1535,7 +1600,7 @@
       "timezone": "Europe/Paris"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-41",
+      "id": "celestia-testnet-mocha-4-observed_peer-43",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "rpc-archival-mocha",
@@ -1543,9 +1608,9 @@
       "endpoint": "195.154.103.60:26656",
       "ip": "195.154.103.60",
       "port": "26656",
-      "latency_ms": 23,
+      "latency_ms": 26,
       "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "4eeea98dd704ba43b2745f1041c81eb91b43d750",
@@ -1567,7 +1632,7 @@
       "timezone": "Europe/Paris"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-42",
+      "id": "celestia-testnet-mocha-4-observed_peer-44",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "celestia-scalewaydedi-mocha-03",
@@ -1576,15 +1641,14 @@
       "ip": "195.154.153.32",
       "port": "26656",
       "latency_ms": 27,
-      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "c449cf45dc362b436ae5bcd28cd8a8584c5ad92e",
         "version": "0.38.17",
         "listen_addr": "tcp://0.0.0.0:26656",
         "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc-mocha.pops.one",
           "https://celestia-testnet-rpc.itrocket.net"
         ],
@@ -1601,7 +1665,71 @@
       "timezone": "Europe/Paris"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-43",
+      "id": "celestia-testnet-mocha-4-observed_peer-45",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "da-proxy-rpc-2-mocha",
+      "status": "online",
+      "endpoint": "195.154.212.28:26656",
+      "ip": "195.154.212.28",
+      "port": "26656",
+      "latency_ms": 20,
+      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "2e10064f62f86af4dd6fc58fbd16270adc8e6d6f",
+        "version": "0.38.17",
+        "listen_addr": "tcp://0.0.0.0:26656",
+        "net_info_sources": [
+          "https://rpc-celestia-testnet.posthuman.digital"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Paris",
+      "region": "Île-de-France",
+      "country": "France",
+      "country_code": "FR",
+      "lat": 48.8558,
+      "lon": 2.3494,
+      "provider": "Online SAS",
+      "asn": "AS12876 Scaleway SAS",
+      "timezone": "Europe/Paris"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-46",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "da-proxy-rpc-pruned-1-mocha",
+      "status": "online",
+      "endpoint": "195.154.218.185:26656",
+      "ip": "195.154.218.185",
+      "port": "26656",
+      "latency_ms": 25,
+      "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "eb74a6fe28bd6e13a63385284dc308b9a7f40438",
+        "version": "0.38.17",
+        "listen_addr": "tcp://0.0.0.0:26656",
+        "net_info_sources": [
+          "https://celestia-testnet-rpc.itrocket.net"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Paris",
+      "region": "Île-de-France",
+      "country": "France",
+      "country_code": "FR",
+      "lat": 48.8558,
+      "lon": 2.3494,
+      "provider": "Scaleway SAS",
+      "asn": "AS12876 Scaleway SAS",
+      "timezone": "Europe/Paris"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-47",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "da-proxy-rpc-pruned-2-mocha",
@@ -1609,15 +1737,16 @@
       "endpoint": "195.154.218.203:26656",
       "ip": "195.154.218.203",
       "port": "26656",
-      "latency_ms": 23,
-      "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "latency_ms": 22,
+      "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "89487bc081cad4b073b33cecb5db72b3654e1681",
         "version": "0.38.17",
         "listen_addr": "tcp://0.0.0.0:26656",
         "net_info_sources": [
+          "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -1633,7 +1762,39 @@
       "timezone": "Europe/Paris"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-44",
+      "id": "celestia-testnet-mocha-4-observed_peer-48",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
+      "status": "observed",
+      "endpoint": "20.119.95.17:26656",
+      "ip": "20.119.95.17",
+      "port": "26656",
+      "latency_ms": null,
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "a8f3e0bf99e1a103c175fa22464909d26ef293e6",
+        "version": "0.38.17",
+        "listen_addr": "tcp://0.0.0.0:26656",
+        "net_info_sources": [
+          "https://rpc-mocha.pops.one"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Boydton",
+      "region": "Virginia",
+      "country": "United States",
+      "country_code": "US",
+      "lat": 36.677696,
+      "lon": -78.37471,
+      "provider": "Microsoft Corporation",
+      "asn": "AS8075 Microsoft Corporation",
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-49",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -1643,7 +1804,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "6cd6709b046cabc4968df299fb72aeda376e7fc0",
@@ -1665,7 +1826,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-45",
+      "id": "celestia-testnet-mocha-4-observed_peer-50",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -1675,7 +1836,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "b4b1664a203776f673a699039578c732a6cf66c9",
@@ -1697,7 +1858,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-46",
+      "id": "celestia-testnet-mocha-4-observed_peer-51",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -1707,7 +1868,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "489523089c4c76790fda570941860e5379288558",
@@ -1729,7 +1890,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-47",
+      "id": "celestia-testnet-mocha-4-observed_peer-52",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -1739,7 +1900,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "78b84b4c66afd18a07bb001d2a0c8da3e2957ed9",
@@ -1761,7 +1922,39 @@
       "timezone": "America/Los_Angeles"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-48",
+      "id": "celestia-testnet-mocha-4-observed_peer-53",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "Kyve_ovh-1",
+      "status": "online",
+      "endpoint": "2001:41d0:203:e4db::3:26656",
+      "ip": "2001:41d0:203:e4db::3",
+      "port": "26656",
+      "latency_ms": 12,
+      "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "ef1853155735bbdc15be6d04d61ea8e0b0f3429d",
+        "version": "0.38.17",
+        "listen_addr": "[2001:41d0:203:e4db::3]:26656",
+        "net_info_sources": [
+          "https://celestia-testnet-rpc.itrocket.net"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Roubaix",
+      "region": "Hauts-de-France",
+      "country": "France",
+      "country_code": "FR",
+      "lat": 50.6924,
+      "lon": 3.20113,
+      "provider": "OVH SAS",
+      "asn": "AS16276 OVH SAS",
+      "timezone": "Europe/Paris"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-54",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "validator",
@@ -1771,7 +1964,7 @@
       "port": "27656",
       "latency_ms": 221,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "2393fbde0f4d37d627d964a2f0fcaea666a593aa",
@@ -1794,7 +1987,7 @@
       "timezone": "America/Argentina/Buenos_Aires"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-49",
+      "id": "celestia-testnet-mocha-4-observed_peer-55",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "ecad-mochanet-2",
@@ -1803,14 +1996,15 @@
       "ip": "207.229.99.83",
       "port": "40656",
       "latency_ms": 158,
-      "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "df1606a5017bc5f4690163cddbea305f0f154c2a",
         "version": "0.38.17",
         "listen_addr": "207.229.99.83:40656",
         "net_info_sources": [
+          "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc-mocha.pops.one",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
@@ -1827,7 +2021,7 @@
       "timezone": "America/Vancouver"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-50",
+      "id": "celestia-testnet-mocha-4-observed_peer-56",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "celestia-node-1",
@@ -1836,14 +2030,15 @@
       "ip": "213.239.192.18",
       "port": "12056",
       "latency_ms": 0,
-      "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "689d597546bda1fbc2cd8d1dfd77a490eeef839e",
         "version": "0.38.17",
         "listen_addr": "tcp://0.0.0.0:12056",
         "net_info_sources": [
+          "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -1859,7 +2054,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-51",
+      "id": "celestia-testnet-mocha-4-observed_peer-57",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "st-server",
@@ -1869,7 +2064,7 @@
       "port": "11656",
       "latency_ms": null,
       "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "eb6d5439c0b52dba3acd6c14d84195f8c2e916f4",
@@ -1891,7 +2086,7 @@
       "timezone": "America/Los_Angeles"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-52",
+      "id": "celestia-testnet-mocha-4-observed_peer-58",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "tendermint",
@@ -1900,16 +2095,16 @@
       "ip": "216.106.185.180",
       "port": "11656",
       "latency_ms": 155,
-      "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "69c08410d85b22daf02afff669dfee2b72204511",
         "version": "0.38.17",
         "listen_addr": "216.106.185.180:11656",
         "net_info_sources": [
-          "https://rpc-mocha.pops.one",
-          "https://rpc.celestia.testnet.dteam.tech:443"
+          "https://rpc-celestia-testnet.posthuman.digital",
+          "https://rpc-mocha.pops.one"
         ],
         "collection": "public_rpc_net_info"
       },
@@ -1924,7 +2119,7 @@
       "timezone": "America/Los_Angeles"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-53",
+      "id": "celestia-testnet-mocha-4-observed_peer-59",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "node-name",
@@ -1932,9 +2127,9 @@
       "endpoint": "216.158.94.178:26656",
       "ip": "216.158.94.178",
       "port": "26656",
-      "latency_ms": 142,
+      "latency_ms": 139,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "588f56ecd9dbac1a2a6529939030393b22ec709f",
@@ -1958,7 +2153,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-54",
+      "id": "celestia-testnet-mocha-4-observed_peer-60",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "celestia-validator_testnet-CroutonDigital",
@@ -1966,16 +2161,15 @@
       "endpoint": "217.28.48.238:28656",
       "ip": "217.28.48.238",
       "port": "28656",
-      "latency_ms": 30,
-      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "latency_ms": 31,
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "387e3834d8023bf23adf3888f803ac4bae499da5",
         "version": "0.38.17",
         "listen_addr": "217.28.48.238:28656",
         "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc-mocha.pops.one",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
@@ -1992,7 +2186,7 @@
       "timezone": "Europe/Riga"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-55",
+      "id": "celestia-testnet-mocha-4-observed_peer-61",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Staked",
@@ -2001,14 +2195,15 @@
       "ip": "3.36.52.55",
       "port": "26656",
       "latency_ms": null,
-      "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "400f8d1cd44ebe54d5e852d0abfb27710cae441f",
         "version": "0.38.17",
         "listen_addr": "tcp://0.0.0.0:26656",
         "net_info_sources": [
+          "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -2024,7 +2219,7 @@
       "timezone": "Asia/Seoul"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-56",
+      "id": "celestia-testnet-mocha-4-observed_peer-62",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Anon",
@@ -2032,17 +2227,16 @@
       "endpoint": "31.7.196.17:26656",
       "ip": "31.7.196.17",
       "port": "26656",
-      "latency_ms": 30,
+      "latency_ms": 31,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "8f282e0237ec45dd0a959bd3e2872f088133a58a",
         "version": "0.38.17",
         "listen_addr": "tcp://0.0.0.0:26656",
         "net_info_sources": [
-          "https://rpc-mocha.pops.one",
-          "https://celestia-testnet-rpc.itrocket.net"
+          "https://rpc-mocha.pops.one"
         ],
         "collection": "public_rpc_net_info"
       },
@@ -2057,7 +2251,7 @@
       "timezone": "Europe/Ljubljana"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-57",
+      "id": "celestia-testnet-mocha-4-observed_peer-63",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "localhost",
@@ -2066,14 +2260,15 @@
       "ip": "37.61.221.1",
       "port": "43656",
       "latency_ms": 5,
-      "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "57d0c67077b426ddc443473284a3b6922ef150a7",
         "version": "0.38.17",
         "listen_addr": "37.61.221.1:43656",
         "net_info_sources": [
+          "https://rpc-mocha.pops.one",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -2089,7 +2284,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-58",
+      "id": "celestia-testnet-mocha-4-observed_peer-64",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "qn-lsn-jfk-14138",
@@ -2099,7 +2294,7 @@
       "port": "26656",
       "latency_ms": 86,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "e0a8d105c137e5e9ab163673f08f7638c1350f20",
@@ -2123,7 +2318,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-59",
+      "id": "celestia-testnet-mocha-4-observed_peer-65",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "consensus-0",
@@ -2133,14 +2328,15 @@
       "port": "26656",
       "latency_ms": 93,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "8bbe141f8f8186e15c4c5046003b0700121bbc45",
         "version": "0.38.17",
         "listen_addr": "tcp://0.0.0.0:26656",
         "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital"
+          "https://rpc-celestia-testnet.posthuman.digital",
+          "https://celestia-testnet-rpc.itrocket.net"
         ],
         "collection": "public_rpc_net_info"
       },
@@ -2155,7 +2351,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-60",
+      "id": "celestia-testnet-mocha-4-observed_peer-66",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -2165,7 +2361,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "173c700089adfa1c4961800f54f2a34a740a23d0",
@@ -2187,7 +2383,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-61",
+      "id": "celestia-testnet-mocha-4-observed_peer-67",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -2197,7 +2393,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "bcdf4a48cb0214c60379eb04cda4112a7addbc63",
@@ -2219,7 +2415,39 @@
       "timezone": "America/Los_Angeles"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-62",
+      "id": "celestia-testnet-mocha-4-observed_peer-68",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "celestia-cb-01",
+      "status": "observed",
+      "endpoint": "44.207.116.119:26656",
+      "ip": "44.207.116.119",
+      "port": "26656",
+      "latency_ms": null,
+      "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "1a786501bb24d7fafdc11d3da07b42c2c94334e6",
+        "version": "0.38.17",
+        "listen_addr": "tcp://0.0.0.0:26656",
+        "net_info_sources": [
+          "https://rpc.celestia.testnet.dteam.tech:443"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Ashburn",
+      "region": "Virginia",
+      "country": "United States",
+      "country_code": "US",
+      "lat": 39.0438,
+      "lon": -77.4874,
+      "provider": "Amazon.com",
+      "asn": "AS14618 Amazon.com, Inc.",
+      "timezone": "America/New_York"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-69",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "p-ops team",
@@ -2227,9 +2455,9 @@
       "endpoint": "5.199.172.53:26656",
       "ip": "5.199.172.53",
       "port": "26656",
-      "latency_ms": 29,
+      "latency_ms": 30,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "c2870ce12cfb08c4ff66c9ad7c49533d2bd8d412",
@@ -2252,7 +2480,7 @@
       "timezone": "Europe/Vilnius"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-63",
+      "id": "celestia-testnet-mocha-4-observed_peer-70",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Node",
@@ -2260,9 +2488,9 @@
       "endpoint": "5.83.152.217:26656",
       "ip": "5.83.152.217",
       "port": "26656",
-      "latency_ms": 10,
+      "latency_ms": 9,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "8cbc1aa32882a06c219bae2bbf5cd051d60899b6",
@@ -2284,7 +2512,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-64",
+      "id": "celestia-testnet-mocha-4-observed_peer-71",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Node",
@@ -2294,7 +2522,7 @@
       "port": "26656",
       "latency_ms": 18,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "f05e6a065b772dda4c7c0cbed40894a8c43416c7",
@@ -2317,7 +2545,7 @@
       "timezone": "Europe/Amsterdam"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-65",
+      "id": "celestia-testnet-mocha-4-observed_peer-72",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Node",
@@ -2327,15 +2555,14 @@
       "port": "55656",
       "latency_ms": 18,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "eaa858b578d6840280fa413a5990c151a3da2fc7",
         "version": "0.38.17",
         "listen_addr": "51.15.21.95:55656",
         "net_info_sources": [
-          "https://rpc-mocha.pops.one",
-          "https://celestia-testnet-rpc.itrocket.net"
+          "https://rpc-mocha.pops.one"
         ],
         "collection": "public_rpc_net_info"
       },
@@ -2350,7 +2577,7 @@
       "timezone": "Europe/Amsterdam"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-66",
+      "id": "celestia-testnet-mocha-4-observed_peer-73",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "M076h2oftq",
@@ -2358,9 +2585,9 @@
       "endpoint": "51.79.19.101:26656",
       "ip": "51.79.19.101",
       "port": "26656",
-      "latency_ms": 92,
+      "latency_ms": 98,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "b977ffaf75faed21a9ac2b758da5ddb0545e9c8e",
@@ -2382,7 +2609,7 @@
       "timezone": "America/Toronto"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-67",
+      "id": "celestia-testnet-mocha-4-observed_peer-74",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -2392,7 +2619,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "bfc85234ac5affb1232bb0d028784fcedd19f041",
@@ -2414,7 +2641,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-68",
+      "id": "celestia-testnet-mocha-4-observed_peer-75",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -2424,7 +2651,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "cfb1ce86f68a589a0e259568e0d73202ad6eda8d",
@@ -2446,7 +2673,7 @@
       "timezone": "America/Chicago"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-69",
+      "id": "celestia-testnet-mocha-4-observed_peer-76",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -2456,7 +2683,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "6c9fbe80a1a563a5e8383d00d4c764fe403f7c55",
@@ -2478,7 +2705,7 @@
       "timezone": "America/Denver"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-70",
+      "id": "celestia-testnet-mocha-4-observed_peer-77",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -2488,7 +2715,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "d0ad5e0058534cfc71b3bdf66cadcdbd1cca4749",
@@ -2510,7 +2737,7 @@
       "timezone": "America/Chicago"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-71",
+      "id": "celestia-testnet-mocha-4-observed_peer-78",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -2520,7 +2747,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "4daf0cb3bd1041e06cb563f5f89f11f47c7c686e",
@@ -2542,7 +2769,71 @@
       "timezone": "America/Los_Angeles"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-72",
+      "id": "celestia-testnet-mocha-4-observed_peer-79",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "tia-node",
+      "status": "online",
+      "endpoint": "52.27.82.238:26656",
+      "ip": "52.27.82.238",
+      "port": "26656",
+      "latency_ms": 166,
+      "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "9699ae8ec68109d9babaded4d52ef8ad1a7c8830",
+        "version": "0.38.17",
+        "listen_addr": "tcp://0.0.0.0:26656",
+        "net_info_sources": [
+          "https://celestia-testnet-rpc.itrocket.net"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Portland",
+      "region": "Oregon",
+      "country": "United States",
+      "country_code": "US",
+      "lat": 45.5235,
+      "lon": -122.676,
+      "provider": "Amazon.com, Inc.",
+      "asn": "AS16509 Amazon.com, Inc.",
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-80",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "Kyve_ovh-1",
+      "status": "observed",
+      "endpoint": "54.38.112.219:26656",
+      "ip": "54.38.112.219",
+      "port": "26656",
+      "latency_ms": null,
+      "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "ef1853155735bbdc15be6d04d61ea8e0b0f3429d",
+        "version": "0.38.17",
+        "listen_addr": "[2001:41d0:203:e4db::3]:26656",
+        "net_info_sources": [
+          "https://rpc.celestia.testnet.dteam.tech:443"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Wattrelos",
+      "region": "Hauts-de-France",
+      "country": "France",
+      "country_code": "FR",
+      "lat": 50.7012,
+      "lon": 3.21501,
+      "provider": "OVH SAS",
+      "asn": "AS16276 OVH SAS",
+      "timezone": "Europe/Paris"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-81",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "qubelabs",
@@ -2550,15 +2841,16 @@
       "endpoint": "57.128.192.23:26686",
       "ip": "57.128.192.23",
       "port": "26686",
-      "latency_ms": 26,
-      "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "latency_ms": 25,
+      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "ac1338ace0d7ebaa77221c977acace15de4c81a8",
         "version": "0.38.17",
         "listen_addr": "tcp://0.0.0.0:26686",
         "net_info_sources": [
+          "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc-mocha.pops.one",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
@@ -2575,7 +2867,7 @@
       "timezone": "Europe/Warsaw"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-73",
+      "id": "celestia-testnet-mocha-4-observed_peer-82",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "CLK",
@@ -2585,7 +2877,7 @@
       "port": "59300",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "8fbeb2926579f67a5ec3f37c38fb4da1de42ded9",
@@ -2608,7 +2900,39 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-74",
+      "id": "celestia-testnet-mocha-4-observed_peer-83",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
+      "status": "observed",
+      "endpoint": "57.151.128.128:26656",
+      "ip": "57.151.128.128",
+      "port": "26656",
+      "latency_ms": null,
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "96cc34730869e31a03c624a977eeeb026b479c4c",
+        "version": "0.38.17",
+        "listen_addr": "tcp://0.0.0.0:26656",
+        "net_info_sources": [
+          "https://rpc-mocha.pops.one"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Cheyenne",
+      "region": "Wyoming",
+      "country": "United States",
+      "country_code": "US",
+      "lat": 41.13925,
+      "lon": -104.816154,
+      "provider": "Microsoft Corporation",
+      "asn": "AS8075 Microsoft Corporation",
+      "timezone": "America/Denver"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-84",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -2618,7 +2942,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "a62fc39f40eebeb1beea171d77e912b848b02626",
@@ -2640,7 +2964,7 @@
       "timezone": "America/Denver"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-75",
+      "id": "celestia-testnet-mocha-4-observed_peer-85",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "da-proxy-rpc-2-mocha",
@@ -2648,9 +2972,9 @@
       "endpoint": "62.210.93.173:26656",
       "ip": "62.210.93.173",
       "port": "26656",
-      "latency_ms": 23,
+      "latency_ms": 22,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "40b10299fa62eaa246a140d94fe4c693c6b8e28c",
@@ -2673,7 +2997,7 @@
       "timezone": "Europe/Paris"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-76",
+      "id": "celestia-testnet-mocha-4-observed_peer-86",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "qn-tsw-ewr-18918",
@@ -2683,7 +3007,7 @@
       "port": "26656",
       "latency_ms": 80,
       "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "073cc0649dc1b99c8db1c806482820453a86e18a",
@@ -2705,7 +3029,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-77",
+      "id": "celestia-testnet-mocha-4-observed_peer-87",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "qn-tsw-ewr-13650",
@@ -2714,15 +3038,14 @@
       "ip": "64.130.45.150",
       "port": "26656",
       "latency_ms": 80,
-      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "073cc0649dc1b99c8db1c806482820453a86e18a",
         "version": "0.38.17",
         "listen_addr": "tcp://0.0.0.0:26656",
         "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc-mocha.pops.one"
         ],
         "collection": "public_rpc_net_info"
@@ -2738,40 +3061,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-78",
-      "network_id": "celestia-testnet-mocha-4",
-      "type": "observed_peer",
-      "name": "qn-tsw-ewr-13651",
-      "status": "online",
-      "endpoint": "64.130.45.151:26656",
-      "ip": "64.130.45.151",
-      "port": "26656",
-      "latency_ms": 80,
-      "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
-      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
-      "metadata": {
-        "node_id": "546cc6e7e987e0d8790efaab1645f7dc7512d760",
-        "version": "0.38.17",
-        "listen_addr": "tcp://0.0.0.0:26656",
-        "net_info_sources": [
-          "https://rpc-mocha.pops.one",
-          "https://celestia-testnet-rpc.itrocket.net"
-        ],
-        "collection": "public_rpc_net_info"
-      },
-      "city": "Newark",
-      "region": "New Jersey",
-      "country": "United States",
-      "country_code": "US",
-      "lat": 40.7356,
-      "lon": -74.1723,
-      "provider": "TeraSwitch Networks Inc.",
-      "asn": "AS20326 TeraSwitch Networks Inc.",
-      "timezone": "America/New_York"
-    },
-    {
-      "id": "celestia-testnet-mocha-4-observed_peer-79",
+      "id": "celestia-testnet-mocha-4-observed_peer-88",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "prd-validator-celestia-testnet",
@@ -2780,15 +3070,14 @@
       "ip": "64.20.55.10",
       "port": "26656",
       "latency_ms": 89,
-      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "dc1bb72bce7ae44c117c6ebe682925de2ce69af1",
         "version": "0.38.17",
         "listen_addr": "tcp://0.0.0.0:26656",
         "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc-mocha.pops.one"
         ],
         "collection": "public_rpc_net_info"
@@ -2804,7 +3093,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-80",
+      "id": "celestia-testnet-mocha-4-observed_peer-89",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "node",
@@ -2814,7 +3103,7 @@
       "port": "16656",
       "latency_ms": 25,
       "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "836b66dd7f9f3a901cdde97596ff6c7d0d835d6c",
@@ -2836,7 +3125,39 @@
       "timezone": "Europe/Helsinki"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-81",
+      "id": "celestia-testnet-mocha-4-observed_peer-90",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "ubuntu-4gb-hel1-1",
+      "status": "online",
+      "endpoint": "65.108.90.11:26656",
+      "ip": "65.108.90.11",
+      "port": "26656",
+      "latency_ms": 25,
+      "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "ea6a87fedef2cef945843f1d2fc2dd66d6ae4bc8",
+        "version": "0.38.17",
+        "listen_addr": "tcp://0.0.0.0:26656",
+        "net_info_sources": [
+          "https://rpc.celestia.testnet.dteam.tech:443"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Helsinki",
+      "region": "Uusimaa",
+      "country": "Finland",
+      "country_code": "FI",
+      "lat": 60.1719,
+      "lon": 24.9347,
+      "provider": "Hetzner Online GmbH",
+      "asn": "AS24940 Hetzner Online GmbH",
+      "timezone": "Europe/Helsinki"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-91",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "NakoTurk",
@@ -2846,7 +3167,7 @@
       "port": "26656",
       "latency_ms": 25,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "ac68d93b828f8f491d01e30d734355207aa20eb2",
@@ -2868,7 +3189,7 @@
       "timezone": "Europe/Helsinki"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-82",
+      "id": "celestia-testnet-mocha-4-observed_peer-92",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "rpc",
@@ -2878,7 +3199,7 @@
       "port": "26656",
       "latency_ms": 25,
       "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "daf2cecee2bd7f1b3bf94839f993f807c6b15fbf",
@@ -2900,7 +3221,7 @@
       "timezone": "Europe/Helsinki"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-83",
+      "id": "celestia-testnet-mocha-4-observed_peer-93",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "hello-celestia-testrelay",
@@ -2909,15 +3230,17 @@
       "ip": "65.109.59.22",
       "port": "11656",
       "latency_ms": 25,
-      "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "f689e6ab2db5f0a3a1db2ed33958a00240689a7b",
         "version": "0.38.17",
         "listen_addr": "65.109.59.22:11656",
         "net_info_sources": [
+          "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc-mocha.pops.one",
+          "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -2933,7 +3256,7 @@
       "timezone": "Europe/Helsinki"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-84",
+      "id": "celestia-testnet-mocha-4-observed_peer-94",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "seed",
@@ -2943,7 +3266,7 @@
       "port": "14656",
       "latency_ms": 25,
       "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "b402fe40f3474e9e208840702e1b7aa37f2edc4b",
@@ -2965,7 +3288,72 @@
       "timezone": "Europe/Helsinki"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-85",
+      "id": "celestia-testnet-mocha-4-observed_peer-95",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "test",
+      "status": "online",
+      "endpoint": "65.109.92.148:61156",
+      "ip": "65.109.92.148",
+      "port": "61156",
+      "latency_ms": 25,
+      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "3ca7c597993d8f065ab1ff58e3378a05828f3f71",
+        "version": "0.38.17",
+        "listen_addr": "65.109.92.148:61156",
+        "net_info_sources": [
+          "https://rpc-celestia-testnet.posthuman.digital"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Helsinki",
+      "region": "Uusimaa",
+      "country": "Finland",
+      "country_code": "FI",
+      "lat": 60.1719,
+      "lon": 24.9347,
+      "provider": "Hetzner Online GmbH",
+      "asn": "AS24940 Hetzner Online GmbH",
+      "timezone": "Europe/Helsinki"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-96",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "node-name",
+      "status": "online",
+      "endpoint": "65.21.20.16:26656",
+      "ip": "65.21.20.16",
+      "port": "26656",
+      "latency_ms": 25,
+      "source": "https://rpc-mocha.pops.one/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "51ac9bc2a76d1aed7051cb36c69922f093be43c1",
+        "version": "0.38.17",
+        "listen_addr": "tcp://0.0.0.0:26656",
+        "net_info_sources": [
+          "https://rpc-mocha.pops.one",
+          "https://celestia-testnet-rpc.itrocket.net"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Helsinki",
+      "region": "Uusimaa",
+      "country": "Finland",
+      "country_code": "FI",
+      "lat": 60.1719,
+      "lon": 24.9347,
+      "provider": "Hetzner Online GmbH",
+      "asn": "AS24940 Hetzner Online GmbH",
+      "timezone": "Europe/Helsinki"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-97",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "ttt",
@@ -2975,7 +3363,7 @@
       "port": "24456",
       "latency_ms": 25,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "360341eb24a62f8dcdf46810052e2ea2a116745f",
@@ -2983,7 +3371,6 @@
         "listen_addr": "tcp://0.0.0.0:24456",
         "net_info_sources": [
           "https://rpc-mocha.pops.one",
-          "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -2999,7 +3386,7 @@
       "timezone": "Europe/Helsinki"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-86",
+      "id": "celestia-testnet-mocha-4-observed_peer-98",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "[NODERS]",
@@ -3007,9 +3394,9 @@
       "endpoint": "67.213.118.143:11656",
       "ip": "67.213.118.143",
       "port": "11656",
-      "latency_ms": 139,
+      "latency_ms": 140,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "946d5d44632a10c9b3600c22fa62a7b3ad9870c1",
@@ -3033,7 +3420,7 @@
       "timezone": "America/Chicago"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-87",
+      "id": "celestia-testnet-mocha-4-observed_peer-99",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "tia-node",
@@ -3041,16 +3428,15 @@
       "endpoint": "67.213.124.27:26656",
       "ip": "67.213.124.27",
       "port": "26656",
-      "latency_ms": 149,
-      "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "latency_ms": 150,
+      "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "17fbb7ea9acf227564ae0e2b90fcc39273e724aa",
         "version": "0.38.17",
         "listen_addr": "tcp://0.0.0.0:26656",
         "net_info_sources": [
-          "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -3066,7 +3452,7 @@
       "timezone": "America/Los_Angeles"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-88",
+      "id": "celestia-testnet-mocha-4-observed_peer-100",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "tia-node",
@@ -3074,9 +3460,9 @@
       "endpoint": "67.213.124.29:26656",
       "ip": "67.213.124.29",
       "port": "26656",
-      "latency_ms": 151,
+      "latency_ms": 150,
       "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "b6c7ccd679ff823fdb72c508557ae9643c9cf0fc",
@@ -3098,7 +3484,7 @@
       "timezone": "America/Los_Angeles"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-89",
+      "id": "celestia-testnet-mocha-4-observed_peer-101",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "da-proxy-rpc-2-mocha",
@@ -3108,7 +3494,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "713de03d025531b8540044342318e14f0377a100",
@@ -3130,7 +3516,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-90",
+      "id": "celestia-testnet-mocha-4-observed_peer-102",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -3140,7 +3526,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "ccc96e96347fa07e813dd45ccc8bcce996bf4154",
@@ -3162,7 +3548,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-91",
+      "id": "celestia-testnet-mocha-4-observed_peer-103",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -3172,7 +3558,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "15f91068f132e20bfacd4cc0151fee73c23d508d",
@@ -3194,7 +3580,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-92",
+      "id": "celestia-testnet-mocha-4-observed_peer-104",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "deNodes",
@@ -3204,7 +3590,7 @@
       "port": "26656",
       "latency_ms": 28,
       "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "76c0f450e2add6af468cef2b3b0799ae3111cab4",
@@ -3227,7 +3613,7 @@
       "timezone": "Europe/Oslo"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-93",
+      "id": "celestia-testnet-mocha-4-observed_peer-105",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "node101",
@@ -3235,9 +3621,9 @@
       "endpoint": "84.32.32.140:26656",
       "ip": "84.32.32.140",
       "port": "26656",
-      "latency_ms": 112,
+      "latency_ms": 106,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "4809a2832d9f871504c76da4b27fae0cc6460025",
@@ -3260,7 +3646,7 @@
       "timezone": "America/Chicago"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-94",
+      "id": "celestia-testnet-mocha-4-observed_peer-106",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "stakin",
@@ -3268,9 +3654,9 @@
       "endpoint": "84.32.70.3:26656",
       "ip": "84.32.70.3",
       "port": "26656",
-      "latency_ms": 107,
+      "latency_ms": 105,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "0f7e1292c43ca44c303c06c1a9e3551b1acfcdef",
@@ -3278,6 +3664,7 @@
         "listen_addr": "tcp://0.0.0.0:26656",
         "net_info_sources": [
           "https://rpc-celestia-testnet.posthuman.digital",
+          "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -3293,7 +3680,7 @@
       "timezone": "America/Chicago"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-95",
+      "id": "celestia-testnet-mocha-4-observed_peer-107",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Upnode",
@@ -3303,7 +3690,7 @@
       "port": "16656",
       "latency_ms": 5,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "fb18473620360e275412e33124daae514d2b0457",
@@ -3326,7 +3713,39 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-96",
+      "id": "celestia-testnet-mocha-4-observed_peer-108",
+      "network_id": "celestia-testnet-mocha-4",
+      "type": "observed_peer",
+      "name": "Kyve_celestia_bridge_2",
+      "status": "online",
+      "endpoint": "88.218.224.14:27656",
+      "ip": "88.218.224.14",
+      "port": "27656",
+      "latency_ms": 5,
+      "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
+      "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
+      "metadata": {
+        "node_id": "7d01511554a7997d5d51ab5822a681429a2ba4a0",
+        "version": "0.38.17",
+        "listen_addr": "88.218.224.14:27656",
+        "net_info_sources": [
+          "https://celestia-testnet-rpc.itrocket.net"
+        ],
+        "collection": "public_rpc_net_info"
+      },
+      "city": "Waldbrunn",
+      "region": "Bavaria",
+      "country": "Germany",
+      "country_code": "DE",
+      "lat": 49.7582,
+      "lon": 9.8069,
+      "provider": "IP- www.accelerated.de",
+      "asn": "AS48314 Michael Sebastian Schinzel trading as IP-Projects GmbH & Co. KG",
+      "timezone": "Europe/Berlin"
+    },
+    {
+      "id": "celestia-testnet-mocha-4-observed_peer-109",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "LinkPool-Archive",
@@ -3334,9 +3753,9 @@
       "endpoint": "89.107.20.19:30058",
       "ip": "89.107.20.19",
       "port": "30058",
-      "latency_ms": 20,
+      "latency_ms": 22,
       "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "ff4ee776d5527494861f53b6917dea37540f2618",
@@ -3358,7 +3777,7 @@
       "timezone": "Europe/London"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-97",
+      "id": "celestia-testnet-mocha-4-observed_peer-110",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "LinkPool",
@@ -3368,7 +3787,7 @@
       "port": "30105",
       "latency_ms": 19,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "02b3810f1390153875c3fb91c14401b72635cc30",
@@ -3390,7 +3809,7 @@
       "timezone": "Europe/London"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-98",
+      "id": "celestia-testnet-mocha-4-observed_peer-111",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -3400,7 +3819,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "53e5c3e87fb3dba2ff470ea7f46f2e31bdd23f71",
@@ -3422,7 +3841,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-99",
+      "id": "celestia-testnet-mocha-4-observed_peer-112",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "mocha-4-cfull-0-TestCelestiaTestSuite_TestSyncToTipMocha",
@@ -3432,7 +3851,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "d64075a990eee495033046ba56efc95f0c15c32d",
@@ -3454,7 +3873,7 @@
       "timezone": "America/New_York"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-100",
+      "id": "celestia-testnet-mocha-4-observed_peer-113",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "01node",
@@ -3462,9 +3881,9 @@
       "endpoint": "91.198.59.18:26656",
       "ip": "91.198.59.18",
       "port": "26656",
-      "latency_ms": 29,
+      "latency_ms": 31,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "9f4389d00778eb02374dd5d3db365439aca249df",
@@ -3488,7 +3907,7 @@
       "timezone": "Europe/Bucharest"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-101",
+      "id": "celestia-testnet-mocha-4-observed_peer-114",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Cumulo",
@@ -3496,9 +3915,9 @@
       "endpoint": "92.204.168.57:26656",
       "ip": "92.204.168.57",
       "port": "26656",
-      "latency_ms": 8,
+      "latency_ms": 11,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "bbdb266294c6e7b3f661dbcabdb4efaf0466c504",
@@ -3521,7 +3940,7 @@
       "timezone": "Europe/Paris"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-102",
+      "id": "celestia-testnet-mocha-4-observed_peer-115",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "NODERS.SERVICES-celestia",
@@ -3531,7 +3950,7 @@
       "port": "11656",
       "latency_ms": 0,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "ba48e9b3511b89ceb40bcff84c307ed5122e2f4d",
@@ -3555,7 +3974,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-103",
+      "id": "celestia-testnet-mocha-4-observed_peer-116",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "StakingFacilities",
@@ -3563,9 +3982,9 @@
       "endpoint": "94.158.242.192:27660",
       "ip": "94.158.242.192",
       "port": "27660",
-      "latency_ms": 11,
+      "latency_ms": 10,
       "source": "https://rpc-mocha.pops.one/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "e09ec4e49be9aee401f22c731774d1cc4bf377ef",
@@ -3587,7 +4006,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-104",
+      "id": "celestia-testnet-mocha-4-observed_peer-117",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "celestia-testnet-p2p-0",
@@ -3596,14 +4015,15 @@
       "ip": "94.242.197.98",
       "port": "26656",
       "latency_ms": null,
-      "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "a26f758700be806467d642e29bfc531b2dfd6947",
         "version": "0.38.17",
         "listen_addr": "celestia-testnet-p2p-0.tm.p2p.world:26656",
         "net_info_sources": [
+          "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -3619,7 +4039,7 @@
       "timezone": "Europe/Berlin"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-105",
+      "id": "celestia-testnet-mocha-4-observed_peer-118",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Krews",
@@ -3629,7 +4049,7 @@
       "port": "23656",
       "latency_ms": 21,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "388f212198dfa729adde000311bc71f58f7b50d7",
@@ -3638,6 +4058,7 @@
         "net_info_sources": [
           "https://rpc-celestia-testnet.posthuman.digital",
           "https://rpc-mocha.pops.one",
+          "https://celestia-testnet-rpc.itrocket.net",
           "https://rpc.celestia.testnet.dteam.tech:443"
         ],
         "collection": "public_rpc_net_info"
@@ -3653,7 +4074,7 @@
       "timezone": "Europe/Rome"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-106",
+      "id": "celestia-testnet-mocha-4-observed_peer-119",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "node",
@@ -3663,7 +4084,7 @@
       "port": "12656",
       "latency_ms": 21,
       "source": "https://rpc-celestia-testnet.posthuman.digital/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "e40a4f74fb1f6b8cfdc1f14e50056aeebe2a5d7d",
@@ -3686,7 +4107,7 @@
       "timezone": "Europe/Rome"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-107",
+      "id": "celestia-testnet-mocha-4-observed_peer-120",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "tensor",
@@ -3696,7 +4117,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://rpc.celestia.testnet.dteam.tech:443/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "8e56645c3742e9292f8ae702b43cf5be2c36fccf",
@@ -3718,7 +4139,7 @@
       "timezone": "Europe/Helsinki"
     },
     {
-      "id": "celestia-testnet-mocha-4-observed_peer-108",
+      "id": "celestia-testnet-mocha-4-observed_peer-121",
       "network_id": "celestia-testnet-mocha-4",
       "type": "observed_peer",
       "name": "Unity",
@@ -3728,7 +4149,7 @@
       "port": "44656",
       "latency_ms": 25,
       "source": "https://celestia-testnet-rpc.itrocket.net/net_info",
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "description": "Globally routable peer observed through public Celestia Mocha testnet RPC /net_info.",
       "metadata": {
         "node_id": "41f8d0c59684cad33eee17b1b30468c8a33777d2",
@@ -3758,7 +4179,7 @@
       "status": "online",
       "endpoint": "https://celestia-testnet-rpc.itrocket.net",
       "ip": "104.26.0.87",
-      "latency_ms": 64,
+      "latency_ms": 72,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -3768,7 +4189,7 @@
         "registry_provider": "itrocket",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -3787,7 +4208,7 @@
       "status": "online",
       "endpoint": "https://celestia-testnet-rpc.itrocket.net",
       "ip": "104.26.1.87",
-      "latency_ms": 64,
+      "latency_ms": 72,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -3797,7 +4218,7 @@
         "registry_provider": "itrocket",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -3816,7 +4237,7 @@
       "status": "online",
       "endpoint": "https://celestia-testnet-rpc.itrocket.net",
       "ip": "172.67.74.126",
-      "latency_ms": 64,
+      "latency_ms": 72,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -3826,7 +4247,7 @@
         "registry_provider": "itrocket",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -3845,7 +4266,7 @@
       "status": "online",
       "endpoint": "https://celestia-testnet-rpc.itrocket.net",
       "ip": "2606:4700:20::681a:157",
-      "latency_ms": 64,
+      "latency_ms": 72,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -3855,7 +4276,7 @@
         "registry_provider": "itrocket",
         "ip_family": "IPv6"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -3874,7 +4295,7 @@
       "status": "online",
       "endpoint": "https://celestia-testnet-rpc.itrocket.net",
       "ip": "2606:4700:20::681a:57",
-      "latency_ms": 64,
+      "latency_ms": 72,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -3884,7 +4305,7 @@
         "registry_provider": "itrocket",
         "ip_family": "IPv6"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -3903,7 +4324,7 @@
       "status": "online",
       "endpoint": "https://celestia-testnet-rpc.itrocket.net",
       "ip": "2606:4700:20::ac43:4a7e",
-      "latency_ms": 64,
+      "latency_ms": 72,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -3913,7 +4334,7 @@
         "registry_provider": "itrocket",
         "ip_family": "IPv6"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -3942,7 +4363,7 @@
         "registry_provider": "Allnodes ⚡️ Nodes & Staking",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -3971,7 +4392,7 @@
         "registry_provider": "Allnodes ⚡️ Nodes & Staking",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -4000,7 +4421,7 @@
         "registry_provider": "Allnodes ⚡️ Nodes & Staking",
         "ip_family": "IPv6"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -4029,7 +4450,7 @@
         "registry_provider": "Allnodes ⚡️ Nodes & Staking",
         "ip_family": "IPv6"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -4058,7 +4479,7 @@
         "registry_provider": "Stake&Relax Validator 🦥",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Helsinki",
       "region": "Uusimaa",
       "country": "Finland",
@@ -4077,7 +4498,7 @@
       "status": "online",
       "endpoint": "https://rpc-celestia-testnet.posthuman.digital",
       "ip": "104.21.81.84",
-      "latency_ms": 155,
+      "latency_ms": 97,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -4087,7 +4508,7 @@
         "registry_provider": "POSTHUMAN",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -4106,7 +4527,7 @@
       "status": "online",
       "endpoint": "https://rpc-celestia-testnet.posthuman.digital",
       "ip": "172.67.140.232",
-      "latency_ms": 155,
+      "latency_ms": 97,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -4116,7 +4537,7 @@
         "registry_provider": "POSTHUMAN",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -4135,7 +4556,7 @@
       "status": "online",
       "endpoint": "https://rpc-celestia-testnet.posthuman.digital",
       "ip": "2606:4700:3037::6815:5154",
-      "latency_ms": 155,
+      "latency_ms": 97,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -4145,7 +4566,7 @@
         "registry_provider": "POSTHUMAN",
         "ip_family": "IPv6"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Montreal",
       "region": "Quebec",
       "country": "Canada",
@@ -4164,7 +4585,7 @@
       "status": "online",
       "endpoint": "https://rpc-celestia-testnet.posthuman.digital",
       "ip": "2606:4700:3037::ac43:8ce8",
-      "latency_ms": 155,
+      "latency_ms": 97,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -4174,7 +4595,7 @@
         "registry_provider": "POSTHUMAN",
         "ip_family": "IPv6"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Montreal",
       "region": "Quebec",
       "country": "Canada",
@@ -4193,7 +4614,7 @@
       "status": "online",
       "endpoint": "https://rpc-mocha.pops.one",
       "ip": "84.32.215.148",
-      "latency_ms": 105,
+      "latency_ms": 109,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -4203,7 +4624,7 @@
         "registry_provider": "P-OPs",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Šiauliai",
       "region": "Siauliai",
       "country": "Lithuania",
@@ -4222,7 +4643,7 @@
       "status": "online",
       "endpoint": "https://rpc.celestia.testnet.dteam.tech:443",
       "ip": "167.88.61.38",
-      "latency_ms": 497,
+      "latency_ms": 502,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -4232,7 +4653,7 @@
         "registry_provider": "DTEAM",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-07-10T04:45:03Z",
+      "last_checked_at": "2026-07-13T04:45:02Z",
       "city": "Santa Clara",
       "region": "California",
       "country": "United States",
