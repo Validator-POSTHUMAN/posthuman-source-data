@@ -1,4 +1,4 @@
-# Monad Liquid Staking Pool Research
+# Monad Staking Pool Research
 
 POSTHUMAN maintains a public validator-facing research brief on Monad liquid
 staking pools, validator onboarding paths, MEV / priority-fee integrations, and
@@ -6,7 +6,7 @@ practical questions validators should ask LST teams.
 
 ## Research Brief
 
-- [Monad Liquid Staking Pools: Validator Integration Research](https://github.com/Validator-POSTHUMAN/contributions/blob/main/research/monad-liquid-staking-pools.md)
+- [Monad Staking Pools: Validator Integration Research](https://github.com/Validator-POSTHUMAN/contributions/blob/main/research/monad-staking-pools.md)
 
 ## Covered Protocols
 

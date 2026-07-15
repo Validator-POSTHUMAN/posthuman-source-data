@@ -975,7 +975,7 @@
       "install-guide",
       "monitoring",
       "decentralize-map",
-      "lst-research",
+      "staking-pools",
       "fastlane-sidecar",
       "skill",
       "snapshots"
@@ -1021,10 +1021,12 @@
     "explorer": "https://nearblocks.io",
     "chain_id": "mainnet",
     "endpoints": {},
+    "contributions": "Near",
     "generatedServices": [],
     "services": [
       "install-guide",
-      "monitoring"
+      "monitoring",
+      "staking-pools"
     ]
   },
   {
