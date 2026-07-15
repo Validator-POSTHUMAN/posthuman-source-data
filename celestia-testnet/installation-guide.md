@@ -26,12 +26,12 @@ sudo apt install -y curl tar wget clang pkg-config libssl-dev jq build-essential
 
 ## 2. Install Go
 
-Celestia requires Go 1.24.1+:
+Celestia app v9 requires Go 1.26.1+:
 
 ```bash
 cd "$HOME"
 if ! command -v go >/dev/null 2>&1; then
-  VER="1.24.1"
+  VER="1.26.1"
   wget "https://golang.org/dl/go${VER}.linux-amd64.tar.gz"
   sudo rm -rf /usr/local/go
   sudo tar -C /usr/local -xzf "go${VER}.linux-amd64.tar.gz"
@@ -148,7 +148,7 @@ sed -i -e 's|prometheus = false|prometheus = true|' "$HOME/.celestia-app/config/
 
 ```bash
 # Posthuman testnet peer
-PEERS="35a5096e5ab65c0a4ebeb721663e18dc2c51dd85@173.208.0.15:39656"
+PEERS="8a8e7ed15c91f31532d098ae55b0ad9ff5aa5ac1@135.181.227.236:39656"
 
 # Update config (adjust as needed based on available peers)
 sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" \
@@ -192,21 +192,26 @@ curl -fsSL https://snapshots.posthuman.digital/celestia-testnet/snapshot.json | 
 ```
 
 ```bash
-# Stop service if running
-sudo systemctl stop celestia-appd-testnet 2>/dev/null || true
+# Download and validate before stopping the node.
+SNAP_DIR="$HOME/celestia-testnet-snapshot-restore"
+rm -rf "$SNAP_DIR"
+mkdir -p "$SNAP_DIR"
+curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
+  lz4 -dc | tar -xf - -C "$SNAP_DIR"
+test -d "$SNAP_DIR/data/application.db"
 
 # Preserve validator signer state if this node has ever signed.
 if [ -f "$HOME/.celestia-app/data/priv_validator_state.json" ]; then
   cp "$HOME/.celestia-app/data/priv_validator_state.json" "$HOME/.celestia-app/priv_validator_state.json.backup"
 fi
 
-# Replace data with the snapshot
-rm -rf "$HOME/.celestia-app/data"
-
-# Download and extract
-cd "$HOME"
-curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
-  lz4 -dc | tar -xf - -C "$HOME/.celestia-app"
+# Stop only after the archive is extracted successfully, then keep rollback data.
+sudo systemctl stop celestia-appd-testnet 2>/dev/null || true
+BACKUP_DIR="$HOME/.celestia-app/data.before-snapshot-$(date +%Y%m%d-%H%M%S)"
+if [ -d "$HOME/.celestia-app/data" ]; then
+  mv "$HOME/.celestia-app/data" "$BACKUP_DIR"
+fi
+mv "$SNAP_DIR/data" "$HOME/.celestia-app/data"
 
 sed -i -e 's|^db_backend *=.*|db_backend = "pebbledb"|' \
   "$HOME/.celestia-app/config/config.toml"

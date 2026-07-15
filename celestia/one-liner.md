@@ -26,14 +26,13 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 
 - Mainnet chain ID: `celestia`
 - Recommended consensus wrapper: `v9.0.4`
-- Current protocol app before activation: `v8`
-- Signaled app v9 height: `11771698`
+- Current protocol app: `v9`
+- App v9 activated at height: `11771698`
 - POSTHUMAN consensus snapshot DB: PebbleDB
-- Celestia DA node version: `v0.31.3`
-- Go: `1.24.1+`
+- Celestia DA node version: `v0.31.4`
+- Go: `1.26.2+`
 
-Before installing, check whether mainnet has already passed the app v9 upgrade
-height:
+Before installing, verify the live mainnet height and sync state:
 
 ```bash
 curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
@@ -46,7 +45,7 @@ explicitly:
 ```bash
 export NETWORK_TYPE=mainnet
 export APP_VERSION=v9.0.4
-export BRIDGE_VERSION=v0.31.3
+export BRIDGE_VERSION=v0.31.4
 
 bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh)"
 ```
@@ -71,7 +70,7 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 - REST: https://rest-celestia-mainnet.posthuman.digital
 - gRPC: https://grpc-celestia-mainnet.posthuman.digital
 - Snapshots: https://snapshots.posthuman.digital/celestia-mainnet/
-- Peer: `955c18c98d5012ee510a0485bf1a6c23b18caae4@5.61.208.27:41656`
+- Peer: `2cc7330049bc02e4276668c414222593d52eb718@135.181.227.236:40656`
 - Addrbook: `https://snapshots.posthuman.digital/celestia-mainnet/addrbook.json`
 
 ## Manual Snapshot Restore
@@ -79,21 +78,30 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 ```bash
 export CELESTIA_HOME="$HOME/.celestia-app"
 export SERVICE_NAME="celestia-appd"
+export SNAP_DIR="$HOME/celestia-mainnet-snapshot-restore"
 
-sudo systemctl stop "$SERVICE_NAME"
+rm -rf "$SNAP_DIR"
+mkdir -p "$SNAP_DIR"
+curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
+  lz4 -dc | tar -xf - -C "$SNAP_DIR"
+test -d "$SNAP_DIR/data/application.db"
+
 cp "$CELESTIA_HOME/data/priv_validator_state.json" \
    "$CELESTIA_HOME/priv_validator_state.json.backup" 2>/dev/null || true
-rm -rf "$CELESTIA_HOME/data"
 
-curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
-  lz4 -dc | tar -xf - -C "$CELESTIA_HOME"
+sudo systemctl stop "$SERVICE_NAME"
+BACKUP_DIR="$CELESTIA_HOME/data.before-snapshot-$(date +%Y%m%d-%H%M%S)"
+if [ -d "$CELESTIA_HOME/data" ]; then
+  mv "$CELESTIA_HOME/data" "$BACKUP_DIR"
+fi
+mv "$SNAP_DIR/data" "$CELESTIA_HOME/data"
 
 if [ -f "$CELESTIA_HOME/priv_validator_state.json.backup" ]; then
   mv "$CELESTIA_HOME/priv_validator_state.json.backup" \
      "$CELESTIA_HOME/data/priv_validator_state.json"
 fi
 
-sudo systemctl restart "$SERVICE_NAME"
+sudo systemctl start "$SERVICE_NAME"
 ```
 
 Validate `snapshot.json` against a trusted live RPC before restore. Do not use

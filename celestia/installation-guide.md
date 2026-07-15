@@ -6,15 +6,14 @@ chain ID `celestia`.
 ## Current Versions
 
 - Recommended consensus binary: `v9.0.4`
-- Current protocol app before upgrade activation: `v8`
+- Current protocol app: `v9`
 - Previous compatible app binary: `v8.0.8`
-- Signaled upgrade height for app v9: `11771698`
-- Go for source builds: `1.24.1+`
+- App v9 activated at height: `11771698`
+- Go for source builds: `1.26.1+`
 - POSTHUMAN snapshot format: PebbleDB `snapshot-latest.tar.lz4`, refreshed every 4 hours
 
-Use the `v9.0.4` wrapper for new installs and recoveries. Before the
-on-chain app v9 activation height it runs the embedded app v8 child
-automatically, while keeping the node ready for the scheduled upgrade.
+Use the `v9.0.4` wrapper for new installs and recoveries. Mainnet has already
+passed the app v9 activation height.
 
 Check live network state before choosing the binary:
 
@@ -123,7 +122,7 @@ sed -i 's|prometheus = false|prometheus = true|' \
   "$CELESTIA_HOME/config/config.toml"
 
 # POSTHUMAN persistent peer
-PEERS="955c18c98d5012ee510a0485bf1a6c23b18caae4@5.61.208.27:41656"
+PEERS="2cc7330049bc02e4276668c414222593d52eb718@135.181.227.236:40656"
 sed -i -e "/^\\[p2p\\]/,/^\\[/{s|^[[:space:]]*persistent_peers *=.*|persistent_peers = \\"$PEERS\\"|}" \
   "$CELESTIA_HOME/config/config.toml"
 ```
@@ -143,15 +142,22 @@ curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
 Restore:
 
 ```bash
-sudo systemctl stop celestia-appd 2>/dev/null || true
+SNAP_DIR="$HOME/celestia-mainnet-snapshot-restore"
+rm -rf "$SNAP_DIR"
+mkdir -p "$SNAP_DIR"
+curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
+  lz4 -dc | tar -xf - -C "$SNAP_DIR"
+test -d "$SNAP_DIR/data/application.db"
 
 cp "$CELESTIA_HOME/data/priv_validator_state.json" \
    "$CELESTIA_HOME/priv_validator_state.json.backup" 2>/dev/null || true
 
-rm -rf "$CELESTIA_HOME/data"
-
-curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
-  lz4 -dc | tar -xf - -C "$CELESTIA_HOME"
+sudo systemctl stop celestia-appd 2>/dev/null || true
+BACKUP_DIR="$CELESTIA_HOME/data.before-snapshot-$(date +%Y%m%d-%H%M%S)"
+if [ -d "$CELESTIA_HOME/data" ]; then
+  mv "$CELESTIA_HOME/data" "$BACKUP_DIR"
+fi
+mv "$SNAP_DIR/data" "$CELESTIA_HOME/data"
 
 if [ -f "$CELESTIA_HOME/priv_validator_state.json.backup" ]; then
   mv "$CELESTIA_HOME/priv_validator_state.json.backup" \

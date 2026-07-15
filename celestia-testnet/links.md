@@ -2,4 +2,4 @@
 - **REST**: https://rest-celestia-testnet.posthuman.digital
 - **gRPC**: https://grpc-celestia-testnet.posthuman.digital
 - **Snapshots**: https://snapshots.posthuman.digital/celestia-testnet/  
-- **Peer**: `35a5096e5ab65c0a4ebeb721663e18dc2c51dd85@173.208.0.15:39656`
+- **Peer**: `8a8e7ed15c91f31532d098ae55b0ad9ff5aa5ac1@135.181.227.236:39656`

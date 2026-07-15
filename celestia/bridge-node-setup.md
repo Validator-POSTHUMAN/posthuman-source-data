@@ -5,7 +5,7 @@ This guide installs a Celestia Data Availability bridge node on mainnet using
 
 ## Current Version
 
-- Celestia node: `v0.31.3`
+- Celestia node: `v0.31.4`
 - Network: `celestia`
 - Default bridge store: `~/.celestia-bridge`
 - Default local JSON-RPC: `http://127.0.0.1:26658`
@@ -30,7 +30,7 @@ sudo apt install -y curl git wget jq tar make gcc build-essential clang \
   pkg-config libssl-dev ncdu lz4 aria2
 
 cd "$HOME"
-GO_VERSION="1.24.1"
+GO_VERSION="1.26.2"
 if ! command -v go >/dev/null 2>&1; then
   wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
   sudo rm -rf /usr/local/go
@@ -52,7 +52,7 @@ rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
 
-NODE_VERSION="v0.31.3"
+NODE_VERSION="v0.31.4"
 git checkout "tags/${NODE_VERSION}"
 
 make build
@@ -172,7 +172,7 @@ rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
 
-NODE_VERSION="v0.31.3"
+NODE_VERSION="v0.31.4"
 git checkout "tags/${NODE_VERSION}"
 make build
 sudo make install

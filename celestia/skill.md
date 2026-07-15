@@ -322,18 +322,25 @@ POSTHUMAN consensus snapshot, when selected by the operator:
 ~~~bash
 export CELESTIA_HOME="$HOME/.celestia-app"
 export SERVICE_NAME="celestia-appd"
+export SNAP_DIR="$HOME/celestia-mainnet-snapshot-restore"
 
-sudo systemctl stop "$SERVICE_NAME"
+rm -rf "$SNAP_DIR"
+mkdir -p "$SNAP_DIR"
+curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
+  lz4 -dc | tar -xf - -C "$SNAP_DIR"
+test -d "$SNAP_DIR/data/application.db"
+
 cp "$CELESTIA_HOME/data/priv_validator_state.json" \
    "$CELESTIA_HOME/priv_validator_state.json.backup"
-rm -rf "$CELESTIA_HOME/data"
 
-curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
-  lz4 -dc | tar -xf - -C "$CELESTIA_HOME"
+sudo systemctl stop "$SERVICE_NAME"
+BACKUP_DIR="$CELESTIA_HOME/data.before-snapshot-$(date +%Y%m%d-%H%M%S)"
+mv "$CELESTIA_HOME/data" "$BACKUP_DIR"
+mv "$SNAP_DIR/data" "$CELESTIA_HOME/data"
 
 mv "$CELESTIA_HOME/priv_validator_state.json.backup" \
    "$CELESTIA_HOME/data/priv_validator_state.json"
-sudo systemctl restart "$SERVICE_NAME"
+sudo systemctl start "$SERVICE_NAME"
 ~~~
 
 Bridge/full/light recovery:

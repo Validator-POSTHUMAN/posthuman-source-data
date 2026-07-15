@@ -17,7 +17,7 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 **Current Versions:**
 - 🌐 Mainnet: `v9.0.4` (chain-id: `celestia`)
 - 🧪 Testnet: `v9.0.4` (chain-id: `mocha-4`)
-- 🔧 Go: `1.24.1`
+- 🔧 Go: `1.26.2`
 
 ## 📋 Features
 
@@ -65,14 +65,24 @@ One-click update with version selection.
 ```bash
 export CELESTIA_HOME="$HOME/.celestia-app"
 export SERVICE_NAME="celestia-appd-testnet"
+export SNAP_DIR="$HOME/celestia-testnet-snapshot-restore"
 
-sudo systemctl stop "${SERVICE_NAME}"
+rm -rf "${SNAP_DIR}"
+mkdir -p "${SNAP_DIR}"
+curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
+  lz4 -dc | tar -xf - -C "${SNAP_DIR}"
+test -d "${SNAP_DIR}/data/application.db"
+
 if [ -f "${CELESTIA_HOME}/data/priv_validator_state.json" ]; then
   cp "${CELESTIA_HOME}/data/priv_validator_state.json" "${CELESTIA_HOME}/priv_validator_state.json.backup"
 fi
-rm -rf "${CELESTIA_HOME}/data"
-curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
-  lz4 -dc | tar -xf - -C "${CELESTIA_HOME}"
+
+sudo systemctl stop "${SERVICE_NAME}"
+BACKUP_DIR="${CELESTIA_HOME}/data.before-snapshot-$(date +%Y%m%d-%H%M%S)"
+if [ -d "${CELESTIA_HOME}/data" ]; then
+  mv "${CELESTIA_HOME}/data" "${BACKUP_DIR}"
+fi
+mv "${SNAP_DIR}/data" "${CELESTIA_HOME}/data"
 sed -i -e 's|^db_backend *=.*|db_backend = "pebbledb"|' "${CELESTIA_HOME}/config/config.toml"
 if grep -q '^app-db-backend' "${CELESTIA_HOME}/config/app.toml"; then
   sed -i 's|^app-db-backend *=.*|app-db-backend = "pebbledb"|' "${CELESTIA_HOME}/config/app.toml"
@@ -82,7 +92,7 @@ fi
 if [ -f "${CELESTIA_HOME}/priv_validator_state.json.backup" ]; then
   mv "${CELESTIA_HOME}/priv_validator_state.json.backup" "${CELESTIA_HOME}/data/priv_validator_state.json"
 fi
-sudo systemctl restart "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}" -f
+sudo systemctl start "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}" -f
 ```
 
 ---
@@ -104,17 +114,20 @@ sudo systemctl restart "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}"
 ### Mainnet (celestia)
 - 🌐 **Website**: https://posthuman.digital
 - 📊 **Explorer**: https://explorer.posthuman.digital/celestia
-- 🔌 **RPC**: https://celestia-rpc.posthuman.digital
-- 🔌 **API**: https://celestia-api.posthuman.digital
-- 🔌 **gRPC**: celestia-grpc.posthuman.digital:443
+- 🔌 **RPC**: https://rpc-celestia-mainnet.posthuman.digital
+- 🔌 **REST**: https://rest-celestia-mainnet.posthuman.digital
+- 🔌 **gRPC**: https://grpc-celestia-mainnet.posthuman.digital
 - 💾 **Snapshots**: https://snapshots.posthuman.digital/celestia-mainnet/
-- 🌐 **Peer**: `2cc7330049bc02e4276668c414222593d52eb718@celestia-peer.posthuman.digital:26656`
+- 🌐 **Peer**: `2cc7330049bc02e4276668c414222593d52eb718@135.181.227.236:40656`
 - 🌐 **Addrbook**: https://snapshots.posthuman.digital/celestia-mainnet/addrbook.json
 
 ### Testnet (mocha-4)
 - 📊 **Explorer**: https://explorer.posthuman.digital/celestia-testnet
 - 🔌 **RPC**: https://rpc-celestia-testnet.posthuman.digital
+- 🔌 **REST**: https://rest-celestia-testnet.posthuman.digital
+- 🔌 **gRPC**: https://grpc-celestia-testnet.posthuman.digital
 - 💾 **Snapshots**: https://snapshots.posthuman.digital/celestia-testnet/
+- 🌐 **Peer**: `8a8e7ed15c91f31532d098ae55b0ad9ff5aa5ac1@135.181.227.236:39656`
 - 🌐 **Addrbook**: https://snapshots.posthuman.digital/celestia-testnet/addrbook.json
 
 ---

@@ -21,7 +21,7 @@ sudo apt install curl git wget htop tmux build-essential jq make gcc tar clang p
 ```bash
 cd ~
 if ! command -v go >/dev/null 2>&1; then
-  VER="1.24.1"
+  VER="1.26.2"
   wget "https://golang.org/dl/go${VER}.linux-amd64.tar.gz"
   sudo rm -rf /usr/local/go
   sudo tar -C /usr/local -xzf "go${VER}.linux-amd64.tar.gz"
@@ -42,7 +42,7 @@ cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-NODE_VERSION="v0.28.2-mocha"
+NODE_VERSION="v0.31.4-mocha"
 git checkout "tags/${NODE_VERSION}"
 make build
 sudo make install
@@ -159,7 +159,7 @@ cd "$HOME"
 rm -rf celestia-node
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node
-NODE_VERSION="v0.28.2-mocha"
+NODE_VERSION="v0.31.4-mocha"
 git checkout "tags/${NODE_VERSION}"
 make build
 sudo make install

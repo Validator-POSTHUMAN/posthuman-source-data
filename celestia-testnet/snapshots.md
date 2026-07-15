@@ -38,15 +38,25 @@ Stop and investigate before restoring if:
 ```bash
 export CELESTIA_HOME="$HOME/.celestia-app"
 export SERVICE_NAME="celestia-appd"
+export SNAP_DIR="$HOME/celestia-testnet-snapshot-restore"
 
-sudo systemctl stop "${SERVICE_NAME}"
+# Download and validate before stopping the node.
+rm -rf "${SNAP_DIR}"
+mkdir -p "${SNAP_DIR}"
+curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
+  lz4 -dc | tar -xf - -C "${SNAP_DIR}"
+test -d "${SNAP_DIR}/data/application.db"
+
 if [ -f "${CELESTIA_HOME}/data/priv_validator_state.json" ]; then
   cp "${CELESTIA_HOME}/data/priv_validator_state.json" "${CELESTIA_HOME}/priv_validator_state.json.backup"
 fi
-rm -rf "${CELESTIA_HOME}/data"
 
-curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
-  lz4 -dc | tar -xf - -C "${CELESTIA_HOME}"
+sudo systemctl stop "${SERVICE_NAME}"
+BACKUP_DIR="${CELESTIA_HOME}/data.before-snapshot-$(date +%Y%m%d-%H%M%S)"
+if [ -d "${CELESTIA_HOME}/data" ]; then
+  mv "${CELESTIA_HOME}/data" "${BACKUP_DIR}"
+fi
+mv "${SNAP_DIR}/data" "${CELESTIA_HOME}/data"
 
 sed -i -e 's|^db_backend *=.*|db_backend = "pebbledb"|' \
   "${CELESTIA_HOME}/config/config.toml"
@@ -61,7 +71,7 @@ fi
 if [ -f "${CELESTIA_HOME}/priv_validator_state.json.backup" ]; then
   mv "${CELESTIA_HOME}/priv_validator_state.json.backup" "${CELESTIA_HOME}/data/priv_validator_state.json"
 fi
-sudo systemctl restart "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}" -f
+sudo systemctl start "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}" -f
 ```
 
 For validator recovery, preserving and restoring `priv_validator_state.json` is

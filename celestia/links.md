@@ -2,7 +2,7 @@
 - **REST**: https://rest-celestia-mainnet.posthuman.digital  
 - **gRPC**: https://grpc-celestia-mainnet.posthuman.digital  
 - **Snapshots**: https://snapshots.posthuman.digital/celestia-mainnet/  
-- **Peer**: `955c18c98d5012ee510a0485bf1a6c23b18caae4@5.61.208.27:41656`
+- **Peer**: `2cc7330049bc02e4276668c414222593d52eb718@135.181.227.236:40656`
 
 > Operational note: verify public RPC height against another trusted endpoint
 > before using it for recovery, especially before applying snapshot metadata.
