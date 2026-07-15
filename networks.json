@@ -193,7 +193,9 @@
     "stake": "https://explorer.provenance.io/validator/pbvaloper1fvsqqncjknzhmq0j6z0a3e8rjgudc3uw2xulnt",
     "explorer": "https://explorer.provenance.io/",
     "chain_id": "pio-mainnet-1",
-    "endpoints": {},
+    "endpoints": {
+      "rpc": "https://rpc.provenance.posthuman.digital"
+    },
     "contributions": "Provenance",
     "generatedServices": [
       "installation-guide"
