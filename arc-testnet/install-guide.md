@@ -1,208 +1,240 @@
-# Arc Network Node Installation Guide
+# Arc Network Testnet — Full Node Installation Guide
 
-Arc is an open EVM-compatible Layer 1 blockchain built on Malachite consensus, delivering sub-second finality and USDC as native gas currency.
+POSTHUMAN supports Arc by publishing tested, operator-focused infrastructure
+documentation. This guide installs a non-signing Arc testnet follow node. It
+does not configure a validator or imply a partnership or endorsement by Arc
+or Circle.
 
-## Hardware Requirements
+Tested release: `v0.7.2` (2026-07-17). Always review the official changelog
+and breaking changes before installation or upgrade.
 
-### Minimum Specifications
-- **CPU:** 4 cores
-- **RAM:** 16 GB
-- **Disk:** 200 GB SSD (NVMe recommended)
-- **Network:** 100 Mbps
+## Requirements
 
-### Recommended Specifications
-- **CPU:** 8+ cores
-- **RAM:** 32 GB
-- **Disk:** 500 GB+ NVMe SSD
-- **Network:** 1 Gbps
+- Ubuntu 24.04 or another Linux distribution with glibc 2.39+
+- x86_64/amd64 or aarch64/arm64
+- 64 GB+ RAM
+- 1 TB+ TLC NVMe storage
+- stable 24 Mbps+ network connection
+- `curl`, `tar`, and `sha256sum`
 
-## Prerequisites
+The node consists of an Execution Layer (EL) and Consensus Layer (CL). The CL
+retrieves finalized blocks from Arc relay endpoints, verifies certificates,
+and sends blocks to the EL for execution.
 
-- Ubuntu 24.04 LTS (recommended)
-- Rust toolchain (1.91.1+)
-- Basic Linux system administration knowledge
+## 1. Install verified binaries
 
-## Installation
-
-### Step 1: Install Rust
-
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source ~/.cargo/env
-```
-
-### Step 2: Install System Dependencies
+The example below uses the official x86_64 Linux release and verifies the
+release-provided checksum before installation.
 
 ```bash
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y libclang-dev pkg-config build-essential git curl
+ARC_VERSION=v0.7.2
+ARC_ARCHIVE=arc-node-v0.7.2-x86_64-unknown-linux-gnu.tar.gz
+ARC_TMP=$(mktemp -d)
+
+mkdir -p "$HOME/.arc/bin"
+
+curl -fL --retry 3 \
+  -o "$ARC_TMP/$ARC_ARCHIVE" \
+  "https://github.com/circlefin/arc-node/releases/download/$ARC_VERSION/$ARC_ARCHIVE"
+
+curl -fL --retry 3 \
+  -o "$ARC_TMP/$ARC_ARCHIVE.sha256" \
+  "https://github.com/circlefin/arc-node/releases/download/$ARC_VERSION/$ARC_ARCHIVE.sha256"
+
+(cd "$ARC_TMP" && sha256sum -c "$ARC_ARCHIVE.sha256")
+tar -xzf "$ARC_TMP/$ARC_ARCHIVE" -C "$HOME/.arc/bin"
+chmod 0755 "$HOME/.arc/bin/arc-node-execution" \
+  "$HOME/.arc/bin/arc-node-consensus" \
+  "$HOME/.arc/bin/arc-snapshots"
 ```
 
-### Step 3: Clone Arc Node Repository
+Verify all binaries:
 
 ```bash
-git clone https://github.com/circlefin/arc-node.git
-cd arc-node
-git checkout v0.6.0
-git submodule update --init --recursive
+$HOME/.arc/bin/arc-node-execution --version
+$HOME/.arc/bin/arc-node-consensus --version
+$HOME/.arc/bin/arc-snapshots --version
 ```
 
-### Step 4: Build Arc Node Binaries
+All three must report `v0.7.2` and commit
+`a85368c0b0a7924e4c74035d195f96deb0291622`.
 
-⏱️ **Build time:** ~10-15 minutes depending on hardware.
+## 2. Download snapshots
+
+Arc does not currently support syncing a new node from genesis. Bootstrap
+both layers from the official snapshot service:
 
 ```bash
-cargo install --path crates/node
-cargo install --path crates/malachite-app
-cargo install --path crates/snapshots
+mkdir -p "$HOME/.arc/execution" "$HOME/.arc/consensus"
+
+$HOME/.arc/bin/arc-snapshots download \
+  --chain arc-testnet \
+  --execution-path "$HOME/.arc/execution" \
+  --consensus-path "$HOME/.arc/consensus"
 ```
 
-Binaries will be installed to `~/.cargo/bin/`:
-- `arc-node-execution` — Execution layer (Reth-based)
-- `arc-node-consensus` — Consensus layer (Malachite-based)
-- `arc-snapshots` — Snapshot utility
+Do not use `--force` on an existing node unless you intentionally approved a
+destructive replacement and backed up required identity/config files.
 
-### Step 5: Create Data Directories
+## 3. Initialize the consensus identity
+
+Run this once on a new node:
 
 ```bash
-mkdir -p ~/.arc/execution ~/.arc/consensus
+$HOME/.arc/bin/arc-node-consensus init \
+  --home "$HOME/.arc/consensus"
 ```
 
-### Step 6: Download Blockchain Snapshots
+Back up `$HOME/.arc/consensus/config/` securely. Never publish or print the
+private identity material.
 
-⚠️ **Important:** Snapshots are ~84 GB download, ~150 GB extracted. Requires stable internet and sufficient disk space.
+## 4. Create systemd services
 
-```bash
-arc-snapshots download --chain=arc-testnet \
-  --execution-path ~/.arc/execution \
-  --consensus-path ~/.arc/consensus
-```
-
-⏱️ **Download time:** 30-60 minutes. Extraction is CPU-intensive.
-
-### Step 7: Generate JWT Secret
-
-```bash
-openssl rand -hex 32 | tr -d "\n" > ~/.arc/jwt.hex
-chmod 600 ~/.arc/jwt.hex
-```
-
-### Step 8: Initialize Consensus Layer
-
-```bash
-arc-node-consensus init --home ~/.arc/consensus
-```
-
-### Step 9: Create Systemd Services
-
-#### Execution Layer Service
+Replace `YOUR_USERNAME` in both unit files. The recommended same-host setup
+uses local IPC between EL and CL. RPC and metrics stay on loopback.
 
 Create `/etc/systemd/system/arc-execution.service`:
 
 ```ini
 [Unit]
-Description=Arc Network Execution Layer
-After=network.target
+Description=Arc Node - Execution Layer
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
 User=YOUR_USERNAME
-WorkingDirectory=/home/YOUR_USERNAME/arc-node
-ExecStart=/home/YOUR_USERNAME/.cargo/bin/arc-node-execution node \
+Group=YOUR_USERNAME
+RuntimeDirectory=arc
+Environment=RUST_LOG=info
+WorkingDirectory=/home/YOUR_USERNAME/.arc
+ExecStart=/home/YOUR_USERNAME/.arc/bin/arc-node-execution node \
   --chain arc-testnet \
   --datadir /home/YOUR_USERNAME/.arc/execution \
-  --http --http.port 8545 --http.addr 0.0.0.0 \
-  --authrpc.port 8551 \
-  --authrpc.jwtsecret /home/YOUR_USERNAME/.arc/jwt.hex \
-  --port 31000
-Restart=on-failure
+  --full \
+  --disable-discovery \
+  --ipcpath /run/arc/reth.ipc \
+  --auth-ipc \
+  --auth-ipc.path /run/arc/auth.ipc \
+  --http \
+  --http.addr 127.0.0.1 \
+  --http.port 8545 \
+  --http.api eth,net,web3,txpool,trace,debug \
+  --metrics 127.0.0.1:9001 \
+  --enable-arc-rpc \
+  --rpc.forwarder https://rpc.quicknode.testnet.arc.network/
+Restart=always
 RestartSec=10
-LimitNOFILE=65535
+KillSignal=SIGTERM
+TimeoutStopSec=300
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target
 ```
-
-#### Consensus Layer Service
 
 Create `/etc/systemd/system/arc-consensus.service`:
 
 ```ini
 [Unit]
-Description=Arc Network Consensus Layer
-After=network.target arc-execution.service
+Description=Arc Node - Consensus Layer
+After=arc-execution.service
 Requires=arc-execution.service
 
 [Service]
 Type=simple
 User=YOUR_USERNAME
-WorkingDirectory=/home/YOUR_USERNAME/arc-node
-ExecStart=/home/YOUR_USERNAME/.cargo/bin/arc-node-consensus start \
+Group=YOUR_USERNAME
+Environment=RUST_LOG=info
+WorkingDirectory=/home/YOUR_USERNAME/.arc
+ExecStart=/home/YOUR_USERNAME/.arc/bin/arc-node-consensus start \
   --home /home/YOUR_USERNAME/.arc/consensus \
-  --eth-rpc-endpoint http://localhost:8545 \
-  --execution-endpoint http://localhost:8551 \
-  --execution-jwt /home/YOUR_USERNAME/.arc/jwt.hex \
+  --full \
+  --eth-socket /run/arc/reth.ipc \
+  --execution-socket /run/arc/auth.ipc \
   --rpc.addr 127.0.0.1:31000 \
   --follow \
   --follow.endpoint https://rpc.drpc.testnet.arc.network,wss=rpc.drpc.testnet.arc.network \
   --follow.endpoint https://rpc.quicknode.testnet.arc.network,wss=rpc.quicknode.testnet.arc.network \
-  --follow.endpoint https://rpc.blockdaemon.testnet.arc.network,wss=rpc.blockdaemon.testnet.arc.network
-Restart=on-failure
+  --follow.endpoint https://rpc.blockdaemon.testnet.arc.network,wss=rpc.blockdaemon.testnet.arc.network/websocket \
+  --execution-persistence-backpressure \
+  --execution-persistence-backpressure-threshold=50 \
+  --metrics 127.0.0.1:29000
+Restart=always
 RestartSec=10
-LimitNOFILE=65535
+KillSignal=SIGTERM
+TimeoutStopSec=300
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-⚠️ **Replace `YOUR_USERNAME` with your actual username.**
-
-### Step 10: Start Services
+Review the generated paths before starting:
 
 ```bash
+sudo systemd-analyze verify \
+  /etc/systemd/system/arc-execution.service \
+  /etc/systemd/system/arc-consensus.service
+
 sudo systemctl daemon-reload
 sudo systemctl enable arc-execution arc-consensus
 sudo systemctl start arc-execution
-sleep 10
 sudo systemctl start arc-consensus
 ```
 
-### Step 11: Verify Operation
+## 5. Verify against external truth
 
-Check status:
-```bash
-sudo systemctl status arc-execution arc-consensus
-```
+Service state alone is not sufficient. Confirm the local height advances and
+compare it with an independent Arc RPC.
 
-Check current block:
 ```bash
-curl -s -X POST -H 'Content-Type: application/json' \
+systemctl is-active arc-execution arc-consensus
+
+LOCAL_HEX=$(curl -fsS -H 'Content-Type: application/json' \
   --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
-  http://localhost:8545 | jq -r '.result' | xargs printf "%d\n"
+  http://127.0.0.1:8545 | jq -r .result)
+
+REMOTE_HEX=$(curl -fsS -H 'Content-Type: application/json' \
+  --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
+  https://rpc.testnet.arc.network | jq -r .result)
+
+printf 'local=%d remote=%d lag=%d\n' \
+  "$LOCAL_HEX" "$REMOTE_HEX" "$((REMOTE_HEX-LOCAL_HEX))"
+
+curl -fsS http://127.0.0.1:31000/ready
 ```
 
-View logs:
+Repeat the height check after 30 seconds. The local height must increase.
+`eth_syncing=false` by itself is not proof that the node is current.
+
+Inspect recent logs:
+
 ```bash
-sudo journalctl -u arc-consensus -f
+sudo journalctl -u arc-execution -u arc-consensus \
+  --since '10 minutes ago' --no-pager
 ```
 
-## Network Ports
+## Security notes
 
-| Port | Service | Access |
-|------|---------|--------|
-| 8545 | Execution RPC | Local only |
-| 8551 | Engine API | Local (JWT protected) |
-| 31000 | Execution P2P | Public |
-| 27000 | Consensus P2P | Public |
+- Keep JSON-RPC (`8545`), CL RPC (`31000`), and metrics (`9001`, `29000`) on
+  `127.0.0.1` for a normal follow node.
+- Do not expose `debug`, `trace`, or `txpool` namespaces publicly.
+- Do not expose the Engine API. The same-host configuration above uses IPC.
+- A public RPC provider requires Arc's separate hardened RPC-node profile,
+  trusted peers, restricted namespaces, firewall review, and onboarding.
+- Preserve the previous binaries and unit files before every upgrade.
 
-## Resources
+## Official resources
 
-- **Official Website:** https://www.arc.network/
-- **Documentation:** https://docs.arc.network/
-- **GitHub:** https://github.com/circlefin/arc-node
-- **Discord:** https://discord.gg/circle
+- Arc: https://www.arc.io/
+- Documentation: https://docs.arc.network/
+- Node repository: https://github.com/circlefin/arc-node
+- Release: https://github.com/circlefin/arc-node/releases/tag/v0.7.2
+- Changelog: https://github.com/circlefin/arc-node/blob/main/CHANGELOG.md
+- Breaking changes: https://github.com/circlefin/arc-node/blob/main/BREAKING_CHANGES.md
+- Snapshots: https://snapshots.arc.network/
+- Explorer: https://testnet.arcscan.app/
+- Partner guidelines: https://www.arc.io/brand-guidelines-and-partner-toolkit
 
----
-
-*Arc is currently in testnet (alpha). Network may experience instability.*  
-*Guide version: 1.0 | Updated: 2026-04-17 | Node version: v0.6.0*
+Arc is a trademark of Circle Internet Group, Inc. and/or its affiliates.
