@@ -1116,6 +1116,43 @@
     "chain_id": ""
   },
   {
+    "name": "verona",
+    "type": "mainnet",
+    "title": "Verona",
+    "website": "https://verona.dev/",
+    "twitter": "https://x.com/burnt_xion",
+    "github": "https://github.com/burnt-labs",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/xion/images/verona-main.svg",
+    "stake": "https://explorer.posthuman.digital/xion/staking/xionvaloper1crq50flkuw2tkahagwvddzptcdfeq45j3m6yhf",
+    "explorer": "https://explorer.posthuman.digital/xion",
+    "daemon_name": "xiond",
+    "chain_id": "xion-mainnet-1",
+    "codebase": {
+      "git_repo": "https://github.com/burnt-labs/xion",
+      "recommended_version": "v30.0.0",
+      "compatible_versions": [
+        "v30.0.0"
+      ]
+    },
+    "genesisUrl": "https://raw.githubusercontent.com/burnt-labs/burnt-networks/refs/heads/main/mainnet/xion-mainnet-1/genesis.json",
+    "endpoints": {
+      "rpc": "https://rpc-verona.posthuman.digital:443",
+      "rest": "https://rest-verona.posthuman.digital:443",
+      "grpc": "https://grpc-verona.posthuman.digital:443",
+      "peer": "c5432e01b827ba40a71320fb6a18965ab92d380d@135.181.227.236:28656",
+      "snapshots": "https://snapshots-verona.posthuman.digital:443"
+    },
+    "contributions": "",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots",
+      "links"
+    ]
+  },
+  {
     "name": "mantra",
     "type": "mainnet",
     "title": "MANTRA Chain",
