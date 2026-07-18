@@ -1125,16 +1125,22 @@
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/xion/images/verona-main.svg",
     "stake": "https://explorer.posthuman.digital/xion/staking/xionvaloper1crq50flkuw2tkahagwvddzptcdfeq45j3m6yhf",
     "explorer": "https://explorer.posthuman.digital/xion",
+    "chain_name": "xiond",
+    "pretty_name": "Verona",
     "daemon_name": "xiond",
+    "node_home": "$HOME/.xiond",
+    "addrbookUrl": "https://snapshots-verona.posthuman.digital/addrbook.json",
     "chain_id": "xion-mainnet-1",
     "codebase": {
       "git_repo": "https://github.com/burnt-labs/xion",
       "recommended_version": "v30.0.0",
       "compatible_versions": [
         "v30.0.0"
-      ]
+      ],
+      "genesis": {
+        "genesis_url": "https://raw.githubusercontent.com/burnt-labs/burnt-networks/refs/heads/main/mainnet/xion-mainnet-1/genesis.json"
+      }
     },
-    "genesisUrl": "https://raw.githubusercontent.com/burnt-labs/burnt-networks/refs/heads/main/mainnet/xion-mainnet-1/genesis.json",
     "endpoints": {
       "rpc": "https://rpc-verona.posthuman.digital:443",
       "rest": "https://rest-verona.posthuman.digital:443",
@@ -1144,8 +1150,7 @@
     },
     "contributions": "",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
     "services": [
       "snapshots",
@@ -1162,16 +1167,22 @@
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/mantrachain/images/OM-Prim-Col.svg",
     "stake": "https://explorer.posthuman.digital/mantra/staking/mantravaloper1lh7g082k3v9r989s0w8hx4tp6jadqcj9wpn6uf",
     "explorer": "https://explorer.posthuman.digital/mantra",
+    "chain_name": "mantrachain",
+    "pretty_name": "MANTRA Chain",
     "daemon_name": "mantrachaind",
+    "node_home": "$HOME/.mantrachain",
+    "addrbookUrl": "https://snapshots-mantra.posthuman.digital/addrbook.json",
     "chain_id": "mantra-1",
     "codebase": {
       "git_repo": "https://github.com/MANTRA-Chain/mantrachain",
       "recommended_version": "v8.3.0",
       "compatible_versions": [
         "v8.3.0"
-      ]
+      ],
+      "genesis": {
+        "genesis_url": "https://raw.githubusercontent.com/MANTRA-Chain/net/refs/heads/main/mantra-1/genesis.json"
+      }
     },
-    "genesisUrl": "https://raw.githubusercontent.com/MANTRA-Chain/net/refs/heads/main/mantra-1/genesis.json",
     "endpoints": {
       "rpc": "https://rpc-mantra.posthuman.digital:443",
       "rest": "https://rest-mantra.posthuman.digital:443",
@@ -1181,8 +1192,7 @@
     },
     "contributions": "",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
     "services": [
       "snapshots",
