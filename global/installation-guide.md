@@ -89,9 +89,11 @@ sudo systemctl enable {{daemon_name}}.service
 sudo systemctl start {{daemon_name}}.service
 ```
 
-### Sync node:
+### Sync the node
 
-After that you sould sync node. You have 2 ways. State-sync or download snapsot. See this guides in next tabs.
+Synchronize the node using a network-approved method. When a snapshot guide is
+available on this page, follow its preflight, backup, restore, and verification
+steps.
 
 ### Start service
 
