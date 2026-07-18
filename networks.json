@@ -1116,6 +1116,43 @@
     "chain_id": ""
   },
   {
+    "name": "mantra",
+    "type": "mainnet",
+    "title": "MANTRA Chain",
+    "website": "https://mantrachain.io/",
+    "twitter": "https://x.com/MANTRA_Chain",
+    "github": "https://github.com/MANTRA-Chain",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/mantrachain/images/OM-Prim-Col.svg",
+    "stake": "https://explorer.posthuman.digital/mantra/staking/mantravaloper1lh7g082k3v9r989s0w8hx4tp6jadqcj9wpn6uf",
+    "explorer": "https://explorer.posthuman.digital/mantra",
+    "daemon_name": "mantrachaind",
+    "chain_id": "mantra-1",
+    "codebase": {
+      "git_repo": "https://github.com/MANTRA-Chain/mantrachain",
+      "recommended_version": "v8.3.0",
+      "compatible_versions": [
+        "v8.3.0"
+      ]
+    },
+    "genesisUrl": "https://raw.githubusercontent.com/MANTRA-Chain/net/refs/heads/main/mantra-1/genesis.json",
+    "endpoints": {
+      "rpc": "https://rpc-mantra.posthuman.digital:443",
+      "rest": "https://rest-mantra.posthuman.digital:443",
+      "grpc": "https://grpc-mantra.posthuman.digital:443",
+      "peer": "4b347588da9d7c6916f902139ae019ad4edcebe0@135.181.227.236:57656",
+      "snapshots": "https://snapshots-mantra.posthuman.digital:443"
+    },
+    "contributions": "",
+    "generatedServices": [
+      "installation-guide",
+      "state-sync"
+    ],
+    "services": [
+      "snapshots",
+      "links"
+    ]
+  },
+  {
     "name": "phmn",
     "type": "mainnet",
     "title": "PHMN",
