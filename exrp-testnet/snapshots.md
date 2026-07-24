@@ -1,66 +1,39 @@
-# 🚀 Restore XRPL EVM Node from [Posthuman](https://snapshots.exrp-testnet.posthuman.digital/) Snapshots
+# XRPL EVM Testnet snapshot
 
-This guide explains how to restore your XRPL EVM node using a snapshot from **Posthuman**.
+Metadata: <https://snapshots.exrp-testnet.posthuman.digital/info.json>
 
----
+Archive: <https://snapshots.exrp-testnet.posthuman.digital/data_latest.zst>
 
-## **🛑 Step 1: Stop XRPL EVM Node**
-Before restoring, stop the XRPL EVM process to prevent database corruption:
+The archive contains `data/` and is compressed with Zstandard. Inspect the
+metadata and confirm that the snapshot is recent before use.
+
+## Restore
+
+Snapshot restore is intended for non-signing nodes or a fully fenced
+replacement node. An active validator must retain its original
+`priv_validator_state.json` and must never run two signers with the same key.
 
 ```bash
+NODE_HOME=/var/lib/exrpd/.exrpd
 sudo systemctl stop exrpd
+
+sudo cp "$NODE_HOME/data/priv_validator_state.json" \
+  "$NODE_HOME/priv_validator_state.json.backup"
+sudo mv "$NODE_HOME/data" "$NODE_HOME/data.pre-snapshot"
+
+curl -fL https://snapshots.exrp-testnet.posthuman.digital/data_latest.zst \
+  -o /tmp/exrp-testnet-data.zst
+zstd -t /tmp/exrp-testnet-data.zst
+sudo tar --use-compress-program=unzstd -xf /tmp/exrp-testnet-data.zst \
+  -C "$NODE_HOME"
+
+sudo cp "$NODE_HOME/priv_validator_state.json.backup" \
+  "$NODE_HOME/data/priv_validator_state.json"
+sudo chown -R exrpd:exrpd "$NODE_HOME/data"
+sudo systemctl start exrpd
 ```
 
----
-
-## **📌 Step 2: Backup Validator State (IMPORTANT)**
-To avoid double signing issues, **backup your validator state file**:
-
-```bash
-cp $HOME/.exrpd/data/priv_validator_state.json $HOME/.exrpd/priv_validator_state.json.backup
-```
-
----
-
-## **🗑 Step 3: Remove Old Blockchain Data**
-Delete the old data to **free space** and **prevent conflicts**:
-
-```bash
-rm -rf $HOME/.exrpd/data
-```
-
----
-
-## **📥 Step 4: Download & Extract the Latest Posthuman Snapshot**
-> **Note:** Since Posthuman updates snapshots **every 24 hours**, use the latest one:
-
-```bash
-curl -L https://snapshots.exrp-testnet.posthuman.digital/data_latest.lz4 | lz4 -dc - | tar -xf - -C $HOME/.exrpd
-```
-
-
-
----
-
-## **📂 Step 5: Restore Validator State**
-Move back the **backup validator state file**:
-
-```bash
-mv $HOME/.exrpd/priv_validator_state.json.backup $HOME/.exrpd/data/priv_validator_state.json
-```
-
----
-
-## **▶️ Step 6: Restart XRPL EVM Node & Monitor Logs**
-Now, restart the service and monitor its logs:
-
-```bash
-sudo systemctl restart exrpd
-sudo journalctl -u exrp -fo cat
-```
-
----
-
-## **✅ Done!**
-Your node should now sync from the restored **Posthuman snapshot**. 🚀 
+Verify local height and block time against
+<https://cosmos-rpc.testnet.xrplevm.org/status> before removing the rollback
+directory.
 
