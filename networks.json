@@ -24,6 +24,35 @@
     ]
   },
   {
+    "name": "limonata",
+    "type": "testnet",
+    "title": "Limonata Testnet",
+    "website": "https://limonata.xyz/",
+    "github": "https://github.com/Limonata-Blockchain/limonata",
+    "icon": "https://raw.githubusercontent.com/Limonata-Blockchain/limonata/main/assets/limonata-logo.png",
+    "stake": "",
+    "explorer": "https://explorer.limonata.xyz/",
+    "daemon_name": "limonatad",
+    "codebase": {
+      "git_repo": "https://github.com/Limonata-Blockchain/limonata",
+      "recommended_version": "limonata-v0.3.4",
+      "compatible_versions": [
+        "limonata-v0.3.4"
+      ]
+    },
+    "chain_id": "limonata_10777-1",
+    "endpoints": {
+      "rpc": "https://cosmos-rpc.limonata.xyz",
+      "rest": "https://rest.limonata.xyz",
+      "json-rpc": "https://rpc.limonata.xyz"
+    },
+    "generatedServices": [],
+    "services": [
+      "installation-guide",
+      "links"
+    ]
+  },
+  {
     "name": "firmachain",
     "type": "mainnet",
     "title": "FirmaChain",
