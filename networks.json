@@ -29,7 +29,7 @@
     "title": "Limonata Testnet",
     "website": "https://limonata.xyz/",
     "github": "https://github.com/Limonata-Blockchain/limonata",
-    "icon": "https://raw.githubusercontent.com/Limonata-Blockchain/limonata/main/assets/limonata-logo.png",
+    "icon": "https://raw.githubusercontent.com/Limonata-Blockchain/limonata/master/assets/limonata-logo.png",
     "stake": "",
     "explorer": "https://explorer.limonata.xyz/",
     "daemon_name": "limonatad",
