@@ -49,7 +49,9 @@
     "generatedServices": [],
     "services": [
       "installation-guide",
-      "links"
+      "links",
+      "useful-commands",
+      "troubleshooting"
     ]
   },
   {
