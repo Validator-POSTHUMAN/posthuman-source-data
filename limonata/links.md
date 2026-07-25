@@ -15,7 +15,22 @@
 - v0.3.4: https://github.com/Limonata-Blockchain/limonata/releases/tag/limonata-v0.3.4
 - Encrypted mempool: https://github.com/Limonata-Blockchain/limonata/blob/main/ENCRYPTED_MEMPOOL.md
 
-## Public endpoints
+## POSTHUMAN public endpoints
+
+- CometBFT RPC: https://rpc-limonata.posthuman.digital
+- Cosmos REST: https://rest-limonata.posthuman.digital
+- Cosmos gRPC: grpc-limonata.posthuman.digital:443
+- Snapshots: https://snapshots-limonata.posthuman.digital
+- Persistent peer:
+  `aff8565175a96ad97ff22af9e6f90542fcf722a3@peer-limonata.posthuman.digital:45656`
+
+RPC, REST, gRPC, and snapshot traffic is proxied through Cloudflare. The peer
+record is DNS-only for raw TCP P2P. API clients are rate-limited to 300
+requests per 10 seconds per source IP. Snapshot metadata and checksums are
+published alongside the latest restore-tested archive, refreshed every four
+hours.
+
+## Official Limonata endpoints
 
 - CometBFT RPC: https://cosmos-rpc.limonata.xyz
 - Cosmos REST: https://rest.limonata.xyz

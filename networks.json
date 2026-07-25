@@ -42,8 +42,11 @@
     },
     "chain_id": "limonata_10777-1",
     "endpoints": {
-      "rpc": "https://cosmos-rpc.limonata.xyz",
-      "rest": "https://rest.limonata.xyz",
+      "rpc": "https://rpc-limonata.posthuman.digital",
+      "rest": "https://rest-limonata.posthuman.digital",
+      "grpc": "grpc-limonata.posthuman.digital:443",
+      "snapshots": "https://snapshots-limonata.posthuman.digital",
+      "peer": "aff8565175a96ad97ff22af9e6f90542fcf722a3@peer-limonata.posthuman.digital:45656",
       "json-rpc": "https://rpc.limonata.xyz"
     },
     "generatedServices": [],
