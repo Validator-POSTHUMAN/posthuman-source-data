@@ -204,16 +204,30 @@
   {
     "name": "gno",
     "type": "testnet",
-    "title": "GNO",
+    "title": "Gnoland",
+    "website": "https://gno.land/",
+    "github": "https://github.com/gnolang/gno",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/gno/gno-logo.svg",
-    "chain_id": "test11",
+    "daemon_name": "gnoland",
+    "codebase": {
+      "git_repo": "https://github.com/gnolang/gno",
+      "recommended_version": "fc40526511474e40b8a66419f5ba28255085bc08",
+      "compatible_versions": [
+        "fc40526511474e40b8a66419f5ba28255085bc08"
+      ]
+    },
+    "chain_id": "topaz-1",
     "endpoints": {
-      "rpc": "https://rpc.gno.posthuman.digital:443"
+      "rpc": "https://rpc-gnoland.posthuman.digital",
+      "snapshots": "https://snapshots-gnoland.posthuman.digital",
+      "peer": "g190ajdkf9dmmrnl2ne0wca2nppes6fn5prmqjv2@peer-gnoland.posthuman.digital:37656"
     },
     "contributions": "Gno-land",
     "generatedServices": [],
     "services": [
-      "installation-guide"
+      "installation-guide",
+      "links",
+      "snapshots"
     ]
   },
   {
