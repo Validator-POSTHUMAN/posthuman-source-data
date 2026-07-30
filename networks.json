@@ -379,7 +379,7 @@
     "explorer": "https://explorer.posthuman.digital/atomone-testnet",
     "chain_id": "atomone-testnet-1",
     "endpoints": {},
-    "contributions": "Atomone",
+    "contributions": "",
     "generatedServices": [
       "installation-guide"
     ],
@@ -666,7 +666,7 @@
     "explorer": "https://explorer.posthuman.digital/juno-testnet/",
     "chain_id": "uni-7",
     "endpoints": {},
-    "contributions": "JunoNetwork",
+    "contributions": "",
     "generatedServices": [
       "installation-guide"
     ],
