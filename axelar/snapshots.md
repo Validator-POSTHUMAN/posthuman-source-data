@@ -48,7 +48,7 @@ Use the Axelar Safe Recovery Kit verifier:
 
 ```bash
 curl -fsSLo "$SNAP_DIR/axelar-snapshot-verify.sh" \
-  https://raw.githubusercontent.com/Validator-POSTHUMAN/AI-skills-for-networks/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/scripts/axelar-snapshot-verify.sh
+  https://raw.githubusercontent.com/Validator-POSTHUMAN/AI-skills-for-networks/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/scripts/axelar-snapshot-verify.sh
 chmod 700 "$SNAP_DIR/axelar-snapshot-verify.sh"
 
 EXPECTED_SHA256="<snapshot_sha256-from-metadata>"
@@ -143,4 +143,4 @@ maintainer status, and successful new vald transactions.
 
 The complete validator-neutral recovery reference is available at:
 
-https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/references/safe-recovery.md
+https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/references/safe-recovery.md

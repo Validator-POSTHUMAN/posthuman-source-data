@@ -4,16 +4,16 @@ This tab links the Axelar-specific AI-agent skill for validator operations. The 
 
 ## Repository
 
-- Skill page: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/tree/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar
-- SKILL.md: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/SKILL.md
-- Raw SKILL.md: https://raw.githubusercontent.com/Validator-POSTHUMAN/AI-skills-for-networks/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/SKILL.md
-- Inventory schema: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/references/inventory.schema.json
-- Example inventory: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/examples/inventory.example.json
-- Healthcheck script: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/scripts/axelar-healthcheck.sh
-- Safe recovery reference: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/references/safe-recovery.md
-- Recovery validation evidence: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/references/recovery-validation.md
-- Snapshot verifier: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/scripts/axelar-snapshot-verify.sh
-- Snapshot verifier tests: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/scripts/axelar-snapshot-verify-test.sh
+- Skill page: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/tree/f9b0b74e1be8d7399721059371a72e8017164a69/axelar
+- SKILL.md: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/SKILL.md
+- Raw SKILL.md: https://raw.githubusercontent.com/Validator-POSTHUMAN/AI-skills-for-networks/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/SKILL.md
+- Inventory schema: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/references/inventory.schema.json
+- Example inventory: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/examples/inventory.example.json
+- Healthcheck script: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/scripts/axelar-healthcheck.sh
+- Safe recovery reference: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/references/safe-recovery.md
+- Recovery validation evidence: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/references/recovery-validation.md
+- Snapshot verifier: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/scripts/axelar-snapshot-verify.sh
+- Snapshot verifier tests: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/scripts/axelar-snapshot-verify-test.sh
 
 ## What It Helps Agents Do
 
@@ -52,7 +52,7 @@ The skill also tells agents to avoid restart loops, preserve recent logs before 
 ## How to Use
 
 1. Open the raw skill file:
-   https://raw.githubusercontent.com/Validator-POSTHUMAN/AI-skills-for-networks/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/SKILL.md
+   https://raw.githubusercontent.com/Validator-POSTHUMAN/AI-skills-for-networks/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/SKILL.md
 
 2. Give that file to your AI agent as a skill, system context, project instruction, or attached reference. The exact method depends on your agent platform.
 
@@ -69,10 +69,10 @@ The skill also tells agents to avoid restart loops, preserve recent logs before 
    - active external chains maintained by the validator
 
 4. For a machine-readable inventory format, use:
-   https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/references/inventory.schema.json
+   https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/references/inventory.schema.json
 
 5. Use the example inventory only as a template with fake values:
-   https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/examples/inventory.example.json
+   https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/examples/inventory.example.json
 
 6. Ask your agent to load the skill and your inventory before any Axelar operational task, especially alert triage, `vald` troubleshooting, external-chain RPC changes, restarts, upgrades, or recovery.
 
@@ -147,5 +147,5 @@ external signing proof before vald resumes.
 ## Current Publication
 
 - Repository: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks
-- Axelar package commit: f42a0e9b9b5e403edc54df5c53a5b9d221070ca0
-- Axelar package: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/tree/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar
+- Axelar package commit: f9b0b74e1be8d7399721059371a72e8017164a69
+- Axelar package: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/tree/f9b0b74e1be8d7399721059371a72e8017164a69/axelar
