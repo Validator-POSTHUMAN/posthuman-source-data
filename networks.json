@@ -128,8 +128,7 @@
     },
     "contributions": "Axelar",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
     "services": [
       "snapshots",

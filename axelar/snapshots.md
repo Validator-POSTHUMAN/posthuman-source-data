@@ -1,28 +1,34 @@
-# 🚀 Restore Axelar Node from [POSTHUMAN](https://snapshots.axelar.posthuman.digital/) Snapshots
+# Restore Axelar from a POSTHUMAN Snapshot
 
-This guide explains how to restore your Axelar node using a snapshot served by
-**POSTHUMAN**.
+This procedure downloads and verifies the complete archive before touching
+live node data. Validator operators must preserve their final signer state and
+prove that no second host can sign with the same consensus key.
 
----
-
-## **📥 Step 1: Download the Latest POSTHUMAN Snapshot**
-> **Note:** use the latest available snapshot. Check the HTTP `Last-Modified`
-> header before downloading.
-
-Download the snapshot first. Do not stop the node or delete the existing data
-until the file is fully downloaded.
+## Snapshot metadata
 
 ```bash
 SNAP_URL="https://snapshots.axelar.posthuman.digital/data_latest.tar.lz4"
+META_URL="https://snapshots.axelar.posthuman.digital/snapshot.json"
 SNAP_DIR="$HOME/axelar-snapshot"
-SNAP_DATE=$(curl -fsSI "$SNAP_URL" | awk -F': ' 'tolower($1)=="last-modified"{print $2}' | xargs -I{} date -u -d "{}" +%Y-%m-%d)
-SNAP_BASENAME="axelar_${SNAP_DATE}.tar.lz4"
-SNAP_FILE="$SNAP_DIR/$SNAP_BASENAME"
-
-sudo apt update
-sudo apt install -y aria2 lz4
+SNAP_FILE="$SNAP_DIR/data_latest.tar.lz4"
 
 mkdir -p "$SNAP_DIR"
+curl -fsS "$META_URL" | jq
+```
+
+Confirm the metadata says `axelar-dojo-1`, record `snapshot_size_bytes`,
+`snapshot_sha256`, `snapshot_height`, and `created_at`, and compare the
+snapshot with independent Axelar RPC truth. Do not continue across an
+incompatible upgrade boundary. For validator recovery, authenticate the
+checksum through an approved secondary channel; metadata served beside the
+archive protects against accidental corruption but is not independent
+provenance.
+
+## 1. Download while the node stays online
+
+```bash
+sudo apt update
+sudo apt install -y aria2 jq lz4
 
 aria2c --continue=true \
   --max-connection-per-server=8 \
@@ -30,66 +36,111 @@ aria2c --continue=true \
   --min-split-size=64M \
   --file-allocation=none \
   --dir="$SNAP_DIR" \
-  --out="$SNAP_BASENAME" \
+  --out="$(basename "$SNAP_FILE")" \
   "$SNAP_URL"
 ```
 
----
+Never pipe a remote response directly into the live Axelar home.
 
-## **🛑 Step 2: Stop Axelar Node**
-Before replacing the data directory, stop the axelar process to prevent database corruption:
+## 2. Verify checksum, LZ4, and archive layout
 
-```bash
-sudo systemctl stop axelar
-```
-
----
-
-## **📌 Step 3: Backup Validator State (IMPORTANT)**
-To avoid double signing issues, **backup your validator state file**:
+Use the Axelar Safe Recovery Kit verifier:
 
 ```bash
-cp $HOME/.axelar/data/priv_validator_state.json $HOME/.axelar/priv_validator_state.json.backup
+curl -fsSLo "$SNAP_DIR/axelar-snapshot-verify.sh" \
+  https://raw.githubusercontent.com/Validator-POSTHUMAN/AI-skills-for-networks/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/scripts/axelar-snapshot-verify.sh
+chmod 700 "$SNAP_DIR/axelar-snapshot-verify.sh"
+
+EXPECTED_SHA256="<snapshot_sha256-from-metadata>"
+EXPECTED_SIZE="<snapshot_size_bytes-from-metadata>"
+
+"$SNAP_DIR/axelar-snapshot-verify.sh" \
+  --archive "$SNAP_FILE" \
+  --sha256 "$EXPECTED_SHA256" \
+  --size "$EXPECTED_SIZE"
 ```
 
----
+The verifier rejects checksum mismatches, corrupt LZ4 streams, path traversal,
+absolute paths, links, special files, entries outside `data/`, and unexpected
+database layouts in one complete archive pass. Stop if any check fails.
 
-## **🗑 Step 4: Remove Old Blockchain Data**
-Delete the old data to **free space** and **prevent conflicts**:
+## 3. Extract into staging
+
+Check free space for the archive, extracted data, rollback copy, and OS safety
+margin. Then extract separately:
 
 ```bash
-rm -rf $HOME/.axelar/data
+STAGE="$SNAP_DIR/extracted"
+chmod 600 "$SNAP_FILE"
+
+"$SNAP_DIR/axelar-snapshot-verify.sh" \
+  --archive "$SNAP_FILE" \
+  --sha256 "$EXPECTED_SHA256" \
+  --size "$EXPECTED_SIZE"
+
+install -d -m 700 "$STAGE"
+
+lz4 -dc "$SNAP_FILE" |
+  tar -xf - --no-same-owner --no-same-permissions -C "$STAGE"
+
+test -d "$STAGE/data"
 ```
 
----
+Re-run verification immediately before extraction and keep the archive
+access-restricted. Do not extract over `$HOME/.axelar/data`.
 
-## **📦 Step 5: Extract the Snapshot**
-Extract the downloaded snapshot into your Axelar home directory:
+## 4. Protect signer and companion state
+
+Resolve the actual Axelar, vald, and tofnd service names first. For a validator:
+
+1. Stop vald, then tofnd when required by the local runbook.
+2. Stop the Axelar node and prove all related processes are absent.
+3. Create an access-restricted backup outside `$HOME/.axelar/data`.
+4. Preserve `$HOME/.axelar/config/`, keyring data, the final
+   `priv_validator_state.json`, vald configuration, and tofnd state.
+5. Verify backup ownership, mode, size, and integrity without printing secret
+   contents.
+
+Never start a validator with the snapshot-provided signer state. Restore the
+preserved final state into staged `data/`. If snapshot height and signer state
+cannot be reconciled, keep the validator stopped.
+
+## 5. Reversible cutover
+
+Prefer a rename-based swap instead of deleting live data:
 
 ```bash
-lz4 -dc "$SNAP_FILE" | tar -xf - -C "$HOME/.axelar"
+AXELAR_HOME="$HOME/.axelar"
+ROLLBACK="$AXELAR_HOME/data.rollback.$(date -u +%Y%m%dT%H%M%SZ)"
+
+test ! -e "$ROLLBACK"
+mv "$AXELAR_HOME/data" "$ROLLBACK"
+mv "$STAGE/data" "$AXELAR_HOME/data"
 ```
 
----
+Restore the preserved validator state where applicable, then restore the
+expected owner and permissions. Start the Axelar node once.
 
-## **📂 Step 6: Restore Validator State**
-Move back the **backup validator state file**:
+If capacity cannot retain the rollback database, stop and obtain explicit
+approval before deleting the exact old `data/` path. Do not use a broad home
+deletion, glob, or generic `unsafe-reset-all`.
 
-```bash
-mv $HOME/.axelar/priv_validator_state.json.backup $HOME/.axelar/data/priv_validator_state.json
-```
+## 6. Verify before resuming vald
 
----
+Require all of the following:
 
-## **▶️ Step 7: Restart Axelar Node & Monitor Logs**
-Now, restart the service and monitor its logs:
+- correct chain ID and running Axelar binary;
+- stable service with no panic, corruption, or restart loop;
+- fresh block time and advancing local height;
+- convergence with an independent RPC and `catching_up=false`;
+- healthy peers;
+- validator bonded, not jailed, and signing fresh external commits;
+- monitoring recovered and disk headroom acceptable.
 
-```bash
-sudo systemctl restart axelar
-sudo journalctl -u axelar -fo cat
-```
+Only then start tofnd and vald in the approved order. Verify
+`axelard health-check`, broadcaster funding/proxy state, external-chain
+maintainer status, and successful new vald transactions.
 
----
+The complete validator-neutral recovery reference is available at:
 
-## **✅ Done!**
-Your node should now sync from the restored **POSTHUMAN snapshot**. 🚀
+https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f42a0e9b9b5e403edc54df5c53a5b9d221070ca0/axelar/references/safe-recovery.md
