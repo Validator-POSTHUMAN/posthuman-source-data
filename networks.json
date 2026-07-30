@@ -11,10 +11,7 @@
     "stake": "",
     "explorer": "",
     "chain_id": "asimov-phase5",
-    "endpoints": {
-      "rpc": "https://rpc.genlayer.posthuman.digital:443",
-      "snapshots": "https://snapshots.genlayer.posthuman.digital:443"
-    },
+    "endpoints": {},
     "contributions": "Genlayer",
     "generatedServices": [],
     "services": [
@@ -77,23 +74,12 @@
       ]
     },
     "chain_id": "colosseum-1",
-    "genesis_ulr": "https://snapshots.firmachain.posthuman.digital/genesis.json",
-    "addrbookUrl": "https://snapshots.firmachain.posthuman.digital/addrbook.json",
-    "endpoints": {
-      "rpc": "https://rpc.firmachain.posthuman.digital:443",
-      "rest": "https://rest.firmachain.posthuman.digital:443",
-      "grpc": "https://grpc.firmachain.posthuman.digital:443",
-      "peer": "3168796330fb85ab21f797f0e2df84e7a98e1983@peer.firmachain.posthuman.digital:49656",
-      "snapshots": "https://snapshots.firmachain.posthuman.digital:443"
-    },
+    "endpoints": {},
     "contributions": "FirmaChain",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
-    "services": [
-      "snapshots"
-    ]
+    "services": []
   },
   {
     "name": "fetchhub",
@@ -114,23 +100,12 @@
       ]
     },
     "chain_id": "fetchhub-4",
-    "genesis_ulr": "https://snapshots.fetch.posthuman.digital/genesis.json",
-    "addrbookUrl": "https://snapshots.fetch.posthuman.digital/addrbook.json",
-    "endpoints": {
-      "rpc": "https://rpc.fetch.posthuman.digital:443",
-      "rest": "https://rest.fetch.posthuman.digital:443",
-      "grpc": "https://grpc.fetch.posthuman.digital:443",
-      "peer": "0584f51f43be88dec1f9790b1321975af2e6606c@peer.fetch.posthuman.digital:43656",
-      "snapshots": "https://snapshots.fetch.posthuman.digital:443"
-    },
+    "endpoints": {},
     "contributions": "FetchAI",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
-    "services": [
-      "snapshots"
-    ]
+    "services": []
   },
   {
     "name": "axelar",
@@ -182,24 +157,13 @@
       ]
     },
     "chain_id": "push_42101-1",
-    "genesis_url": "https://snapshots.push.posthuman.digital/genesis.json",
     "addrbookUrl": "https://snapshots.push.posthuman.digital/addrbook.json",
-    "endpoints": {
-      "rpc": "https://rpc.push.posthuman.digital:443",
-      "rest": "https://rest.push.posthuman.digital:443",
-      "grpc": "https://grpc.push.posthuman.digital:443",
-      "json-rpc": "https://json-rpc.push.posthuman.digital:443",
-      "peer": "7bf1c608994f3f0b6b65aa52072d164c9d8a7f4d@peer.push.posthuman.digital:50656",
-      "snapshots": "https://snapshots.push.posthuman.digital:443"
-    },
+    "endpoints": {},
     "contributions": "PushChain",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
-    "services": [
-      "snapshots"
-    ]
+    "services": []
   },
   {
     "name": "gno",
@@ -265,20 +229,12 @@
     "stake": "https://explorer.posthuman.digital/shentu",
     "explorer": "https://explorer.posthuman.digital/shentu",
     "chain_id": "shentu-2.2",
-    "endpoints": {
-      "rpc": "https://rpc.shentu.posthuman.digital:443",
-      "rest": "https://rest.shentu.posthuman.digital:443",
-      "grpc": "https://grpc.shentu.posthuman.digital:443",
-      "peer": "77f21eee88ff4f895ff79dbdabb3e726c3f5eba5@peer.shentu.posthuman.digital:50656",
-      "snapshots": "https://snapshots.shentu.posthuman.digital:443"
-    },
+    "endpoints": {},
     "contributions": "",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
     "services": [
-      "snapshots",
       "skill"
     ]
   },
@@ -380,20 +336,10 @@
     "stake": "https://wallet.keplr.app/chains/dymension?modal=staking&chain=dymension_1100-1&validator_address=dymvaloper1lsjs7pwll7pqm40namkyx3e5qdwg0v0swrshud&step_id=2",
     "explorer": "https://explorer.posthuman.digital/dymension",
     "node_home": "$HOME/.dymension",
-    "addrbookUrl": "123",
-    "endpoints": {
-      "rpc": "https://rpc.dymension.posthuman.digital",
-      "wss": "wss://rpc.dymension.posthuman.digital",
-      "rest": "https://rest.dymension.posthuman.digital",
-      "grpc": "https://grpc.dymension.posthuman.digital",
-      "evm-rpc": "https://evm-rpc.dymension.posthuman.digital",
-      "seed-node": "7f5862bc6b2a13fee3a1928c2c7aed33edb711a2@peer.dymension.posthuman.digital:25656"
-    },
+    "endpoints": {},
     "contributions": "Dymension",
     "generatedServices": [
-      "installation-guide",
-      "state-sync",
-      "peers"
+      "installation-guide"
     ],
     "services": []
   },
@@ -432,19 +378,12 @@
     "stake": "https://explorer.posthuman.digital/atomone/staking/atonevaloper1vcp7pkg8sk0n8ylhezxxs8qqrnwfld4dsv2sew",
     "explorer": "https://explorer.posthuman.digital/atomone-testnet",
     "chain_id": "atomone-testnet-1",
-    "endpoints": {
-      "rpc": "https://rpc.atomone-testnet.posthuman.digital:443",
-      "rest": "https://rest.atomone-testnet.posthuman.digital:443",
-      "grpc": "https://grpc.atomone-testnet.posthuman.digital:443",
-      "seed-node": "9aa69d667da6dd43ba82110b4ff290ac38d68976@135.181.227.236:60656"
-    },
+    "endpoints": {},
     "contributions": "Atomone",
     "generatedServices": [
       "installation-guide"
     ],
-    "services": [
-      "snapshot-service"
-    ]
+    "services": []
   },
   {
     "name": "atomone",
@@ -487,17 +426,10 @@
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/stargaze/images/stars.svg",
     "stake": "https://explorer.posthuman.digital/stargaze/staking/starsvaloper14ftwwcfvhnp3qvxawesjan5duh8rmrkrzdvquy",
     "explorer": "https://explorer.posthuman.digital/stargaze",
-    "endpoints": {
-      "rpc": "https://rpc.stargaze.posthuman.digital:443",
-      "rest": "https://rest.stargaze.posthuman.digital:443",
-      "grpc": "https://grpc.stargaze.posthuman.digital:443",
-      "seed-node": "ea4ac95dd628844361cdee9b33e4c5db085d70e7@peer.stargaze.posthuman.digital:32656"
-    },
+    "endpoints": {},
     "contributions": "Stargaze",
     "generatedServices": [
-      "installation-guide",
-      "state-sync",
-      "peers"
+      "installation-guide"
     ],
     "services": []
   },
@@ -528,19 +460,10 @@
     "stake": "https://shielded.live/validators/0E3AB495DEC6558008A6CD962FFCBDA749CF475CAE21932AC1C6A9F4A8368550",
     "explorer": "https://shielded.live/",
     "chain_id": "namada.5f5de2dd1b88cba30586420",
-    "endpoints": {
-      "rpc": "https://rpc.namada.posthuman.digital:443",
-      "peer": "67cdb666f68cfefcd799ac589b2a9b005c067ef3@peer.namada.posthuman.digital:26656",
-      "snapshots": "https://snapshots.namada.posthuman.digital/"
-    },
+    "endpoints": {},
     "contributions": "Namada",
     "generatedServices": [],
-    "services": [
-      "installation-guide",
-      "genesis-file",
-      "addr-book",
-      "snapshot-service"
-    ]
+    "services": []
   },
   {
     "name": "celestia",
@@ -632,23 +555,12 @@
     "stake": "https://explorer.posthuman.digital/agoric/staking/agoricvaloper13yy5mk8ek8p5kk3e8nleucw003nt2vmzxrdx36",
     "explorer": "https://explorer.posthuman.digital/agoric",
     "chain_id": "agoric-3",
-    "endpoints": {
-      "rpc": "https://rpc.agoric.posthuman.digital",
-      "rest": "https://rest.agoric.posthuman.digital",
-      "grpc": "https://grpc.agoric.posthuman.digital",
-      "peer": "a31df340e2a186a0541cdb5099a1cca6eab67c75@135.181.61.154:12756"
-    },
+    "endpoints": {},
     "contributions": "Agoric",
-    "generatedServices": [
-      "state-sync",
-      "peers"
-    ],
+    "generatedServices": [],
     "services": [
       "installation-guide",
-      "IBC-Relayers",
-      "genesis-and-addrbook",
-      "snapshot-service",
-      "one-liner"
+      "IBC-Relayers"
     ]
   },
   {
@@ -667,20 +579,13 @@
     "stake": "https://explorer.posthuman.digital/warden-testnet/staking/wardenvaloper12de4mzezcvhauqxcszrhkdagwv8lwqs9uvla75",
     "explorer": "https://explorer.posthuman.digital/warden-testnet",
     "chain_id": "chiado_10010-1",
-    "endpoints": {
-      "rpc": "https://rpc.warden-testnet.posthuman.digital",
-      "rest": "https://rest.warden-testnet.posthuman.digital",
-      "grpc": "https://grpc.warden-testnet.posthuman.digital",
-      "peer": "4ba715e890aeceb9fef100c7c404004d1d711f37@46.4.52.158:656"
-    },
+    "endpoints": {},
     "contributions": "Warden",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
     "services": [
-      "oracle-slinky-setup-guide",
-      "snapshots"
+      "oracle-slinky-setup-guide"
     ]
   },
   {
@@ -742,23 +647,12 @@
     "stake": "https://explorer.posthuman.digital/zetachain/staking/zetavaloper1mj5uvv4703fwvna0t622yj9386cfwavr2hl6q4",
     "explorer": "https://explorer.posthuman.digital/zetachain",
     "chain_id": "zetachain_7000-1",
-    "endpoints": {
-      "rpc": "https://rpc.zetachain.posthuman.digital",
-      "rpc_ws": "wss://rpc.zetachain.posthuman.digital/websocket",
-      "rest": "https://rest.zetachain.posthuman.digital",
-      "grpc": "https://grpc.zetachain.posthuman.digital",
-      "evm_json_rpc": "https://evm.zetachain.posthuman.digital",
-      "evm_json_rpc_ws": "wss://wss.zetachain.posthuman.digital",
-      "peer": "21cc2d900409df3612d4b00537c9ebaf09fab2f6@135.181.227.236:31656"
-    },
+    "endpoints": {},
     "contributions": "Zetachain",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
-    "services": [
-      "snapshots"
-    ]
+    "services": []
   },
   {
     "name": "juno-testnet",
@@ -771,20 +665,12 @@
     "stake": "https://explorer.posthuman.digital/juno-testnet/staking/",
     "explorer": "https://explorer.posthuman.digital/juno-testnet/",
     "chain_id": "uni-7",
-    "endpoints": {
-      "rpc": "https://rpc.juno-testnet.posthuman.digital",
-      "rest": "https://rest.juno-testnet.posthuman.digital",
-      "grpc": "https://grpc.juno-testnet.posthuman.digital",
-      "peer": "ea35c818280a6ac5d1d2a987d8d60f4bd76f4e06@141.95.34.193:16656"
-    },
+    "endpoints": {},
     "contributions": "JunoNetwork",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
-    "services": [
-      "snapshots"
-    ]
+    "services": []
   },
   {
     "name": "juno",
@@ -905,20 +791,12 @@
     "stake": "https://explorer.posthuman.digital/neutron",
     "explorer": "https://explorer.posthuman.digital/neutron",
     "chain_id": "neutron-1",
-    "endpoints": {
-      "rpc": "https://rpc.neutron.posthuman.digital",
-      "rest": "https://rest.neutron.posthuman.digital",
-      "grpc": "grpc.neutron.posthuman.digital",
-      "peer": "d5ce5e05dad8d5ed75709e2e4c591e088ade8dd5@peer.neutron.posthuman.digital:13656"
-    },
+    "endpoints": {},
     "contributions": "Neutron",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
-    "services": [
-      "snapshots"
-    ]
+    "services": []
   },
   {
     "name": "babylon-testnet",
@@ -932,20 +810,10 @@
     "stake": "https://explorer.posthuman.digital/babylon-testnet/staking/bbnvaloper1thsqam9as5sxzj8c8cmkdrgtc5gmlxn0nxuypf",
     "explorer": "https://explorer.posthuman.digital/babylon-testnet",
     "chain_id": "bbn-test-5",
-    "endpoints": {
-      "rpc": "https://rpc.babylon.posthuman.digital",
-      "rest": "https://rest-api.babylon.posthuman.digital",
-      "grpc": "https://grpc.babylon.posthuman.digital",
-      "peer": "70d302558183535e220a725d463597ade72e130d@95.217.229.104:60656"
-    },
+    "endpoints": {},
     "contributions": "Babylon",
     "generatedServices": [],
-    "services": [
-      "installation-guide",
-      "genesis-and-addrbook",
-      "snapshot-service",
-      "one-liner"
-    ]
+    "services": []
   },
   {
     "name": "canton-testnet",
