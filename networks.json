@@ -654,6 +654,26 @@
     "services": []
   },
   {
+    "name": "osmosis",
+    "type": "mainnet",
+    "title": "Osmosis",
+    "website": "https://osmosis.zone/",
+    "twitter": "https://x.com/osmosiszone",
+    "discord": "https://discord.gg/osmosis",
+    "github": "https://github.com/osmosis-labs",
+    "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/osmo.svg",
+    "stake": "https://explorer.posthuman.digital/osmosis/staking/osmovaloper1e8238v24qccht9mqc2w0r4luq462yxttfpaeam",
+    "explorer": "https://explorer.posthuman.digital/osmosis",
+    "chain_id": "osmosis-1",
+    "endpoints": {},
+    "contributions": "Osmosis",
+    "generatedServices": [],
+    "services": [
+      "ibc-relayers",
+      "links"
+    ]
+  },
+  {
     "name": "juno-testnet",
     "type": "testnet",
     "title": "Juno",
