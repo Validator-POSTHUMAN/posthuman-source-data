@@ -669,6 +669,8 @@
     "contributions": "Osmosis",
     "generatedServices": [],
     "services": [
+      "installation-guide",
+      "skill",
       "ibc-relayers",
       "links"
     ]
