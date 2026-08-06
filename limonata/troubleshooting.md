@@ -1,12 +1,9 @@
 # Limonata Testnet — Troubleshooting
 
-## Official genesis fails `validate-genesis`
+## Verify the official genesis
 
-On `limonata-v0.3.4`, the official genesis can trigger a `burn_bps` range
-error because of a dormant-module validation check. Do not replace a
-checksum-verified official genesis to work around this message.
-
-Verify the file instead:
+The v0.3.6 binary has no `validate-genesis` subcommand. Do not modify the
+official genesis or copy an unverified replacement. Verify the file directly:
 
 ```bash
 sha256sum "$HOME/.limonatad/config/genesis.json"
@@ -52,7 +49,7 @@ service design.
 
 ## Prebuilt binary does not run
 
-The `limonata-v0.3.4` amd64 release requires glibc 2.38 or newer. Confirm:
+The `limonata-v0.3.6` amd64 release requires glibc 2.38 or newer. Confirm:
 
 ```bash
 ldd --version | head -1

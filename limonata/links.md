@@ -12,8 +12,8 @@
 
 - GitHub: https://github.com/Limonata-Blockchain/limonata
 - Releases: https://github.com/Limonata-Blockchain/limonata/releases
-- v0.3.4: https://github.com/Limonata-Blockchain/limonata/releases/tag/limonata-v0.3.4
-- Encrypted mempool: https://github.com/Limonata-Blockchain/limonata/blob/main/ENCRYPTED_MEMPOOL.md
+- v0.3.6: https://github.com/Limonata-Blockchain/limonata/releases/tag/limonata-v0.3.6
+- Encrypted mempool: https://github.com/Limonata-Blockchain/limonata/blob/limonata-v0.3.6/ENCRYPTED_MEMPOOL.md
 
 ## POSTHUMAN public endpoints
 
