@@ -4,7 +4,7 @@ This guide installs a non-signing Limonata full node on
 `limonata_10777-1`. Validator creation and grant participation are separate
 procedures covered by the official validator documentation.
 
-Tested release: `limonata-v0.3.4` (`77fc357f`) on 2026-07-25.
+Tested release: `limonata-v0.3.6` (`effa377d`) on 2026-08-06.
 
 ## Requirements
 
@@ -25,7 +25,7 @@ The commands below pin the release instead of following a moving `latest`
 link.
 
 ```bash
-LIMONATA_VERSION=limonata-v0.3.4
+LIMONATA_VERSION=limonata-v0.3.6
 LIMONATA_ARCHIVE=limonatad-linux-amd64.tar.gz
 LIMONATA_TMP=$(mktemp -d)
 
@@ -34,20 +34,20 @@ curl -fL --retry 3 \
   "https://github.com/Limonata-Blockchain/limonata/releases/download/$LIMONATA_VERSION/$LIMONATA_ARCHIVE"
 
 printf '%s  %s\n' \
-  '73aa3ac82f961ad2908a948d0f32b1c5e242f78082be8fbaae1e7e5c35be16b5' \
+  '39ff376963498de120604c273d50751afc005ebeec9cbcca88c0f732eff56125' \
   "$LIMONATA_TMP/$LIMONATA_ARCHIVE" | sha256sum -c -
 
 tar -xzf "$LIMONATA_TMP/$LIMONATA_ARCHIVE" -C "$LIMONATA_TMP"
 
 printf '%s  %s\n' \
-  'e5e5ecdbb8e6837902872e8d775f746a2d4775277e33395454fc1013390e6a35' \
+  '048627427e46c72ea61dd59e42e70c91b9fadbb2402a6b3ee63584f41673e066' \
   "$LIMONATA_TMP/limonatad" | sha256sum -c -
 
 sudo install -m 0755 "$LIMONATA_TMP/limonatad" /usr/local/bin/limonatad
 limonatad version --long
 ```
 
-Expected application version: `v0.3.4`, commit `77fc357f`.
+Expected application version: `v0.3.6`, commit `effa377d`.
 
 ## 2. Initialize the node and verify genesis
 
@@ -71,10 +71,8 @@ printf '%s  %s\n' \
   "$LIMONATA_HOME/config/genesis.json" | sha256sum -c -
 ```
 
-Do not replace the official genesis if `validate-genesis` reports a
-`burn_bps` range error on v0.3.4. This release currently rejects the official
-genesis because a dormant-module validation check is too strict; the
-checksum-verified official file is the correct network genesis.
+The v0.3.6 binary has no `validate-genesis` subcommand. Verify the official
+genesis only by the fixed SHA-256 above and do not modify or replace it.
 
 ## 3. Configure the application and peer
 
@@ -214,6 +212,10 @@ For validator onboarding, grants, or DKG-sensitive recovery, coordinate with
 the Limonata team and follow the official validator documentation.
 
 ## Upgrade procedure
+
+The coordinated `encmempool-strict-concentration-v1` upgrade activated at
+height `1650000`. A legacy binary cannot continue past that height; use the
+checksum-verified v0.3.6 release.
 
 1. Review the official release notes and confirm whether the upgrade is
    rolling or height-gated.

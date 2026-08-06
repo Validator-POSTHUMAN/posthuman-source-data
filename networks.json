@@ -32,9 +32,9 @@
     "daemon_name": "limonatad",
     "codebase": {
       "git_repo": "https://github.com/Limonata-Blockchain/limonata",
-      "recommended_version": "limonata-v0.3.4",
+      "recommended_version": "limonata-v0.3.6",
       "compatible_versions": [
-        "limonata-v0.3.4"
+        "limonata-v0.3.6"
       ]
     },
     "chain_id": "limonata_10777-1",
