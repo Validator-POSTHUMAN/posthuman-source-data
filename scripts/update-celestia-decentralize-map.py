@@ -42,10 +42,6 @@ POSTHUMAN_RPC_ENDPOINTS = [
         "address": "https://rpc-celestia-mainnet.posthuman.digital",
         "provider": "POSTHUMAN",
     },
-    {
-        "address": "https://rpc-celestia-mainnet-archive.posthuman.digital",
-        "provider": "POSTHUMAN archive",
-    },
 ]
 
 NET_INFO_RPC_URLS = [

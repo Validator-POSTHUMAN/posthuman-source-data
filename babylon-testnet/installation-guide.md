@@ -1,5 +1,9 @@
 #  Babylon Validator Setup Guide
 
+> **Archived testnet:** POSTHUMAN no longer publishes the old Babylon testnet
+> genesis, addrbook, RPC, REST, gRPC, or snapshot services. This guide is kept
+> only as historical reference and is not a complete current installation path.
+
 ## Recommended Hardware
 - **CPU:** 4 Cores
 - **RAM:** 32GB
@@ -52,11 +56,9 @@ sed -i \
 -e "s/node = .*/node = \"tcp:\/\/localhost:${POSTHUMAN_PORT}657\"/" $HOME/.babylond/config/client.toml
 ```
 
-## Step 6: Download Genesis and Addrbook
-```bash
-wget -O $HOME/.babylond/config/genesis.json http://snapshots.babylon.posthuman.digital/genesis.json
-wget -O $HOME/.babylond/config/addrbook.json http://snapshots.babylon.posthuman.digital/addrbook.json
-```
+## Step 6: Genesis and Addrbook
+
+POSTHUMAN no longer publishes these archived Babylon testnet artifacts.
 
 ## Step 7: Configure Peers and Seeds
 ```bash

@@ -1,11 +1,4 @@
-## Genesis File 
-Fetch the latest genesis file:
-```bash
-wget -O $HOME/.babylond/config/genesis.json https://snapshots.babylon.posthuman.digital/genesis.json
-```
-## Addrbook file
-Updated every 1 hour
+# Babylon testnet genesis and addrbook
 
-```bash
-wget -O $HOME/.babylond/config/addrbook.json https://snapshots.babylon.posthuman.digital/addrbook.json
-```
+> **Retired:** POSTHUMAN no longer publishes artifacts for the archived
+> Babylon testnet. No genesis or addrbook download is advertised here.

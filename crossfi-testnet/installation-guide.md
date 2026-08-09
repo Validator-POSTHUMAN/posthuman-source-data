@@ -1,3 +1,7 @@
+> **Archived network:** POSTHUMAN no longer publishes CrossFi testnet genesis,
+> addrbook, or snapshot artifacts. Commands that depended on those artifacts
+> have been removed; the remaining content is historical reference only.
+
 ## Download binary
 ```bash
 cd $HOME
@@ -9,11 +13,9 @@ git clone https://github.com/crossfichain/testnet.git
 rm -rf crossfi-node_0.3.0-prebuild3_linux_amd64.tar.gz $HOME/bin
 ```
 
-## Download addrbook and genesis files
-```bash
-wget -O $HOME/.mineplex-chain/config/genesis.json https://snapshots.crossfi-testnet.posthuman.digital/genesis.json
-wget -O $HOME/.mineplex-chain/config/addrbook.json https://snapshots.crossfi-testnet.posthuman.digital/addrbook.json
-```
+## Addrbook and genesis files
+
+POSTHUMAN no longer publishes these CrossFi testnet artifacts.
 
 ## Add seeds and peers
 ```bash
