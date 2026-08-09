@@ -313,6 +313,7 @@
       "rpc": "https://rpc.cosmos.posthuman.digital",
       "rest": "https://rest.cosmos.posthuman.digital",
       "grpc": "https://grpc.cosmos.posthuman.digital",
+      "network-files": "https://rpc.cosmos.posthuman.digital/files/cosmoshub/manifest.json",
       "seed-node": "6d581e53245f7f81c24a20392b60256a7e59de59@peer.cosmos.posthuman.digital:26656"
     },
     "contributions": "Cosmos",
@@ -324,6 +325,7 @@
       "install-guide",
       "ibc-relayers",
       "links",
+      "network-files",
       "skill"
     ]
   },

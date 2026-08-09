@@ -11,7 +11,7 @@ sudo apt-get install git curl build-essential make jq gcc snapd chrony lz4 tmux 
 rm -rf $HOME/go
 sudo rm -rf /usr/local/go
 cd $HOME
-curl https://dl.google.com/go/go1.20.5.linux-amd64.tar.gz | sudo tar -C/usr/local -zxvf -
+curl https://go.dev/dl/go1.25.7.linux-amd64.tar.gz | sudo tar -C/usr/local -zxvf -
 cat <<'EOF' >>$HOME/.profile
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
@@ -29,7 +29,7 @@ cd $HOME
 rm -rf gaia
 git clone https://github.com/cosmos/gaia.git
 cd gaia
-git checkout v14.1.0
+git checkout v27.6.0
 make install
 gaiad version
 ```
@@ -42,13 +42,15 @@ gaiad init NodeName --chain-id=cosmoshub-4
 
 ### Download Genesis
 ```
-curl -Ls https://ss.cosmos.nodestake.org/genesis.json > $HOME/.gaia/config/genesis.json 
+curl -fsSLo $HOME/.gaia/config/genesis.json \
+  https://rpc.cosmos.posthuman.digital/files/cosmoshub/genesis.json
 ```
 
 ### Download addrbook
 
 ```
-curl -Ls https://ss.cosmos.nodestake.org/addrbook.json > $HOME/.gaia/config/addrbook.json
+curl -fsSLo $HOME/.gaia/config/addrbook.json \
+  https://rpc.cosmos.posthuman.digital/files/cosmoshub/addrbook.json
 ```
 
 ### Create Service
@@ -71,11 +73,17 @@ sudo systemctl daemon-reload
 sudo systemctl enable gaiad
 ```
 
-### Download Snapshot(optional)
+### Bootstrap artifact metadata
+
+Check the POSTHUMAN manifest for file hashes, generation time, and source
+provenance before replacing configuration files:
+
 ```
-SNAP_NAME=$(curl -s https://ss.cosmos.nodestake.org/ | egrep -o ">20.*\.tar.lz4" | tr -d ">")
-curl -o - -L https://ss.cosmos.nodestake.org/${SNAP_NAME}  | lz4 -c -d - | tar -x -C $HOME/.gaiad
+curl -fsSL https://rpc.cosmos.posthuman.digital/files/cosmoshub/manifest.json | jq
 ```
+
+Use a verified snapshot or state-sync source separately; no POSTHUMAN Cosmos
+Hub snapshot is advertised by this guide.
 
 ### Launch Node
 
