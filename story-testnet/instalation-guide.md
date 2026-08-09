@@ -1,6 +1,10 @@
 
 # Story Node Installation Guide
 
+> **Archived legacy testnet:** POSTHUMAN no longer publishes the Story RPC,
+> REST, EVM, WebSocket, genesis, addrbook, or snapshot services referenced by
+> the original guide. The remaining content is historical reference only.
+
 ## Recommended Hardware:
 - **CPU:** 4 Cores
 - **Memory:** 8GB RAM
@@ -90,12 +94,9 @@ sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*seeds *=.*/seeds = "$SEEDS"/}" -e "/^
 
 ---
 
-## Download Genesis and Addrbook
-Download the required genesis and address book files:
-```bash
-wget -O $HOME/.story/story/config/genesis.json https://snapshots.story.posthuman.digital/genesis.json
-wget -O $HOME/.story/story/config/addrbook.json https://snapshots.story.posthuman.digital/addrbook.json
-```
+## Genesis and Addrbook
+
+POSTHUMAN no longer publishes these Story legacy testnet artifacts.
 
 ---
 
@@ -162,38 +163,10 @@ EOF
 
 ---
 
-# Story Node Snapshot Installation Guide
+# Story Node Snapshot Service
 
-## Pruned Snapshot Installation
-Updated every 24 hours
-
-### Pruned Snapshot 
-
-```bash
-# Install dependencies, if needed
-sudo apt install curl jq lz4  -y
-
-# Stop node
-sudo systemctl stop story story-geth
-
-# Backup priv_validator_state.json
-cp $HOME/.story/story/data/priv_validator_state.json $HOME/.story/story/priv_validator_state.json.backup
-
-# Remove old data and unpack Story snapshot
-rm -rf $HOME/.story/story/data
-curl https://snapshots-pruned.story.posthuman.digital/story_pruned.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.story/story
-
-# Restore priv_validator_state.json
-mv $HOME/.story/story/priv_validator_state.json.backup $HOME/.story/story/data/priv_validator_state.json
-
-# Delete Geth data and unpack Geth snapshot
-rm -rf $HOME/.story/geth/iliad/geth/chaindata
-curl https://snapshots-pruned.story.posthuman.digital/geth_story_pruned.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.story/geth/iliad/geth
-
-# Restart node and check logs
-sudo systemctl restart story story-geth
-sudo journalctl -u story-geth -u story -f
-```
+POSTHUMAN no longer publishes Story legacy testnet snapshots. The unsafe stale
+restore sequence has been removed.
 
 ---
 

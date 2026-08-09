@@ -1,5 +1,4 @@
-## Genesis File 
-Fetch the genesis file:
-```bash
-wget -O $HOME/.crossfid/config/genesis.json https://snapshots.crossfi-testnet.posthuman.digital/genesis.json
-```
+# CrossFi testnet genesis
+
+> **Retired:** POSTHUMAN no longer publishes the CrossFi testnet genesis file.
+> The archived network page is retained, but this artifact is unavailable.

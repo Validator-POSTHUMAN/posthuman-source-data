@@ -1,3 +1,4 @@
 - Explorer: [https://explorer.posthuman.digital/stargaze](https://explorer.posthuman.digital/stargaze)
-- RPC: [https://rpc.stargaze.posthuman.digital](https://rpc.stargaze.posthuman.digital)
-- Snapshot: [https://rpc.stargaze.posthuman.digital](https://snapshot.stargaze.posthuman.digital)
+
+> POSTHUMAN's Stargaze RPC and snapshot services are retired. The network page
+> remains available as a historical record.
