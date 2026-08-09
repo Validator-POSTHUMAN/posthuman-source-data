@@ -6,11 +6,24 @@ Hub RPC. They are refreshed hourly only while the local node is synced.
 - Manifest: <https://rpc.cosmos.posthuman.digital/files/cosmoshub/manifest.json>
 - Genesis: <https://rpc.cosmos.posthuman.digital/files/cosmoshub/genesis.json>
 - Sanitized addrbook: <https://rpc.cosmos.posthuman.digital/files/cosmoshub/addrbook.json>
+- Live peer discovery: <https://rpc.cosmos.posthuman.digital/files/cosmoshub/peers.json>
 - Node version telemetry: <https://rpc.cosmos.posthuman.digital/files/cosmoshub/version.json>
 
 The manifest records the generation time, source URL, byte count and SHA-256
 for each download. The addrbook is not a raw copy: it contains only public
 IPv4 entries that were successful and not banned by the POSTHUMAN RPC node.
+
+## Live peer discovery
+
+`peers.json` is an optional discovery feed, not a node configuration. Each
+hour it checks at most 80 sanitized addrbook entries from the non-signing RPC
+and publishes up to 25 endpoints with a successful TCP connection at
+generation time. The response has a two-hour `expires_at` value.
+
+It does **not** prove consensus participation, peer identity beyond the local
+addrbook record, uptime, validator status, or future reachability. Never
+automatically write this list to `persistent_peers` or a production node
+configuration; use it only as a bounded troubleshooting/discovery hint.
 
 ## Version telemetry
 
@@ -39,6 +52,13 @@ for file in genesis addrbook; do
   actual=$(sha256sum "$WORKDIR/$file.json" | awk '{print $1}')
   test "$actual" = "$expected"
 done
+
+curl -fsSLo "$WORKDIR/peers.json" "$FILES/peers.json"
+expected=$(jq -r '.discovery.live_peers.sha256' "$WORKDIR/manifest.json")
+actual=$(sha256sum "$WORKDIR/peers.json" | awk '{print $1}')
+test "$actual" = "$expected"
+jq -e '.schema == "posthuman.live-peers/v1" and .automatic_config_update == false and (.peers | type == "array")' \
+  "$WORKDIR/peers.json"
 ```
 
 Only after the checks pass, copy the files to the initialized Gaia home:
