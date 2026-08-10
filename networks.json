@@ -156,7 +156,6 @@
       ]
     },
     "chain_id": "push_42101-1",
-    "addrbookUrl": "https://snapshots.push.posthuman.digital/addrbook.json",
     "endpoints": {},
     "contributions": "PushChain",
     "generatedServices": [
