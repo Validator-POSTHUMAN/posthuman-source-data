@@ -1,6 +1,6 @@
 # Celestia Light Node (Mocha-4 Testnet) — POSTHUMAN
 
-Run a Celestia mocha-4 light node backed by POSTHUMAN RPC/gRPC endpoints. The instructions mirror Celestia’s quick-start flow while exposing POSTHUMAN public services ready for production use.
+Run a Celestia mocha-4 light node using a validated public core gRPC fallback.
 
 ## Hardware Requirements (non-archival)
 | Resource  | Requirement |
@@ -52,7 +52,9 @@ make cel-key
 ## 4. Initialize the light node
 ```bash
 celestia light init \
-  --core.ip https://rpc-celestia-testnet.posthuman.digital \
+  --core.ip mocha.grpc.cumulo.me \
+  --core.port 443 \
+  --core.tls \
   --p2p.network mocha
 ```
 
@@ -87,9 +89,9 @@ After=network-online.target
 [Service]
 User=$USER
 ExecStart=$(which celestia) light start \
-  --core.ip https://rpc-celestia-testnet.posthuman.digital \
-  --core.rpc.port 443 \
-  --core.grpc.port 443 \
+  --core.ip mocha.grpc.cumulo.me \
+  --core.port 443 \
+  --core.tls \
   --keyring.accname my_celes_key \
   --p2p.network mocha \
   --metrics \
@@ -111,7 +113,7 @@ sudo systemctl enable celestia-light
 sudo systemctl restart celestia-light && sudo journalctl -u celestia-light -fo cat
 ```
 
-> POSTHUMAN mocha endpoints are exposed over HTTPS via Cloudflare. When pointing to a raw consensus node, switch the host and restore the default `26657` / `9090` ports.
+> Celestia-node v0.31.4 uses core gRPC. When pointing to a raw consensus node, use its gRPC host and port (default `9090`) and omit `--core.tls` unless TLS is enabled.
 
 ## 7. Inspect node information
 ```bash

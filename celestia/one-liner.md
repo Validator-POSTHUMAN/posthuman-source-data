@@ -35,7 +35,7 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 Before installing, verify the live mainnet height and sync state:
 
 ```bash
-curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
+curl -fsS https://celestia-rpc.publicnode.com/status | \
   jq -r '.result.sync_info.latest_block_height'
 ```
 
@@ -66,7 +66,7 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 ## POSTHUMAN Mainnet Services
 
 - Explorer: https://explorer.posthuman.digital/celestia
-- RPC: https://rpc-celestia-mainnet.posthuman.digital
+- RPC fallback (PublicNode): https://celestia-rpc.publicnode.com
 - REST: https://rest-celestia-mainnet.posthuman.digital
 - gRPC: https://grpc-celestia-mainnet.posthuman.digital
 - Snapshots: https://snapshots.posthuman.digital/celestia-mainnet/

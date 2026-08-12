@@ -10,7 +10,7 @@ chain ID `celestia`.
 - Previous compatible app binary: `v8.0.8`
 - App v9 activated at height: `11771698`
 - Go for source builds: `1.26.1+`
-- POSTHUMAN snapshot format: PebbleDB `snapshot-latest.tar.lz4`, refreshed every 4 hours
+- POSTHUMAN snapshot format: PebbleDB `snapshot-latest.tar.lz4`; check `snapshot.json` for the latest published build
 
 Use the `v9.0.4` wrapper for new installs and recoveries. Mainnet has already
 passed the app v9 activation height.
@@ -18,7 +18,7 @@ passed the app v9 activation height.
 Check live network state before choosing the binary:
 
 ```bash
-curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
+curl -fsS https://celestia-rpc.publicnode.com/status | \
   jq -r '.result.node_info.network, .result.sync_info.latest_block_height, .result.sync_info.catching_up'
 ```
 
@@ -135,7 +135,7 @@ and investigate before restore.
 
 ```bash
 curl -fsS https://snapshots.posthuman.digital/celestia-mainnet/snapshot.json | jq .
-curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
+curl -fsS https://celestia-rpc.publicnode.com/status | \
   jq -r '.result.sync_info.latest_block_height'
 ```
 
