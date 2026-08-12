@@ -87,22 +87,20 @@ cd $HOME/celestia-node
 
 ## ⚙️ 5. Configure and Initialize the Full Storage Node
 ```bash
-celestia full init --core.ip $CORE_IP
-```
-
----
-
-## 📡 6. Set Consensus Node RPC and gRPC Ports
-```bash
-CORE_IP="<PUT_CONSENSUS_NODE_IP>"
-CORE_RPC_PORT="<PUT_CONSENSUS_NODE_RPC_PORT>"
-CORE_GRPC_PORT="<PUT_CONSENSUS_NODE_GRPC_PORT>"
+CORE_IP="mocha.grpc.cumulo.me"
+CORE_PORT="443"
 KEY_NAME="my_celes_key"
+
+celestia full init \
+  --core.ip "$CORE_IP" \
+  --core.port "$CORE_PORT" \
+  --core.tls \
+  --p2p.network mocha
 ```
 
 ---
 
-## 🔄 7. Create a Service File for Celestia Full Storage Node
+## 🔄 6. Create a Service File for Celestia Full Storage Node
 ```bash
 sudo tee /etc/systemd/system/celestia-full.service > /dev/null <<EOF
 [Unit]
@@ -113,9 +111,10 @@ After=network-online.target
 User=$USER
 ExecStart=$(which celestia) full start \
 --core.ip $CORE_IP \
---core.rpc.port $CORE_RPC_PORT \
---core.grpc.port $CORE_GRPC_PORT \
+--core.port $CORE_PORT \
+--core.tls \
 --keyring.accname $KEY_NAME \
+--p2p.network mocha \
 --metrics.tls=true --metrics --metrics.endpoint otel.celestia.observer
 Restart=on-failure
 RestartSec=3
@@ -135,7 +134,7 @@ sudo systemctl restart celestia-full && sudo journalctl -u celestia-full -fo cat
 
 ---
 
-## 📡 8. Retrieve Node Peer ID
+## 📡 7. Retrieve Node Peer ID
 Generate an auth token:
 ```bash
 NODE_TYPE=full

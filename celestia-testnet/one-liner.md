@@ -58,7 +58,7 @@ One-click update with version selection.
 **PostHuman Snapshots:**
 - 📍 Mainnet: https://snapshots.posthuman.digital/celestia-mainnet/
 - 📍 Testnet: https://snapshots.posthuman.digital/celestia-testnet/
-- ⏱️ Mainnet and testnet snapshots are automated every 4 hours
+- ⏱️ Testnet snapshots are automated every 4 hours; mainnet publication is temporarily paused, so check its `snapshot.json` before use
 - 🌐 Fast worldwide via Cloudflare R2
 
 **Manual snapshot restore:**
@@ -114,7 +114,7 @@ sudo systemctl start "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}" -
 ### Mainnet (celestia)
 - 🌐 **Website**: https://posthuman.digital
 - 📊 **Explorer**: https://explorer.posthuman.digital/celestia
-- 🔌 **RPC**: https://rpc-celestia-mainnet.posthuman.digital
+- 🔌 **RPC fallback (PublicNode)**: https://celestia-rpc.publicnode.com
 - 🔌 **REST**: https://rest-celestia-mainnet.posthuman.digital
 - 🔌 **gRPC**: https://grpc-celestia-mainnet.posthuman.digital
 - 💾 **Snapshots**: https://snapshots.posthuman.digital/celestia-mainnet/

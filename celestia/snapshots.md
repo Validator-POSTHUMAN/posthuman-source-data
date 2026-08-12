@@ -4,7 +4,7 @@ POSTHUMAN provides a pruned Celestia consensus-node snapshot for chain ID
 `celestia`.
 
 - DB backend: PebbleDB
-- Cadence: every 4 hours
+- Publication cadence: temporarily paused while the snapshot source is the active validator; check `snapshot.json` before use
 - Archive format: `snapshot-latest.tar.lz4`
 
 ## Snapshot Endpoint
@@ -26,7 +26,7 @@ Always compare snapshot metadata with a trusted live RPC before restore:
 ```bash
 curl -fsS https://snapshots.posthuman.digital/celestia-mainnet/snapshot.json | jq .
 
-curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
+curl -fsS https://celestia-rpc.publicnode.com/status | \
   jq -r '.result.node_info.network, .result.sync_info.latest_block_height, .result.sync_info.catching_up'
 ```
 

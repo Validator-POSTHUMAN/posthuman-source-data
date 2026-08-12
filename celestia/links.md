@@ -1,4 +1,4 @@
-- **RPC**: https://rpc-celestia-mainnet.posthuman.digital  
+- **RPC fallback (PublicNode)**: https://celestia-rpc.publicnode.com
 - **REST**: https://rest-celestia-mainnet.posthuman.digital  
 - **gRPC**: https://grpc-celestia-mainnet.posthuman.digital  
 - **Snapshots**: https://snapshots.posthuman.digital/celestia-mainnet/  

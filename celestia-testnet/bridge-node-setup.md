@@ -45,7 +45,11 @@ make cel-key
 
 ### Configure and Initialize the Application
 ```sh
-celestia bridge init --core.ip https://rpc-celestia-testnet.posthuman.digital --p2p.network mocha
+celestia bridge init \
+  --core.ip mocha.grpc.cumulo.me \
+  --core.port 443 \
+  --core.tls \
+  --p2p.network mocha
 ```
 Once started, a wallet key is generated. You need to fund this address with testnet tokens.
 Find your wallet address:
@@ -64,6 +68,9 @@ After=network-online.target
 [Service]
 User=$USER
 ExecStart=$(which celestia) bridge start \
+--core.ip mocha.grpc.cumulo.me \
+--core.port 443 \
+--core.tls \
 --p2p.network mocha --archival \
 --metrics.tls=true --metrics --metrics.endpoint otel.mocha.celestia.observer
 Restart=on-failure
@@ -94,17 +101,11 @@ curl -X POST \
      http://localhost:26658
 ```
 
-### Download and Restore Snapshot
-```sh
-sudo apt install aria2 jq lz4 unzip -y
-cd $HOME
-aria2c -x 16 -s 16 -o celestia-bridge-snap.tar.lz4 https://server-8.itrocket.net/testnet/celestia/bridge/celestia_2025-03-03_4981368_snap.tar.lz4
-sudo systemctl stop celestia-bridge
-rm -rf ~/.celestia-bridge-mocha-4/{blocks,data,index,inverted_index,transients,.lock}
-tar -I lz4 -xvf ~/celestia-bridge-snap.tar.lz4 -C ~/.celestia-bridge-mocha-4/
-sudo systemctl restart celestia-bridge && sudo journalctl -u celestia-bridge -fo cat
-rm ~/celestia-bridge-snap.tar.lz4
-```
+### Snapshot availability
+
+No verified Mocha bridge-node store snapshot is currently published here.
+Sync the bridge node from the network. The POSTHUMAN `celestia-appd`
+consensus snapshot is not compatible with a `celestia-node` bridge store.
 
 ## Cheat Sheet
 

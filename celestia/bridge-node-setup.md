@@ -9,7 +9,7 @@ This guide installs a Celestia Data Availability bridge node on mainnet using
 - Network: `celestia`
 - Default bridge store: `~/.celestia-bridge`
 - Default local JSON-RPC: `http://127.0.0.1:26658`
-- Trusted core RPC: `https://rpc-celestia-mainnet.posthuman.digital`
+- Validated core gRPC fallback: `celestia-mainnet-grpc.itrocket.net:443`
 - Metrics collector: `otel.celestia.observer`
 
 ## Requirements
@@ -67,7 +67,9 @@ celestia version
 
 ```bash
 celestia bridge init \
-  --core.ip https://rpc-celestia-mainnet.posthuman.digital \
+  --core.ip celestia-mainnet-grpc.itrocket.net \
+  --core.port 443 \
+  --core.tls \
   --p2p.network celestia
 ```
 
@@ -92,9 +94,9 @@ After=network-online.target
 [Service]
 User=$USER
 ExecStart=$(command -v celestia) bridge start \
-  --core.ip https://rpc-celestia-mainnet.posthuman.digital \
-  --core.rpc.port 443 \
-  --core.grpc.port 443 \
+  --core.ip celestia-mainnet-grpc.itrocket.net \
+  --core.port 443 \
+  --core.tls \
   --p2p.network celestia \
   --metrics \
   --metrics.tls=true \

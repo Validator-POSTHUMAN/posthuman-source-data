@@ -8,7 +8,7 @@ This guide installs a Celestia Data Availability light node on mainnet using
 - Celestia node: `v0.31.4`
 - Network: `celestia`
 - Default light-node store: `~/.celestia-light`
-- Trusted core RPC: `https://rpc-celestia-mainnet.posthuman.digital`
+- Validated core gRPC fallback: `celestia-mainnet-grpc.itrocket.net:443`
 
 ## Requirements
 
@@ -59,7 +59,9 @@ celestia version
 
 ```bash
 celestia light init \
-  --core.ip https://rpc-celestia-mainnet.posthuman.digital \
+  --core.ip celestia-mainnet-grpc.itrocket.net \
+  --core.port 443 \
+  --core.tls \
   --p2p.network celestia
 ```
 
@@ -85,9 +87,9 @@ After=network-online.target
 [Service]
 User=$USER
 ExecStart=$(command -v celestia) light start \
-  --core.ip https://rpc-celestia-mainnet.posthuman.digital \
-  --core.rpc.port 443 \
-  --core.grpc.port 443 \
+  --core.ip celestia-mainnet-grpc.itrocket.net \
+  --core.port 443 \
+  --core.tls \
   --keyring.accname my_celes_key \
   --p2p.network celestia \
   --metrics \
