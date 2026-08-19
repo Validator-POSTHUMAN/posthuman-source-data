@@ -5,14 +5,14 @@ chain ID `celestia`.
 
 ## Current Versions
 
-- Recommended consensus binary: `v9.0.4`
+- Recommended consensus binary: `v9.0.6`
 - Current protocol app: `v9`
 - Previous compatible app binary: `v8.0.8`
 - App v9 activated at height: `11771698`
 - Go for source builds: `1.26.1+`
 - POSTHUMAN snapshot format: PebbleDB `snapshot-latest.tar.lz4`; check `snapshot.json` for the latest published build
 
-Use the `v9.0.4` wrapper for new installs and recoveries. Mainnet has already
+Use the `v9.0.6` wrapper for new installs and recoveries. Mainnet has already
 passed the app v9 activation height.
 
 Check live network state before choosing the binary:
@@ -44,7 +44,7 @@ sudo apt install -y curl wget jq tar lz4 git make gcc chrony build-essential \
 Use the current recommended mainnet wrapper binary.
 
 ```bash
-APP_VERSION="v9.0.4"
+APP_VERSION="v9.0.6"
 
 cd "$HOME"
 rm -rf celestia-app-release
