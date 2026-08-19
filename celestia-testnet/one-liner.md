@@ -15,8 +15,8 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
  screen -S celestia-manager
 ```
 **Current Versions:**
-- 🌐 Mainnet: `v9.0.4` (chain-id: `celestia`)
-- 🧪 Testnet: `v9.0.4-mocha` (chain-id: `mocha-4`)
+- 🌐 Mainnet: `v9.0.6` (chain-id: `celestia`)
+- 🧪 Testnet: `v9.0.6-mocha` (chain-id: `mocha-4`)
 - 🔧 Go: `1.26.2`
 
 ## 📋 Features

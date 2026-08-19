@@ -25,7 +25,7 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 ## Current Version Matrix
 
 - Mainnet chain ID: `celestia`
-- Recommended consensus wrapper: `v9.0.4`
+- Recommended consensus wrapper: `v9.0.6`
 - Current protocol app: `v9`
 - App v9 activated at height: `11771698`
 - POSTHUMAN consensus snapshot DB: PebbleDB
@@ -44,7 +44,7 @@ explicitly:
 
 ```bash
 export NETWORK_TYPE=mainnet
-export APP_VERSION=v9.0.4
+export APP_VERSION=v9.0.6
 export BRIDGE_VERSION=v0.31.4
 
 bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh)"
