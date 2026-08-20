@@ -322,6 +322,7 @@
     ],
     "services": [
       "install-guide",
+      "decentralize-map",
       "ibc-relayers",
       "links",
       "network-files",

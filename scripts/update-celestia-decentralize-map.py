@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Update Celestia mainnet decentralization map data.
+"""Update a reviewed Cosmos-network decentralization map data set.
 
 The map intentionally includes only public infrastructure:
 - POSTHUMAN and chain-registry public RPC DNS endpoints;
@@ -15,6 +15,7 @@ import argparse
 import datetime as dt
 import ipaddress
 import json
+import os
 import socket
 import time
 import urllib.error
@@ -25,32 +26,65 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-CHAIN = "celestia"
-NETWORK = "Celestia Mainnet"
-NETWORK_ID = "celestia-mainnet"
-CHAIN_ID = "celestia"
+PROFILES = {
+    "celestia": {
+        "chain": "celestia",
+        "network": "Celestia Mainnet",
+        "network_id": "celestia-mainnet",
+        "chain_id": "celestia",
+        "registry_directory": "celestia",
+        "posthuman_rpc": ["https://rpc-celestia-mainnet.posthuman.digital"],
+        "net_info_rpc": [
+            "https://rpc-celestia-mainnet.posthuman.digital",
+            "https://public-celestia-rpc.numia.xyz",
+            "https://celestia-rpc.polkachu.com",
+            "https://celestia-mainnet-rpc.itrocket.net",
+            "https://celestia-rpc.publicnode.com:443",
+        ],
+        "local_home": "~/.celestia-app",
+    },
+    "cosmoshub": {
+        "chain": "cosmoshub",
+        "network": "Cosmos Hub Mainnet",
+        "network_id": "cosmoshub-mainnet",
+        "chain_id": "cosmoshub-4",
+        "registry_directory": "cosmoshub",
+        "posthuman_rpc": ["https://rpc.cosmos.posthuman.digital"],
+        "net_info_rpc": [
+            "https://rpc.cosmos.posthuman.digital",
+            "https://cosmos.rpc.uquad.org:443",
+            "https://rpc.cosmoshub-main.ccvalidators.com:443",
+            "https://cosmoshub.tendermintrpc.lava.build:443",
+            "https://rpc-cosmoshub.ecostake.com",
+            "https://cosmos-rpc.staketab.org:443",
+        ],
+        "local_home": "~/.gaia",
+    },
+}
+
+PROFILE_NAME = os.environ.get("POSTHUMAN_MAP_PROFILE", "celestia")
+if PROFILE_NAME not in PROFILES:
+    raise SystemExit(f"Unsupported decentralization-map profile: {PROFILE_NAME}")
+PROFILE = PROFILES[PROFILE_NAME]
+CHAIN = str(PROFILE["chain"])
+NETWORK = str(PROFILE["network"])
+NETWORK_ID = str(PROFILE["network_id"])
+CHAIN_ID = str(PROFILE["chain_id"])
 CHAIN_REGISTRY_URL = (
-    "https://raw.githubusercontent.com/cosmos/chain-registry/master/celestia/chain.json"
+    "https://raw.githubusercontent.com/cosmos/chain-registry/master/"
+    f"{PROFILE['registry_directory']}/chain.json"
 )
 GEO_FIELDS = (
     "status,message,country,countryCode,regionName,city,lat,lon,timezone,isp,as,query"
 )
-USER_AGENT = "POSTHUMAN-celestia-map-updater/1.0"
+USER_AGENT = f"POSTHUMAN-{CHAIN}-map-updater/1.0"
 
 POSTHUMAN_RPC_ENDPOINTS = [
-    {
-        "address": "https://rpc-celestia-mainnet.posthuman.digital",
-        "provider": "POSTHUMAN",
-    },
+    {"address": address, "provider": "POSTHUMAN"}
+    for address in PROFILE["posthuman_rpc"]
 ]
 
-NET_INFO_RPC_URLS = [
-    "https://rpc-celestia-mainnet.posthuman.digital",
-    "https://public-celestia-rpc.numia.xyz",
-    "https://celestia-rpc.polkachu.com",
-    "https://celestia-mainnet-rpc.itrocket.net",
-    "https://celestia-rpc.publicnode.com:443",
-]
+NET_INFO_RPC_URLS = list(PROFILE["net_info_rpc"])
 
 
 def utc_now() -> str:
@@ -271,7 +305,7 @@ def add_registry_peer_candidates(
                     "type": point_type,
                     "name": provider
                     if provider != "Unknown"
-                    else f"Celestia {point_type} {ip}",
+                    else f"{NETWORK} {point_type} {ip}",
                     "endpoint": f"{ip}:{port}" if port else ip,
                     "ip": ip,
                     "port": str(port) if port else "",
@@ -316,7 +350,7 @@ def add_observed_peer_candidates(
                 if rpc_url not in sources:
                     sources.append(rpc_url)
                 continue
-            moniker = str(node_info.get("moniker") or "Observed Celestia peer")
+            moniker = str(node_info.get("moniker") or f"Observed {NETWORK} peer")
             candidates[key] = {
                 "type": "observed_peer",
                 "name": moniker,
@@ -324,7 +358,7 @@ def add_observed_peer_candidates(
                 "ip": remote_ip,
                 "port": str(listen_port) if listen_port else "",
                 "source": f"{rpc_url}/net_info",
-                "description": "Globally routable peer observed through public Celestia mainnet RPC /net_info.",
+                "description": f"Globally routable peer observed through public {NETWORK} RPC /net_info.",
                 "metadata": {
                     "node_id": str(node_info.get("id") or ""),
                     "version": str(node_info.get("version") or ""),
@@ -369,7 +403,7 @@ def rpc_candidates(endpoints: list[dict[str, str]]) -> list[dict[str, Any]]:
                     "ip": ip,
                     "latency_ms": latency,
                     "source": "cosmos chain-registry RPC API list + /status health check",
-                    "description": "Public Celestia RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
+                    "description": f"Public {NETWORK} RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
                     "metadata": {
                         "chain_id_response": chain_id_response,
                         "rpc_moniker": moniker,
@@ -406,7 +440,7 @@ def check_peer_latencies(
 
 
 def source_entries(rpc_endpoints: list[dict[str, str]]) -> list[dict[str, str]]:
-    entries = [{"label": "Cosmos chain-registry Celestia", "url": CHAIN_REGISTRY_URL}]
+    entries = [{"label": f"Cosmos chain-registry {NETWORK}", "url": CHAIN_REGISTRY_URL}]
     for rpc_url in NET_INFO_RPC_URLS:
         entries.append({"label": f"Public RPC /net_info: {rpc_url}", "url": rpc_url})
     for endpoint in rpc_endpoints:
@@ -501,10 +535,10 @@ def build_map() -> dict[str, Any]:
         "privacy": {
             "raw_validator_ips": "not published",
             "sentry_topology": "not published",
-            "local_addrbook": "excluded when local node is not on celestia mainnet",
+            "local_addrbook": f"excluded; public sources only for {CHAIN_ID}",
             "public_endpoints": "POSTHUMAN public RPC, chain-registry RPC/seed/peer entries, and public RPC /net_info peers",
-            "observed_public_peers": "globally routable peers returned by public Celestia mainnet RPC /net_info",
-            "note": "The map uses only public Celestia mainnet endpoints. Private validator/sentry topology and non-global addresses are intentionally excluded. Local ~/.celestia-app data is ignored unless it is verified to be on chain_id celestia.",
+            "observed_public_peers": f"globally routable peers returned by public {NETWORK} RPC /net_info",
+            "note": f"The map uses only public {NETWORK} endpoints. Private validator/sentry topology and non-global addresses are intentionally excluded. Local {PROFILE['local_home']} data is not used.",
         },
         "sources": source_entries(rpc_endpoints),
         "summary": {
@@ -531,7 +565,7 @@ def main() -> int:
     parser.add_argument(
         "--check",
         action="store_true",
-        help="Build data without writing celestia/decentralize-map.json",
+        help=f"Build data without writing {CHAIN}/decentralize-map.json",
     )
     args = parser.parse_args()
 
