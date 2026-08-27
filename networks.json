@@ -173,16 +173,16 @@
     "daemon_name": "gnoland",
     "codebase": {
       "git_repo": "https://github.com/gnolang/gno",
-      "recommended_version": "9ab5198acac68016341655c82290ecaff5591edb",
+      "recommended_version": "c4c72fdd288c757e8da0d93aae867fa479b1b15c",
       "compatible_versions": [
-        "9ab5198acac68016341655c82290ecaff5591edb"
+        "c4c72fdd288c757e8da0d93aae867fa479b1b15c"
       ]
     },
-    "chain_id": "sapphire-1",
+    "chain_id": "pearl-1",
     "endpoints": {
       "rpc": "https://rpc-gnoland.posthuman.digital",
       "snapshots": "https://snapshots-gnoland.posthuman.digital",
-      "peer": "g1d7pksd7luqhk5sm5zmxwkl8w2cge6n7wz9llnh@peer-gnoland.posthuman.digital:37656"
+      "peer": "g1zq6h7d7302wqwd7hycndq9qqx9d3tsew3c4d7d@peer-gnoland.posthuman.digital:37656"
     },
     "contributions": "Gno-land",
     "generatedServices": [],
