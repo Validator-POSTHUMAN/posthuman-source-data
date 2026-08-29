@@ -161,7 +161,8 @@
     "generatedServices": [
       "installation-guide"
     ],
-    "services": []
+    "services": [],
+    "node_home": "$HOME/.pchain"
   },
   {
     "name": "gno",
@@ -342,7 +343,14 @@
     "generatedServices": [
       "installation-guide"
     ],
-    "services": []
+    "services": [],
+    "daemon_name": "dymd",
+    "chain_id": "dymension_1100-1",
+    "codebase": {
+      "git_repo": "https://github.com/dymensionxyz/dymension",
+      "recommended_version": "v3.0.0"
+    },
+    "genesis_url": "https://github.com/dymensionxyz/networks/raw/main/mainnet/dymension/genesis.json"
   },
   {
     "name": "humans",
@@ -369,7 +377,14 @@
       {
         "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/humans/images/heart-dark-mode.png"
       }
-    ]
+    ],
+    "daemon_name": "humansd",
+    "chain_id": "humans_1089-1",
+    "node_home": "$HOME/.humans",
+    "codebase": {
+      "git_repo": "https://github.com/humansdotai/humans",
+      "recommended_version": "v1.0.0"
+    }
   },
   {
     "name": "atomone-testnet",
