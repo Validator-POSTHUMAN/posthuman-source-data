@@ -1816,25 +1816,25 @@
       "type": "validator",
       "name": "POSTHUMAN Monad mainnet validator",
       "status": "online",
-      "endpoint": "5.61.208.27:8000",
-      "ip": "5.61.208.27",
+      "endpoint": "46.166.169.82:8000",
+      "ip": "46.166.169.82",
       "port": "8000",
-      "latency_ms": 241,
+      "latency_ms": 29,
       "source": "POSTHUMAN public validator host",
-      "last_checked_at": "2026-08-27T01:22:03Z",
+      "last_checked_at": "2026-09-01T15:16:13Z",
       "description": "Public validator p2p endpoint added by operator request.",
       "metadata": {
         "collection": "public validator endpoint"
       },
-      "city": "Chiyoda City",
-      "region": "Tokyo",
-      "country": "Japan",
-      "country_code": "JP",
-      "lat": 35.694,
-      "lon": 139.754,
-      "provider": "Amarutu Technology Ltd",
-      "asn": "AS206264 Amarutu Technology Ltd",
-      "timezone": "Asia/Tokyo"
+      "city": "Šiauliai",
+      "region": "Siauliai",
+      "country": "Lithuania",
+      "country_code": "LT",
+      "lat": 55.921,
+      "lon": 23.2941,
+      "provider": "Cherry Servers",
+      "asn": "AS16125 UAB Cherry Servers",
+      "timezone": "Europe/Vilnius"
     }
   ]
 }

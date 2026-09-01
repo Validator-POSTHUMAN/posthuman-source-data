@@ -38,14 +38,14 @@ NETWORKS: dict[str, dict[str, Any]] = {
         "observed_peer_sources": [
             {
                 "label": "POSTHUMAN mainnet node public peer-discovery cache",
-                "ssh_host": "ubuntu@5.61.208.27",
+                "ssh_host": "root@46.166.169.82",
                 "path": "/home/monad/monad-bft/config/peers.toml",
             },
         ],
         "log_peer_sources": [
             {
                 "label": "POSTHUMAN mainnet monad-bft live log remote_addr endpoints",
-                "ssh_host": "ubuntu@5.61.208.27",
+                "ssh_host": "root@46.166.169.82",
                 "unit": "monad-bft",
                 "lines": 50000,
             },
@@ -53,7 +53,7 @@ NETWORKS: dict[str, dict[str, Any]] = {
         "validator_endpoints": [
             {
                 "name": "POSTHUMAN Monad mainnet validator",
-                "endpoint": "5.61.208.27:8000",
+                "endpoint": "46.166.169.82:8000",
                 "source": "POSTHUMAN public validator host",
             },
         ],
@@ -246,6 +246,7 @@ EXCLUDED_PUBLIC_IPS = {
     # POSTHUMAN validator hosts. The map should not publish our validator
     # machine IPs as discovered peer topology.
     "5.61.208.27",
+    "46.166.169.82",
     "149.86.227.103",
 }
 
