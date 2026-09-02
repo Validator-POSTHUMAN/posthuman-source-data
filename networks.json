@@ -525,15 +525,14 @@
     "twitter": "https://x.com/CelestiaOrg",
     "discord": "https://discord.com/invite/celestiacommunity",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/celestia/celestia.svg",
-    "stake": "https://explorer.posthuman.digital/celestia-testnet/staking/celestiavaloper1sa5mgyskjzpx6znnd6jxkn59g02hm6c4p8a59v",
+    "stake": "https://explorer.posthuman.digital/celestia-testnet/staking/celestiavaloper10eqlwgqrn73kvw5t4ss8ns7wxmvpvt96ujakst",
     "explorer": "https://explorer.posthuman.digital/celestia-testnet",
-    "chain_id": "mocha-4",
+    "chain_id": "mocha-5",
     "endpoints": {
-      "rpc": "https://rpc-celestia-testnet.posthuman.digital",
-      "rest": "https://rest-celestia-testnet.posthuman.digital",
-      "grpc": "https://grpc-celestia-testnet.posthuman.digital",
-      "snapshots": "https://snapshots.posthuman.digital/celestia-testnet/",
-      "peer": "8a8e7ed15c91f31532d098ae55b0ad9ff5aa5ac1@135.181.227.236:39656"
+      "rpc": "https://celestia-testnet-rpc.itrocket.net",
+      "rest": "https://celestia-testnet-api.itrocket.net",
+      "peer": "1f01208683a8eb380adc1075a97508fb1d2bb888@135.181.232.241:28756",
+      "snapshots": "https://server-6.itrocket.net/testnet/celestia/"
     },
     "generatedServices": [],
     "services": [
@@ -541,9 +540,7 @@
       "bridge-node-setup",
       "full-node-setup",
       "light-node-setup",
-      "snapshots",
-      "decentralize-map",
-      "one-liner"
+      "snapshots"
     ]
   },
   {

@@ -18,7 +18,7 @@ This guide will help you set up a **Celestia Full Storage Node** using PostHuman
 | Full store | 64 GB  | 8 cores | 160 TiB NVME | 1 Gbps    |
 | Bridge     | 64 GB  | 8 cores | 160 TiB NVME | 1 Gbps    |
 
-> Figures mirror Celestia’s official mocha-4 guidance (v6 throughput assumptions).
+> Figures mirror Celestia’s official mocha-5 guidance (v6 throughput assumptions).
 
 ---
 

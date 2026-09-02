@@ -1,6 +1,6 @@
-# Celestia Testnet (Mocha-4) — Installation Guide
+# Celestia Testnet (Mocha-5) — Installation Guide
 
-Comprehensive guide for installing and running a Celestia node on the Mocha-4 testnet.
+Comprehensive guide for installing and running a Celestia node on the Mocha-5 testnet.
 
 ---
 
@@ -84,7 +84,7 @@ Initialize with your node name and testnet chain ID:
 ```bash
 # Set variables
 MONIKER="<YOUR_NODE_NAME>"
-CHAIN_ID="mocha-4"
+CHAIN_ID="mocha-5"
 
 # Initialize
 celestia-appd init "$MONIKER" --chain-id "$CHAIN_ID"
@@ -101,11 +101,11 @@ This creates: `~/.celestia-app/`
 ```bash
 
 # Download genesis.json
-curl -Ls https://snapshots.posthuman.digital/celestia-testnet/genesis.json \
+curl -Ls https://raw.githubusercontent.com/celestiaorg/networks/main/mocha-5/genesis.json \
   -o "$HOME/.celestia-app/config/genesis.json"
 
 # Download addrbook.json (peer list)
-curl -Ls https://snapshots.posthuman.digital/celestia-testnet/addrbook.json \
+curl -Ls https://server-6.itrocket.net/testnet/celestia/addrbook.json \
   -o "$HOME/.celestia-app/config/addrbook.json"
 
 # Verify downloads
@@ -148,7 +148,7 @@ sed -i -e 's|prometheus = false|prometheus = true|' "$HOME/.celestia-app/config/
 
 ```bash
 # Posthuman testnet peer
-PEERS="8a8e7ed15c91f31532d098ae55b0ad9ff5aa5ac1@135.181.227.236:39656"
+PEERS="1f01208683a8eb380adc1075a97508fb1d2bb888@135.181.232.241:28756"
 
 # Update config (adjust as needed based on available peers)
 sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" \
@@ -162,7 +162,7 @@ sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peer
 ```bash
 sudo tee /etc/systemd/system/celestia-appd-testnet.service > /dev/null <<EOF
 [Unit]
-Description=Celestia Node (Mocha-4 Testnet)
+Description=Celestia Node (Mocha-5 Testnet)
 After=network-online.target
 
 [Service]
@@ -184,55 +184,16 @@ EOF
 
 ## 8. Download and Apply Snapshot
 
-Testnet snapshots are pruned and updated roughly every 4 hours. Check the
-current height and build time before restoring:
+POSTHUMAN does not currently publish a Mocha-5 snapshot. Use the verified
+ITRocket feed at `https://server-6.itrocket.net/testnet/celestia/`. Check
+`.current_state.json`, verify the live RPC identifies as `mocha-5`, download
+the exact listed file before stopping the node, and validate the complete
+archive with `lz4 -t`.
 
-```bash
-curl -fsSL https://snapshots.posthuman.digital/celestia-testnet/snapshot.json | jq
-```
-
-```bash
-# Download and validate before stopping the node.
-SNAP_DIR="$HOME/celestia-testnet-snapshot-restore"
-rm -rf "$SNAP_DIR"
-mkdir -p "$SNAP_DIR"
-curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
-  lz4 -dc | tar -xf - -C "$SNAP_DIR"
-test -d "$SNAP_DIR/data/application.db"
-
-# Preserve validator signer state if this node has ever signed.
-if [ -f "$HOME/.celestia-app/data/priv_validator_state.json" ]; then
-  cp "$HOME/.celestia-app/data/priv_validator_state.json" "$HOME/.celestia-app/priv_validator_state.json.backup"
-fi
-
-# Stop only after the archive is extracted successfully, then keep rollback data.
-sudo systemctl stop celestia-appd-testnet 2>/dev/null || true
-BACKUP_DIR="$HOME/.celestia-app/data.before-snapshot-$(date +%Y%m%d-%H%M%S)"
-if [ -d "$HOME/.celestia-app/data" ]; then
-  mv "$HOME/.celestia-app/data" "$BACKUP_DIR"
-fi
-mv "$SNAP_DIR/data" "$HOME/.celestia-app/data"
-
-sed -i -e 's|^db_backend *=.*|db_backend = "pebbledb"|' \
-  "$HOME/.celestia-app/config/config.toml"
-
-if grep -q '^app-db-backend' "$HOME/.celestia-app/config/app.toml"; then
-  sed -i 's|^app-db-backend *=.*|app-db-backend = "pebbledb"|' \
-    "$HOME/.celestia-app/config/app.toml"
-else
-  printf '\napp-db-backend = "pebbledb"\n' >> "$HOME/.celestia-app/config/app.toml"
-fi
-
-# Restore signer state after extraction. This is mandatory for validators.
-if [ -f "$HOME/.celestia-app/priv_validator_state.json.backup" ]; then
-  mv "$HOME/.celestia-app/priv_validator_state.json.backup" "$HOME/.celestia-app/data/priv_validator_state.json"
-fi
-
-# Verify
-ls -lh "$HOME/.celestia-app/data/"
-```
-
----
+Before replacing validator data, preserve the local consensus key and newest
+`priv_validator_state.json`. Never use signer state from a snapshot. Keep the
+old data directory as rollback material until the restored node is synced and
+verified.
 
 ## 9. Start the Node
 
@@ -324,7 +285,7 @@ celestia-appd tx staking create-validator \
   --amount=1000000utia \
   --pubkey=$(celestia-appd tendermint show-validator) \
   --moniker="<YOUR_NODE_NAME>" \
-  --chain-id=mocha-4 \
+  --chain-id=mocha-5 \
   --commission-rate="0.10" \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.01" \
@@ -400,11 +361,11 @@ sed -i '/WALLET_ADDRESS_TESTNET/d' "$HOME/.bash_profile"
 
 ## Resources
 
-- **Posthuman Snapshots**: https://snapshots.posthuman.digital/celestia-testnet/
-- **Posthuman RPC**: https://rpc-celestia-testnet.posthuman.digital
+- **Mocha-5 snapshots (ITRocket)**: https://server-6.itrocket.net/testnet/celestia/
+- **Mocha-5 RPC (ITRocket)**: https://celestia-testnet-rpc.itrocket.net
 - **Discord Faucet**: https://discord.com/invite/celestiacommunity
 - **Official Testnet Docs**: https://docs.celestia.org/nodes/mocha-testnet
 
 ---
 
-**Last Updated**: v9.0.6-mocha | Chain ID: mocha-4
+**Last Updated**: v9.0.6-mocha | Chain ID: mocha-5
