@@ -1,4 +1,4 @@
-# Posthuman Service Bridge Node Setup for Mocha Testnet (mocha-4)
+# Posthuman Service Bridge Node Setup for Mocha Testnet (mocha-5)
 
 ## Hardware Requirements (mocha data availability)
 
@@ -111,7 +111,7 @@ consensus snapshot is not compatible with a `celestia-node` bridge store.
 
 ### Check Wallet Balance
 ```sh
-celestia state balance --node.store ~/.celestia-bridge-mocha-4/
+celestia state balance --node.store ~/.celestia-bridge-mocha-5/
 ```
 
 ### Get Wallet Address
@@ -129,17 +129,17 @@ cd ~/celestia-node
 
 ### Check Bridge Node Status
 ```sh
-celestia header sync-state --node.store ~/.celestia-bridge-mocha-4/
+celestia header sync-state --node.store ~/.celestia-bridge-mocha-5/
 ```
 
 ### Get Node ID
 ```sh
-celestia p2p info --node.store ~/.celestia-bridge-mocha-4/
+celestia p2p info --node.store ~/.celestia-bridge-mocha-5/
 ```
 
 ### Set Permissions for Transferring Keys
 ```sh
-chmod -R 700 ~/.celestia-bridge-mocha-4
+chmod -R 700 ~/.celestia-bridge-mocha-5
 ```
 
 ### Reset Node
@@ -182,4 +182,4 @@ sudo systemctl restart celestia-bridge && sudo journalctl -u celestia-bridge -fo
 sudo systemctl stop celestia-bridge
 sudo systemctl disable celestia-bridge
 sudo rm /etc/systemd/system/celestia-bridge*
-rm -rf $HOME/celestia-node $HOME/.celestia-bridge-mocha-4
+rm -rf $HOME/celestia-node $HOME/.celestia-bridge-mocha-5

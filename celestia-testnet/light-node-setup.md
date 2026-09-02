@@ -1,6 +1,6 @@
-# Celestia Light Node (Mocha-4 Testnet) — POSTHUMAN
+# Celestia Light Node (Mocha-5 Testnet) — POSTHUMAN
 
-Run a Celestia mocha-4 light node using a validated public core gRPC fallback.
+Run a Celestia mocha-5 light node using a validated public core gRPC fallback.
 
 ## Hardware Requirements (non-archival)
 | Resource  | Requirement |
@@ -10,7 +10,7 @@ Run a Celestia mocha-4 light node using a validated public core gRPC fallback.
 | Disk      | 20 GB SSD |
 | Bandwidth | 56 Kbps |
 
-> Archival (unpruned header) light nodes on mocha-4 follow the same CPU/RAM/bandwidth profile but require ~111 KB of disk per block.
+> Archival (unpruned header) light nodes on mocha-5 follow the same CPU/RAM/bandwidth profile but require ~111 KB of disk per block.
 ## 1. Update packages and install dependencies
 ```bash
 sudo apt update && sudo apt upgrade -y
@@ -83,7 +83,7 @@ cd "$HOME/celestia-node"
 ```bash
 sudo tee /etc/systemd/system/celestia-light.service > /dev/null <<EOF
 [Unit]
-Description=Celestia mocha-4 light node (POSTHUMAN)
+Description=Celestia mocha-5 light node (POSTHUMAN)
 After=network-online.target
 
 [Service]

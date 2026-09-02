@@ -1,5 +1,5 @@
-- **RPC**: https://rpc-celestia-testnet.posthuman.digital  
-- **REST**: https://rest-celestia-testnet.posthuman.digital
-- **gRPC**: https://grpc-celestia-testnet.posthuman.digital
-- **Snapshots**: https://snapshots.posthuman.digital/celestia-testnet/  
-- **Peer**: `8a8e7ed15c91f31532d098ae55b0ad9ff5aa5ac1@135.181.227.236:39656`
+- **RPC (ITRocket)**: https://celestia-testnet-rpc.itrocket.net
+- **REST (ITRocket)**: https://celestia-testnet-api.itrocket.net
+- **Snapshots (ITRocket)**: https://server-6.itrocket.net/testnet/celestia/
+- **POSTHUMAN peer**: `1f01208683a8eb380adc1075a97508fb1d2bb888@135.181.232.241:28756`
+- **Official genesis**: https://raw.githubusercontent.com/celestiaorg/networks/main/mocha-5/genesis.json

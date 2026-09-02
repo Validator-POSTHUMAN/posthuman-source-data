@@ -1,82 +1,23 @@
-# Celestia Testnet Snapshot
+# Celestia Testnet Snapshot (Mocha-5)
 
-**Network:** Mocha-4 pruned consensus node  
-**DB backend:** PebbleDB  
-**Cadence:** every 4 hours via POSTHUMAN snapshot automation  
-**Download:** `https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4`
+**Network:** Mocha-5 (`mocha-5`)
+**DB backend:** PebbleDB
+**Provider:** ITRocket (external)
 
-> Up-to-date height, build time, size, and snapshot file name are published at
-> `snapshot.json` alongside the snapshot file.
+## Current source
 
-## Snapshot Endpoint
+- Index: https://server-6.itrocket.net/testnet/celestia/
+- Metadata: https://server-6.itrocket.net/testnet/celestia/.current_state.json
+- Live RPC: https://celestia-testnet-rpc.itrocket.net
 
-- Index: https://snapshots.posthuman.digital/celestia-testnet/
-- Metadata: https://snapshots.posthuman.digital/celestia-testnet/snapshot.json
-- Snapshot file: https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4
-- Genesis: https://snapshots.posthuman.digital/celestia-testnet/genesis.json
-- Addrbook: https://snapshots.posthuman.digital/celestia-testnet/addrbook.json
+> POSTHUMAN does not currently publish a Mocha-5 snapshot. The older
+> `snapshots.posthuman.digital/celestia-testnet` bundle is for retired
+> `mocha-4` and is incompatible with Mocha-5.
 
-## Preflight
+Before downloading, verify that the live RPC reports `mocha-5`, is not
+catching up, and is ahead of the height in `.current_state.json`. Download the
+exact `snapshot_name` listed in that metadata file, then validate the complete
+archive with `lz4 -t` before stopping a node.
 
-Always compare snapshot metadata with the live RPC before using the archive:
-
-```bash
-curl -fsS https://snapshots.posthuman.digital/celestia-testnet/snapshot.json | jq .
-curl -fsS https://rpc-celestia-testnet.posthuman.digital/status | \
-  jq '.result.node_info.network, .result.sync_info.latest_block_height, .result.sync_info.catching_up'
-```
-
-Stop and investigate before restoring if:
-
-- `chain_id` is not `mocha-4`.
-- RPC is catching up or the RPC height is behind snapshot metadata.
-- The snapshot file is unexpectedly small or unavailable.
-- You cannot preserve validator keys and `priv_validator_state.json`.
-
-## Quick restore
-
-```bash
-export CELESTIA_HOME="$HOME/.celestia-app"
-export SERVICE_NAME="celestia-appd"
-export SNAP_DIR="$HOME/celestia-testnet-snapshot-restore"
-
-# Download and validate before stopping the node.
-rm -rf "${SNAP_DIR}"
-mkdir -p "${SNAP_DIR}"
-curl -fL https://snapshots.posthuman.digital/celestia-testnet/snapshot-latest.tar.lz4 | \
-  lz4 -dc | tar -xf - -C "${SNAP_DIR}"
-test -d "${SNAP_DIR}/data/application.db"
-
-if [ -f "${CELESTIA_HOME}/data/priv_validator_state.json" ]; then
-  cp "${CELESTIA_HOME}/data/priv_validator_state.json" "${CELESTIA_HOME}/priv_validator_state.json.backup"
-fi
-
-sudo systemctl stop "${SERVICE_NAME}"
-BACKUP_DIR="${CELESTIA_HOME}/data.before-snapshot-$(date +%Y%m%d-%H%M%S)"
-if [ -d "${CELESTIA_HOME}/data" ]; then
-  mv "${CELESTIA_HOME}/data" "${BACKUP_DIR}"
-fi
-mv "${SNAP_DIR}/data" "${CELESTIA_HOME}/data"
-
-sed -i -e 's|^db_backend *=.*|db_backend = "pebbledb"|' \
-  "${CELESTIA_HOME}/config/config.toml"
-
-if grep -q '^app-db-backend' "${CELESTIA_HOME}/config/app.toml"; then
-  sed -i 's|^app-db-backend *=.*|app-db-backend = "pebbledb"|' \
-    "${CELESTIA_HOME}/config/app.toml"
-else
-  printf '\napp-db-backend = "pebbledb"\n' >> "${CELESTIA_HOME}/config/app.toml"
-fi
-
-if [ -f "${CELESTIA_HOME}/priv_validator_state.json.backup" ]; then
-  mv "${CELESTIA_HOME}/priv_validator_state.json.backup" "${CELESTIA_HOME}/data/priv_validator_state.json"
-fi
-sudo systemctl start "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}" -f
-```
-
-For validator recovery, preserving and restoring `priv_validator_state.json` is
-mandatory. Never replace it with an older value from a snapshot.
-
-The pipeline keeps the PebbleDB snapshot pruned and ready for rapid validator or full-node recovery. Browse the current build at [https://snapshots.posthuman.digital/celestia-testnet/](https://snapshots.posthuman.digital/celestia-testnet/).
-
-Each bundle is generated on POSTHUMAN bare-metal infrastructure, pruned via `cosmprund`, and delivered worldwide through Cloudflare R2 + Workers.
+For validator recovery, preserve the local consensus key and the newest
+`priv_validator_state.json`. Never restore signer state from a snapshot.
