@@ -1,151 +1,88 @@
-# Axelar AI Validator Skill
+# Axelar Validator Operations Skill
 
-This tab links the Axelar-specific AI-agent skill for validator operations. The skill is validator-neutral and server-neutral: it does not contain production validator names, private hosts, real valoper addresses, real consensus addresses, RPC provider secrets, or server-provider assumptions.
+This page links the reviewed, validator-neutral Axelar operations skill. It
+covers the classic validator plane (`axelard`, `vald`, a dedicated `tofnd`, the
+broadcaster account, and external-chain maintainers) and the separately
+isolated Amplifier verifier plane (`ampd`, an Amplifier-only `tofnd`, and one
+handler/client pair per supported chain).
 
-## Repository
-
-- Skill page: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/tree/f9b0b74e1be8d7399721059371a72e8017164a69/axelar
-- SKILL.md: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/SKILL.md
-- Raw SKILL.md: https://raw.githubusercontent.com/Validator-POSTHUMAN/AI-skills-for-networks/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/SKILL.md
-- Inventory schema: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/references/inventory.schema.json
-- Example inventory: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/examples/inventory.example.json
-- Healthcheck script: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/scripts/axelar-healthcheck.sh
-- Safe recovery reference: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/references/safe-recovery.md
-- Recovery validation evidence: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/references/recovery-validation.md
-- Snapshot verifier: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/scripts/axelar-snapshot-verify.sh
-- Snapshot verifier tests: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/scripts/axelar-snapshot-verify-test.sh
-
-## What It Helps Agents Do
-
-- Monitor Axelar consensus signing and node health.
-- Triage `vald`, `tofnd`, broadcaster, and external-chain maintainer issues.
-- Diagnose sequence drift, out-of-gas votes, RPC-client errors, and missed polls.
-- Prepare and verify upgrades.
-- Detect stale consensus even when basic component checks pass.
-- Recover safely from local node, `vald`, `tofnd`, or data failures with
-  checksum, archive-layout, signer-state, staging, and rollback gates.
-- Write concise operator reports.
-
-## Operational Scope
-
-- Mainnet chain ID: axelar-dojo-1
-- Testnet chain ID: axelar-testnet-lisbon-3
-- Daemon: axelard
-- Default mainnet home: ~/.axelar
-- Default testnet home: ~/.axelar_testnet
-- Denom: uaxl
-- Companion processes: vald and tofnd
-- Official app repo: https://github.com/axelarnetwork/axelar-core
-- Official config repo: https://github.com/axelarnetwork/axelar-configs
-- Official docs repo: https://github.com/axelarnetwork/axelar-docs
-
-## Safety Guardrails
-
-The skill requires agents to verify live state before claiming health or taking action. It instructs agents to load the operator's own Axelar inventory first and to match the affected consensus address, valoper, broadcaster, host, service names, RPC endpoint, and external-chain maintainer set before restarting anything.
-
-The skill treats `vald` as a critical voting process, not a generic sidecar. It tells agents to investigate broadcaster sequence drift, local RPC latency, failed vote transaction codes, `tofnd` status, and external-chain RPC errors before restarting services. It also warns agents not to restart the consensus node for `vald`-only symptoms unless there is separate evidence of an `axelard` fault.
-
-For external chains, the skill requires RPC config and chain-maintainer registration changes to be handled together. This prevents fee burn when a validator votes for a chain it is not registered to maintain, and prevents missed rewards when the validator is registered but `vald` is not configured for the chain.
-
-The skill also tells agents to avoid restart loops, preserve recent logs before process changes, compare local and public RPC state when possible, keep the broadcaster funded, and ask the operator before destructive recovery, data deletion, snapshot restore, unjail transactions, or key-affecting actions.
-
-## How to Use
-
-1. Open the raw skill file:
-   https://raw.githubusercontent.com/Validator-POSTHUMAN/AI-skills-for-networks/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/SKILL.md
-
-2. Give that file to your AI agent as a skill, system context, project instruction, or attached reference. The exact method depends on your agent platform.
-
-3. Prepare your own Axelar inventory. At minimum, provide:
-   - host or SSH target
-   - Axelar node systemd service name
-   - vald service name, if supervised by systemd
-   - tofnd service name, if supervised by systemd
-   - local RPC endpoint
-   - validator moniker or label
-   - valoper address
-   - consensus address
-   - broadcaster address
-   - active external chains maintained by the validator
-
-4. For a machine-readable inventory format, use:
-   https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/references/inventory.schema.json
-
-5. Use the example inventory only as a template with fake values:
-   https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/f9b0b74e1be8d7399721059371a72e8017164a69/axelar/examples/inventory.example.json
-
-6. Ask your agent to load the skill and your inventory before any Axelar operational task, especially alert triage, `vald` troubleshooting, external-chain RPC changes, restarts, upgrades, or recovery.
-
-7. For live checks, run the helper script from the skill repository with your own values.
-
-Example:
-
-~~~bash
-axelar-healthcheck.sh \
-  --host <user>@<host> \
-  --node-service <axelard-systemd-service> \
-  --vald-service <vald-systemd-service> \
-  --tofnd-service <tofnd-systemd-service> \
-  --rpc http://127.0.0.1:<rpc-port> \
-  --public-rpc https://<public-rpc> \
-  --valcons <HEX_CONSENSUS_ADDRESS> \
-  --valoper <axelarvaloper...> \
-  --broadcaster <axelar1...> \
-  --maintainer-chain ethereum \
-  --maintainer-chain avalanche
-~~~
-
-If you are already on the validator host, use local mode:
-
-~~~bash
-axelar-healthcheck.sh \
-  --local \
-  --node-service <axelard-systemd-service> \
-  --vald-service <vald-systemd-service> \
-  --tofnd-service <tofnd-systemd-service> \
-  --rpc http://127.0.0.1:<rpc-port> \
-  --public-rpc https://<public-rpc> \
-  --valcons <HEX_CONSENSUS_ADDRESS> \
-  --valoper <axelarvaloper...> \
-  --broadcaster <axelar1...>
-~~~
-
-## Helper Script
-
-The skill includes `scripts/axelar-healthcheck.sh`, which checks:
-
-- systemd state for `axelard`, `vald`, and `tofnd`
-- local RPC height and sync state
-- latest block age with a fail-closed consensus freshness threshold
-- optional local/public RPC height gap
-- running binary path and version
-- peers
-- recent consensus block signatures
-- staking validator status
-- `axelard health-check`
-- broadcaster balance
-- broadcaster proxy query
-- optional external-chain maintainer status
-- recent `vald` log counters for sequence drift, out-of-gas votes, poll misses, signing-session issues, RPC-client errors, and panic/fatal patterns
-
-The script supports SSH mode, local mode, configurable daemon name, configurable home path, configurable signing window, request timeouts, broadcaster balance threshold, maximum latest-block age, and repeated `--maintainer-chain` checks.
-
-## Safe Recovery Kit
-
-The package includes a validator-neutral Axelar recovery reference and a
-non-destructive snapshot verifier. The verifier requires a trusted expected
-SHA-256, validates SHA-256 plus LZ4/tar layout in one complete archive pass,
-and rejects traversal, absolute paths, entries outside `data/`, links,
-devices, sockets, pipes, and unexpected database layouts before the operator
-stops services. Deterministic fixtures cover the valid path and ten rejection
-cases.
-
-The recovery reference uses staged extraction, protected Axelar/tofnd state,
-a reversible data-directory swap, preserved anti-double-sign state, and
-external signing proof before vald resumes.
-
-## Current Publication
+## Immutable release
 
 - Repository: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks
-- Axelar package commit: f9b0b74e1be8d7399721059371a72e8017164a69
-- Axelar package: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/tree/f9b0b74e1be8d7399721059371a72e8017164a69/axelar
+- Reviewed merge commit: `3cf8bc02be02ca411c1ceffc0df0eeaf8090a652`
+- Package: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/tree/3cf8bc02be02ca411c1ceffc0df0eeaf8090a652/axelar
+- SKILL.md: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/3cf8bc02be02ca411c1ceffc0df0eeaf8090a652/axelar/SKILL.md
+- Raw SKILL.md: https://raw.githubusercontent.com/Validator-POSTHUMAN/AI-skills-for-networks/3cf8bc02be02ca411c1ceffc0df0eeaf8090a652/axelar/SKILL.md
+- SKILL.md SHA-256: `ee1f14058a68ae881b8929d2d10cf0e3214ca4123b72d849aa726cee5c97106c`
+- Inventory schema: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/3cf8bc02be02ca411c1ceffc0df0eeaf8090a652/axelar/references/inventory.schema.json
+- Fake inventory example: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/3cf8bc02be02ca411c1ceffc0df0eeaf8090a652/axelar/examples/inventory.example.json
+- Classic healthcheck: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/3cf8bc02be02ca411c1ceffc0df0eeaf8090a652/axelar/scripts/axelar-healthcheck.sh
+- Amplifier healthcheck: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/3cf8bc02be02ca411c1ceffc0df0eeaf8090a652/axelar/scripts/axelar-amplifier-healthcheck.sh
+- Monitoring reference: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/3cf8bc02be02ca411c1ceffc0df0eeaf8090a652/axelar/references/monitoring.md
+- Safe recovery reference: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/3cf8bc02be02ca411c1ceffc0df0eeaf8090a652/axelar/references/safe-recovery.md
+- Snapshot verifier: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/3cf8bc02be02ca411c1ceffc0df0eeaf8090a652/axelar/scripts/axelar-snapshot-verify.sh
+- Evaluation scenarios: https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/3cf8bc02be02ca411c1ceffc0df0eeaf8090a652/axelar/evals/axelar-skill-scenarios.md
+
+## Coverage
+
+### Classic validator plane
+
+- exact network, host, service, binary, release, backup, rollback, and signer
+  identity preflight;
+- consensus freshness, local/reference height, peers, recent signatures,
+  bonded/jailed state, disk, restarts, and bounded errors;
+- independent `vald` and classic `tofnd` health and private-listener checks;
+- broadcaster proxy mapping, fee balance, account sequence, transaction
+  inclusion, and concurrent-account-use detection;
+- expected-versus-observed external-chain maintainer membership, RPC identity,
+  finality health, and submitted/late/missing votes;
+- staged upgrades, incident isolation, snapshot verification, signer-state
+  preservation, reversible cutover, and post-recovery acceptance.
+
+### Amplifier verifier plane
+
+- a separate Axelar full node and separate `tofnd` from the classic validator;
+- exact `ampd`, handler, chain-client, contract-deployment, and chain-registry
+  review;
+- one independently supervised handler and operator-controlled full node or
+  reviewed light client per supported chain;
+- process, listener, Axelar freshness, handler/client parity, `/status`,
+  `/metrics`, vote, multisig-proof, reward, funding, and authorization checks;
+- independent failure domains so one handler incident does not restart
+  unaffected handlers, `ampd`, or the classic validator stack.
+
+## Safety boundaries
+
+The skill contains no POSTHUMAN production hosts, private endpoints, keys,
+credentials, signer state, wallet secrets, or real operator inventory.
+
+It never auto-creates a validator, generates or moves keys, stakes, signs,
+broadcasts, registers a broadcaster, changes maintainer support, bonds an
+Amplifier verifier, registers public keys or chain support, authorizes a
+verifier, or mutates services. A classic transaction may only be prepared as
+an unsigned `--generate-only` document for separate review. Amplifier
+activation stays a non-runnable review record.
+
+The classic and Amplifier planes must not share `tofnd`. Signer uniqueness must
+be proven before any start, migration, or recovery. Signer, gRPC, handler, and
+monitoring listeners stay on loopback or an explicitly reviewed private
+network; passwordless signer containers and wildcard signer binds are rejected.
+
+## How to use
+
+1. Download `axelar/SKILL.md` from the immutable commit above.
+2. Verify its SHA-256 is exactly
+   `ee1f14058a68ae881b8929d2d10cf0e3214ca4123b72d849aa726cee5c97106c`.
+3. Load it together with the operator's private inventory for the exact Axelar
+   role and target.
+4. Use the classic or Amplifier read-only healthcheck only after every required
+   inventory field is resolved.
+5. Refresh current releases, network artifacts, deployment contracts,
+   parameters, and advisories before any production change.
+6. Keep custody, signing, broadcast, registration, authorization, funding,
+   firewall exposure, data replacement, and service mutation behind their
+   separate operator-controlled approvals.
+
+A passing helper check is evidence, not proof of all duties. Complete each
+plane's acceptance gate with independent chain, signer, vote, handler,
+monitoring, and public-state evidence before claiming health.
