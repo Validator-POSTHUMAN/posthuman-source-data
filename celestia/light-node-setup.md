@@ -1,149 +1,141 @@
-# Celestia Light Node Setup
+# Celestia Mainnet Light Node
 
-This guide installs a Celestia Data Availability light node on mainnet using
-`celestia-node`.
+A light node follows extended headers and performs data availability sampling
+(DAS) without downloading every block. Current celestia-node DA roles are
+**bridge** and **light** only.
 
-## Current Version
+## Pinned software
 
-- Celestia node: `v0.31.4`
 - Network: `celestia`
-- Default light-node store: `~/.celestia-light`
-- Validated core gRPC fallback: `celestia-mainnet-grpc.itrocket.net:443`
+- celestia-node: `v0.32.1`
+- Source commit: `8fc6945a38db8af6277d906c5d313a70db33c444`
+- Go: `1.26.5`
+- Store: `$HOME/.celestia-light`
 
-## Requirements
+Do not install from an unpinned branch or pipe a remote script into a shell.
 
-- 1 CPU core or more
-- 500 MB RAM or more
-- 20 GB SSD or more for non-archival use
-- Stable network connection
+## Capacity
 
-## 1. Install Packages and Go
+| Profile | CPU | Memory | Disk | Network |
+| --- | ---: | ---: | ---: | ---: |
+| Pruned light node | 1 core | 500 MB | 20 GB SSD | 56 Kbps |
+| Unpruned-header light node | 1 core | 500 MB | 7 TiB NVMe | 56 Kbps |
+
+The 20 GB profile is for normal pruned operation. The 7 TiB figure is a
+one-year planning estimate for retaining unpruned headers at the 128 MB per
+6 seconds throughput envelope; actual use may be lower. Monitor real growth and
+keep capacity headroom.
+
+## Build from the pinned source
+
+Install Go `1.26.5` and build dependencies through trusted distribution
+channels, then verify the toolchain.
 
 ```bash
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y curl git wget jq tar make gcc build-essential clang \
-  pkg-config libssl-dev ncdu
+go version
+test "$(go env GOVERSION)" = "go1.26.5"
 
-cd "$HOME"
-GO_VERSION="1.26.2"
-if ! command -v go >/dev/null 2>&1; then
-  wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
-  sudo rm -rf /usr/local/go
-  sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
-  rm "go${GO_VERSION}.linux-amd64.tar.gz"
-fi
+NODE_TAG="v0.32.1"
+NODE_COMMIT="8fc6945a38db8af6277d906c5d313a70db33c444"
+BUILD_ROOT="$(mktemp -d -p /tmp celestia-node-build.XXXXXX)"
 
-grep -q "/usr/local/go/bin" "$HOME/.bash_profile" 2>/dev/null || \
-  echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> "$HOME/.bash_profile"
-source "$HOME/.bash_profile" 2>/dev/null || true
+git clone --filter=blob:none --depth 1 --branch "$NODE_TAG" \
+  https://github.com/celestiaorg/celestia-node.git "$BUILD_ROOT/src"
+test "$(git -C "$BUILD_ROOT/src" rev-parse HEAD)" = "$NODE_COMMIT"
+
+make -C "$BUILD_ROOT/src" build cel-key
+install -d "$BUILD_ROOT/stage/bin"
+install -m 0755 "$BUILD_ROOT/src/build/celestia" \
+  "$BUILD_ROOT/stage/bin/celestia"
+install -m 0755 "$BUILD_ROOT/src/cel-key" \
+  "$BUILD_ROOT/stage/bin/cel-key"
+
+"$BUILD_ROOT/stage/bin/celestia" version
 ```
 
-## 2. Build `celestia-node`
+Keep the staging directory until the version and commit have been reviewed. For
+a new, non-running node, install the reviewed staged binaries at
+`$HOME/.local/bin/`. Binary activation and service restart are separate
+approval-controlled steps.
+
+## Initialize
+
+A light node uses a consensus gRPC endpoint for state access. Verify the endpoint
+serves mainnet before using it. Add `--core.tls` only when the endpoint provides
+TLS.
 
 ```bash
-cd "$HOME"
-rm -rf celestia-node
-git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node
-
-NODE_VERSION="v0.31.4"
-git checkout "tags/${NODE_VERSION}"
-
-make build
-sudo make install
-make cel-key
-celestia version
-```
-
-## 3. Initialize
-
-```bash
-celestia light init \
-  --core.ip celestia-mainnet-grpc.itrocket.net \
-  --core.port 443 \
+"$HOME/.local/bin/celestia" light init \
+  --node.store "$HOME/.celestia-light" \
+  --core.ip <consensus-grpc-host> \
+  --core.port <grpc-port> \
   --core.tls \
   --p2p.network celestia
 ```
 
-Create or restore a key:
+Initialization creates the DA store and local keyring. Follow [Keys and signer
+boundaries](keys.md) for custody rules.
 
-```bash
-KEY_NAME="my_celes_key"
-cd "$HOME/celestia-node"
-./cel-key add "$KEY_NAME" --keyring-backend test --node.type light
+Keep JSON-RPC `26658` on loopback unless an authenticated, TLS-protected,
+rate-limited access layer is intentionally designed and reviewed.
 
-# Restore existing key:
-# ./cel-key add "$KEY_NAME" --keyring-backend test --node.type light --recover
-```
+## Service template
 
-## 4. Create Systemd Service
-
-```bash
-sudo tee /etc/systemd/system/celestia-light.service > /dev/null <<EOF
+```ini
 [Unit]
-Description=Celestia light node
+Description=Celestia mainnet light node
 After=network-online.target
+Wants=network-online.target
 
 [Service]
-User=$USER
-ExecStart=$(command -v celestia) light start \
-  --core.ip celestia-mainnet-grpc.itrocket.net \
-  --core.port 443 \
-  --core.tls \
-  --keyring.accname my_celes_key \
-  --p2p.network celestia \
-  --metrics \
-  --metrics.tls=true \
-  --metrics.endpoint otel.celestia.observer
+Type=simple
+User=<service-user>
+ExecStart=%h/.local/bin/celestia light start --node.store %h/.celestia-light --core.ip <consensus-grpc-host> --core.port <grpc-port> --core.tls --p2p.network celestia
 Restart=on-failure
-RestartSec=3
+RestartSec=5
 LimitNOFILE=65535
 
 [Install]
 WantedBy=multi-user.target
-EOF
-
-sudo systemctl daemon-reload
-sudo systemctl enable celestia-light
-sudo systemctl restart celestia-light
-journalctl -u celestia-light -f -o cat
 ```
 
-## 5. Verify
+This guide does not submit blobs or other transactions. Fund and transaction
+work requires a separate reviewed procedure.
+
+## Verify
 
 ```bash
-systemctl status celestia-light --no-pager
-celestia header sync-state --node.store ~/.celestia-light
-celestia p2p info --node.store ~/.celestia-light
-celestia state balance --node.store ~/.celestia-light
+systemctl is-active celestia-light.service
+"$HOME/.local/bin/celestia" header sync-state \
+  --node.store "$HOME/.celestia-light"
+"$HOME/.local/bin/celestia" p2p info \
+  --node.store "$HOME/.celestia-light"
+"$HOME/.local/bin/celestia" state account-address \
+  --node.store "$HOME/.celestia-light"
+ss -lntp | grep ':26658'
+journalctl -u celestia-light.service --since "15 minutes ago" --no-pager
 ```
 
-## 6. Upgrade
+Healthy means the service remains stable, headers advance toward an independent
+mainnet reference, sampling continues without persistent errors, peers are
+present, RPC stays loopback-bound, and disk has headroom. Treat stale or unknown
+header freshness as degraded rather than healthy.
 
-```bash
-sudo systemctl stop celestia-light
+## Upgrade discipline
 
-cd "$HOME"
-rm -rf celestia-node
-git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node
+Build every replacement in a new staging directory, verify the announced tag
+and commit, retain the current binary for rollback, and restart only after
+review. When upgrading from a release earlier than `v0.31.3`, run
+`celestia light config-update --p2p.network celestia` while stopped and inspect
+the merged configuration before activation.
 
-NODE_VERSION="v0.31.4"
-git checkout "tags/${NODE_VERSION}"
-make build
-sudo make install
-make cel-key
+## Sources
 
-celestia light config-update
-sudo systemctl restart celestia-light
-```
+Evidence reviewed from the official Celestia docs repository at commit
+`8fbaa868a323c13d3edae2875d9b27765eb29c45`:
 
-## 7. Remove
-
-```bash
-sudo systemctl stop celestia-light
-sudo systemctl disable celestia-light
-sudo rm -f /etc/systemd/system/celestia-light.service
-sudo systemctl daemon-reload
-rm -rf "$HOME/celestia-node" "$HOME/.celestia-light"
-```
+- `operate/getting-started/hardware-requirements`
+- `operate/data-availability/light-node/quickstart`
+- `operate/data-availability/light-node/advanced`
+- `operate/data-availability/install-celestia-node`
+- `operate/maintenance/troubleshooting`

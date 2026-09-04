@@ -1,239 +1,82 @@
-🚀 **PostHuman Celestia Full Storage Node Setup Guide**
+# Celestia Full Node Terminology and Legacy DA Role Retirement — Mocha-5
 
-This guide will help you set up a **Celestia Full Storage Node** using PostHuman infrastructure.
+There is no current `full` role in celestia-node. The supported data
+availability roles are **bridge** and **light**. Older guides used “full storage
+node” for a retired DA role; do not use those obsolete commands with current
+software.
 
----
+## Mocha-5 boundary
 
-## 🔧 Hardware Requirements (data availability)
+- Consensus chain ID: `mocha-5`
+- DA P2P network: `mocha`
+- Mocha-5 began at height 1 and is not an in-place Mocha-4 upgrade.
+- Never reuse Mocha-4 chain data, a Mocha-4 DA store, or Mocha-4 signer state.
 
-### Non-archival
-| Node type  | Memory | CPU     | Disk       | Bandwidth |
-|------------|--------|---------|------------|-----------|
-| Full store | 64 GB  | 8 cores | 8 TiB NVME | 1 Gbps    |
-| Bridge     | 64 GB  | 8 cores | 8 TiB NVME | 1 Gbps    |
+## Two different meanings
 
-### Archival
-| Node type  | Memory | CPU     | Disk         | Bandwidth |
-|------------|--------|---------|--------------|-----------|
-| Full store | 64 GB  | 8 cores | 160 TiB NVME | 1 Gbps    |
-| Bridge     | 64 GB  | 8 cores | 160 TiB NVME | 1 Gbps    |
+### Consensus full node
 
-> Figures mirror Celestia’s official mocha-5 guidance (v6 throughput assumptions).
+A consensus full node runs **celestia-appd** from celestia-app. It validates the
+consensus chain, executes application state, and can provide RPC and gRPC. A
+validator is a consensus full node with an active consensus signer.
 
----
+Current Mocha reference:
 
-## 📦 1. Update Packages and Install Dependencies
-```bash
-sudo apt update && sudo apt upgrade -y
-sudo apt install curl git wget htop tmux build-essential jq make gcc tar clang pkg-config libssl-dev ncdu -y
-```
+- celestia-app: `v9.0.6-mocha`
+- Commit: `6f4b596e47f80683adb1a161ca7cb640dcd9d206`
+- Home must be a dedicated Mocha-5 path, such as
+  `$HOME/.celestia-app-mocha-5`.
 
----
+| Consensus profile | CPU | Memory | NVMe | Network |
+| --- | ---: | ---: | ---: | ---: |
+| Validator or non-archival consensus node | 32 cores | 32 GB | 12 TiB | 1 Gbps |
+| Archival consensus node | 32 cores | 64 GB | 624 TiB | 1 Gbps |
 
-## 🛠 2. Install Go
-```bash
-cd ~
-if ! command -v go >/dev/null 2>&1; then
-  VER="1.26.2"
-  wget "https://golang.org/dl/go${VER}.linux-amd64.tar.gz"
-  sudo rm -rf /usr/local/go
-  sudo tar -C /usr/local -xzf "go${VER}.linux-amd64.tar.gz"
-  rm "go${VER}.linux-amd64.tar.gz"
-fi
+The non-archival estimate uses a conservative 7-day planning window; archival
+uses one year. Both use the 128 MB per 6 seconds maximum-throughput envelope.
+Actual use may be lower. Validators must pass the official CPU benchmark;
+prefer GFNI and SHA-NI support.
 
-[ -d "$HOME/go/bin" ] || mkdir -p "$HOME/go/bin"
-if ! grep -q "/usr/local/go/bin" "$HOME/.bash_profile" 2>/dev/null; then
-  echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> "$HOME/.bash_profile"
-fi
-source "$HOME/.bash_profile" 2>/dev/null || true
-go version
-```
+A bridge node's initial sync needs an archival Mocha-5 consensus gRPC source.
+A consensus node is archival only when its block retention and application
+pruning are configured and verified for that purpose.
 
----
+### Data availability node
 
-## 📥 3. Install Celestia Node
-```bash
-cd "$HOME"
-rm -rf celestia-node
-git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node
-NODE_VERSION="v0.31.4-mocha"
-git checkout "tags/${NODE_VERSION}"
-make build
-sudo make install
-make cel-key
-```
+A DA node runs **celestia-node**. Choose a current role:
 
----
+| Need | Current role | Guide | Mocha-5 store |
+| --- | --- | --- | --- |
+| Import, erasure-code, retain, and serve blocks | Bridge | [Bridge node setup](bridge-node-setup.md) | `$HOME/.celestia-bridge-mocha-5` |
+| Verify availability through DAS | Light | [Light node setup](light-node-setup.md) | `$HOME/.celestia-light-mocha-5` |
 
-## 🔑 4. Create a Wallet
-```bash
-./cel-key add my_celes_key --keyring-backend test --node.type full
-```
+Do not relabel or copy a legacy DA store. Initialize a separate current-role
+store with `--p2p.network mocha` and independently verify Mocha-5 freshness.
 
-### (Optional) Restore an Existing Wallet
-```bash
-cd ~/celestia-node
-./cel-key add my_celes_key --keyring-backend test --node.type full --recover
-```
+## Migration checklist for a legacy DA deployment
 
-Retrieve your wallet address:
-```bash
-cd $HOME/celestia-node
-./cel-key list --node.type full --keyring-backend test
-```
+1. Record the installed version, configured network, store path, peer ID,
+   retention intent, and upstream consensus source without exposing key data.
+2. Treat any Mocha-4 identity or height history as incompatible with Mocha-5.
+3. Decide whether the workload needs bridge retention/serving or light DAS.
+4. Provision the chosen role in its dedicated `-mocha-5` store.
+5. Keep JSON-RPC `26658` on loopback and expose bridge P2P `2121` over TCP and
+   UDP when choosing the bridge role.
+6. Prove new-role sync, peers, storage headroom, and independent Mocha-5 height
+   freshness before retiring the legacy process.
+7. Handle identity or wallet transfer only through a separately approved key
+   procedure.
 
----
+This page intentionally contains no legacy full-role command examples, reset
+steps, key deletion, or transaction actions.
 
-## ⚙️ 5. Configure and Initialize the Full Storage Node
-```bash
-CORE_IP="mocha.grpc.cumulo.me"
-CORE_PORT="443"
-KEY_NAME="my_celes_key"
+## Sources
 
-celestia full init \
-  --core.ip "$CORE_IP" \
-  --core.port "$CORE_PORT" \
-  --core.tls \
-  --p2p.network mocha
-```
+Evidence reviewed from the official Celestia docs repository at commit
+`8fbaa868a323c13d3edae2875d9b27765eb29c45`:
 
----
-
-## 🔄 6. Create a Service File for Celestia Full Storage Node
-```bash
-sudo tee /etc/systemd/system/celestia-full.service > /dev/null <<EOF
-[Unit]
-Description=Celestia Full Storage Node
-After=network-online.target
-
-[Service]
-User=$USER
-ExecStart=$(which celestia) full start \
---core.ip $CORE_IP \
---core.port $CORE_PORT \
---core.tls \
---keyring.accname $KEY_NAME \
---p2p.network mocha \
---metrics.tls=true --metrics --metrics.endpoint otel.celestia.observer
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=65535
-
-[Install]
-WantedBy=multi-user.target
-EOF
-```
-
-Enable and start the service:
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable celestia-full
-sudo systemctl restart celestia-full && sudo journalctl -u celestia-full -fo cat
-```
-
----
-
-## 📡 7. Retrieve Node Peer ID
-Generate an auth token:
-```bash
-NODE_TYPE=full
-AUTH_TOKEN=$(celestia $NODE_TYPE auth admin)
-```
-
-Get the peer ID:
-```bash
-curl -X POST \
-     -H "Authorization: Bearer $AUTH_TOKEN" \
-     -H 'Content-Type: application/json' \
-     -d '{"jsonrpc":"2.0","id":0,"method":"p2p.Info","params":[]}' \
-     http://localhost:26658
-```
-
----
-
-## 📖 9. Useful Commands (Cheat Sheet)
-
-### 💰 Check Wallet Balance
-```bash
-celestia state balance --node.store ~/.celestia-full/
-```
-
-### 📜 Get Wallet Address
-```bash
-cd $HOME/celestia-node
-./cel-key list --node.type full --keyring-backend test
-```
-
-### 🔄 Restore an Existing Key
-```bash
-KEY_NAME="my_celes_key"
-cd ~/celestia-node
-./cel-key add $KEY_NAME --keyring-backend test --node.type full --recover
-```
-
-### 📊 Check Node Sync Status
-```bash
-celestia header sync-state --node.store ~/.celestia-full/
-```
-
-### 🔍 Get Node ID
-```bash
-celestia p2p info --node.store ~/.celestia-full/
-```
-
-### 🔐 Add Permissions for Key Transfers
-```bash
-chmod -R 700 ~/.celestia-full
-```
-
-### 🔄 Reset Node
-```bash
-celestia full unsafe-reset-store
-```
-
----
-
-## 🔄 10. Upgrade Instructions
-
-### 🛑 Stop Full Storage Node
-```bash
-sudo systemctl stop celestia-full
-```
-
-### 📥 Download Latest Version
-```bash
-cd "$HOME"
-rm -rf celestia-node
-git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node
-NODE_VERSION="v0.31.4-mocha"
-git checkout "tags/${NODE_VERSION}"
-make build
-sudo make install
-make cel-key
-```
-
-### 🔄 Update Configuration
-```bash
-celestia full config-update
-```
-
-### 🚀 Restart Full Storage Node
-```bash
-sudo systemctl restart celestia-full && sudo journalctl -u celestia-full -fo cat
-```
-
----
-
-## 🗑 11. Delete Full Storage Node
-```bash
-sudo systemctl stop celestia-full
-sudo systemctl disable celestia-full
-sudo rm /etc/systemd/system/celestia-full*
-rm -rf $HOME/celestia-node $HOME/.celestia-app $HOME/.celestia-full
-```
-
----
-
-🚀 **Your Celestia Full Storage Node is now up and running.**
+- `operate/getting-started/hardware-requirements`
+- `operate/networks/mocha-testnet`
+- `operate/consensus-validators/consensus-node`
+- `operate/data-availability/bridge-node`
+- `operate/data-availability/light-node/quickstart`
