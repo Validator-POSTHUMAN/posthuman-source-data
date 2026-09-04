@@ -1,179 +1,144 @@
-# Celestia Light Node (Mocha-5 Testnet) — POSTHUMAN
+# Celestia Mocha-5 Light Node
 
-Run a Celestia mocha-5 light node using a validated public core gRPC fallback.
+A light node follows extended headers and performs data availability sampling
+(DAS) without downloading every block. Current celestia-node DA roles are
+**bridge** and **light** only.
 
-## Hardware Requirements (non-archival)
-| Resource  | Requirement |
-|-----------|-------------|
-| CPU       | 1 core |
-| Memory    | 500 MB |
-| Disk      | 20 GB SSD |
-| Bandwidth | 56 Kbps |
+## Network and software pins
 
-> Archival (unpruned header) light nodes on mocha-5 follow the same CPU/RAM/bandwidth profile but require ~111 KB of disk per block.
-## 1. Update packages and install dependencies
+- Consensus chain ID: `mocha-5`
+- DA P2P network: `mocha`
+- celestia-node: `v0.32.1-mocha`
+- Source commit: `8fc6945a38db8af6277d906c5d313a70db33c444`
+- Go: `1.26.5`
+- Store: `$HOME/.celestia-light-mocha-5`
+
+Mocha-5 is a new chain from height 1. Never reuse a Mocha-4 DA store,
+consensus data directory, or signer-state file. Do not install from an unpinned
+branch or pipe a remote script into a shell.
+
+## Capacity
+
+| Profile | CPU | Memory | Disk | Network |
+| --- | ---: | ---: | ---: | ---: |
+| Pruned light node | 1 core | 500 MB | 20 GB SSD | 56 Kbps |
+| Unpruned-header light node | 1 core | 500 MB | 7 TiB NVMe | 56 Kbps |
+
+The 20 GB profile is for normal pruned operation. The 7 TiB figure is a
+one-year planning estimate for unpruned headers at the 128 MB per 6 seconds
+maximum-throughput envelope. Monitor actual growth and keep capacity headroom.
+
+## Build from the pinned source
+
+Install Go `1.26.5` and build dependencies through trusted distribution
+channels, then verify the toolchain.
+
 ```bash
-sudo apt update && sudo apt upgrade -y
-sudo apt install curl git wget htop tmux build-essential jq make gcc tar clang pkg-config libssl-dev ncdu -y
-```
-
-## 2. Install Go (if needed)
-```bash
-cd ~
-if ! command -v go >/dev/null 2>&1; then
-  VER="1.26.2"
-  wget "https://golang.org/dl/go${VER}.linux-amd64.tar.gz"
-  sudo rm -rf /usr/local/go
-  sudo tar -C /usr/local -xzf "go${VER}.linux-amd64.tar.gz"
-  rm "go${VER}.linux-amd64.tar.gz"
-fi
-
-[ -d "$HOME/go/bin" ] || mkdir -p "$HOME/go/bin"
-if ! grep -q "/usr/local/go/bin" "$HOME/.bash_profile" 2>/dev/null; then
-  echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> "$HOME/.bash_profile"
-fi
-source "$HOME/.bash_profile" 2>/dev/null || true
 go version
+test "$(go env GOVERSION)" = "go1.26.5"
+
+NODE_TAG="v0.32.1-mocha"
+NODE_COMMIT="8fc6945a38db8af6277d906c5d313a70db33c444"
+BUILD_ROOT="$(mktemp -d -p /tmp celestia-node-build.XXXXXX)"
+
+git clone --filter=blob:none --depth 1 --branch "$NODE_TAG" \
+  https://github.com/celestiaorg/celestia-node.git "$BUILD_ROOT/src"
+test "$(git -C "$BUILD_ROOT/src" rev-parse HEAD)" = "$NODE_COMMIT"
+
+make -C "$BUILD_ROOT/src" build cel-key
+install -d "$BUILD_ROOT/stage/bin"
+install -m 0755 "$BUILD_ROOT/src/build/celestia" \
+  "$BUILD_ROOT/stage/bin/celestia"
+install -m 0755 "$BUILD_ROOT/src/cel-key" \
+  "$BUILD_ROOT/stage/bin/cel-key"
+
+"$BUILD_ROOT/stage/bin/celestia" version
 ```
 
-## 3. Download and build celestia-node
-```bash
-cd "$HOME"
-rm -rf celestia-node
-git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node
-NODE_VERSION="v0.31.4-mocha"
-git checkout "tags/${NODE_VERSION}"
-make build
-sudo make install
-make cel-key
-```
+Keep staging until the reported version and commit are reviewed. For a new,
+non-running node, install the reviewed staged binaries at `$HOME/.local/bin/`.
+Binary activation and service restart are separate approval-controlled steps.
 
-## 4. Initialize the light node
+## Initialize a new Mocha-5 store
+
+Verify the proposed consensus endpoint reports `mocha-5`. Add `--core.tls` only
+when the endpoint supports TLS.
+
 ```bash
-celestia light init \
-  --core.ip mocha.grpc.cumulo.me \
-  --core.port 443 \
+celestia-appd status --node <consensus-rpc-url> | \
+  jq -e '.NodeInfo.network == "mocha-5"'
+
+"$HOME/.local/bin/celestia" light init \
+  --node.store "$HOME/.celestia-light-mocha-5" \
+  --core.ip <mocha-5-consensus-grpc-host> \
+  --core.port <grpc-port> \
   --core.tls \
   --p2p.network mocha
 ```
 
-## 5. Create or restore a wallet
-```bash
-KEY_NAME="my_celes_key"
-cd "$HOME/celestia-node"
-./cel-key add "$KEY_NAME" --keyring-backend test --node.type light --p2p.network mocha
-```
+Initialization creates a new DA store and local keyring. Do not copy a
+Mocha-4 directory into it. Follow [Keys and signer boundaries](keys.md).
 
-Restore an existing key:
-```bash
-cd "$HOME/celestia-node"
-./cel-key add "$KEY_NAME" --keyring-backend test --node.type light --p2p.network mocha --recover
-```
+Keep JSON-RPC `26658` on loopback unless an authenticated, TLS-protected,
+rate-limited access layer is explicitly designed and reviewed.
 
-Display the wallet address:
-```bash
-cd "$HOME/celestia-node"
-./cel-key list --node.type light --keyring-backend test --p2p.network mocha
-```
+## Service template
 
-> Replace `my_celes_key` with your chosen key name; use the same identifier in the systemd unit below.
-
-## 6. Create a systemd service
-```bash
-sudo tee /etc/systemd/system/celestia-light.service > /dev/null <<EOF
+```ini
 [Unit]
-Description=Celestia mocha-5 light node (POSTHUMAN)
+Description=Celestia Mocha-5 light node
 After=network-online.target
+Wants=network-online.target
 
 [Service]
-User=$USER
-ExecStart=$(which celestia) light start \
-  --core.ip mocha.grpc.cumulo.me \
-  --core.port 443 \
-  --core.tls \
-  --keyring.accname my_celes_key \
-  --p2p.network mocha \
-  --metrics \
-  --metrics.tls=true \
-  --metrics.endpoint otel.mocha.celestia.observer
+Type=simple
+User=<service-user>
+ExecStart=%h/.local/bin/celestia light start --node.store %h/.celestia-light-mocha-5 --core.ip <mocha-5-consensus-grpc-host> --core.port <grpc-port> --core.tls --p2p.network mocha
 Restart=on-failure
-RestartSec=3
+RestartSec=5
 LimitNOFILE=65535
 
 [Install]
 WantedBy=multi-user.target
-EOF
 ```
 
-Reload and start:
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable celestia-light
-sudo systemctl restart celestia-light && sudo journalctl -u celestia-light -fo cat
-```
+This guide does not submit blobs or other transactions.
 
-> Celestia-node v0.31.4 uses core gRPC. When pointing to a raw consensus node, use its gRPC host and port (default `9090`) and omit `--core.tls` unless TLS is enabled.
-
-## 7. Inspect node information
-```bash
-NODE_TYPE=light
-AUTH_TOKEN=$(celestia "$NODE_TYPE" auth admin --p2p.network mocha)
-
-curl -X POST \
-  -H "Authorization: Bearer $AUTH_TOKEN" \
-  -H 'Content-Type: application/json' \
-  -d '{"jsonrpc":"2.0","id":0,"method":"p2p.Info","params":[]}' \
-  http://localhost:26658
-```
-
-## 8. Useful commands
+## Verify
 
 ```bash
-# Balance
-celestia state balance --node.store ~/.celestia-light-mocha/
-
-# Wallet address
-cd "$HOME/celestia-node"
-./cel-key list --node.type light --keyring-backend test --p2p.network mocha
-
-# Restore key
-cd "$HOME/celestia-node"
-./cel-key add my_celes_key --keyring-backend test --node.type light --p2p.network mocha --recover
-
-# Sync status
-celestia header sync-state --node.store ~/.celestia-light-mocha/
-
-# Peer information
-celestia p2p info --node.store ~/.celestia-light-mocha/
-
-# Harden permissions
-chmod -R 700 ~/.celestia-light-mocha
-
-# Reset
-celestia light unsafe-reset-store --p2p.network mocha
+systemctl is-active celestia-light-mocha-5.service
+"$HOME/.local/bin/celestia" header sync-state \
+  --node.store "$HOME/.celestia-light-mocha-5"
+"$HOME/.local/bin/celestia" p2p info \
+  --node.store "$HOME/.celestia-light-mocha-5"
+"$HOME/.local/bin/celestia" state account-address \
+  --node.store "$HOME/.celestia-light-mocha-5"
+ss -lntp | grep ':26658'
+journalctl -u celestia-light-mocha-5.service \
+  --since "15 minutes ago" --no-pager
 ```
 
-## 9. Upgrading
-```bash
-sudo systemctl stop celestia-light
-cd "$HOME"
-rm -rf celestia-node
-git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node
-NODE_VERSION="v0.31.4-mocha"
-git checkout "tags/${NODE_VERSION}"
-make build
-sudo make install
-make cel-key
-celestia light config-update --p2p.network mocha
-sudo systemctl restart celestia-light && sudo journalctl -u celestia-light -fo cat
-```
+Healthy means the service remains stable, headers advance toward an independent
+Mocha-5 reference, sampling has no persistent errors, peers are present, RPC is
+loopback-bound, and disk has headroom. Any Mocha-4 chain identity is a hard
+failure; stale or unknown freshness is degraded.
 
-## 10. Removal
-```bash
-sudo systemctl stop celestia-light
-sudo systemctl disable celestia-light
-sudo rm /etc/systemd/system/celestia-light.service
-rm -rf "$HOME/celestia-node" "$HOME/.celestia-light-mocha"
-```
+## Upgrade discipline
+
+Build replacements in a new staging directory, verify the announced Mocha tag
+and commit, retain rollback, and activate only after review. When upgrading
+from before `v0.31.3`, run
+`celestia light config-update --p2p.network mocha --node.store "$HOME/.celestia-light-mocha-5"`
+while stopped and inspect the merged configuration before activation.
+
+## Sources
+
+Evidence reviewed from the official Celestia docs repository at commit
+`8fbaa868a323c13d3edae2875d9b27765eb29c45`:
+
+- `operate/getting-started/hardware-requirements`
+- `operate/data-availability/light-node/quickstart`
+- `operate/data-availability/light-node/advanced`
+- `operate/data-availability/install-celestia-node`
+- `operate/networks/mocha-testnet`

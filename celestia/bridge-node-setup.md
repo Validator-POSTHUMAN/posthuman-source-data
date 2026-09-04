@@ -1,197 +1,164 @@
-# Celestia Bridge Node Setup
+# Celestia Mainnet Bridge Node
 
-This guide installs a Celestia Data Availability bridge node on mainnet using
-`celestia-node`.
+A bridge node is the heavy data-availability (DA) role. It imports blocks from
+an archival consensus source, validates and erasure-codes them, and serves
+shares to the DA network. Current celestia-node DA roles are **bridge** and
+**light** only.
 
-## Current Version
+## Pinned software
 
-- Celestia node: `v0.31.4`
 - Network: `celestia`
-- Default bridge store: `~/.celestia-bridge`
-- Default local JSON-RPC: `http://127.0.0.1:26658`
-- Validated core gRPC fallback: `celestia-mainnet-grpc.itrocket.net:443`
-- Metrics collector: `otel.celestia.observer`
+- celestia-node: `v0.32.1`
+- Source commit: `8fc6945a38db8af6277d906c5d313a70db33c444`
+- Go: `1.26.5`
+- Store: `$HOME/.celestia-bridge`
 
-## Requirements
+Verify release announcements before changing these pins. Do not install from an
+unpinned branch or pipe a remote script into a shell.
 
-Bridge nodes are heavy DA nodes. Plan for:
+## Capacity and CPU gate
 
-- 8 CPU cores or more
-- 64 GB RAM
-- 8 TiB NVMe for non-archival operation
-- 160 TiB NVMe for archival operation
-- 1 Gbps network
+| Profile | CPU | Memory | NVMe | Network |
+| --- | ---: | ---: | ---: | ---: |
+| Non-archival bridge | 32 cores | 64 GB | 25 TiB | 1 Gbps |
+| Archival bridge | 32 cores | 64 GB | 637 TiB | 1 Gbps |
 
-## 1. Install Packages and Go
+The non-archival figure assumes a conservative 7-day planning window and the
+128 MB per 6 seconds maximum-throughput envelope. The archival figure assumes
+one year at that envelope. Actual use may be lower, but retain at least one
+month of maximum-throughput capacity as free space.
+
+Before provisioning, run the official celestia-app CPU benchmark. Prefer CPUs
+with at least 32 cores plus GFNI and SHA-NI support. A core count alone does not
+prove the host can sustain the workload.
+
+## Network prerequisites
+
+- Initial bridge sync requires an **archival celestia-app consensus gRPC
+  source** with complete historical blocks. A normal pruned public endpoint is
+  not sufficient.
+- Expose DA P2P port `2121` on both TCP and UDP to the public network.
+- Keep DA JSON-RPC port `26658` on loopback. Expose it only through a deliberately
+  authenticated, TLS-protected, rate-limited boundary.
+- Confirm storage capacity, endpoint retention, firewall policy, and clock sync
+  before initialization.
+
+## Build from the pinned source
+
+Install Go `1.26.5` and standard build dependencies through your trusted OS or
+Go distribution process, then verify `go version` before building.
 
 ```bash
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y curl git wget jq tar make gcc build-essential clang \
-  pkg-config libssl-dev ncdu lz4 aria2
-
-cd "$HOME"
-GO_VERSION="1.26.2"
-if ! command -v go >/dev/null 2>&1; then
-  wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
-  sudo rm -rf /usr/local/go
-  sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
-  rm "go${GO_VERSION}.linux-amd64.tar.gz"
-fi
-
-grep -q "/usr/local/go/bin" "$HOME/.bash_profile" 2>/dev/null || \
-  echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> "$HOME/.bash_profile"
-source "$HOME/.bash_profile" 2>/dev/null || true
 go version
+test "$(go env GOVERSION)" = "go1.26.5"
+
+NODE_TAG="v0.32.1"
+NODE_COMMIT="8fc6945a38db8af6277d906c5d313a70db33c444"
+BUILD_ROOT="$(mktemp -d -p /tmp celestia-node-build.XXXXXX)"
+
+git clone --filter=blob:none --depth 1 --branch "$NODE_TAG" \
+  https://github.com/celestiaorg/celestia-node.git "$BUILD_ROOT/src"
+test "$(git -C "$BUILD_ROOT/src" rev-parse HEAD)" = "$NODE_COMMIT"
+
+make -C "$BUILD_ROOT/src" build cel-key
+install -d "$BUILD_ROOT/stage/bin"
+install -m 0755 "$BUILD_ROOT/src/build/celestia" \
+  "$BUILD_ROOT/stage/bin/celestia"
+install -m 0755 "$BUILD_ROOT/src/cel-key" \
+  "$BUILD_ROOT/stage/bin/cel-key"
+
+"$BUILD_ROOT/stage/bin/celestia" version
 ```
 
-## 2. Build `celestia-node`
+Keep the staging directory until the binary version and commit output have been
+reviewed. For a new, non-running node, install the reviewed staged binaries at
+`$HOME/.local/bin/`. Replacing a live binary and restarting a service are
+separate, approval-controlled operations.
+
+## Initialize
+
+Select and verify an archival consensus gRPC service. For TLS endpoints, add
+`--core.tls`; omit it only for a trusted plaintext connection.
 
 ```bash
-cd "$HOME"
-rm -rf celestia-node
-git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node
-
-NODE_VERSION="v0.31.4"
-git checkout "tags/${NODE_VERSION}"
-
-make build
-sudo make install
-make cel-key
-
-celestia version
-./cel-key version 2>/dev/null || true
-```
-
-## 3. Initialize the Bridge Node
-
-```bash
-celestia bridge init \
-  --core.ip celestia-mainnet-grpc.itrocket.net \
-  --core.port 443 \
+"$HOME/.local/bin/celestia" bridge init \
+  --node.store "$HOME/.celestia-bridge" \
+  --core.ip <archival-consensus-grpc-host> \
+  --core.port <grpc-port> \
   --core.tls \
   --p2p.network celestia
 ```
 
-List the generated bridge key:
+Initialization creates the DA store and its local keyring. Follow the separate
+[key custody guide](keys.md); never copy secret material into terminal history,
+documentation, tickets, or logs.
 
-```bash
-cd "$HOME/celestia-node"
-./cel-key list --node.type bridge --keyring-backend test
-```
+Review `$HOME/.celestia-bridge/config.toml`, confirm the selected network and
+archival source, and verify JSON-RPC remains loopback-bound before starting.
 
-Fund the bridge wallet with enough TIA for PayForBlob transactions before
-production use.
+## Service template
 
-## 4. Create Systemd Service
+Replace only the endpoint placeholders after review. The unit assumes the
+binary is installed under the service user's home.
 
-```bash
-sudo tee /etc/systemd/system/celestia-bridge.service > /dev/null <<EOF
+```ini
 [Unit]
-Description=Celestia bridge node
+Description=Celestia mainnet bridge node
 After=network-online.target
+Wants=network-online.target
 
 [Service]
-User=$USER
-ExecStart=$(command -v celestia) bridge start \
-  --core.ip celestia-mainnet-grpc.itrocket.net \
-  --core.port 443 \
-  --core.tls \
-  --p2p.network celestia \
-  --metrics \
-  --metrics.tls=true \
-  --metrics.endpoint otel.celestia.observer
+Type=simple
+User=<service-user>
+ExecStart=%h/.local/bin/celestia bridge start --node.store %h/.celestia-bridge --core.ip <archival-consensus-grpc-host> --core.port <grpc-port> --core.tls --p2p.network celestia
 Restart=on-failure
-RestartSec=3
+RestartSec=5
 LimitNOFILE=65535
 
 [Install]
 WantedBy=multi-user.target
-EOF
-
-sudo systemctl daemon-reload
-sudo systemctl enable celestia-bridge
-sudo systemctl restart celestia-bridge
-journalctl -u celestia-bridge -f -o cat
 ```
 
-Add `--archival` only when you intentionally run an archival bridge node and
-have enough disk.
+Do not add `--archival` unless the 637 TiB planning profile, retention intent,
+and ongoing capacity alerts have been approved. Decide before the store's first
+start: v0.32.1 refuses conversion from a previously pruned store back to
+archival mode. If archival retention is later required, provision and verify a
+separate new store; do not reset or delete the working store.
 
-## 5. Verify
+## Verify
 
 ```bash
-systemctl status celestia-bridge --no-pager
-
-celestia header sync-state --node.store ~/.celestia-bridge
-celestia p2p info --node.store ~/.celestia-bridge
-celestia state balance --node.store ~/.celestia-bridge
-
-NODE_TYPE=bridge
-AUTH_TOKEN=$(celestia "$NODE_TYPE" auth admin --node.store ~/.celestia-bridge)
-
-curl -fsS \
-  -H "Authorization: Bearer $AUTH_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","id":0,"method":"p2p.Info","params":[]}' \
-  http://127.0.0.1:26658 | jq .
+systemctl is-active celestia-bridge.service
+"$HOME/.local/bin/celestia" header sync-state \
+  --node.store "$HOME/.celestia-bridge"
+"$HOME/.local/bin/celestia" p2p info \
+  --node.store "$HOME/.celestia-bridge"
+ss -lntup | grep -E '(:2121|:26658)'
+journalctl -u celestia-bridge.service --since "15 minutes ago" --no-pager
 ```
 
-## 6. Optional Bridge Store Restore
+Healthy means the service is stable, the header height advances toward an
+independent mainnet reference, DA peers are present, `2121` is reachable over
+TCP and UDP, `26658` is not publicly bound, and disk growth has safe headroom.
+A running process alone is not proof of health.
 
-Bridge-node stores are not consensus snapshots. Do not restore
-`snapshot-latest.tar.lz4` into `~/.celestia-bridge`.
+## Upgrade discipline
 
-If you use a third-party bridge store backup, verify the provider, network,
-file name, checksum or size, and freshness first. ITRocket publishes a
-Celestia bridge-node guide at:
+1. Confirm the announced mainnet tag and commit from official sources.
+2. Build in a new staging directory and verify the commit and reported version.
+3. Preserve the current binary as the rollback artifact.
+4. If crossing from a release before `v0.31.3`, run the role-specific
+   `config-update` while the service is stopped and review the merged config.
+5. Replace and restart only after approval, then repeat every verification
+   above.
 
-```text
-https://itrocket.net/services/mainnet/celestia/bridge-node/
-```
+## Sources
 
-Safe restore shape:
+Evidence reviewed from the official Celestia docs repository at commit
+`8fbaa868a323c13d3edae2875d9b27765eb29c45`:
 
-```bash
-sudo systemctl stop celestia-bridge
-
-cp -a ~/.celestia-bridge ~/.celestia-bridge.backup-$(date +%Y%m%d-%H%M%S)
-
-# Replace only bridge-node store data after verifying the selected snapshot.
-# Do not delete keys unless the operator explicitly approves it.
-
-sudo systemctl restart celestia-bridge
-journalctl -u celestia-bridge -f -o cat
-```
-
-## 7. Upgrade
-
-```bash
-sudo systemctl stop celestia-bridge
-
-cd "$HOME"
-rm -rf celestia-node
-git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node
-
-NODE_VERSION="v0.31.4"
-git checkout "tags/${NODE_VERSION}"
-make build
-sudo make install
-make cel-key
-
-celestia bridge config-update
-sudo systemctl restart celestia-bridge
-```
-
-Verify header sync, p2p info, balance, metrics, and logs after every upgrade.
-
-## 8. Remove
-
-```bash
-sudo systemctl stop celestia-bridge
-sudo systemctl disable celestia-bridge
-sudo rm -f /etc/systemd/system/celestia-bridge.service
-sudo systemctl daemon-reload
-rm -rf "$HOME/celestia-node" "$HOME/.celestia-bridge"
-```
+- `operate/getting-started/hardware-requirements`
+- `operate/data-availability/bridge-node`
+- `operate/data-availability/install-celestia-node`
+- `operate/networks/mainnet-beta`
+- `operate/maintenance/troubleshooting`

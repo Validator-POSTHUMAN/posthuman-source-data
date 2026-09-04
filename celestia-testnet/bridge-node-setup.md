@@ -1,185 +1,165 @@
-# Posthuman Service Bridge Node Setup for Mocha Testnet (mocha-5)
+# Celestia Mocha-5 Bridge Node
 
-## Hardware Requirements (mocha data availability)
+A bridge node is the heavy data-availability (DA) role. It imports blocks from
+an archival consensus source, validates and erasure-codes them, and serves
+shares to the DA network. Current celestia-node DA roles are **bridge** and
+**light** only.
 
-### Non-archival
-## Setting Up a Posthuman Service Node
+## Network and software pins
 
-### Update Packages and Install Dependencies
-```sh
-sudo apt update && sudo apt upgrade -y
-sudo apt install curl git wget htop tmux build-essential jq make gcc tar clang pkg-config libssl-dev ncdu -y
-```
+- Consensus chain ID: `mocha-5`
+- DA P2P network: `mocha`
+- celestia-node: `v0.32.1-mocha`
+- Source commit: `8fc6945a38db8af6277d906c5d313a70db33c444`
+- Go: `1.26.5`
+- Store: `$HOME/.celestia-bridge-mocha-5`
 
-### Install Go
-```sh
-cd ~
-if ! command -v go >/dev/null 2>&1; then
-  VER="1.26.2"
-  wget "https://golang.org/dl/go${VER}.linux-amd64.tar.gz"
-  sudo rm -rf /usr/local/go
-  sudo tar -C /usr/local -xzf "go${VER}.linux-amd64.tar.gz"
-  rm "go${VER}.linux-amd64.tar.gz"
-fi
+Mocha-5 started from height 1 and is not an in-place upgrade from Mocha-4.
+Never reuse a Mocha-4 DA store, consensus data directory, or signer-state file.
+Do not install from an unpinned branch or pipe a remote script into a shell.
 
-[ -d "$HOME/go/bin" ] || mkdir -p "$HOME/go/bin"
-if ! grep -q "/usr/local/go/bin" "$HOME/.bash_profile" 2>/dev/null; then
-  echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> "$HOME/.bash_profile"
-fi
-source "$HOME/.bash_profile" 2>/dev/null || true
+## Capacity and CPU gate
+
+| Profile | CPU | Memory | NVMe | Network |
+| --- | ---: | ---: | ---: | ---: |
+| Non-archival bridge | 32 cores | 64 GB | 25 TiB | 1 Gbps |
+| Archival bridge | 32 cores | 64 GB | 637 TiB | 1 Gbps |
+
+These official planning profiles use a conservative 7-day window for
+non-archival operation and one year for archival operation, both at the
+128 MB per 6 seconds maximum-throughput envelope. Actual use may be lower.
+Maintain at least one month of maximum-throughput capacity as free space.
+
+Run the official celestia-app CPU benchmark before provisioning. Prefer at
+least 32 cores with GFNI and SHA-NI support; core count alone is not proof of
+sufficient throughput.
+
+## Network prerequisites
+
+- Initial bridge sync requires an **archival Mocha-5 celestia-app consensus
+  gRPC source** with complete history from height 1. A pruned endpoint and any
+  Mocha-4 endpoint are invalid.
+- Expose DA P2P port `2121` on TCP and UDP.
+- Keep DA JSON-RPC `26658` on loopback unless it is deliberately protected by
+  authentication, TLS, and rate limits.
+- Verify the endpoint chain ID, archival retention, firewall policy, storage,
+  and clock synchronization before initialization.
+
+## Build from the pinned source
+
+Install Go `1.26.5` and build dependencies from trusted distribution channels,
+then verify the toolchain.
+
+```bash
 go version
+test "$(go env GOVERSION)" = "go1.26.5"
+
+NODE_TAG="v0.32.1-mocha"
+NODE_COMMIT="8fc6945a38db8af6277d906c5d313a70db33c444"
+BUILD_ROOT="$(mktemp -d -p /tmp celestia-node-build.XXXXXX)"
+
+git clone --filter=blob:none --depth 1 --branch "$NODE_TAG" \
+  https://github.com/celestiaorg/celestia-node.git "$BUILD_ROOT/src"
+test "$(git -C "$BUILD_ROOT/src" rev-parse HEAD)" = "$NODE_COMMIT"
+
+make -C "$BUILD_ROOT/src" build cel-key
+install -d "$BUILD_ROOT/stage/bin"
+install -m 0755 "$BUILD_ROOT/src/build/celestia" \
+  "$BUILD_ROOT/stage/bin/celestia"
+install -m 0755 "$BUILD_ROOT/src/cel-key" \
+  "$BUILD_ROOT/stage/bin/cel-key"
+
+"$BUILD_ROOT/stage/bin/celestia" version
 ```
 
-### Install Celestia-Node
-```sh
-cd "$HOME"
-rm -rf celestia-node
-git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node
-NODE_VERSION="v0.31.4-mocha"
-git checkout "tags/${NODE_VERSION}"
-make build
-sudo make install
-make cel-key
-```
+Keep staging until the reported version and commit are reviewed. For a new,
+non-running node, install the reviewed staged binaries at `$HOME/.local/bin/`.
+Binary activation and service restart are separate approval-controlled steps.
 
-### Configure and Initialize the Application
-```sh
-celestia bridge init \
-  --core.ip mocha.grpc.cumulo.me \
-  --core.port 443 \
+## Initialize a new Mocha-5 store
+
+First verify the proposed consensus source is on `mocha-5` and retains every
+block required for initial sync.
+
+```bash
+celestia-appd status --node <consensus-rpc-url> | \
+  jq -e '.NodeInfo.network == "mocha-5"'
+
+"$HOME/.local/bin/celestia" bridge init \
+  --node.store "$HOME/.celestia-bridge-mocha-5" \
+  --core.ip <archival-mocha-5-consensus-grpc-host> \
+  --core.port <grpc-port> \
   --core.tls \
   --p2p.network mocha
 ```
-Once started, a wallet key is generated. You need to fund this address with testnet tokens.
-Find your wallet address:
-```sh
-cd $HOME/celestia-node
-./cel-key list --node.type bridge --keyring-backend test --p2p.network mocha
-```
 
-### Create a Systemd Service File
-```sh
-sudo tee /etc/systemd/system/celestia-bridge.service > /dev/null <<EOF
+Add `--core.tls` only for a TLS endpoint. Initialization creates the new DA
+store and local keyring. Do not copy any Mocha-4 directory into this store.
+Follow [Keys and signer boundaries](keys.md) for custody rules.
+
+Review the generated config and confirm `mocha`, the Mocha-5 upstream, and the
+loopback JSON-RPC bind before starting.
+
+## Service template
+
+```ini
 [Unit]
-Description=Celestia Bridge
+Description=Celestia Mocha-5 bridge node
 After=network-online.target
+Wants=network-online.target
 
 [Service]
-User=$USER
-ExecStart=$(which celestia) bridge start \
---core.ip mocha.grpc.cumulo.me \
---core.port 443 \
---core.tls \
---p2p.network mocha --archival \
---metrics.tls=true --metrics --metrics.endpoint otel.mocha.celestia.observer
+Type=simple
+User=<service-user>
+ExecStart=%h/.local/bin/celestia bridge start --node.store %h/.celestia-bridge-mocha-5 --core.ip <archival-mocha-5-consensus-grpc-host> --core.port <grpc-port> --core.tls --p2p.network mocha
 Restart=on-failure
-RestartSec=3
+RestartSec=5
 LimitNOFILE=65535
 
 [Install]
 WantedBy=multi-user.target
-EOF
 ```
 
-### Enable and Start the Service
-```sh
-sudo systemctl daemon-reload
-sudo systemctl enable celestia-bridge
-sudo systemctl restart celestia-bridge && sudo journalctl -u celestia-bridge -fo cat
+Do not add `--archival` until the 637 TiB profile, retention objective, and
+capacity alerting have been approved. Decide before the store's first start:
+v0.32.1 refuses conversion from a previously pruned store back to archival
+mode. If archival retention is later required, provision and verify a separate
+new Mocha-5 store; do not reset or delete the working store.
+
+## Verify
+
+```bash
+systemctl is-active celestia-bridge-mocha-5.service
+"$HOME/.local/bin/celestia" header sync-state \
+  --node.store "$HOME/.celestia-bridge-mocha-5"
+"$HOME/.local/bin/celestia" p2p info \
+  --node.store "$HOME/.celestia-bridge-mocha-5"
+ss -lntup | grep -E '(:2121|:26658)'
+journalctl -u celestia-bridge-mocha-5.service \
+  --since "15 minutes ago" --no-pager
 ```
 
-### Get Node Peer ID Information
-❗ You can only generate an auth token after initializing and starting your Celestia node.
-```sh
-NODE_TYPE=bridge
-AUTH_TOKEN=$(celestia $NODE_TYPE auth admin --p2p.network mocha)
-curl -X POST \
-     -H "Authorization: Bearer $AUTH_TOKEN" \
-     -H 'Content-Type: application/json' \
-     -d '{"jsonrpc":"2.0","id":0,"method":"p2p.Info","params":[]}' \
-     http://localhost:26658
-```
+Healthy means the service is stable, headers advance toward an independent
+Mocha-5 reference, peers are present, `2121` is reachable on TCP and UDP,
+`26658` is not public, and disk has headroom. Any Mocha-4 chain identity is a
+hard failure.
 
-### Snapshot availability
+## Upgrade discipline
 
-No verified Mocha bridge-node store snapshot is currently published here.
-Sync the bridge node from the network. The POSTHUMAN `celestia-appd`
-consensus snapshot is not compatible with a `celestia-node` bridge store.
+Verify the announced Mocha tag and commit, build in a new staging directory,
+retain rollback, and activate only after review. When crossing from a release
+before `v0.31.3`, run
+`celestia bridge config-update --p2p.network mocha --node.store "$HOME/.celestia-bridge-mocha-5"`
+while stopped, inspect the merged configuration, then restart and repeat all
+checks.
 
-## Cheat Sheet
+## Sources
 
-### Check Wallet Balance
-```sh
-celestia state balance --node.store ~/.celestia-bridge-mocha-5/
-```
+Evidence reviewed from the official Celestia docs repository at commit
+`8fbaa868a323c13d3edae2875d9b27765eb29c45`:
 
-### Get Wallet Address
-```sh
-cd $HOME/celestia-node
-./cel-key list --node.type bridge --keyring-backend test --p2p.network mocha
-```
-
-### Restore an Existing cel_key
-```sh
-KEY_NAME="my_celes_key"
-cd ~/celestia-node
-./cel-key add $KEY_NAME --keyring-backend test --node.type bridge --recover --p2p.network mocha
-```
-
-### Check Bridge Node Status
-```sh
-celestia header sync-state --node.store ~/.celestia-bridge-mocha-5/
-```
-
-### Get Node ID
-```sh
-celestia p2p info --node.store ~/.celestia-bridge-mocha-5/
-```
-
-### Set Permissions for Transferring Keys
-```sh
-chmod -R 700 ~/.celestia-bridge-mocha-5
-```
-
-### Reset Node
-```sh
-celestia bridge unsafe-reset-store --p2p.network mocha
-```
-
-## Upgrade
-
-### Stop Bridge Node
-```sh
-sudo systemctl stop celestia-bridge
-```
-
-### Download and Install Latest Version
-```sh
-cd "$HOME"
-rm -rf celestia-node
-git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node
-NODE_VERSION="v0.31.4-mocha"
-git checkout "tags/${NODE_VERSION}"
-make build
-sudo make install
-make cel-key
-```
-
-### Update Configuration
-```sh
-celestia bridge config-update --p2p.network mocha
-```
-
-### Restart Bridge Node
-```sh
-sudo systemctl restart celestia-bridge && sudo journalctl -u celestia-bridge -fo cat
-```
-
-## Delete Bridge Node
-```sh
-sudo systemctl stop celestia-bridge
-sudo systemctl disable celestia-bridge
-sudo rm /etc/systemd/system/celestia-bridge*
-rm -rf $HOME/celestia-node $HOME/.celestia-bridge-mocha-5
+- `operate/getting-started/hardware-requirements`
+- `operate/data-availability/bridge-node`
+- `operate/data-availability/install-celestia-node`
+- `operate/networks/mocha-testnet`
+- `operate/maintenance/troubleshooting`

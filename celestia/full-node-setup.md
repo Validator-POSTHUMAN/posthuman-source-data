@@ -1,150 +1,74 @@
-# Celestia Full Storage Node Setup
+# Celestia Full Node Terminology and Legacy DA Role Retirement
 
-This guide installs a Celestia Data Availability full storage node on mainnet
-using `celestia-node`.
+There is no current `full` role in celestia-node. The supported data
+availability roles are **bridge** and **light**. Older guides used “full storage
+node” for a retired DA role; do not use those obsolete commands with current
+software.
 
-## Current Version
+## Two different meanings
 
-- Celestia node: `v0.31.4`
-- Network: `celestia`
-- Default full-node store: `~/.celestia-full`
-- Validated core gRPC fallback: `celestia-mainnet-grpc.itrocket.net:443`
+### Consensus full node
 
-## Requirements
+A consensus full node runs **celestia-appd** from the celestia-app repository.
+It validates the consensus chain, executes application state, and can provide
+RPC and gRPC services. A validator is a consensus full node with an active
+consensus signer.
 
-- 8 CPU cores or more
-- 64 GB RAM
-- 8 TiB NVMe for non-archival operation
-- 160 TiB NVMe for archival operation
-- 1 Gbps network
+Current celestia-app mainnet reference:
 
-## 1. Install Packages and Go
+- Version: `v9.0.6`
+- Commit: `6f4b596e47f80683adb1a161ca7cb640dcd9d206`
+- Chain ID: `celestia`
 
-```bash
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y curl git wget jq tar make gcc build-essential clang \
-  pkg-config libssl-dev ncdu lz4
+| Consensus profile | CPU | Memory | NVMe | Network |
+| --- | ---: | ---: | ---: | ---: |
+| Validator or non-archival consensus node | 32 cores | 32 GB | 12 TiB | 1 Gbps |
+| Archival consensus node | 32 cores | 64 GB | 624 TiB | 1 Gbps |
 
-cd "$HOME"
-GO_VERSION="1.26.2"
-if ! command -v go >/dev/null 2>&1; then
-  wget "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz"
-  sudo rm -rf /usr/local/go
-  sudo tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
-  rm "go${GO_VERSION}.linux-amd64.tar.gz"
-fi
+The non-archival estimate uses a conservative 7-day planning window; archival
+uses one year. Both use the 128 MB per 6 seconds maximum-throughput envelope.
+Actual consumption may be lower. Validators must pass the official CPU
+benchmark; prefer GFNI and SHA-NI support.
 
-grep -q "/usr/local/go/bin" "$HOME/.bash_profile" 2>/dev/null || \
-  echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> "$HOME/.bash_profile"
-source "$HOME/.bash_profile" 2>/dev/null || true
-```
+A bridge node's initial sync needs an archival consensus gRPC source. Running a
+consensus full node does not automatically make it archival: block retention
+and application pruning must be configured and verified deliberately.
 
-## 2. Build `celestia-node`
+### Data availability node
 
-```bash
-cd "$HOME"
-rm -rf celestia-node
-git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node
+A DA node runs **celestia-node**. Choose one of the current roles:
 
-NODE_VERSION="v0.31.4"
-git checkout "tags/${NODE_VERSION}"
+| Need | Current role | Guide |
+| --- | --- | --- |
+| Import, erasure-code, retain, and serve blocks | Bridge | [Bridge node setup](bridge-node-setup.md) |
+| Verify availability through DAS with low resources | Light | [Light node setup](light-node-setup.md) |
 
-make build
-sudo make install
-make cel-key
-celestia version
-```
+Do not relabel an old DA “full” store as a bridge store. Reinitialize the chosen
+current role and apply the correct key-custody and network checks.
 
-## 3. Initialize
+## Migration checklist for a legacy DA deployment
 
-```bash
-celestia full init \
-  --core.ip celestia-mainnet-grpc.itrocket.net \
-  --core.port 443 \
-  --core.tls \
-  --p2p.network celestia
-```
+1. Record the installed binary version, configured network, store path, peer ID,
+   retention intent, and upstream consensus source without exposing key data.
+2. Decide whether the workload requires bridge retention/serving or light DAS.
+3. Provision the current role in a separate store using its current guide.
+4. Keep mainnet RPC `26658` on loopback and expose bridge P2P `2121` over TCP and
+   UDP when choosing the bridge role.
+5. Prove new-role sync, peer connectivity, storage headroom, and independent
+   height freshness before retiring the legacy process.
+6. Handle any identity or wallet transfer only through a separately approved
+   key procedure.
 
-Create or restore a key:
+This page intentionally contains no legacy full-role command examples, reset
+steps, key deletion, or transaction actions.
 
-```bash
-KEY_NAME="my_celes_key"
-cd "$HOME/celestia-node"
-./cel-key add "$KEY_NAME" --keyring-backend test --node.type full
+## Sources
 
-# Restore existing key:
-# ./cel-key add "$KEY_NAME" --keyring-backend test --node.type full --recover
-```
+Evidence reviewed from the official Celestia docs repository at commit
+`8fbaa868a323c13d3edae2875d9b27765eb29c45`:
 
-## 4. Create Systemd Service
-
-```bash
-sudo tee /etc/systemd/system/celestia-full.service > /dev/null <<EOF
-[Unit]
-Description=Celestia full storage node
-After=network-online.target
-
-[Service]
-User=$USER
-ExecStart=$(command -v celestia) full start \
-  --core.ip celestia-mainnet-grpc.itrocket.net \
-  --core.port 443 \
-  --core.tls \
-  --keyring.accname my_celes_key \
-  --p2p.network celestia \
-  --metrics \
-  --metrics.tls=true \
-  --metrics.endpoint otel.celestia.observer
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=65535
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-sudo systemctl daemon-reload
-sudo systemctl enable celestia-full
-sudo systemctl restart celestia-full
-journalctl -u celestia-full -f -o cat
-```
-
-## 5. Verify
-
-```bash
-systemctl status celestia-full --no-pager
-celestia header sync-state --node.store ~/.celestia-full
-celestia p2p info --node.store ~/.celestia-full
-celestia state balance --node.store ~/.celestia-full
-```
-
-## 6. Upgrade
-
-```bash
-sudo systemctl stop celestia-full
-
-cd "$HOME"
-rm -rf celestia-node
-git clone https://github.com/celestiaorg/celestia-node.git
-cd celestia-node
-
-NODE_VERSION="v0.31.4"
-git checkout "tags/${NODE_VERSION}"
-make build
-sudo make install
-make cel-key
-
-celestia full config-update
-sudo systemctl restart celestia-full
-```
-
-## 7. Remove
-
-```bash
-sudo systemctl stop celestia-full
-sudo systemctl disable celestia-full
-sudo rm -f /etc/systemd/system/celestia-full.service
-sudo systemctl daemon-reload
-rm -rf "$HOME/celestia-node" "$HOME/.celestia-full"
-```
+- `operate/getting-started/hardware-requirements`
+- `operate/getting-started/overview`
+- `operate/consensus-validators/consensus-node`
+- `operate/data-availability/bridge-node`
+- `operate/data-availability/light-node/quickstart`
