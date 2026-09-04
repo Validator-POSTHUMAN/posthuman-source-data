@@ -132,6 +132,9 @@
     ],
     "services": [
       "snapshots",
+      "axelar-validator-setup",
+      "axelar-broadcaster",
+      "axelar-amplifier",
       "skill"
     ]
   },
