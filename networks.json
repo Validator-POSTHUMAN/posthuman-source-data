@@ -1274,7 +1274,8 @@
     "contributions": "Bitcoin",
     "generatedServices": [],
     "services": [
-      "install-guide"
+      "install-guide",
+      "mining-guide"
     ],
     "version": "28.1"
   },
