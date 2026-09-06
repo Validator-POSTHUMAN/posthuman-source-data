@@ -1200,5 +1200,81 @@
       "migration",
       "liquidity-pools"
     ]
+  },
+  {
+    "name": "avalanche",
+    "type": "mainnet",
+    "title": "Avalanche",
+    "website": "https://www.avax.network/",
+    "twitter": "https://x.com/avax",
+    "discord": "https://discord.gg/avax",
+    "github": "https://github.com/ava-labs/avalanchego",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/avalanche/avax.svg",
+    "stake": "",
+    "explorer": "https://avascan.info",
+    "chain_id": "43114",
+    "endpoints": {},
+    "contributions": "Avalanche",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
+  },
+  {
+    "name": "solana",
+    "type": "mainnet",
+    "title": "Solana",
+    "website": "https://solana.com/",
+    "twitter": "https://x.com/solana",
+    "discord": "https://discord.gg/solana",
+    "github": "https://github.com/anza-xyz/agave",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/solana/sol.svg",
+    "stake": "",
+    "explorer": "https://explorer.solana.com",
+    "chain_id": "mainnet-beta",
+    "endpoints": {},
+    "contributions": "Solana",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
+  },
+  {
+    "name": "mina",
+    "type": "mainnet",
+    "title": "Mina Protocol",
+    "website": "https://minaprotocol.com/",
+    "twitter": "https://x.com/MinaProtocol",
+    "discord": "https://discord.gg/minaprotocol",
+    "github": "https://github.com/MinaProtocol/mina",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/mina/mina.svg",
+    "stake": "",
+    "explorer": "https://minascan.io/mainnet",
+    "chain_id": "mainnet",
+    "endpoints": {},
+    "contributions": "Mina",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
+  },
+  {
+    "name": "bitcoin",
+    "type": "mainnet",
+    "title": "Bitcoin",
+    "website": "https://bitcoin.org/",
+    "twitter": "https://x.com/bitcoincoreorg",
+    "discord": "",
+    "github": "https://github.com/bitcoin/bitcoin",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/bitcoin/btc.svg",
+    "stake": "",
+    "explorer": "https://blockstream.info",
+    "chain_id": "main",
+    "endpoints": {},
+    "contributions": "Bitcoin",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
   }
 ]
