@@ -1270,7 +1270,9 @@
     "stake": "",
     "explorer": "https://blockstream.info",
     "chain_id": "main",
-    "endpoints": {},
+    "endpoints": {
+      "rpc": "https://bitcoin-rpc.publicnode.com"
+    },
     "contributions": "Bitcoin",
     "generatedServices": [],
     "services": [
@@ -1372,6 +1374,52 @@
     "generatedServices": [],
     "services": [
       "installation-guide"
+    ]
+  },
+  {
+    "name": "xrpl",
+    "type": "mainnet",
+    "title": "XRP Ledger",
+    "website": "https://xrpl.org/",
+    "twitter": "https://x.com/RippleXDev",
+    "discord": "https://discord.gg/sfX3ERAMjH",
+    "github": "https://github.com/XRPLF/rippled",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/xrpl/xrp.svg",
+    "stake": "",
+    "explorer": "https://livenet.xrpl.org",
+    "chain_id": "main",
+    "version": "3.3.0",
+    "endpoints": {
+      "rpc": "https://xrplcluster.com",
+      "ws": "wss://xrplcluster.com"
+    },
+    "contributions": "XRPL",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
+  },
+  {
+    "name": "xrpl-testnet",
+    "type": "testnet",
+    "title": "XRP Ledger Testnet",
+    "website": "https://xrpl.org/",
+    "twitter": "https://x.com/RippleXDev",
+    "discord": "https://discord.gg/sfX3ERAMjH",
+    "github": "https://github.com/XRPLF/rippled",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/xrpl/xrp.svg",
+    "stake": "",
+    "explorer": "https://testnet.xrpl.org",
+    "chain_id": "testnet",
+    "version": "3.3.0",
+    "endpoints": {
+      "rpc": "https://s.altnet.rippletest.net:51234",
+      "ws": "wss://s.altnet.rippletest.net:51233"
+    },
+    "contributions": "XRPL",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
     ]
   }
 ]
