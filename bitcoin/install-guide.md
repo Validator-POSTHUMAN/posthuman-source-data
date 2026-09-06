@@ -48,7 +48,7 @@ Never skip verification on Bitcoin Core. Download the binary, the signed
 checksum file and the signatures:
 
 ````bash
-VERSION=28.0
+VERSION=28.1
 cd /tmp
 wget https://bitcoincore.org/bin/bitcoin-core-${VERSION}/bitcoin-${VERSION}-x86_64-linux-gnu.tar.gz
 wget https://bitcoincore.org/bin/bitcoin-core-${VERSION}/SHA256SUMS
@@ -185,6 +185,11 @@ on a different chain than the rest of the network, which matters far more than
 being a few blocks behind.
 
 `connections_in` greater than zero confirms `8333/tcp` is genuinely reachable.
+A node with `connections_in: 0` and healthy `connections_out` is not broken —
+it verifies the chain exactly as well — it simply does not serve peers. That is
+a reasonable choice for a node that exists only as a backend for your own
+services, and a poor one if you meant to contribute capacity to the network.
+Decide which of the two you are running, and set the firewall to match.
 
 ## Upgrade
 
