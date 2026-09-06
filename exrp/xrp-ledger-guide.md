@@ -1,8 +1,14 @@
 # XRP Ledger Validator Installation Guide
 
-> **Not to be confused with XRPL EVM.** This card is the XRP Ledger itself,
-> run with `rippled`. XRPL EVM is a separate Cosmos-based sidechain with its own
-> card, its own binary and its own staking model.
+> **This tab is about a different network from the rest of this card.** The card
+> is XRPL EVM — a Cosmos SDK sidechain running `exrpd`, with delegated
+> proof-of-stake, `xrplevm_1440000-1` and everything else on the other tabs.
+> This tab is the **XRP Ledger itself**, run with `rippled`: a different binary,
+> a different consensus model, and no staking at all.
+>
+> They are published together because operators reach for one while thinking of
+> the other. If you came here for node setup on the chain this card is named
+> after, use the **installation guide** tab instead.
 
 ## Read this first: XRPL validators are not paid
 

@@ -1,8 +1,13 @@
 # XRP Ledger Testnet Node Installation Guide
 
-> **Not to be confused with XRPL EVM testnet.** This card is the XRP Ledger
-> Testnet, run with `rippled`. XRPL EVM testnet is a separate Cosmos-based
-> sidechain with its own card and its own binary.
+> **This tab is about a different network from the rest of this card.** The card
+> is XRPL EVM testnet — a Cosmos SDK sidechain running `exrpd` on
+> `xrplevm_1449000-1`. This tab is the **XRP Ledger Testnet** (Altnet), run with
+> `rippled`: a different binary, a different consensus model, and no staking.
+>
+> They are published together because operators reach for one while thinking of
+> the other. If you came here for node setup on the chain this card is named
+> after, use the **installation guide** tab instead.
 
 ## About the XRPL Testnet
 
