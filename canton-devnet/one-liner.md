@@ -1,14 +1,14 @@
-# Canton Network TestNet One-Liner Installation
+# Canton Network DevNet One-Liner Installation
 
 ## Status: In Development 🚧
 
 The one-liner installation script for a Canton Network validator is currently in development.
 
 For now, please use the detailed installation guide:
-- [TestNet Installation Guide](testnet-installation-guide.md)
+- [DevNet Installation Guide](installation-guide.md)
 
 Guides for the other Canton networks are published on their own cards:
-- Canton Network DevNet
+- Canton Network TestNet
 - Canton Network MainNet
 
 ## Coming Soon

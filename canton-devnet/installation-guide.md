@@ -12,9 +12,13 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: DevNet
-- Version: 0.5.11
+- Version: 0.6.14
 - Migration ID: 1
 - Purpose: Testing and development
+
+> DevNet does not always run the newest release stream. At the time of writing
+> DevNet runs `0.6.14` while TestNet runs `0.7.4`, so choose the version that
+> belongs to the network you are joining rather than the highest one published.
 
 ## Requirements
 

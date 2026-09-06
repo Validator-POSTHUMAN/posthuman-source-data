@@ -855,7 +855,7 @@
   {
     "name": "canton-testnet",
     "type": "testnet",
-    "title": "Canton Network",
+    "title": "Canton Network TestNet",
     "website": "https://www.canton.network/",
     "twitter": "https://twitter.com/CantonNetwork",
     "discord": "https://discord.gg/cantonnetwork",
@@ -863,22 +863,43 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
     "stake": "",
     "explorer": "https://lighthouse.testnet.cantonloop.com/",
-    "version": "DevNet: 0.5.11 | TestNet: 0.5.10",
+    "version": "0.7.4",
+    "endpoints": {
+      "explorer": "https://lighthouse.testnet.cantonloop.com/"
+    },
+    "contributions": "Canton",
+    "generatedServices": [],
+    "services": [
+      "testnet-installation-guide",
+      "one-liner"
+    ]
+  },
+  {
+    "name": "canton-devnet",
+    "type": "testnet",
+    "title": "Canton Network DevNet",
+    "website": "https://www.canton.network/",
+    "twitter": "https://twitter.com/CantonNetwork",
+    "discord": "https://discord.gg/cantonnetwork",
+    "github": "https://github.com/digital-asset/decentralized-canton-sync",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
+    "stake": "",
+    "explorer": "https://lighthouse.devnet.cantonloop.com/",
+    "version": "0.6.14",
     "endpoints": {
       "explorer": "https://lighthouse.devnet.cantonloop.com/"
     },
     "contributions": "Canton",
     "generatedServices": [],
     "services": [
-      "devnet-installation-guide",
-      "testnet-installation-guide",
+      "installation-guide",
       "one-liner"
     ]
   },
   {
     "name": "canton-mainnet",
     "type": "mainnet",
-    "title": "Canton Network",
+    "title": "Canton Network MainNet",
     "website": "https://www.canton.network/",
     "twitter": "https://twitter.com/CantonNetwork",
     "discord": "https://discord.gg/cantonnetwork",
@@ -886,7 +907,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
     "stake": "",
     "explorer": "https://lighthouse.cantonloop.com/",
-    "version": "0.5.9",
+    "version": "0.7.3",
     "endpoints": {
       "explorer": "https://lighthouse.cantonloop.com/"
     },
