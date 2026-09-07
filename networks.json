@@ -1407,7 +1407,9 @@
     "endpoints": {
       "rest": "https://akash.rpc.uquad.org"
     },
-    "generatedServices": [],
+    "generatedServices": [
+      "installation-guide"
+    ],
     "services": []
   },
   {
@@ -1418,7 +1420,9 @@
     "endpoints": {
       "rest": "https://api.dungeongames.io"
     },
-    "generatedServices": [],
+    "generatedServices": [
+      "installation-guide"
+    ],
     "services": []
   },
   {
@@ -1429,7 +1433,9 @@
     "endpoints": {
       "rest": "https://rest.getbze.com"
     },
-    "generatedServices": [],
+    "generatedServices": [
+      "installation-guide"
+    ],
     "services": []
   },
   {
@@ -1440,7 +1446,9 @@
     "endpoints": {
       "rest": "https://babylon-api.polkachu.com"
     },
-    "generatedServices": [],
+    "generatedServices": [
+      "installation-guide"
+    ],
     "services": []
   },
   {
@@ -1451,7 +1459,9 @@
     "endpoints": {
       "rest": "https://rest.union.build"
     },
-    "generatedServices": [],
+    "generatedServices": [
+      "installation-guide"
+    ],
     "services": []
   },
   {
@@ -1462,7 +1472,9 @@
     "endpoints": {
       "rest": "https://lava-api.polkachu.com"
     },
-    "generatedServices": [],
+    "generatedServices": [
+      "installation-guide"
+    ],
     "services": []
   },
   {
@@ -1473,7 +1485,9 @@
     "endpoints": {
       "rest": "https://api.axone.cumulo.com.es"
     },
-    "generatedServices": [],
+    "generatedServices": [
+      "installation-guide"
+    ],
     "services": []
   },
   {
@@ -1482,7 +1496,9 @@
     "title": "Axelar Testnet",
     "chain_id": "axelar-testnet-lisbon-3",
     "endpoints": {},
-    "generatedServices": [],
+    "generatedServices": [
+      "installation-guide"
+    ],
     "services": []
   }
 ]
