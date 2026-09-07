@@ -760,7 +760,8 @@
       "installation-guide",
       "upgrade",
       "links",
-      "snapshots"
+      "snapshots",
+      "xrp-ledger-guide"
     ]
   },
   {
@@ -788,7 +789,8 @@
       "installation-guide",
       "upgrade",
       "links",
-      "snapshots"
+      "snapshots",
+      "xrp-ledger-guide"
     ]
   },
   {
@@ -855,7 +857,7 @@
   {
     "name": "canton-testnet",
     "type": "testnet",
-    "title": "Canton Network",
+    "title": "Canton Network TestNet",
     "website": "https://www.canton.network/",
     "twitter": "https://twitter.com/CantonNetwork",
     "discord": "https://discord.gg/cantonnetwork",
@@ -863,22 +865,43 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
     "stake": "",
     "explorer": "https://lighthouse.testnet.cantonloop.com/",
-    "version": "DevNet: 0.5.11 | TestNet: 0.5.10",
+    "version": "0.7.4",
+    "endpoints": {
+      "explorer": "https://lighthouse.testnet.cantonloop.com/"
+    },
+    "contributions": "Canton",
+    "generatedServices": [],
+    "services": [
+      "testnet-installation-guide",
+      "one-liner"
+    ]
+  },
+  {
+    "name": "canton-devnet",
+    "type": "testnet",
+    "title": "Canton Network DevNet",
+    "website": "https://www.canton.network/",
+    "twitter": "https://twitter.com/CantonNetwork",
+    "discord": "https://discord.gg/cantonnetwork",
+    "github": "https://github.com/digital-asset/decentralized-canton-sync",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
+    "stake": "",
+    "explorer": "https://lighthouse.devnet.cantonloop.com/",
+    "version": "0.6.14",
     "endpoints": {
       "explorer": "https://lighthouse.devnet.cantonloop.com/"
     },
     "contributions": "Canton",
     "generatedServices": [],
     "services": [
-      "devnet-installation-guide",
-      "testnet-installation-guide",
+      "installation-guide",
       "one-liner"
     ]
   },
   {
     "name": "canton-mainnet",
     "type": "mainnet",
-    "title": "Canton Network",
+    "title": "Canton Network MainNet",
     "website": "https://www.canton.network/",
     "twitter": "https://twitter.com/CantonNetwork",
     "discord": "https://discord.gg/cantonnetwork",
@@ -886,7 +909,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
     "stake": "",
     "explorer": "https://lighthouse.cantonloop.com/",
-    "version": "0.5.9",
+    "version": "0.7.3",
     "endpoints": {
       "explorer": "https://lighthouse.cantonloop.com/"
     },
@@ -1178,6 +1201,181 @@
       "about",
       "migration",
       "liquidity-pools"
+    ]
+  },
+  {
+    "name": "avalanche",
+    "type": "mainnet",
+    "title": "Avalanche",
+    "website": "https://www.avax.network/",
+    "twitter": "https://x.com/avax",
+    "discord": "https://discord.gg/avax",
+    "github": "https://github.com/ava-labs/avalanchego",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/avalanche/avax.svg",
+    "stake": "",
+    "explorer": "https://avascan.info",
+    "chain_id": "43114",
+    "endpoints": {},
+    "contributions": "Avalanche",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
+  },
+  {
+    "name": "solana",
+    "type": "mainnet",
+    "title": "Solana",
+    "website": "https://solana.com/",
+    "twitter": "https://x.com/solana",
+    "discord": "https://discord.gg/solana",
+    "github": "https://github.com/anza-xyz/agave",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/solana/sol.svg",
+    "stake": "",
+    "explorer": "https://explorer.solana.com",
+    "chain_id": "mainnet-beta",
+    "endpoints": {},
+    "contributions": "Solana",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
+  },
+  {
+    "name": "mina",
+    "type": "mainnet",
+    "title": "Mina Protocol",
+    "website": "https://minaprotocol.com/",
+    "twitter": "https://x.com/MinaProtocol",
+    "discord": "https://discord.gg/minaprotocol",
+    "github": "https://github.com/MinaProtocol/mina",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/mina/mina-logo.png",
+    "stake": "",
+    "explorer": "https://minascan.io/mainnet",
+    "chain_id": "mainnet",
+    "endpoints": {},
+    "contributions": "Mina",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
+  },
+  {
+    "name": "bitcoin",
+    "type": "mainnet",
+    "title": "Bitcoin",
+    "website": "https://bitcoin.org/",
+    "twitter": "https://x.com/bitcoincoreorg",
+    "discord": "",
+    "github": "https://github.com/bitcoin/bitcoin",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/bitcoin/btc.svg",
+    "stake": "",
+    "explorer": "https://blockstream.info",
+    "chain_id": "main",
+    "endpoints": {
+      "rpc": "https://bitcoin-rpc.publicnode.com"
+    },
+    "contributions": "Bitcoin",
+    "generatedServices": [],
+    "services": [
+      "install-guide",
+      "mining-guide"
+    ],
+    "version": "28.1"
+  },
+  {
+    "name": "avalanche-testnet",
+    "type": "testnet",
+    "title": "Avalanche Fuji",
+    "website": "https://www.avax.network/",
+    "twitter": "https://x.com/avax",
+    "discord": "https://discord.gg/avax",
+    "github": "https://github.com/ava-labs/avalanchego",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/avalanche/avax.svg",
+    "stake": "",
+    "explorer": "https://subnets-test.avax.network",
+    "chain_id": "43113",
+    "endpoints": {},
+    "contributions": "Avalanche",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
+  },
+  {
+    "name": "solana-testnet",
+    "type": "testnet",
+    "title": "Solana Testnet",
+    "website": "https://solana.com/",
+    "twitter": "https://x.com/solana",
+    "discord": "https://discord.gg/solana",
+    "github": "https://github.com/anza-xyz/agave",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/solana/sol.svg",
+    "stake": "",
+    "explorer": "https://explorer.solana.com/?cluster=testnet",
+    "chain_id": "testnet",
+    "endpoints": {},
+    "contributions": "Solana",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
+  },
+  {
+    "name": "near-testnet",
+    "type": "testnet",
+    "title": "NEAR Testnet",
+    "website": "https://near.org/",
+    "twitter": "https://x.com/nearprotocol",
+    "discord": "https://discord.com/invite/nearprotocol",
+    "github": "https://github.com/near/nearcore",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/near/near-logo.svg",
+    "stake": "",
+    "explorer": "https://testnet.nearblocks.io",
+    "chain_id": "testnet",
+    "endpoints": {},
+    "contributions": "Near",
+    "generatedServices": [],
+    "services": [
+      "install-guide"
+    ]
+  },
+  {
+    "name": "starknet-testnet",
+    "type": "testnet",
+    "title": "Starknet Sepolia",
+    "website": "https://www.starknet.io",
+    "twitter": "https://x.com/Starknet",
+    "discord": "https://discord.gg/starknet-community",
+    "github": "https://github.com/eqlabs/pathfinder",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/starknet/strk-logo.svg",
+    "stake": "",
+    "explorer": "https://sepolia.starkscan.co",
+    "chain_id": "SN_SEPOLIA",
+    "endpoints": {},
+    "contributions": "Starknet",
+    "generatedServices": [],
+    "services": [
+      "installation-guide"
+    ]
+  },
+  {
+    "name": "espresso-testnet",
+    "type": "testnet",
+    "title": "Espresso Decaf",
+    "website": "https://www.espressosys.com",
+    "twitter": "https://x.com/EspressoSys",
+    "discord": "https://discord.com/invite/DRfcHRnnBz",
+    "github": "https://github.com/EspressoSystems/espresso-network",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/espresso/espresso-logo.svg",
+    "stake": "",
+    "explorer": "",
+    "chain_id": "912559",
+    "endpoints": {},
+    "contributions": "Espresso",
+    "generatedServices": [],
+    "services": [
+      "installation-guide"
     ]
   }
 ]

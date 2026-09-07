@@ -12,7 +12,7 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: TestNet
-- Version: 0.5.10
+- Version: 0.7.4
 - Migration ID: 1
 - Purpose: Pre-production testing
 
