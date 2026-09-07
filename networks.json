@@ -345,7 +345,8 @@
     "generatedServices": [
       "installation-guide"
     ],
-    "services": []
+    "services": [],
+    "chain_id": "dymension_1100-1"
   },
   {
     "name": "humans",
@@ -410,7 +411,7 @@
       "peers"
     ],
     "services": [
-      "IBC-Relayers",
+      "ibc-relayers",
       "genesis-and-addrbook",
       "snapshot-service",
       "one-liner"
@@ -575,7 +576,7 @@
     "generatedServices": [],
     "services": [
       "installation-guide",
-      "IBC-Relayers"
+      "ibc-relayers"
     ]
   },
   {
@@ -1009,11 +1010,9 @@
     "explorer": "",
     "endpoints": {},
     "contributions": "Espresso",
-    "generatedServices": [
-      "installation-guide"
-    ],
+    "generatedServices": [],
     "services": [
-      "snapshots"
+      "install-guide"
     ]
   },
   {
@@ -1376,5 +1375,114 @@
     "services": [
       "installation-guide"
     ]
+  },
+  {
+    "name": "warden",
+    "type": "mainnet",
+    "daemon_name": "wardend",
+    "website": "https://wardenprotocol.org/",
+    "discord": "https://discord.com/invite/wardenprotocol",
+    "twitter": "https://x.com/wardenprotocol",
+    "codebase": {
+      "git_repo": "https://github.com/warden-protocol/wardenprotocol",
+      "recommended_version": "v0.5.2"
+    },
+    "title": "Warden",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/warden-testnet/warden.svg",
+    "stake": "https://explorer.posthuman.digital/warden/staking/wardenvaloper12de4mzezcvhauqxcszrhkdagwv8lwqs9uvla75",
+    "explorer": "https://explorer.posthuman.digital/warden",
+    "chain_id": "warden_8765-1",
+    "endpoints": {},
+    "contributions": "Warden",
+    "generatedServices": [
+      "installation-guide"
+    ],
+    "services": []
+  },
+  {
+    "name": "akash",
+    "type": "mainnet",
+    "title": "Akash Network",
+    "chain_id": "akashnet-2",
+    "endpoints": {
+      "rest": "https://akash.rpc.uquad.org"
+    },
+    "generatedServices": [],
+    "services": []
+  },
+  {
+    "name": "dungeon",
+    "type": "mainnet",
+    "title": "Dungeon",
+    "chain_id": "dungeon-1",
+    "endpoints": {
+      "rest": "https://api.dungeongames.io"
+    },
+    "generatedServices": [],
+    "services": []
+  },
+  {
+    "name": "beezee",
+    "type": "mainnet",
+    "title": "BeeZee",
+    "chain_id": "beezee-1",
+    "endpoints": {
+      "rest": "https://rest.getbze.com"
+    },
+    "generatedServices": [],
+    "services": []
+  },
+  {
+    "name": "babylon",
+    "type": "mainnet",
+    "title": "Babylon",
+    "chain_id": "bbn-1",
+    "endpoints": {
+      "rest": "https://babylon-api.polkachu.com"
+    },
+    "generatedServices": [],
+    "services": []
+  },
+  {
+    "name": "union",
+    "type": "mainnet",
+    "title": "Union",
+    "chain_id": "union-1",
+    "endpoints": {
+      "rest": "https://rest.union.build"
+    },
+    "generatedServices": [],
+    "services": []
+  },
+  {
+    "name": "lava",
+    "type": "mainnet",
+    "title": "Lava",
+    "chain_id": "lava-mainnet-1",
+    "endpoints": {
+      "rest": "https://lava-api.polkachu.com"
+    },
+    "generatedServices": [],
+    "services": []
+  },
+  {
+    "name": "axone",
+    "type": "mainnet",
+    "title": "Axone",
+    "chain_id": "axone-1",
+    "endpoints": {
+      "rest": "https://api.axone.cumulo.com.es"
+    },
+    "generatedServices": [],
+    "services": []
+  },
+  {
+    "name": "axelar-testnet",
+    "type": "testnet",
+    "title": "Axelar Testnet",
+    "chain_id": "axelar-testnet-lisbon-3",
+    "endpoints": {},
+    "generatedServices": [],
+    "services": []
   }
 ]
