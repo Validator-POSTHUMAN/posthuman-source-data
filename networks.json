@@ -1275,7 +1275,6 @@
     "endpoints": {
       "rpc": "https://bitcoin-rpc.publicnode.com"
     },
-    "contributions": "Bitcoin",
     "generatedServices": [],
     "services": [
       "install-guide",
