@@ -4,7 +4,7 @@ POSTHUMAN provides a pruned Celestia consensus-node snapshot for chain ID
 `celestia`.
 
 - DB backend: PebbleDB
-- Publication cadence: temporarily paused while the snapshot source is the active validator; check `snapshot.json` before use
+- Publication cadence: temporarily paused pending a controlled publication reactivation; check `snapshot.json` before use
 - Archive format: `snapshot-latest.tar.lz4`
 
 ## Snapshot Endpoint
