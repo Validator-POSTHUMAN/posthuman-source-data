@@ -3,7 +3,7 @@
   "network": "Celestia Mocha Testnet",
   "network_id": "celestia-testnet-mocha-4",
   "chain_id": "mocha-4",
-  "updated_at": "2026-09-10T04:45:02Z",
+  "updated_at": "2026-09-13T04:45:02Z",
   "privacy": {
     "raw_validator_ips": "not published",
     "sentry_topology": "not published",
@@ -79,7 +79,7 @@
       "port": "26656",
       "latency_ms": 5,
       "source": "https://raw.githubusercontent.com/cosmos/chain-registry/master/testnets/celestiatestnet3/chain.json",
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "description": "Public seed from cosmos chain-registry.",
       "metadata": {
         "chain_registry_address": "seed.publicnode.com:26656",
@@ -111,7 +111,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://raw.githubusercontent.com/cosmos/chain-registry/master/testnets/celestiatestnet3/chain.json",
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "description": "Public seed from cosmos chain-registry.",
       "metadata": {
         "chain_registry_address": "seed.celestia.testnet.dteam.tech:26656",
@@ -143,7 +143,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://raw.githubusercontent.com/cosmos/chain-registry/master/testnets/celestiatestnet3/chain.json",
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "description": "Public seed from cosmos chain-registry.",
       "metadata": {
         "chain_registry_address": "185.144.99.223:26656",
@@ -175,7 +175,7 @@
       "port": "26656",
       "latency_ms": null,
       "source": "https://raw.githubusercontent.com/cosmos/chain-registry/master/testnets/celestiatestnet3/chain.json",
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "description": "Public seed from cosmos chain-registry.",
       "metadata": {
         "chain_registry_address": "65.108.66.220:26656",
@@ -207,7 +207,7 @@
       "port": "11656",
       "latency_ms": null,
       "source": "https://raw.githubusercontent.com/cosmos/chain-registry/master/testnets/celestiatestnet3/chain.json",
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "description": "Public seed from cosmos chain-registry.",
       "metadata": {
         "chain_registry_address": "celestia-testnet-seed.itrocket.net:11656",
@@ -246,7 +246,7 @@
         "registry_provider": "Allnodes ⚡️ Nodes & Staking",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -275,7 +275,7 @@
         "registry_provider": "Allnodes ⚡️ Nodes & Staking",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -304,7 +304,7 @@
         "registry_provider": "Allnodes ⚡️ Nodes & Staking",
         "ip_family": "IPv6"
       },
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -333,7 +333,7 @@
         "registry_provider": "Allnodes ⚡️ Nodes & Staking",
         "ip_family": "IPv6"
       },
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -362,7 +362,7 @@
         "registry_provider": "Stake&Relax Validator 🦥",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "city": "Helsinki",
       "region": "Uusimaa",
       "country": "Finland",
@@ -378,20 +378,20 @@
       "network_id": "celestia-testnet-mocha-4",
       "type": "rpc",
       "name": "Cumulo RPC",
-      "status": "online",
+      "status": "unknown",
       "endpoint": "https://mocha.celestia.rpc.cumulo.me",
       "ip": "92.204.168.57",
-      "latency_ms": 33,
+      "latency_ms": null,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
-        "chain_id_response": "mocha-4",
-        "rpc_moniker": "Cumulo",
+        "chain_id_response": null,
+        "rpc_moniker": null,
         "dns_host": "mocha.celestia.rpc.cumulo.me",
         "registry_provider": "Cumulo",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "city": "Strasbourg",
       "region": "Grand Est",
       "country": "France",
@@ -410,7 +410,7 @@
       "status": "degraded",
       "endpoint": "https://rpc-celestia-testnet.posthuman.digital",
       "ip": "104.21.81.84",
-      "latency_ms": 164,
+      "latency_ms": 72,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -420,7 +420,7 @@
         "registry_provider": "POSTHUMAN",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -439,7 +439,7 @@
       "status": "degraded",
       "endpoint": "https://rpc-celestia-testnet.posthuman.digital",
       "ip": "172.67.140.232",
-      "latency_ms": 164,
+      "latency_ms": 72,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -449,7 +449,7 @@
         "registry_provider": "POSTHUMAN",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -468,7 +468,7 @@
       "status": "degraded",
       "endpoint": "https://rpc-celestia-testnet.posthuman.digital",
       "ip": "2606:4700:3037::6815:5154",
-      "latency_ms": 164,
+      "latency_ms": 72,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -478,7 +478,7 @@
         "registry_provider": "POSTHUMAN",
         "ip_family": "IPv6"
       },
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -497,7 +497,7 @@
       "status": "degraded",
       "endpoint": "https://rpc-celestia-testnet.posthuman.digital",
       "ip": "2606:4700:3037::ac43:8ce8",
-      "latency_ms": 164,
+      "latency_ms": 72,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -507,7 +507,7 @@
         "registry_provider": "POSTHUMAN",
         "ip_family": "IPv6"
       },
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "city": "Toronto",
       "region": "Ontario",
       "country": "Canada",
@@ -526,7 +526,7 @@
       "status": "degraded",
       "endpoint": "https://rpc.celestia.testnet.dteam.tech:443",
       "ip": "167.88.61.38",
-      "latency_ms": 451,
+      "latency_ms": 442,
       "source": "cosmos chain-registry RPC API list + /status health check",
       "description": "Public Celestia Mocha testnet RPC endpoint. DNS edge locations can represent gateway or CDN edge infrastructure, not validator/sentry topology.",
       "metadata": {
@@ -536,7 +536,7 @@
         "registry_provider": "DTEAM",
         "ip_family": "IPv4"
       },
-      "last_checked_at": "2026-09-10T04:45:02Z",
+      "last_checked_at": "2026-09-13T04:45:02Z",
       "city": "Santa Clara",
       "region": "California",
       "country": "United States",
