@@ -1211,9 +1211,13 @@
     "discord": "https://discord.gg/avax",
     "github": "https://github.com/ava-labs/avalanchego",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/avalanche/avax.svg",
-    "stake": "",
-    "explorer": "https://avascan.info",
+    "stake": "https://core.app/stake",
+    "explorer": "https://explorer.avax.network/",
     "chain_id": "43114",
+    "daemon_name": "avalanchego",
+    "codebase": {
+      "recommended_version": "v1.15.0"
+    },
     "endpoints": {},
     "contributions": "Avalanche",
     "generatedServices": [],
