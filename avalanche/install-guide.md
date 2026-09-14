@@ -1,194 +1,136 @@
-# Avalanche Validator Installation Guide
+# Avalanche Node and Validator Guide
 
-## About Avalanche
+> Reviewed on 2026-09-14. This is a public, copy-only runbook. It does not
+> connect to a host, handle a wallet, sign a staking transaction, or change a
+> running validator.
 
-Avalanche is an EVM-compatible Layer 1 built from three chains that share one
-validator set: the **P-Chain** (staking and coordination), the **X-Chain**
-(asset transfers) and the **C-Chain** (EVM contracts). One `avalanchego`
-process serves all three, plus any subnets you choose to track.
+## 1. Choose an installation path
 
-**Validator facts that shape the setup:**
-- Staking is non-custodial and time-boxed: you lock AVAX for a fixed period
-  with a start and end time, and the stake unlocks when that period ends.
-- Rewards depend on measured **uptime**, and uptime is measured by your peers,
-  not by your own node. A node that cannot accept inbound connections looks
-  offline to the network even while its own health endpoint is happy.
-- There is no slashing for downtime, but a validator below the uptime
-  threshold at the end of its staking period earns nothing for that period.
+Avalanche publishes three current installation paths: the guided installer,
+a pre-built release archive, and a source build. The installer creates the
+node configuration and a system service; a manual installation leaves runtime
+supervision to the operator. Sources: [official installer guide](https://build.avax.network/docs/nodes/run-a-node/using-install-script/installing-avalanche-go), [pre-built binary guide](https://build.avax.network/docs/nodes/run-a-node/using-binary), [source-build guide](https://build.avax.network/docs/nodes/run-a-node/from-source).
 
-## Requirements
+For a reproducible source build, pin the reviewed tag and verify that it
+resolves to the expected commit before building:
 
-| Component | Minimum | Recommended |
-|-----------|---------|-------------|
-| CPU       | 8 cores | 16 cores    |
-| RAM       | 16 GB   | 32 GB       |
-| Disk      | 1 TB SSD| 2 TB NVMe   |
-| Network   | 1 Gbps  | 1 Gbps, static IP |
-| OS        | Ubuntu 22.04 | Ubuntu 24.04 |
+```bash
+set -Eeuo pipefail
+VERSION=v1.15.0
+EXPECTED_COMMIT=70bd6d063b7343fd2cd8217200aaf77b57f19f68
 
-Minimum self-stake to become a primary-network validator is 2,000 AVAX.
+git clone https://github.com/ava-labs/avalanchego.git
+cd avalanchego
+git checkout --detach "$VERSION"
+test "$(git rev-parse HEAD)" = "$EXPECTED_COMMIT"
+./scripts/build.sh
+./build/avalanchego --version
+```
 
-## Update the system
+The build prerequisites and `scripts/build.sh` workflow are documented by
+Avalanche; the v1.15.0 tag and commit are pinned here so a moving branch is not
+treated as a release. Sources: [source-build guide](https://build.avax.network/docs/nodes/run-a-node/from-source), [AvalancheGo v1.15.0](https://github.com/ava-labs/avalanchego/releases/tag/v1.15.0).
 
-````bash
-sudo apt -y update && sudo apt -y upgrade
-sudo apt -y install curl wget jq ufw
-````
+For a pre-built Linux AMD64 installation, use the release asset named
+`avalanchego-linux-amd64-v1.15.0.tar.gz`. Verify its detached signature and
+this reviewed SHA-256 before extracting it:
 
-## Open the P2P port — do this before you start
+```text
+ca5330e6cf8f31106f89929db84c65af7bf2a6a74789bad36a7bbde4cbea7019
+```
 
-This is the single step most often skipped, and it fails in a way that looks
-like success. `avalanchego` will sync, report peers and serve RPC while
-**only** making outbound connections. The network then measures your uptime as
-near zero because no peer can dial you back, and the node's own health check
-eventually reports `primary network validator has no inbound connections`.
+Source: [AvalancheGo v1.15.0 release assets](https://github.com/ava-labs/avalanchego/releases/tag/v1.15.0).
 
-````bash
-sudo ufw allow 22/tcp
-sudo ufw allow 9651/tcp
-sudo ufw enable
-sudo ufw status verbose
-````
+## 2. Network and API baseline
 
-Port `9651/tcp` must be reachable **inbound** from the public internet. Port
-`9650` is the API and must stay local — never expose it.
+AvalancheGo's HTTP API listens on `127.0.0.1:9650` by default, while the
+Primary Network staking port is TCP `9651`. A validator must send and receive
+traffic on its staking port and have a reachable public address. Sources:
+[AvalancheGo configuration flags](https://build.avax.network/docs/nodes/configure/configs-flags), [validator requirements](https://build.avax.network/docs/primary-network/validate/node-validator).
 
-Verify from another machine, not from the node itself:
+Keep a validator's API on loopback:
 
-````bash
-nc -vz <your-public-ip> 9651
-````
-
-If your provider has its own firewall or security group in front of the host,
-open `9651/tcp` there as well.
-
-## Install the node
-
-The official installer builds or fetches the release, creates the systemd unit
-and generates the staking keys on first run:
-
-````bash
-wget -nd -m https://raw.githubusercontent.com/ava-labs/avalanche-docs/master/scripts/avalanchego-installer.sh
-chmod 700 avalanchego-installer.sh
-./avalanchego-installer.sh
-````
-
-Answer the prompts:
-- **RPC access**: private (localhost only).
-- **State sync**: enabled — it brings the C-Chain up in hours rather than days.
-- **Public IP**: your static IP, or dynamic resolution if the host's IP changes.
-
-The installer places the binary under `~/avalanche-node/avalanchego`, the data
-directory at `~/.avalanchego/`, and installs `avalanchego.service`.
-
-## Recommended configuration
-
-Pruned C-Chain with state sync keeps disk growth manageable. Create
-`~/.avalanchego/configs/chains/C/config.json`:
-
-````json
+```json
 {
-  "state-sync-enabled": true,
-  "pruning-enabled": true
+  "http-host": "127.0.0.1",
+  "http-port": 9650
 }
-````
+```
 
-Restart after changing chain configuration:
+A dedicated RPC node may bind the HTTP API to an explicitly reviewed private
+interface and publish it through an authenticated or allowlisted reverse
+proxy. Do not expose a signing validator's API directly to the internet; the
+official installer warns that a public RPC listener must be protected by a
+firewall that admits only known clients. Sources: [configuration flags](https://build.avax.network/docs/nodes/configure/configs-flags), [installer RPC warning](https://build.avax.network/docs/nodes/run-a-node/using-install-script/installing-avalanche-go).
 
-````bash
-sudo systemctl restart avalanchego
-````
+After bootstrap, the local Primary Network endpoints are:
 
-## Start and follow the node
+```text
+P-Chain: http://127.0.0.1:9650/ext/bc/P
+X-Chain: http://127.0.0.1:9650/ext/bc/X
+C-Chain: http://127.0.0.1:9650/ext/bc/C/rpc
+```
 
-````bash
-sudo systemctl enable --now avalanchego
-sudo systemctl status avalanchego
-sudo journalctl -u avalanchego -f -o cat
-````
+Source: [official node guide](https://build.avax.network/docs/nodes/run-a-node/from-source#rpc).
 
-## Verify bootstrap
+## 3. Verify the node before staking
 
-Each chain bootstraps separately. All three must return `true` before you
-register as a validator:
+All three Primary Network chains must be bootstrapped before validator
+registration. `health.health` reports the node's aggregate health, while
+`info.getNodeID` returns the NodeID, BLS public key, and proof of possession
+required for Primary Network validation. Sources: [Info RPC](https://build.avax.network/docs/rpcs/other/info-rpc), [Health RPC](https://build.avax.network/docs/rpcs/other/health-rpc), [validator guide](https://build.avax.network/docs/primary-network/validate/node-validator).
 
-````bash
+```bash
+API=http://127.0.0.1:9650
+
+curl -fsS "$API/ext/health" | jq '{healthy, checks}'
+
 for chain in P X C; do
-  printf '%s: ' "$chain"
-  curl -s -X POST --data "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"info.isBootstrapped\",\"params\":{\"chain\":\"$chain\"}}" \
-    -H 'content-type:application/json' http://127.0.0.1:9650/ext/info | jq -r .result.isBootstrapped
+  curl -fsS -H 'content-type:application/json' \
+    --data "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"info.isBootstrapped\",\"params\":{\"chain\":\"$chain\"}}" \
+    "$API/ext/info" | jq -r --arg chain "$chain" '"\($chain): \(.result.isBootstrapped)"'
 done
-````
 
-Check health and peer count:
+curl -fsS -H 'content-type:application/json' \
+  --data '{"jsonrpc":"2.0","id":1,"method":"info.getNodeID"}' \
+  "$API/ext/info" | jq '.result'
+```
 
-````bash
-curl -s -X POST --data '{"jsonrpc":"2.0","id":1,"method":"health.health"}' \
-  -H 'content-type:application/json' http://127.0.0.1:9650/ext/health | jq .result.healthy
+Verify TCP `9651` from a different network before staking; a successful local
+health check is not proof that peers can dial the node. Source: [validator
+requirements](https://build.avax.network/docs/primary-network/validate/node-validator#requirements).
 
-curl -s -X POST --data '{"jsonrpc":"2.0","id":1,"method":"info.peers"}' \
-  -H 'content-type:application/json' http://127.0.0.1:9650/ext/info | jq -r .result.numPeers
-````
+## 4. Create the validator
 
-## Get your NodeID and BLS identity
+Avalanche's reviewed paths are Core web, `platform-cli`, the Avalanche SDK, or
+the Builder Console. Validator registration is a P-Chain transaction. Source:
+[Turn Node Into Validator](https://build.avax.network/docs/primary-network/validate/node-validator).
 
-Registration needs the NodeID together with the BLS public key and its proof of
-possession. All three come from one call:
+Safe operator sequence:
 
-````bash
-curl -s -X POST --data '{"jsonrpc":"2.0","id":1,"method":"info.getNodeID"}' \
-  -H 'content-type:application/json' http://127.0.0.1:9650/ext/info | jq .result
-````
+1. Complete the P/X/C bootstrap, health, and external TCP `9651` checks above.
+   Source: [validator requirements](https://build.avax.network/docs/primary-network/validate/node-validator#requirements).
+2. Retrieve the NodeID, BLS public key, and proof of possession with
+   `info.getNodeID`. Source: [Info RPC](https://build.avax.network/docs/rpcs/other/info-rpc#infogetnodeid).
+3. Open the official [Core staking interface](https://core.app) or
+   [Builder Console staking tool](https://build.avax.network/console/primary-network/stake), select Primary Network validation, and enter the reviewed node and reward parameters. Source: [official validator guide](https://build.avax.network/docs/primary-network/validate/node-validator#add-a-validator-with-core-extension).
+4. Review the NodeID, stake, duration, delegation fee, reward address, start
+   condition, and wallet network before approving the P-Chain transaction.
+   These parameters cannot be changed and stake cannot be removed early after
+   submission. Source: [official validator warning](https://build.avax.network/docs/primary-network/validate/node-validator#introduction).
+5. Before the start condition, confirm the NodeID through
+   `platform.getPendingValidators`; after validation begins, use
+   `platform.getCurrentValidators`. Source: [official verification steps](https://build.avax.network/docs/primary-network/validate/node-validator#verify-validator-status).
 
-Keep `~/.avalanchego/staking/` safe. It holds `staker.crt`, `staker.key` and
-`signer.key` — these are your node's identity. Back the directory up before any
-migration, and never run two nodes with the same staking keys at the same time.
+Refresh the current stake, duration, fee, and uptime requirements from the
+official validator and Helicon sources immediately before signing. The
+Helicon changes described in the Upgrade section apply at their documented
+activation boundary, not retroactively. Sources: [validator guide](https://build.avax.network/docs/primary-network/validate/node-validator), [v1.15.0 release](https://github.com/ava-labs/avalanchego/releases/tag/v1.15.0).
 
-## Register as a validator
+## 5. Protect identity
 
-Use the Core wallet or the Avalanche CLI to add the validator on the P-Chain
-with your NodeID, BLS key, proof of possession, stake amount, and start and end
-times. Registration is a P-Chain transaction and needs a funded P-Chain
-address; the node itself never holds your funds.
-
-## Verify from outside your own node
-
-Your own node is not a witness to your uptime. After the staking period starts,
-check what the network sees:
-
-````bash
-curl -s -X POST --data '{"jsonrpc":"2.0","id":1,"method":"platform.getCurrentValidators","params":{"nodeIDs":["NodeID-..."]}}' \
-  -H 'content-type:application/json' https://api.avax.network/ext/bc/P | jq '.result.validators[0] | {connected, uptime, validationRewardOwner}'
-````
-
-If `connected` is `false` or the uptime is far below your local reading, the
-cause is almost always inbound reachability on `9651/tcp`, not the node.
-
-You can also confirm on the public explorer:
-`https://avascan.info/staking/validator/<your-node-id>`
-
-## Upgrade
-
-````bash
-./avalanchego-installer.sh --upgrade
-sudo systemctl restart avalanchego
-````
-
-After every upgrade re-check bootstrap, health, version and the external
-`connected` flag before considering the upgrade finished.
-
-## Monitoring
-
-Watch at minimum:
-- `avalanchego.service` active and restart count stable;
-- all three chains bootstrapped;
-- peer count in a normal range for the network;
-- **external** `connected=true` and uptime for your NodeID;
-- free space on the data filesystem;
-- the staking period end date — an expired validator simply stops validating.
-
----
-
-**Created by POSTHUMAN validators**
-
-Website: https://posthuman.digital
+The staking certificate, staking private key, and BLS signer key define the
+node's validator identity. Keep their contents out of terminals, tickets, and
+public repositories, and never run two nodes with the same staking identity.
+Avalanche's backup guide identifies these files as the unique material needed
+to reconstruct a NodeID. Source: [Backup and Restore](https://build.avax.network/docs/nodes/maintain/backup-restore).
