@@ -1218,7 +1218,11 @@
     "contributions": "Avalanche",
     "generatedServices": [],
     "services": [
-      "install-guide"
+      "install-guide",
+      "archive-indexing",
+      "upgrades",
+      "useful-commands",
+      "monitoring"
     ]
   },
   {
