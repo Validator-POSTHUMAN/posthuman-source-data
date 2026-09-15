@@ -941,12 +941,17 @@
     "contributions": "Monad",
     "services": [
       "install-guide",
+      "state-sync",
+      "archive-indexing",
+      "snapshots",
+      "endpoints",
+      "upgrades",
+      "cli-sheet",
       "monitoring",
       "decentralize-map",
       "staking-pools",
       "fastlane-sidecar",
-      "skill",
-      "snapshots"
+      "skill"
     ]
   },
   {
@@ -970,10 +975,15 @@
     "generatedServices": [],
     "services": [
       "install-guide",
+      "state-sync",
+      "archive-indexing",
+      "snapshots",
+      "endpoints",
+      "upgrades",
+      "cli-sheet",
       "monitoring",
       "decentralize-map",
-      "skill",
-      "snapshots"
+      "skill"
     ]
   },
   {
