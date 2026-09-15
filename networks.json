@@ -941,6 +941,7 @@
     "contributions": "Monad",
     "services": [
       "install-guide",
+      "delegation-program",
       "state-sync",
       "archive-indexing",
       "snapshots",
@@ -975,6 +976,7 @@
     "generatedServices": [],
     "services": [
       "install-guide",
+      "delegation-program",
       "state-sync",
       "archive-indexing",
       "snapshots",
