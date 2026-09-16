@@ -277,7 +277,11 @@
     "generatedServices": [],
     "services": [
       "installation-guide",
+      "snapshots",
+      "create-validator",
       "validator-attestation",
+      "monitoring",
+      "security-hardening",
       "skill"
     ]
   },
