@@ -1018,13 +1018,15 @@
     "discord": "https://discord.com/invite/DRfcHRnnBz",
     "github": "https://github.com/EspressoSystems",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/espresso/espresso-logo.svg",
-    "stake": "",
-    "explorer": "",
+    "stake": "https://stake.espresso.network/",
+    "explorer": "https://explorer.main.net.espresso.network",
     "endpoints": {},
     "contributions": "Espresso",
     "generatedServices": [],
     "services": [
-      "install-guide"
+      "install-guide",
+      "monitoring",
+      "security-hardening"
     ]
   },
   {
@@ -1386,14 +1388,14 @@
     "discord": "https://discord.com/invite/DRfcHRnnBz",
     "github": "https://github.com/EspressoSystems/espresso-network",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/espresso/espresso-logo.svg",
-    "stake": "",
-    "explorer": "",
+    "stake": "https://stake.decaf.espresso.network/",
+    "explorer": "https://explorer.decaf.testnet.espresso.network",
     "chain_id": "912559",
     "endpoints": {},
     "contributions": "Espresso",
     "generatedServices": [],
     "services": [
-      "installation-guide"
+      "install-guide"
     ]
   },
   {
