@@ -624,9 +624,7 @@
     "generatedServices": [
       "installation-guide"
     ],
-    "services": [
-      "snapshots"
-    ]
+    "services": []
   },
   {
     "name": "oraichain",
@@ -726,19 +724,13 @@
     "explorer": "https://explorer.posthuman.digital/juno/",
     "chain_id": "juno-1",
     "endpoints": {
-      "rpc": "https://rpc.juno.posthuman.digital",
-      "rest": "https://rest.juno.posthuman.digital",
-      "grpc": "https://grpc.juno.posthuman.digital",
       "peer": "113a11ad866cddddea40ddf9b56fde43f03d7499@135.181.227.236:12656"
     },
     "contributions": "JunoNetwork",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
-    "services": [
-      "snapshots"
-    ]
+    "services": []
   },
   {
     "name": "exrp-testnet",
