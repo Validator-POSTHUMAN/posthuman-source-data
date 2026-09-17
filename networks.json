@@ -150,6 +150,7 @@
     "stake": "",
     "explorer": "",
     "daemon_name": "pchaind",
+    "node_home": "$HOME/.pchain",
     "node_name": "NodeName",
     "codebase": {
       "git_repo": "https://github.com/pushchain/push-chain-node.git",
@@ -344,6 +345,17 @@
     "stake": "https://wallet.keplr.app/chains/dymension?modal=staking&chain=dymension_1100-1&validator_address=dymvaloper1lsjs7pwll7pqm40namkyx3e5qdwg0v0swrshud&step_id=2",
     "explorer": "https://explorer.posthuman.digital/dymension",
     "node_home": "$HOME/.dymension",
+    "daemon_name": "dymd",
+    "codebase": {
+      "git_repo": "https://github.com/dymensionxyz/dymension",
+      "recommended_version": "v4.0.2",
+      "compatible_versions": [
+        "v4.0.2"
+      ],
+      "genesis": {
+        "genesis_url": "https://github.com/dymensionxyz/networks/raw/main/mainnet/dymension/genesis.json"
+      }
+    },
     "endpoints": {},
     "contributions": "Dymension",
     "generatedServices": [
@@ -359,6 +371,19 @@
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/humans/images/heart-dark-mode.svg",
     "stake": "https://explorer.posthuman.digital/humans/staking/humanvaloper1ndnf0cd75nvz56feqy23um3mq22nlhe9ggu0uh",
     "explorer": "https://explorer.posthuman.digital/humans",
+    "chain_id": "humans_1089-1",
+    "daemon_name": "humansd",
+    "node_home": "$HOME/.humansd",
+    "codebase": {
+      "git_repo": "https://github.com/humansdotai/humans",
+      "recommended_version": "v1.0.0",
+      "compatible_versions": [
+        "v1.0.0"
+      ],
+      "genesis": {
+        "genesis_url": "https://raw.githubusercontent.com/humansdotai/mainnets/refs/heads/main/mainnet/1/genesis_1089-1.json"
+      }
+    },
     "endpoints": {
       "rpc": "https://rpc.humans.posthuman.digital",
       "rest": "https://rest.humans.posthuman.digital",
