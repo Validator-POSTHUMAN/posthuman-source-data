@@ -406,6 +406,7 @@
   },
   {
     "name": "atomone-testnet",
+    "node_home": "$HOME/.atomone",
     "type": "testnet",
     "title": "AtomOne",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/atomone/atomone.svg",
@@ -610,6 +611,7 @@
   },
   {
     "name": "warden-testnet",
+    "node_home": "$HOME/.warden",
     "type": "testnet",
     "daemon_name": "wardend",
     "website": "https://wardenprotocol.org/",
@@ -653,6 +655,7 @@
   },
   {
     "name": "oraichain",
+    "node_home": "$HOME/.oraid",
     "type": "mainnet",
     "title": "Oraichain",
     "website": "https://orai.io/",
@@ -721,6 +724,7 @@
   },
   {
     "name": "juno-testnet",
+    "node_home": "$HOME/.juno",
     "type": "testnet",
     "title": "Juno",
     "website": "https://junonetwork.io/",
@@ -1443,6 +1447,7 @@
   },
   {
     "name": "warden",
+    "node_home": "$HOME/.warden",
     "type": "mainnet",
     "daemon_name": "wardend",
     "website": "https://wardenprotocol.org/",
@@ -1479,6 +1484,7 @@
   },
   {
     "name": "dungeon",
+    "node_home": "$HOME/.dungeonchain",
     "type": "mainnet",
     "title": "Dungeon",
     "chain_id": "dungeon-1",
@@ -1557,6 +1563,7 @@
   },
   {
     "name": "axelar-testnet",
+    "node_home": "$HOME/.axelar",
     "type": "testnet",
     "title": "Axelar Testnet",
     "chain_id": "axelar-testnet-lisbon-3",

@@ -53,13 +53,13 @@ Replace `<node_name>` with your moniker.
 ### Download genesis.json
 
 ```
-curl -Ls {{codebase.genesis.genesis_url}} > "$HOME/.{{chain_name}}/config/genesis.json"
+curl -Ls {{codebase.genesis.genesis_url}} > "{{node_home}}/config/genesis.json"
 ```
 
 ### Download addrbook.json
 
 ```
-curl -Ls {{addrbookUrl}} > "$HOME/.{{chain_name}}/config/addrbook.json"
+curl -Ls {{addrbookUrl}} > "{{node_home}}/config/addrbook.json"
 ```
 
 ### Create systemd service
