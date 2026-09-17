@@ -236,7 +236,7 @@ The node itself does not stake. On NEAR, stake lives in a **staking-pool smart
 contract** deployed through the `poolv1.near` factory, and the node signs for
 that pool through `validator_key.json`.
 
-Follow the **Validator signaling** guide for the full sequence: create the
+Follow the **Create validator** guide for the full sequence: create the
 account and access keys, deploy the pool, write `validator_key.json`, restart
 `neard`, deposit stake, then `ping` every epoch.
 
@@ -246,7 +246,7 @@ blast radii.
 
 ## Related guides
 
-- **Validator signaling** — pool creation, `ping`, proposals, commission
+- **Create validator** — pool creation, `ping`, proposals, commission
 - **Keys & custody** — `validator_key.json`, `node_key.json`, access keys
 - **Security** — host hardening, RPC exposure, backups
 - **Monitoring** — Prometheus exporters, endorsement ratio, alerting

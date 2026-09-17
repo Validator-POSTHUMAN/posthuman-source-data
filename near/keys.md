@@ -110,6 +110,6 @@ re-synced; the key files are not.
 
 ## Related guides
 
-- **Validator signaling** — key rotation procedure on the pool contract
+- **Create validator** — key rotation procedure on the pool contract
 - **Security** — host hardening and RPC exposure
 - **Installation guide** — where these files are created

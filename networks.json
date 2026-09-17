@@ -1001,7 +1001,7 @@
     "generatedServices": [],
     "services": [
       "install-guide",
-      "validator-signaling",
+      "create-validator",
       "keys",
       "security-hardening",
       "state-sync",

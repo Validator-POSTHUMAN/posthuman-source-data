@@ -256,7 +256,7 @@ always the host.
 ## Related guides
 
 The mainnet guides apply unchanged except for the factory and network name:
-**Installation guide**, **Validator signaling**, **Keys & custody**,
+**Installation guide**, **Create validator**, **Keys & custody**,
 **Security**, **Monitoring**, **State sync**, **Upgrades**.
 
 ---

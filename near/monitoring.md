@@ -252,5 +252,5 @@ re-proposing, and nothing in the node's own metrics will tell you.
 ## Related guides
 
 - **Security** — RPC exposure and the scrape path
-- **Validator signaling** — the `ping` timer this section refers to
+- **Create validator** — the `ping` timer this section refers to
 - **Endpoints** — public RPC endpoints used for cross-checks
