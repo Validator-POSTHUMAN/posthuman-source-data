@@ -3,9 +3,13 @@
 
 The map intentionally includes only public infrastructure:
 - official Monad bootstrap peers from the public node.toml;
+- approximate validator locations and ASN data from a public registry;
 - public JSON-RPC endpoints and their current DNS edge IPs.
 
-Private validator, sentry, and internal topology addresses must not be added.
+Registry-derived validator points must not include validator IPs, P2P endpoints,
+auth addresses, or secp keys. Explicit operator-approved public validator
+endpoints may be configured separately. Private sentry and internal topology
+addresses must not be added.
 Observed peers are imported only from public Monad peer-discovery records and
 filtered to globally routable addresses.
 """
@@ -16,6 +20,7 @@ import argparse
 import datetime as dt
 import ipaddress
 import json
+import math
 import socket
 import subprocess
 import time
@@ -35,6 +40,8 @@ NETWORKS: dict[str, dict[str, Any]] = {
         "network_id": "monad-mainnet",
         "chain_id": "143",
         "config_url": "https://bucket.monadinfra.com/config/mainnet/latest/node.toml",
+        "validator_registry_url": "https://mon.stake-manager.net/monad-validators.json",
+        "validator_registry_min_count": 196,
         "observed_peer_sources": [
             {
                 "label": "POSTHUMAN mainnet node public peer-discovery cache",
@@ -48,13 +55,6 @@ NETWORKS: dict[str, dict[str, Any]] = {
                 "ssh_host": "root@46.166.169.82",
                 "unit": "monad-bft",
                 "lines": 50000,
-            },
-        ],
-        "validator_endpoints": [
-            {
-                "name": "POSTHUMAN Monad mainnet validator",
-                "endpoint": "46.166.169.82:8000",
-                "source": "POSTHUMAN public validator host",
             },
         ],
         "rpc_endpoints": [
@@ -322,6 +322,149 @@ def parse_peer_blocks(toml_text: str) -> list[dict[str, str]]:
     return peers
 
 
+def parse_validator_registry(
+    payload: str,
+    source_url: str,
+    minimum_count: int,
+) -> tuple[list[dict[str, Any]], str]:
+    try:
+        document = json.loads(payload)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"invalid validator registry JSON from {source_url}") from exc
+
+    if not isinstance(document, dict) or not isinstance(document.get("validators"), list):
+        raise ValueError(f"validator registry from {source_url} has no validators array")
+
+    rows = document["validators"]
+    if len(rows) < minimum_count:
+        raise ValueError(
+            f"validator registry from {source_url} has {len(rows)} rows; "
+            f"minimum expected is {minimum_count}"
+        )
+
+    source_updated = document.get("updated")
+    if not isinstance(source_updated, str) or not source_updated.strip():
+        raise ValueError(f"validator registry from {source_url} has no update timestamp")
+
+    validators: list[dict[str, Any]] = []
+    seen_ids: set[int] = set()
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            raise ValueError(f"validator registry row {index} is not an object")
+
+        validator_id = row.get("id")
+        if isinstance(validator_id, bool) or not isinstance(validator_id, int) or validator_id <= 0:
+            raise ValueError(f"validator registry row {index} has invalid id")
+        if validator_id in seen_ids:
+            raise ValueError(f"validator registry has duplicate validator id {validator_id}")
+        seen_ids.add(validator_id)
+
+        name = row.get("name")
+        if not isinstance(name, str) or not name.strip():
+            raise ValueError(f"validator {validator_id} has no name")
+
+        raw_lat = row.get("lat")
+        raw_lon = row.get("lon")
+        if isinstance(raw_lat, bool) or isinstance(raw_lon, bool):
+            raise ValueError(f"validator {validator_id} has invalid coordinates")
+        try:
+            lat = float(raw_lat)
+            lon = float(raw_lon)
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"validator {validator_id} has invalid coordinates") from exc
+        if not math.isfinite(lat) or not math.isfinite(lon) or not -90 <= lat <= 90 or not -180 <= lon <= 180:
+            raise ValueError(f"validator {validator_id} has out-of-range coordinates")
+
+        country_code = row.get("geo_country")
+        if not isinstance(country_code, str) or not country_code.strip():
+            raise ValueError(f"validator {validator_id} has no country code")
+
+        provider = row.get("asn_org")
+        if not isinstance(provider, str) or not provider.strip():
+            raise ValueError(f"validator {validator_id} has no ASN provider")
+        asn_number = row.get("asn")
+        if isinstance(asn_number, bool) or not isinstance(asn_number, int) or asn_number <= 0:
+            raise ValueError(f"validator {validator_id} has invalid ASN")
+
+        if not isinstance(row.get("active"), bool) or not isinstance(row.get("decommissioned"), bool):
+            raise ValueError(f"validator {validator_id} has invalid lifecycle flags")
+
+        validators.append(
+            {
+                **row,
+                "id": validator_id,
+                "name": name.strip(),
+                "lat": lat,
+                "lon": lon,
+                "geo_country": country_code.strip().upper(),
+                "asn_org": provider.strip(),
+                "asn": asn_number,
+            }
+        )
+
+    return sorted(validators, key=lambda row: row["id"]), source_updated
+
+
+def build_validator_registry_points(
+    cfg: dict[str, Any],
+    now: str,
+) -> list[dict[str, Any]]:
+    source_url = cfg.get("validator_registry_url")
+    if not source_url:
+        return []
+
+    rows, source_updated = parse_validator_registry(
+        fetch_text(source_url),
+        source_url,
+        int(cfg.get("validator_registry_min_count", 1)),
+    )
+    points: list[dict[str, Any]] = []
+    for row in rows:
+        active = row.get("active") is True and row.get("decommissioned") is not True
+        provider = row.get("asn_org") if isinstance(row.get("asn_org"), str) else ""
+        asn_number = row.get("asn")
+        asn = f"AS{asn_number} {provider}" if isinstance(asn_number, int) else provider
+        website = row.get("website") if isinstance(row.get("website"), str) else ""
+
+        metadata: dict[str, str | int | float | bool | None] = {
+            "validator_id": row["id"],
+            "rank": row.get("rank") if isinstance(row.get("rank"), int) else None,
+            "active": active,
+            "commission_percent": row.get("commission")
+            if isinstance(row.get("commission"), (int, float)) and not isinstance(row.get("commission"), bool)
+            else None,
+            "stake_mon": row.get("stake")
+            if isinstance(row.get("stake"), (int, float)) and not isinstance(row.get("stake"), bool)
+            else None,
+            "website": website or None,
+            "registry_updated_at": source_updated,
+        }
+        points.append(
+            {
+                "id": f"{cfg['network_id']}-validator-{row['id']}",
+                "network_id": cfg["network_id"],
+                "type": "validator",
+                "name": row["name"],
+                "status": "active" if active else "inactive",
+                "city": row.get("geo_city") or "",
+                "country": row["geo_country"],
+                "country_code": row["geo_country"],
+                "lat": row["lat"],
+                "lon": row["lon"],
+                "provider": provider,
+                "asn": asn,
+                "source": source_url,
+                "last_checked_at": now,
+                "description": (
+                    "Monad validator from the public stake-manager registry. "
+                    "Location and ASN are registry-provided and may be approximate."
+                ),
+                "metadata": metadata,
+            }
+        )
+    return points
+
+
 def fetch_observed_peer_source(source: dict[str, str]) -> str:
     cmd = [
         "ssh",
@@ -487,8 +630,14 @@ def apply_geo(point: dict[str, Any], ip: str, geo_cache: dict[str, dict[str, Any
     )
 
 
-def source_entries(config_url: str, rpc_endpoints: list[dict[str, Any]]) -> list[dict[str, str]]:
+def source_entries(
+    config_url: str,
+    rpc_endpoints: list[dict[str, Any]],
+    validator_registry_url: str | None = None,
+) -> list[dict[str, str]]:
     entries = [{"label": "Official Monad node config", "url": config_url}]
+    if validator_registry_url:
+        entries.append({"label": "Monad validator registry", "url": validator_registry_url})
     for endpoint in rpc_endpoints:
         entries.append({"label": endpoint["name"].replace(" edge", ""), "url": endpoint["url"]})
     entries.append({"label": "GeoIP lookup", "url": "http://ip-api.com/"})
@@ -509,6 +658,64 @@ def check_peer_latencies(peers: list[dict[str, Any]]) -> dict[str, int | None]:
             except Exception:
                 result[endpoint] = None
     return result
+
+
+def validator_registry_ids(data: dict[str, Any], source_url: str) -> set[int]:
+    validator_ids: set[int] = set()
+    for point in data.get("points", []):
+        if not isinstance(point, dict) or point.get("type") != "validator":
+            continue
+        if point.get("source") != source_url:
+            continue
+        metadata = point.get("metadata")
+        validator_id = metadata.get("validator_id") if isinstance(metadata, dict) else None
+        if isinstance(validator_id, bool) or not isinstance(validator_id, int):
+            raise ValueError("existing registry validator point has invalid validator_id")
+        if validator_id in validator_ids:
+            raise ValueError(f"existing map has duplicate registry validator id {validator_id}")
+        validator_ids.add(validator_id)
+    return validator_ids
+
+
+def validate_validator_registry_continuity(
+    path: Path,
+    data: dict[str, Any],
+    cfg: dict[str, Any],
+) -> None:
+    source_url = cfg.get("validator_registry_url")
+    if not source_url or not path.exists():
+        return
+
+    try:
+        previous = json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"cannot validate existing validator registry continuity in {path}") from exc
+    if not isinstance(previous, dict):
+        raise ValueError(f"existing map {path} is not a JSON object")
+
+    previous_ids = validator_registry_ids(previous, source_url)
+    if not previous_ids:
+        return
+    current_ids = validator_registry_ids(data, source_url)
+    missing_ids = sorted(previous_ids - current_ids)
+    if missing_ids:
+        preview = ", ".join(str(validator_id) for validator_id in missing_ids[:10])
+        suffix = "..." if len(missing_ids) > 10 else ""
+        raise ValueError(
+            f"validator registry continuity check rejected {len(missing_ids)} omitted ids: "
+            f"{preview}{suffix}"
+        )
+
+
+def validator_privacy_description(cfg: dict[str, Any]) -> str:
+    if cfg.get("validator_registry_url") and not cfg.get("validator_endpoints"):
+        return (
+            "registry markers use approximate locations and ASN data; "
+            "validator IPs and P2P endpoints are not published"
+        )
+    if cfg.get("validator_endpoints"):
+        return "operator-approved public validator P2P endpoints are published"
+    return "no validator markers are published"
 
 
 def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[str, Any]]) -> dict[str, Any]:
@@ -543,6 +750,9 @@ def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[
         apply_geo(point, host, geo_cache)
         points.append(point)
 
+    validator_registry_points = build_validator_registry_points(cfg, now)
+    points.extend(validator_registry_points)
+
     rpc_count = 0
     for endpoint in cfg["rpc_endpoints"]:
         status, latency, chain_id_response = rpc_health(endpoint["url"], endpoint["expected_chain_id"])
@@ -575,7 +785,7 @@ def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[
             apply_geo(point, ip, geo_cache)
             points.append(point)
 
-    validator_count = 0
+    validator_count = len(validator_registry_points)
     for validator in cfg.get("validator_endpoints", []):
         try:
             host, port = split_endpoint(validator["endpoint"])
@@ -728,15 +938,20 @@ def build_network_map(name: str, cfg: dict[str, Any], geo_cache: dict[str, dict[
         "chain_id": cfg["chain_id"],
         "updated_at": now,
         "privacy": {
-            "raw_validator_ips": "not published",
             "sentry_topology": "not published",
             "public_endpoints": "RPC and official bootstrap peers",
-            "validator_endpoints": "operator-approved public validator p2p endpoints",
+            "validator_points": validator_privacy_description(cfg),
+            "validator_registry": "public stake-manager registry when configured",
+            "validator_endpoints": "operator-approved public validator p2p endpoints when configured",
             "observed_public_peers": "globally routable peers from Monad peer-discovery cache",
             "log_observed_public_peers": "globally routable endpoints extracted from live Monad logs",
-            "note": "The map uses public RPC DNS, official Monad bootstrap peers, operator-approved public validator endpoints, globally routable observed peer-discovery records, and globally routable live log endpoints. Non-global addresses are intentionally excluded.",
+            "note": "The map uses only the public sources configured for this network. Private sentry topology and non-global peer addresses are excluded.",
         },
-        "sources": source_entries(cfg["config_url"], cfg["rpc_endpoints"]),
+        "sources": source_entries(
+            cfg["config_url"],
+            cfg["rpc_endpoints"],
+            cfg.get("validator_registry_url"),
+        ),
         "summary": {
             "points": len(points),
             "bootstrap_peers": len(bootstrap_peers),
@@ -762,6 +977,7 @@ def main() -> int:
     for name in names:
         data = build_network_map(name, NETWORKS[name], geo_cache)
         path = ROOT / name / "decentralize-map.json"
+        validate_validator_registry_continuity(path, data, NETWORKS[name])
         rendered = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
         if args.check:
             print(
