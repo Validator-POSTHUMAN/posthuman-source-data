@@ -1,11 +1,49 @@
 # TheGraph-Indexer-Setup
 ## A guide to installing from scratch, how to install an indexer on the main network
 
+> ## Read first: Graph Horizon is live
+>
+> The protocol runs on **Arbitrum One**, and Graph Horizon changed how stake,
+> allocations and payments work. The steps below still describe the correct
+> installation flow, but keep these current rules in mind:
+>
+> - **Stake, then provision.** Staking GRT is no longer enough. Stake must be
+>   explicitly assigned to a data service — `SubgraphService` — before it can
+>   back allocations. Registration happens with the data service itself, not
+>   with the old ServiceRegistry contract.
+> - **GraphTally (TAPv2) only.** The gateway serves queries exclusively against
+>   TAPv2 receipts. `indexer-service-rs` and `indexer-tap-agent` must be
+>   **v2.0.0 or later** with Horizon enabled. An un-migrated stack receives no
+>   queries at all.
+> - **Allocations can stay open.** Rewards are collected by submitting POIs
+>   periodically; closing is no longer required. But a POI must land within
+>   `maxPOIStaleness` (**28 days**) or any network participant can force-close
+>   the allocation, and the uncollected rewards are lost with no retroactive
+>   recovery. Current agent versions still recycle allocations on roughly the
+>   old cycle.
+> - **Rewards also require eligibility.** Under GIP-0079 an Indexer must serve
+>   qualifying queries on at least 5 days in a rolling 28-day window. See the
+>   [Monitoring tab](https://nodes.posthuman.digital/chains/the-graph?tab=monitoring).
+> - **Reward and query fee cuts are set per data service**, not as global
+>   staking parameters.
+>
+> Horizon overview: <https://thegraph.com/docs/en/graph-horizon/overview/> ·
+> migration guide: <https://thegraph.com/docs/en/graph-horizon/migration-guide/>
+>
+> Companion tabs:
+> [Delegation](https://nodes.posthuman.digital/chains/the-graph?tab=delegation) ·
+> [Monitoring](https://nodes.posthuman.digital/chains/the-graph?tab=monitoring) ·
+> [Security hardening](https://nodes.posthuman.digital/chains/the-graph?tab=security-hardening) ·
+> [Tooling](https://nodes.posthuman.digital/chains/the-graph?tab=tooling) ·
+> [Skill](https://nodes.posthuman.digital/chains/the-graph?tab=skill)
+
 ## Pre-requisites 
 1) Dedicated server (16 Core, RAM 128Gb, 2Tb nvme)
 2) Domain like https://web3validator.info/
-3) 100,000 GRT for indexing
+3) 100,000 GRT for indexing (the current minimum Indexer stake)
 4) A 12-word mnemonic phrase in order for it to work
+5) An **Arbitrum One archive RPC supporting EIP-1898** — not part of this stack
+6) ETH on Arbitrum One in the operator wallet, for gas
 ### 1)Server
 
 Server must be with minimum 12-core proccessor and 64gb RAM , good example is AX101 in hetzner you can check the [step-by-step guide here](https://www.indivar.com/blog/setup-new-dedicated-hetzner-server/)
@@ -130,7 +168,7 @@ It should looks like :
 - `AGENT_DB_NAME` - the name of the database used by the Indexer agent/service nodes.
 - `CHAIN_0_NAME` - the name of the network that you want to index
 - `CHAIN_0_RPC` - your RPCs (archive nodes) used by the index nodes.
-- `TXN_RPC` - your Goerli ETH RPC used by Indexer agent/service nodes. This can be a fast/full/archive node, up to you! Please note that using Erigon as the TXN_RPC has proven unreliable by some indexers.
+- `TXN_RPC` - the **Arbitrum One** RPC used by the Indexer agent/service to submit protocol transactions. This can be a fast/full/archive node, up to you! Please note that using Erigon as the TXN_RPC has proven unreliable by some indexers. (Older copies of this guide named a Goerli endpoint here — that is obsolete; the protocol lives on Arbitrum One.)
 - `OPERATOR_SEED_PHRASE` - the 12/15 word mnemonic that you generated earlier. Will be used by the Agent/Service to send transactions (open/close allocations, etc)
 - `STAKING_WALLET_ADDRESS` - the address (0x...) that you staked your GRT with, ideally living on an entirely different mnemonic phrase than your Operator Wallet.
 - `GEO_COORDINATES` of your server - you can search for an ip location website and check your server exact coordinates.
@@ -237,3 +275,62 @@ the CLI flags and environment variables that can be used to change the ports.
 | Port | Purpose                                      | Routes | CLI argument                | Environment variable                    |
 | ---- | -------------------------------------------- | ------ | --------------------------- | --------------------------------------- |
 | 8000 | Indexer management API (for `graph indexer`) | `/`    | `--indexer-management-port` | `INDEXER_AGENT_INDEXER_MANAGEMENT_PORT` |
+
+---
+
+## Verify the indexer is actually on the network
+
+Containers running is not the same as earning. Check all four layers.
+
+### 1. Stack
+
+```bash
+docker ps                     # no container in "Restarting"
+./logs indexer-agent          # no repeating error class
+```
+
+### 2. Deployments
+
+```bash
+docker exec cli graph indexer status --network arbitrum-one
+```
+
+Every deployment `synced` and `healthy`, all endpoint checks `up`.
+
+### 3. Protocol state
+
+```bash
+docker exec cli graph indexer allocations get all --network arbitrum-one
+docker exec cli graph indexer rules get all --network arbitrum-one
+docker exec cli graph indexer actions get all --network arbitrum-one
+```
+
+Allocations match the rules, and no action is stuck in `queued`, `approved`
+or `pending`.
+
+### 4. From outside the host
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' https://<your-index-host>/
+curl -s https://<your-index-host>/healthz
+curl -s https://<your-index-host>/status
+```
+
+The registered endpoint must answer publicly — the gateway reaches you through
+DNS, TLS and your proxy, none of which the local stack can verify for you.
+
+Then confirm rewards eligibility is being earned, not just assumed:
+[Monitoring tab](https://nodes.posthuman.digital/chains/the-graph?tab=monitoring).
+
+---
+
+## Common first-run mistakes
+
+| Symptom | Cause |
+| --- | --- |
+| No queries arrive at all | stack older than indexer-service-rs / tap-agent v2.0.0, or GraphTally sender not allow-listed |
+| Paid queries rejected with HTTP 400 | `max_receipt_value_grt` set below the gateway's current receipt size |
+| Allocation opens, then nothing happens | operator wallet out of ETH on Arbitrum One |
+| Deployment stuck, chain head flat | archive RPC degraded — check it before touching graph-node |
+| Rewards zero despite healthy deployments | POI went stale past 28 days, or REO eligibility not met |
+| Page green locally, offline for the gateway | DNS record, TLS expiry or proxy — verify from another host |

@@ -472,19 +472,23 @@
     "name": "the-graph",
     "type": "mainnet",
     "title": "TheGraph",
+    "website": "https://thegraph.com",
+    "twitter": "https://x.com/graphprotocol",
+    "discord": "https://discord.gg/graphprotocol",
+    "github": "https://github.com/graphprotocol",
     "icon": "https://raw.githubusercontent.com/web3validator/TheGraph-Indexer-Setup/main/the-graph-grt-logo.svg",
-    "stake": "https://thegraph.com/explorer/profile/0x047739cb42c227489cccd11aa5f28aa4eb46d2cf?view=Indexing&chain=arbitrum-one",
+    "stake": "https://thegraph.com/explorer/profile/0x0874e792462406dc12EE96b75E52A3BdbBA3a123?view=Indexing&chain=arbitrum-one",
     "explorer": "https://thegraph.com/explorer",
-    "endpoints": {
-      "rpc": "",
-      "rest": "",
-      "json_rpc": "",
-      "peer": ""
-    },
-    "chain_id": "ethereum",
+    "chain_id": "arbitrum-one",
+    "endpoints": {},
     "generatedServices": [],
     "services": [
-      "installation-guide"
+      "installation-guide",
+      "delegation",
+      "monitoring",
+      "security-hardening",
+      "tooling",
+      "skill"
     ]
   },
   {
