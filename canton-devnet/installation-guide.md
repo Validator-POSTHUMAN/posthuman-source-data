@@ -12,13 +12,18 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: DevNet
-- Version: 0.6.14
+- Version: 0.8.1 (verified 2026-09-18)
 - Migration ID: 1
 - Purpose: Testing and development
 
-> DevNet does not always run the newest release stream. At the time of writing
-> DevNet runs `0.6.14` while TestNet runs `0.7.4`, so choose the version that
-> belongs to the network you are joining rather than the highest one published.
+> Each network runs its own release stream and they do not move together. On
+> 2026-09-18 DevNet ran `0.8.1`, TestNet `0.8.0` and MainNet `0.7.5`, so
+> "highest version wins" is the wrong rule — choose the version that belongs to
+> the network you are joining:
+> `curl -s https://docs.dev.global.canton.network.sync.global/info | jq .`
+>
+> DevNet is reset roughly every three months. A change in `migration_id` is a
+> **network reset**, not an upgrade — see the Backup & Recovery tab.
 
 ## Requirements
 
@@ -45,14 +50,13 @@ Canton Network is the first public permissionless blockchain platform designed f
 # Install dependencies
 sudo apt update && sudo apt install -y curl jq docker.io docker-compose
 
-# Check current network version (Lighthouse API — same as explorer)
-curl -s "https://lighthouse.devnet.cantonloop.com/api/stats" | jq '{version, migration}'
+# Check the current network version and migration ID.
+# Public and keyless — works before your node exists.
+# Do NOT use lighthouse.devnet.cantonloop.com/api/stats: it now returns 401.
+curl -s https://docs.dev.global.canton.network.sync.global/info | jq .
 
-# Or via /info endpoint (may show target version ahead of actual)
-curl -s https://docs.dev.global.canton.network.sync.global/info | jq '.'
-
-# Create directory
-VERSION="0.5.11"
+# Create directory — use the version the command above reported
+VERSION="0.8.1"
 MIGRATION_ID="1"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
@@ -106,17 +110,32 @@ docker-compose --version
 #### 2. Check Network Status & IP
 
 ```bash
-# Check current network version (Lighthouse API — same as explorer)
-curl -s "https://lighthouse.devnet.cantonloop.com/api/stats" | jq '{version, migration}'
-
-# Or via /info endpoint
-curl -s https://docs.dev.global.canton.network.sync.global/info | jq '.'
+curl -s https://docs.dev.global.canton.network.sync.global/info | jq .
 ```
+
+```json
+{"network":"devnet","sv":{"migration_id":1,"serial_id":5,"version":"0.8.1"},
+ "synchronizer":{"current":{"chain_id_suffix":"0","serial_id":5,"version":"0.8.1"},
+ "legacy":null,"successor":null}}
+```
+
+Note `sv.version` and `sv.migration_id` — you need both below.
+
+DevNet Scan is public, so you can also confirm the network is reachable before
+installing anything:
+
+```bash
+curl -s https://scan.sv-1.dev.global.canton.network.digitalasset.com/api/scan/version
+```
+
+> **Do not use `https://lighthouse.devnet.cantonloop.com/api/stats` for this.**
+> It now returns `401 API key required`. Any guide or script still polling it
+> for the network version is broken.
 
 #### 3. Download Canton Node
 
 ```bash
-VERSION="0.5.11"
+VERSION="0.8.1"
 mkdir -p ~/.canton/${VERSION}
 cd ~/.canton/${VERSION}
 
@@ -244,11 +263,18 @@ docker logs splice-validator-validator-1 --tail 100
 
 ### Prometheus Metrics
 
-Canton exports metrics on port **10013** (Prometheus format):
+Canton exports metrics on port **10013** (Prometheus format). The validator
+image ships `wget`, not `curl` — a `curl` exec fails with `executable file not
+found in $PATH` and returns an empty body, which reads exactly like a dead
+metrics port:
 
 ```bash
-docker exec splice-validator-validator-1 curl -s http://localhost:10013/metrics | head -20
+docker exec splice-validator-validator-1 \
+  wget -q -O - --timeout=10 http://localhost:10013/metrics | head -20
 ```
+
+The Monitoring tab covers which of those metrics actually indicate health, and
+which obvious alert rule silently never fires.
 
 ### Alerting
 
@@ -286,14 +312,24 @@ chmod +x /root/canton_devnet_monitor.sh
 
 ### Firewall Configuration
 
+A Canton validator has **no external ingress requirements** — Splice states it
+does not need to whitelist any SVs or validators inbound. It needs egress on
+443 to the Super Validators, which is usually allowed already. So the correct
+policy admits nothing from the internet except your own SSH:
+
 ```bash
-# Allow only necessary ports
-ufw allow 22/tcp      # SSH
-ufw allow 443/tcp     # HTTPS
-# Allow Docker network internal communication
-ufw insert 1 allow out to 172.19.0.0/16
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow 22/tcp                          # restrict to your admin CIDR
+ufw insert 1 allow out to 172.19.0.0/16   # Docker internal, if needed locally
 ufw enable
 ```
+
+Do not open 443 inbound. Nothing on a validator listens on it.
+
+DevNet hosts usually run other services too. Audit the whole box, not just the
+Canton stack — see the Security Hardening tab, including why a published Docker
+port bypasses ufw entirely.
 
 ### Restrict Web UI Access
 

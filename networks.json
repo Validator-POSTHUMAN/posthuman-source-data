@@ -895,7 +895,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
     "stake": "",
     "explorer": "https://lighthouse.testnet.cantonloop.com/",
-    "version": "0.7.4",
+    "version": "0.8.0",
     "endpoints": {
       "explorer": "https://lighthouse.testnet.cantonloop.com/"
     },
@@ -903,7 +903,12 @@
     "generatedServices": [],
     "services": [
       "testnet-installation-guide",
-      "one-liner"
+      "one-liner",
+      "monitoring",
+      "security-hardening",
+      "backup-recovery",
+      "tooling",
+      "skill"
     ]
   },
   {
@@ -917,7 +922,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
     "stake": "",
     "explorer": "https://lighthouse.devnet.cantonloop.com/",
-    "version": "0.6.14",
+    "version": "0.8.1",
     "endpoints": {
       "explorer": "https://lighthouse.devnet.cantonloop.com/"
     },
@@ -925,7 +930,12 @@
     "generatedServices": [],
     "services": [
       "installation-guide",
-      "one-liner"
+      "one-liner",
+      "monitoring",
+      "security-hardening",
+      "backup-recovery",
+      "tooling",
+      "skill"
     ]
   },
   {
@@ -939,7 +949,7 @@
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/logos/canton.svg",
     "stake": "",
     "explorer": "https://lighthouse.cantonloop.com/",
-    "version": "0.7.3",
+    "version": "0.7.5",
     "endpoints": {
       "explorer": "https://lighthouse.cantonloop.com/"
     },
@@ -947,7 +957,12 @@
     "generatedServices": [],
     "services": [
       "mainnet-installation-guide",
-      "one-liner"
+      "one-liner",
+      "monitoring",
+      "security-hardening",
+      "backup-recovery",
+      "tooling",
+      "skill"
     ]
   },
   {

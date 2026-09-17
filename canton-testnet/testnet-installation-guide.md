@@ -12,9 +12,16 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: TestNet
-- Version: 0.7.4
+- Version: 0.8.0 (verified 2026-09-18)
 - Migration ID: 1
 - Purpose: Pre-production testing
+
+> Never trust a version number written in a guide, including this one. Read it
+> from the network before installing or upgrading:
+> `curl -s https://docs.test.global.canton.network.sync.global/info | jq .`
+>
+> TestNet is reset roughly every three months. A change in `migration_id` is a
+> **network reset**, not an upgrade — see the Backup & Recovery tab.
 
 ## Requirements
 
@@ -93,12 +100,22 @@ docker-compose --version
 #### 2. Check Network Status
 
 ```bash
-# Get current version from Lighthouse explorer API (actual network version)
-curl -s "https://lighthouse.testnet.cantonloop.com/api/stats" | jq '{version, migration}'
-
-# Or from /info endpoint (target version — may be ahead of actual)
-curl -s https://docs.test.global.canton.network.sync.global/info | jq '.'
+curl -s https://docs.test.global.canton.network.sync.global/info | jq .
 ```
+
+```json
+{"network":"testnet","sv":{"migration_id":1,"serial_id":2,"version":"0.8.0"},
+ "synchronizer":{"current":{"chain_id_suffix":"5","serial_id":2,"version":"0.8.0"},
+ "legacy":null,"successor":null}}
+```
+
+Note `sv.version` and `sv.migration_id` — you need both below. This endpoint is
+public and needs no API key and no IP whitelisting, so it works before your
+node exists.
+
+> **Do not use `https://lighthouse.testnet.cantonloop.com/api/stats` for this.**
+> It now returns `401 API key required`. Any guide or script still polling it
+> for the network version is broken.
 
 #### 3. Download Canton Node
 
@@ -236,11 +253,17 @@ docker run --rm -v splice-validator_postgres-splice:/data -v $(pwd):/backup \
 
 ### Prometheus Metrics
 
-Canton exports metrics on port **10013**:
+Canton exports metrics on port **10013**. The validator image ships `wget`,
+not `curl` — a `curl` exec fails with `executable file not found in $PATH` and
+returns an empty body, which reads exactly like a dead metrics port:
 
 ```bash
-docker exec splice-validator-validator-1 curl -s http://localhost:10013/metrics | head -20
+docker exec splice-validator-validator-1 \
+  wget -q -O - --timeout=10 http://localhost:10013/metrics | head -20
 ```
+
+The Monitoring tab covers which of those metrics actually indicate health, and
+which obvious alert rule silently never fires.
 
 ### Alerting
 
@@ -278,14 +301,23 @@ chmod +x /root/canton_testnet_monitor.sh
 
 ### Firewall Configuration
 
+A Canton validator has **no external ingress requirements** — Splice states it
+does not need to whitelist any SVs or validators inbound. It needs egress on
+443 to the Super Validators, which is usually allowed already. So the correct
+policy admits nothing from the internet except your own SSH:
+
 ```bash
-# Allow only necessary ports
-ufw allow 22/tcp      # SSH
-ufw allow 443/tcp     # HTTPS
-# Allow Docker network internal communication
-ufw insert 1 allow out to 172.19.0.0/16
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow 22/tcp                          # restrict to your admin CIDR
+ufw insert 1 allow out to 172.19.0.0/16   # Docker internal, if needed locally
 ufw enable
 ```
+
+Do not open 443 inbound. Nothing on a validator listens on it.
+
+See the Security Hardening tab for the full treatment, including why a
+published Docker port bypasses ufw entirely.
 
 ### Restrict Web UI Access
 
