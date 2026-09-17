@@ -38,10 +38,20 @@ NEAR has two validator roles with different hardware and stake requirements:
   they validate and endorse chunks. Lower RAM and storage, same 2.5% minimum
   annual reward target.
 
-A seat requires more stake than the 300th largest staking proposal, with an
-absolute floor of 25,500 NEAR. The live seat price is published on
-[nearblocks.io/node-explorer](https://nearblocks.io/node-explorer) and
-[near-staking.com/stats](https://near-staking.com/stats).
+**Read the seat price, do not quote it.** A seat costs more than the smallest
+stake currently in the validator set, and that number moves every epoch.
+`docs.near.org` describes the threshold as the 300th largest staking proposal
+with an absolute floor of 25,500 NEAR; measured against mainnet on 2026-09-17
+the set held 415 validators and the smallest stake in it was 10,989 NEAR, so
+the documented floor is not what the protocol is currently enforcing. Take the
+live figure from [nearblocks.io/node-explorer](https://nearblocks.io/node-explorer),
+[near-staking.com/stats](https://near-staking.com/stats) or the RPC itself:
+
+```bash
+curl -s -X POST https://free.rpc.fastnear.com -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"validators","params":[null]}' \
+  | jq '[.result.current_validators[].stake | tonumber] | min / 1e24 | floor'
+```
 
 ## Hardware
 
