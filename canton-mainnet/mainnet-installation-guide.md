@@ -12,9 +12,13 @@ Canton Network is the first public permissionless blockchain platform designed f
 
 **Network Details:**
 - Network: MainNet
-- Version: 0.7.3
+- Version: 0.7.5 (verified 2026-09-18)
 - Migration ID: 4
 - Purpose: Production network
+
+> Never trust a version number written in a guide, including this one. Read it
+> from the network before installing or upgrading:
+> `curl -s https://docs.global.canton.network.sync.global/info | jq .`
 
 **Participants:**
 Goldman Sachs, Deutsche Börse, BNP Paribas, Microsoft, Moody's, S&P Global, Digital Asset, and other institutional players.
@@ -106,14 +110,22 @@ docker-compose --version
 #### 2. Check Network Status
 
 ```bash
-# Get current version and migration ID
-curl -s "https://lighthouse.cantonloop.com/api/stats" | jq '{version, migration}'
-
-# Or from /info endpoint (may show target version ahead of actual):
-# curl -s https://docs.global.canton.network.sync.global/info | jq '.'
+curl -s https://docs.global.canton.network.sync.global/info | jq .
 ```
 
-Note the `version` and `migration_id` from the output — you will need them below.
+```json
+{"network":"mainnet","sv":{"migration_id":4,"serial_id":5,"version":"0.7.5"},
+ "synchronizer":{"current":{"chain_id_suffix":"2","serial_id":5,"version":"0.7.5"},
+ "legacy":null,"successor":null}}
+```
+
+Note `sv.version` and `sv.migration_id` — you need both below. This endpoint is
+public and needs no API key and no IP whitelisting, so it works before your
+node exists.
+
+> **Do not use `https://lighthouse.cantonloop.com/api/stats` for this.** It now
+> returns `401 API key required`. Any guide or script still polling it for the
+> network version is broken.
 
 #### 3. Download Canton Node
 
@@ -313,8 +325,8 @@ docker logs splice-validator-validator-1 --tail 100
 ### Process
 
 ```bash
-# 1. Check new version (Lighthouse = same as explorer)
-curl -s "https://lighthouse.cantonloop.com/api/stats" | jq '{version, migration}'
+# 1. Check the network version and migration ID
+curl -s https://docs.global.canton.network.sync.global/info | jq .
 
 # 2. Backup database
 docker exec splice-validator-postgres-splice-1 pg_dump -U cnadmin validator | gzip > ~/mainnet_backup_$(date +%Y%m%d).sql.gz
@@ -410,11 +422,17 @@ chmod +x /root/canton_mainnet_backup.sh
 
 ### Prometheus Metrics
 
-Canton exports metrics on port **10013**:
+Canton exports metrics on port **10013**. The validator image ships `wget`,
+not `curl` — a `curl` exec fails with `executable file not found in $PATH` and
+returns an empty body, which reads exactly like a dead metrics port:
 
 ```bash
-docker exec splice-validator-validator-1 curl -s http://localhost:10013/metrics | head -20
+docker exec splice-validator-validator-1 \
+  wget -q -O - --timeout=10 http://localhost:10013/metrics | head -20
 ```
+
+The Monitoring tab covers which of those metrics actually indicate health, and
+which obvious alert rule silently never fires.
 
 ### Alerting
 
@@ -444,12 +462,24 @@ chmod +x /root/canton_mainnet_monitor.sh
 ### Essential Security Measures
 
 1. **Firewall Configuration**
+
+A Canton validator has **no external ingress requirements** — Splice states it
+does not need to whitelist any SVs or validators inbound. It needs egress on
+443 to the Super Validators, which is usually allowed already. So the correct
+policy admits nothing from the internet except your own SSH:
+
 ```bash
-ufw allow 22/tcp      # SSH
-ufw allow 443/tcp     # HTTPS
-ufw insert 1 allow out to 172.19.0.0/16  # Docker internal
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow 22/tcp                          # restrict to your admin CIDR
+ufw insert 1 allow out to 172.19.0.0/16   # Docker internal, if needed locally
 ufw enable
 ```
+
+Do not open 443 inbound. Nothing on a validator listens on it.
+
+See the Security Hardening tab for the full treatment, including why a
+published Docker port bypasses ufw entirely.
 
 2. **Wallet UI is localhost-only by default** — nginx binds to `127.0.0.1:8888`. Access via SSH tunnel only.
 
