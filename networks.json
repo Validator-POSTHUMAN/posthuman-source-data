@@ -1455,7 +1455,13 @@
     "twitter": "https://x.com/wardenprotocol",
     "codebase": {
       "git_repo": "https://github.com/warden-protocol/wardenprotocol",
-      "recommended_version": "v0.5.2"
+      "recommended_version": "v1.0.2",
+      "compatible_versions": [
+        "v1.0.2"
+      ],
+      "genesis": {
+        "genesis_url": "https://github.com/warden-protocol/networks/raw/main/mainnet/genesis.json"
+      }
     },
     "title": "Warden",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/warden-testnet/warden.svg",
