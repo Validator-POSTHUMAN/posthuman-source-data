@@ -1277,14 +1277,26 @@
     "discord": "https://discord.gg/minaprotocol",
     "github": "https://github.com/MinaProtocol/mina",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/mina/mina-logo.png",
-    "stake": "",
+    "stake": "https://minascan.io/mainnet/validator/B62qrnPdz8HpsDJfGHirDLpVrN2VeyeitdaTKBaccWtHpeVW9Hgwi75/delegations",
     "explorer": "https://minascan.io/mainnet",
     "chain_id": "mainnet",
     "endpoints": {},
     "contributions": "Mina",
     "generatedServices": [],
     "services": [
-      "install-guide"
+      "install-guide",
+      "install-docker",
+      "keys",
+      "block-producer",
+      "snark-worker",
+      "archive-node",
+      "monitoring",
+      "security-hardening",
+      "delegation-program",
+      "upgrades",
+      "useful-commands",
+      "troubleshooting",
+      "links"
     ]
   },
   {
