@@ -1001,8 +1001,18 @@
     "generatedServices": [],
     "services": [
       "install-guide",
+      "validator-signaling",
+      "keys",
+      "security-hardening",
+      "state-sync",
+      "snapshots",
+      "archive-indexing",
+      "upgrades",
+      "useful-commands",
       "monitoring",
-      "staking-pools"
+      "links",
+      "staking-pools",
+      "skill"
     ]
   },
   {
