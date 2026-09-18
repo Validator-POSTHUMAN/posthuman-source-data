@@ -1131,6 +1131,41 @@
     ]
   },
   {
+    "name": "arc",
+    "type": "mainnet",
+    "title": "Arc Network",
+    "website": "https://www.arc.io/",
+    "twitter": "https://x.com/arc",
+    "discord": "https://discord.com/invite/buildonarc",
+    "github": "https://github.com/circlefin/arc-node",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/arc/arc-network.svg",
+    "stake": "",
+    "explorer": "https://explorer.arc.io",
+    "chain_id": "5042",
+    "endpoints": {
+      "rpc": "https://rpc.mainnet.arc.io"
+    },
+    "contributions": "Arc",
+    "generatedServices": [],
+    "services": [
+      "install-guide",
+      "install-docker",
+      "snapshots",
+      "pruning-and-storage",
+      "rpc-and-indexes",
+      "monitoring",
+      "security-hardening",
+      "upgrades",
+      "useful-commands",
+      "troubleshooting",
+      "testnets",
+      "operator-toolbox",
+      "skill",
+      "links"
+    ],
+    "version": "0.8.0"
+  },
+  {
     "name": "arc-testnet",
     "type": "testnet",
     "title": "Arc Network Testnet",
@@ -1140,14 +1175,17 @@
     "github": "https://github.com/circlefin/arc-node",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/arc-testnet/arc-network.svg",
     "stake": "",
-    "explorer": "https://testnet.arcscan.app/",
-    "endpoints": {},
+    "explorer": "https://explorer.testnet.arc.io",
+    "endpoints": {
+      "rpc": "https://rpc.testnet.arc.io"
+    },
     "contributions": "Arc",
     "generatedServices": [],
     "services": [
       "install-guide"
     ],
-    "chain_id": "5042002"
+    "chain_id": "5042002",
+    "version": "0.8.0"
   },
   {
     "name": "pharos-testnet",

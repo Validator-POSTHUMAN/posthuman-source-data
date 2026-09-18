@@ -5,8 +5,20 @@ documentation. This guide installs a non-signing Arc testnet follow node. It
 does not configure a validator or imply a partnership or endorsement by Arc
 or Circle.
 
-Tested release: `v0.7.2` (2026-07-17). Always review the official changelog
-and breaking changes before installation or upgrade.
+Tested release: **`v0.8.0`**. Always review the official changelog and
+breaking changes before installation or upgrade.
+
+> **`v0.8.0` is mandatory on Arc Testnet.** Circle requires it before timestamp
+> `1788447600` (2026-09-03 15:00 UTC), when Zero8 activates; earlier versions
+> are not supported after that moment. Arc forks activate on a **wall-clock
+> timestamp**, not a block height — there is no on-chain plan and no approaching
+> height to watch.
+>
+> `v0.8.0` also moves snapshots to Reth **V2** storage format. A fresh install
+> from a v0.8.0 snapshot needs no migration; a node restored from an older V1
+> snapshot does. Read `BREAKING_CHANGES.md#v080` before upgrading such a node.
+
+For **Arc mainnet** (`5042`), see the Arc Network card.
 
 ## Requirements
 
@@ -27,8 +39,8 @@ The example below uses the official x86_64 Linux release and verifies the
 release-provided checksum before installation.
 
 ```bash
-ARC_VERSION=v0.7.2
-ARC_ARCHIVE=arc-node-v0.7.2-x86_64-unknown-linux-gnu.tar.gz
+ARC_VERSION=v0.8.0
+ARC_ARCHIVE=arc-node-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
 ARC_TMP=$(mktemp -d)
 
 mkdir -p "$HOME/.arc/bin"
@@ -56,8 +68,12 @@ $HOME/.arc/bin/arc-node-consensus --version
 $HOME/.arc/bin/arc-snapshots --version
 ```
 
-All three must report `v0.7.2` and commit
-`a85368c0b0a7924e4c74035d195f96deb0291622`.
+All three must report `v0.8.0`. The tag resolves to commit
+`66ad2d5aa6d9b41e8f689812004be4c7233a9e16`.
+
+The checksum step above is the only integrity control on this path: Circle
+states that **GPG signature verification is disabled until the Arc release
+signing key is published**.
 
 ## 2. Download snapshots
 
@@ -69,9 +85,17 @@ mkdir -p "$HOME/.arc/execution" "$HOME/.arc/consensus"
 
 $HOME/.arc/bin/arc-snapshots download \
   --chain arc-testnet \
+  --el-profile=full \
   --execution-path "$HOME/.arc/execution" \
   --consensus-path "$HOME/.arc/consensus"
 ```
+
+`--el-profile` defaults to `minimal`, which does not match the `--full` flag
+the execution layer uses below. Pass it explicitly, or `archive` for an archive
+node — there is no in-place conversion afterwards.
+
+Testnet snapshots are roughly **68 GB compressed EL** and **16 GB compressed
+CL**, extracting to about 103 GB and 36 GB.
 
 Do not use `--force` on an existing node unless you intentionally approved a
 destructive replacement and backed up required identity/config files.
@@ -122,7 +146,7 @@ ExecStart=/home/YOUR_USERNAME/.arc/bin/arc-node-execution node \
   --http.api eth,net,web3,txpool,trace,debug \
   --metrics 127.0.0.1:9001 \
   --enable-arc-rpc \
-  --rpc.forwarder https://rpc.quicknode.testnet.arc.network/
+  --rpc.forwarder https://rpc.testnet.arc.io/
 Restart=always
 RestartSec=10
 KillSignal=SIGTERM
@@ -154,11 +178,11 @@ ExecStart=/home/YOUR_USERNAME/.arc/bin/arc-node-consensus start \
   --execution-socket /run/arc/auth.ipc \
   --rpc.addr 127.0.0.1:31000 \
   --follow \
-  --follow.endpoint https://rpc.drpc.testnet.arc.network,wss=rpc.drpc.testnet.arc.network \
-  --follow.endpoint https://rpc.quicknode.testnet.arc.network,wss=rpc.quicknode.testnet.arc.network \
-  --follow.endpoint https://rpc.blockdaemon.testnet.arc.network,wss=rpc.blockdaemon.testnet.arc.network/websocket \
+  --follow.endpoint https://rpc.testnet.arc.io,wss=rpc.testnet.arc.io \
+  --follow.endpoint https://rpc.drpc.testnet.arc.io,wss=rpc.drpc.testnet.arc.io \
+  --follow.endpoint https://rpc.blockdaemon.testnet.arc.io,wss=rpc.blockdaemon.testnet.arc.io/websocket \
   --execution-persistence-backpressure \
-  --execution-persistence-backpressure-threshold=50 \
+  --execution-persistence-backpressure-threshold=16 \
   --metrics 127.0.0.1:29000
 Restart=always
 RestartSec=10
@@ -197,7 +221,7 @@ LOCAL_HEX=$(curl -fsS -H 'Content-Type: application/json' \
 
 REMOTE_HEX=$(curl -fsS -H 'Content-Type: application/json' \
   --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
-  https://rpc.testnet.arc.network | jq -r .result)
+  https://rpc.testnet.arc.io | jq -r .result)
 
 printf 'local=%d remote=%d lag=%d\n' \
   "$LOCAL_HEX" "$REMOTE_HEX" "$((REMOTE_HEX-LOCAL_HEX))"
@@ -228,13 +252,15 @@ sudo journalctl -u arc-execution -u arc-consensus \
 ## Official resources
 
 - Arc: https://www.arc.io/
-- Documentation: https://docs.arc.network/
+- Documentation: https://docs.arc.io/
 - Node repository: https://github.com/circlefin/arc-node
-- Release: https://github.com/circlefin/arc-node/releases/tag/v0.7.2
+- Release: https://github.com/circlefin/arc-node/releases/tag/v0.8.0
+- Node requirements: https://docs.arc.io/arc/references/node-requirements
 - Changelog: https://github.com/circlefin/arc-node/blob/main/CHANGELOG.md
 - Breaking changes: https://github.com/circlefin/arc-node/blob/main/BREAKING_CHANGES.md
 - Snapshots: https://snapshots.arc.network/
-- Explorer: https://testnet.arcscan.app/
+- Explorer: https://explorer.testnet.arc.io/
+- Faucet: https://faucet.circle.com
 - Partner guidelines: https://www.arc.io/brand-guidelines-and-partner-toolkit
 
 Arc is a trademark of Circle Internet Group, Inc. and/or its affiliates.
