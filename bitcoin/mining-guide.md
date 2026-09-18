@@ -5,41 +5,67 @@
 Running a full node verifies the chain. Mining **produces** blocks with proof of
 work and is a hardware, power and heat business. The two are separate: you can
 run a node without mining, and you can mine without running a node — though
-mining without your own node means trusting someone else's view of the chain.
+mining without your own node means trusting someone else's view of the chain,
+and it means someone else decides which transactions you work on.
 
-Set up the node first — see the full node guide on this card — then come back
-here.
+Set up the node first — see the **Installation guide** — then come back here.
 
 ## Read the numbers before you buy anything
 
-These are live mainnet figures, not illustrations:
+Live mainnet figures, measured 2026-09-18:
 
-- network hash rate: **≈ 1,038 EH/s** (1.04 × 10²¹ hashes per second)
-- difficulty: **≈ 1.27 × 10¹⁴**
+| | |
+|---|---|
+| Block height | 967,539 |
+| Difficulty | 1.2745 × 10¹⁴ |
+| Network hash rate | ≈ 954 EH/s (9.5 × 10²⁰ H/s) |
+| Next retarget | height 967,680, estimated **+3.76 %** |
+| Block subsidy | **3.125 BTC** |
+| Next halving | block 1,050,000 — about 82,500 blocks away, roughly early 2028 |
 
 Expected time for a miner to find a block **on its own** is
-`difficulty × 2³² ÷ your hash rate`. At the difficulty above that is about
-5.47 × 10²⁶ hashes per block, which works out to:
+`difficulty × 2³² ÷ your hash rate`. At the difficulty above that is
+5.47 × 10²³ hashes per block:
 
 | Your hardware | Hash rate | Expected time to a solo block |
 |---|---|---|
-| Bitaxe-class device | 1 TH/s | ~17 million years |
-| One modern ASIC | 100 TH/s | ~170,000 years |
-| Small farm | 1 PH/s | ~17,000 years |
-| Serious operation | 100 PH/s | ~170 years |
+| Bitaxe-class device | 1 TH/s | ~17,300 years |
+| One modern ASIC | 100 TH/s | ~173 years |
+| Small farm | 1 PH/s | ~17 years |
+| Serious operation | 100 PH/s | ~63 days |
 
-This is not a reason never to solo mine — it is a lottery with a real jackpot
-and people do win it — but it is the reason **pool mining** is what nearly
-everyone does. A pool pays you a steady share proportional to the work you
-submit instead of a jackpot you will statistically never see.
+A 1 TH/s device has roughly a 1-in-6,300,000 chance of finding a block on any
+given day. This is not a reason never to solo mine — it is a lottery with a
+real jackpot and people do win it, at these exact odds — but it is the reason
+**pool mining** is what nearly everyone does. A pool pays a steady share
+proportional to the work you submit instead of a jackpot you will statistically
+never see.
 
 Two more facts worth accepting early:
 
 - **CPU and GPU mining is dead on mainnet.** ASICs are roughly a billion times
-  faster per watt. CPU miners are useful only on regtest or testnet, for
-  learning the mechanics.
+  faster per watt. CPU miners are useful only on regtest or signet, for
+  learning the mechanics — see the **Testnets** guide.
 - **Electricity price decides profitability**, not hardware price. Work out
   your cost per kWh and your machine's J/TH before ordering anything.
+
+### The only economics that matter
+
+````
+daily revenue = (your TH/s ÷ network TH/s) × 144 blocks × (3.125 BTC + avg fees) × BTC price
+daily power   = your TH/s × J/TH × 24 ÷ 1,000,000   kWh
+daily cost    = daily power × your price per kWh
+````
+
+Run this with your own numbers before every purchase. A machine at 20 J/TH is
+profitable at electricity prices where a 30 J/TH machine is not, and the
+difference is not marginal. Difficulty has risen in all but a handful of
+retargets — assume it keeps rising when you model payback.
+
+Fee income is currently a rounding error: the mempool clears at 1 sat/vB, so
+fees add well under 1 % to the subsidy. That is not a constant. After the 2028
+halving the subsidy drops to 1.5625 BTC, and fee share becomes the difference
+between a viable and a dead machine.
 
 ## Path A — pool mining
 
@@ -48,154 +74,119 @@ interface with the pool's Stratum URL, your worker name and password, and you
 are mining.
 
 ````
-Pool URL:  stratum+tcp://<pool-host>:<port>
-Worker:    <your-account>.<machine-name>
-Password:  x
+URL:      stratum+tcp://<pool-host>:<port>
+Worker:   <account>.<rig-name>
+Password: x
 ````
 
-Choose a pool on payout scheme (PPS vs PPLNS), fee, minimum payout and — worth
-weighing — how centralising it is. If you already run a node, prefer a pool that
-lets you supply your own block template.
+| Pool | Notes |
+|---|---|
+| [Ocean](https://ocean.xyz) | Non-custodial payouts; DATUM lets the miner build its own block templates |
+| [Braiins Pool](https://braiins.com/pool) | FPPS, mature tooling, Braiins OS+ firmware integration, Stratum v2 |
+| [public-pool](https://github.com/benjamin-wilson/public-pool) | Self-hostable open-source pool; the usual choice for home solo mining against your own node |
+| [Solo CKPool](https://solo.ckpool.org) | Solo mining with a shared front end — find a block, keep the block |
+
+Choosing a pool is choosing who constructs the block template — that is, who
+decides which transactions get mined with your hash rate. Pools that let the
+miner build the template (Ocean's DATUM, Stratum v2 job declaration) move that
+decision back to you. For an infrastructure operator that is the interesting
+difference between pools, not the fee schedule.
+
+### Payout schemes, one line each
+
+- **FPPS / PPS+** — the pool pays per share at a fixed rate and carries the
+  variance. Predictable income, higher fee.
+- **PPLNS** — you are paid out of blocks the pool actually finds, weighted by
+  recent shares. Lower fee, more variance, penalises hopping.
+- **Solo** — nothing until your hardware finds a block, then everything.
 
 ## Path B — solo mining against your own node
 
-Here your node builds the block templates, so you decide what goes into the
-blocks you try to mine. You need a Stratum server between the ASIC and
-`bitcoind`, because ASICs speak Stratum and `bitcoind` speaks
-`getblocktemplate`.
+Solo mining is where a full node stops being optional: you construct the block
+template yourself, so you need an unpruned, fully synced node with a healthy
+mempool. ASICs speak Stratum and `bitcoind` speaks `getblocktemplate`, so a
+Stratum server sits between them.
 
 ### Prepare the node
 
-Mining needs ZMQ notifications so the Stratum server learns about new blocks
-immediately rather than by polling. Add to `bitcoin.conf`:
-
-````
-# ZMQ notifications for the stratum server, local only
-zmqpubhashblock=tcp://127.0.0.1:28332
-zmqpubrawblock=tcp://127.0.0.1:28333
-
-# RPC for the stratum server, local only
+````ini
 server=1
 rpcbind=127.0.0.1
 rpcallowip=127.0.0.1
+txindex=1
+maxmempool=1000
+
+# ZMQ so the stratum server hears about new blocks instead of polling
+zmqpubhashblock=tcp://127.0.0.1:28332
+zmqpubrawblock=tcp://127.0.0.1:28333
+
+# v30.0+ defaults, stated explicitly because they decide template contents
+blockmintxfee=0.001
+datacarriersize=100000
 ````
 
-Generate the RPC credential with the official helper and keep the password in
-your secret store, never in a config you commit or a message you send:
+`blocksonly=1` is incompatible with mining: an empty mempool means empty blocks
+and no fee income.
+
+Stratum servers to use: [public-pool](https://github.com/benjamin-wilson/public-pool)
+(modern, web UI, designed for exactly this) or
+[ckpool](https://bitbucket.org/ckolivas/ckpool) in solo mode (minimal, C, long
+track record). Both point at the node's RPC and ZMQ, both hand your ASIC work
+built from your own mempool.
+
+### The IPC mining interface
+
+Since v30.0 Core also exposes an experimental IPC interface intended for
+Stratum v2 and similar clients:
 
 ````bash
-python3 <(curl -sS https://raw.githubusercontent.com/bitcoin/bitcoin/master/share/rpcauth/rpcauth.py) miner
+bitcoin -m node -ipcbind=unix   # listen on a unix socket for IPC mining clients
 ````
 
-Restart and confirm the node is fully synced before mining — a node behind the
-tip will hand out templates for a chain nobody else is on:
+v31.0 tightened it: clients must be built against the current `mining.capnp`
+schema or `Init.makeMining` fails outright, and `createNewBlock` now waits for
+IBD to finish and the tip to catch up before producing templates. Read the
+release notes for your exact version before wiring anything to it — this
+interface has changed in every release since it appeared.
 
-````bash
-sudo systemctl restart bitcoind
-bitcoin-cli getblockchaininfo | jq '{blocks, headers, initialblockdownload}'
-bitcoin-cli getmininginfo
-````
+## Path C — learning and testing
 
-### Run a solo Stratum server
+A Bitaxe (open-source, ~1 TH/s, ~15–20 W, silent) mining against your own
+`public-pool` instance is the cheapest way to exercise the whole pipeline: node
+→ template → stratum → hardware → share → block. On mainnet it is a lottery
+ticket; on **signet or regtest** it is a working laboratory where you can mine
+blocks on demand and test every downstream system. See the **Testnets** guide.
 
-**CKPool in solo mode** is the standard choice:
-`https://bitbucket.org/ckolivas/ckpool`
+Hardware and firmware worth knowing:
 
-Build it, then write a config that points at your node and pays to **your**
-address:
+| | |
+|---|---|
+| [Bitaxe](https://bitaxe.org) | Open-source single-ASIC miner, ESP32 control board, fully inspectable |
+| [Braiins OS+](https://braiins.com/os) | Open firmware for Antminer S19/S21 — autotuning, measurably better J/TH |
+| [Stratum v2](https://stratumprotocol.org) | Encrypted, authenticated stratum with miner-built templates |
 
-````json
-{
-  "btcd": [
-    {
-      "url": "127.0.0.1:8332",
-      "auth": "miner",
-      "pass": "<rpc-password-from-your-secret-store>",
-      "notify": true
-    }
-  ],
-  "btcaddress": "<your-bitcoin-address>",
-  "btcsig": "/your-tag/",
-  "serverurl": ["0.0.0.0:3333"],
-  "mindiff": 1,
-  "startdiff": 1000,
-  "logdir": "/var/log/ckpool"
-}
-````
+## Operating a miner
 
-`btcaddress` is where the block reward goes if you win. Check it twice — a typo
-here is the most expensive typo in this guide.
+| Signal | Watch for |
+|---|---|
+| Accepted vs rejected shares | rejection rate > 2 % means stale work, a bad network path, or an unstable overclock |
+| Reported hash rate vs nameplate | a sustained shortfall is thermal throttling |
+| Chip and intake temperature | dust, failing fans, ambient creep |
+| Power draw at the wall | the only honest J/TH measurement |
+| Pool-side worker status | a rig can look alive locally and be disconnected from the pool |
+| Payout address | verify it after **every** firmware update — replacing it is the standard ASIC malware payload |
 
-For Bitaxe-class hardware, **public-pool**
-(`https://github.com/benjamin-wilson/public-pool`) is a friendlier
-self-hosted alternative with a web dashboard, and it talks to the same node.
+Firmware only from the vendor or a project you have verified, never from a
+"performance unlock" download. Miners sit on the same LAN as everything else
+and ship with weak default credentials: give them their own VLAN, change the
+passwords, and never expose a miner's web interface to the internet.
 
-### Firewall
+## Sources
 
-````bash
-sudo ufw allow 3333/tcp   # only from your miners' network
-````
-
-Restrict `3333/tcp` to the LAN your ASICs are on. Your RPC port `8332` stays
-closed to everything except localhost — the Stratum server is the only thing
-that should touch it.
-
-### Point the miner at your server
-
-````
-Pool URL:  stratum+tcp://<your-server-ip>:3333
-Worker:    <your-bitcoin-address>.<machine-name>
-Password:  x
-````
-
-## Verify it is really mining
-
-On the Stratum server, watch for accepted shares from each worker. Shares are
-the proof your hardware is doing real work against your templates — an ASIC
-that connects but submits nothing is misconfigured, not unlucky.
-
-On the node:
-
-````bash
-bitcoin-cli getmininginfo
-bitcoin-cli getblocktemplate '{"rules":["segwit"]}' | jq '{height, previousblockhash, curtime}'
-````
-
-The template height must be the current tip plus one. If it is not, the node is
-not synced and everything downstream is wasted work.
-
-## Rehearse on regtest first
-
-Before pointing real hardware anywhere, run the whole flow locally where blocks
-are free and instant:
-
-````bash
-bitcoind -regtest -daemon
-bitcoin-cli -regtest createwallet miner
-ADDR=$(bitcoin-cli -regtest getnewaddress)
-bitcoin-cli -regtest generatetoaddress 101 "$ADDR"
-bitcoin-cli -regtest getbalance
-````
-
-This teaches you templates, coinbase maturity (100 blocks before a reward is
-spendable) and reorgs in minutes, at zero cost.
-
-## Operational care
-
-- **Heat and power** are the real failure modes. One ASIC is a 3 kW space
-  heater on a dedicated circuit; plan airflow, breakers and noise before
-  delivery, not after.
-- **Firmware**: run vendor firmware or a reputable alternative. Third-party
-  firmware from unverified sources has repeatedly shipped hidden fee
-  redirection — your hashrate silently paying someone else.
-- **Payout address**: verify it on the device and in the pool account. Prefer
-  an address whose keys you hold offline.
-- **Monitoring**: hash rate per worker, accepted versus rejected shares, chip
-  temperatures, fan health, power draw, and node sync state. A rising reject
-  rate usually means network or overclock problems, not bad luck.
-
----
-
-**Created by POSTHUMAN validators**
-
-Website: https://posthuman.digital
+- [mempool.space REST API — live difficulty, hash rate, retarget](https://mempool.space/docs/api/rest)
+- [bitcoincore.org — v31.0 release notes, IPC mining interface](https://bitcoincore.org/en/releases/31.0/)
+- [bitcoincore.org — v30.0 release notes, `bitcoin -m node -ipcbind`](https://bitcoincore.org/en/releases/30.0/)
+- [academy.braiins.com — BTC mining setup](https://academy.braiins.com/en/braiins-pool/btc-mining-setup/)
+- [bitaxe.org](https://bitaxe.org)
+- [stratumprotocol.org — Stratum v2](https://stratumprotocol.org)
+- [benjamin-wilson/public-pool](https://github.com/benjamin-wilson/public-pool)
