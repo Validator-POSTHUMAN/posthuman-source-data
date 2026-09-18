@@ -295,13 +295,27 @@
     "discord": "https://discord.gg/ethereum-org",
     "github": "https://github.com/ethereum",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/ethereum/eth.svg",
+    "explorer": "https://etherscan.io",
     "chain_id": "1",
     "endpoints": {
-      "jsonrpc": ""
+      "rpc": "https://ethereum-rpc.publicnode.com"
     },
     "generatedServices": [],
     "services": [
-      "install-guide"
+      "install-guide",
+      "install-docker",
+      "create-validator",
+      "pruning-and-storage",
+      "archive-node",
+      "links",
+      "upgrades",
+      "useful-commands",
+      "monitoring",
+      "security-hardening",
+      "troubleshooting",
+      "testnets",
+      "tooling",
+      "skill"
     ]
   },
   {
