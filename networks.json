@@ -319,6 +319,39 @@
     ]
   },
   {
+    "name": "base",
+    "type": "mainnet",
+    "title": "Base",
+    "website": "https://base.org",
+    "twitter": "https://x.com/base",
+    "discord": "https://discord.gg/buildonbase",
+    "github": "https://github.com/base/base",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/base/base.svg",
+    "explorer": "https://basescan.org",
+    "chain_id": "8453",
+    "endpoints": {
+      "rpc": "https://mainnet.base.org"
+    },
+    "generatedServices": [],
+    "services": [
+      "install-guide",
+      "binaries-and-systemd",
+      "snapshots",
+      "pruning-and-storage",
+      "rpc-and-flashblocks",
+      "monitoring",
+      "security-hardening",
+      "upgrades",
+      "useful-commands",
+      "troubleshooting",
+      "testnets",
+      "tooling",
+      "links",
+      "skill"
+    ],
+    "version": "1.4.0"
+  },
+  {
     "name": "cosmoshub",
     "type": "mainnet",
     "title": "CosmosHub",
