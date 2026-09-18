@@ -1365,9 +1365,23 @@
     "generatedServices": [],
     "services": [
       "install-guide",
-      "mining-guide"
+      "install-docker",
+      "configuration",
+      "pruning-and-storage",
+      "rpc-and-indexes",
+      "lightning-node",
+      "mining-guide",
+      "monitoring",
+      "security-hardening",
+      "backup-recovery",
+      "useful-commands",
+      "upgrades",
+      "troubleshooting",
+      "testnets",
+      "operator-toolbox",
+      "links"
     ],
-    "version": "28.1"
+    "version": "31.1"
   },
   {
     "name": "avalanche-testnet",
