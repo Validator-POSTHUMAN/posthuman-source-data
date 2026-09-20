@@ -1409,14 +1409,27 @@
     "discord": "https://discord.gg/solana",
     "github": "https://github.com/anza-xyz/agave",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/solana/sol.svg",
-    "stake": "",
+    "stake": "https://explorer.solana.com/address/DyDjFYB6i51FMHQvB4eKSwGHmgMxVf1i3FWwANAngqyY",
     "explorer": "https://explorer.solana.com",
     "chain_id": "mainnet-beta",
     "endpoints": {},
     "contributions": "Solana",
     "generatedServices": [],
     "services": [
-      "install-guide"
+      "install-guide",
+      "keys",
+      "create-validator",
+      "delegation-program",
+      "snapshots",
+      "rpc-and-indexes",
+      "links",
+      "upgrades",
+      "useful-commands",
+      "monitoring",
+      "security-hardening",
+      "governance",
+      "troubleshooting",
+      "operator-toolbox"
     ]
   },
   {
@@ -1522,7 +1535,16 @@
     "contributions": "Solana",
     "generatedServices": [],
     "services": [
-      "install-guide"
+      "install-guide",
+      "keys",
+      "delegation-program",
+      "snapshots",
+      "links",
+      "upgrades",
+      "useful-commands",
+      "monitoring",
+      "security-hardening",
+      "troubleshooting"
     ]
   },
   {
