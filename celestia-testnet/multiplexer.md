@@ -1,220 +1,182 @@
-# Celestia Mocha-5 Multiplexer
+# Celestia Mocha-5 App Upgrade and Multiplexer
 
-The Celestia multiplexer is a `celestia-appd` consensus-node feature. It is not
-a `celestia-node` DA role and does not replace bridge or light nodes.
+**Mocha-5 only; reviewed 2026-09-23.** These pins and this activation height do
+not apply to mainnet. This guide documents an upgrade procedure; updating or
+reading it performs no runtime action.
 
-The multiplexer keeps one CometBFT instance while selecting an embedded legacy
-application for historical app versions or the native current application. It
-observes `AppVersion` changes and switches application execution without a
-whole-binary swap at the upgrade boundary. The normal operator entry point
-remains `celestia-appd start`; there is no separate multiplexer service.
-
-Mocha-5 is a new chain from height 1. Never reuse Mocha-4 consensus data,
-signer state, home directories, snapshots, or service arguments for Mocha-5.
-
-## Current official pin
+## Current release and activation
 
 | Item | Mocha-5 value |
 | --- | --- |
-| Chain ID | `mocha-5` |
-| Release tag | `v9.0.6-mocha` |
-| Git commit | `6f4b596e47f80683adb1a161ca7cb640dcd9d206` |
-| Source module | `github.com/celestiaorg/celestia-app/v9` |
-| Source-build Go version | `1.26.5` |
-| Linux runtime floor | glibc `2.38` or later; Ubuntu 24.04 or equivalent |
-| Supported release architectures | Linux and macOS, `amd64` and `arm64` |
+| Consensus chain ID | `mocha-5` |
+| Target multiplexer release | `v10.2.0-mocha` |
+| Source commit | `3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a` |
+| App v10 activation height | **1082619** |
+| Source module | `github.com/celestiaorg/celestia-app/v10` |
+| Source-build Go | `1.26.6` |
+| Linux runtime floor | glibc `2.38`; Ubuntu 24.04 or equivalent; Ubuntu 22.04 and older unsupported |
+| Release architectures | Linux and macOS, `amd64` and `arm64`; Linux x86_64 tested in CI |
 
-The official `v9.0.6-mocha` and `v9.0.6` tags point to the same commit. Keep
-the Mocha release label and chain identity explicit; a shared commit does not
-make mainnet and testnet state interchangeable.
+The binary version and active protocol app version are different. Before
+activation, this v10 multiplexer runs embedded `v9.0.7-corto` and RPC still
+reports app version `9`. At activation it switches to native v10 and runs app
+migrations automatically. Leave it running; do not schedule by a wall-clock
+estimate or perform a second binary swap at the height.
 
-At the pinned commit, the multiplexer build embeds these historical app
-binaries:
+The multiplexer keeps one CometBFT instance and selects the historical or
+native app. Use the official **multiplexer** archive, not `standalone`, while
+the chain is on v9. Source builds use `make install` from the pinned tag.
+**Do not use Cosmovisor for this upgrade.** A multiplexer cannot run its app
+without CometBFT and is not a `celestia-node` DA role.
 
-- app version 3: `v3.12.0`
-- app version 4: `v4.1.0`
-- app version 5: `v5.0.12`
-- app version 6: `v6.4.4`
-- app version 7: `v7.0.2-mocha`
-- app version 8: `v8.0.8`
+Historical embedding constants at the target commit are `v3.12.0`, `v4.1.0`,
+`v5.0.12`, `v6.4.4`, `v7.0.2-mocha`, `v8.0.8`, and `v9.0.7-corto` for app
+versions 3 through 9. The `corto` child label is the upstream embedding pin;
+it does not change the consensus chain ID to Corto. Source builds download
+these seven historical assets; review their provenance before activation.
 
-These are exact upstream embedding constants. Do not substitute historical
-assets or import a Mocha-4 binary directory into a Mocha-5 home.
+Historical `v9.0.6-mocha` and mainnet `v9.0.6` shared commit
+`6f4b596e47f80683adb1a161ca7cb640dcd9d206`. That is historical provenance,
+not the current target or permission to interchange network state. Mocha-5
+started at height 1: never reuse Mocha-4 data, signer state, homes or snapshots.
 
-## Deployment model and boundaries
+## Stage an official release without activating it
 
-- The default upstream `make build` and `make install` targets use build tags
-  `ledger,multiplexer`. `make install-standalone` omits multiplexer support.
-- Official release archives named `celestia-app_<OS>_<arch>.tar.gz` are
-  multiplexer builds. Archives containing `standalone` omit it.
-- A multiplexer binary must run with CometBFT. Starting its application without
-  CometBFT fails closed.
-- The multiplexer supports the historical ABCI 1.0 and ABCI 2.0 boundaries used
-  by the embedded applications.
-- Multiplexer is an alternative to whole-binary switching. Do not layer an
-  unreviewed second automatic binary-switch mechanism around it.
-- It does not relax consensus-key custody, signer-state continuity, backup, or
-  one-live-signer requirements.
-
-## Stage and verify an official release
-
-This stages the Mocha release without replacing a live binary. Select only an
-official multiplexer archive, validate it against the release checksum file,
-and inspect its metadata before activation.
+Select the platform archive and validate the official checksum before opening
+it. This example stages a Linux binary outside the live path:
 
 ```bash
 set -eu
-
-APP_TAG="v9.0.6-mocha"
-APP_COMMIT="6f4b596e47f80683adb1a161ca7cb640dcd9d206"
-
+APP_TAG="v10.2.0-mocha"
+APP_COMMIT="3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a"
 case "$(uname -m)" in
   x86_64) ASSET="celestia-app_Linux_x86_64.tar.gz" ;;
   aarch64|arm64) ASSET="celestia-app_Linux_arm64.tar.gz" ;;
-  *) printf 'Unsupported architecture: %s\n' "$(uname -m)" >&2; exit 1 ;;
+  *) printf 'Unsupported architecture\n' >&2; exit 1 ;;
 esac
-
 STAGE="$(mktemp -d -p /tmp "celestia-app-${APP_TAG}.XXXXXX")"
 BASE_URL="https://github.com/celestiaorg/celestia-app/releases/download/${APP_TAG}"
-
-curl --proto '=https' --tlsv1.2 -fL \
-  "${BASE_URL}/${ASSET}" -o "${STAGE}/${ASSET}"
-curl --proto '=https' --tlsv1.2 -fL \
-  "${BASE_URL}/checksums.txt" -o "${STAGE}/checksums.txt"
-
+curl --proto '=https' --tlsv1.2 -fL "${BASE_URL}/${ASSET}" -o "${STAGE}/${ASSET}"
+curl --proto '=https' --tlsv1.2 -fL "${BASE_URL}/checksums.txt" -o "${STAGE}/checksums.txt"
 (
   cd "$STAGE"
-  awk -v file="$ASSET" '$2 == file || $2 == "*" file {print}' \
-    checksums.txt > selected-checksum.txt
+  awk -v file="$ASSET" '$2 == file || $2 == "*" file {print}' checksums.txt > selected-checksum.txt
   test "$(wc -l < selected-checksum.txt)" -eq 1
   sha256sum -c selected-checksum.txt
   mkdir unpacked
   tar -xzf "$ASSET" -C unpacked
 )
-
 test -x "$STAGE/unpacked/celestia-appd"
 "$STAGE/unpacked/celestia-appd" version --long
-printf 'Expected commit: %s\n' "$APP_COMMIT"
-printf 'Staged binary: %s\n' "$STAGE/unpacked/celestia-appd"
+printf 'Expected commit: %s\nStaged binary: %s\n' "$APP_COMMIT" "$STAGE/unpacked/celestia-appd"
 ```
 
-Confirm the reported version is `9.0.6-mocha`, the commit is the pinned commit,
-and the build tags include `multiplexer`. Keep the staged artifact until review
-is complete. Installing it into the active binary path and restarting the node
-are separate, approval-controlled operations.
+Require reported version `10.2.0-mocha`, the exact commit and `multiplexer`
+build tag. Keep the exact previous binary and config available. This staging
+example does not install over a live binary or restart a service.
 
-For a source build, pin both tag and commit and use Go `1.26.5`. At this source
-revision, the standard multiplexer target downloads the six historical release
-archives before embedding them. Review that dependency path and verify the
-historical assets before treating a locally built binary as production-ready.
+## Configuration preflight
 
-## Mocha-5 configuration contract
+Use the existing dedicated Mocha-5 home and reviewed service arguments, not a
+new default home. Verify its genesis and local RPC both identify `mocha-5`.
 
-Use a dedicated home ending in `-mocha-5`; this guide uses
-`$HOME/.celestia-app-mocha-5`. Before activation, inspect the effective service
-arguments and configuration:
+- Keep `rpc.grpc_laddr` non-empty and loopback-bound; upstream's example is
+  `tcp://127.0.0.1:9098`.
+- The ABCI client `proxy_app` in `config.toml` must equal the **top-level**
+  ABCI server `address` in `app.toml`. The default pair is
+  `tcp://127.0.0.1:36658`. For port-prefixed/co-located nodes, explicitly match
+  `address` to their existing `proxy_app`; do not put two networks on the same
+  default port. Missing `address` falls back to the default and may block v10
+  startup. Address mismatch is not a reason to modify the database.
+- When Fibre is not operated, keep `priv_validator_grpc_laddr = ""` in
+  `config.toml`. v10 exposes `SignRawBytes` on that endpoint; an old non-empty
+  setting can become active. Do not expose signer gRPC as an upgrade side effect.
+- Upstream recommends `config sync` to add field documentation. Preview only
+  with `config sync --dry-run --home <reviewed-home>` and review differences;
+  do not blindly apply config synchronization or overwrite existing values.
 
-```bash
-MOCHA_5_HOME="$HOME/.celestia-app-mocha-5"
+POSTHUMAN operates app nodes, **not Bridge/Light**. Fibre service and escrow
+activation require a separate decision. No port/firewall expansion is implied.
 
-test -f "$MOCHA_5_HOME/config/genesis.json"
-test "$(jq -r '.chain_id // .genesis.chain_id' \
-  "$MOCHA_5_HOME/config/genesis.json")" = "mocha-5"
+## Safe upgrade and verification order
 
-grep -E '^[[:space:]]*proxy_app[[:space:]]*=' \
-  "$MOCHA_5_HOME/config/config.toml"
-grep -E '^[[:space:]]*grpc_laddr[[:space:]]*=' \
-  "$MOCHA_5_HOME/config/config.toml"
-```
+1. Verify the exact home/service, chain `mocha-5`, effective binary path,
+   version/commit/build tags and public consensus identity. Reject any mainnet
+   or Mocha-4 home, database, snapshot or signer-state path.
+2. Query `signal upgrade` and `signal tally 10` against the local node and an
+   independent Mocha-5 reference. The reviewed activation height is `1082619`;
+   reconcile any contradictory plan before continuing. A pending upgrade means
+   **do not signal again**: rejection can still consume fees. Signaling is a
+   separate transaction and not required to locally install the binary.
+3. Prove the same consensus key cannot sign from another host, service,
+   standby or restored backup. Do not read, copy or move
+   `priv_validator_key.json`. Preserve the newest `priv_validator_state.json`
+   in place; signing history is monotonic, not a rollback artifact.
+4. Record height, active app version, bonded/jailed status, missed-block
+   baseline and fresh external signatures. Retain the exact old binary/config
+   and establish a verified chain-specific recovery backup through the
+   approved procedure without exposing key material.
+5. Stage and verify the multiplexer checksum, platform/glibc compatibility,
+   capacity, ABCI address match, loopback binds and Fibre-disabled config.
+6. Upgrade a **non-signing Mocha-5 RPC/app node first**: controlled stop,
+   replace only the reviewed binary, restart with the same home/database.
+   Verify process binary identity, stable service/restart count, advancing sync
+   and committed block/AppHash parity. Only after it passes, repeat the
+   controlled change on the sole validator. Never create a second signer.
+7. Before `1082619`, require binary `10.2.0-mocha`, embedded `v9.0.7-corto`,
+   active app version `9`, no restart loop, `catching_up=false` and fresh
+   validator signatures through two independent Mocha-5 references.
+8. Leave the multiplexer running at activation. At/after the fork require
+   active app version `10`, successful migrations, advancing height,
+   committed block/AppHash parity at the same height and consumption of the
+   pending upgrade plan. Recheck external signatures, bonded/jailed status,
+   missed-block delta, service stability and monitoring. Binary version alone
+   is not proof that activation succeeded.
 
-The effective configuration must satisfy both conditions:
+## Rollback boundaries — fail closed
 
-1. `rpc.grpc_laddr` is non-empty. Upstream documents
-   `tcp://127.0.0.1:9098` as the loopback example.
-2. The ABCI client `proxy_app` and ABCI server `address` values match. Upstream
-   documents `tcp://127.0.0.1:36658` as the multiplexer default pair.
+- **Before fork height AND before any v10 app/store migration:** a
+  binary/config-only rollback to the exact retained compatible pre-v10
+  release (for example previously verified `v9.0.8-mocha`) is possible only
+  while local and independent chain state are both pre-activation and the
+  database is proven unchanged by migration. Stop the process first; keep the
+  same home/data and newest signer state, then verify sync/signing. This is
+  temporary: restore the verified v10 multiplexer before activation.
+- **At/after height `1082619`, after any migration, or with unknown migration
+  status:** do **not** downgrade to v9 or restore a pre-fork database. Stop
+  signing on an app-hash/consensus mismatch, preserve evidence and use an
+  upstream-compatible forward fix or separately reviewed recovery plan. A
+  retained old binary alone is not a safe rollback.
+- Never roll back, delete, truncate, replace from a snapshot or reset
+  `priv_validator_state.json`; never run `unsafe-reset-all` on a signer.
+  Never activate a backup host holding the same consensus key. If signer
+  fencing or signing-state continuity is uncertain, leave the signer stopped.
+- Key movement, snapshot restoration, reset, unjail, funds/signaling actions,
+  Fibre/escrow activation and firewall changes are not part of this procedure.
 
-Keep these internal endpoints on loopback unless an explicit protected design
-requires otherwise. A mismatch is a startup blocker, not a reason to alter
-consensus data.
+## Alert and recovery evidence
 
-## Upgrade and recovery gate
+Alert on missing `grpc_laddr`, ABCI client/server mismatch, failure to start an
+embedded app, repeated app-version switches, restarts, panic/consensus failure,
+unknown migration status, wrong chain identity, stalled height or lost fresh
+signatures. v10.2.0 exits when an embedded app fails: verify service-manager
+restart behavior and alerting rather than accepting a restart loop as healthy.
 
-Before changing an existing Mocha-5 validator:
-
-1. Verify chain ID `mocha-5`, dedicated home, service, current binary path,
-   version, commit, build tags, and public consensus identity.
-2. Reject any home, snapshot, database, or signer-state path inherited from
-   Mocha-4.
-3. Confirm active Mocha upgrade instructions and signaling state.
-4. Preserve configuration, the Mocha-5 consensus signer, and the newest
-   Mocha-5 `priv_validator_state.json` through the approved backup process.
-5. Prove the same consensus key cannot sign from another host or service.
-6. Check glibc compatibility before selecting the multiplexer artifact.
-7. Review `rpc.grpc_laddr`, `proxy_app`, and `address` before activation.
-8. Stage the binary and define a rollback artifact; do not change node data to
-   solve a binary or configuration error.
-9. Activate once, then verify process stability, sync, external Mocha-5
-   commits, and validator signatures.
-
-The multiplexer can sync from genesis with embedded applications, but this is
-not permission to reuse Mocha-4 data or signer state. Create new Mocha-5 state
-and preserve its signing history after activation.
-
-## Verification and alert contract
-
-Healthy operation requires all of the following:
-
-- `celestia-appd version --long` reports the pinned Mocha version, commit, and
-  `multiplexer` build tag;
-- the service uses only the dedicated `-mocha-5` home and remains active
-  without a restart loop;
-- logs show multiplexer initialization without embedded-app startup failure;
-- local RPC reports network `mocha-5`, advancing height, fresh block time, and
-  `catching_up=false` after synchronization;
-- external fresh Mocha-5 commits include the expected validator consensus
-  address when the node is meant to sign.
-
-Alert immediately on:
-
-- `App cannot be started without CometBFT when using the multiplexer`;
-- missing `grpc_laddr`;
-- ABCI client/server address mismatch;
-- any Mocha-4 chain ID, home, snapshot, database, or signer-state reference;
-- failure to decompress or start an embedded application;
-- repeated app-version switching, process restarts, stale height, or lost
-  validator signatures.
-
-The v9.0.6 source disables the Prometheus sink only in an embedded child app to
-avoid duplicate collector registration. This does not mean consensus telemetry
-is unavailable: monitor the parent process, CometBFT RPC, service state, logs,
-and external commits.
-
-If an old embedded artifact is suspected, preserve and inventory the current
-historical-binary directory, then stage a verified Mocha-5 replacement set. Do
-not apply a broad deletion instruction from troubleshooting material to a
-validator.
+Monitor the parent app/CometBFT process, local RPC, logs and independent commits.
+Historical v9.0.6 disabled the Prometheus sink inside embedded children to
+avoid duplicate collectors; this never meant consensus telemetry was optional.
+Do not delete the historical-binary directory to troubleshoot a validator.
 
 ## Sources
 
-Evidence reviewed from the official Celestia docs repository at commit
-`8fbaa868a323c13d3edae2875d9b27765eb29c45`:
+- [Official v10.2.0-mocha release and upgrade notice](https://github.com/celestiaorg/celestia-app/releases/tag/v10.2.0-mocha)
+- [Pinned Go module](https://github.com/celestiaorg/celestia-app/blob/3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a/go.mod)
+- [Pinned embedding constants](https://github.com/celestiaorg/celestia-app/blob/3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a/internal/embedding/data.go)
+- [Mocha app v10 activation/signaling](https://mocha.celenium.io/upgrade/10?tab=signals&page=1)
+- [Signaling queries and pending-plan gate](validator-signaling.md)
+- [Keys and signer boundaries](keys.md)
 
-- `constants/mocha_versions.json`
-- `app/operate/networks/mocha-testnet/page.mdx`
-- `app/operate/consensus-validators/install-celestia-app/page.mdx`
-- `app/operate/consensus-validators/validator-node/page.mdx`
-
-Evidence reviewed from official celestia-app tag `v9.0.6-mocha`, commit
-`6f4b596e47f80683adb1a161ca7cb640dcd9d206`:
-
-- `go.mod`
-- `Makefile`
-- `.goreleaser.yaml`
-- `multiplexer/README.md`
-- `multiplexer/cmd/start.go`
-- `multiplexer/abci/multiplexer.go`
-- `multiplexer/appd/run.go`
-- `cmd/celestia-appd/cmd/modify_root_command_multiplexer.go`
-- `internal/embedding/data.go`
-- `docs/release-notes/release-notes.md`
+General multiplexer/configuration background was reviewed from official docs
+commit `8fbaa868a323c13d3edae2875d9b27765eb29c45` (consensus installation,
+validator and Mocha pages). The release and embedding pins above supersede
+that historical documentation's version matrix.

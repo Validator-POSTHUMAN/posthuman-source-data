@@ -1,4 +1,11 @@
-# Celestia — One-Liner Setup Script
+# Historical Celestia One-Liner — Not a Mocha-5 Installer
+
+> **Historical Mocha-4 reference only. Do not run the examples below on
+> Mocha-5.** The helper has not been validated here for Mocha-5/app v10.
+> Current Mocha-5 target: `v10.2.0-mocha`, activation **1082619**; use
+> [installation](installation-guide.md) or [existing-node upgrade](multiplexer.md).
+> DA `v0.34.2-mocha` is informational only: POSTHUMAN operates neither Bridge
+> nor Light; Fibre/escrow activation requires a separate decision.
 
 Automated installation and management for Celestia nodes (Mainnet & Testnet) by [PostHuman Validator](https://posthuman.digital).
 
@@ -7,14 +14,14 @@ Automated installation and management for Celestia nodes (Mainnet & Testnet) by 
 ## 🚀 One-Liner Install & Run
 
 **Quick run (auto-cleanup):**
-```bash
+```text
 bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh)"
 ```
 **With screen (persistent session):**
-```bash
+```text
  screen -S celestia-manager
 ```
-**Current Versions:**
+**Historical versions from this archived example (not current):**
 - 🌐 Mainnet: `v9.0.6` (chain-id: `celestia`)
 - 🧪 Testnet: `v9.0.6-mocha` (chain-id: `mocha-4`)
 - 🔧 Go: `1.26.2`
@@ -62,7 +69,7 @@ One-click update with version selection.
 - 🌐 Fast worldwide via Cloudflare R2
 
 **Manual snapshot restore:**
-```bash
+```text
 export CELESTIA_HOME="$HOME/.celestia-app"
 export SERVICE_NAME="celestia-appd-testnet"
 export SNAP_DIR="$HOME/celestia-testnet-snapshot-restore"
@@ -144,14 +151,14 @@ sudo systemctl start "${SERVICE_NAME}" && sudo journalctl -u "${SERVICE_NAME}" -
 
 ### Network Selection
 Supports both Mainnet and Testnet:
-```bash
+```text
 export NETWORK_TYPE=testnet  # or mainnet (default)
 ./celestia-manager.sh
 ```
 
 ### Custom Installation Directory
 Install to custom location (e.g., separate disk):
-```bash
+```text
 export CELESTIA_HOME=/mnt/data/.celestia-app
 ./celestia-manager.sh
 ```
@@ -169,7 +176,7 @@ Complete suite for Data Availability nodes:
 
 ## 🔄 Quick Update
 
-```bash
+```text
 ./celestia-manager.sh
 # Select: 2 (Update Node) → Press Enter for latest version
 ```
@@ -189,19 +196,19 @@ Complete suite for Data Availability nodes:
 ## 🐛 Troubleshooting
 
 **Node not syncing?**
-```bash
+```text
 sudo journalctl -u celestia-appd -f -n 100
 celestia-appd status 2>&1 | jq .SyncInfo
 ```
 
 **Service won't start?**
-```bash
+```text
 sudo systemctl status celestia-appd
 sudo journalctl -u celestia-appd -n 50 --no-pager
 ```
 
 **Check sync status:**
-```bash
+```text
 ./celestia-manager.sh
 # Select: 7 (Status & Logs) → 2 (Check Sync Status)
 ```

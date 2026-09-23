@@ -10,6 +10,18 @@ that transaction's height (approximately 2 days at the source's assumed
 cadence). Mocha is the proving ground: test and observe the release here before
 any mainnet signal.
 
+## Current v10 plan — reviewed 2026-09-23
+
+Mocha-5 target: **`v10.2.0-mocha`**, app version **10**, activation height
+**1082619**. Follow [App upgrade and multiplexer](multiplexer.md) for the
+binary-first RPC-before-validator order and fork/migration rollback boundary.
+Check `query signal upgrade` **before** considering a transaction. Once an
+upgrade is pending, do not signal or try-upgrade again: a rejected transaction
+can still consume fees. The activation applies to all validators regardless
+of individual signaling history. `missing-validators` returns **monikers**,
+not validator/account addresses. Historical v9 tally/delay behavior below is
+not a reason to calculate a new height or send a v10 signal now.
+
 ## Mocha-5 boundary
 
 - Chain ID: `mocha-5`

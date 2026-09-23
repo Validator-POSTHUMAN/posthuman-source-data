@@ -605,10 +605,9 @@
     "website": "https://celestia.org/",
     "codebase": {
       "git_repo": "https://github.com/celestiaorg/celestia-app",
-      "recommended_version": "v9.0.6-mocha",
+      "recommended_version": "v10.2.0-mocha",
       "compatible_versions": [
-        "v9.0.6-mocha",
-        "v9.0.4-mocha"
+        "v10.2.0-mocha"
       ]
     },
     "chain_name": "celestia-app",
@@ -622,7 +621,6 @@
     "endpoints": {
       "rpc": "https://celestia-testnet-rpc.itrocket.net",
       "rest": "https://celestia-testnet-api.itrocket.net",
-      "peer": "1f01208683a8eb380adc1075a97508fb1d2bb888@135.181.232.241:28756",
       "snapshots": "https://server-6.itrocket.net/testnet/celestia/"
     },
     "generatedServices": [],

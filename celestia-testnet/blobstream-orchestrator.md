@@ -6,6 +6,14 @@ identity, and publish signatures to a **separate Blobstream P2P network**. It
 was not a DA bridge/light node and did not replace the consensus signer. The
 current Mocha-5 deployment status is blocked by the compatibility gate below.
 
+## Current app context — deployment still blocked
+
+Mocha-5 now targets app `v10.2.0-mocha` at activation height **1082619**; see
+[App upgrade](multiplexer.md). The v9 source analysis below is historical and
+is **not** proof of v10 compatibility. No compatible legacy orchestrator
+release has been established here, so the existing blocked gate remains.
+Fibre in DA `v0.34.2-mocha` does not supply that missing compatibility proof.
+
 ## Mocha-5 and binary gates
 
 - Consensus chain ID: `mocha-5`
