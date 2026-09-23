@@ -4,13 +4,34 @@ A light node follows extended headers and performs data availability sampling
 (DAS) without downloading every block. Current celestia-node DA roles are
 **bridge** and **light** only.
 
+## Operational scope and Fibre boundary
+
+**Informational guide: POSTHUMAN does not operate a Celestia Bridge or Light
+node.** The templates below describe a separately approved deployment, not
+existing POSTHUMAN infrastructure. Updating this guide enables no service,
+port, firewall rule, key, escrow, or transaction.
+
+`v0.34.2-mocha` adds a built-in Fibre client and the `fibre` JSON-RPC namespace
+on **Bridge and Light** nodes. The namespace includes Submit, Upload,
+Download, Deposit, Withdraw, QueryEscrowAccount, and PendingWithdrawals.
+Fibre needs a configured Mocha core endpoint running **celestia-app v10** with
+`x/fibre` and `x/valaddr`; it is unavailable without a core endpoint. Installing
+a v10 wrapper before activation does not mean these v10 modules are active.
+
+The Mocha-5 app target is `v10.2.0-mocha`, activation height **1082619**; see
+[App upgrade and rollback boundaries](multiplexer.md). This is not a mainnet
+version recommendation. Fibre/escrow activation requires a **separate operator
+decision** covering custody, funding, exposure and provider dependencies.
+Do not call Submit/Upload/Deposit/Withdraw, fund escrow, enable signer gRPC,
+or infer Fibre availability from DA health checks in this guide.
+
 ## Network and software pins
 
 - Consensus chain ID: `mocha-5`
 - DA P2P network: `mocha`
-- celestia-node: `v0.32.1-mocha`
-- Source commit: `8fc6945a38db8af6277d906c5d313a70db33c444`
-- Go: `1.26.5`
+- celestia-node: `v0.34.2-mocha`
+- Source commit: `cd6cd46f00a572a7010fecc7e0dacf8a456982d2`
+- Go: `1.26.8`
 - Store: `$HOME/.celestia-light-mocha-5`
 
 Mocha-5 is a new chain from height 1. Never reuse a Mocha-4 DA store,
@@ -30,15 +51,15 @@ maximum-throughput envelope. Monitor actual growth and keep capacity headroom.
 
 ## Build from the pinned source
 
-Install Go `1.26.5` and build dependencies through trusted distribution
+Install Go `1.26.8` and build dependencies through trusted distribution
 channels, then verify the toolchain.
 
 ```bash
 go version
-test "$(go env GOVERSION)" = "go1.26.5"
+test "$(go env GOVERSION)" = "go1.26.8"
 
-NODE_TAG="v0.32.1-mocha"
-NODE_COMMIT="8fc6945a38db8af6277d906c5d313a70db33c444"
+NODE_TAG="v0.34.2-mocha"
+NODE_COMMIT="cd6cd46f00a572a7010fecc7e0dacf8a456982d2"
 BUILD_ROOT="$(mktemp -d -p /tmp celestia-node-build.XXXXXX)"
 
 git clone --filter=blob:none --depth 1 --branch "$NODE_TAG" \
@@ -133,6 +154,14 @@ from before `v0.31.3`, run
 while stopped and inspect the merged configuration before activation.
 
 ## Sources
+
+Release and toolchain reviewed 2026-09-23:
+
+- [Official v0.34.2-mocha release, Fibre namespace and core v10 dependency](https://github.com/celestiaorg/celestia-node/releases/tag/v0.34.2-mocha)
+- [Pinned celestia-node go.mod (Go 1.26.8)](https://github.com/celestiaorg/celestia-node/blob/cd6cd46f00a572a7010fecc7e0dacf8a456982d2/go.mod)
+
+Capacity and general role guidance below retain their historical documentation
+provenance; they are not a new benchmark of Fibre workloads.
 
 Evidence reviewed from the official Celestia docs repository at commit
 `8fbaa868a323c13d3edae2875d9b27765eb29c45`:

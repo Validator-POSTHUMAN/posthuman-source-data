@@ -1,14 +1,26 @@
 # Celestia Testnet (Mocha-5) — Installation Guide
 
-Comprehensive guide for installing and running a Celestia node on the Mocha-5 testnet.
+For a **new non-running** Mocha-5 app node. Existing nodes must follow
+[App upgrade and multiplexer](multiplexer.md), not reinitialize their home.
+
+**Reviewed 2026-09-23:** target `v10.2.0-mocha`, commit
+`3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a`, app v10 activation **1082619**.
+Before activation the multiplexer runs app v9; binary version is not protocol
+version. The upgrade guide defines RPC-first order, verification and the
+pre-fork/pre-migration-only rollback boundary. Mainnet and Mocha-4 are separate.
+
+POSTHUMAN operates app nodes, not Bridge/Light. DA `v0.34.2-mocha` and its Fibre
+namespace are documented in the [Bridge](bridge-node-setup.md) and
+[Light](light-node-setup.md) informational guides; Fibre/escrow activation
+requires a separate decision.
 
 ---
 
 ## Prerequisites
 
 **For Validator/Consensus Node** (official requirements):
-- **Hardware**: 16 cores, 32 GB RAM, 2 TiB NVMe SSD, 1 Gbps bandwidth
-- **OS**: Ubuntu 20.04+ or similar Linux distribution
+- **Hardware**: 32 cores, 32 GB RAM, 12 TiB NVMe planning envelope, 1 Gbps bandwidth; see [capacity assumptions](full-node-setup.md)
+- **OS**: Ubuntu 24.04 or equivalent with glibc >= 2.38; Ubuntu 22.04 and older unsupported
 - **Network**: Stable internet connection
 
 **Note**: These are official requirements for validators. For non-validator full nodes, lower specs may work but are not recommended for production.
@@ -24,56 +36,44 @@ sudo apt install -y curl tar wget clang pkg-config libssl-dev jq build-essential
 
 ---
 
-## 2. Install Go
+## 2. Select the verified multiplexer artifact or toolchain
 
-Celestia app v9 requires Go 1.26.1+:
+Prefer the checksum-verified official multiplexer archive and staging commands
+in [App upgrade and multiplexer](multiplexer.md). Do not select `standalone`
+while Mocha-5 is still on app v9. Do not use Cosmovisor for this upgrade.
 
-```bash
-cd "$HOME"
-if ! command -v go >/dev/null 2>&1; then
-  VER="1.26.1"
-  wget "https://golang.org/dl/go${VER}.linux-amd64.tar.gz"
-  sudo rm -rf /usr/local/go
-  sudo tar -C /usr/local -xzf "go${VER}.linux-amd64.tar.gz"
-  rm "go${VER}.linux-amd64.tar.gz"
-fi
+If building from source, install Go **1.26.6** through trusted distribution
+channels and verify `go version`. Do not reuse the old v9 toolchain assumption.
 
-# Setup Go environment
-[ -d "$HOME/go/bin" ] || mkdir -p "$HOME/go/bin"
-if ! grep -q "/usr/local/go/bin" "$HOME/.bash_profile" 2>/dev/null; then
-  echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> "$HOME/.bash_profile"
-fi
-source "$HOME/.bash_profile" 2>/dev/null || true
+## 3. Build from the pinned source (alternative to the official archive)
 
-# Verify
-go version
-```
-
----
-
-## 3. Build and Install `celestia-appd`
-
-Clone and build the testnet version:
+Use a new staging directory without deleting or replacing another checkout:
 
 ```bash
-cd "$HOME"
-rm -rf celestia-app
-git clone https://github.com/celestiaorg/celestia-app.git
-cd celestia-app
-
-# Checkout current Mocha testnet version
-VERSION="v9.0.6-mocha"
-git checkout "tags/$VERSION"
-
-# Build and install
-make build
-make install
-
-# Verify
-celestia-appd version
+set -eu
+VERSION="v10.2.0-mocha"
+APP_COMMIT="3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a"
+test "$(go env GOVERSION)" = "go1.26.6"
+BUILD_ROOT="$(mktemp -d -p /tmp celestia-app-build.XXXXXX)"
+git clone --filter=blob:none --depth 1 --branch "$VERSION" \
+  https://github.com/celestiaorg/celestia-app.git "$BUILD_ROOT/src"
+test "$(git -C "$BUILD_ROOT/src" rev-parse HEAD)" = "$APP_COMMIT"
+make -C "$BUILD_ROOT/src" build
+"$BUILD_ROOT/src/build/celestia-appd" version --long
 ```
 
-Expected output: `9.0.6-mocha`
+Require `10.2.0-mocha`, the pinned commit and the `multiplexer` build tag.
+Review the embedded historical assets as described in the upgrade guide.
+Only after review, install the binary for this **new non-running** node;
+existing nodes use the controlled upgrade workflow instead of this command:
+
+```bash
+make -C "$BUILD_ROOT/src" install
+celestia-appd version --long
+```
+
+Verify the effective installed binary path before creating a service. Avoid
+sharing an executable path with a mainnet or any running node.
 
 ---
 
@@ -87,30 +87,30 @@ MONIKER="<YOUR_NODE_NAME>"
 CHAIN_ID="mocha-5"
 
 # Initialize
-celestia-appd init "$MONIKER" --chain-id "$CHAIN_ID"
+celestia-appd init "$MONIKER" --chain-id "$CHAIN_ID" --home "$HOME/.celestia-app-mocha-5"
 ```
 
-This creates: `~/.celestia-app/`
+This creates: `~/.celestia-app-mocha-5/`
 
 ---
 
 ## 5. Download Genesis and Address Book
 
-**Important**: Download from Posthuman testnet infrastructure:
+**Important**: Use the official Mocha-5 genesis and the listed community addrbook; verify chain identity before use:
 
 ```bash
 
 # Download genesis.json
 curl -Ls https://raw.githubusercontent.com/celestiaorg/networks/main/mocha-5/genesis.json \
-  -o "$HOME/.celestia-app/config/genesis.json"
+  -o "$HOME/.celestia-app-mocha-5/config/genesis.json"
 
 # Download addrbook.json (peer list)
 curl -Ls https://server-6.itrocket.net/testnet/celestia/addrbook.json \
-  -o "$HOME/.celestia-app/config/addrbook.json"
+  -o "$HOME/.celestia-app-mocha-5/config/addrbook.json"
 
 # Verify downloads
-ls -lh "$HOME/.celestia-app/config/genesis.json"
-ls -lh "$HOME/.celestia-app/config/addrbook.json"
+ls -lh "$HOME/.celestia-app-mocha-5/config/genesis.json"
+ls -lh "$HOME/.celestia-app-mocha-5/config/addrbook.json"
 ```
 
 ---
@@ -121,41 +121,52 @@ ls -lh "$HOME/.celestia-app/config/addrbook.json"
 
 ```bash
 sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.002utia"|g' \
-  "$HOME/.celestia-app/config/app.toml"
+  "$HOME/.celestia-app-mocha-5/config/app.toml"
 ```
 
 ### 6.2 Configure Pruning (Recommended for testnet)
 
 ```bash
-sed -i -e 's|^pruning *=.*|pruning = "custom"|' "$HOME/.celestia-app/config/app.toml"
-sed -i -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' "$HOME/.celestia-app/config/app.toml"
-sed -i -e 's|^pruning-interval *=.*|pruning-interval = "19"|' "$HOME/.celestia-app/config/app.toml"
+sed -i -e 's|^pruning *=.*|pruning = "custom"|' "$HOME/.celestia-app-mocha-5/config/app.toml"
+sed -i -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' "$HOME/.celestia-app-mocha-5/config/app.toml"
+sed -i -e 's|^pruning-interval *=.*|pruning-interval = "19"|' "$HOME/.celestia-app-mocha-5/config/app.toml"
 ```
 
 ### 6.3 Disable Indexer (Saves disk space)
 
 ```bash
-sed -i -e 's|^indexer *=.*|indexer = "null"|' "$HOME/.celestia-app/config/config.toml"
+sed -i -e 's|^indexer *=.*|indexer = "null"|' "$HOME/.celestia-app-mocha-5/config/config.toml"
 ```
 
 ### 6.4 Enable Prometheus
 
 ```bash
-sed -i -e 's|prometheus = false|prometheus = true|' "$HOME/.celestia-app/config/config.toml"
+sed -i -e 's|prometheus = false|prometheus = true|' "$HOME/.celestia-app-mocha-5/config/config.toml"
 ```
 
 ### 6.5 Add Peers
 
+The old POSTHUMAN endpoint ending in `:28756` belonged to the retired
+Mocha-5 source and must not be used. Select a current public peer, verify its
+Mocha-5 identity and reachability, and replace every placeholder before use.
+
 ```bash
-# Posthuman testnet peer
-PEERS="1f01208683a8eb380adc1075a97508fb1d2bb888@135.181.232.241:28756"
+# Independently verified public Mocha-5 peer
+PEERS="<VERIFIED_MOCHA_5_NODE_ID>@<PUBLIC_P2P_HOST>:<P2P_PORT>"
 
 # Update config (adjust as needed based on available peers)
 sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" \
-  "$HOME/.celestia-app/config/config.toml"
+  "$HOME/.celestia-app-mocha-5/config/config.toml"
 ```
 
 ---
+
+### 6.6 v10 configuration preflight
+
+Before startup, follow [Configuration preflight](multiplexer.md#configuration-preflight):
+ensure the top-level app ABCI `address` matches `proxy_app`, preserve loopback
+binds and keep `priv_validator_grpc_laddr = ""` when Fibre is not operated.
+Do not blindly apply `config sync` or change ports to resolve a mismatch.
 
 ## 7. Create Systemd Service
 
@@ -167,8 +178,8 @@ After=network-online.target
 
 [Service]
 User=$USER
-WorkingDirectory=$HOME/.celestia-app
-ExecStart=$(which celestia-appd) start --home $HOME/.celestia-app
+WorkingDirectory=$HOME/.celestia-app-mocha-5
+ExecStart=$(which celestia-appd) start --home $HOME/.celestia-app-mocha-5
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
@@ -218,7 +229,7 @@ sudo journalctl -u celestia-appd-testnet -f -o cat
 ### Check Sync Status
 
 ```bash
-celestia-appd status 2>&1 | jq .SyncInfo
+celestia-appd status --home "$HOME/.celestia-app-mocha-5" 2>&1 | jq .SyncInfo
 ```
 
 Look for `"catching_up": false` when fully synced.
@@ -226,18 +237,22 @@ Look for `"catching_up": false` when fully synced.
 ### Check Block Height
 
 ```bash
-celestia-appd status 2>&1 | jq .SyncInfo.latest_block_height
+celestia-appd status --home "$HOME/.celestia-app-mocha-5" 2>&1 | jq .SyncInfo.latest_block_height
 ```
 
 ---
 
 ## 11. Create or Restore Wallet
 
+Optional operator-controlled onboarding, not part of an app upgrade. Keep
+wallet recovery material out of chat, logs and agent context. Never import or
+copy a consensus key through these wallet steps.
+
 ### Create New Wallet
 
 ```bash
 WALLET="wallet-testnet"
-celestia-appd keys add "$WALLET"
+celestia-appd --home "$HOME/.celestia-app-mocha-5" keys add "$WALLET"
 ```
 
 **Save the mnemonic securely!**
@@ -246,13 +261,13 @@ celestia-appd keys add "$WALLET"
 
 ```bash
 WALLET="wallet-testnet"
-celestia-appd keys add "$WALLET" --recover
+celestia-appd --home "$HOME/.celestia-app-mocha-5" keys add "$WALLET" --recover
 ```
 
 ### Save Wallet Address
 
 ```bash
-WALLET_ADDRESS=$(celestia-appd keys show "$WALLET" -a)
+WALLET_ADDRESS=$(celestia-appd --home "$HOME/.celestia-app-mocha-5" keys show "$WALLET" -a)
 echo "export WALLET_ADDRESS_TESTNET=$WALLET_ADDRESS" >> "$HOME/.bash_profile"
 source "$HOME/.bash_profile"
 echo "Testnet wallet: $WALLET_ADDRESS"
@@ -271,21 +286,22 @@ Request testnet TIA from the faucet:
 ### Check Balance
 
 ```bash
-celestia-appd query bank balances "$WALLET_ADDRESS"
+celestia-appd --home "$HOME/.celestia-app-mocha-5" query bank balances "$WALLET_ADDRESS"
 ```
 
 ---
 
 ## 13. Create Validator
 
-After sync and funding:
+Optional new-validator transaction, requiring a separate operator decision;
+never repeat it for an existing validator upgrade. After sync and funding:
 
 ```bash
 celestia-appd tx staking create-validator \
   --amount=1000000utia \
-  --pubkey=$(celestia-appd tendermint show-validator) \
+  --pubkey=$(celestia-appd --home "$HOME/.celestia-app-mocha-5" tendermint show-validator) \
   --moniker="<YOUR_NODE_NAME>" \
-  --chain-id=mocha-5 \
+  --chain-id=mocha-5 --home "$HOME/.celestia-app-mocha-5" \
   --commission-rate="0.10" \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.01" \
@@ -314,7 +330,7 @@ sudo systemctl stop celestia-appd-testnet
 ### Node Info
 
 ```bash
-celestia-appd status 2>&1 | jq
+celestia-appd status --home "$HOME/.celestia-app-mocha-5" 2>&1 | jq
 ```
 
 ---
@@ -330,32 +346,18 @@ celestia-appd status 2>&1 | jq
    sudo ufw enable
    ```
 
-2. **Backup Keys**: `~/.celestia-app/config/priv_validator_key.json`
+2. **Signer custody**: Follow [Keys and signer boundaries](keys.md); preserve the existing key and newest signer state without exposing or moving them.
 3. **SSH Key Auth**: Disable password authentication
 4. **Monitoring**: Setup Prometheus/Grafana
 
 ---
 
-## Uninstall
+## Retirement boundary
 
-```bash
-# Stop and disable
-sudo systemctl stop celestia-appd-testnet
-sudo systemctl disable celestia-appd-testnet
-
-# Remove service
-sudo rm /etc/systemd/system/celestia-appd-testnet.service
-sudo systemctl daemon-reload
-
-# Remove binary (if not shared with mainnet)
-# sudo rm $(which celestia-appd)
-
-# Remove data
-rm -rf "$HOME/.celestia-app"
-
-# Clean environment
-sed -i '/WALLET_ADDRESS_TESTNET/d' "$HOME/.bash_profile"
-```
+There is no copy-paste validator uninstall procedure here. Decommissioning,
+data deletion, key handling or signer migration requires a separately reviewed
+plan with verified recovery evidence and duplicate-signer fencing. Never use
+installation or retirement steps as a database or signer-state rollback.
 
 ---
 
@@ -368,4 +370,4 @@ sed -i '/WALLET_ADDRESS_TESTNET/d' "$HOME/.bash_profile"
 
 ---
 
-**Last Updated**: v9.0.6-mocha | Chain ID: mocha-5
+**Last Updated**: 2026-09-23 | v10.2.0-mocha | App v10 height: 1082619 | Chain ID: mocha-5
