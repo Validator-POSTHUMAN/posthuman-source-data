@@ -171,7 +171,7 @@
   },
   {
     "name": "gno",
-    "type": "testnet",
+    "type": "mainnet",
     "title": "Gnoland",
     "website": "https://gno.land/",
     "github": "https://github.com/gnolang/gno",
@@ -179,16 +179,16 @@
     "daemon_name": "gnoland",
     "codebase": {
       "git_repo": "https://github.com/gnolang/gno",
-      "recommended_version": "c4c72fdd288c757e8da0d93aae867fa479b1b15c",
+      "recommended_version": "v1.5.0",
       "compatible_versions": [
-        "c4c72fdd288c757e8da0d93aae867fa479b1b15c"
+        "v1.5.0"
       ]
     },
-    "chain_id": "pearl-1",
+    "chain_id": "gnoland-1",
     "endpoints": {
       "rpc": "https://rpc-gnoland.posthuman.digital",
       "snapshots": "https://snapshots-gnoland.posthuman.digital",
-      "peer": "g1zq6h7d7302wqwd7hycndq9qqx9d3tsew3c4d7d@peer-gnoland.posthuman.digital:37656"
+      "peer": "g17zx8uj0rqkkrsdkz3jvt8kp0k5ry30aw3qplww@peer-gnoland.posthuman.digital:38656"
     },
     "contributions": "Gno-land",
     "generatedServices": [],
