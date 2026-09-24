@@ -815,7 +815,8 @@
     },
     "contributions": "JunoNetwork",
     "generatedServices": [
-      "installation-guide"
+      "installation-guide",
+      "state-sync"
     ],
     "services": [
       "snapshots"
