@@ -1,4 +1,3 @@
-![1v (10)](https://github.com/Validator-POSTHUMAN/IBC-Relayers/assets/92199696/ca4e098d-6160-4535-806d-59b7a4951ccb)
 # IBC Relayers: 
 `There's a list of IBC relayers currently provided by POSTHUMAN validator:`
 
