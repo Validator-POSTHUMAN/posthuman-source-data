@@ -639,8 +639,7 @@
       "validator-signaling",
       "blobstream-orchestrator",
       "storage-optimization",
-      "snapshots",
-      "one-liner"
+      "snapshots"
     ]
   },
   {
