@@ -17,7 +17,9 @@
     "services": [
       "install-guide",
       "troubleshooting",
-      "useful-commands"
+      "useful-commands",
+      "monitoring",
+      "security-hardening"
     ]
   },
   {
@@ -216,7 +218,8 @@
       "installation-guide"
     ],
     "services": [
-      "skill"
+      "skill",
+      "snapshots"
     ]
   },
   {
@@ -636,7 +639,8 @@
       "validator-signaling",
       "blobstream-orchestrator",
       "storage-optimization",
-      "snapshots"
+      "snapshots",
+      "one-liner"
     ]
   },
   {
@@ -656,7 +660,8 @@
     "generatedServices": [],
     "services": [
       "installation-guide",
-      "ibc-relayers"
+      "ibc-relayers",
+      "one-liner"
     ]
   },
   {
@@ -769,7 +774,8 @@
       "installation-guide",
       "skill",
       "ibc-relayers",
-      "links"
+      "links",
+      "snapshots"
     ]
   },
   {
@@ -789,7 +795,9 @@
     "generatedServices": [
       "installation-guide"
     ],
-    "services": []
+    "services": [
+      "snapshots"
+    ]
   },
   {
     "name": "juno",
@@ -809,7 +817,9 @@
     "generatedServices": [
       "installation-guide"
     ],
-    "services": []
+    "services": [
+      "snapshots"
+    ]
   },
   {
     "name": "exrp-testnet",
@@ -946,7 +956,12 @@
     "endpoints": {},
     "contributions": "Babylon",
     "generatedServices": [],
-    "services": []
+    "services": [
+      "installation-guide",
+      "genesis-and-addrbook",
+      "snapshot-service",
+      "one-liner"
+    ]
   },
   {
     "name": "canton-testnet",
@@ -1259,7 +1274,9 @@
     "contributions": "Logos",
     "generatedServices": [],
     "services": [
-      "install-guide"
+      "install-guide",
+      "monitoring",
+      "security-hardening"
     ],
     "chain_id": ""
   },
@@ -1600,7 +1617,9 @@
     "contributions": "Espresso",
     "generatedServices": [],
     "services": [
-      "install-guide"
+      "install-guide",
+      "monitoring",
+      "security-hardening"
     ]
   },
   {
