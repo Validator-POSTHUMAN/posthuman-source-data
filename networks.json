@@ -727,7 +727,6 @@
       "installation-guide"
     ],
     "services": [
-      "snapshots",
       "skill"
     ]
   },
