@@ -721,16 +721,10 @@
     "stake": "https://explorer.posthuman.digital/oraichain/staking/oraivaloper1gvk3caqtdnwhff60ndm29tp0m7p8e57zgx588h",
     "explorer": "https://explorer.posthuman.digital/oraichain",
     "chain_id": "Oraichain",
-    "endpoints": {
-      "rpc": "https://rpc.oraichain.posthuman.digital",
-      "rest": "https://rest.oraichain.posthuman.digital",
-      "grpc": "https://grpc.oraichain.posthuman.digital",
-      "peer": "129e4e71e797e9d32d56f5354721217da4d4f46d@135.181.227.236:55656"
-    },
+    "endpoints": {},
     "contributions": "Orai",
     "generatedServices": [
-      "installation-guide",
-      "state-sync"
+      "installation-guide"
     ],
     "services": [
       "snapshots",
