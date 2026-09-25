@@ -633,6 +633,7 @@
       "bridge-node-setup",
       "full-node-setup",
       "multiplexer",
+      "fibre",
       "light-node-setup",
       "monitoring",
       "keys",
