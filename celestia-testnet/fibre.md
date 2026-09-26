@@ -10,6 +10,26 @@
 - Keep the app gRPC and PrivValidator gRPC endpoints bound to loopback. The Fibre data-plane listener is the only endpoint that should be public.
 - `tx valaddr set-host` is an account-key, fee-bearing on-chain transaction. It needs a separate explicit approval for the exact public `host:port`.
 
+## Fill in your own deployment values
+
+Before following the procedure, create a private operator worksheet and replace
+every placeholder below with values from **your own** Mocha-5 inventory. Do not
+copy another validator's addresses, home directories, service names, RPCs,
+validator accounts, or firewall rules.
+
+| Required value | Your value |
+| --- | --- |
+| Validator service | `<YOUR_VALIDATOR_SERVICE>` |
+| Fibre service and dedicated home | `<YOUR_FIBRE_SERVICE>`, `<YOUR_FIBRE_HOME>` |
+| App-node home and chain ID | `<YOUR_MOCHA_HOME>`, `mocha-5` |
+| Local app gRPC and PrivValidator gRPC | `127.0.0.1:<YOUR_APP_GRPC_PORT>`, `127.0.0.1:<YOUR_PRIVVAL_GRPC_PORT>` |
+| Public provider host and data-plane port | `<YOUR_PUBLIC_IP_OR_DNS>:<YOUR_FIBRE_PORT>` |
+| Validator account and consensus address | `<YOUR_VALIDATOR_ACCOUNT>`, `<YOUR_CONSENSUS_ADDRESS>` |
+| Trusted Mocha-5 RPC and monitoring target | `<YOUR_TRUSTED_RPC>`, `<YOUR_MONITORING_TARGET>` |
+
+Keep credentials, keyring passphrases, private infrastructure details, and any
+non-public endpoints out of this worksheet and out of the command line.
+
 ## Capacity and prerequisites
 
 Before installing, record the service state, current height, sync state, bonded/jailed state, restart count, free disk, and fresh external signatures. Do not add Fibre to a validator that is unhealthy or has unresolved signing ambiguity.
@@ -32,10 +52,10 @@ In the app-node configuration, bind application gRPC locally. In the CometBFT co
 ```toml
 # app configuration
 [grpc]
-address = "127.0.0.1:<APP_GRPC_PORT>"
+address = "127.0.0.1:<YOUR_APP_GRPC_PORT>"
 
 # CometBFT config.toml
-priv_validator_grpc_laddr = "127.0.0.1:<PRIVVAL_GRPC_PORT>"
+priv_validator_grpc_laddr = "127.0.0.1:<YOUR_PRIVVAL_GRPC_PORT>"
 ```
 
 Do **not** prefix `priv_validator_grpc_laddr` with `tcp://`: this field is a bare address and an invalid prefix can prevent the app multiplexer from starting. Treat any app configuration change as validator maintenance: retain the prior file, restart only the reviewed service, and verify signing after.
@@ -43,9 +63,9 @@ Do **not** prefix `priv_validator_grpc_laddr` with `tcp://`: this field is a bar
 The Fibre server configuration should use only loopback control links:
 
 ```toml
-app_grpc_address = "127.0.0.1:<APP_GRPC_PORT>"
-signer_grpc_address = "127.0.0.1:<PRIVVAL_GRPC_PORT>"
-server_listen_address = "0.0.0.0:7980"
+app_grpc_address = "127.0.0.1:<YOUR_APP_GRPC_PORT>"
+signer_grpc_address = "127.0.0.1:<YOUR_PRIVVAL_GRPC_PORT>"
+server_listen_address = "0.0.0.0:<YOUR_FIBRE_PORT>"
 ```
 
 Start the exact `fibre` binary packaged with the same reviewed celestia-app release, with explicit `--home`, `--app-grpc-address`, `--signer-grpc-address`, and `--server-listen-address` arguments. Manage it as a dedicated service that requires the validator service, restarts only on failure, and starts on boot. Do not place keys, passphrases, or account credentials in a unit file, environment file, or guide.
@@ -64,11 +84,11 @@ Before registration, require all of the following:
 Only then may an explicitly approved operator transaction set the public host:
 
 ```text
-celestia-appd tx valaddr set-host <PUBLIC-IP-OR-DNS:7980> \
-  --from <VALIDATOR-ACCOUNT> \
+celestia-appd tx valaddr set-host <YOUR_PUBLIC_IP_OR_DNS:YOUR_FIBRE_PORT> \
+  --from <YOUR_VALIDATOR_ACCOUNT> \
   --chain-id mocha-5 \
-  --home <REVIEWED-MOCHA-5-HOME> \
-  --node <TRUSTED-MOCHA-5-RPC>
+  --home <YOUR_MOCHA_HOME> \
+  --node <YOUR_TRUSTED_RPC>
 ```
 
 Review the generated transaction's chain ID, message type, signer, exact host and port, account sequence, and fee before signing. Confirm its committed result (`code: 0`) and query the resulting provider record. Treat the rollout as complete only when that record resolves to the approved `host:port`; a local listener alone does not register a Fibre provider or receive network traffic. Do not resend a completed registration merely to check status.

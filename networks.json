@@ -634,6 +634,7 @@
       "full-node-setup",
       "multiplexer",
       "fibre",
+      "skill",
       "light-node-setup",
       "monitoring",
       "keys",

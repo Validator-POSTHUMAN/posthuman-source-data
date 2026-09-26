@@ -1,6 +1,6 @@
 ---
 name: celestia-validator-and-bridge-ops
-description: "Operate Celestia mainnet consensus validators/full nodes and Data Availability bridge/light/full nodes: monitor celestia-appd and celestia-node, bridge-node sync, snapshots, upgrades, safe recovery, public endpoints, and concise operator reports."
+description: "Deploy, register, or verify Celestia Fibre servers; operate Celestia consensus validators/full nodes and Data Availability bridge/light/full nodes safely."
 ---
 
 # Celestia Validator and Bridge Ops
@@ -356,6 +356,46 @@ Bridge/full/light recovery:
 Do not mix consensus snapshots with DA node stores. `celestia-appd` snapshots
 restore `~/.celestia-app/data`; bridge/full/light snapshots restore their own
 `~/.celestia-*` stores.
+
+## Fibre Server Workflow
+
+Use this workflow only with the exact Celestia app release and network that
+upstream documents as Fibre-compatible. Fibre is a validator-operated data
+service, not a bridge, full, or light node.
+
+1. Load the operator's own inventory: chain ID, validator service, Fibre
+   service, app home, dedicated Fibre home, local app gRPC address, local
+   PrivValidator gRPC address, public host:port, firewall owner, validator
+   account reference, consensus address, and monitoring path. Do not infer
+   these values from another operator's deployment.
+2. Prove the validator is bonded, not jailed, synced, advancing, and signing
+   before changing its host. Record unit state/restarts, free disk, CPU/RAM,
+   current height, and independent signature evidence. Stop if signer identity
+   or active network is ambiguous.
+3. Run the official Fibre CPU gate after capturing the baseline. Require its
+   published pass result and required CPU features, then recheck sync, height
+   advance, restart count, and signing before proceeding.
+4. Use a dedicated Fibre home and bind app gRPC and PrivValidator gRPC to
+   loopback only. Set `priv_validator_grpc_laddr` as a bare `host:port`, never
+   with a `tcp://` prefix. Never copy, read, export, or substitute the
+   consensus key or roll back signer state.
+5. Start Fibre as a boot-enabled service that depends on the validator and
+   restarts on failure. Configure only the local app/signer gRPC addresses and
+   the reviewed public data-plane listener. Expose only the approved Fibre TCP
+   port after firewall and independent-reachability checks.
+6. Verify a ready signer, stable Fibre restart count, loopback-only control
+   listeners, public data-plane reachability, validator sync, and a fresh
+   independent validator signature. Record missing metrics collection as a
+   residual rather than claiming monitoring coverage.
+7. Register only after explicit approval for the exact public host:port.
+   Prepare `tx valaddr set-host` in a protected local terminal; review chain
+   ID, signer, account sequence, fee, message type, and host:port before
+   signing. Never request, log, or place a keyring passphrase in chat, command
+   arguments, a unit, or an environment file.
+8. Require a committed transaction result with `code=0`, then query
+   `x/valaddr` using the validator consensus address. Complete registration
+   only when the provider record matches the approved host:port. Do not resend
+   merely to check status.
 
 ## Public Endpoint Checks
 
