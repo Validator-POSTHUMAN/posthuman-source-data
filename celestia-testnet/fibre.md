@@ -1,6 +1,6 @@
 # Celestia Mocha-5 Fibre Server
 
-**Mocha-5 / celestia-app v10 only.** Reviewed 2026-09-25. Fibre is a validator-operated data service; it is not a Celestia Bridge or Light node. Follow the exact release-compatible upstream instructions before changing a running validator.
+**Mocha-5 / celestia-app v10 only.** Reviewed 2026-09-26. Fibre is a validator-operated data service; it is not a Celestia Bridge or Light node. Follow the exact release-compatible upstream instructions before changing a running validator.
 
 ## Scope and safety boundary
 
@@ -71,7 +71,7 @@ celestia-appd tx valaddr set-host <PUBLIC-IP-OR-DNS:7980> \
   --node <TRUSTED-MOCHA-5-RPC>
 ```
 
-Review the generated transaction's chain ID, message type, signer, exact host and port, account sequence, and fee before signing. Confirm its committed result (`code: 0`) and query the resulting provider record. A local listener alone does not register a Fibre provider or receive network traffic.
+Review the generated transaction's chain ID, message type, signer, exact host and port, account sequence, and fee before signing. Confirm its committed result (`code: 0`) and query the resulting provider record. Treat the rollout as complete only when that record resolves to the approved `host:port`; a local listener alone does not register a Fibre provider or receive network traffic. Do not resend a completed registration merely to check status.
 
 ## Monitoring
 
