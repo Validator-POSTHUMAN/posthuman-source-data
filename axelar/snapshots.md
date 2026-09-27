@@ -1,15 +1,27 @@
 # Restore Axelar from a POSTHUMAN Snapshot
 
 
-> **Restore-verified: not yet.** The pipeline that produced this archive used to
-> prune the copy offline with `cosmprund`; that rewrote the application state and
-> made the Celestia archive unrestorable (`APP HASH MISMATCH` at height
-> `14443346`, 2026-09-27). The offline prune is now **off** for this publisher, so
-> new archives are copies of the node's own pruned data — the same change that
-> made the Celestia archive restore cleanly in an end-to-end test. This archive
-> has not had that test yet. Until it does, keep a rollback of your old database
-> and verify the height against a live RPC. Detail: POSTHUMAN decision record
-> `2026-09-27-our-own-snapshot-could-not-restore.md`.
+> **Restore-verified on 2026-09-27.** The published archive at height `35290207`
+> was restored end to end on a throwaway node: it executed **11,694 blocks** past
+> the snapshot height and logged no app-hash divergence. That test exists because a
+> sibling publisher pruned its copy offline with `cosmprund`, which rewrote the
+> application state and produced a Celestia archive that stalled a restored node
+> with `APP HASH MISMATCH` at height `14443346`. Offline pruning is now **off** for
+> this publisher, so the archive is a copy of the node's own data.
+
+What the archive is, so its size is not a surprise:
+
+- Roughly **200 GB** compressed. It is large because the node's goleveldb
+  `application.db` retains about 150 GB while the node keeps only 100 recent
+  states — retained database garbage rather than history — beside about 69 GB of
+  real block history.
+- Node parameters the archive inherits: `pruning = "custom"`,
+  `pruning-keep-recent = "100"`, `pruning-interval = "10"`, `min-retain-blocks = 0`,
+  `indexer = "null"`, goleveldb. It is not an archive node and carries no
+  transaction index.
+- Resumable: the host answers byte-range requests, so an interrupted download
+  continues instead of starting over. Plan disk for the archive, the extracted data,
+  and a rollback copy of whatever you replace.
 
 This procedure downloads and verifies the complete archive before touching
 live node data. Validator operators must preserve their final signer state and

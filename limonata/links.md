@@ -42,12 +42,18 @@ Network identifiers:
 - EVM chain ID: `10777` (`0x2a19`)
 - Base denomination: `aLIMO`
 
-> **Restore-verified: not yet.** The pipeline that produced this archive used to
-> prune the copy offline with `cosmprund`; that rewrote the application state and
-> made the Celestia archive unrestorable (`APP HASH MISMATCH` at height
-> `14443346`, 2026-09-27). The offline prune is now **off** for this publisher, so
-> new archives are copies of the node's own pruned data — the same change that made
-> the Celestia archive restore cleanly in an end-to-end test. This archive has not
-> had that test yet. Until it does, keep a rollback of your old database and verify
-> the height against a live RPC. Detail: POSTHUMAN decision record
-> `2026-09-27-our-own-snapshot-could-not-restore.md`.
+> **Restore-verified on 2026-09-27.** The published archive at height `4041596` was
+> restored end to end on a throwaway node: it reached the chain tip, ran 1,693 blocks
+> past the snapshot height with `catching_up=false`, and logged no app-hash
+> divergence. That test exists because this pipeline used to prune the copy offline
+> with `cosmprund`, which rewrote the application state and produced a Celestia
+> archive that stalled a restored node with `APP HASH MISMATCH` at height
+> `14443346`. Offline pruning is now off, so the archive is a copy of the node's own
+> data — which is also why it grew from 9.7 GB to about 21 GB. That is the real size
+> of a snapshot that restores.
+
+Node parameters the archive inherits: `pruning = "default"`, `min-retain-blocks = 0`,
+`indexer = "kv"` (so it includes the transaction index, about 5 GB of the total),
+goleveldb. Snapshot metadata and checksums are published beside the archive and
+refreshed every four hours; read `snapshot_time` from `snapshot.json` rather than
+assuming freshness.
