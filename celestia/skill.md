@@ -319,10 +319,10 @@ Consensus node recovery:
 
 <!-- The POSTHUMAN archive is withdrawn from the restore path; see celestia/snapshots.md -->
 The restore procedure lives in one place now: **[Celestia Mainnet Snapshot](snapshots.md)**.
-Our own archive cannot currently be restored (`APP HASH MISMATCH` at height
-`14443346`, reproduced 2026-09-27), so that page names a verified third-party
-source instead. Do not copy the old one-line `curl | lz4 | tar` restore from
-earlier revisions of this document: it neither resumes nor verifies a checksum.
+It uses our own archive, which was restore-verified end to end on 2026-09-27, and
+names a third-party alternative. Do not copy the old one-line
+`curl | lz4 | tar` restore from earlier revisions of this document: it neither
+resumes nor verifies a checksum.
 
 
 ## Fibre Server Workflow
