@@ -317,45 +317,13 @@ Consensus node recovery:
 9. Verify chain ID, height progression, `catching_up=false`, logs,
    local/public gap, and validator signing if applicable.
 
-POSTHUMAN consensus snapshot, when selected by the operator:
+<!-- The POSTHUMAN archive is withdrawn from the restore path; see celestia/snapshots.md -->
+The restore procedure lives in one place now: **[Celestia Mainnet Snapshot](snapshots.md)**.
+Our own archive cannot currently be restored (`APP HASH MISMATCH` at height
+`14443346`, reproduced 2026-09-27), so that page names a verified third-party
+source instead. Do not copy the old one-line `curl | lz4 | tar` restore from
+earlier revisions of this document: it neither resumes nor verifies a checksum.
 
-~~~bash
-export CELESTIA_HOME="$HOME/.celestia-app"
-export SERVICE_NAME="celestia-appd"
-export SNAP_DIR="$HOME/celestia-mainnet-snapshot-restore"
-
-rm -rf "$SNAP_DIR"
-mkdir -p "$SNAP_DIR"
-curl -fL https://snapshots-celestia-mainnet.posthuman.digital/snapshot-latest.tar.lz4 | \
-  lz4 -dc | tar -xf - -C "$SNAP_DIR"
-test -d "$SNAP_DIR/data/application.db"
-
-cp "$CELESTIA_HOME/data/priv_validator_state.json" \
-   "$CELESTIA_HOME/priv_validator_state.json.backup"
-
-sudo systemctl stop "$SERVICE_NAME"
-BACKUP_DIR="$CELESTIA_HOME/data.before-snapshot-$(date +%Y%m%d-%H%M%S)"
-mv "$CELESTIA_HOME/data" "$BACKUP_DIR"
-mv "$SNAP_DIR/data" "$CELESTIA_HOME/data"
-
-mv "$CELESTIA_HOME/priv_validator_state.json.backup" \
-   "$CELESTIA_HOME/data/priv_validator_state.json"
-sudo systemctl start "$SERVICE_NAME"
-~~~
-
-Bridge/full/light recovery:
-
-- Confirm node type, node store, service, key name, keyring backend, core RPC,
-  wallet address, and wallet funding expectations.
-- Stop only the affected DA service.
-- Back up node-store config, keys, and logs.
-- Remove or replace bridge/full/light stores only after approval.
-- After restore, verify `celestia <type> header sync-state`, p2p info, wallet
-  balance, metrics, and recent logs.
-
-Do not mix consensus snapshots with DA node stores. `celestia-appd` snapshots
-restore `~/.celestia-app/data`; bridge/full/light snapshots restore their own
-`~/.celestia-*` stores.
 
 ## Fibre Server Workflow
 

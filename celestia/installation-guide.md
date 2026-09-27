@@ -122,48 +122,18 @@ sed -i 's|prometheus = false|prometheus = true|' \
   "$CELESTIA_HOME/config/config.toml"
 
 # POSTHUMAN persistent peer
-PEERS="2cc7330049bc02e4276668c414222593d52eb718@135.181.227.236:40656"
+PEERS="9f21a4f163710710aa7932e1832a257ef326186f@peer-celestia-mainnet.posthuman.digital:40656"
 sed -i -e "/^\\[p2p\\]/,/^\\[/{s|^[[:space:]]*persistent_peers *=.*|persistent_peers = \\"$PEERS\\"|}" \
   "$CELESTIA_HOME/config/config.toml"
 ```
 
-## 6. Restore From POSTHUMAN Snapshot
+<!-- The POSTHUMAN archive is withdrawn from the restore path; see celestia/snapshots.md -->
+The restore procedure lives in one place now: **[Celestia Mainnet Snapshot](snapshots.md)**.
+Our own archive cannot currently be restored (`APP HASH MISMATCH` at height
+`14443346`, reproduced 2026-09-27), so that page names a verified third-party
+source instead. Do not copy the old one-line `curl | lz4 | tar` restore from
+earlier revisions of this document: it neither resumes nor verifies a checksum.
 
-Use the PebbleDB snapshot for faster sync. Verify `snapshot.json` against a trusted
-reference RPC before using it. If metadata and network height disagree, stop
-and investigate before restore.
-
-```bash
-curl -fsS https://snapshots-celestia-mainnet.posthuman.digital/snapshot.json | jq .
-curl -fsS https://celestia-rpc.publicnode.com/status | \
-  jq -r '.result.sync_info.latest_block_height'
-```
-
-Restore:
-
-```bash
-SNAP_DIR="$HOME/celestia-mainnet-snapshot-restore"
-rm -rf "$SNAP_DIR"
-mkdir -p "$SNAP_DIR"
-curl -fL https://snapshots-celestia-mainnet.posthuman.digital/snapshot-latest.tar.lz4 | \
-  lz4 -dc | tar -xf - -C "$SNAP_DIR"
-test -d "$SNAP_DIR/data/application.db"
-
-cp "$CELESTIA_HOME/data/priv_validator_state.json" \
-   "$CELESTIA_HOME/priv_validator_state.json.backup" 2>/dev/null || true
-
-sudo systemctl stop celestia-appd 2>/dev/null || true
-BACKUP_DIR="$CELESTIA_HOME/data.before-snapshot-$(date +%Y%m%d-%H%M%S)"
-if [ -d "$CELESTIA_HOME/data" ]; then
-  mv "$CELESTIA_HOME/data" "$BACKUP_DIR"
-fi
-mv "$SNAP_DIR/data" "$CELESTIA_HOME/data"
-
-if [ -f "$CELESTIA_HOME/priv_validator_state.json.backup" ]; then
-  mv "$CELESTIA_HOME/priv_validator_state.json.backup" \
-     "$CELESTIA_HOME/data/priv_validator_state.json"
-fi
-```
 
 ## 7. Create Systemd Service
 
