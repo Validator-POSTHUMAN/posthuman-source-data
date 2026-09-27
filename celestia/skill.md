@@ -326,7 +326,7 @@ export SNAP_DIR="$HOME/celestia-mainnet-snapshot-restore"
 
 rm -rf "$SNAP_DIR"
 mkdir -p "$SNAP_DIR"
-curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
+curl -fL https://snapshots-celestia-mainnet.posthuman.digital/snapshot-latest.tar.lz4 | \
   lz4 -dc | tar -xf - -C "$SNAP_DIR"
 test -d "$SNAP_DIR/data/application.db"
 

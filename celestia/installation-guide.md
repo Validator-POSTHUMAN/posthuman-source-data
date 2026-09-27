@@ -78,10 +78,10 @@ celestia-appd init "$MONIKER" --chain-id "$CHAIN_ID" --home "$CELESTIA_HOME"
 ## 4. Download Genesis and Addrbook
 
 ```bash
-curl -fL https://snapshots.posthuman.digital/celestia-mainnet/genesis.json \
+curl -fL https://snapshots-celestia-mainnet.posthuman.digital/genesis.json \
   -o "$CELESTIA_HOME/config/genesis.json"
 
-curl -fL https://snapshots.posthuman.digital/celestia-mainnet/addrbook.json \
+curl -fL https://snapshots-celestia-mainnet.posthuman.digital/addrbook.json \
   -o "$CELESTIA_HOME/config/addrbook.json"
 
 jq -r '.chain_id // .genesis.chain_id' "$CELESTIA_HOME/config/genesis.json"
@@ -134,7 +134,7 @@ reference RPC before using it. If metadata and network height disagree, stop
 and investigate before restore.
 
 ```bash
-curl -fsS https://snapshots.posthuman.digital/celestia-mainnet/snapshot.json | jq .
+curl -fsS https://snapshots-celestia-mainnet.posthuman.digital/snapshot.json | jq .
 curl -fsS https://celestia-rpc.publicnode.com/status | \
   jq -r '.result.sync_info.latest_block_height'
 ```
@@ -145,7 +145,7 @@ Restore:
 SNAP_DIR="$HOME/celestia-mainnet-snapshot-restore"
 rm -rf "$SNAP_DIR"
 mkdir -p "$SNAP_DIR"
-curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
+curl -fL https://snapshots-celestia-mainnet.posthuman.digital/snapshot-latest.tar.lz4 | \
   lz4 -dc | tar -xf - -C "$SNAP_DIR"
 test -d "$SNAP_DIR/data/application.db"
 

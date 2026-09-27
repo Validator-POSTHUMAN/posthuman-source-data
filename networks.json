@@ -581,7 +581,7 @@
       "rest": "https://rest-celestia-mainnet.posthuman.digital",
       "grpc": "https://grpc-celestia-mainnet.posthuman.digital",
       "peer": "2cc7330049bc02e4276668c414222593d52eb718@135.181.227.236:40656",
-      "snapshots": "https://snapshots.posthuman.digital/celestia-mainnet/"
+      "snapshots": "https://snapshots-celestia-mainnet.posthuman.digital/"
     },
     "contributions": "Celestia",
     "generatedServices": [],
@@ -1039,7 +1039,7 @@
     "chain_id": "143",
     "endpoints": {
       "rpc": "https://rpc-monad.posthuman.digital",
-      "snapshots": "https://snapshots.posthuman.digital/monad/mainnet"
+      "snapshots": "https://snapshots-monad.posthuman.digital"
     },
     "generatedServices": [],
     "contributions": "Monad",
@@ -1074,7 +1074,7 @@
     "endpoints": {
       "rpc": "https://rpc-monad-testnet.posthuman.digital",
       "wss": "wss://rpc-monad-testnet.posthuman.digital",
-      "snapshots": "https://snapshots.posthuman.digital/monad/testnet"
+      "snapshots": "https://snapshots-monad-testnet.posthuman.digital"
     },
     "contributions": "Monad",
     "generatedServices": [],

@@ -69,9 +69,9 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 - RPC fallback (PublicNode): https://celestia-rpc.publicnode.com
 - REST: https://rest-celestia-mainnet.posthuman.digital
 - gRPC: https://grpc-celestia-mainnet.posthuman.digital
-- Snapshots: https://snapshots.posthuman.digital/celestia-mainnet/
+- Snapshots: https://snapshots-celestia-mainnet.posthuman.digital/
 - Peer: `2cc7330049bc02e4276668c414222593d52eb718@135.181.227.236:40656`
-- Addrbook: `https://snapshots.posthuman.digital/celestia-mainnet/addrbook.json`
+- Addrbook: `https://snapshots-celestia-mainnet.posthuman.digital/addrbook.json`
 
 ## Manual Snapshot Restore
 
@@ -82,7 +82,7 @@ export SNAP_DIR="$HOME/celestia-mainnet-snapshot-restore"
 
 rm -rf "$SNAP_DIR"
 mkdir -p "$SNAP_DIR"
-curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
+curl -fL https://snapshots-celestia-mainnet.posthuman.digital/snapshot-latest.tar.lz4 | \
   lz4 -dc | tar -xf - -C "$SNAP_DIR"
 test -d "$SNAP_DIR/data/application.db"
 

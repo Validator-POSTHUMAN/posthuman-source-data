@@ -4,16 +4,21 @@ POSTHUMAN provides a pruned Celestia consensus-node snapshot for chain ID
 `celestia`.
 
 - DB backend: PebbleDB
-- Publication cadence: temporarily paused pending a controlled publication reactivation; check `snapshot.json` before use
+- Publication cadence: every four hours when the source node passes its size
+  gate. Publication has been blocked since 2026-09-24 while that gate is
+  reviewed, so **read `snapshot_time` from `snapshot.json` and decide whether
+  that height is recent enough for you** before restoring.
 - Archive format: `snapshot-latest.tar.lz4`
+- Resumable: yes. The host answers byte-range requests, so an interrupted
+  download continues instead of starting over.
 
 ## Snapshot Endpoint
 
-- Index: https://snapshots.posthuman.digital/celestia-mainnet/
-- Metadata: https://snapshots.posthuman.digital/celestia-mainnet/snapshot.json
-- Snapshot file: `https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4`
-- Genesis: `https://snapshots.posthuman.digital/celestia-mainnet/genesis.json`
-- Addrbook: `https://snapshots.posthuman.digital/celestia-mainnet/addrbook.json`
+- Index: https://snapshots-celestia-mainnet.posthuman.digital/
+- Metadata: https://snapshots-celestia-mainnet.posthuman.digital/snapshot.json
+- Snapshot file: `https://snapshots-celestia-mainnet.posthuman.digital/snapshot-latest.tar.lz4`
+- Genesis: `https://snapshots-celestia-mainnet.posthuman.digital/genesis.json`
+- Addrbook: `https://snapshots-celestia-mainnet.posthuman.digital/addrbook.json`
 
 The snapshot contains the `data/` directory and is extracted directly into
 `$HOME/.celestia-app`. Configure both CometBFT and app DB backends as
@@ -24,7 +29,7 @@ PebbleDB before starting from this snapshot.
 Always compare snapshot metadata with a trusted live RPC before restore:
 
 ```bash
-curl -fsS https://snapshots.posthuman.digital/celestia-mainnet/snapshot.json | jq .
+curl -fsS https://snapshots-celestia-mainnet.posthuman.digital/snapshot.json | jq .
 
 curl -fsS https://celestia-rpc.publicnode.com/status | \
   jq -r '.result.node_info.network, .result.sync_info.latest_block_height, .result.sync_info.catching_up'
@@ -39,16 +44,39 @@ Stop if:
 
 ## Quick Restore
 
+Requires `aria2`, `jq` and `lz4`:
+
+```bash
+sudo apt update && sudo apt install -y aria2 jq lz4
+```
+
 ```bash
 export CELESTIA_HOME="$HOME/.celestia-app"
 export SERVICE_NAME="celestia-appd"
 export SNAP_DIR="$HOME/celestia-mainnet-snapshot-restore"
 
-# Download and validate before stopping the node.
+# Download and validate before stopping the node. The archive is fetched to disk
+# rather than piped into tar: the host supports byte ranges, so a dropped
+# connection resumes, and the published SHA-256 can be checked before anything
+# touches live data.
 rm -rf "$SNAP_DIR"
 mkdir -p "$SNAP_DIR"
-curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
-  lz4 -dc | tar -xf - -C "$SNAP_DIR"
+curl -fsS https://snapshots-celestia-mainnet.posthuman.digital/snapshot.json \
+  -o "$SNAP_DIR/snapshot.json"
+EXPECTED_SHA256="$(jq -er '.snapshot_sha256' "$SNAP_DIR/snapshot.json")"
+EXPECTED_SIZE="$(jq -er '.snapshot_size_bytes' "$SNAP_DIR/snapshot.json")"
+
+aria2c --continue=true --max-connection-per-server=8 --split=8 \
+  --min-split-size=64M --file-allocation=none \
+  --dir="$SNAP_DIR" --out=snapshot-latest.tar.lz4 \
+  https://snapshots-celestia-mainnet.posthuman.digital/snapshot-latest.tar.lz4
+
+test "$(stat -c %s "$SNAP_DIR/snapshot-latest.tar.lz4")" = "$EXPECTED_SIZE"
+printf '%s  %s\n' "$EXPECTED_SHA256" "$SNAP_DIR/snapshot-latest.tar.lz4" | \
+  sha256sum --check --strict
+lz4 -t "$SNAP_DIR/snapshot-latest.tar.lz4"
+
+lz4 -dc "$SNAP_DIR/snapshot-latest.tar.lz4" | tar -xf - -C "$SNAP_DIR"
 test -d "$SNAP_DIR/data/application.db"
 
 cp "$CELESTIA_HOME/data/priv_validator_state.json" \

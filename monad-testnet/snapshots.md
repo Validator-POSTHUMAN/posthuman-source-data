@@ -6,7 +6,8 @@
 | --- | --- |
 | Network | Monad Testnet |
 | Chain ID | `10143` (`0x279f`) |
-| POSTHUMAN metadata root | https://snapshots.posthuman.digital/monad/testnet |
+| POSTHUMAN metadata root | https://snapshots-monad-testnet.posthuman.digital |
+| Resumable download | yes: the host answers byte-range requests, so `aria2c --continue` works |
 | Official archive guidance | [Archive data](https://docs.monad.xyz/node-ops/archive-data/) |
 
 A snapshot is a recovery/bootstrap artifact, not proof of complete historical coverage or a substitute for an independent backup.
