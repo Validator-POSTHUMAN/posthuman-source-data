@@ -7,6 +7,27 @@ stopping a node. Never extract a remote response directly over live data.
 The public URL will be enabled only after POSTHUMAN completes external DNS,
 TLS, byte-range, and restore verification.
 
+## Until that URL is live: a reviewed third-party snapshot
+
+POSTHUMAN runs a synced non-signing Osmosis node and builds this archive from it,
+but the public hostname is not resolvable yet, so nothing below can be fetched
+from us today. Rather than leave the page without a usable route, one third-party
+source was measured on 2026-09-27 and can be used with the same discipline:
+
+| | |
+|---|---|
+| Source | Polkachu, `https://polkachu.com/tendermint_snapshots/osmosis` |
+| Archive | `https://snapshots.polkachu.com/snapshots/osmosis/osmosis_<height>.tar.lz4` |
+| Measured | height `71,416,922`, 33.1 GB, `HEAD` 200 |
+| Resumable | yes — a byte-range request answers `206`, so `aria2c --continue` works |
+
+It is somebody else's artifact. Verify it the way you would verify ours: read the
+height from the file name, confirm your node's chain id is `osmosis-1` before
+replacing anything, keep `priv_validator_key.json` and
+`priv_validator_state.json` out of the extraction, and stop the node only after
+the download and decompression have succeeded. The steps below apply unchanged
+once `SNAP_BASE` points at a source that answers.
+
 ## 1. Fetch metadata and archive
 
 ```bash
