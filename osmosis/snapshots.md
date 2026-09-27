@@ -4,15 +4,16 @@ The POSTHUMAN Osmosis archive contains the pruned `data/` directory and the
 matching top-level `wasm/` directory. Download and fully validate it before
 stopping a node. Never extract a remote response directly over live data.
 
-The public URL will be enabled only after POSTHUMAN completes external DNS,
-TLS, byte-range, and restore verification.
+The public URL went live on 2026-09-27 and was verified from outside: the
+directory lists, `snapshot.json` parses, and a byte-range request against the
+127 GB archive answers `206 bytes 0-1023/127765412571`, which is what the
+`aria2c --continue` below needs.
 
-## Until that URL is live: a reviewed third-party snapshot
+## An alternative source
 
-POSTHUMAN runs a synced non-signing Osmosis node and builds this archive from it,
-but the public hostname is not resolvable yet, so nothing below can be fetched
-from us today. Rather than leave the page without a usable route, one third-party
-source was measured on 2026-09-27 and can be used with the same discipline:
+Our archive is rebuilt every three days, so it can be up to that old. One
+third-party source was measured on the same day and can be used instead, with the
+same discipline:
 
 | | |
 |---|---|

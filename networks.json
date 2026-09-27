@@ -763,7 +763,13 @@
     "stake": "https://explorer.posthuman.digital/osmosis/staking/osmovaloper1e8238v24qccht9mqc2w0r4luq462yxttfpaeam",
     "explorer": "https://explorer.posthuman.digital/osmosis",
     "chain_id": "osmosis-1",
-    "endpoints": {},
+    "endpoints": {
+      "rpc": "https://rpc-osmosis.posthuman.digital:443",
+      "rest": "https://rest-osmosis.posthuman.digital:443",
+      "grpc": "https://grpc-osmosis.posthuman.digital:443",
+      "peer": "af8cc3db7cc79f26052628a76dac100c89a62964@peer-osmosis.posthuman.digital:46656",
+      "snapshots": "https://snapshots-osmosis.posthuman.digital:443"
+    },
     "contributions": "Osmosis",
     "generatedServices": [],
     "services": [
