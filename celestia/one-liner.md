@@ -70,44 +70,15 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 - REST: https://rest-celestia-mainnet.posthuman.digital
 - gRPC: https://grpc-celestia-mainnet.posthuman.digital
 - Snapshots: https://snapshots-celestia-mainnet.posthuman.digital/
-- Peer: `2cc7330049bc02e4276668c414222593d52eb718@135.181.227.236:40656`
+- Peer: `9f21a4f163710710aa7932e1832a257ef326186f@peer-celestia-mainnet.posthuman.digital:40656`
 - Addrbook: `https://snapshots-celestia-mainnet.posthuman.digital/addrbook.json`
 
-## Manual Snapshot Restore
-
-```bash
-export CELESTIA_HOME="$HOME/.celestia-app"
-export SERVICE_NAME="celestia-appd"
-export SNAP_DIR="$HOME/celestia-mainnet-snapshot-restore"
-
-rm -rf "$SNAP_DIR"
-mkdir -p "$SNAP_DIR"
-curl -fL https://snapshots-celestia-mainnet.posthuman.digital/snapshot-latest.tar.lz4 | \
-  lz4 -dc | tar -xf - -C "$SNAP_DIR"
-test -d "$SNAP_DIR/data/application.db"
-
-cp "$CELESTIA_HOME/data/priv_validator_state.json" \
-   "$CELESTIA_HOME/priv_validator_state.json.backup" 2>/dev/null || true
-
-sudo systemctl stop "$SERVICE_NAME"
-BACKUP_DIR="$CELESTIA_HOME/data.before-snapshot-$(date +%Y%m%d-%H%M%S)"
-if [ -d "$CELESTIA_HOME/data" ]; then
-  mv "$CELESTIA_HOME/data" "$BACKUP_DIR"
-fi
-mv "$SNAP_DIR/data" "$CELESTIA_HOME/data"
-
-if [ -f "$CELESTIA_HOME/priv_validator_state.json.backup" ]; then
-  mv "$CELESTIA_HOME/priv_validator_state.json.backup" \
-     "$CELESTIA_HOME/data/priv_validator_state.json"
-fi
-
-sudo systemctl start "$SERVICE_NAME"
-```
-
-Validate `snapshot.json` against a trusted live RPC before restore. Do not use
-the consensus snapshot for bridge/full/light node stores. The current
-POSTHUMAN consensus snapshot uses PebbleDB, so the restored node must have
-`db_backend = "pebbledb"` and `app-db-backend = "pebbledb"` configured.
+<!-- The POSTHUMAN archive is withdrawn from the restore path; see celestia/snapshots.md -->
+The restore procedure lives in one place now: **[Celestia Mainnet Snapshot](snapshots.md)**.
+Our own archive cannot currently be restored (`APP HASH MISMATCH` at height
+`14443346`, reproduced 2026-09-27), so that page names a verified third-party
+source instead. Do not copy the old one-line `curl | lz4 | tar` restore from
+earlier revisions of this document: it neither resumes nor verifies a checksum.
 
 ## Safety Notes
 

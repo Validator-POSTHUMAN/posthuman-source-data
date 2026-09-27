@@ -41,3 +41,13 @@ Network identifiers:
 - Cosmos chain ID: `limonata_10777-1`
 - EVM chain ID: `10777` (`0x2a19`)
 - Base denomination: `aLIMO`
+
+> **Restore-verified: no.** This archive is produced by the same offline-prune
+> pipeline as the Celestia one, and on 2026-09-27 a restore from the Celestia
+> archive stopped with `APP HASH MISMATCH DETECTED at height 14443346` while the
+> same node ran fine on a database that pipeline never touched. This archive has
+> not been restore-tested either way. Until it is, treat it as a data set rather
+> than a recovery path: verify a candidate against a live RPC, keep a rollback of
+> your old database, and expect to fall back to a provider whose snapshot you have
+> seen restore. Detail: POSTHUMAN decision record
+> `2026-09-27-our-own-snapshot-could-not-restore.md`.

@@ -1,8 +1,8 @@
-- **RPC fallback (PublicNode)**: https://celestia-rpc.publicnode.com
+- **RPC fallback (PublicNode)**: https://rpc-celestia-mainnet.posthuman.digital
 - **REST**: https://rest-celestia-mainnet.posthuman.digital  
 - **gRPC**: https://grpc-celestia-mainnet.posthuman.digital  
 - **Snapshots**: https://snapshots-celestia-mainnet.posthuman.digital/  
-- **Peer**: `2cc7330049bc02e4276668c414222593d52eb718@135.181.227.236:40656`
+- **Peer**: `9f21a4f163710710aa7932e1832a257ef326186f@peer-celestia-mainnet.posthuman.digital:40656`
 
 > Operational note: verify public RPC height against another trusted endpoint
 > before using it for recovery, especially before applying snapshot metadata.

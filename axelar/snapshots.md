@@ -1,5 +1,16 @@
 # Restore Axelar from a POSTHUMAN Snapshot
 
+
+> **Restore-verified: no.** This archive is produced by the same offline-prune
+> pipeline as the Celestia one, and on 2026-09-27 a restore from the Celestia
+> archive stopped with `APP HASH MISMATCH DETECTED at height 14443346` while the
+> same node ran fine on a database that pipeline never touched. This archive has
+> not been restore-tested either way. Until it is, treat it as a data set rather
+> than a recovery path: verify a candidate against a live RPC, keep a rollback of
+> your old database, and expect to fall back to a provider whose snapshot you have
+> seen restore. Detail: POSTHUMAN decision record
+> `2026-09-27-our-own-snapshot-could-not-restore.md`.
+
 This procedure downloads and verifies the complete archive before touching
 live node data. Validator operators must preserve their final signer state and
 prove that no second host can sign with the same consensus key.
