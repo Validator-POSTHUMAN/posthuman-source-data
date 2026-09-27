@@ -18,7 +18,6 @@ your own RPC node.
 | FastNEAR | `https://free.rpc.fastnear.com` | paid only | free tier, recommended public default |
 | NEAR | `https://archival-rpc.mainnet.near.org` | yes | severely rate limited |
 | dRPC | `https://near.drpc.org` | no | free tier |
-| BlockPI | `https://near.blockpi.network/v1/rpc/public` | no | 20 req/s free |
 | 1RPC | `https://1rpc.io/near` | no | 200 req/day free |
 | Intear | `https://rpc.intea.rs` | no | free |
 | ZAN | `https://api.zan.top/node/v1/near/mainnet/` | no | ~20 req/s free |
