@@ -1,28 +1,29 @@
 # Celestia Mainnet Snapshot
 
 
-> **The POSTHUMAN Celestia archive is not a usable restore source right now.**
-> On 2026-09-27 a restore from it produced `APP HASH MISMATCH DETECTED at height
-> 14443346` and the node stopped advancing; the same node, on the database it ran
-> before the restore, crossed that height immediately. The archive is pruned
-> offline with `cosmprund`, and that rewritten state does not reproduce the
-> network's app hash. Until the publishing pipeline is rebuilt and a restore is
-> proven end to end, use the third-party source below. `snapshot.json`,
-> `genesis.json` and `addrbook.json` on that host remain correct and useful.
+> **Restore-verified on 2026-09-27.** This archive was restored end to end on a
+> throwaway node: it reached the chain tip, ran 371 blocks past the snapshot
+> height with `catching_up=false`, and logged no app-hash divergence. That test
+> exists because the previous pipeline pruned the copy offline with `cosmprund`,
+> which rewrote the application state and produced an archive that stalled a
+> restored node with `APP HASH MISMATCH` at height `14443346`. The publisher no
+> longer rewrites anything: the archive is a copy of the node's own pruned data.
 
 POSTHUMAN provides a pruned Celestia consensus-node snapshot for chain ID
 `celestia`.
 
 - DB backend: PebbleDB
-- Publication cadence: every four hours. Publication stalled between 2026-09-24
-  and 2026-09-27 on the publisher's source-size gate and resumed once that gate
-  was raised, so read `snapshot_time` from `snapshot.json` rather than assuming
-  freshness.
-- Archive format: `snapshot-latest.tar.lz4`
+- Publication cadence: every four hours. Read `snapshot_time` from
+  `snapshot.json` rather than assuming freshness.
+- Archive format: `snapshot-latest.tar.lz4`, roughly 3 GB
 - Resumable: yes. The host answers byte-range requests, so an interrupted
   download continues instead of starting over.
-- Restore-verified: **no.** See the notice above; the metadata, genesis and
-  address book on this host are fine, the archive is not a restore source today.
+- Restore-verified: **yes**, 2026-09-27, at height `14445450`. See the notice
+  above for what the test actually proved.
+- Node parameters behind it: `pruning = custom` / `keep-recent = 100` /
+  `interval = 19`, `min-retain-blocks = 300000` (about ten days of blocks),
+  `indexer = null`, PebbleDB. The archive inherits exactly those, so it is not an
+  archive node and carries no transaction index.
 
 ## Snapshot Endpoint
 
@@ -36,14 +37,13 @@ The snapshot contains the `data/` directory and is extracted directly into
 `$HOME/.celestia-app`. Configure both CometBFT and app DB backends as
 PebbleDB before starting from this snapshot.
 
-### Restore source while ours is withdrawn
+### An alternative source
 
-ITRocket publishes a PebbleDB Celestia snapshot and a machine-readable index.
-Measured on 2026-09-27: `celestia_2026-09-27_14439541_snap.tar.lz4`, height
-`14439541`, 3.0 GiB, `HEAD` 200, and a byte-range request answers `206`, so
-`aria2c --continue` works. It is the same provider POSTHUMAN used for its own
-2026-09-18 Celestia rebuild, which restored cleanly. The Quick Restore below
-reads the current file name from that index rather than hard-coding a height.
+Our archive is rebuilt every four hours, so it can be a few hours old. ITRocket
+publishes a PebbleDB Celestia snapshot with the same node parameters and a
+machine-readable index; measured on 2026-09-27 at height `14439541`, 3.0 GiB,
+`HEAD` 200, range `206`. POSTHUMAN restored its own node from that provider twice
+in September, so it is a route we have walked rather than a link we found.
 
 It is somebody else's artifact: confirm the height against a live RPC, keep
 `priv_validator_key.json` and `priv_validator_state.json` out of the extraction,
@@ -90,24 +90,24 @@ export SNAP_DIR="$HOME/celestia-mainnet-snapshot-restore"
 rm -rf "$SNAP_DIR"
 install -d -m 0700 "$SNAP_DIR"
 
-STATE_URL="https://server-1.itrocket.net/mainnet/celestia/.current_state.json"
-SNAP_BASE="https://server-1.itrocket.net/mainnet/celestia"
-curl -fsS "$STATE_URL" -o "$SNAP_DIR/state.json"
-SNAP_NAME="$(jq -er '.snapshot_name' "$SNAP_DIR/state.json")"
-SNAP_HEIGHT="$(jq -er '.snapshot_height' "$SNAP_DIR/state.json")"
-echo "candidate $SNAP_NAME at height $SNAP_HEIGHT"
+SNAP_BASE="https://snapshots-celestia-mainnet.posthuman.digital"
+curl -fsS "$SNAP_BASE/snapshot.json" -o "$SNAP_DIR/snapshot.json"
+EXPECTED_SHA256="$(jq -er '.snapshot_sha256' "$SNAP_DIR/snapshot.json")"
+EXPECTED_SIZE="$(jq -er '.snapshot_size_bytes' "$SNAP_DIR/snapshot.json")"
+jq -er '.chain_id == "celestia"' "$SNAP_DIR/snapshot.json"
 
 aria2c --continue=true --max-connection-per-server=8 --split=8 \
   --min-split-size=64M --file-allocation=none \
-  --dir="$SNAP_DIR" --out="$SNAP_NAME" "$SNAP_BASE/$SNAP_NAME"
-lz4 -t "$SNAP_DIR/$SNAP_NAME"
+  --dir="$SNAP_DIR" --out=snapshot-latest.tar.lz4 \
+  "$SNAP_BASE/snapshot-latest.tar.lz4"
 
-lz4 -dc "$SNAP_DIR/$SNAP_NAME" | tar -xf - -C "$SNAP_DIR"
+test "$(stat -c %s "$SNAP_DIR/snapshot-latest.tar.lz4")" = "$EXPECTED_SIZE"
+printf '%s  %s\n' "$EXPECTED_SHA256" "$SNAP_DIR/snapshot-latest.tar.lz4" | \
+  sha256sum --check --strict
+lz4 -t "$SNAP_DIR/snapshot-latest.tar.lz4"
+
+lz4 -dc "$SNAP_DIR/snapshot-latest.tar.lz4" | tar -xf - -C "$SNAP_DIR"
 test -d "$SNAP_DIR/data/application.db"
-
-# This provider publishes no checksum next to the archive, so the integrity proof
-# is `lz4 -t` plus the layout check above, and the height is confirmed against two
-# live RPCs in the preflight. Ours will carry a SHA-256 again when it returns.
 
 cp "$CELESTIA_HOME/data/priv_validator_state.json" \
    "$CELESTIA_HOME/priv_validator_state.json.backup" 2>/dev/null || true

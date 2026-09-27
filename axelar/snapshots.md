@@ -1,14 +1,14 @@
 # Restore Axelar from a POSTHUMAN Snapshot
 
 
-> **Restore-verified: no.** This archive is produced by the same offline-prune
-> pipeline as the Celestia one, and on 2026-09-27 a restore from the Celestia
-> archive stopped with `APP HASH MISMATCH DETECTED at height 14443346` while the
-> same node ran fine on a database that pipeline never touched. This archive has
-> not been restore-tested either way. Until it is, treat it as a data set rather
-> than a recovery path: verify a candidate against a live RPC, keep a rollback of
-> your old database, and expect to fall back to a provider whose snapshot you have
-> seen restore. Detail: POSTHUMAN decision record
+> **Restore-verified: not yet.** The pipeline that produced this archive used to
+> prune the copy offline with `cosmprund`; that rewrote the application state and
+> made the Celestia archive unrestorable (`APP HASH MISMATCH` at height
+> `14443346`, 2026-09-27). The offline prune is now **off** for this publisher, so
+> new archives are copies of the node's own pruned data — the same change that
+> made the Celestia archive restore cleanly in an end-to-end test. This archive
+> has not had that test yet. Until it does, keep a rollback of your old database
+> and verify the height against a live RPC. Detail: POSTHUMAN decision record
 > `2026-09-27-our-own-snapshot-could-not-restore.md`.
 
 This procedure downloads and verifies the complete archive before touching
