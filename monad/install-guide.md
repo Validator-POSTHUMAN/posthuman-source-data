@@ -10,7 +10,7 @@
 | Official installation source | [Monad full-node installation](https://docs.monad.xyz/node-ops/full-node-installation) |
 | Official operations source | [Monad general operations](https://docs.monad.xyz/node-ops/general-operations) |
 
-The official installation page reviewed on 2026-09-15 documents Monad `0.16.2`; verify the current official release and exact target network before installation or upgrade.
+Official [v0.16.4 upgrade instructions](https://docs.monad.xyz/node-ops/upgrade-instructions/v0.16.4), reviewed on 2026-09-29, apply to both Monad mainnet and testnet. This is a rolling upgrade on top of `v0.16.3` with no breaking `node.toml` changes. Verify the current official release and exact target network before installation or upgrade.
 
 ## Roles and boundaries
 

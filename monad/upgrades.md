@@ -1,6 +1,6 @@
 # Monad Mainnet upgrades and protocol changes
 
-Official [upgrade instructions](https://docs.monad.xyz/node-ops/upgrade-instructions) reviewed on 2026-09-15 list a `v0.16.2` coordinated raptorcast rollout and a separate MIP-8/page-storage migration. Treat these as distinct changes; do not infer that every upgrade requires reset or that a historical example applies now.
+Official [v0.16.4 upgrade instructions](https://docs.monad.xyz/node-ops/upgrade-instructions/v0.16.4), reviewed on 2026-09-29, apply to both mainnet and testnet. `v0.16.4` is a rolling upgrade on top of `v0.16.3` with no breaking `node.toml` changes. The `v0.16.2` coordinated raptorcast rollout and the separate MIP-8/page-storage migration remain historical changes; do not infer that every upgrade requires reset or that a historical example applies now.
 
 Monad does not use the Cosmos Cosmovisor/on-chain-height template. Do not publish Cosmovisor commands, Cosmos governance votes, or automatic service changes for this network.
 
