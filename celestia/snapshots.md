@@ -15,7 +15,8 @@ POSTHUMAN provides a pruned Celestia consensus-node snapshot for chain ID
 - DB backend: PebbleDB
 - Publication cadence: every four hours. Read `snapshot_time` from
   `snapshot.json` rather than assuming freshness.
-- Archive format: `snapshot-latest.tar.lz4`, roughly 3 GB
+- Archive format: `snapshot-latest.tar.lz4`; read `snapshot_size_bytes` from
+  `snapshot.json` before download because its size changes with the source data.
 - Resumable: yes. The host answers byte-range requests, so an interrupted
   download continues instead of starting over.
 - Restore-verified: **yes**, 2026-09-27, at height `14445450`. See the notice
