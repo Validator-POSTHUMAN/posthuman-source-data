@@ -460,7 +460,6 @@
     "type": "testnet",
     "title": "AtomOne",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/atomone/atomone.svg",
-    "stake": "https://explorer.posthuman.digital/atomone/staking/atonevaloper1vcp7pkg8sk0n8ylhezxxs8qqrnwfld4dsv2sew",
     "explorer": "https://explorer.posthuman.digital/atomone-testnet",
     "chain_id": "atomone-testnet-1",
     "endpoints": {},
@@ -475,7 +474,6 @@
     "type": "mainnet",
     "title": "AtomOne",
     "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/atomone/atomone.svg",
-    "stake": "https://explorer.posthuman.digital/atomone/staking/atonevaloper1vcp7pkg8sk0n8ylhezxxs8qqrnwfld4dsv2sew",
     "explorer": "https://explorer.posthuman.digital/atomone",
     "chain_id": "atomone-1",
     "endpoints": {
