@@ -3,58 +3,58 @@
   "network": "mina",
   "chainId": "0718f61ab88f9d0fa643ff4dc3a3d5998dd6d51a6008b2b0339b0dbb26133886",
   "tokenId": "wSHV2S4qX9jFsLjQo8r1BsMLH2ZRKsZx6EJd1sbozGPieEC4Jf",
-  "generatedAt": "2026-10-03T12:36:00Z",
+  "generatedAt": "2026-10-11T03:17:36Z",
   "source": "staking-epoch-ledger exported from a synced POSTHUMAN Mina node",
-  "epoch": 4,
-  "slot": 23,
-  "blockHeight": 559014,
-  "maxObservedBlockHeight": 559014,
-  "ledgerAccounts": 278611,
-  "totalStakeNanomina": "1304594640840039233",
+  "epoch": 5,
+  "slot": 191,
+  "blockHeight": 561594,
+  "maxObservedBlockHeight": 561594,
+  "ledgerAccounts": 278883,
+  "totalStakeNanomina": "1305450442840039233",
   "minDelegators": 1,
-  "validatorCount": 783,
-  "listedCount": 783,
+  "validatorCount": 784,
+  "listedCount": 784,
   "validators": [
     {
-      "publicKey": "B62qoiM41U5gBnjujQRgeewfkK9VmgVT8ifrRRwAsqBUM6pdxi9ywk2",
-      "stakeNanomina": "162160544168386564",
-      "selfStakeNanomina": "23060137018780",
-      "delegators": 40
+      "publicKey": "B62qkAhMYM7NWh2M5MABFwpNoqgzoweHr3bv6srWM43bwQMh2pVG82U",
+      "stakeNanomina": "122092206073221182",
+      "selfStakeNanomina": "6500000000",
+      "delegators": 6
     },
     {
       "publicKey": "B62qq3TQ8AP7MFYPVtMx5tZGF3kWLJukfwG1A1RGvaBW1jfTPTkDBW6",
-      "stakeNanomina": "57695127313080917",
-      "selfStakeNanomina": "14110004077661",
-      "delegators": 24955
+      "stakeNanomina": "57406114830692160",
+      "selfStakeNanomina": "16836016231739",
+      "delegators": 24986
     },
     {
       "publicKey": "B62qpge4uMq4Vv5Rvc8Gw9qSquUYd6xoW1pz7HQkMSHm6h1o7pvLPAN",
-      "stakeNanomina": "56032118394793137",
+      "stakeNanomina": "54199488583995823",
       "selfStakeNanomina": "0",
       "delegators": 8802
     },
     {
       "publicKey": "B62qpbpoWmfjZ12jA8TYrS8QktRDYGYjz2cj41tuUe1f2UP2wfpKvXs",
-      "stakeNanomina": "32001375674062099",
+      "stakeNanomina": "30676103286502440",
       "selfStakeNanomina": "11100000000",
       "delegators": 2
     },
     {
       "publicKey": "B62qo9RPW9hzMwFBHSgYsUdBZtSnY71zRUXK93ZnKr596cp46wkf9M1",
-      "stakeNanomina": "20960978135318961",
+      "stakeNanomina": "20993478709154596",
       "selfStakeNanomina": "1990000000",
       "delegators": 8
     },
     {
       "publicKey": "B62qq6ZYPG5JsjZnGJ3pADmRn6hU6qy13EhraTSymjSgyEDwoDR9Gd6",
-      "stakeNanomina": "16853269808781634",
-      "selfStakeNanomina": "95807308483325",
-      "delegators": 2585
+      "stakeNanomina": "16370153881538151",
+      "selfStakeNanomina": "133295206156333",
+      "delegators": 2588
     },
     {
       "publicKey": "B62qiW9Qwv9UnKfNKdBm6hRLNDobv46rVhX1trGdB35YCNT33CSCVt5",
-      "stakeNanomina": "15449331513786355",
-      "selfStakeNanomina": "15449104545500705",
+      "stakeNanomina": "16319546781176087",
+      "selfStakeNanomina": "16319319812890437",
       "delegators": 2
     },
     {
@@ -65,9 +65,9 @@
     },
     {
       "publicKey": "B62qrQiw9JhUumq457sMxicgQ94Z1WD9JChzJu19kBE8Szb5T8tcUAC",
-      "stakeNanomina": "12971398588218793",
-      "selfStakeNanomina": "40642166685548",
-      "delegators": 5522
+      "stakeNanomina": "12965549122464477",
+      "selfStakeNanomina": "41741510988414",
+      "delegators": 5518
     },
     {
       "publicKey": "B62qpsikYYhTaAXw8XdgGhQtLsnecHF89LZdW2bGTa4aj4mePWPHxPe",
@@ -82,58 +82,52 @@
       "delegators": 7
     },
     {
-      "publicKey": "B62qj9SeVBtbZCeGUVznWUqECvFrFU8DoHLQxFtHXX1Dk1BB7dfW4AP",
-      "stakeNanomina": "5000733195602343",
-      "selfStakeNanomina": "725214805923",
-      "delegators": 1
-    },
-    {
-      "publicKey": "B62qmkGkjvFwmkqv6erSmTGMx9ABhuxJqpCi4gyUtxFDwif97j2X5zp",
-      "stakeNanomina": "4897654297956288",
-      "selfStakeNanomina": "5371027411528",
-      "delegators": 3
+      "publicKey": "B62qoiM41U5gBnjujQRgeewfkK9VmgVT8ifrRRwAsqBUM6pdxi9ywk2",
+      "stakeNanomina": "3532409621905123",
+      "selfStakeNanomina": "23060137018780",
+      "delegators": 39
     },
     {
       "publicKey": "B62qopHVr6nGCsQgrvsBsoxDm1E5CEdMkDSN3jneRnxKpR5iiXnTbas",
-      "stakeNanomina": "3466965425490841",
+      "stakeNanomina": "3407277735022892",
       "selfStakeNanomina": "219366805",
       "delegators": 71
     },
     {
       "publicKey": "B62qnSjFGjZ39C8iDGMErbFSX5NvKVyvjvHxvf7U1oDmyeU6ynxXZZF",
-      "stakeNanomina": "3110472994730701",
-      "selfStakeNanomina": "48285623570",
+      "stakeNanomina": "3120375776762563",
+      "selfStakeNanomina": "2748324815773",
       "delegators": 670
     },
     {
       "publicKey": "B62qmFf6UZn2sg3j8bYLGmMinzS2FHX6hDM71nFxAfMhvh4hnGBtkBD",
-      "stakeNanomina": "2568455683433559",
+      "stakeNanomina": "2568460703433559",
       "selfStakeNanomina": "8420261256",
       "delegators": 480
     },
     {
       "publicKey": "B62qrecVjpoZ4Re3a5arN6gXZ6orhmj1enUtA887XdG5mtZfdUbBUh4",
-      "stakeNanomina": "2445088019194161",
+      "stakeNanomina": "2445088024299312",
       "selfStakeNanomina": "137101",
       "delegators": 17
     },
     {
       "publicKey": "B62qqV16g8s744GHM6Dph1uhW4fggYwyvtDnVSoRUyYqNvTir3Rqqzx",
-      "stakeNanomina": "2371877179768905",
+      "stakeNanomina": "2218812853345087",
       "selfStakeNanomina": "38343236750",
-      "delegators": 687
+      "delegators": 686
     },
     {
       "publicKey": "B62qpsyB3gCndt8sNz4GRwusBtg9U72TNiL4mxmcQfWKZ5noa9fFnWr",
-      "stakeNanomina": "2054260934391868",
-      "selfStakeNanomina": "4979900000",
-      "delegators": 113
+      "stakeNanomina": "2078881856139390",
+      "selfStakeNanomina": "4969800000",
+      "delegators": 115
     },
     {
       "publicKey": "B62qs2P91UjdhngetBJ57C56HQ8t5V7ECAYWBvpkaC45ovXNgnzqfG6",
-      "stakeNanomina": "1898360654070906",
-      "selfStakeNanomina": "24226656773011",
-      "delegators": 854
+      "stakeNanomina": "1902501604933575",
+      "selfStakeNanomina": "26646779306599",
+      "delegators": 852
     },
     {
       "publicKey": "B62qrMu1QgSkkgRMahCDXzVMgokpBuWLCRwUUWmuuhS8BwaACR1buux",
@@ -149,50 +143,50 @@
     },
     {
       "publicKey": "B62qpVUF5PXf7vh4eH8cZ3om3mp23bQJPDqwE2iB8BaE5ZUhaCJdU8L",
-      "stakeNanomina": "1054533928326897",
+      "stakeNanomina": "1057415334325531",
       "selfStakeNanomina": "1069718566",
       "delegators": 6
     },
     {
       "publicKey": "B62qkFC7mMp4eMD65r9tTFQeXZJtFyyXm18J84ZRzhodwuweu578kt7",
-      "stakeNanomina": "1040926219101809",
-      "selfStakeNanomina": "9900480000000",
+      "stakeNanomina": "1046147012001809",
+      "selfStakeNanomina": "12600480000000",
       "delegators": 4
     },
     {
       "publicKey": "B62qqD9f8CGy5QeFj1h3nsit3Zp2GDBntjEoVCdfj4SPQuubRW1CYXp",
-      "stakeNanomina": "962740110880397",
-      "selfStakeNanomina": "0",
+      "stakeNanomina": "965440110880397",
+      "selfStakeNanomina": "2700000000000",
       "delegators": 354
     },
     {
-      "publicKey": "B62qjSytpSK7aEauBprjXDSZwc9ai4YMv9tpmXLQK14Vy941YV36rMz",
-      "stakeNanomina": "905579113567407",
-      "selfStakeNanomina": "9071409327221",
-      "delegators": 2159
+      "publicKey": "B62qrae3PEBj66KV2obWnzVxMjDCMuFWnyzxEzvLkQutaKPmWtfUPm3",
+      "stakeNanomina": "889379129583785",
+      "selfStakeNanomina": "0",
+      "delegators": 393
     },
     {
-      "publicKey": "B62qrae3PEBj66KV2obWnzVxMjDCMuFWnyzxEzvLkQutaKPmWtfUPm3",
-      "stakeNanomina": "892066941565345",
-      "selfStakeNanomina": "0",
-      "delegators": 394
+      "publicKey": "B62qjSytpSK7aEauBprjXDSZwc9ai4YMv9tpmXLQK14Vy941YV36rMz",
+      "stakeNanomina": "882379648616752",
+      "selfStakeNanomina": "9071409327221",
+      "delegators": 2157
     },
     {
       "publicKey": "B62qnoD79sP5w3KXQYPn4tfjm4gaGJrvhMza23JEHkQ1J9gsR3tzbrZ",
-      "stakeNanomina": "780026396721875",
+      "stakeNanomina": "782188209521875",
       "selfStakeNanomina": "10000000000",
       "delegators": 15
     },
     {
       "publicKey": "B62qpYmDbDJAyADVkJzydoz7QeZy1ZTiWeH1LSuyMxXezvu5mAQi53U",
-      "stakeNanomina": "741305040051460",
+      "stakeNanomina": "738567793143763",
       "selfStakeNanomina": "2538141486",
-      "delegators": 883
+      "delegators": 882
     },
     {
       "publicKey": "B62qnR6HKx34NCyDkSeRcJ44KATjUCs4xmQYDbwTXPJPQ4J6ebfeQe4",
-      "stakeNanomina": "651641110341445",
-      "selfStakeNanomina": "909354416781",
+      "stakeNanomina": "655099021040534",
+      "selfStakeNanomina": "3609354416781",
       "delegators": 181
     },
     {
@@ -203,45 +197,45 @@
     },
     {
       "publicKey": "B62qmpSNd5voNiVnyM4c1bcbRC53wdkEANwYZaA2iA5rgCv68XezSuG",
-      "stakeNanomina": "648773666673582",
+      "stakeNanomina": "650934697033582",
       "selfStakeNanomina": "381523456",
       "delegators": 7
     },
     {
       "publicKey": "B62qjCuPisQjLW7YkB22BR9KieSmUZTyApftqxsAuB3U21r3vj1YnaG",
-      "stakeNanomina": "603106778839829",
+      "stakeNanomina": "595817698901852",
       "selfStakeNanomina": "5763431",
       "delegators": 714
     },
     {
       "publicKey": "B62qjhiEXP45KEk8Fch4FnYJQ7UMMfiR3hq9ZeMUZ8ia3MbfEteSYDg",
-      "stakeNanomina": "593554799778623",
+      "stakeNanomina": "595715609978623",
       "selfStakeNanomina": "176100000",
       "delegators": 60
     },
     {
       "publicKey": "B62qnbehH2RBTrJmRApx1rGrJGkrjTRYqJiCRgtwp8S6J7D9VqNP9Po",
-      "stakeNanomina": "564290712436139",
-      "selfStakeNanomina": "1188328747496",
+      "stakeNanomina": "565370761736139",
+      "selfStakeNanomina": "1296103581690",
       "delegators": 26
     },
     {
       "publicKey": "B62qkBqSkXgkirtU3n8HJ9YgwHh3vUD6kGJ5ZRkQYGNPeL5xYL2tL1L",
-      "stakeNanomina": "532642438324483",
-      "selfStakeNanomina": "14058696177004",
+      "stakeNanomina": "537827401416197",
+      "selfStakeNanomina": "16758696177004",
       "delegators": 156
     },
     {
       "publicKey": "B62qrnPdz8HpsDJfGHirDLpVrN2VeyeitdaTKBaccWtHpeVW9Hgwi75",
-      "stakeNanomina": "475245316763600",
-      "selfStakeNanomina": "1747419495478",
-      "delegators": 90
+      "stakeNanomina": "478664307695994",
+      "selfStakeNanomina": "2828253595478",
+      "delegators": 91
     },
     {
       "publicKey": "B62qs2Lw5WZNSjd8eHBUZXFYyRjV8oKtrZMFDn1S1Ye62G71xCQJMYM",
-      "stakeNanomina": "431311242976243",
+      "stakeNanomina": "429463278965640",
       "selfStakeNanomina": "50327273938449",
-      "delegators": 334
+      "delegators": 333
     },
     {
       "publicKey": "B62qpXqPzauUXLnsAQFnYHMCiV9pRqG2wqbJ4pL936SVANHa66zkkQj",
@@ -250,16 +244,16 @@
       "delegators": 192
     },
     {
+      "publicKey": "B62qmM9KDeqvu3TVpQStGJARgg7KppxE8UF3xMdtKV9TDc33kSUGug5",
+      "stakeNanomina": "353324495747652",
+      "selfStakeNanomina": "16751718417815",
+      "delegators": 128
+    },
+    {
       "publicKey": "B62qopzjbycAJDzvhc1tEuYSmJYfRQQbfS9nvkKtUzBS1fmLCyTz4dJ",
       "stakeNanomina": "350000674310000",
       "selfStakeNanomina": "11934410000",
       "delegators": 1
-    },
-    {
-      "publicKey": "B62qmM9KDeqvu3TVpQStGJARgg7KppxE8UF3xMdtKV9TDc33kSUGug5",
-      "stakeNanomina": "344643835308550",
-      "selfStakeNanomina": "14051718417815",
-      "delegators": 128
     },
     {
       "publicKey": "B62qj28AitWwLTU3HAhtoW34nJ6LkyHU7XKm5wC84q1RtF4ho1yEgGn",
@@ -269,9 +263,9 @@
     },
     {
       "publicKey": "B62qmqprUwxHxG6uGDQe48Xys9diJhunEqQNRuFC5a1KBUNsDaNADgj",
-      "stakeNanomina": "289660623527623",
-      "selfStakeNanomina": "6158736061",
-      "delegators": 38
+      "stakeNanomina": "297848833761737",
+      "selfStakeNanomina": "1098161872343",
+      "delegators": 40
     },
     {
       "publicKey": "B62qmBBEPcCpWqvMhParohskEjDttye1A7iSxwmMncXXgKkgjQ9PA7y",
@@ -281,8 +275,8 @@
     },
     {
       "publicKey": "B62qnVMHrtGPVRN3SrwyDzjbgBQhaFSgv16SAAFe5ddm2369KKzRn6d",
-      "stakeNanomina": "280244216235625",
-      "selfStakeNanomina": "12600992101000",
+      "stakeNanomina": "282944216235625",
+      "selfStakeNanomina": "15300992101000",
       "delegators": 8
     },
     {
@@ -293,8 +287,8 @@
     },
     {
       "publicKey": "B62qksN97EtNvQGzH2RAgnDR8zLAawhPNE1QzWCgPRcknyL6NJ3CCgJ",
-      "stakeNanomina": "264118123068701",
-      "selfStakeNanomina": "10691730316822",
+      "stakeNanomina": "267538133068701",
+      "selfStakeNanomina": "14111740316822",
       "delegators": 82
     },
     {
@@ -310,28 +304,22 @@
       "delegators": 168
     },
     {
-      "publicKey": "B62qp6qMf3Do4q4aKqEsLxVpVuXJaRCijtyhsjZBvDSEFUBGXg8Z9cs",
-      "stakeNanomina": "243040250975238",
-      "selfStakeNanomina": "400754236822",
-      "delegators": 9
-    },
-    {
-      "publicKey": "B62qik2auL1VbkX6fijdzwT6fGgjpi8caKUH6vbov573DbdT2UbQkDp",
-      "stakeNanomina": "242392116437606",
-      "selfStakeNanomina": "14345854254191",
-      "delegators": 189
-    },
-    {
       "publicKey": "B62qkd4tZQGe9mo5tK3wQi5PUoMdtUGtLWps6Se9o1qWdwNwuUtdWdr",
-      "stakeNanomina": "242156836358761",
-      "selfStakeNanomina": "14063353100000",
+      "stakeNanomina": "246297758988761",
+      "selfStakeNanomina": "16763353100000",
       "delegators": 46
     },
     {
-      "publicKey": "B62qk2ujo9BoBxCs9BFQUsv3efaJDzbJeLs4YJdZMJzJoVj69ShVdKs",
-      "stakeNanomina": "217703660194908",
-      "selfStakeNanomina": "1809510000",
-      "delegators": 2
+      "publicKey": "B62qik2auL1VbkX6fijdzwT6fGgjpi8caKUH6vbov573DbdT2UbQkDp",
+      "stakeNanomina": "244591260906348",
+      "selfStakeNanomina": "17045854254191",
+      "delegators": 188
+    },
+    {
+      "publicKey": "B62qp6qMf3Do4q4aKqEsLxVpVuXJaRCijtyhsjZBvDSEFUBGXg8Z9cs",
+      "stakeNanomina": "243760443771363",
+      "selfStakeNanomina": "400734357879",
+      "delegators": 9
     },
     {
       "publicKey": "B62qoazqR1ag2hDwjkSSm6qV3eJtkiPvVPKhfVyeea7TehBAWu4dWJ5",
@@ -346,22 +334,34 @@
       "delegators": 5
     },
     {
+      "publicKey": "B62qk2ujo9BoBxCs9BFQUsv3efaJDzbJeLs4YJdZMJzJoVj69ShVdKs",
+      "stakeNanomina": "202703650094908",
+      "selfStakeNanomina": "1809510000",
+      "delegators": 2
+    },
+    {
+      "publicKey": "B62qmkGkjvFwmkqv6erSmTGMx9ABhuxJqpCi4gyUtxFDwif97j2X5zp",
+      "stakeNanomina": "197651747716818",
+      "selfStakeNanomina": "5371027411528",
+      "delegators": 3
+    },
+    {
       "publicKey": "B62qouoFyhrUqHkXrMsdwsmPi3Z2JWPFrEJNhFrBJARESvSnqpCZhiZ",
-      "stakeNanomina": "191019267649358",
-      "selfStakeNanomina": "7201000000000",
+      "stakeNanomina": "193719267649358",
+      "selfStakeNanomina": "9901000000000",
       "delegators": 2
     },
     {
       "publicKey": "B62qqe4vXu5XrF3jUKcBpD7rGo1TsuybeXQfHMK8QuejfqmFB7K3Y93",
-      "stakeNanomina": "190000387642521",
-      "selfStakeNanomina": "1656307247",
+      "stakeNanomina": "192700387642521",
+      "selfStakeNanomina": "2701656307247",
       "delegators": 11
     },
     {
       "publicKey": "B62qn7KLcjFRqNhnUngn2iky62Lq4E8G2t66KdFKTdeJUzwoEkPsSmJ",
-      "stakeNanomina": "183901627216943",
-      "selfStakeNanomina": "14240700862811",
-      "delegators": 424
+      "stakeNanomina": "188217010246943",
+      "selfStakeNanomina": "16940700862811",
+      "delegators": 425
     },
     {
       "publicKey": "B62qkAjdrnm7ifJ2BLZRkNzkoYLR1XvKQcY4cWgRMiYg1ehpyuAdGww",
@@ -370,32 +370,26 @@
       "delegators": 7
     },
     {
-      "publicKey": "B62qqch9XkiTS8BLUDSM1sayfXNAtnYnQFChktYG1bfCJkDMUqs98Xr",
-      "stakeNanomina": "178133535953469",
-      "selfStakeNanomina": "13691898619603",
-      "delegators": 35
-    },
-    {
       "publicKey": "B62qooQD2NzgGaiHHmbdo4C1c8YcQi5uf3ns75p9xfKp2L9FagTiFcP",
       "stakeNanomina": "171823734301454",
       "selfStakeNanomina": "1100000",
       "delegators": 11
     },
     {
-      "publicKey": "B62qphpEdBwSycpN67XFjcXSEY9j18chmttFTXYerhTPMX4JkXubWkd",
-      "stakeNanomina": "165224791124564",
-      "selfStakeNanomina": "5457117883998",
-      "delegators": 43
-    },
-    {
       "publicKey": "B62qkxMXa9JorkHdS1iinLn5WwMV4dgn3HT63osBoFgQHYoah1MdzKw",
-      "stakeNanomina": "164282757347780",
-      "selfStakeNanomina": "14101290810273",
+      "stakeNanomina": "167342922297780",
+      "selfStakeNanomina": "16801290810273",
       "delegators": 9
     },
     {
+      "publicKey": "B62qqch9XkiTS8BLUDSM1sayfXNAtnYnQFChktYG1bfCJkDMUqs98Xr",
+      "stakeNanomina": "165662074351992",
+      "selfStakeNanomina": "16751908619603",
+      "delegators": 35
+    },
+    {
       "publicKey": "B62qqy7DHHzo4ryzUYdycH9jNaPYGj1vMUPZxQ2VwSq134EjHKeYiGt",
-      "stakeNanomina": "160422642175065",
+      "stakeNanomina": "161143051475065",
       "selfStakeNanomina": "9243648",
       "delegators": 2
     },
@@ -406,10 +400,22 @@
       "delegators": 5
     },
     {
+      "publicKey": "B62qqKvhGqh8bCL6Z3mDiE27paMtpCC4VqwPiGZap3SHChgFoBWAyr5",
+      "stakeNanomina": "151275728857865",
+      "selfStakeNanomina": "4623690582360",
+      "delegators": 3
+    },
+    {
       "publicKey": "B62qonpNiy6q7bkVRC4crMCNqZWwxvkiJNhnjruEcHd6vJRdmxo7wq7",
       "stakeNanomina": "149613473280498",
       "selfStakeNanomina": "9366757600268",
       "delegators": 6
+    },
+    {
+      "publicKey": "B62qphpEdBwSycpN67XFjcXSEY9j18chmttFTXYerhTPMX4JkXubWkd",
+      "stakeNanomina": "149324766024564",
+      "selfStakeNanomina": "7102883998",
+      "delegators": 43
     },
     {
       "publicKey": "B62qmTYWQUM5V1r9HT5wVPVYgWpotezECEgciGAXJFFGJKzNZpzH3Fz",
@@ -424,22 +430,22 @@
       "delegators": 4
     },
     {
-      "publicKey": "B62qqKvhGqh8bCL6Z3mDiE27paMtpCC4VqwPiGZap3SHChgFoBWAyr5",
-      "stakeNanomina": "147495140842865",
-      "selfStakeNanomina": "843102567360",
-      "delegators": 3
+      "publicKey": "B62qoVopcNoQPFydweGWUBnJJbrokkebVDiWGmAzYoaLysrFfzNCbya",
+      "stakeNanomina": "141060037777691",
+      "selfStakeNanomina": "2706905517220",
+      "delegators": 36
+    },
+    {
+      "publicKey": "B62qid146JcZD6eSrDt2p9iqrQC6eTxRxYB5HUyg5XpTezsqP73WWRR",
+      "stakeNanomina": "138467181171394",
+      "selfStakeNanomina": "2702984322535",
+      "delegators": 13
     },
     {
       "publicKey": "B62qqYgjPA3VwKEnmWy7Cwp9fVPsZskTXQTKQdmw8qqKgznzarSEfXM",
-      "stakeNanomina": "138020817536623",
+      "stakeNanomina": "138380817536623",
       "selfStakeNanomina": "950100000",
       "delegators": 7
-    },
-    {
-      "publicKey": "B62qoVopcNoQPFydweGWUBnJJbrokkebVDiWGmAzYoaLysrFfzNCbya",
-      "stakeNanomina": "137235600001169",
-      "selfStakeNanomina": "6905517220",
-      "delegators": 36
     },
     {
       "publicKey": "B62qrCz3ehCqi8Pn8y3vWC9zYEB9RKsidauv15DeZxhzkxL3bKeba5h",
@@ -452,12 +458,6 @@
       "stakeNanomina": "136365903338034",
       "selfStakeNanomina": "4697700360873",
       "delegators": 7
-    },
-    {
-      "publicKey": "B62qid146JcZD6eSrDt2p9iqrQC6eTxRxYB5HUyg5XpTezsqP73WWRR",
-      "stakeNanomina": "135047161171394",
-      "selfStakeNanomina": "2984322535",
-      "delegators": 13
     },
     {
       "publicKey": "B62qnFYf8Vxt1H6uvRWJFNg5WFprMq7pooZ9bxSXvMka5L7MTqcHXN2",
@@ -497,14 +497,14 @@
     },
     {
       "publicKey": "B62qngGSkaZCutEntH6Qu7V2g7waodEDfjars9VRf591oAxvpUW9Mzd",
-      "stakeNanomina": "112154747762133",
-      "selfStakeNanomina": "46154743096403",
+      "stakeNanomina": "112514767762133",
+      "selfStakeNanomina": "46514763096403",
       "delegators": 1
     },
     {
       "publicKey": "B62qmdsqUB7b3GYTWmCTGSioxMKeSesj4JrcRQRmmPRqwTtTo6xdYDz",
-      "stakeNanomina": "111616108964743",
-      "selfStakeNanomina": "39076006264598",
+      "stakeNanomina": "111616905964743",
+      "selfStakeNanomina": "39076803264598",
       "delegators": 3
     },
     {
@@ -515,7 +515,7 @@
     },
     {
       "publicKey": "B62qoH7rNL5vycXsFjAKr3ssxK9vvfB9Kz3uRXFhBECNxugykP6Fank",
-      "stakeNanomina": "107013192232273",
+      "stakeNanomina": "107733227282273",
       "selfStakeNanomina": "1979100000",
       "delegators": 5
     },
@@ -586,10 +586,28 @@
       "delegators": 10
     },
     {
+      "publicKey": "B62qrr4HsyQDc8BHf875XHizovkMqfXYKFxqxdcLPNahHnz1GZqCmXL",
+      "stakeNanomina": "80335014449904",
+      "selfStakeNanomina": "361209950000",
+      "delegators": 12
+    },
+    {
+      "publicKey": "B62qphjuHHaPY37THFRMYRQsVCf1JgEE6k512cV3S4RmkmdutMhzZmr",
+      "stakeNanomina": "79679808832130",
+      "selfStakeNanomina": "56875847901685",
+      "delegators": 13
+    },
+    {
       "publicKey": "B62qipA4mZXjXaKHv6GSakqhjpoAa9wZnAKV5X4HyFyy6vz6aqCNYeD",
       "stakeNanomina": "79663604894520",
       "selfStakeNanomina": "3255342839419",
       "delegators": 6
+    },
+    {
+      "publicKey": "B62qrB4hLHkwUz3UXwx6jLx6XrvbRae4d8t6pMVaGhjt2c1XoqJZTUb",
+      "stakeNanomina": "78094126137215",
+      "selfStakeNanomina": "18401957664439",
+      "delegators": 3
     },
     {
       "publicKey": "B62qp8Vq6n4VHq1LUm9Wd5QKjpKb7umoZ2oU9gpJYuHNUc7t2HGhGUA",
@@ -598,21 +616,9 @@
       "delegators": 19
     },
     {
-      "publicKey": "B62qrr4HsyQDc8BHf875XHizovkMqfXYKFxqxdcLPNahHnz1GZqCmXL",
-      "stakeNanomina": "77274804499904",
-      "selfStakeNanomina": "1000000000",
-      "delegators": 12
-    },
-    {
       "publicKey": "B62qmQ5ufDZUTz8tm1GVQvmNrn4Don4hXPJ5GFMJpP8VEXkHJCZ9ySW",
       "stakeNanomina": "75555305608641",
       "selfStakeNanomina": "14376049062035",
-      "delegators": 3
-    },
-    {
-      "publicKey": "B62qrB4hLHkwUz3UXwx6jLx6XrvbRae4d8t6pMVaGhjt2c1XoqJZTUb",
-      "stakeNanomina": "75388429137215",
-      "selfStakeNanomina": "15696260664439",
       "delegators": 3
     },
     {
@@ -622,28 +628,28 @@
       "delegators": 1
     },
     {
+      "publicKey": "B62qijDC2gCTtcqYGnUAc9YgH2Uw4fzr8xEKKL4faZmWyAypgEe3oWC",
+      "stakeNanomina": "74976156135120",
+      "selfStakeNanomina": "18934736123806",
+      "delegators": 97
+    },
+    {
       "publicKey": "B62qjeR6fS4Z9dyaNt1UWPh8bHWm4euq5ksKnctfQdwucSzRGh9cFZV",
       "stakeNanomina": "74728913027251",
       "selfStakeNanomina": "61110585584960",
       "delegators": 1
     },
     {
-      "publicKey": "B62qphjuHHaPY37THFRMYRQsVCf1JgEE6k512cV3S4RmkmdutMhzZmr",
-      "stakeNanomina": "74279808832130",
-      "selfStakeNanomina": "51475847901685",
-      "delegators": 13
-    },
-    {
-      "publicKey": "B62qijDC2gCTtcqYGnUAc9YgH2Uw4fzr8xEKKL4faZmWyAypgEe3oWC",
-      "stakeNanomina": "73320583834851",
-      "selfStakeNanomina": "16234736123806",
-      "delegators": 98
-    },
-    {
       "publicKey": "B62qkkjmwsCMeX42PjL9DNPssKAupBojQT6Wd2ZZYeBq1EF7PTwKV6x",
       "stakeNanomina": "72724063383990",
       "selfStakeNanomina": "1449996948052",
       "delegators": 3
+    },
+    {
+      "publicKey": "B62qjvx1gE8xJ3H9Wx5JTx4GcCEanEjUK3MFWZjaGu7hLUr18UUXbWL",
+      "stakeNanomina": "71289473835237",
+      "selfStakeNanomina": "40786611110707",
+      "delegators": 5
     },
     {
       "publicKey": "B62qj3Gzxgb4G4M8CwZRXZPtmVwGJtGfVXVbpMrACNDSqQLoXzSQ9HW",
@@ -662,12 +668,6 @@
       "stakeNanomina": "69595560376541",
       "selfStakeNanomina": "1800935720633",
       "delegators": 135
-    },
-    {
-      "publicKey": "B62qjvx1gE8xJ3H9Wx5JTx4GcCEanEjUK3MFWZjaGu7hLUr18UUXbWL",
-      "stakeNanomina": "68589473835237",
-      "selfStakeNanomina": "38086611110707",
-      "delegators": 5
     },
     {
       "publicKey": "B62qpPqw2hzqjtcqpEwvckfsAENgXUxgJGu8y3Z6Fzus7pRH6UaLLp7",
@@ -724,6 +724,12 @@
       "delegators": 2
     },
     {
+      "publicKey": "B62qrui6wB5ZUxBQwkWMG8cmtpMuK6sPRn1hLstKLi25CecdfcistdE",
+      "stakeNanomina": "58498496658765",
+      "selfStakeNanomina": "2700793655136",
+      "delegators": 65
+    },
+    {
       "publicKey": "B62qorXXHv971Kvnq91TkvWsRAvMCB8yszCX6yUhpyZseKcibSZSDSF",
       "stakeNanomina": "58145890702022",
       "selfStakeNanomina": "22759251268332",
@@ -734,12 +740,6 @@
       "stakeNanomina": "56725135594407",
       "selfStakeNanomina": "19900000",
       "delegators": 113
-    },
-    {
-      "publicKey": "B62qrui6wB5ZUxBQwkWMG8cmtpMuK6sPRn1hLstKLi25CecdfcistdE",
-      "stakeNanomina": "55798496658765",
-      "selfStakeNanomina": "793655136",
-      "delegators": 65
     },
     {
       "publicKey": "B62qpT62jspFKgFqqEcdhi2hKUKW6SATwkNXuNg8bctX9QjToofbGZw",
@@ -760,6 +760,12 @@
       "delegators": 3
     },
     {
+      "publicKey": "B62qoq5Eis3tAaGRta5SZ7M7CYD1nNdkNWh9CJa3QuZ1An8Dxeue2dP",
+      "stakeNanomina": "40689771064099",
+      "selfStakeNanomina": "24987875612575",
+      "delegators": 3
+    },
+    {
       "publicKey": "B62qifREEiYeag7TD8B1JvNaQF2ZNDrHxpME2diecJeQ6anfYrABnhJ",
       "stakeNanomina": "40620766052192",
       "selfStakeNanomina": "65015000000",
@@ -770,6 +776,12 @@
       "stakeNanomina": "40324598186894",
       "selfStakeNanomina": "40324598186894",
       "delegators": 2
+    },
+    {
+      "publicKey": "B62qptf4MGw8h6tJyd7b1Bbqysfk3UVyRBEukCZEHuNSJEretDBDWYs",
+      "stakeNanomina": "40046065911755",
+      "selfStakeNanomina": "16770677004966",
+      "delegators": 10
     },
     {
       "publicKey": "B62qn9Xw7796dqjdmPRxzj9BHKjUwtGwovYpWXZ4EsSADVJrBee2pxd",
@@ -784,10 +796,10 @@
       "delegators": 3
     },
     {
-      "publicKey": "B62qoq5Eis3tAaGRta5SZ7M7CYD1nNdkNWh9CJa3QuZ1An8Dxeue2dP",
-      "stakeNanomina": "37989771064099",
-      "selfStakeNanomina": "22287875612575",
-      "delegators": 3
+      "publicKey": "B62qirtWdQYyj4uH2mqsNTjkURCcNjWgmrjxMVM6axc2G6LrKvbTLLR",
+      "stakeNanomina": "38128232243943",
+      "selfStakeNanomina": "16751618900000",
+      "delegators": 4
     },
     {
       "publicKey": "B62qrJowiiRAYWQUrhyieAdFuDJgQ2MoyCqTzotP2ECRVptb63f7bG3",
@@ -796,10 +808,10 @@
       "delegators": 3
     },
     {
-      "publicKey": "B62qptf4MGw8h6tJyd7b1Bbqysfk3UVyRBEukCZEHuNSJEretDBDWYs",
-      "stakeNanomina": "37346065911755",
-      "selfStakeNanomina": "14070677004966",
-      "delegators": 10
+      "publicKey": "B62qjAAPEV5hE41EgunTNeADAViDWW8Cktzxe36A5z5yoXyFPDnziak",
+      "stakeNanomina": "36227338468998",
+      "selfStakeNanomina": "36227338468998",
+      "delegators": 3
     },
     {
       "publicKey": "B62qmiJsasogL3iTj2HhSE5AyhN3y5x2GYuvccCBdT1xYB2bpuSHL2P",
@@ -814,12 +826,6 @@
       "delegators": 2
     },
     {
-      "publicKey": "B62qirtWdQYyj4uH2mqsNTjkURCcNjWgmrjxMVM6axc2G6LrKvbTLLR",
-      "stakeNanomina": "35428232243943",
-      "selfStakeNanomina": "14051618900000",
-      "delegators": 4
-    },
-    {
       "publicKey": "B62qmd1EZEgVpDi1xSuHbPnqZroPVG1fbD1GMpsBF7bA6Y3TcT9BTWA",
       "stakeNanomina": "34870166588788",
       "selfStakeNanomina": "10148741595124",
@@ -832,16 +838,16 @@
       "delegators": 12
     },
     {
-      "publicKey": "B62qjAAPEV5hE41EgunTNeADAViDWW8Cktzxe36A5z5yoXyFPDnziak",
-      "stakeNanomina": "33167088468998",
-      "selfStakeNanomina": "33167088468998",
-      "delegators": 3
-    },
-    {
       "publicKey": "B62qjWwDxk5nGMXN32ffuMpMSp3wPa7BLB3AXHH5EYiczcRxDTF9uP4",
       "stakeNanomina": "32992671895896",
       "selfStakeNanomina": "4603464862",
       "delegators": 1
+    },
+    {
+      "publicKey": "B62qkCBzfCu5ma93fapuvEP1kB8io2i88zijQftn5YrBzSqWHJjtiX4",
+      "stakeNanomina": "31914559642869",
+      "selfStakeNanomina": "13121993631880",
+      "delegators": 27
     },
     {
       "publicKey": "B62qix9vooX5NqJYo8nT6xWqCeQu5AJoS1ng6FRnUpVAra6PAZZ1CU4",
@@ -850,28 +856,22 @@
       "delegators": 33
     },
     {
-      "publicKey": "B62qkCBzfCu5ma93fapuvEP1kB8io2i88zijQftn5YrBzSqWHJjtiX4",
-      "stakeNanomina": "30899630442869",
-      "selfStakeNanomina": "11422013831880",
-      "delegators": 27
-    },
-    {
       "publicKey": "B62qqhZioGPLYePnwCFUqQd7WoHu3TTmZVAvwoh61xnC6VcWNqLMsCp",
       "stakeNanomina": "30236583625310",
       "selfStakeNanomina": "2316734062292",
       "delegators": 2
     },
     {
+      "publicKey": "B62qmLRLxC5Fx3cRmHDwKGq6psCbmXAYE1UsS4Z1foqrXCTtJuvTbbL",
+      "stakeNanomina": "30157053832249",
+      "selfStakeNanomina": "3243037577951",
+      "delegators": 65
+    },
+    {
       "publicKey": "B62qrLewpuQqr1CTZP6SWuhvp9Me433b9q9u9Bz9jwZZ7ApsBGvSEU6",
       "stakeNanomina": "29342900011968",
       "selfStakeNanomina": "370000000",
       "delegators": 5
-    },
-    {
-      "publicKey": "B62qrE1TgV5jegA2rn32gi7FkHbFSvo2xRxKwhYykAiAsLy7ib7Uwnc",
-      "stakeNanomina": "29236981326029",
-      "selfStakeNanomina": "17215276534223",
-      "delegators": 23
     },
     {
       "publicKey": "B62qif7HxYzQCb8v2FN3KgZkS8oevDG2zqYqzkdjSV1Smf6jbEcPVEc",
@@ -886,22 +886,16 @@
       "delegators": 5
     },
     {
-      "publicKey": "B62qmLRLxC5Fx3cRmHDwKGq6psCbmXAYE1UsS4Z1foqrXCTtJuvTbbL",
-      "stakeNanomina": "27457053832249",
-      "selfStakeNanomina": "543037577951",
-      "delegators": 65
-    },
-    {
-      "publicKey": "B62qqSDsgPh4c6E4DQw1Rbo1dCtZJMivQtXTDJcL58m95pydVupDDRE",
-      "stakeNanomina": "27108322630579",
-      "selfStakeNanomina": "5726590919312",
-      "delegators": 57
-    },
-    {
       "publicKey": "B62qkQCXhzstenWTCwbGqRgdvivBQEE2WDNRWLRo4gAXcnkQKZ1FAta",
       "stakeNanomina": "25981333143206",
       "selfStakeNanomina": "3397630770",
       "delegators": 1
+    },
+    {
+      "publicKey": "B62qk9PM2iFnDwWqbtB85tnRQ95hecBcjvSpDBqaWFRrH95Lfet6Kyo",
+      "stakeNanomina": "25894941784311",
+      "selfStakeNanomina": "22301600000000",
+      "delegators": 4
     },
     {
       "publicKey": "B62qjqYBrf5erL4LHSapiuvcX9TMLCVqCuyzYYGC2sGZfKxt8tQ67Vz",
@@ -916,57 +910,63 @@
       "delegators": 16
     },
     {
-      "publicKey": "B62qk9PM2iFnDwWqbtB85tnRQ95hecBcjvSpDBqaWFRrH95Lfet6Kyo",
-      "stakeNanomina": "23194941784311",
-      "selfStakeNanomina": "19601600000000",
+      "publicKey": "B62qnAyuWpFyRqpDA94SMbkUmhKoMLuoykj5DYWf8eeskprLKS6nLdC",
+      "stakeNanomina": "24088013024600",
+      "selfStakeNanomina": "16755580174924",
       "delegators": 4
     },
     {
-      "publicKey": "B62qnAyuWpFyRqpDA94SMbkUmhKoMLuoykj5DYWf8eeskprLKS6nLdC",
-      "stakeNanomina": "21388013024600",
-      "selfStakeNanomina": "14055580174924",
-      "delegators": 4
+      "publicKey": "B62qqSDsgPh4c6E4DQw1Rbo1dCtZJMivQtXTDJcL58m95pydVupDDRE",
+      "stakeNanomina": "20688302530579",
+      "selfStakeNanomina": "26580919312",
+      "delegators": 57
     },
     {
       "publicKey": "B62qj7tJG5rxdy1hxo2tPo8xJGN3qDHwQdPqq7UMH6xGfhyfUikyKV8",
-      "stakeNanomina": "17563327590000",
-      "selfStakeNanomina": "17563327590000",
+      "stakeNanomina": "20263327590000",
+      "selfStakeNanomina": "20263327590000",
       "delegators": 1
     },
     {
-      "publicKey": "B62qnr2iUdADcgeYKUVjjvXaPy4qXXz8gmYUYu2WbHA8ZaieWMo2r9s",
-      "stakeNanomina": "16076510868922",
-      "selfStakeNanomina": "2385256955",
-      "delegators": 10
-    },
-    {
       "publicKey": "B62qj8qNQqR2XDdee4KEqKDMpwHPQdk4XP5xotjLg5fwMNMEpD5i2bD",
-      "stakeNanomina": "14416423863614",
-      "selfStakeNanomina": "14413723999996",
+      "stakeNanomina": "17116423863614",
+      "selfStakeNanomina": "17113723999996",
       "delegators": 9
     },
     {
       "publicKey": "B62qn3aPKv9vuoU1oJdT785bYLbbU1TTrNAXyEfycA17Kx7Miao4whM",
-      "stakeNanomina": "14080031218587",
-      "selfStakeNanomina": "12079648420877",
+      "stakeNanomina": "16780031218587",
+      "selfStakeNanomina": "14779648420877",
       "delegators": 9
     },
     {
       "publicKey": "B62qpH9udXinXbRpyvGLeTFcSeJdrwTrbRQcMYU6ufPKUepRrHddgms",
-      "stakeNanomina": "14063103362874",
-      "selfStakeNanomina": "14051814100000",
+      "stakeNanomina": "16763103362874",
+      "selfStakeNanomina": "16751814100000",
       "delegators": 11
     },
     {
       "publicKey": "B62qn8JN3sLVja6GLETxWdnma3hXuUP2WfUARkcLfs8jWqW4FbuGuCU",
-      "stakeNanomina": "14057945307293",
-      "selfStakeNanomina": "14052618100100",
+      "stakeNanomina": "16757945307293",
+      "selfStakeNanomina": "16752618100100",
       "delegators": 7
     },
     {
       "publicKey": "B62qk8bcoWGkmLvgSekJfKnTZh618eUCAzJFu77bhUAq9Vci4nvgb4z",
-      "stakeNanomina": "13686781474820",
-      "selfStakeNanomina": "5449916105857",
+      "stakeNanomina": "16386781474820",
+      "selfStakeNanomina": "8149916105857",
+      "delegators": 9
+    },
+    {
+      "publicKey": "B62qk7nUB7DFReStpCTxHsW9Qm6go42vvLK6shgQcUrAAz6K66HsNtc",
+      "stakeNanomina": "15303642168532",
+      "selfStakeNanomina": "2700091943146",
+      "delegators": 2
+    },
+    {
+      "publicKey": "B62qmNP1Ki9cRqL9MivqFbmKi9XDASsQMEs2teiy8RwrJiDANB9w2UA",
+      "stakeNanomina": "13355195779169",
+      "selfStakeNanomina": "12678170000000",
       "delegators": 9
     },
     {
@@ -974,12 +974,6 @@
       "stakeNanomina": "12846357600963",
       "selfStakeNanomina": "44219784",
       "delegators": 17
-    },
-    {
-      "publicKey": "B62qk7nUB7DFReStpCTxHsW9Qm6go42vvLK6shgQcUrAAz6K66HsNtc",
-      "stakeNanomina": "12603642168532",
-      "selfStakeNanomina": "91943146",
-      "delegators": 2
     },
     {
       "publicKey": "B62qobvkvofH1P6fmu9pjb91tx6dJ6YR5nFtgitxhkpFYsF6WZJn4yi",
@@ -994,28 +988,46 @@
       "delegators": 99
     },
     {
+      "publicKey": "B62qnr2iUdADcgeYKUVjjvXaPy4qXXz8gmYUYu2WbHA8ZaieWMo2r9s",
+      "stakeNanomina": "12099490768922",
+      "selfStakeNanomina": "2375256955",
+      "delegators": 10
+    },
+    {
+      "publicKey": "B62qrE1TgV5jegA2rn32gi7FkHbFSvo2xRxKwhYykAiAsLy7ib7Uwnc",
+      "stakeNanomina": "12021704791806",
+      "selfStakeNanomina": "0",
+      "delegators": 23
+    },
+    {
+      "publicKey": "B62qj9SeVBtbZCeGUVznWUqECvFrFU8DoHLQxFtHXX1Dk1BB7dfW4AP",
+      "stakeNanomina": "11889439250923",
+      "selfStakeNanomina": "11889439250923",
+      "delegators": 1
+    },
+    {
+      "publicKey": "B62qn7HrKKt5ia1dvGYHuvuFGLdwNSXUSAERQgvS2yZbZvVaK5biQef",
+      "stakeNanomina": "11742831357706",
+      "selfStakeNanomina": "8498524491072",
+      "delegators": 11
+    },
+    {
       "publicKey": "B62qrwriCceuC9YB7w5nbVMuKfDYi5T325aGtxyBp7LqVehPAJtEuj6",
       "stakeNanomina": "11460789998532",
       "selfStakeNanomina": "11459942573215",
       "delegators": 3
     },
     {
-      "publicKey": "B62qmNP1Ki9cRqL9MivqFbmKi9XDASsQMEs2teiy8RwrJiDANB9w2UA",
-      "stakeNanomina": "10655195779169",
-      "selfStakeNanomina": "9978170000000",
-      "delegators": 9
-    },
-    {
-      "publicKey": "B62qq6ceNHCu9mSBvczmHS5JzHC4zw5U9KLALuwZPemeksx82AEfQSr",
-      "stakeNanomina": "10267866881194",
-      "selfStakeNanomina": "3979800000",
-      "delegators": 23
-    },
-    {
       "publicKey": "B62qj2bSvrtaot83VniN8hffLcfLLQTiLoTH5PiCmkwaADRF9hqmUfe",
-      "stakeNanomina": "10140486030026",
-      "selfStakeNanomina": "11799545286",
+      "stakeNanomina": "10140475930026",
+      "selfStakeNanomina": "11789445286",
       "delegators": 2
+    },
+    {
+      "publicKey": "B62qrVGh6mx3DQBmXobnWidM265mxSD3aisVjR7c9KMyZV5FfXqywST",
+      "stakeNanomina": "9983629028563",
+      "selfStakeNanomina": "6359810090719",
+      "delegators": 7
     },
     {
       "publicKey": "B62qre3erTHfzQckNuibViWQGyyKwZseztqrjPZBv6SQF384Rg6ESAy",
@@ -1060,16 +1072,16 @@
       "delegators": 4
     },
     {
-      "publicKey": "B62qn7HrKKt5ia1dvGYHuvuFGLdwNSXUSAERQgvS2yZbZvVaK5biQef",
-      "stakeNanomina": "9042831357706",
-      "selfStakeNanomina": "5798524491072",
-      "delegators": 11
-    },
-    {
       "publicKey": "B62qn6RFRY4whvu4kReqj2rEYxpm5d5o42v4YcVkBf3ib1qHXfdC9kb",
       "stakeNanomina": "8771665302161",
       "selfStakeNanomina": "1002000000",
       "delegators": 1
+    },
+    {
+      "publicKey": "B62qrvETVZ7hobVY1Pym6hwiWc57Ccz22iv264j6NK7EL3FvGHQBhND",
+      "stakeNanomina": "8484180444673",
+      "selfStakeNanomina": "2701322032840",
+      "delegators": 10
     },
     {
       "publicKey": "B62qoB94nRGJFTf9qzXVUDnLC88zt7fBcxdfTsr2FmByJqKNHFy6GH5",
@@ -1078,10 +1090,10 @@
       "delegators": 17
     },
     {
-      "publicKey": "B62qrVGh6mx3DQBmXobnWidM265mxSD3aisVjR7c9KMyZV5FfXqywST",
-      "stakeNanomina": "7283629028563",
-      "selfStakeNanomina": "3659810090719",
-      "delegators": 7
+      "publicKey": "B62qjWmFMiYUiWGvisVof9mbiKi2sB1FhZdwiDyXi8nMCoLDJuFaRYY",
+      "stakeNanomina": "7792948649758",
+      "selfStakeNanomina": "2700000000000",
+      "delegators": 15
     },
     {
       "publicKey": "B62qjYFuUkb1D8xgwdADbiZ6UUr6KA6x61BzzE1K9sgemawDbytmjTb",
@@ -1120,6 +1132,12 @@
       "delegators": 12
     },
     {
+      "publicKey": "B62qq6ceNHCu9mSBvczmHS5JzHC4zw5U9KLALuwZPemeksx82AEfQSr",
+      "stakeNanomina": "6142506095837",
+      "selfStakeNanomina": "3979800000",
+      "delegators": 22
+    },
+    {
       "publicKey": "B62qig4yUF3SFjmeDTYefkWAkYZFD2bwkpD9ocpGXgAyfzJaeT4cDrq",
       "stakeNanomina": "5996466967448",
       "selfStakeNanomina": "100100000",
@@ -1138,12 +1156,6 @@
       "delegators": 5
     },
     {
-      "publicKey": "B62qrvETVZ7hobVY1Pym6hwiWc57Ccz22iv264j6NK7EL3FvGHQBhND",
-      "stakeNanomina": "5784180444673",
-      "selfStakeNanomina": "1322032840",
-      "delegators": 10
-    },
-    {
       "publicKey": "B62qns9cPvDwckhJXHpWZZ8b8T8oUgoF4Enpax5zNVBYYMtQwHf4Cmp",
       "stakeNanomina": "5762632856009",
       "selfStakeNanomina": "0",
@@ -1154,12 +1166,6 @@
       "stakeNanomina": "5545981801745",
       "selfStakeNanomina": "0",
       "delegators": 7
-    },
-    {
-      "publicKey": "B62qr9jmNyuKG9Zhi1jENgPuswFRRDrkin3tP6D76qx8HNpjke5aUMs",
-      "stakeNanomina": "5536584379725",
-      "selfStakeNanomina": "35418726271",
-      "delegators": 10
     },
     {
       "publicKey": "B62qkmyxf2s94f6KzgnH6NbnECV8RjCKYSKXqpxcTXi7rcopSAutS1h",
@@ -1174,16 +1180,22 @@
       "delegators": 10
     },
     {
-      "publicKey": "B62qjWmFMiYUiWGvisVof9mbiKi2sB1FhZdwiDyXi8nMCoLDJuFaRYY",
-      "stakeNanomina": "5092948649758",
-      "selfStakeNanomina": "0",
-      "delegators": 15
+      "publicKey": "B62qjqtLRExnb2fyMiBpv6nC1ckGuBrCY9mXtTTcf5x7GD3CG6sU3Ad",
+      "stakeNanomina": "5126810929448",
+      "selfStakeNanomina": "3603527229943",
+      "delegators": 8
     },
     {
       "publicKey": "B62qoo7juS8X4i59TJ2iV4p7ogHqBwwuMC9VfsQFSNjZgZpNmGw58dJ",
       "stakeNanomina": "5002971160744",
       "selfStakeNanomina": "618766141",
       "delegators": 6
+    },
+    {
+      "publicKey": "B62qr3qCQ5XeTCrhy1FCU8FgHnuNDdfvJhq9aaSVA5KBSns2Vb9xsZf",
+      "stakeNanomina": "4500864609131",
+      "selfStakeNanomina": "4500464609089",
+      "delegators": 7
     },
     {
       "publicKey": "B62qmjkodb4YAahsyb9U89t1EZ4yRHg1LgY46mFy2ohtsMPiiSVovgT",
@@ -1223,8 +1235,8 @@
     },
     {
       "publicKey": "B62qrfRjSn7Wz1JAyM66rd46Zcf37sWa9tobyXh9wfZubHEfozW3SAf",
-      "stakeNanomina": "3401500402682",
-      "selfStakeNanomina": "2232405418",
+      "stakeNanomina": "3401490302682",
+      "selfStakeNanomina": "2222305418",
       "delegators": 8
     },
     {
@@ -1252,6 +1264,12 @@
       "delegators": 138
     },
     {
+      "publicKey": "B62qoA8zWuP3qK1ibaeCcETtvG2R79tv2Ea71Djc2fHrCJpw2pSQSJh",
+      "stakeNanomina": "2723792880560",
+      "selfStakeNanomina": "8874815150",
+      "delegators": 4
+    },
+    {
       "publicKey": "B62qrexVgJhu7Bn9JPfffu6Na6AYUUrphtZVd723VY6o9HED1b952aH",
       "stakeNanomina": "2677951413381",
       "selfStakeNanomina": "849239282",
@@ -1268,12 +1286,6 @@
       "stakeNanomina": "2547491431196",
       "selfStakeNanomina": "2545644033940",
       "delegators": 9
-    },
-    {
-      "publicKey": "B62qjqtLRExnb2fyMiBpv6nC1ckGuBrCY9mXtTTcf5x7GD3CG6sU3Ad",
-      "stakeNanomina": "2426810929448",
-      "selfStakeNanomina": "903527229943",
-      "delegators": 8
     },
     {
       "publicKey": "B62qnvKLdq3j46nuQML7govR1gNqfBjHtv86FzmfrAU9NPGd9BSzooh",
@@ -1318,10 +1330,10 @@
       "delegators": 3
     },
     {
-      "publicKey": "B62qr3qCQ5XeTCrhy1FCU8FgHnuNDdfvJhq9aaSVA5KBSns2Vb9xsZf",
-      "stakeNanomina": "1800864609131",
-      "selfStakeNanomina": "1800464609089",
-      "delegators": 7
+      "publicKey": "B62qr9jmNyuKG9Zhi1jENgPuswFRRDrkin3tP6D76qx8HNpjke5aUMs",
+      "stakeNanomina": "1936524379725",
+      "selfStakeNanomina": "35418726271",
+      "delegators": 10
     },
     {
       "publicKey": "B62qjWchpjVwmbEazciy3VSBZhJNVF28RcDQirLFpH2rvfmDrtXL382",
@@ -1547,8 +1559,8 @@
     },
     {
       "publicKey": "B62qmmfwYfsQ9YdwYfTK6uFBiBWNKecCynfKWTD1UB77C71AaFpJ6zT",
-      "stakeNanomina": "489430292380",
-      "selfStakeNanomina": "18738470000",
+      "stakeNanomina": "500106542380",
+      "selfStakeNanomina": "29414720000",
       "delegators": 1
     },
     {
@@ -1592,12 +1604,6 @@
       "stakeNanomina": "376028177005",
       "selfStakeNanomina": "376028177005",
       "delegators": 1
-    },
-    {
-      "publicKey": "B62qqaGu2Hz6122My8Ddxj5WPgQd1tVLmXXJioxa7Wm5m5VJPzoZdhc",
-      "stakeNanomina": "371866039561",
-      "selfStakeNanomina": "371866039561",
-      "delegators": 3
     },
     {
       "publicKey": "B62qnEetHDy25PTrgDdEJq4veBvaEnSweB3L2EyXLTNKVWbP3eMfKwH",
@@ -1894,6 +1900,12 @@
       "delegators": 1
     },
     {
+      "publicKey": "B62qqaGu2Hz6122My8Ddxj5WPgQd1tVLmXXJioxa7Wm5m5VJPzoZdhc",
+      "stakeNanomina": "71846039561",
+      "selfStakeNanomina": "71846039561",
+      "delegators": 3
+    },
+    {
       "publicKey": "B62qnfNBWuw64hr1Js2aUppey2RSGpmDZC8GF16xLRAYgMJT59JnMUn",
       "stakeNanomina": "67849983424",
       "selfStakeNanomina": "66848584235",
@@ -2006,12 +2018,6 @@
       "stakeNanomina": "40772106122",
       "selfStakeNanomina": "40772106122",
       "delegators": 1
-    },
-    {
-      "publicKey": "B62qpG2jj3CLrcWPUaMLoBfZeAjuVxXfaPBj4vmt9cv7kfztwHZWG56",
-      "stakeNanomina": "40389900045",
-      "selfStakeNanomina": "39989900000",
-      "delegators": 2
     },
     {
       "publicKey": "B62qnbPjbMQWD7gAw5bLbUkC9Sac4fumehugiXFZoasecbmZ9MxVeso",
@@ -2132,12 +2138,6 @@
       "stakeNanomina": "24000000000",
       "selfStakeNanomina": "24000000000",
       "delegators": 1
-    },
-    {
-      "publicKey": "B62qoA8zWuP3qK1ibaeCcETtvG2R79tv2Ea71Djc2fHrCJpw2pSQSJh",
-      "stakeNanomina": "23793980560",
-      "selfStakeNanomina": "8875915150",
-      "delegators": 4
     },
     {
       "publicKey": "B62qni2bXsMfr4HnT1RSYob5x6Cz2rP1zUr3sKuMSqrqt9jtJR3se4y",
@@ -2272,6 +2272,12 @@
       "delegators": 5
     },
     {
+      "publicKey": "B62qmMBrtEUYcT16Wq3PX3rshZR596FQUMSw8Ecu3wzFkLsoY7sqoVk",
+      "stakeNanomina": "11377436208",
+      "selfStakeNanomina": "11234639955",
+      "delegators": 1
+    },
+    {
       "publicKey": "B62qmv6z8q87impMR7yVNq848dYbKtUmcQwaH8qoRw3v5WyEbPUDVq8",
       "stakeNanomina": "11231705504",
       "selfStakeNanomina": "11025000000",
@@ -2281,12 +2287,6 @@
       "publicKey": "B62qpYngyqVnBCs92WoPCYQxLs4arKnBSppBr1rHtshmtWY19hVdJd3",
       "stakeNanomina": "10898900000",
       "selfStakeNanomina": "1900000000",
-      "delegators": 1
-    },
-    {
-      "publicKey": "B62qmMBrtEUYcT16Wq3PX3rshZR596FQUMSw8Ecu3wzFkLsoY7sqoVk",
-      "stakeNanomina": "10897436208",
-      "selfStakeNanomina": "10754639955",
       "delegators": 1
     },
     {
@@ -2554,6 +2554,12 @@
       "delegators": 7
     },
     {
+      "publicKey": "B62qpG2jj3CLrcWPUaMLoBfZeAjuVxXfaPBj4vmt9cv7kfztwHZWG56",
+      "stakeNanomina": "5379800045",
+      "selfStakeNanomina": "4979800000",
+      "delegators": 2
+    },
+    {
       "publicKey": "B62qnaKqreP9LkE5T4TatP3NRWQMqgEmAkjU1ySYEZYk6KyFereuyNY",
       "stakeNanomina": "5247681293",
       "selfStakeNanomina": "980000000",
@@ -2573,8 +2579,8 @@
     },
     {
       "publicKey": "B62qiZn3dDGNFgqnXemGk1Bxfk6wwiSu4drTerDTUyJWZXdD5E1HMeT",
-      "stakeNanomina": "4639400367",
-      "selfStakeNanomina": "3021381427",
+      "stakeNanomina": "4629400367",
+      "selfStakeNanomina": "3011381427",
       "delegators": 5
     },
     {
@@ -3226,12 +3232,6 @@
       "delegators": 2
     },
     {
-      "publicKey": "B62qm4C3DDfZr4EFKsWgMYkLAsXytAhnVzBUjJojNm9nyv9ApdJmcsc",
-      "stakeNanomina": "1954294451",
-      "selfStakeNanomina": "499018407",
-      "delegators": 8
-    },
-    {
       "publicKey": "B62qqasnCE2RHtjfjeU9k2rq3EzJxk6r3ghXGwng9tmAUM4FCcxTeNW",
       "stakeNanomina": "1949700000",
       "selfStakeNanomina": "1529700000",
@@ -3242,6 +3242,12 @@
       "stakeNanomina": "1948538880",
       "selfStakeNanomina": "0",
       "delegators": 1
+    },
+    {
+      "publicKey": "B62qm4C3DDfZr4EFKsWgMYkLAsXytAhnVzBUjJojNm9nyv9ApdJmcsc",
+      "stakeNanomina": "1944294451",
+      "selfStakeNanomina": "489018407",
+      "delegators": 8
     },
     {
       "publicKey": "B62qmDRVGNhNHwnHL3vRRH4Hgv3bjhmvtn9D7DU4awHrcJszL2T1o6k",
