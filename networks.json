@@ -779,6 +779,20 @@
     ]
   },
   {
+    "name": "junoclaw-testnet",
+    "type": "testnet",
+    "title": "JunoClaw G2 Testnet",
+    "website": "https://junoclaw.xyz/",
+    "github": "https://github.com/Dragonmonk111/layer-sdk",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/junoclaw-testnet/logo.png",
+    "stake": "",
+    "explorer": "",
+    "chain_id": "junoclaw-g1",
+    "endpoints": {},
+    "generatedServices": [],
+    "services": ["installation-guide", "links", "skill"]
+  },
+  {
     "name": "juno",
     "type": "mainnet",
     "title": "Juno",
