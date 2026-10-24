@@ -3,11 +3,19 @@
 For a **new non-running** Mocha-5 app node. Existing nodes must follow
 [App upgrade and multiplexer](multiplexer.md), not reinitialize their home.
 
-**Reviewed 2026-09-23:** target `v10.2.0-mocha`, commit
-`3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a`, app v10 activation **1082619**.
-Before activation the multiplexer runs app v9; binary version is not protocol
-version. The upgrade guide defines RPC-first order, verification and the
-pre-fork/pre-migration-only rollback boundary. Mainnet and Mocha-4 are separate.
+**Reviewed 2026-10-15:** the documented, pinned installation baseline remains
+`v10.2.0-mocha`, commit `3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a`; app v10
+activation was height **1082619**. Live RPC on 2026-10-14 identified `mocha-5`
+at height `1689832`, well past that activation.
+
+Upstream has since published `v10.4.0-mocha` (commit
+`5187d2fb5eb8bc4b534c74724882943c54253ae9`), but GitHub still marks it
+**pre-release**. It adds breaking Fibre signer-transport changes (mTLS is now
+required for remote signer connections). This guide does not silently promote
+that pre-release to the tested install baseline; operators should review its
+[release notes](https://github.com/celestiaorg/celestia-app/releases/tag/v10.4.0-mocha)
+and the multiplexer upgrade procedure before upgrading an existing node.
+Mainnet and Mocha-4 are separate.
 
 POSTHUMAN operates app nodes, not Bridge/Light. DA `v0.34.2-mocha` and its Fibre
 namespace are documented in the [Bridge](bridge-node-setup.md) and

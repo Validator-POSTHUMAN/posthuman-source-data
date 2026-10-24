@@ -5,15 +5,18 @@ chain ID `celestia`.
 
 ## Current Versions
 
-- Recommended consensus binary: `v9.0.8`
-- Current protocol app: `v9`
-- Previous compatible app binary: `v8.0.8`
-- App v9 activated at height: `11771698`
-- Go for source builds: `1.26.1+`
-- POSTHUMAN snapshot format: PebbleDB `snapshot-latest.tar.lz4`; check `snapshot.json` for the latest published build
+- Mainnet pre-upgrade protocol observed on 2026-10-14: app `9` at height `14959732` (independent PublicNode RPC).
+- Current mainnet release: `v10.4.0` multiplexer, published 2026-10-07. It embeds the v9 app and switches to app v10 only after coordinated on-chain activation.
+- Previous app v9 activation: height `11771698`.
+- Source-build toolchain for the current release: Go `1.26.6`.
+- POSTHUMAN snapshot format: PebbleDB `snapshot-latest.tar.lz4`; check `snapshot.json` for each current build.
 
-Use the `v9.0.8` wrapper for new installs and recoveries. Mainnet has already
-passed the app v9 activation height.
+For new mainnet consensus-node installs and recoveries, use the `v10.4.0`
+multiplexer, not the standalone or old `v9.0.8` binary. Mainnet was still on
+app v9 at the observation above; installing the multiplexer does not itself
+activate app v10. Follow the upstream [v10.4.0 release instructions](https://github.com/celestiaorg/celestia-app/releases/tag/v10.4.0)
+and check the live upgrade plan before any existing-node cutover. Do not use
+Cosmovisor for this coordinated transition.
 
 Check live network state before choosing the binary:
 
@@ -41,29 +44,31 @@ sudo apt install -y curl wget jq tar lz4 git make gcc chrony build-essential \
 
 ## 2. Install `celestia-appd`
 
-Use the current recommended mainnet wrapper binary.
+Use the official `v10.4.0` mainnet multiplexer archive. The release requires
+Linux glibc `2.38+` (Ubuntu 24.04 on x86_64 is the tested CI platform). Do not
+substitute the `celestia-app-standalone` archive while mainnet is on app v9.
 
 ```bash
-APP_VERSION="v9.0.8"
-
-cd "$HOME"
-rm -rf celestia-app-release
-mkdir celestia-app-release
-cd celestia-app-release
+APP_VERSION="v10.4.0"
+STAGE_DIR="$(mktemp -d -p /tmp celestia-app-release.XXXXXX)"
+cd "$STAGE_DIR"
 
 curl -fLO "https://github.com/celestiaorg/celestia-app/releases/download/${APP_VERSION}/celestia-app_Linux_x86_64.tar.gz"
 curl -fLO "https://github.com/celestiaorg/celestia-app/releases/download/${APP_VERSION}/checksums.txt"
+sha256sum --ignore-missing --check checksums.txt
 
-sha256sum -c --ignore-missing checksums.txt
 tar -xzf celestia-app_Linux_x86_64.tar.gz
-
 chmod +x celestia-appd
-sudo mv celestia-appd /usr/local/bin/celestia-appd
+sudo install -m 0755 celestia-appd /usr/local/bin/celestia-appd
 celestia-appd version
 ```
 
-If the official binary fails with a GLIBC error on Ubuntu 22.04, build
-`celestia-app` from source on the host instead of using the release archive.
+The release checksum covers the downloaded archive. Keep the currently installed
+binary and database untouched until the staged artifact and target host are
+verified. For an existing node, follow the upstream coordinated upgrade
+procedure, use the same home/database, and verify sync and signing after restart.
+Do not reinitialize an existing node or treat app-version activation as a binary
+replacement event.
 
 ## 3. Initialize
 
