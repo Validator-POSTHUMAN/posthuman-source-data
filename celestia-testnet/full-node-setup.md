@@ -22,9 +22,9 @@ validator is a consensus full node with an active consensus signer.
 
 Current Mocha reference:
 
-- celestia-app: `v10.2.0-mocha`
-- Commit: `3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a`
-- App v10 activation: **1082619**; pre-activation app version remains `9`.
+- celestia-app: `v10.5.0-mocha` (checked 2026-10-28)
+- Commit: `6013e758d5dceb75827ad191c8d739d7c43cfa04`
+- App v10 activated at **1082619**; current protocol app version is `10`.
 - [Upgrade order, checks and fork/migration rollback boundaries](multiplexer.md).
 - Home must be a dedicated Mocha-5 path, such as
   `$HOME/.celestia-app-mocha-5`.
@@ -45,9 +45,10 @@ pruning are configured and verified for that purpose.
 
 ### Data availability node
 
-A DA node runs **celestia-node**, not celestia-appd. Mocha release
-`v0.34.2-mocha` adds the Fibre JSON-RPC namespace on Bridge/Light with a
-configured core v10 dependency. POSTHUMAN operates neither DA role;
+A DA node runs **celestia-node**, not celestia-appd. Historical Mocha release
+`v0.34.2-mocha` added the Fibre JSON-RPC namespace on Bridge/Light with a
+configured core v10 dependency; verify the newer DA release separately before
+installing. POSTHUMAN operates neither DA role;
 Fibre/escrow activation needs a separate decision. Choose a current role:
 
 | Need | Current role | Guide | Mocha-5 store |

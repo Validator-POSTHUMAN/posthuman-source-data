@@ -16,9 +16,13 @@ consensus signer.
 
 Current celestia-app mainnet reference:
 
-- Version: `v9.0.6`
-- Commit: `6f4b596e47f80683adb1a161ca7cb640dcd9d206`
+- Version: `v10.5.0` multiplexer (checked 2026-10-28)
+- Commit: `6013e758d5dceb75827ad191c8d739d7c43cfa04`
 - Chain ID: `celestia`
+
+See the [current consensus installation guide](installation-guide.md) before
+using an app binary or snapshot. The old v9-only build is not a recovery
+target after app-v10 activation.
 
 | Consensus profile | CPU | Memory | NVMe | Network |
 | --- | ---: | ---: | ---: | ---: |

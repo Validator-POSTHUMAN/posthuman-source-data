@@ -1,5 +1,20 @@
 # Celestia Mainnet Snapshot
 
+> **Publication degraded — checked 2026-10-28 22:37 UTC.** POSTHUMAN's
+> `snapshot.json` still reports `2026-10-16T14:55:27Z`, height `15010220`,
+> while the live mainnet was above `15382800` and running app version `10`.
+> The 93,533,764,040-byte archive responds to HEAD, but its age and
+> post-upgrade restore compatibility have **not** been validated. Do not use
+> this archive for a fresh restore until publication resumes and a current
+> build passes a new end-to-end restore test. The 2026-09-27 proof below
+> applies only to the earlier archive tested then.
+
+The publisher is still scheduled every four hours, but its preflight rejects
+the source database: the 2026-10-28 20:45 UTC log reported
+`source_bytes=190700234505` above its `120GiB` limit. The RPC itself remains
+active. Raising the guard or replacing the non-signing source database needs a
+separate capacity and recovery review; neither happened in this page audit.
+
 
 > **Restore-verified on 2026-09-27.** This archive was restored end to end on a
 > throwaway node: it reached the chain tip, ran 371 blocks past the snapshot
@@ -13,8 +28,8 @@ POSTHUMAN provides a pruned Celestia consensus-node snapshot for chain ID
 `celestia`.
 
 - DB backend: PebbleDB
-- Publication cadence: every four hours. Read `snapshot_time` from
-  `snapshot.json` rather than assuming freshness.
+- Intended publication cadence: every four hours; currently not meeting it.
+  Read `snapshot_time` from `snapshot.json` rather than assuming freshness.
 - Archive format: `snapshot-latest.tar.lz4`; read `snapshot_size_bytes` from
   `snapshot.json` before download because its size changes with the source data.
 - Resumable: yes. The host answers byte-range requests, so an interrupted
@@ -40,11 +55,12 @@ PebbleDB before starting from this snapshot.
 
 ### An alternative source
 
-Our archive is rebuilt every four hours, so it can be a few hours old. ITRocket
-publishes a PebbleDB Celestia snapshot with the same node parameters and a
-machine-readable index; measured on 2026-09-27 at height `14439541`, 3.0 GiB,
-`HEAD` 200, range `206`. POSTHUMAN restored its own node from that provider twice
-in September, so it is a route we have walked rather than a link we found.
+ITRocket publishes a PebbleDB Celestia snapshot with a machine-readable index.
+Its metadata at the 2026-10-28 check reported height `15377714` (live chain
+above `15382800`), size `3.3G`, and a four-hour interval. It was not downloaded
+or restore-tested in this check. POSTHUMAN restored its own node from that
+provider twice in September; that historical proof is not proof of this
+particular archive.
 
 It is somebody else's artifact: confirm the height against a live RPC, keep
 `priv_validator_key.json` and `priv_validator_state.json` out of the extraction,
@@ -53,6 +69,9 @@ and stop the node only after the download and decompression have succeeded.
 ## Preflight
 
 Always compare snapshot metadata with a trusted live RPC before restore:
+
+**The POSTHUMAN Quick Restore below is suspended while the publication notice
+above applies.** Do not run it against the stale archive.
 
 ```bash
 # The candidate you are about to restore, from the source named above.
@@ -68,6 +87,7 @@ curl -fsS https://celestia-rpc.publicnode.com/status | \
 Stop if:
 
 - `chain_id` is not `celestia`;
+- `snapshot_time` is stale relative to the expected four-hour cadence;
 - metadata height is far ahead of or inconsistent with trusted RPC height;
 - snapshot file size is unexpectedly small;
 - you cannot preserve keys and validator state.

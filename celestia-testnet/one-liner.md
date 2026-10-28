@@ -7,7 +7,7 @@ Do not reuse Mocha-4 databases, snapshots, homes or signer state on Mocha-5.
 
 ## Current Mocha-5 documentation
 
-- Target app: **v10.2.0-mocha**, activation height **1082619**.
+- Current app binary: **v10.5.0-mocha**; historical v10 activation height **1082619**.
 - [New-node installation](installation-guide.md).
 - [Existing-node upgrade and multiplexer](multiplexer.md).
 - [Snapshot provenance and recovery boundaries](snapshots.md).
@@ -19,7 +19,8 @@ stopped and fenced. Never restore an older `priv_validator_state.json`, copy a
 consensus key to another live signer, or stream an unverified archive directly
 into a live home. A legacy helper is not an exception to these requirements.
 
-DA **v0.34.2-mocha** is informational only. POSTHUMAN operates neither Bridge
+DA **v0.34.2-mocha** is a historical informational pin, not a current
+installer recommendation. POSTHUMAN operates neither Bridge
 nor Light. Fibre/escrow activation, DA deployment, transactions and network
 exposure require separate decisions; this page offers no automatic activation.
 

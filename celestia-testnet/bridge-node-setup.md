@@ -12,14 +12,14 @@ node.** The templates below describe a separately approved deployment, not
 existing POSTHUMAN infrastructure. Updating this guide enables no service,
 port, firewall rule, key, escrow, or transaction.
 
-`v0.34.2-mocha` adds a built-in Fibre client and the `fibre` JSON-RPC namespace
+Historical `v0.34.2-mocha` added a built-in Fibre client and the `fibre` JSON-RPC namespace
 on **Bridge and Light** nodes. The namespace includes Submit, Upload,
 Download, Deposit, Withdraw, QueryEscrowAccount, and PendingWithdrawals.
 Fibre needs a configured Mocha core endpoint running **celestia-app v10** with
 `x/fibre` and `x/valaddr`; it is unavailable without a core endpoint. Installing
 a v10 wrapper before activation does not mean these v10 modules are active.
 
-The Mocha-5 app target is `v10.2.0-mocha`, activation height **1082619**; see
+The Mocha-5 app runs `v10.5.0-mocha`; activation height **1082619** is historical. See
 [App upgrade and rollback boundaries](multiplexer.md). This is not a mainnet
 version recommendation. Fibre/escrow activation requires a **separate operator
 decision** covering custody, funding, exposure and provider dependencies.
@@ -30,8 +30,8 @@ or infer Fibre availability from DA health checks in this guide.
 
 - Consensus chain ID: `mocha-5`
 - DA P2P network: `mocha`
-- celestia-node: `v0.34.2-mocha`
-- Source commit: `cd6cd46f00a572a7010fecc7e0dacf8a456982d2`
+- celestia-node: `v0.34.4-mocha` (official Mocha pre-release, 2026-10-26)
+- Source commit: `3c33b0a4d18128fbc291893d44e7195824bcd561`
 - Go: `1.26.8`
 - Store: `$HOME/.celestia-bridge-mocha-5`
 
@@ -75,8 +75,8 @@ then verify the toolchain.
 go version
 test "$(go env GOVERSION)" = "go1.26.8"
 
-NODE_TAG="v0.34.2-mocha"
-NODE_COMMIT="cd6cd46f00a572a7010fecc7e0dacf8a456982d2"
+NODE_TAG="v0.34.4-mocha"
+NODE_COMMIT="3c33b0a4d18128fbc291893d44e7195824bcd561"
 BUILD_ROOT="$(mktemp -d -p /tmp celestia-node-build.XXXXXX)"
 
 git clone --filter=blob:none --depth 1 --branch "$NODE_TAG" \
@@ -178,8 +178,8 @@ checks.
 
 Release and toolchain reviewed 2026-09-23:
 
-- [Official v0.34.2-mocha release, Fibre namespace and core v10 dependency](https://github.com/celestiaorg/celestia-node/releases/tag/v0.34.2-mocha)
-- [Pinned celestia-node go.mod (Go 1.26.8)](https://github.com/celestiaorg/celestia-node/blob/cd6cd46f00a572a7010fecc7e0dacf8a456982d2/go.mod)
+- [Official v0.34.4-mocha release](https://github.com/celestiaorg/celestia-node/releases/tag/v0.34.4-mocha)
+- [Pinned celestia-node go.mod (Go 1.26.8)](https://github.com/celestiaorg/celestia-node/blob/3c33b0a4d18128fbc291893d44e7195824bcd561/go.mod)
 
 Capacity and general role guidance below retain their historical documentation
 provenance; they are not a new benchmark of Fibre workloads.

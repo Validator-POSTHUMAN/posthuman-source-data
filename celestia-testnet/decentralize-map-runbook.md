@@ -5,7 +5,7 @@ as historical data, not as Mocha-5 infrastructure or a current health source.
 Do not relabel its records, combine them with Mocha-5, or run the legacy
 collector/deploy wrapper as part of an app upgrade.
 
-Current Mocha-5 target: **v10.2.0-mocha**, activation height **1082619**.
+Current Mocha-5 app: **v10.5.0-mocha**; activation height **1082619** is historical.
 See the [node-ops index](links.md) and [app upgrade guide](multiplexer.md).
 
 ## Historical artifacts

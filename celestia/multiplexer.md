@@ -9,15 +9,16 @@ observes `AppVersion` changes and switches application execution without a
 whole-binary swap at the upgrade boundary. The normal operator entry point
 remains `celestia-appd start`; there is no separate multiplexer service.
 
-## Current official pin
+## Current official pin (checked 2026-10-28)
 
 | Item | Mainnet value |
 | --- | --- |
 | Chain ID | `celestia` |
-| Release tag | `v9.0.6` |
-| Git commit | `6f4b596e47f80683adb1a161ca7cb640dcd9d206` |
-| Source module | `github.com/celestiaorg/celestia-app/v9` |
-| Source-build Go version | `1.26.5` |
+| Release tag | `v10.5.0` |
+| Git commit | `6013e758d5dceb75827ad191c8d739d7c43cfa04` |
+| Protocol app version | `10` (active since height `15116658`) |
+| Source module | `github.com/celestiaorg/celestia-app/v10` |
+| Source-build Go version | `1.26.6` |
 | Linux runtime floor | glibc `2.38` or later; Ubuntu 24.04 or equivalent |
 | Supported release architectures | Linux and macOS, `amd64` and `arm64` |
 
@@ -25,8 +26,8 @@ The official mainnet and Mocha release tags point to the same commit, but use
 the network-specific tag and chain identity. Do not substitute the Mocha tag
 for a mainnet release procedure.
 
-At the pinned commit, the multiplexer build embeds these historical app
-binaries:
+At the historical `v9.0.6` commit, the multiplexer build embedded these app
+binaries (not a current release asset manifest):
 
 - app version 3: `v3.12.0`
 - app version 4: `v4.1.0`
@@ -62,8 +63,8 @@ its metadata before activation.
 ```bash
 set -eu
 
-APP_TAG="v9.0.6"
-APP_COMMIT="6f4b596e47f80683adb1a161ca7cb640dcd9d206"
+APP_TAG="v10.5.0"
+APP_COMMIT="6013e758d5dceb75827ad191c8d739d7c43cfa04"
 
 case "$(uname -m)" in
   x86_64) ASSET="celestia-app_Linux_x86_64.tar.gz" ;;
@@ -95,19 +96,18 @@ printf 'Expected commit: %s\n' "$APP_COMMIT"
 printf 'Staged binary: %s\n' "$STAGE/unpacked/celestia-appd"
 ```
 
-Confirm the reported version is `9.0.6`, the commit is the pinned commit, and
+Confirm the reported version is `10.5.0`, the commit is the pinned commit, and
 the build tags include `multiplexer`. Keep the staged artifact until review is
 complete. Installing it into the active binary path and restarting the node are
 separate, approval-controlled operations.
 
-For a source build, pin both tag and commit and use Go `1.26.5`. At this source
-revision, the standard multiplexer target downloads the six historical release
-archives before embedding them. Review that dependency path and verify the
-historical assets before treating a locally built binary as production-ready.
+For a source build, pin both tag and commit and use Go `1.26.6`. Review the
+current tag's embedding dependency path and verify historical assets before
+treating a locally built binary as production-ready.
 
 ## Configuration contract
 
-Set `CELESTIA_HOME` to the reviewed mainnet consensus home. Before activation,
+Set `CELESTIA_HOME` to the reviewed mainnet consensus home. Before a patch upgrade,
 inspect the effective service arguments and configuration:
 
 ```bash
@@ -140,15 +140,15 @@ Before changing an existing validator:
 
 1. Verify the exact mainnet home, service, current binary path, version, commit,
    build tags, and chain ID.
-2. Confirm active upgrade instructions and network signaling state.
+2. Confirm app version `10`, active release notes and current chain head.
 3. Preserve configuration, the consensus signer, and the newest
    `priv_validator_state.json` through the approved backup process.
 4. Prove the same consensus key cannot sign from another host or service.
 5. Check glibc compatibility before selecting the multiplexer artifact.
-6. Review `rpc.grpc_laddr`, `proxy_app`, and `address` before activation.
+6. Review `rpc.grpc_laddr`, `proxy_app`, and `address` before restart.
 7. Stage the binary and define a rollback artifact; do not change node data to
    solve a binary or configuration error.
-8. Activate once, then verify process stability, sync, external commits, and
+8. Restart once, then verify process stability, sync, external commits, and
    validator signatures.
 
 The multiplexer can sync from genesis with embedded applications, but this is
@@ -196,7 +196,7 @@ Evidence reviewed from the official Celestia docs repository at commit
 - `app/operate/consensus-validators/install-celestia-app/page.mdx`
 - `app/operate/consensus-validators/validator-node/page.mdx`
 
-Evidence reviewed from official celestia-app tag `v9.0.6`, commit
+Historical implementation evidence reviewed from celestia-app tag `v9.0.6`, commit
 `6f4b596e47f80683adb1a161ca7cb640dcd9d206`:
 
 - `go.mod`
@@ -209,3 +209,5 @@ Evidence reviewed from official celestia-app tag `v9.0.6`, commit
 - `cmd/celestia-appd/cmd/modify_root_command_multiplexer.go`
 - `internal/embedding/data.go`
 - `docs/release-notes/release-notes.md`
+
+Current release and checksums: [official v10.5.0 mainnet release](https://github.com/celestiaorg/celestia-app/releases/tag/v10.5.0).

@@ -3,16 +3,16 @@
 For a **new non-running** Mocha-5 app node. Existing nodes must follow
 [App upgrade and multiplexer](multiplexer.md), not reinitialize their home.
 
-**Reviewed 2026-09-23:** target `v10.2.0-mocha`, commit
-`3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a`, app v10 activation **1082619**.
-Before activation the multiplexer runs app v9; binary version is not protocol
-version. The upgrade guide defines RPC-first order, verification and the
-pre-fork/pre-migration-only rollback boundary. Mainnet and Mocha-4 are separate.
+**Checked 2026-10-28:** live Mocha-5 reports app version `10` and binary
+`10.5.0-mocha`. The official `v10.5.0-mocha` tag is marked pre-release but is
+running on POSTHUMAN's validator and zero-power RPC. It resolves to commit
+`6013e758d5dceb75827ad191c8d739d7c43cfa04`. Use the **Mocha** archive,
+not the mainnet archive. The historical app-v10 activation was height
+`1082619`; never reuse Mocha-4 data or snapshots.
 
-POSTHUMAN operates app nodes, not Bridge/Light. DA `v0.34.2-mocha` and its Fibre
-namespace are documented in the [Bridge](bridge-node-setup.md) and
-[Light](light-node-setup.md) informational guides; Fibre/escrow activation
-requires a separate decision.
+The separately versioned DA-node guides are informational; verify their
+current upstream release before installation. Fibre/escrow transactions
+require a separate decision.
 
 ---
 
@@ -38,9 +38,9 @@ sudo apt install -y curl tar wget clang pkg-config libssl-dev jq build-essential
 
 ## 2. Select the verified multiplexer artifact or toolchain
 
-Prefer the checksum-verified official multiplexer archive and staging commands
-in [App upgrade and multiplexer](multiplexer.md). Do not select `standalone`
-while Mocha-5 is still on app v9. Do not use Cosmovisor for this upgrade.
+Prefer the checksum-verified official **Mocha** multiplexer archive and staging
+commands in [App upgrade and multiplexer](multiplexer.md). Do not substitute
+the mainnet archive or Cosmovisor for this app upgrade.
 
 If building from source, install Go **1.26.6** through trusted distribution
 channels and verify `go version`. Do not reuse the old v9 toolchain assumption.
@@ -51,8 +51,8 @@ Use a new staging directory without deleting or replacing another checkout:
 
 ```bash
 set -eu
-VERSION="v10.2.0-mocha"
-APP_COMMIT="3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a"
+VERSION="v10.5.0-mocha"
+APP_COMMIT="6013e758d5dceb75827ad191c8d739d7c43cfa04"
 test "$(go env GOVERSION)" = "go1.26.6"
 BUILD_ROOT="$(mktemp -d -p /tmp celestia-app-build.XXXXXX)"
 git clone --filter=blob:none --depth 1 --branch "$VERSION" \
@@ -62,7 +62,7 @@ make -C "$BUILD_ROOT/src" build
 "$BUILD_ROOT/src/build/celestia-appd" version --long
 ```
 
-Require `10.2.0-mocha`, the pinned commit and the `multiplexer` build tag.
+Require `10.5.0-mocha`, the pinned commit and the `multiplexer` build tag.
 Review the embedded historical assets as described in the upgrade guide.
 Only after review, install the binary for this **new non-running** node;
 existing nodes use the controlled upgrade workflow instead of this command:
@@ -370,4 +370,4 @@ installation or retirement steps as a database or signer-state rollback.
 
 ---
 
-**Last Updated**: 2026-09-23 | v10.2.0-mocha | App v10 height: 1082619 | Chain ID: mocha-5
+**Last checked**: 2026-10-28 | v10.5.0-mocha | App v10 height: 1082619 (historical) | Chain ID: mocha-5

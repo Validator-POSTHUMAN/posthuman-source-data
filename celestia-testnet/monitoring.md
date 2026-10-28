@@ -7,16 +7,14 @@ and Mocha-5 network configuration passed the blocked gate in
 consensus chain ID `mocha-5`, DA P2P network `mocha`, and a dedicated
 `-mocha-5` home or store. Any Mocha-4 identity is a hard failure.
 
-## v10 activation watch — reviewed 2026-09-23
+## Current v10 watch — checked 2026-10-28
 
-The Mocha app target is `v10.2.0-mocha`, activation height **1082619**.
-Before the height, the multiplexer may correctly report protocol app version
-`9` through embedded `v9.0.7-corto`; after migration require app version `10`.
-Check binary identity, pending-plan consumption, block/AppHash parity and fresh
-external signatures separately; see [Upgrade and rollback](multiplexer.md).
-DA release `v0.34.2-mocha` exposes Fibre on Bridge/Light only when its configured
-core supports v10. POSTHUMAN runs neither role: no DA/Fibre health or escrow
-activation claim follows from the app upgrade.
+The Mocha app already passed activation height **1082619** and runs protocol
+app version `10` with binary `v10.5.0-mocha`. A current node reporting app `9`
+is not healthy. Check process binary, block/AppHash parity, fresh external
+signatures, and the separately operated Fibre server; see
+[Upgrade and rollback](multiplexer.md). POSTHUMAN runs neither Bridge nor
+Light; app health alone does not establish DA-node or Fibre readiness.
 
 ## Authoritative context
 
