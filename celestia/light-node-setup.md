@@ -7,9 +7,9 @@ A light node follows extended headers and performs data availability sampling
 ## Pinned software
 
 - Network: `celestia`
-- celestia-node: `v0.32.1`
-- Source commit: `8fc6945a38db8af6277d906c5d313a70db33c444`
-- Go: `1.26.5`
+- celestia-node: `v0.34.4` (official mainnet release, 2026-10-27)
+- Source commit: `3c33b0a4d18128fbc291893d44e7195824bcd561`
+- Go: `1.26.8`
 - Store: `$HOME/.celestia-light`
 
 Do not install from an unpinned branch or pipe a remote script into a shell.
@@ -28,15 +28,15 @@ keep capacity headroom.
 
 ## Build from the pinned source
 
-Install Go `1.26.5` and build dependencies through trusted distribution
+Install Go `1.26.8` and build dependencies through trusted distribution
 channels, then verify the toolchain.
 
 ```bash
 go version
-test "$(go env GOVERSION)" = "go1.26.5"
+test "$(go env GOVERSION)" = "go1.26.8"
 
-NODE_TAG="v0.32.1"
-NODE_COMMIT="8fc6945a38db8af6277d906c5d313a70db33c444"
+NODE_TAG="v0.34.4"
+NODE_COMMIT="3c33b0a4d18128fbc291893d44e7195824bcd561"
 BUILD_ROOT="$(mktemp -d -p /tmp celestia-node-build.XXXXXX)"
 
 git clone --filter=blob:none --depth 1 --branch "$NODE_TAG" \

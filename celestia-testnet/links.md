@@ -1,7 +1,9 @@
 # Celestia Mocha-5 — Node Operations Index
 
-**Reviewed 2026-09-23:** app `v10.2.0-mocha`, activation height **1082619**;
-DA `v0.34.2-mocha`. Mainnet and historical Mocha-4 are separate networks.
+**Checked 2026-10-28:** live Mocha-5 app `v10.5.0-mocha`, protocol app `10`.
+The app-v10 activation at height **1082619** is historical. DA-node guides
+have separately pinned releases; verify them against current upstream before
+installing. Mainnet and retired Mocha-4 are separate networks.
 
 - [App upgrade, verification and rollback boundaries](multiplexer.md)
 - [New app-node installation](installation-guide.md)
@@ -13,14 +15,15 @@ DA `v0.34.2-mocha`. Mainnet and historical Mocha-4 are separate networks.
 - [Keys and signer boundaries](keys.md)
 - [Snapshots and Mocha-4 exclusions](snapshots.md)
 
-POSTHUMAN operates neither Bridge nor Light. The Fibre JSON-RPC namespace
-requires configured core v10; Fibre and escrow activation need a separate
-decision and are not part of this documentation update.
+POSTHUMAN operates neither Bridge nor Light, but does operate a Mocha-5 Fibre
+server. Its signer link, service and escrow actions require their own checks;
+do not infer them from DA-node installation guides.
 
 ## Public references
 
-- **RPC (ITRocket)**: https://celestia-testnet-rpc.itrocket.net
-- **REST (ITRocket)**: https://celestia-testnet-api.itrocket.net
+- **RPC (POSTHUMAN)**: https://rpc-celestia-testnet.posthuman.digital
+- **REST (POSTHUMAN)**: https://rest-celestia-testnet.posthuman.digital
+- **External RPC (ITRocket)**: https://celestia-testnet-rpc.itrocket.net
 - **Snapshots (ITRocket)**: https://server-6.itrocket.net/testnet/celestia/
 - **Peers**: the previously listed POSTHUMAN `:28756` source is retired; verify a current public Mocha-5 peer before configuration.
 - **Official genesis**: https://raw.githubusercontent.com/celestiaorg/networks/main/mocha-5/genesis.json

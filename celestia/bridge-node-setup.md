@@ -8,9 +8,9 @@ shares to the DA network. Current celestia-node DA roles are **bridge** and
 ## Pinned software
 
 - Network: `celestia`
-- celestia-node: `v0.32.1`
-- Source commit: `8fc6945a38db8af6277d906c5d313a70db33c444`
-- Go: `1.26.5`
+- celestia-node: `v0.34.4` (official mainnet release, 2026-10-27)
+- Source commit: `3c33b0a4d18128fbc291893d44e7195824bcd561`
+- Go: `1.26.8`
 - Store: `$HOME/.celestia-bridge`
 
 Verify release announcements before changing these pins. Do not install from an
@@ -45,15 +45,15 @@ prove the host can sustain the workload.
 
 ## Build from the pinned source
 
-Install Go `1.26.5` and standard build dependencies through your trusted OS or
+Install Go `1.26.8` and standard build dependencies through your trusted OS or
 Go distribution process, then verify `go version` before building.
 
 ```bash
 go version
-test "$(go env GOVERSION)" = "go1.26.5"
+test "$(go env GOVERSION)" = "go1.26.8"
 
-NODE_TAG="v0.32.1"
-NODE_COMMIT="8fc6945a38db8af6277d906c5d313a70db33c444"
+NODE_TAG="v0.34.4"
+NODE_COMMIT="3c33b0a4d18128fbc291893d44e7195824bcd561"
 BUILD_ROOT="$(mktemp -d -p /tmp celestia-node-build.XXXXXX)"
 
 git clone --filter=blob:none --depth 1 --branch "$NODE_TAG" \

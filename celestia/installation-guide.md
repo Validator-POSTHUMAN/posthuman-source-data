@@ -5,21 +5,25 @@ chain ID `celestia`.
 
 ## Current Versions
 
-- Recommended consensus binary: `v9.0.8`
-- Current protocol app: `v9`
-- Previous compatible app binary: `v8.0.8`
-- App v9 activated at height: `11771698`
-- Go for source builds: `1.26.1+`
-- POSTHUMAN snapshot format: PebbleDB `snapshot-latest.tar.lz4`; check `snapshot.json` for the latest published build
+- Recommended consensus multiplexer: `v10.5.0`, commit
+  `6013e758d5dceb75827ad191c8d739d7c43cfa04`.
+- Live mainnet protocol app: `10` (checked 2026-10-28); app v10 activated at
+  height `15116658`.
+- Go for source builds: `1.26.6`.
+- POSTHUMAN's PebbleDB snapshot was stale at the 2026-10-28 check. Verify
+  `snapshot.json` against the live chain before use; see [Snapshots](snapshots.md).
 
-Use the `v9.0.8` wrapper for new installs and recoveries. Mainnet has already
-passed the app v9 activation height.
+Use the official `v10.5.0` multiplexer for new installs and recoveries, not a
+v9-only binary. For an existing node, preserve its home and signing state.
+See the [official v10.5.0 release](https://github.com/celestiaorg/celestia-app/releases/tag/v10.5.0).
 
 Check live network state before choosing the binary:
 
 ```bash
-curl -fsS https://celestia-rpc.publicnode.com/status | \
+curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
   jq -r '.result.node_info.network, .result.sync_info.latest_block_height, .result.sync_info.catching_up'
+curl -fsS https://rpc-celestia-mainnet.posthuman.digital/abci_info | \
+  jq -r '.result.response.version, .result.response.app_version'
 ```
 
 ## Requirements
@@ -41,29 +45,31 @@ sudo apt install -y curl wget jq tar lz4 git make gcc chrony build-essential \
 
 ## 2. Install `celestia-appd`
 
-Use the current recommended mainnet wrapper binary.
+Stage and checksum-verify the official multiplexer archive. This example is
+for a new, non-running node; do not reinitialize an existing signer.
 
 ```bash
-APP_VERSION="v9.0.8"
+APP_VERSION="v10.5.0"
 
-cd "$HOME"
-rm -rf celestia-app-release
-mkdir celestia-app-release
-cd celestia-app-release
+STAGE_DIR="$(mktemp -d -p /tmp celestia-app-release.XXXXXX)"
+cd "$STAGE_DIR"
 
 curl -fLO "https://github.com/celestiaorg/celestia-app/releases/download/${APP_VERSION}/celestia-app_Linux_x86_64.tar.gz"
 curl -fLO "https://github.com/celestiaorg/celestia-app/releases/download/${APP_VERSION}/checksums.txt"
 
-sha256sum -c --ignore-missing checksums.txt
+sha256sum --ignore-missing --check checksums.txt
 tar -xzf celestia-app_Linux_x86_64.tar.gz
 
-chmod +x celestia-appd
-sudo mv celestia-appd /usr/local/bin/celestia-appd
-celestia-appd version
+./celestia-appd version --long
+sudo install -m 0755 celestia-appd /usr/local/bin/celestia-appd
+celestia-appd version --long
 ```
 
-If the official binary fails with a GLIBC error on Ubuntu 22.04, build
-`celestia-app` from source on the host instead of using the release archive.
+Require version `10.5.0`, commit
+`6013e758d5dceb75827ad191c8d739d7c43cfa04` and the multiplexer build
+tag. Published Linux x86_64 archive SHA-256:
+`3a200f501a59406cb7de9134b7ce229409b4095e8dcaa492b88238cef73d4445`.
+Verify the executable path before starting a service.
 
 ## 3. Initialize
 

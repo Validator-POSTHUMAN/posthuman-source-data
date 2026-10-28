@@ -8,7 +8,7 @@ current Mocha-5 deployment status is blocked by the compatibility gate below.
 
 ## Current app context — deployment still blocked
 
-Mocha-5 now targets app `v10.2.0-mocha` at activation height **1082619**; see
+Mocha-5 runs app `v10.5.0-mocha`; activation height **1082619** is historical. See
 [App upgrade](multiplexer.md). The v9 source analysis below is historical and
 is **not** proof of v10 compatibility. No compatible legacy orchestrator
 release has been established here, so the existing blocked gate remains.

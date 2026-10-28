@@ -1,7 +1,12 @@
 # Celestia — One-Liner Manager
 
-POSTHUMAN maintains a helper script for installing and managing Celestia
-consensus and Data Availability nodes.
+**Do not use the linked manager for new installs or upgrades.** At the
+2026-10-28 review its source still selected Go `1.24.1`, while the current
+Celestia app source requires Go `1.26.6`; this tab's former v9/DA version
+matrix and direct execution examples are retired. Use the reviewed
+[consensus installation guide](installation-guide.md),
+[snapshot status](snapshots.md), and upstream release notes until the manager
+has been upgraded and tested for app v10 and current DA releases.
 
 ## Repository
 
@@ -9,48 +14,23 @@ consensus and Data Availability nodes.
 https://github.com/Validator-POSTHUMAN/celestia-oneliner
 ```
 
-Run:
-
-```bash
-bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh)"
-```
-
-For a persistent terminal:
-
-```bash
-screen -S celestia-manager
-bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh)"
-```
-
-## Current Version Matrix
+## Current version context
 
 - Mainnet chain ID: `celestia`
-- Recommended consensus wrapper: `v9.0.6`
-- Current protocol app: `v9`
-- App v9 activated at height: `11771698`
+- Recommended consensus multiplexer: `v10.5.0`
+- Current protocol app: `10`
+- App v10 activated at height: `15116658`
 - POSTHUMAN consensus snapshot DB: PebbleDB
-- Celestia DA node version: `v0.31.4`
-- Go: `1.26.2+`
+- Source-build Go: `1.26.6`
 
 Before installing, verify the live mainnet height and sync state:
 
 ```bash
-curl -fsS https://celestia-rpc.publicnode.com/status | \
+curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
   jq -r '.result.sync_info.latest_block_height'
 ```
 
-If the one-liner default version lags behind this page, override versions
-explicitly:
-
-```bash
-export NETWORK_TYPE=mainnet
-export APP_VERSION=v9.0.6
-export BRIDGE_VERSION=v0.31.4
-
-bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celestia-oneliner/main/celestia-manager.sh)"
-```
-
-## What the Manager Covers
+## Historical manager scope (not validated for app v10)
 
 - Consensus node install and update.
 - Pruned or archive node profile.
@@ -58,10 +38,8 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Validator-POSTHUMAN/celest
 - RPC/API/gRPC exposure controls.
 - Firewall helper.
 - Validator wallet and validator transaction helpers.
-- Data Availability nodes:
-  - bridge node
-  - full storage node
-  - light node
+- Data Availability nodes; its former `full storage node` role is retired in
+  current Celestia DA software.
 
 ## POSTHUMAN Mainnet Services
 

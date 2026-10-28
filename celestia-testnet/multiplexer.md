@@ -1,39 +1,37 @@
 # Celestia Mocha-5 App Upgrade and Multiplexer
 
-**Mocha-5 only; reviewed 2026-09-23.** These pins and this activation height do
-not apply to mainnet. This guide documents an upgrade procedure; updating or
-reading it performs no runtime action.
+**Mocha-5 only; checked 2026-10-28.** The activation height below is historical
+and does not apply to mainnet. The current patch is `v10.5.0-mocha` on an
+already-active app-v10 chain; it is not a new height fork.
 
 ## Current release and activation
 
 | Item | Mocha-5 value |
 | --- | --- |
 | Consensus chain ID | `mocha-5` |
-| Target multiplexer release | `v10.2.0-mocha` |
-| Source commit | `3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a` |
+| Current multiplexer release | `v10.5.0-mocha` (GitHub pre-release; running on POSTHUMAN signer and zero-power RPC) |
+| Source commit | `6013e758d5dceb75827ad191c8d739d7c43cfa04` |
 | App v10 activation height | **1082619** |
 | Source module | `github.com/celestiaorg/celestia-app/v10` |
 | Source-build Go | `1.26.6` |
 | Linux runtime floor | glibc `2.38`; Ubuntu 24.04 or equivalent; Ubuntu 22.04 and older unsupported |
 | Release architectures | Linux and macOS, `amd64` and `arm64`; Linux x86_64 tested in CI |
 
-The binary version and active protocol app version are different. Before
-activation, this v10 multiplexer runs embedded `v9.0.7-corto` and RPC still
-reports app version `9`. At activation it switches to native v10 and runs app
-migrations automatically. Leave it running; do not schedule by a wall-clock
-estimate or perform a second binary swap at the height.
+The binary version and protocol app version are different. Live Mocha-5 already
+reports app version `10`; upgrading an existing v10 node to this patch does
+not replay the old activation at height `1082619`.
 
 The multiplexer keeps one CometBFT instance and selects the historical or
-native app. Use the official **multiplexer** archive, not `standalone`, while
-the chain is on v9. Source builds use `make install` from the pinned tag.
-**Do not use Cosmovisor for this upgrade.** A multiplexer cannot run its app
-without CometBFT and is not a `celestia-node` DA role.
+native app. Use the official **Mocha multiplexer** archive for existing homes;
+source builds use `make install` from the pinned tag. Do not use Cosmovisor
+for this upgrade. It is not a `celestia-node` DA role.
 
-Historical embedding constants at the target commit are `v3.12.0`, `v4.1.0`,
+At the historical v10.2.0-mocha commit, embedding constants were `v3.12.0`, `v4.1.0`,
 `v5.0.12`, `v6.4.4`, `v7.0.2-mocha`, `v8.0.8`, and `v9.0.7-corto` for app
 versions 3 through 9. The `corto` child label is the upstream embedding pin;
 it does not change the consensus chain ID to Corto. Source builds download
-these seven historical assets; review their provenance before activation.
+those seven historical assets. This is a record of the original v9-to-v10
+activation, not a current pre-activation checklist.
 
 Historical `v9.0.6-mocha` and mainnet `v9.0.6` shared commit
 `6f4b596e47f80683adb1a161ca7cb640dcd9d206`. That is historical provenance,
@@ -47,8 +45,8 @@ it. This example stages a Linux binary outside the live path:
 
 ```bash
 set -eu
-APP_TAG="v10.2.0-mocha"
-APP_COMMIT="3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a"
+APP_TAG="v10.5.0-mocha"
+APP_COMMIT="6013e758d5dceb75827ad191c8d739d7c43cfa04"
 case "$(uname -m)" in
   x86_64) ASSET="celestia-app_Linux_x86_64.tar.gz" ;;
   aarch64|arm64) ASSET="celestia-app_Linux_arm64.tar.gz" ;;
@@ -71,7 +69,7 @@ test -x "$STAGE/unpacked/celestia-appd"
 printf 'Expected commit: %s\nStaged binary: %s\n' "$APP_COMMIT" "$STAGE/unpacked/celestia-appd"
 ```
 
-Require reported version `10.2.0-mocha`, the exact commit and `multiplexer`
+Require reported version `10.5.0-mocha`, the exact commit and `multiplexer`
 build tag. Keep the exact previous binary and config available. This staging
 example does not install over a live binary or restart a service.
 
@@ -95,19 +93,18 @@ new default home. Verify its genesis and local RPC both identify `mocha-5`.
   with `config sync --dry-run --home <reviewed-home>` and review differences;
   do not blindly apply config synchronization or overwrite existing values.
 
-POSTHUMAN operates app nodes, **not Bridge/Light**. Fibre service and escrow
-activation require a separate decision. No port/firewall expansion is implied.
+POSTHUMAN operates app nodes and a Mocha-5 Fibre server, but not Bridge/Light
+DA nodes. Preserve the existing Fibre signer link and match its binary to the
+reviewed app release; no new escrow transaction or port expansion is implied.
 
 ## Safe upgrade and verification order
 
 1. Verify the exact home/service, chain `mocha-5`, effective binary path,
    version/commit/build tags and public consensus identity. Reject any mainnet
    or Mocha-4 home, database, snapshot or signer-state path.
-2. Query `signal upgrade` and `signal tally 10` against the local node and an
-   independent Mocha-5 reference. The reviewed activation height is `1082619`;
-   reconcile any contradictory plan before continuing. A pending upgrade means
-   **do not signal again**: rejection can still consume fees. Signaling is a
-   separate transaction and not required to locally install the binary.
+2. Confirm local and independent Mocha-5 RPCs both report app version `10`.
+   Height `1082619` is already past; do not send another upgrade signal or
+   treat this patch as a new fork.
 3. Prove the same consensus key cannot sign from another host, service,
    standby or restored backup. Do not read, copy or move
    `priv_validator_key.json`. Preserve the newest `priv_validator_state.json`
@@ -116,24 +113,28 @@ activation require a separate decision. No port/firewall expansion is implied.
    baseline and fresh external signatures. Retain the exact old binary/config
    and establish a verified chain-specific recovery backup through the
    approved procedure without exposing key material.
-5. Stage and verify the multiplexer checksum, platform/glibc compatibility,
-   capacity, ABCI address match, loopback binds and Fibre-disabled config.
+5. Stage and verify the multiplexer and matching Fibre checksums,
+   platform/glibc compatibility, capacity, ABCI address match, and existing
+   signer/Fibre transport bindings. Preserve the active Fibre configuration.
 6. Upgrade a **non-signing Mocha-5 RPC/app node first**: controlled stop,
    replace only the reviewed binary, restart with the same home/database.
    Verify process binary identity, stable service/restart count, advancing sync
-   and committed block/AppHash parity. Only after it passes, repeat the
-   controlled change on the sole validator. Never create a second signer.
-7. Before `1082619`, require binary `10.2.0-mocha`, embedded `v9.0.7-corto`,
-   active app version `9`, no restart loop, `catching_up=false` and fresh
-   validator signatures through two independent Mocha-5 references.
-8. Leave the multiplexer running at activation. At/after the fork require
-   active app version `10`, successful migrations, advancing height,
-   committed block/AppHash parity at the same height and consumption of the
-   pending upgrade plan. Recheck external signatures, bonded/jailed status,
-   missed-block delta, service stability and monitoring. Binary version alone
-   is not proof that activation succeeded.
+   and committed block/AppHash parity. Only after it passes, stop the existing
+   Fibre server and signer, replace both with matching verified binaries, start
+   the signer then Fibre, and verify readiness. Never create a second signer.
+7. After restart require binary `10.5.0-mocha`, active app version `10`, no
+   restart loop, `catching_up=false`, and fresh validator signatures through
+   two independent Mocha-5 references.
+8. Require advancing height and committed block/AppHash parity at the same
+   height. Recheck external signatures, bonded/jailed status, missed-block
+   delta, Fibre readiness, service stability and monitoring. Binary version
+   alone is not proof that the patch upgrade succeeded.
 
-## Rollback boundaries — fail closed
+## Historical v9-to-v10 rollback boundary — no longer available
+
+Mocha-5 is past the v10 activation height. Do not roll a current node back to
+v9. Any current v10 patch rollback requires separate compatibility evidence
+for the exact database and Fibre release; keep signer state monotonic.
 
 - **Before fork height AND before any v10 app/store migration:** a
   binary/config-only rollback to the exact retained compatible pre-v10
@@ -141,7 +142,8 @@ activation require a separate decision. No port/firewall expansion is implied.
   while local and independent chain state are both pre-activation and the
   database is proven unchanged by migration. Stop the process first; keep the
   same home/data and newest signer state, then verify sync/signing. This is
-  temporary: restore the verified v10 multiplexer before activation.
+  temporary: restore the verified v10 multiplexer before activation. This
+  condition is historical and cannot apply to the current network height.
 - **At/after height `1082619`, after any migration, or with unknown migration
   status:** do **not** downgrade to v9 or restore a pre-fork database. Stop
   signing on an app-hash/consensus mismatch, preserve evidence and use an
@@ -159,7 +161,7 @@ activation require a separate decision. No port/firewall expansion is implied.
 Alert on missing `grpc_laddr`, ABCI client/server mismatch, failure to start an
 embedded app, repeated app-version switches, restarts, panic/consensus failure,
 unknown migration status, wrong chain identity, stalled height or lost fresh
-signatures. v10.2.0 exits when an embedded app fails: verify service-manager
+signatures. v10.5.0 exits when an embedded app fails: verify service-manager
 restart behavior and alerting rather than accepting a restart loop as healthy.
 
 Monitor the parent app/CometBFT process, local RPC, logs and independent commits.
@@ -169,8 +171,8 @@ Do not delete the historical-binary directory to troubleshoot a validator.
 
 ## Sources
 
-- [Official v10.2.0-mocha release and upgrade notice](https://github.com/celestiaorg/celestia-app/releases/tag/v10.2.0-mocha)
-- [Pinned Go module](https://github.com/celestiaorg/celestia-app/blob/3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a/go.mod)
+- [Official v10.5.0-mocha release](https://github.com/celestiaorg/celestia-app/releases/tag/v10.5.0-mocha)
+- [Pinned Go module](https://github.com/celestiaorg/celestia-app/blob/6013e758d5dceb75827ad191c8d739d7c43cfa04/go.mod)
 - [Pinned embedding constants](https://github.com/celestiaorg/celestia-app/blob/3b77dc2f5b00e1a646a2e9dd98b5c024a0d9ad8a/internal/embedding/data.go)
 - [Mocha app v10 activation/signaling](https://mocha.celenium.io/upgrade/10?tab=signals&page=1)
 - [Signaling queries and pending-plan gate](validator-signaling.md)
