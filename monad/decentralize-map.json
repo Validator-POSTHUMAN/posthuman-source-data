@@ -3,7 +3,7 @@
   "network": "Monad Mainnet",
   "network_id": "monad-mainnet",
   "chain_id": "143",
-  "updated_at": "2026-10-28T02:42:55Z",
+  "updated_at": "2026-10-29T02:44:37Z",
   "privacy": {
     "sentry_topology": "not published",
     "public_endpoints": "RPC and official bootstrap peers",
@@ -126,7 +126,7 @@
       "port": "8000",
       "latency_ms": 5,
       "source": "https://bucket.monadinfra.com/config/mainnet/latest/node.toml",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public bootstrap peer from official Monad node configuration.",
       "metadata": {
         "auth_port": "8001",
@@ -151,9 +151,9 @@
       "endpoint": "64.31.53.173:8000",
       "ip": "64.31.53.173",
       "port": "8000",
-      "latency_ms": 90,
+      "latency_ms": 86,
       "source": "https://bucket.monadinfra.com/config/mainnet/latest/node.toml",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public bootstrap peer from official Monad node configuration.",
       "metadata": {
         "auth_port": "8001",
@@ -180,7 +180,7 @@
       "port": "8000",
       "latency_ms": 168,
       "source": "https://bucket.monadinfra.com/config/mainnet/latest/node.toml",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public bootstrap peer from official Monad node configuration.",
       "metadata": {
         "auth_port": "8001",
@@ -207,7 +207,7 @@
       "port": "8000",
       "latency_ms": 11,
       "source": "https://bucket.monadinfra.com/config/mainnet/latest/node.toml",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public bootstrap peer from official Monad node configuration.",
       "metadata": {
         "auth_port": "8001",
@@ -234,7 +234,7 @@
       "port": "8000",
       "latency_ms": 94,
       "source": "https://bucket.monadinfra.com/config/mainnet/latest/node.toml",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public bootstrap peer from official Monad node configuration.",
       "metadata": {
         "auth_port": "8001",
@@ -261,7 +261,7 @@
       "port": "8000",
       "latency_ms": 219,
       "source": "https://bucket.monadinfra.com/config/mainnet/latest/node.toml",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public bootstrap peer from official Monad node configuration.",
       "metadata": {
         "auth_port": "8001",
@@ -286,9 +286,9 @@
       "endpoint": "69.162.93.53:8000",
       "ip": "69.162.93.53",
       "port": "8000",
-      "latency_ms": 196,
+      "latency_ms": 191,
       "source": "https://bucket.monadinfra.com/config/mainnet/latest/node.toml",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public bootstrap peer from official Monad node configuration.",
       "metadata": {
         "auth_port": "8001",
@@ -313,9 +313,9 @@
       "endpoint": "185.189.46.19:8000",
       "ip": "185.189.46.19",
       "port": "8000",
-      "latency_ms": 26,
+      "latency_ms": 27,
       "source": "https://bucket.monadinfra.com/config/mainnet/latest/node.toml",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public bootstrap peer from official Monad node configuration.",
       "metadata": {
         "auth_port": "8001",
@@ -345,16 +345,16 @@
       "provider": "TeraSwitch Networks Inc.",
       "asn": "AS20326 TeraSwitch Networks Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 3,
-        "rank": 186,
+        "rank": 187,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 257149972.805365,
+        "stake_mon": 256474251.721101,
         "website": "https://www.gmonads.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -371,16 +371,16 @@
       "provider": "Equinix (EMEA) Acquisition Enterprises B.V.",
       "asn": "AS15830 Equinix (EMEA) Acquisition Enterprises B.V.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 4,
-        "rank": 121,
+        "rank": 107,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 151325532.745168,
+        "stake_mon": 151207337.838706,
         "website": "https://bharvest.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -397,16 +397,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 5,
-        "rank": 191,
+        "rank": 190,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 210025082.611331,
+        "stake_mon": 210090698.540717,
         "website": "https://www.alchemy.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -418,21 +418,21 @@
       "city": "Baton Rouge",
       "country": "US",
       "country_code": "US",
-      "lat": 30.3927,
-      "lon": -91.0014,
+      "lat": 30.4485,
+      "lon": -91.13,
       "provider": "REV",
       "asn": "AS20355 REV",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 6,
-        "rank": 182,
+        "rank": 183,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 157890952.455825,
+        "stake_mon": 157086799.266896,
         "website": "https://prostaking.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -449,16 +449,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 7,
-        "rank": 190,
+        "rank": 191,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 147753908.54661,
+        "stake_mon": 147803309.083893,
         "website": "https://www.staking4all.org/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -475,16 +475,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 8,
-        "rank": 15,
+        "rank": 9,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 78065573.978027,
+        "stake_mon": 78107805.893501,
         "website": "https://dsrv.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -501,16 +501,16 @@
       "provider": "Allnodes Inc",
       "asn": "AS395201 Allnodes Inc",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 9,
-        "rank": 179,
+        "rank": 188,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 144039065.798218,
+        "stake_mon": 144049059.741935,
         "website": "https://everstake.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -527,16 +527,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS204770 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 10,
-        "rank": 169,
+        "rank": 174,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 147912509.311576,
+        "stake_mon": 147995380.612447,
         "website": "https://stakin.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -553,16 +553,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 11,
-        "rank": 159,
+        "rank": 150,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 129252498.749108,
+        "stake_mon": 128812099.843386,
         "website": "https://www.bitminetech.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -579,16 +579,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS59642 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 12,
-        "rank": 183,
+        "rank": 182,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 150061318.524848,
+        "stake_mon": 150104897.689765,
         "website": "https://onchain.bitwiseinvestments.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -605,16 +605,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 13,
-        "rank": 21,
+        "rank": 38,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76767663.973687,
+        "stake_mon": 76758039.123461,
         "website": "https://kjnodes.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -631,16 +631,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS213896 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 14,
-        "rank": 158,
+        "rank": 148,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75909467.963774,
+        "stake_mon": 75929220.783328,
         "website": "https://starlightnode.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -657,16 +657,16 @@
       "provider": "Fusix Networks B.V.",
       "asn": "AS57866 Fusix Networks B.V.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 15,
-        "rank": 133,
+        "rank": 109,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76269595.606547,
+        "stake_mon": 76293526.878761,
         "website": "https://staker.space",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -683,16 +683,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 16,
-        "rank": 177,
+        "rank": 176,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 141502464.423479,
+        "stake_mon": 141766477.397003,
         "website": "https://blockvision.org",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -709,16 +709,16 @@
       "provider": "GTHost",
       "asn": "AS63023 GTHost",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 18,
-        "rank": 59,
+        "rank": 37,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75431939.725543,
+        "stake_mon": 75457093.789481,
         "website": "https://denodes.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -735,16 +735,16 @@
       "provider": "WebNX, Inc.",
       "asn": "AS18450 WebNX, Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 19,
-        "rank": 105,
+        "rank": 62,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76388852.869334,
+        "stake_mon": 76421219.109281,
         "website": "https://www.natsai.xyz/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -761,16 +761,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS213896 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 20,
-        "rank": 161,
+        "rank": 164,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 110100232.328397,
         "website": "https://lemniscap.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -787,16 +787,16 @@
       "provider": "Latitude.sh LTDA",
       "asn": "AS262287 Latitude.sh LTDA",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 21,
-        "rank": 87,
+        "rank": 125,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76354947.164326,
+        "stake_mon": 76358028.85386,
         "website": "https://www.redundex.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -813,16 +813,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 22,
-        "rank": 34,
+        "rank": 39,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75617261.565845,
+        "stake_mon": 75641235.722834,
         "website": "https://enigma-validator.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -839,16 +839,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 23,
-        "rank": 171,
+        "rank": 175,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 145027727.394335,
+        "stake_mon": 144806113.426212,
         "website": "https://www.nansen.ai",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -865,16 +865,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 24,
-        "rank": 55,
+        "rank": 64,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 35356093.64062,
+        "stake_mon": 35366145.441024,
         "website": "https://blockpi.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -891,16 +891,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 26,
         "rank": 16,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 113214533.446249,
+        "stake_mon": 113268379.604038,
         "website": "https://staking.contributiondao.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -917,16 +917,16 @@
       "provider": "MEVSPACE sp. z o.o.",
       "asn": "AS201814 MEVSPACE sp. z o.o.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 28,
-        "rank": 33,
+        "rank": 48,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 77499143.557206,
+        "stake_mon": 77489612.050474,
         "website": "https://nodestake.org",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -943,16 +943,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 29,
-        "rank": 139,
+        "rank": 160,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 77378739.417121,
+        "stake_mon": 77399308.130804,
         "website": "https://node.monster/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -969,16 +969,16 @@
       "provider": "velia.net Internetdienste GmbH",
       "asn": "AS29066 velia.net Internetdienste GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 30,
-        "rank": 22,
+        "rank": 28,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76442850.073162,
+        "stake_mon": 76473615.297469,
         "website": "https://spidernode.net/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -995,16 +995,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 31,
-        "rank": 166,
+        "rank": 151,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 110456492.687225,
+        "stake_mon": 110479310.029004,
         "website": "https://www.stakingcabin.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1021,16 +1021,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 32,
-        "rank": 170,
+        "rank": 169,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 35219809.092932,
+        "stake_mon": 35227541.385447,
         "website": "https://kukis-global.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1047,16 +1047,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 33,
-        "rank": 119,
+        "rank": 108,
         "active": true,
         "commission_percent": 10,
         "stake_mon": 35102028.245565,
         "website": "https://staketab.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1073,16 +1073,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 34,
-        "rank": 63,
+        "rank": 141,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 35148478.55197,
         "website": "https://tryghost.xyz",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1099,16 +1099,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 35,
-        "rank": 104,
+        "rank": 119,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76339584.75638,
+        "stake_mon": 76352266.127394,
         "website": "https://despread.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1125,16 +1125,16 @@
       "provider": "velia.net",
       "asn": "AS30083 velia.net",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 36,
-        "rank": 20,
+        "rank": 24,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 90094729.818113,
+        "stake_mon": 89392824.182933,
         "website": "https://firstset.xyz",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1151,16 +1151,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS214159 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 37,
-        "rank": 100,
+        "rank": 75,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 78384585.256041,
+        "stake_mon": 75738079.059434,
         "website": "https://www.lakestake.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1177,16 +1177,16 @@
       "provider": "ServeTheWorld AS",
       "asn": "AS34989 ServeTheWorld AS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 38,
-        "rank": 98,
+        "rank": 103,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 110103068.88515,
+        "stake_mon": 110103069.365865,
         "website": "https://moonlet.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1203,16 +1203,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS214159 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 39,
-        "rank": 37,
+        "rank": 46,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 80268420.707928,
+        "stake_mon": 80274578.675042,
         "website": "https://stakecraft.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1229,16 +1229,16 @@
       "provider": "velia.net",
       "asn": "AS30083 velia.net",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 40,
-        "rank": 65,
+        "rank": 99,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75103338.273607,
+        "stake_mon": 75103338.952039,
         "website": "https://dteam.tech/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1255,16 +1255,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 41,
-        "rank": 110,
+        "rank": 158,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75599292.947721,
+        "stake_mon": 75620646.749367,
         "website": "https://itrocket.net/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1281,16 +1281,16 @@
       "provider": "velia.net Internetdienste GmbH",
       "asn": "AS29066 velia.net Internetdienste GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 42,
-        "rank": 5,
+        "rank": 20,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 77117725.921221,
+        "stake_mon": 77152418.13362,
         "website": "https://pathrocknetwork.org/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1307,16 +1307,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS59642 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 43,
-        "rank": 178,
+        "rank": 179,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 142967417.210103,
+        "stake_mon": 143020501.098603,
         "website": "https://www.pops.one",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1333,16 +1333,16 @@
       "provider": "23M GmbH",
       "asn": "AS47447 23M GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 44,
-        "rank": 32,
+        "rank": 36,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75850692.645141,
+        "stake_mon": 75877174.475438,
         "website": "https://blackblocks.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1359,16 +1359,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 45,
-        "rank": 8,
+        "rank": 13,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 79536043.367063,
+        "stake_mon": 79570753.552303,
         "website": "https://imperator.co",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1385,16 +1385,16 @@
       "provider": "VNET a.s.",
       "asn": "AS29405 VNET a.s.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 46,
-        "rank": 113,
+        "rank": 84,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 114722756.009036,
+        "stake_mon": 114722756.293588,
         "website": "https://spectrumstaking.net/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1411,16 +1411,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 48,
-        "rank": 70,
+        "rank": 95,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 78251724.688047,
+        "stake_mon": 78276575.572298,
         "website": "https://nodes.guru",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1437,16 +1437,16 @@
       "provider": "Nessus GmbH",
       "asn": "AS47692 Nessus GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 49,
-        "rank": 149,
+        "rank": 135,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75100004,
         "website": "https://ftptech.xyz",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1463,16 +1463,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 50,
-        "rank": 25,
+        "rank": 32,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75705331.932929,
+        "stake_mon": 75733439.139399,
         "website": "https://noders.team",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1489,16 +1489,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 51,
-        "rank": 101,
+        "rank": 61,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 84222267.405418,
+        "stake_mon": 84111218.864395,
         "website": "https://theworkshop.sh",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1515,16 +1515,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 52,
-        "rank": 56,
+        "rank": 65,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 110100060.115304,
         "website": "https://cryptomind.group",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1541,16 +1541,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS59642 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 53,
-        "rank": 54,
+        "rank": 47,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 77950150.626318,
+        "stake_mon": 77969218.147117,
         "website": "https://d10s.fi/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1567,16 +1567,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS214159 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 54,
-        "rank": 147,
+        "rank": 161,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 110100113,
         "website": "https://chainode.tech/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1593,16 +1593,16 @@
       "provider": "VNET a.s.",
       "asn": "AS29405 VNET a.s.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 55,
-        "rank": 172,
+        "rank": 173,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 122920164.240313,
+        "stake_mon": 124048850.999219,
         "website": "https://starduststaking.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1619,16 +1619,16 @@
       "provider": "ServeTheWorld AS",
       "asn": "AS34989 ServeTheWorld AS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 56,
-        "rank": 84,
+        "rank": 69,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 114417552.434498,
+        "stake_mon": 114455044.80527,
         "website": "https://l0vd.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1645,16 +1645,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 57,
-        "rank": 67,
+        "rank": 78,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 35418855.550655,
+        "stake_mon": 35424354.497164,
         "website": "https://www.meria.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1671,16 +1671,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 58,
-        "rank": 10,
+        "rank": 11,
         "active": true,
         "commission_percent": 0,
-        "stake_mon": 91089113.248782,
+        "stake_mon": 91133938.868642,
         "website": "https://delightlabs.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1697,16 +1697,16 @@
       "provider": "GTHost",
       "asn": "AS63023 GTHost",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 60,
-        "rank": 76,
+        "rank": 123,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75782605.236762,
+        "stake_mon": 75812496.608885,
         "website": "https://stakeme.pro",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1723,16 +1723,16 @@
       "provider": "IP-Projects GmbH & Co. KG",
       "asn": "AS48314 IP-Projects GmbH & Co. KG",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 61,
-        "rank": 99,
+        "rank": 80,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 77148035.944723,
+        "stake_mon": 77108456.094441,
         "website": "https://www.synergynodes.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1749,16 +1749,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 63,
-        "rank": 134,
+        "rank": 87,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76402430.90102,
+        "stake_mon": 76406167.021228,
         "website": "https://coinblitz.pro",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1775,16 +1775,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 64,
-        "rank": 135,
+        "rank": 159,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75352403.862397,
+        "stake_mon": 75368868.713597,
         "website": "https://go2pro.xyz/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1801,16 +1801,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 65,
-        "rank": 73,
+        "rank": 86,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75561191.094811,
+        "stake_mon": 75580465.929885,
         "website": "https://originstake.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1827,16 +1827,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS214159 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 66,
-        "rank": 94,
+        "rank": 55,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76138091.788171,
+        "stake_mon": 76159683.439838,
         "website": "https://stakely.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1853,16 +1853,16 @@
       "provider": "Interserver, Inc",
       "asn": "AS19318 Interserver, Inc",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 67,
-        "rank": 57,
+        "rank": 58,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75413732.245628,
+        "stake_mon": 75431648.282048,
         "website": "https://x.com/Cassini0x",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1879,16 +1879,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 68,
-        "rank": 35,
+        "rank": 31,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76148837.848158,
+        "stake_mon": 76189487.527528,
         "website": "https://cp0x.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1905,16 +1905,16 @@
       "provider": "MEVSPACE sp. z o.o.",
       "asn": "AS201814 MEVSPACE sp. z o.o.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 69,
-        "rank": 43,
+        "rank": 40,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76194108.84706,
+        "stake_mon": 76228349.236228,
         "website": "https://www.0xhub.xyz/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1931,16 +1931,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS204770 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 70,
-        "rank": 111,
+        "rank": 117,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75764299,
         "website": "https://f5nodes.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1957,16 +1957,16 @@
       "provider": "velia.net Internetdienste GmbH",
       "asn": "AS29066 velia.net Internetdienste GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 71,
-        "rank": 4,
+        "rank": 2,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 81722249.034905,
+        "stake_mon": 81490098.671322,
         "website": "https://www.jointhehub.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -1983,16 +1983,16 @@
       "provider": "01node Funding Srl",
       "asn": "AS41536 01node Funding Srl",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 72,
-        "rank": 176,
+        "rank": 177,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 150004558.124087,
+        "stake_mon": 150143485.295271,
         "website": "https://01node.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2009,16 +2009,16 @@
       "provider": "WebNX, Inc.",
       "asn": "AS18450 WebNX, Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 73,
-        "rank": 115,
+        "rank": 110,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 110993263.992569,
+        "stake_mon": 111039632.499805,
         "website": "https://1xp.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2035,16 +2035,16 @@
       "provider": "Dimension Data",
       "asn": "AS3741 Dimension Data",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 74,
-        "rank": 7,
+        "rank": 5,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75538707.754836,
+        "stake_mon": 75562384.158376,
         "website": "https://stakeus.xyz",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2061,16 +2061,16 @@
       "provider": "TeraSwitch Networks Inc.",
       "asn": "AS20326 TeraSwitch Networks Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 75,
-        "rank": 46,
+        "rank": 33,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 113741495.921978,
+        "stake_mon": 113791515.209129,
         "website": "https://laminatedlabs.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2087,16 +2087,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 76,
-        "rank": 143,
+        "rank": 152,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 120057506.925724,
+        "stake_mon": 120114376.348125,
         "website": "https://luganodes.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2113,16 +2113,16 @@
       "provider": "velia.net Internetdienste GmbH",
       "asn": "AS29066 velia.net Internetdienste GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 77,
-        "rank": 3,
+        "rank": 8,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 36421192.303781,
+        "stake_mon": 36434531.520738,
         "website": "https://0xmakase.co.jp/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2139,16 +2139,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS204770 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 78,
-        "rank": 47,
+        "rank": 34,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 116745618.518383,
+        "stake_mon": 116799964.779024,
         "website": "https://www.validationcloud.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2165,16 +2165,16 @@
       "provider": "Evolus IT Solutions GmbH",
       "asn": "AS215120 Evolus IT Solutions GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 79,
-        "rank": 42,
+        "rank": 29,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75687659.945432,
+        "stake_mon": 75714091.430744,
         "website": "https://stakecito.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2191,16 +2191,16 @@
       "provider": "IPAX GmbH",
       "asn": "AS44133 IPAX GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 80,
-        "rank": 18,
+        "rank": 17,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 35391060.755471,
+        "stake_mon": 35399010.962729,
         "website": "https://solva.solutions",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2217,16 +2217,16 @@
       "provider": "Google Fiber Inc.",
       "asn": "AS16591 Google Fiber Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 81,
-        "rank": 118,
+        "rank": 101,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 78994123.291894,
+        "stake_mon": 79276194.600172,
         "website": "https://monad.silknodes.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2243,16 +2243,16 @@
       "provider": "Tier 4 Cloud Services",
       "asn": "AS146943 Tier 4 Cloud Services",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 82,
-        "rank": 19,
+        "rank": 35,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 93889353.22292,
+        "stake_mon": 93299151.213673,
         "website": "https://huginn.tech",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2269,16 +2269,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 83,
-        "rank": 85,
+        "rank": 91,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76053155.39237,
+        "stake_mon": 76071263.331096,
         "website": "https://www.certhum.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2295,16 +2295,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 84,
-        "rank": 125,
+        "rank": 128,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75950003,
         "website": "https://mcf.rocks/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2321,16 +2321,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 85,
-        "rank": 175,
+        "rank": 171,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75100003,
         "website": "https://stakeangle.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2347,16 +2347,16 @@
       "provider": "IP-Projects GmbH & Co. KG",
       "asn": "AS48314 IP-Projects GmbH & Co. KG",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 86,
-        "rank": 78,
+        "rank": 96,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76021680.931953,
+        "stake_mon": 76026149.729122,
         "website": "https://ttt.zone",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2373,16 +2373,16 @@
       "provider": "Amarutu Technology Ltd",
       "asn": "AS206264 Amarutu Technology Ltd",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 87,
-        "rank": 156,
+        "rank": 129,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 76104003,
         "website": "https://syncnode.tech/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2399,16 +2399,16 @@
       "provider": "Blacknight Internet Solutions Limited",
       "asn": "AS39122 Blacknight Internet Solutions Limited",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 88,
-        "rank": 58,
+        "rank": 27,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 79495941.291152,
+        "stake_mon": 79409703.472984,
         "website": "https://grassets.tech",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2425,16 +2425,16 @@
       "provider": "WebNX, Inc.",
       "asn": "AS18450 WebNX, Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 89,
-        "rank": 44,
+        "rank": 43,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75941833.459839,
+        "stake_mon": 75973867.1404,
         "website": "https://rhinostake.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2451,16 +2451,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 90,
-        "rank": 13,
+        "rank": 15,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76548449.526884,
+        "stake_mon": 76584620.803401,
         "website": "https://brightlystake.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2477,16 +2477,16 @@
       "provider": "velia.net Internetdienste GmbH",
       "asn": "AS29066 velia.net Internetdienste GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 91,
-        "rank": 81,
+        "rank": 89,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 78523937.360644,
+        "stake_mon": 78606340.069533,
         "website": "https://encapsulate.xyz",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2503,16 +2503,16 @@
       "provider": "Markley Network Services, LLC",
       "asn": "AS398427 Markley Network Services, LLC",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 92,
-        "rank": 180,
+        "rank": 181,
         "active": true,
         "commission_percent": 4,
-        "stake_mon": 355364504.509767,
+        "stake_mon": 355507300.66596,
         "website": "http://cmsholdings.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2529,16 +2529,16 @@
       "provider": "Limestone Networks, Inc.",
       "asn": "AS46475 Limestone Networks, Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 93,
-        "rank": 102,
+        "rank": 82,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 78328591.155291,
+        "stake_mon": 78328592.058044,
         "website": "https://quicknode.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2555,16 +2555,16 @@
       "provider": "Nessus GmbH",
       "asn": "AS47692 Nessus GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 94,
-        "rank": 140,
+        "rank": 132,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 111750127.12966,
+        "stake_mon": 111772705.569828,
         "website": "https://trusted-point.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2581,16 +2581,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS59642 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 95,
-        "rank": 48,
+        "rank": 50,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 39446508.678576,
+        "stake_mon": 39446508.987462,
         "website": "https://chainlayer.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2607,16 +2607,16 @@
       "provider": "Interserver, Inc",
       "asn": "AS19318 Interserver, Inc",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 96,
-        "rank": 40,
+        "rank": 54,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75652015.216057,
+        "stake_mon": 75672143.998565,
         "website": "https://NodesHub.online",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2633,16 +2633,16 @@
       "provider": "TeraSwitch Networks Inc.",
       "asn": "AS20326 TeraSwitch Networks Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 97,
         "rank": 195,
         "active": true,
         "commission_percent": 5,
-        "stake_mon": 2221956148.56656,
+        "stake_mon": 2220268633.098174,
         "website": "https://backpack.exchange/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2659,16 +2659,16 @@
       "provider": "Telasera Technologies PTY LTD",
       "asn": "AS328723 Telasera Technologies PTY LTD",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 98,
-        "rank": 38,
+        "rank": 25,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 114820056.582235,
         "website": "https://auri0x.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2685,16 +2685,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS16125 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 99,
-        "rank": 82,
+        "rank": 85,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 110100069.159141,
         "website": "https://www.qubelabs.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2711,16 +2711,16 @@
       "provider": "Limestone Networks, Inc.",
       "asn": "AS46475 Limestone Networks, Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 100,
         "rank": 45,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 111311305.280934,
+        "stake_mon": 111364393.769395,
         "website": "https://asxn.xyz/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2737,16 +2737,16 @@
       "provider": "MEVSPACE sp. z o.o.",
       "asn": "AS201814 MEVSPACE sp. z o.o.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 101,
-        "rank": 80,
+        "rank": 81,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76049864.729007,
+        "stake_mon": 76086613.306581,
         "website": "https://swissstarnode.tech/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2763,16 +2763,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 102,
-        "rank": 187,
+        "rank": 185,
         "active": true,
         "commission_percent": 0,
-        "stake_mon": 275078852.124003,
+        "stake_mon": 274676131.740496,
         "website": "https://www.polkachu.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2789,16 +2789,16 @@
       "provider": "WIIT AG",
       "asn": "AS24961 WIIT AG",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 103,
-        "rank": 29,
+        "rank": 23,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75459850.558193,
+        "stake_mon": 75491500.803687,
         "website": "https://validatus.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2815,16 +2815,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS214159 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 104,
-        "rank": 91,
+        "rank": 90,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75100003,
         "website": "https://envoys.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2841,16 +2841,16 @@
       "provider": "BattleHost",
       "asn": "AS210356 BattleHost",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 105,
-        "rank": 14,
+        "rank": 10,
         "active": true,
         "commission_percent": 10,
         "stake_mon": 80929449.160814,
         "website": "https://stakesquid.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2867,16 +2867,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 106,
-        "rank": 150,
+        "rank": 136,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 110730707.899458,
+        "stake_mon": 110762629.728399,
         "website": "https://hoodrun.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2893,16 +2893,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 107,
-        "rank": 132,
+        "rank": 149,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75120008.000709,
         "website": "https://emberstake.xyz/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2919,16 +2919,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 108,
-        "rank": 68,
+        "rank": 56,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76491056.891126,
+        "stake_mon": 76526886.361194,
         "website": "https://cosmosspaces.zone/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2945,16 +2945,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 109,
-        "rank": 74,
+        "rank": 98,
         "active": true,
         "commission_percent": 9,
-        "stake_mon": 81381946.761193,
+        "stake_mon": 81452188.078749,
         "website": "https://zim.one/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2971,16 +2971,16 @@
       "provider": "velia.net Internetdienste GmbH",
       "asn": "AS29066 velia.net Internetdienste GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 110,
-        "rank": 9,
+        "rank": 7,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 79838950.421448,
+        "stake_mon": 79875737.635117,
         "website": "https://provalidator.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -2997,16 +2997,16 @@
       "provider": "Amarutu Technology Ltd",
       "asn": "AS206264 Amarutu Technology Ltd",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 111,
-        "rank": 2,
+        "rank": 3,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 77131346.653827,
+        "stake_mon": 77159779.126167,
         "website": "https://lux8.net/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3023,16 +3023,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 112,
-        "rank": 136,
+        "rank": 127,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 79000322.451234,
+        "stake_mon": 79008595.271385,
         "website": "https://proofgroup.xyz",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3049,16 +3049,16 @@
       "provider": "Nessus GmbH",
       "asn": "AS47692 Nessus GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 113,
-        "rank": 120,
+        "rank": 94,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76492601.095121,
+        "stake_mon": 76567588.149894,
         "website": "https://crouton.digital/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3075,16 +3075,16 @@
       "provider": "TeraSwitch Networks Inc.",
       "asn": "AS20326 TeraSwitch Networks Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 114,
-        "rank": 151,
+        "rank": 166,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 116983563.914743,
+        "stake_mon": 116985926.065123,
         "website": "https://nadradar.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3101,16 +3101,16 @@
       "provider": "Interserver, Inc",
       "asn": "AS19318 Interserver, Inc",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 115,
-        "rank": 64,
+        "rank": 66,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75418771.312065,
+        "stake_mon": 75439315.711783,
         "website": "https://x.com/R93ax",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3127,16 +3127,16 @@
       "provider": "IPAX GmbH",
       "asn": "AS44133 IPAX GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 117,
-        "rank": 77,
+        "rank": 122,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76006886.930779,
+        "stake_mon": 76020059.308033,
         "website": "https://daic.capital/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3153,16 +3153,16 @@
       "provider": "FiberState, LLC",
       "asn": "AS26042 FiberState, LLC",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 118,
-        "rank": 69,
+        "rank": 88,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 35566533.073118,
         "website": "https://stakeware.xyz",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3179,16 +3179,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 119,
-        "rank": 90,
+        "rank": 52,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75543720.146433,
+        "stake_mon": 75569153.906634,
         "website": "https://coinsummer.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3205,16 +3205,16 @@
       "provider": "Nessus GmbH",
       "asn": "AS47692 Nessus GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 120,
-        "rank": 152,
+        "rank": 153,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75101245.433661,
         "website": "https://validatrium.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3231,16 +3231,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 121,
-        "rank": 60,
+        "rank": 67,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75596356.654922,
+        "stake_mon": 75620174.264723,
         "website": "https://talentum.id",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3257,16 +3257,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 122,
-        "rank": 164,
+        "rank": 163,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 35341843.212784,
+        "stake_mon": 35346920.987677,
         "website": "https://blockhunters.org/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3283,16 +3283,16 @@
       "provider": "Servers.com, Inc.",
       "asn": "AS7979 Servers.com, Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 123,
         "rank": 194,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 277360031.37646,
+        "stake_mon": 281499005.478382,
         "website": "http://p2p.org/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3309,16 +3309,16 @@
       "provider": "Servers.com, Inc.",
       "asn": "AS7979 Servers.com, Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 124,
-        "rank": 145,
+        "rank": 111,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 40996524.129871,
+        "stake_mon": 41004812.877553,
         "website": "https://www.ledger.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3335,16 +3335,16 @@
       "provider": "TeraSwitch Networks Inc.",
       "asn": "AS20326 TeraSwitch Networks Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 125,
-        "rank": 188,
+        "rank": 184,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 120045413.357379,
+        "stake_mon": 120072445.019949,
         "website": "https://www.blockdaemon.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3361,16 +3361,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS214159 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 126,
-        "rank": 153,
+        "rank": 154,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76159701.737381,
+        "stake_mon": 76204253.763135,
         "website": "https://amonstaker.xyz/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3387,16 +3387,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 129,
-        "rank": 146,
+        "rank": 162,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 117097851.824604,
+        "stake_mon": 117125929.268988,
         "website": "https://figment.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3413,16 +3413,16 @@
       "provider": "velia.net",
       "asn": "AS30083 velia.net",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 130,
-        "rank": 52,
+        "rank": 77,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76988235.409279,
+        "stake_mon": 77125395.645232,
         "website": "https://node101.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3439,16 +3439,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 131,
-        "rank": 130,
+        "rank": 138,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75100042.850574,
         "website": "www.gulflabs.xyz",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3465,16 +3465,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 132,
-        "rank": 160,
+        "rank": 144,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 35131165.7,
         "website": "https://www.ankr.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3491,16 +3491,16 @@
       "provider": "uvensys GmbH",
       "asn": "AS58010 uvensys GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 133,
-        "rank": 103,
+        "rank": 124,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 112188139.781756,
+        "stake_mon": 112226158.842087,
         "website": "https://h2o-nodes.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3517,16 +3517,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 134,
-        "rank": 11,
+        "rank": 4,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75771305.023484,
+        "stake_mon": 75806522.982689,
         "website": "https://www.republic.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3543,16 +3543,16 @@
       "provider": "TeraSwitch Networks Inc.",
       "asn": "AS20326 TeraSwitch Networks Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 135,
-        "rank": 23,
+        "rank": 18,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75761216.858337,
+        "stake_mon": 75788363.127407,
         "website": "https://tessellated.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3569,16 +3569,16 @@
       "provider": "TeraSwitch Networks Inc.",
       "asn": "AS20326 TeraSwitch Networks Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 136,
-        "rank": 79,
+        "rank": 70,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 110851510.056231,
+        "stake_mon": 110892206.284986,
         "website": "https://asymmetric.re",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3595,16 +3595,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 137,
-        "rank": 127,
+        "rank": 120,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75141593,
         "website": "https://www.hextrust.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3621,16 +3621,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 138,
-        "rank": 66,
+        "rank": 73,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 110923544.762839,
+        "stake_mon": 110963102.635402,
         "website": "https://www.hashkey.cloud/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3647,16 +3647,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 139,
-        "rank": 6,
+        "rank": 12,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 77934067.514964,
+        "stake_mon": 77964462.619363,
         "website": "https://blockscape.network",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3673,16 +3673,16 @@
       "provider": "Digiweb ltd",
       "asn": "AS31122 Digiweb ltd",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 141,
-        "rank": 154,
+        "rank": 134,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 110100928.170278,
         "website": "https://artifact-systems.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3699,16 +3699,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 142,
-        "rank": 53,
+        "rank": 63,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75678066.359431,
+        "stake_mon": 75704952.970462,
         "website": "https://www.lavenderfive.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3725,16 +3725,16 @@
       "provider": "TeraSwitch Networks Inc.",
       "asn": "AS20326 TeraSwitch Networks Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 143,
-        "rank": 129,
+        "rank": 142,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 110100058.227805,
         "website": "https://quantnode.tech/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3751,16 +3751,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS204770 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 144,
-        "rank": 71,
+        "rank": 59,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 110989531.32977,
+        "stake_mon": 111031488.137515,
         "website": "https://informal.systems",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3777,16 +3777,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 145,
-        "rank": 83,
+        "rank": 112,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75465844.215781,
+        "stake_mon": 75479381.184408,
         "website": "https://validated.4pillars.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3803,16 +3803,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS216444 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 146,
-        "rank": 17,
+        "rank": 22,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 110772016.367111,
+        "stake_mon": 110821434.832196,
         "website": "https://www.rockx.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3829,16 +3829,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 148,
-        "rank": 128,
+        "rank": 157,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 77488987.751123,
+        "stake_mon": 77502761.208828,
         "website": "https://finoa-fcs.io/products-delegated-staking/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3855,16 +3855,16 @@
       "provider": "Fountainhead Technologies Limited",
       "asn": "AS207075 Fountainhead Technologies Limited",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 149,
         "rank": 1,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 35758090.52903,
+        "stake_mon": 35771997.864774,
         "website": "https://fountainhead.network",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3881,16 +3881,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 150,
-        "rank": 162,
+        "rank": 165,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 76154160.050079,
         "website": "https://www.node3tech.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3907,16 +3907,16 @@
       "provider": "Skoed Limited",
       "asn": "AS200295 Skoed Limited",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 151,
         "rank": 49,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 77106939.102478,
+        "stake_mon": 77136952.945321,
         "website": "https://www.simplystaking.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3933,16 +3933,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 152,
-        "rank": 88,
+        "rank": 71,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 112860510.208886,
+        "stake_mon": 112893861.200837,
         "website": "https://stake.fish",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3959,16 +3959,16 @@
       "provider": "Comunicaciones Metropolitanas METROCOM, S.A.",
       "asn": "AS266853 Comunicaciones Metropolitanas METROCOM, S.A.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 154,
-        "rank": 165,
+        "rank": 170,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 132887142.882855,
+        "stake_mon": 132802897.123334,
         "website": "https://forthenads.xyz",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -3985,16 +3985,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS214159 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 156,
-        "rank": 122,
+        "rank": 115,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75424196.366487,
         "website": "https://www.thepharus.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4011,16 +4011,16 @@
       "provider": "JSC Selectel",
       "asn": "AS50340 JSC Selectel",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 157,
-        "rank": 50,
+        "rank": 41,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 114710005.759986,
+        "stake_mon": 114735221.966768,
         "website": "https://rskl.xyz/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4037,16 +4037,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 159,
-        "rank": 141,
+        "rank": 140,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 111852361.24369,
+        "stake_mon": 111876615.675922,
         "website": "https://infstones.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4063,16 +4063,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 160,
-        "rank": 36,
+        "rank": 42,
         "active": true,
         "commission_percent": 5,
-        "stake_mon": 113436952.260265,
+        "stake_mon": 113473732.74659,
         "website": "https://www.galaxy.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4089,16 +4089,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS16125 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 161,
-        "rank": 138,
+        "rank": 137,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 35170524.487166,
         "website": "https://www.animocabrands.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4115,16 +4115,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 162,
-        "rank": 24,
+        "rank": 19,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 90876332.978371,
+        "stake_mon": 90923237.137364,
         "website": "https://stakeshark.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4141,16 +4141,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS204770 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 163,
-        "rank": 12,
+        "rank": 6,
         "active": true,
         "commission_percent": 5,
-        "stake_mon": 76347494.861451,
+        "stake_mon": 76386756.13237,
         "website": "https://chainflow.io",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4167,16 +4167,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 164,
-        "rank": 117,
+        "rank": 133,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 35200003,
         "website": "https://www.din.build/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4193,16 +4193,16 @@
       "provider": "Amazon.com, Inc.",
       "asn": "AS16509 Amazon.com, Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 165,
         "rank": 193,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 352413622.352888,
+        "stake_mon": 352544336.24201,
         "website": "https://www.kraken.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4219,16 +4219,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 166,
-        "rank": 86,
+        "rank": 60,
         "active": true,
         "commission_percent": 0,
-        "stake_mon": 88707903.718441,
+        "stake_mon": 88716591.91583,
         "website": "https://goldsky.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4245,16 +4245,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 167,
-        "rank": 31,
+        "rank": 51,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 77092472.172405,
+        "stake_mon": 77107721.913786,
         "website": "https://www.senseinode.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4271,16 +4271,16 @@
       "provider": "Cogent Communications, LLC",
       "asn": "AS174 Cogent Communications, LLC",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 168,
-        "rank": 174,
+        "rank": 172,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 112033323.757878,
+        "stake_mon": 112061322.73544,
         "website": "https://stakingfacilities.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4297,16 +4297,16 @@
       "provider": "TeraSwitch Networks Inc.",
       "asn": "AS20326 TeraSwitch Networks Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 169,
-        "rank": 123,
+        "rank": 116,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 118838854.915675,
+        "stake_mon": 119171416.204135,
         "website": "https://gemini.com/staking",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4323,16 +4323,16 @@
       "provider": "TeraSwitch Networks Inc.",
       "asn": "AS20326 TeraSwitch Networks Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 170,
-        "rank": 181,
+        "rank": 178,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 121473624.09694,
+        "stake_mon": 121507070.138909,
         "website": "https://triton.one",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4349,16 +4349,16 @@
       "provider": "Digiweb ltd",
       "asn": "AS31122 Digiweb ltd",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 171,
-        "rank": 144,
+        "rank": 145,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 35300021.887821,
         "website": "https://www.bitgo.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4375,16 +4375,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 172,
-        "rank": 163,
+        "rank": 155,
         "active": true,
         "commission_percent": 10,
-        "stake_mon": 111735261.300779,
+        "stake_mon": 111756659.062415,
         "website": "https://www.allnodes.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4401,16 +4401,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS16125 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 177,
-        "rank": 142,
+        "rank": 139,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75100003,
         "website": "https://pacific-meta.co.jp/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4427,16 +4427,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 179,
         "rank": 189,
         "active": true,
         "commission_percent": 3,
-        "stake_mon": 254814647.793108,
+        "stake_mon": 254919585.142392,
         "website": "https://lemonad.pro/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4453,16 +4453,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 181,
-        "rank": 39,
+        "rank": 44,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 111419084.806375,
+        "stake_mon": 111457236.984747,
         "website": "https://li.fi/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4479,16 +4479,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 182,
-        "rank": 26,
+        "rank": 21,
         "active": true,
         "commission_percent": 0,
-        "stake_mon": 27684257.907596,
+        "stake_mon": 27736842.557863,
         "website": "https://www.wcs.tech",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4505,16 +4505,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 183,
         "rank": 167,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75600520.908005,
+        "stake_mon": 75620909.980996,
         "website": "https://foreststaking.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4531,7 +4531,7 @@
       "provider": "Servers.com, Inc.",
       "asn": "AS7979 Servers.com, Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 186,
@@ -4540,7 +4540,7 @@
         "commission_percent": 15,
         "stake_mon": 140100051,
         "website": "https://www.etherfuse.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4557,16 +4557,16 @@
       "provider": "Servers.com, Inc.",
       "asn": "AS7979 Servers.com, Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 187,
-        "rank": 184,
+        "rank": 180,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 140921337.94491,
+        "stake_mon": 140977010.975912,
         "website": "https://kiln.fi",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4583,16 +4583,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 188,
-        "rank": 89,
+        "rank": 126,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 35122335.104665,
         "website": "https://altlayer.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4609,16 +4609,16 @@
       "provider": "Allnodes Inc",
       "asn": "AS395201 Allnodes Inc",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 189,
-        "rank": 92,
+        "rank": 76,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 110863594.561931,
+        "stake_mon": 110897372.24394,
         "website": "https://cointelegraph-guardians.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4635,16 +4635,16 @@
       "provider": "Bo data ApS",
       "asn": "AS49974 Bo data ApS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 190,
-        "rank": 93,
+        "rank": 106,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75722155.354742,
+        "stake_mon": 75823255.354742,
         "website": "https://speedynodes.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4661,16 +4661,16 @@
       "provider": "MEVSPACE sp. z o.o.",
       "asn": "AS201814 MEVSPACE sp. z o.o.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 191,
-        "rank": 185,
+        "rank": 186,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 129905477.90093,
+        "stake_mon": 128397592.931541,
         "website": "https://www.bitctrl.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4687,16 +4687,16 @@
       "provider": "Leaseweb Canada Inc.",
       "asn": "AS32613 Leaseweb Canada Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 192,
-        "rank": 75,
+        "rank": 79,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75366361.010323,
         "website": "https://block-pro.net/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4713,16 +4713,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS213896 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 193,
-        "rank": 155,
+        "rank": 146,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76365352.034967,
+        "stake_mon": 76409434.527341,
         "website": "https://t.me/DEUSxTG",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4739,16 +4739,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 194,
-        "rank": 137,
+        "rank": 143,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76088121.256879,
+        "stake_mon": 76108722.902448,
         "website": "https://www.paradisenodes.xyz/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4765,16 +4765,16 @@
       "provider": "Nessus GmbH",
       "asn": "AS47692 Nessus GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 195,
-        "rank": 61,
+        "rank": 72,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76212278.178077,
+        "stake_mon": 76291849.422569,
         "website": "https://cosmicvalidator.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4791,16 +4791,16 @@
       "provider": "Hetzner Online GmbH",
       "asn": "AS24940 Hetzner Online GmbH",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 196,
-        "rank": 112,
+        "rank": 100,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75800303.80039,
+        "stake_mon": 75830993.894748,
         "website": "https://unitynodes.com",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4817,16 +4817,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS216444 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 197,
-        "rank": 27,
+        "rank": 14,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75493955.177785,
+        "stake_mon": 75514190.147308,
         "website": "https://www.posthuman.digital/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4843,16 +4843,16 @@
       "provider": "Hostkey B.v.",
       "asn": "AS57043 Hostkey B.v.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 198,
-        "rank": 97,
+        "rank": 118,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76779799.547594,
+        "stake_mon": 76763629.339796,
         "website": "https://metatarz.xyz",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4869,16 +4869,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS204770 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 199,
-        "rank": 51,
+        "rank": 68,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76025136.221683,
+        "stake_mon": 76050895.240024,
         "website": "https://tservices.es/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4895,16 +4895,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 200,
-        "rank": 41,
+        "rank": 53,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75518608.799551,
+        "stake_mon": 75548356.325508,
         "website": "https://phase.cc/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4921,16 +4921,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS204770 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 201,
-        "rank": 114,
+        "rank": 83,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75212151.362461,
         "website": "https://nodeify.net",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4947,16 +4947,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS204770 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 202,
-        "rank": 106,
+        "rank": 121,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75772647.806274,
+        "stake_mon": 75797221.755564,
         "website": null,
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4973,16 +4973,16 @@
       "provider": "Interserver, Inc",
       "asn": "AS26666 Interserver, Inc",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 203,
-        "rank": 107,
+        "rank": 92,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75101112,
+        "stake_mon": 75101702,
         "website": "https://www.blocash.xyz",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -4999,16 +4999,16 @@
       "provider": "Hostkey B.v.",
       "asn": "AS57043 Hostkey B.v.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 204,
-        "rank": 116,
+        "rank": 104,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 110620195.334332,
+        "stake_mon": 110619911.527109,
         "website": "https://lootgo.app/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5025,16 +5025,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 205,
-        "rank": 131,
+        "rank": 130,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75100084.082451,
+        "stake_mon": 75100085.103922,
         "website": "https://obelisk.sh/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5051,16 +5051,16 @@
       "provider": "MEVSPACE sp. z o.o.",
       "asn": "AS201814 MEVSPACE sp. z o.o.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 206,
-        "rank": 124,
+        "rank": 113,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 110767359.665526,
+        "stake_mon": 110801990.271829,
         "website": "https://decentra.cloud/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5077,16 +5077,16 @@
       "provider": "Latitude.sh",
       "asn": "AS396356 Latitude.sh",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 207,
-        "rank": 30,
+        "rank": 26,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75431127.765097,
+        "stake_mon": 75434240.383932,
         "website": "https://unityfarms.cloud/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5103,7 +5103,7 @@
       "provider": "Amarutu Technology Ltd",
       "asn": "AS206264 Amarutu Technology Ltd",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 208,
@@ -5112,7 +5112,7 @@
         "commission_percent": 15,
         "stake_mon": 75730001,
         "website": "https://inotel.ro",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5129,16 +5129,16 @@
       "provider": "Lucky Friday Labs, LLC",
       "asn": "AS27424 Lucky Friday Labs, LLC",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 209,
-        "rank": 108,
+        "rank": 102,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75962658.075037,
+        "stake_mon": 75988715.628184,
         "website": "https://globalstake.io/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5155,16 +5155,16 @@
       "provider": "GTHost",
       "asn": "AS63023 GTHost",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 210,
-        "rank": 95,
+        "rank": 97,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75100001,
         "website": "https://validexis.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5181,16 +5181,16 @@
       "provider": "UAB Cherry Servers",
       "asn": "AS204770 UAB Cherry Servers",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 211,
-        "rank": 148,
+        "rank": 147,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 110100051,
         "website": "https://data.nexus/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5207,16 +5207,16 @@
       "provider": "GTHost",
       "asn": "AS63023 GTHost",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 212,
-        "rank": 126,
+        "rank": 131,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75100001,
         "website": "https://chaindigital.tech/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5233,16 +5233,16 @@
       "provider": "WebNX, Inc.",
       "asn": "AS18450 WebNX, Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 213,
-        "rank": 109,
+        "rank": 114,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75170586.91163,
         "website": "https://ainodes.tech",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5259,16 +5259,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 214,
-        "rank": 173,
+        "rank": 156,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 110100051,
         "website": "https://www.lunarstrategy.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5285,16 +5285,16 @@
       "provider": "Allnodes Inc",
       "asn": "AS395201 Allnodes Inc",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 215,
-        "rank": 62,
+        "rank": 74,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 76837363.453059,
+        "stake_mon": 76840001.947081,
         "website": "https://github.com/pointgroup-labs/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5311,16 +5311,16 @@
       "provider": "GTHost",
       "asn": "AS63023 GTHost",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 216,
-        "rank": 96,
+        "rank": 105,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75100001,
         "website": "https://astrosynx.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5337,16 +5337,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 217,
-        "rank": 157,
+        "rank": 93,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75850636.302692,
+        "stake_mon": 75889544.878437,
         "website": "https://infrasingularity.com/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5363,16 +5363,16 @@
       "provider": "Amarutu Technology Ltd",
       "asn": "AS206264 Amarutu Technology Ltd",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 218,
-        "rank": 72,
+        "rank": 57,
         "active": true,
         "commission_percent": 15,
         "stake_mon": 75154036,
         "website": "https://luckyresearch.org",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5389,16 +5389,16 @@
       "provider": "OVH SAS",
       "asn": "AS16276 OVH SAS",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 219,
         "rank": 196,
         "active": true,
         "commission_percent": 100,
-        "stake_mon": 31739823.1,
+        "stake_mon": 41739823.1,
         "website": "https://www.category.xyz/",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5415,16 +5415,16 @@
       "provider": "TeraSwitch Networks Inc.",
       "asn": "AS20326 TeraSwitch Networks Inc.",
       "source": "https://mon.stake-manager.net/monad-validators.json",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Monad validator from the public stake-manager registry. Location and ASN are registry-provided and may be approximate.",
       "metadata": {
         "validator_id": 222,
-        "rank": 28,
+        "rank": 30,
         "active": true,
         "commission_percent": 15,
-        "stake_mon": 75410169.461959,
+        "stake_mon": 75432932.862742,
         "website": "https://xlabs.xyz",
-        "registry_updated_at": "2026-10-28T02:40:31.398Z"
+        "registry_updated_at": "2026-10-29T02:40:25.312Z"
       }
     },
     {
@@ -5435,9 +5435,9 @@
       "status": "online",
       "endpoint": "https://rpc.monad.xyz",
       "ip": "64.130.47.14",
-      "latency_ms": 22,
+      "latency_ms": 48,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5463,9 +5463,9 @@
       "status": "online",
       "endpoint": "https://rpc1.monad.xyz",
       "ip": "104.18.24.120",
-      "latency_ms": 41,
+      "latency_ms": 39,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5491,9 +5491,9 @@
       "status": "online",
       "endpoint": "https://rpc1.monad.xyz",
       "ip": "104.18.25.120",
-      "latency_ms": 41,
+      "latency_ms": 39,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5519,9 +5519,9 @@
       "status": "online",
       "endpoint": "https://rpc1.monad.xyz",
       "ip": "2606:4700::6812:1878",
-      "latency_ms": 41,
+      "latency_ms": 39,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5547,9 +5547,9 @@
       "status": "online",
       "endpoint": "https://rpc1.monad.xyz",
       "ip": "2606:4700::6812:1978",
-      "latency_ms": 41,
+      "latency_ms": 39,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5575,9 +5575,9 @@
       "status": "online",
       "endpoint": "https://rpc2.monad.xyz",
       "ip": "104.18.24.120",
-      "latency_ms": 35,
+      "latency_ms": 40,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5603,9 +5603,9 @@
       "status": "online",
       "endpoint": "https://rpc2.monad.xyz",
       "ip": "104.18.25.120",
-      "latency_ms": 35,
+      "latency_ms": 40,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5631,9 +5631,9 @@
       "status": "online",
       "endpoint": "https://rpc2.monad.xyz",
       "ip": "2606:4700::6812:1878",
-      "latency_ms": 35,
+      "latency_ms": 40,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5659,9 +5659,9 @@
       "status": "online",
       "endpoint": "https://rpc2.monad.xyz",
       "ip": "2606:4700::6812:1978",
-      "latency_ms": 35,
+      "latency_ms": 40,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5687,9 +5687,9 @@
       "status": "online",
       "endpoint": "https://rpc3.monad.xyz",
       "ip": "152.236.9.75",
-      "latency_ms": 32,
+      "latency_ms": 31,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5715,9 +5715,9 @@
       "status": "online",
       "endpoint": "https://rpc3.monad.xyz",
       "ip": "2605:6441:1:439::",
-      "latency_ms": 32,
+      "latency_ms": 31,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5743,9 +5743,9 @@
       "status": "online",
       "endpoint": "https://rpc4.monad.xyz",
       "ip": "100.28.246.104",
-      "latency_ms": 416,
+      "latency_ms": 413,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5770,10 +5770,10 @@
       "name": "Monad official public RPC 4",
       "status": "online",
       "endpoint": "https://rpc4.monad.xyz",
-      "ip": "44.209.253.87",
-      "latency_ms": 416,
+      "ip": "100.60.92.127",
+      "latency_ms": 413,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5787,7 +5787,7 @@
       "country_code": "US",
       "lat": 39.04372,
       "lon": -77.48749,
-      "provider": "Amazon.com",
+      "provider": "Amazon.com, Inc.",
       "asn": "AS14618 Amazon.com, Inc.",
       "timezone": "America/New_York"
     },
@@ -5799,9 +5799,9 @@
       "status": "online",
       "endpoint": "https://rpc4.monad.xyz",
       "ip": "52.202.53.242",
-      "latency_ms": 416,
+      "latency_ms": 413,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5827,9 +5827,9 @@
       "status": "online",
       "endpoint": "https://rpc-mainnet.monadinfra.com",
       "ip": "104.26.2.107",
-      "latency_ms": 32,
+      "latency_ms": 40,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5855,9 +5855,9 @@
       "status": "online",
       "endpoint": "https://rpc-mainnet.monadinfra.com",
       "ip": "104.26.3.107",
-      "latency_ms": 32,
+      "latency_ms": 40,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5883,9 +5883,9 @@
       "status": "online",
       "endpoint": "https://rpc-mainnet.monadinfra.com",
       "ip": "172.67.74.36",
-      "latency_ms": 32,
+      "latency_ms": 40,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5911,9 +5911,9 @@
       "status": "online",
       "endpoint": "https://rpc-mainnet.monadinfra.com",
       "ip": "2606:4700:20::681a:26b",
-      "latency_ms": 32,
+      "latency_ms": 40,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5939,9 +5939,9 @@
       "status": "online",
       "endpoint": "https://rpc-mainnet.monadinfra.com",
       "ip": "2606:4700:20::681a:36b",
-      "latency_ms": 32,
+      "latency_ms": 40,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5967,9 +5967,9 @@
       "status": "online",
       "endpoint": "https://rpc-mainnet.monadinfra.com",
       "ip": "2606:4700:20::ac43:4a24",
-      "latency_ms": 32,
+      "latency_ms": 40,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -5995,9 +5995,9 @@
       "status": "online",
       "endpoint": "https://rpc-monad.posthuman.digital",
       "ip": "104.21.81.84",
-      "latency_ms": 553,
+      "latency_ms": 274,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6023,9 +6023,9 @@
       "status": "online",
       "endpoint": "https://rpc-monad.posthuman.digital",
       "ip": "172.67.140.232",
-      "latency_ms": 553,
+      "latency_ms": 274,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6051,9 +6051,9 @@
       "status": "online",
       "endpoint": "https://rpc-monad.posthuman.digital",
       "ip": "2606:4700:3037::6815:5154",
-      "latency_ms": 553,
+      "latency_ms": 274,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6079,9 +6079,9 @@
       "status": "online",
       "endpoint": "https://rpc-monad.posthuman.digital",
       "ip": "2606:4700:3037::ac43:8ce8",
-      "latency_ms": 553,
+      "latency_ms": 274,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6107,9 +6107,9 @@
       "status": "online",
       "endpoint": "https://publicendpoints.com/evm/evm-143/rpc",
       "ip": "104.21.53.250",
-      "latency_ms": 166,
+      "latency_ms": 153,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6135,9 +6135,9 @@
       "status": "online",
       "endpoint": "https://publicendpoints.com/evm/evm-143/rpc",
       "ip": "172.67.221.33",
-      "latency_ms": 166,
+      "latency_ms": 153,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6163,9 +6163,9 @@
       "status": "online",
       "endpoint": "https://publicendpoints.com/evm/evm-143/rpc",
       "ip": "2606:4700:3030::6815:35fa",
-      "latency_ms": 166,
+      "latency_ms": 153,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6191,9 +6191,9 @@
       "status": "online",
       "endpoint": "https://publicendpoints.com/evm/evm-143/rpc",
       "ip": "2606:4700:3033::ac43:dd21",
-      "latency_ms": 166,
+      "latency_ms": 153,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6219,9 +6219,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.drpc.org",
       "ip": "104.20.46.180",
-      "latency_ms": 39,
+      "latency_ms": 38,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6247,9 +6247,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.drpc.org",
       "ip": "172.66.146.203",
-      "latency_ms": 39,
+      "latency_ms": 38,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6275,9 +6275,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.drpc.org",
       "ip": "2606:4700:10::6814:2eb4",
-      "latency_ms": 39,
+      "latency_ms": 38,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6303,9 +6303,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.drpc.org",
       "ip": "2606:4700:10::ac42:92cb",
-      "latency_ms": 39,
+      "latency_ms": 38,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6331,9 +6331,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.api.onfinality.io/public",
       "ip": "142.215.53.55",
-      "latency_ms": 358,
+      "latency_ms": 349,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6359,9 +6359,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.gateway.tatum.io",
       "ip": "34.160.43.88",
-      "latency_ms": 157,
+      "latency_ms": 168,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6387,9 +6387,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.gateway.tatum.io",
       "ip": "2600:1901:0:3a76::",
-      "latency_ms": 157,
+      "latency_ms": 168,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6415,9 +6415,9 @@
       "status": "online",
       "endpoint": "https://monad-rpc.huginn.tech",
       "ip": "67.217.56.190",
-      "latency_ms": 291,
+      "latency_ms": 273,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6443,9 +6443,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet-rpc.spidernode.net",
       "ip": "188.114.96.3",
-      "latency_ms": 143,
+      "latency_ms": 142,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6471,9 +6471,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet-rpc.spidernode.net",
       "ip": "188.114.97.3",
-      "latency_ms": 143,
+      "latency_ms": 142,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6499,9 +6499,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet-rpc.spidernode.net",
       "ip": "2a06:98c1:3120::3",
-      "latency_ms": 143,
+      "latency_ms": 142,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6527,9 +6527,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet-rpc.spidernode.net",
       "ip": "2a06:98c1:3121::3",
-      "latency_ms": 143,
+      "latency_ms": 142,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6555,9 +6555,9 @@
       "status": "online",
       "endpoint": "https://infra.originstake.com/monad/evm",
       "ip": "65.109.25.222",
-      "latency_ms": 128,
+      "latency_ms": 98,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6583,9 +6583,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.rpc.sentio.xyz",
       "ip": "104.26.12.205",
-      "latency_ms": 189,
+      "latency_ms": 182,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6611,9 +6611,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.rpc.sentio.xyz",
       "ip": "104.26.13.205",
-      "latency_ms": 189,
+      "latency_ms": 182,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6639,9 +6639,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.rpc.sentio.xyz",
       "ip": "172.67.74.152",
-      "latency_ms": 189,
+      "latency_ms": 182,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6667,9 +6667,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.rpc.sentio.xyz",
       "ip": "2606:4700:20::681a:ccd",
-      "latency_ms": 189,
+      "latency_ms": 182,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6695,9 +6695,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.rpc.sentio.xyz",
       "ip": "2606:4700:20::681a:dcd",
-      "latency_ms": 189,
+      "latency_ms": 182,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6723,9 +6723,9 @@
       "status": "online",
       "endpoint": "https://monad-mainnet.rpc.sentio.xyz",
       "ip": "2606:4700:20::ac43:4a98",
-      "latency_ms": 189,
+      "latency_ms": 182,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6751,9 +6751,9 @@
       "status": "online",
       "endpoint": "https://rpc.swiftnodes.io/rpc/monad",
       "ip": "213.199.62.15",
-      "latency_ms": 78,
+      "latency_ms": 65,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6779,9 +6779,9 @@
       "status": "online",
       "endpoint": "https://rpc.swiftnodes.io/rpc/monad",
       "ip": "213.199.62.29",
-      "latency_ms": 78,
+      "latency_ms": 65,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6807,9 +6807,9 @@
       "status": "online",
       "endpoint": "https://rpc.swiftnodes.io/rpc/monad",
       "ip": "213.199.62.39",
-      "latency_ms": 78,
+      "latency_ms": 65,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6835,9 +6835,9 @@
       "status": "online",
       "endpoint": "https://rpc.swiftnodes.io/rpc/monad",
       "ip": "213.199.62.54",
-      "latency_ms": 78,
+      "latency_ms": 65,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
@@ -6863,9 +6863,9 @@
       "status": "online",
       "endpoint": "https://gm.monad.at.htw.tech",
       "ip": "74.50.90.66",
-      "latency_ms": 271,
+      "latency_ms": 272,
       "source": "DNS + eth_chainId health check",
-      "last_checked_at": "2026-10-28T02:42:55Z",
+      "last_checked_at": "2026-10-29T02:44:37Z",
       "description": "Public JSON-RPC endpoint. Cloudflare anycast points represent edge IPs, not validator/sentry topology.",
       "metadata": {
         "chain_id_response": "0x8f",
