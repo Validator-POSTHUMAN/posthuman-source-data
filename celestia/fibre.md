@@ -12,6 +12,8 @@ Size a dedicated Fibre data disk separately from celestia-app data and stake-bas
 
 ## 2. Stage the matching Fibre binary
 
+If the consensus key is held in an external KMS, verify the exact release's KMS policy and `SignRawBytes` support before Fibre starts. Confirm median signing latency at the celestia-app node is <=10 ms across the last 50 signatures (use `cometbft_privval_signing_latency_*` metrics for a remote signer). Ordinary consensus signatures alone do not prove Fibre endorsement support. Stop if support or latency is unverified.
+
 Select the version for the exact chain above. The host must meet the published release's OS requirements; Fibre's Linux archive requires glibc >=2.34. Stage in a fresh empty directory (do not reuse an app home):
 
 ```bash
@@ -34,6 +36,13 @@ Use the [official hardware requirements and CPU benchmark](https://docs.celestia
 Back up the existing non-secret configuration and preserve its owner/mode. In the validator's *existing* `config/app.toml` `[grpc]` section, set `enable = true` and `address = "127.0.0.1:<APP_GRPC_PORT>"`. In the top level of `config/config.toml`, set `priv_validator_grpc_laddr = "127.0.0.1:<SIGNER_GRPC_PORT>"`. Both are bare `host:port` addresses without `tcp://`. Use literal loopback IPs, not `localhost`. Do not append duplicate TOML sections or alter the separate CometBFT `[rpc] grpc_laddr`. Validate the exact file owner/mode and service-user readability before a controlled app restart. After restarting, prove both listeners are loopback-only, the node has caught up, the restart count is stable, and independent RPC shows fresh signatures. Do not proceed if signing fails.
 
 ## 4. Install the Fibre service
+
+Immediately before the first Fibre start, query the existing node's `/abci_info` and require `result.response.app_version >= 10`. The installed binary version is not evidence of active app version; an app-v9 chain lacks `x/fibre` and `x/valaddr`. Keep Fibre stopped if the gate fails.
+
+```bash
+# Replace the RPC port if this node does not use the default.
+curl -fsS 'http://127.0.0.1:26657/abci_info' | jq -e '(.result.response.app_version | tonumber) >= 10'
+```
 
 Create a dedicated non-login service account and persistent Fibre home on the planned data disk, separate from the app home. Use the verified release-matched `fibre` binary. Configure a dedicated service to require/order after the validator, restart only on failure, and start with the reviewed values:
 
@@ -69,6 +78,17 @@ Keep the data-plane listener local during the first start. Confirm the log repor
 Registration is a fee-bearing account-key transaction and needs explicit approval for the *exact* public `host:port`. First verify the active app version is >=10 via `/abci_info`, bonded status, independent signing, public Fibre reachability, and the current `x/valaddr` record. In a protected local terminal, review the unsigned `celestia-appd tx valaddr set-host <HOST:PORT> --from <ACCOUNT> --chain-id <CHAIN_ID> --home <APP_HOME> --node <TRUSTED_RPC>` transaction: message, chain ID, signer, account sequence, fee, host and port. Keep keyring passphrases out of chat, argv, logs, units, and env files. Broadcast once only after approval. Require a committed `code=0`, then run `celestia-appd query valaddr provider <VALCONS> --node <TRUSTED_RPC>`; require `found=true` and the exact approved host. A provider record persists across restarts; do not resend the transaction as a status check.
 
 ## 6. Postflight and rollback
+
+Require Fibre readiness and liveness `SERVING` after registration. A successful probe is not a successful upload; verify an upload canary separately when an approved funded client is available.
+
+With a reviewed `grpc_health_probe` binary, check Fibre's local TLS port. Before registration, readiness may correctly fail with `provider_not_registered`; liveness should be `SERVING`. After registration, require both probes to exit 0 and report `SERVING`:
+
+```bash
+grpc_health_probe -addr=127.0.0.1:<FIBRE_PORT> -tls -tls-no-verify
+grpc_health_probe -addr=127.0.0.1:<FIBRE_PORT> -tls -tls-no-verify -service=fibre-liveness
+```
+
+The readiness signer check proves signer reachability and key continuity, not a successful signature.
 
 Prove app sync/height advance, bonded/unjailed state, fresh independent signatures, stable app/Fibre restart counts, private control listeners, external Fibre TLS reachability, matching on-chain provider, free disk, memory/I/O/thermal headroom, and actual upload/readiness when available. Monitor Fibre liveness/restarts, public port, shard storage, signing, and the guard; only claim metrics coverage if a collector is verified. If Fibre overloads a shared signer, stop *Fibre only* and preserve the validator. Before registration, revert the listener/firewall and Fibre service separately; after registration, update the on-chain record only through a separately approved transaction. Never roll signer state back.
 
