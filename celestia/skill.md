@@ -97,10 +97,11 @@ restoring snapshots, deleting data, exposing RPC, or touching keys.
   key changes, signer changes, unjail, governance voting, staking edits,
   transaction broadcast, bridge/full/light unsafe reset, public endpoint
   exposure, or firewall changes.
-- Back up `priv_validator_key.json`, `node_key.json`, keyring references,
-  `priv_validator_state.json`, `app.toml`, `config.toml`, `client.toml`,
-  genesis, Cosmovisor metadata, DA node store metadata, bridge/full/light
-  keys, and recent logs before destructive recovery.
+- Preserve key custody and existing protected backups without opening or copying
+  validator keys or signer state. Before destructive recovery, back up the
+  relevant non-secret configuration, genesis, runtime metadata, and recent logs;
+  handle any key/state backup only through the operator's explicitly authorized
+  custody procedure after proving no duplicate signer exists.
 - Preserve `priv_validator_state.json` and understand double-sign risk before
   moving validator data between hosts.
 - Do not restart-loop during network-wide halts, upgrade boundaries, or public
@@ -317,15 +318,42 @@ Consensus node recovery:
 9. Verify chain ID, height progression, `catching_up=false`, logs,
    local/public gap, and validator signing if applicable.
 
-<!-- The POSTHUMAN archive is withdrawn from the restore path; see celestia/snapshots.md -->
-The restore procedure lives in one place now: **[Celestia Mainnet Snapshot](snapshots.md)**.
-It uses our own archive, which was restore-verified end to end on 2026-09-27, and
-names a third-party alternative. Do not copy the old one-line
-`curl | lz4 | tar` restore from earlier revisions of this document: it neither
-resumes nor verifies a checksum.
+POSTHUMAN consensus snapshot, when selected by the operator:
 
+~~~bash
+export CELESTIA_HOME="$HOME/.celestia-app"
+export SERVICE_NAME="celestia-appd"
+
+sudo systemctl stop "$SERVICE_NAME"
+cp "$CELESTIA_HOME/data/priv_validator_state.json" \
+   "$CELESTIA_HOME/priv_validator_state.json.backup"
+rm -rf "$CELESTIA_HOME/data"
+
+curl -fL https://snapshots.posthuman.digital/celestia-mainnet/snapshot-latest.tar.lz4 | \
+  lz4 -dc | tar -xf - -C "$CELESTIA_HOME"
+
+mv "$CELESTIA_HOME/priv_validator_state.json.backup" \
+   "$CELESTIA_HOME/data/priv_validator_state.json"
+sudo systemctl restart "$SERVICE_NAME"
+~~~
+
+Bridge/full/light recovery:
+
+- Confirm node type, node store, service, key name, keyring backend, core RPC,
+  wallet address, and wallet funding expectations.
+- Stop only the affected DA service.
+- Back up node-store config, keys, and logs.
+- Remove or replace bridge/full/light stores only after approval.
+- After restore, verify `celestia <type> header sync-state`, p2p info, wallet
+  balance, metrics, and recent logs.
+
+Do not mix consensus snapshots with DA node stores. `celestia-appd` snapshots
+restore `~/.celestia-app/data`; bridge/full/light snapshots restore their own
+`~/.celestia-*` stores.
 
 ## Fibre Server Workflow
+
+For a release-matched, step-by-step same-host installation, read the [mainnet Fibre guide](fibre.md) before changing a validator. The [public skill reference](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/main/celestia/references/fibre-install.md) covers both mainnet and Mocha-5.
 
 Use this workflow only with the exact Celestia app release and network that
 upstream documents as Fibre-compatible. Fibre is a validator-operated data

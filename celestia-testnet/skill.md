@@ -11,6 +11,7 @@ path.
 - [Celestia skill](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/tree/main/celestia)
 - [SKILL.md](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/main/celestia/SKILL.md)
 - [Raw SKILL.md](https://raw.githubusercontent.com/Validator-POSTHUMAN/AI-skills-for-networks/main/celestia/SKILL.md)
+- [Fibre installation reference](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/main/celestia/references/fibre-install.md)
 - [Inventory schema](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/main/celestia/references/inventory.schema.json)
 - [Example inventory](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/main/celestia/examples/inventory.example.json)
 
@@ -32,4 +33,4 @@ declaring registration complete.
 It never accepts or stores keyring passphrases, private keys, mnemonics, or
 private endpoints in chat, guide files, service units, or environment files.
 
-See the [Fibre guide](fibre.md) for the Mocha-5 procedure and fill-in worksheet.
+See the [Fibre guide](fibre.md) for the current Mocha-5 installation and registration procedure.

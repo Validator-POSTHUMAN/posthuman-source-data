@@ -585,6 +585,7 @@
       "full-node-setup",
       "operating-boundaries",
       "multiplexer",
+      "fibre",
       "light-node-setup",
       "monitoring",
       "keys",
