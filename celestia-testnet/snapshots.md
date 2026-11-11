@@ -4,13 +4,14 @@
 **DB backend:** PebbleDB
 **Provider:** ITRocket (external)
 
-**Checked 2026-10-28 22:42 UTC:** metadata names
-`celestia_2026-10-28_2107634_snap.tar.lz4` at height `2107634` and size
-`851M`; the exact archive responds HTTP 200 with a 892,312,272-byte
-Content-Length. POSTHUMAN's Mocha-5 RPC was synced above height `2112100`.
-The archive was **not** downloaded, checksummed, inspected or restore-tested
-in this audit. Re-read metadata before each use; the filename changes every
-publication cycle. This is not a POSTHUMAN-operated snapshot.
+**Checked 2026-11-11 22:38 UTC:** ITRocket metadata names
+`celestia_2026-11-11_2532763_snap.tar.lz4` at height `2532763`,
+PebbleDB, size `982M`. The exact archive responded HTTP 200 with a
+1,029,168,879-byte Content-Length and byte-range support. POSTHUMAN's
+Mocha-5 RPC was synced at height `2534504`. This is a current external
+candidate, **not** a verified restore: the full archive was not downloaded,
+checksummed, inspected or restore-tested. Re-read metadata before each use;
+the filename changes every publication cycle.
 
 ## Current source
 
