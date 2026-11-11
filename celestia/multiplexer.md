@@ -9,13 +9,13 @@ observes `AppVersion` changes and switches application execution without a
 whole-binary swap at the upgrade boundary. The normal operator entry point
 remains `celestia-appd start`; there is no separate multiplexer service.
 
-## Current official pin (checked 2026-10-28)
+## Current official pin (checked 2026-11-11)
 
 | Item | Mainnet value |
 | --- | --- |
 | Chain ID | `celestia` |
-| Release tag | `v10.5.0` |
-| Git commit | `6013e758d5dceb75827ad191c8d739d7c43cfa04` |
+| Release tag | `v10.6.0` |
+| Git commit | `25f09cab3f8912bbe78c62909e8d39d8fa8b3fc0` |
 | Protocol app version | `10` (active since height `15116658`) |
 | Source module | `github.com/celestiaorg/celestia-app/v10` |
 | Source-build Go version | `1.26.6` |
@@ -63,8 +63,8 @@ its metadata before activation.
 ```bash
 set -eu
 
-APP_TAG="v10.5.0"
-APP_COMMIT="6013e758d5dceb75827ad191c8d739d7c43cfa04"
+APP_TAG="v10.6.0"
+APP_COMMIT="25f09cab3f8912bbe78c62909e8d39d8fa8b3fc0"
 
 case "$(uname -m)" in
   x86_64) ASSET="celestia-app_Linux_x86_64.tar.gz" ;;
@@ -210,4 +210,4 @@ Historical implementation evidence reviewed from celestia-app tag `v9.0.6`, comm
 - `internal/embedding/data.go`
 - `docs/release-notes/release-notes.md`
 
-Current release and checksums: [official v10.5.0 mainnet release](https://github.com/celestiaorg/celestia-app/releases/tag/v10.5.0).
+Current release and checksums: [official v10.6.0 mainnet release](https://github.com/celestiaorg/celestia-app/releases/tag/v10.6.0).
