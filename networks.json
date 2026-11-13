@@ -1787,5 +1787,34 @@
     "services": [
       "axelar-validator-setup"
     ]
+  },
+  {
+    "name": "limonata-mainnet",
+    "type": "mainnet",
+    "title": "Limonata",
+    "website": "https://limonata.xyz",
+    "github": "https://github.com/Limonata-Blockchain/limonata",
+    "daemon_name": "limonatad",
+    "chain_id": "limonata_20777-1",
+    "codebase": {
+      "git_repo": "https://github.com/Limonata-Blockchain/limonata",
+      "recommended_version": "v0.4.0-mainnet.3"
+    },
+    "endpoints": {},
+    "generatedServices": [],
+    "services": [
+      "backup-recovery",
+      "configuration",
+      "create-validator",
+      "installation-guide",
+      "links",
+      "monitoring",
+      "security-hardening",
+      "snapshots",
+      "state-sync",
+      "troubleshooting",
+      "upgrades",
+      "useful-commands"
+    ]
   }
 ]
