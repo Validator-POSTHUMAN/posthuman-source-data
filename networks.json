@@ -1722,20 +1722,6 @@
     "services": []
   },
   {
-    "name": "union",
-    "type": "mainnet",
-    "title": "Union",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/union/union-logo.svg",
-    "chain_id": "union-1",
-    "endpoints": {
-      "rest": "https://rest.union.build"
-    },
-    "generatedServices": [
-      "installation-guide"
-    ],
-    "services": []
-  },
-  {
     "name": "lava",
     "type": "mainnet",
     "title": "Lava",
