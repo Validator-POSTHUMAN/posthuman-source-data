@@ -5,17 +5,18 @@ chain ID `celestia`.
 
 ## Current Versions
 
-- Recommended consensus multiplexer: `v10.5.0`, commit
-  `6013e758d5dceb75827ad191c8d739d7c43cfa04`.
-- Live mainnet protocol app: `10` (checked 2026-10-28); app v10 activated at
+- Recommended consensus multiplexer: `v10.6.0`, commit
+  `25f09cab3f8912bbe78c62909e8d39d8fa8b3fc0`.
+- Live mainnet protocol app: `10` (checked 2026-11-11); app v10 activated at
   height `15116658`.
 - Go for source builds: `1.26.6`.
-- POSTHUMAN's PebbleDB snapshot was stale at the 2026-10-28 check. Verify
+- POSTHUMAN's PebbleDB snapshot metadata was fresh at the 2026-11-11 check,
+  but the new archive has not passed an end-to-end restore test. Verify
   `snapshot.json` against the live chain before use; see [Snapshots](snapshots.md).
 
-Use the official `v10.5.0` multiplexer for new installs and recoveries, not a
+Use the official `v10.6.0` multiplexer for new installs and recoveries, not a
 v9-only binary. For an existing node, preserve its home and signing state.
-See the [official v10.5.0 release](https://github.com/celestiaorg/celestia-app/releases/tag/v10.5.0).
+See the [official v10.6.0 release](https://github.com/celestiaorg/celestia-app/releases/tag/v10.6.0).
 
 Check live network state before choosing the binary:
 
@@ -49,7 +50,7 @@ Stage and checksum-verify the official multiplexer archive. This example is
 for a new, non-running node; do not reinitialize an existing signer.
 
 ```bash
-APP_VERSION="v10.5.0"
+APP_VERSION="v10.6.0"
 
 STAGE_DIR="$(mktemp -d -p /tmp celestia-app-release.XXXXXX)"
 cd "$STAGE_DIR"
@@ -65,10 +66,10 @@ sudo install -m 0755 celestia-appd /usr/local/bin/celestia-appd
 celestia-appd version --long
 ```
 
-Require version `10.5.0`, commit
-`6013e758d5dceb75827ad191c8d739d7c43cfa04` and the multiplexer build
+Require version `10.6.0`, commit
+`25f09cab3f8912bbe78c62909e8d39d8fa8b3fc0` and the multiplexer build
 tag. Published Linux x86_64 archive SHA-256:
-`3a200f501a59406cb7de9134b7ce229409b4095e8dcaa492b88238cef73d4445`.
+`65abebce6b17f6f7532f974d5819b901d3ed1f3fbdefbc90b0675d58c0992f95`.
 Verify the executable path before starting a service.
 
 ## 3. Initialize

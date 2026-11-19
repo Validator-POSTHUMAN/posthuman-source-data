@@ -1,20 +1,19 @@
 # Celestia Mainnet Snapshot
 
-> **Publication degraded — checked 2026-10-28 22:37 UTC.** POSTHUMAN's
-> `snapshot.json` still reports `2026-10-16T14:55:27Z`, height `15010220`,
-> while the live mainnet was above `15382800` and running app version `10`.
-> The 93,533,764,040-byte archive responds to HEAD, but its age and
-> post-upgrade restore compatibility have **not** been validated. Do not use
-> this archive for a fresh restore until publication resumes and a current
-> build passes a new end-to-end restore test. The 2026-09-27 proof below
-> applies only to the earlier archive tested then.
+> **Publication resumed — checked 2026-11-11 22:36 UTC.** POSTHUMAN's
+> `snapshot.json` reports height `15806782`, created `2026-11-11T22:26:47Z`,
+> size `7263888123` bytes and chain ID `celestia`; the live RPC was at
+> `15807000`, synced. This is fresh metadata for the new light-node publisher,
+> not a verified restore. The exact archive has **not** been downloaded,
+> checksum-validated or restored end to end in this audit. Keep the Quick
+> Restore suspended until that proof is repeated for the new pipeline.
 
-The publisher is still scheduled every four hours, but its preflight rejects
-the source database: the 2026-10-28 20:45 UTC log reported
-`source_bytes=190700234505` above its `120GiB` limit. The RPC itself remains
-active. Raising the guard or replacing the non-signing source database needs a
-separate capacity and recovery review; neither happened in this page audit.
-
+The former RPC-based publisher failed its 120-GiB source-size guard in October.
+On 2026-11-08 POSTHUMAN moved publication to a separate non-signing, pruned
+light node. The active timer uses two daily windows (`01:20` and `13:20` with
+up to 30 minutes of random delay), not the old four-hour schedule. The
+2026-09-27 restore proof below applies only to the earlier publisher and
+archive.
 
 > **Restore-verified on 2026-09-27.** This archive was restored end to end on a
 > throwaway node: it reached the chain tip, ran 371 blocks past the snapshot
@@ -28,16 +27,17 @@ POSTHUMAN provides a pruned Celestia consensus-node snapshot for chain ID
 `celestia`.
 
 - DB backend: PebbleDB
-- Intended publication cadence: every four hours; currently not meeting it.
-  Read `snapshot_time` from `snapshot.json` rather than assuming freshness.
+- Current timer: twice daily with up to 30 minutes of random delay. Read
+  `created_at` and `snapshot_height` from `snapshot.json`; do not assume a run
+  succeeded merely because the timer fired.
 - Archive format: `snapshot-latest.tar.lz4`; read `snapshot_size_bytes` from
   `snapshot.json` before download because its size changes with the source data.
 - Resumable: yes. The host answers byte-range requests, so an interrupted
   download continues instead of starting over.
-- Restore-verified: **yes**, 2026-09-27, at height `14445450`. See the notice
-  above for what the test actually proved.
+- Current archive restore-verified: **no**. The 2026-09-27 test at height
+  `14445450` applied to an older publication pipeline only.
 - Node parameters behind it: `pruning = custom` / `keep-recent = 100` /
-  `interval = 19`, `min-retain-blocks = 300000` (about ten days of blocks),
+  `interval = 10`, `min-retain-blocks = 30000` on the new light publisher,
   `indexer = null`, PebbleDB. The archive inherits exactly those, so it is not an
   archive node and carries no transaction index.
 
@@ -70,8 +70,8 @@ and stop the node only after the download and decompression have succeeded.
 
 Always compare snapshot metadata with a trusted live RPC before restore:
 
-**The POSTHUMAN Quick Restore below is suspended while the publication notice
-above applies.** Do not run it against the stale archive.
+**The POSTHUMAN Quick Restore below remains suspended until the new publisher
+has a current end-to-end restore proof.** Fresh metadata alone is insufficient.
 
 ```bash
 # The candidate you are about to restore, from the source named above.

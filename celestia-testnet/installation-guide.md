@@ -7,8 +7,11 @@ For a **new non-running** Mocha-5 app node. Existing nodes must follow
 `10.5.0-mocha`. The official `v10.5.0-mocha` tag is marked pre-release but is
 running on POSTHUMAN's validator and zero-power RPC. It resolves to commit
 `6013e758d5dceb75827ad191c8d739d7c43cfa04`. Use the **Mocha** archive,
-not the mainnet archive. The historical app-v10 activation was height
-`1082619`; never reuse Mocha-4 data or snapshots.
+not the mainnet archive. The official `v10.6.0-mocha` patch is published,
+but POSTHUMAN's zero-power RPC still runs `v10.5.0-mocha` (checked
+2026-11-11); do not label the newer release as deployed or substitute it
+in the commands below without an upgrade review. The historical app-v10
+activation was height `1082619`; never reuse Mocha-4 data or snapshots.
 
 The separately versioned DA-node guides are informational; verify their
 current upstream release before installation. Fibre/escrow transactions
