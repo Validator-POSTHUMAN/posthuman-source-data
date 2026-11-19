@@ -208,7 +208,7 @@
     "github": "https://github.com/provenance-io/",
     "icon": "https://raw.githubusercontent.com/cosmos/chain-registry/refs/heads/master/provenance/images/prov.svg",
     "stake": "https://explorer.provenance.io/validator/pbvaloper1fvsqqncjknzhmq0j6z0a3e8rjgudc3uw2xulnt",
-    "explorer": "https://explorer.provenance.io/",
+    "explorer": "https://zonescan.io/provenance",
     "chain_id": "pio-mainnet-1",
     "endpoints": {
       "rpc": "https://rpc.provenance.posthuman.digital"
