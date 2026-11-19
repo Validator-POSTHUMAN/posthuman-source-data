@@ -1750,20 +1750,6 @@
     "services": []
   },
   {
-    "name": "axone",
-    "type": "mainnet",
-    "title": "Axone",
-    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/refs/heads/main/axone/axone-logo.png",
-    "chain_id": "axone-1",
-    "endpoints": {
-      "rest": "https://api.axone.cumulo.com.es"
-    },
-    "generatedServices": [
-      "installation-guide"
-    ],
-    "services": []
-  },
-  {
     "name": "axelar-testnet",
     "daemon_name": "axelard",
     "codebase": {
