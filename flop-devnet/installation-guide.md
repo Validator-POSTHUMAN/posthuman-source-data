@@ -4,7 +4,7 @@ FLOP is a verification layer for AI inference. A **miner** serves one pinned mod
 - a vLLM backend produces TOPLOC proofs;
 - a worker holds the miner account, answers calibration jobs, and later serves paid sessions over an HTTPS session endpoint.
 
-Its stake is posted by a sponsor. It is penalised for jobs it leaves unanswered, not for double-signing.
+Its stake is posted by a sponsor. The penalties documented so far come from jobs it leaves unanswered; FLOP has not published full slashing rules, so never run two workers on one miner account.
 
 This guide follows the official **devnet public-path miner pack** and adds the checks POSTHUMAN uses. Test FLOP has no value, and there are no earnings yet. The devnet changes often: re-verify every pinned value against the pack, <https://flop.network/releases.json> and the finalized chain before you use it.
 
@@ -24,23 +24,26 @@ Run everything as root from `/opt/flop-miner` (mode 0700). Verify the pack tarba
 
 ## Before any start or signature
 
+Work in a root shell (`sudo -i`, then `cd /opt/flop-miner`). `miner.env` is root-only, and `sudo` resets the environment, so running pack scripts through `sudo` from a user shell easily loses `FLOP_CLI` and `DRY_RUN`. Load and check the pinned CLI first:
+
+```sh
+export FLOP_CLI="$(sed -n 's/^FLOP_CLI=//p' /opt/flop-miner/miner.env | tail -1)"
+case "$FLOP_CLI" in *@sha256:*) echo "FLOP_CLI pinned" ;; *) echo "FLOP_CLI empty or unpinned: STOP" >&2 ;; esac
+```
+
 1. **Genesis.** Read the genesis hash with the digest-pinned CLI and compare it with the value you recorded. Stop on any mismatch: a devnet reset invalidates keys, grants and policies.
 
    ```sh
    docker run --rm --network host "$FLOP_CLI" --network devnet --rpc wss://rpc.devnet.flop.network network status --json | jq -r .rpc.genesis_hash
    ```
 
-2. **Images.** Pin every image in `miner.env` as `vX.Y.Z@sha256:…`, never `:stable`. `decode-policy.sh`, `sponsor.sh` and `retire.sh` fall back to `cli:stable` when `FLOP_CLI` is not in their environment, and the last two mount the miner signer into it. Export it first (`export FLOP_CLI="$(sed -n 's/^FLOP_CLI=//p' miner.env)"`) and pass it through `sudo` explicitly.
+2. **Images.** Pin every image in `miner.env` as `vX.Y.Z@sha256:…`, never `:stable`. `decode-policy.sh`, `sponsor.sh` and `retire.sh` fall back to `cli:stable` when `FLOP_CLI` is not in their environment, and the last two mount the miner signer into it. An empty value counts as unset, so run the scripts only from the root shell above, after the `FLOP_CLI pinned` check.
 3. **Account.** Dry-run every signing script first and check the printed address. The dry run happens only when `DRY_RUN` reaches the script as exactly `1`:
-   - from a non-root shell, use `sudo DRY_RUN=1 FLOP_CLI="$FLOP_CLI" ./retire.sh`;
+   - in the root shell, use `DRY_RUN=1 ./retire.sh` (and `DRY_RUN=1 ./sponsor.sh`), without `sudo`;
    - **never** use `DRY_RUN=1 sudo ./retire.sh`: sudo drops the variable, and the deregistration is signed for real;
    - no `DRY_RUN:` line in the output means it did not dry-run, so stop.
 4. **Model.** Fetch the exact model revision the pack names with `./fetch-model.sh`, check every file against a checksum list, and mount it read-only.
-5. **Decode policy.** Before every start:
-   1. export `FLOP_CLI` from `miner.env`;
-   2. run `./decode-policy.sh miner.env`.
-
-   It writes the policy hash only if the chain allowlists it.
+5. **Decode policy.** Before every start, run `./decode-policy.sh miner.env` in the root shell, after the `FLOP_CLI pinned` check. It writes the policy hash only if the chain allowlists it. Never run `sudo ./decode-policy.sh`: it drops `FLOP_CLI` and mounts `miner.env`, tokens included, into `:stable`.
 
 ## Account and sponsorship
 
@@ -48,7 +51,7 @@ Run everything as root from `/opt/flop-miner` (mode 0700). Verify the pack tarba
 - **Approved operators** request an operator key once, through the access-request template at <https://github.com/flop-labs/network>, and grant miners with `sponsor-grant.sh`. Keep the operator key off miner hosts.
 - **Sponsorship request:**
   1. Read <https://faucet.flop.network/limits>.
-  2. Run `sudo FLOP_CLI="$FLOP_CLI" ./sponsor.sh` once. Approved operators also pass `GRANT_FILE=…` after `sudo`.
+  2. In the root shell, dry-run with `DRY_RUN=1 ./sponsor.sh`, then run `./sponsor.sh` once. Approved operators prefix `GRANT_FILE=…`.
   3. Read the reply:
      - `200`/`201` means done;
      - `409` means already sponsored;
@@ -119,10 +122,10 @@ Run everything as root from `/opt/flop-miner` (mode 0700). Verify the pack tarba
 
 ## Permanent exit
 
-1. Export `FLOP_CLI` and run the genesis check.
-2. Run `sudo DRY_RUN=1 FLOP_CLI="$FLOP_CLI" ./retire.sh` and confirm the `DRY_RUN:` line shows your address.
+1. In the root shell, load and check `FLOP_CLI`, then run the genesis check.
+2. Run `DRY_RUN=1 ./retire.sh` and confirm the `DRY_RUN:` line shows your address.
 3. Stop the worker.
-4. Immediately run `sudo FLOP_CLI="$FLOP_CLI" ./retire.sh`, then confirm `registered: false` in `miner status`.
+4. Immediately run `./retire.sh`, then confirm `registered: false` in `miner status`.
 
 An open session, a dispute or native delegated stake refuses the exit until it is resolved. Sponsored stake unbonds over 7 days and returns to the sponsor. A retired miner still counts toward the operator's quota.
 
