@@ -101,7 +101,7 @@ case "$FLOP_CLI" in *@sha256:*) echo "FLOP_CLI pinned" ;; *) echo "FLOP_CLI empt
 
 ## Downtime, restarts and upgrades
 
-- **There is no pause.** A calibration job left unanswered is penalised. Operators in November 2026 used a 600-block deadline, which is about 10 minutes at about 1 s per block; re-check it for your release. Keep any planned outage to about 5 minutes, including the backend cold start.
+- **There is no pause.** A calibration job left unanswered is penalised. Operators in November 2026 used a 600-block deadline, which is about 10 minutes at about 1 s per block; re-check it for your release. Keep any planned outage to at most about 5 minutes (half the deadline), including the backend cold start.
 - **Prefer `docker compose … restart worker`.** Allowed commands:
   - `stop`;
   - `start`;
