@@ -30,8 +30,11 @@ Run everything as root from `/opt/flop-miner` (mode 0700). Verify the pack tarba
    docker run --rm --network host "$FLOP_CLI" --network devnet --rpc wss://rpc.devnet.flop.network network status --json | jq -r .rpc.genesis_hash
    ```
 
-2. **Images.** Pin every image in `miner.env` as `vX.Y.Z@sha256:…`, never `:stable`.
-3. **Account.** Run every signing script with `DRY_RUN=1` first and check the address. `retire.sh` signs a deregistration without it.
+2. **Images.** Pin every image in `miner.env` as `vX.Y.Z@sha256:…`, never `:stable`. `decode-policy.sh`, `sponsor.sh` and `retire.sh` fall back to `cli:stable` when `FLOP_CLI` is not in their environment, and the last two mount the miner signer into it. Export it first (`export FLOP_CLI="$(sed -n 's/^FLOP_CLI=//p' miner.env)"`) and pass it through `sudo` explicitly.
+3. **Account.** Dry-run every signing script first and check the printed address. The dry run happens only when `DRY_RUN` reaches the script as exactly `1`:
+   - from a non-root shell, use `sudo DRY_RUN=1 FLOP_CLI="$FLOP_CLI" ./retire.sh`;
+   - **never** use `DRY_RUN=1 sudo ./retire.sh`: sudo drops the variable, and the deregistration is signed for real;
+   - no `DRY_RUN:` line in the output means it did not dry-run, so stop.
 4. **Model.** Fetch the exact model revision the pack names with `./fetch-model.sh`, check every file against a checksum list, and mount it read-only.
 5. **Decode policy.** Before every start:
    1. export `FLOP_CLI` from `miner.env`;
@@ -45,13 +48,14 @@ Run everything as root from `/opt/flop-miner` (mode 0700). Verify the pack tarba
 - **Approved operators** request an operator key once, through the access-request template at <https://github.com/flop-labs/network>, and grant miners with `sponsor-grant.sh`. Keep the operator key off miner hosts.
 - **Sponsorship request:**
   1. Read <https://faucet.flop.network/limits>.
-  2. Run `./sponsor.sh` once.
+  2. Run `sudo FLOP_CLI="$FLOP_CLI" ./sponsor.sh` once. Approved operators also pass `GRANT_FILE=…` after `sudo`.
   3. Read the reply:
      - `200`/`201` means done;
      - `409` means already sponsored;
      - `503` means retry in a minute;
      - `429` means a limit, so retry later;
-     - `403` means the wrong role or an invalid grant.
+     - `403` means the wrong role or an invalid grant;
+     - `422` means operator review.
 - **Never retry in a loop,** and never run `miner register` by hand.
 
 ## Secrets
@@ -65,12 +69,11 @@ Run everything as root from `/opt/flop-miner` (mode 0700). Verify the pack tarba
 ## Start
 
 1. **Backend.** Start it first and wait for `/health` to show:
-   - `ok: true`;
    - `model_identity: "measured"`;
    - the expected model hash and decode-policy hash.
 
    Record the cold-start time.
-2. **Endpoint.** Behind a tunnel, the public name must answer 502 or 530 (origin down) with no redirect or bot challenge.
+2. **Endpoint.** Behind a tunnel, the public name must answer 502 (origin down; Cloudflare may show 530) with no redirect or bot challenge.
 3. **Worker.** Start it. The log should show:
    - `Image: version …`;
    - `[gpu] declared`;
@@ -89,12 +92,13 @@ Run everything as root from `/opt/flop-miner` (mode 0700). Verify the pack tarba
   - container restart counts;
   - GPU memory;
   - the edge 401;
-  - the fee trend.
+  - the calibration record;
+  - a free-balance reading to compare between runs.
 - **Backups.** After calibration, back up the worker-data volume together with `miner.env` and `enclave.seed`, encrypted or in root-only storage.
 
 ## Downtime, restarts and upgrades
 
-- **There is no pause.** A job left unanswered past its deadline (600 blocks, about 10 minutes at about 1 s per block) is penalised. Keep any planned outage to about 5 minutes, including the backend cold start.
+- **There is no pause.** A calibration job left unanswered is penalised. Operators in November 2026 used a 600-block deadline, which is about 10 minutes at about 1 s per block; re-check it for your release. Keep any planned outage to about 5 minutes, including the backend cold start.
 - **Prefer `docker compose … restart worker`.** Allowed commands:
   - `stop`;
   - `start`;
@@ -115,11 +119,12 @@ Run everything as root from `/opt/flop-miner` (mode 0700). Verify the pack tarba
 
 ## Permanent exit
 
-1. Run the genesis check, then `DRY_RUN=1 ./retire.sh`.
-2. Stop the worker.
-3. Run `./retire.sh` immediately, then confirm `registered: false` in `miner status`.
+1. Export `FLOP_CLI` and run the genesis check.
+2. Run `sudo DRY_RUN=1 FLOP_CLI="$FLOP_CLI" ./retire.sh` and confirm the `DRY_RUN:` line shows your address.
+3. Stop the worker.
+4. Immediately run `sudo FLOP_CLI="$FLOP_CLI" ./retire.sh`, then confirm `registered: false` in `miner status`.
 
-An open session or dispute refuses the exit until it settles. Sponsored stake unbonds over 7 days and returns to the sponsor. A retired miner still counts toward the operator's quota.
+An open session, a dispute or native delegated stake refuses the exit until it is resolved. Sponsored stake unbonds over 7 days and returns to the sponsor. A retired miner still counts toward the operator's quota.
 
 ## Sources
 

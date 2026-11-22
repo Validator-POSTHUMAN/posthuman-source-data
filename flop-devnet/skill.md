@@ -20,4 +20,4 @@ The skill is operator-neutral. It never authorizes:
 - printing key material or session tokens;
 - removing Docker volumes.
 
-Read the [reviewed SKILL.md](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/42c30dcbbab9ca80fbcef0a8d89f787c81e5f778/flop/SKILL.md) (Git blob `50780ca5e969a19f1eabe8576e9d5171982eafd7`) and the [installation guide](/chains/flop-devnet).
+Read the [reviewed SKILL.md](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/672a1ea567d44aaa2c70ea8343d1cc6f6ef493c0/flop/SKILL.md) (Git blob `e4ae10322f1464eb3e4398a2aad1318fba13b0a7`) and the [installation guide](/chains/flop-devnet).
