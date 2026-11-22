@@ -790,6 +790,20 @@
     "services": ["installation-guide", "links", "skill"]
   },
   {
+    "name": "flop-devnet",
+    "type": "testnet",
+    "title": "FLOP Devnet",
+    "website": "https://flop.finance/",
+    "github": "https://github.com/flop-labs",
+    "icon": "https://raw.githubusercontent.com/Validator-POSTHUMAN/posthuman-source-data/main/flop-devnet/logo.svg",
+    "stake": "",
+    "explorer": "https://explorer.devnet.flop.network/mining",
+    "chain_id": "",
+    "endpoints": {},
+    "generatedServices": [],
+    "services": ["installation-guide", "links", "skill"]
+  },
+  {
     "name": "juno",
     "type": "mainnet",
     "title": "Juno",
