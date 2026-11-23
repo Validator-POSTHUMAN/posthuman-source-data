@@ -143,7 +143,7 @@ This part covers the first two steps. It adds what POSTHUMAN learned while quali
 ### Host
 
 - **Machine.** A dedicated Linux x86-64 host or isolated VM with:
-  - Docker Engine and Compose v2 (2.24.4 or later for the hardening below; we tested with 2.40);
+  - Docker Engine and Compose v2 (2.24.4 or later for the hardening below; our node runs 2.40, and we checked the merge with 2.35);
   - `curl`, `jq` and `sha256sum`;
   - a stable public IPv4.
 
