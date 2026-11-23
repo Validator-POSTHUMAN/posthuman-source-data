@@ -7,7 +7,8 @@ It covers:
 - sponsorship replies;
 - the backend, endpoint and worker start order;
 - calibration;
-- read-only health checks;
+- read-only health checks, including the worker's own readiness;
+- signer-fence recovery and the IPv4-first fix for hosts without IPv6;
 - the downtime budget;
 - safe retirement.
 
@@ -20,4 +21,4 @@ The skill is operator-neutral. It never authorizes:
 - printing key material or session tokens;
 - removing Docker volumes.
 
-Read the [reviewed SKILL.md](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/53ed75664dce6067dea7e25598f2b50551b09fe3/flop/SKILL.md) (Git blob `3e0edf71778fa612827ff21e751027193b677a65`) and the [installation guide](/node-ops/flop-devnet/installation).
+Read the [reviewed SKILL.md](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/a9865bbc00bb3d47a3909e415b73eca99ddbe289/flop/SKILL.md) (Git blob `dee4264970cb7793656327e030d40264af3af11d`) and the [installation guide](/node-ops/flop-devnet/installation).
