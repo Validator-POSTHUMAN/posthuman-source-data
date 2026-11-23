@@ -1,4 +1,4 @@
-# FLOP Devnet: GPU inference miner guide
+# FLOP Devnet: GPU miner and keyless node guide
 
 FLOP is a verification layer for AI inference. A **miner** serves one pinned model on its own GPU:
 - a vLLM backend produces TOPLOC proofs;
@@ -6,7 +6,7 @@ FLOP is a verification layer for AI inference. A **miner** serves one pinned mod
 
 Its stake is posted by a sponsor. The penalties documented so far come from jobs it leaves unanswered; FLOP has not published full slashing rules, so never run two workers on one miner account.
 
-This guide follows the official **devnet public-path miner pack** and adds the checks POSTHUMAN uses. Test FLOP has no value, and there are no earnings yet. The devnet changes often: re-verify every pinned value against the pack, <https://flop.network/releases.json> and the finalized chain before you use it.
+The first part follows the official **devnet public-path miner pack** and adds the checks POSTHUMAN uses. The second part, [Keyless full node](#keyless-full-node-first-step-to-a-validator-seat), covers the first steps towards a validator seat. Test FLOP has no value, and there are no earnings yet. The devnet changes often: re-verify every pinned value against the pack, <https://flop.network/releases.json> and the finalized chain before you use it.
 
 ## Host
 
@@ -129,9 +129,142 @@ case "$FLOP_CLI" in *@sha256:*) echo "FLOP_CLI pinned" ;; *) echo "FLOP_CLI empt
 
 An open session, a dispute or native delegated stake refuses the exit until it is resolved. Sponsored stake unbonds over 7 days and returns to the sponsor. A retired miner still counts toward the operator's quota.
 
+## Keyless full node: first step to a validator seat
+
+FLOP's [validator page](https://explorer.devnet.flop.network/validator) and its [Devnet RPC guide](https://gist.github.com/sv/7c8b93f3868bc15e3b6eabe0578057e3) (setup files pinned to revision `21adaa99c601003278d1682bf937696f21d31432`) describe this path:
+1. one operator application per team (you may apply before the node is synced and add the evidence later);
+2. a keyless full node that syncs over public P2P and survives a restart;
+3. a signing handoff, by FLOP's invitation only.
+
+This part covers the first two steps. It adds what POSTHUMAN learned while qualifying its candidate in November 2026.
+- **No account, session or validator key.** The node never signs and holds no stake. Its only key is the libp2p node key on its volume, which fixes its Peer ID. Do not set `NODE_ROLE=validator` or run any `join` command on it.
+- **A host of its own.** Run it on a different host from the miner: it needs inbound TCP 30333, and the miner host opens nothing beyond its session endpoint. Never copy miner or account files into it.
+
+### Host
+
+- **Machine.** A dedicated Linux x86-64 host or isolated VM with:
+  - Docker Engine and Compose v2 (2.24.4 or later for the hardening below; we tested with 2.40);
+  - `curl`, `jq` and `sha256sum`;
+  - a stable public IPv4.
+
+  No GPU is needed. FLOP's pilot reference is 4 vCPU, 16 GiB RAM and 300 GB SSD, an observed starting point rather than a requirement. The archive database keeps growing (57 GB on 2026-11-21), so watch free disk.
+- **Shared hosts: check disk I/O first.** The initial sync writes heavily.
+  - Our first attempt ran on a host with signing validators, and it tripped another validator's I/O-pressure guard. CPU and memory limits did not help, and I/O throttling raised the pressure further.
+  - We stopped it and moved the node to a host where its data sits on a separate NVMe disk.
+  - Before you place the node next to a signer: list the host's existing I/O, thermal and disk guards and sample their margins. Count the initial sync in the load budget, and have a way to stop only this node.
+- **Ports.**
+  - Open inbound TCP 30333 and allow outbound P2P.
+  - RPC 9944, metrics 9615 and readiness 9619 stay on `127.0.0.1`. From another host, check that they are refused, for example with `curl -m 5 http://<public IPv4>:9944`, then 9615 and 9619. A refusal or a timeout are both fine; an answer is not.
+
+### Install and sync
+
+1. Follow step 1 of FLOP's guide:
+   - download the five setup files and the raw chain spec;
+   - check every SHA256 it lists;
+   - create `rpc-pool.env`.
+
+   The env template pins the node image by digest (`node-devnet@sha256:84498fd7…`) and uses archive pruning.
+2. In `rpc-pool.env`:
+   - set `HOST_IP` to the host's own interface and `PUBLIC_ADDR` to `/ip4/<public IPv4>/tcp/30333`. Behind NAT (AWS, for example) the two differ;
+   - keep `RPC_BIND_IP=127.0.0.1` and `PROMETHEUS_BIND_IP=127.0.0.1`.
+3. **Keep the project and the volume.** The node key and the database live on the volume.
+   - Use the same Compose project name and volume on every start.
+   - Never run `down -v`, `docker volume rm` or a volume prune on it.
+   - A new volume means a new Peer ID, which breaks the restart proof and the Peer ID in your application, and then a full resync.
+4. **Bootnode.** In November 2026 the pinned bootnode accepted TCP and then closed or reset the connection during the libp2p handshake (flop-labs/network#522, #571).
+   - If your node finds no peers through it, put a community peer from another team's public application first in `BOOTNODES` (space-separated) and keep the official one second. We used one from flop-labs/network#429.
+   - A community peer is a third party you choose to trust. The hash comparison against FLOP's reference below still decides whether you follow the right chain.
+   - Never edit the chain spec or genesis to fix peering.
+5. **Start and wait.** `curl http://127.0.0.1:9619/ready` returns 503 while syncing and 200 once caught up.
+   - Our sync from genesis took 1 h 44 min. FLOP quotes about 3 hours.
+   - FLOP also publishes a [daily archive snapshot](https://snapshots.flop.network/devnet-ts/archive/). Read the caveats in its guide first: blocks before the snapshot height are not re-executed, and it only fits an archive node.
+   - A running container or a peer count alone is not success.
+
+### Optional hardening (what POSTHUMAN runs)
+
+This is an **excerpt, not a complete file**, used as an override on top of FLOP's file. Add it (`-f <override>.yml`) to every FLOP Compose command and to the systemd unit, or a plain `up -d` recreates the containers without the hardening. Everything else stays as in FLOP's `docker-compose.rpc.yml`, including:
+- `NODE_ROLE: rpc` and `RPC_METHODS: safe`;
+- `PUBLIC_ADDR`;
+- `CHAIN: /chainspec/chain.raw.json`;
+- the loopback bindings of 9944, 9615 and 9619.
+
+Without `NODE_ROLE: rpc`, the entrypoint defaults to the validator role.
+
+```yaml
+services:
+  rpc:
+    image: local/flop-keyless:21adaa99   # see the Dockerfile below
+    restart: "no"                        # a systemd unit starts and stops the project
+    read_only: true
+    tmpfs: ["/tmp:size=256m,mode=1777"]
+    cap_drop: [ALL]
+    cap_add: [SETUID, SETGID]            # the entrypoint drops to the node user with gosu
+    security_opt: [no-new-privileges:true]
+    mem_limit: 32g                       # size to your host
+    memswap_limit: 32g
+    volumes: !override [rpc-data:/data]  # entrypoint and chain spec are baked into the image
+  ready:
+    image: local/flop-ready:21adaa99     # FROM the pinned python digest, COPY rpc_ready.py /opt/rpc_ready.py, USER 65534
+    restart: "no"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 128m
+    volumes: !reset []
+```
+
+```dockerfile
+FROM ghcr.io/flop-labs/flop-core/node-devnet@sha256:84498fd73db2464eb13088ab34d369ddf7cddd22a45c810d140c9ff8ec16c91d
+COPY node-entrypoint.sh /usr/local/bin/devnet-node-entrypoint.sh
+COPY chain.raw.json /chainspec/chain.raw.json
+ENTRYPOINT ["/bin/sh", "/usr/local/bin/devnet-node-entrypoint.sh"]
+```
+
+- **Data directory.** In our build the node runs as UID 1001 (check with `docker run --rm --entrypoint id <image> user`), so its data directory must be writable by that user.
+- **systemd unit.**
+  - On start, it checks free disk space, then runs `docker compose up -d --no-build`.
+  - On stop, it sets this project's containers to `restart=no`, stops them, and confirms that they really stopped.
+- **Disk guard.** A timer checks free space every five minutes and stops only this node below a set threshold.
+- **Monitoring.** With `restart: "no"`, a crashed node stays down, so alert on readiness and on the container state.
+
+### Prove sync and restart recovery
+
+Run the `observe` checks from step 2 of FLOP's guide:
+1. two observations at least 60 s apart;
+2. one restart of this project only;
+3. a third observation after readiness returns.
+
+Keep all three receipts:
+- UTC time;
+- local and reference finalized heights;
+- the common height and its hash;
+- the Peer ID.
+
+The heights must rise, the hashes must match, and the Peer ID must not change across the restart. If finality stalls or a hash differs, stop and report it in your application. Never delete the database to "fix" sync. If you restart through systemd, check that both containers actually stopped before you start them again.
+
+### Apply once per team
+
+- **Which form.** Use FLOP's [operator application](https://github.com/flop-labs/network/issues/new?template=operator-application.yml&network=devnet): one per team per network, updated as you progress, never duplicated. The fields are listed in step 3 of FLOP's guide.
+- **Earlier contacts.** Link any earlier introduction, for example a comment in flop-labs/network#10. Because the rule is one application per network, we filed Testnet interest as a separate issue.
+- **Approval.** The issue is a public record, not approval. Maintainers add `intake:sync-qualified` and later labels only after they verify the evidence.
+- **Secrets.** Never post any of these:
+  - seeds or session secret keys;
+  - `account.json` or `.env` files;
+  - keystores, enrollment tokens or TLS private keys.
+
+### What comes next
+
+- **Signing.** Self-service signing is not open. FLOP has published a [signing release and handoff](https://gist.github.com/sv/870b0fa9d63efa6c7873ded10d49d411), but the coordinated committee deployment and complete public DA reachability are still pending, and signing needs FLOP's explicit invitation. Until then, keep the node keyless and synced.
+- **When invited:**
+  - use the checksummed package for your invitation, on a separate validator host or isolated deployment;
+  - never run two processes with the same validator keys;
+  - per FLOP, copying a volume into another Compose project is not an approved migration.
+- **Testnet** will have its own image, chain spec, genesis and admission steps. Start it with a fresh database.
+
 ## Sources
 
 - FLOP devnet public-path miner pack, README and scripts (`devnet-ts-20261110`)
+- [FLOP Devnet RPC guide](https://gist.github.com/sv/7c8b93f3868bc15e3b6eabe0578057e3) (setup files at revision `21adaa99…`) and the [validator page](https://explorer.devnet.flop.network/validator)
 - [Operator documentation](https://docs.flop.network/)
 - [Mining explorer](https://explorer.devnet.flop.network/mining)
 - [POSTHUMAN FLOP miner skill](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/tree/main/flop)
