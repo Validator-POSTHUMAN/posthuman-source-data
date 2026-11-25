@@ -4,7 +4,7 @@
 > `mocha-4`; it is not Mocha-5 infrastructure or a current Mocha-5 health
 > source. It remains unchanged for historical context. Do not relabel its
 > records or run the legacy collector as part of an app upgrade. Current
-> Mocha-5 versions and activation are in the [node-ops index](links.md).
+> Mocha-5 versions and activation are in the [node-ops index](https://github.com/Validator-POSTHUMAN/posthuman-source-data/blob/main/celestia-testnet/links.md).
 
 Interactive map for public Celestia Mocha testnet RPC and consensus peer infrastructure tracked by POSTHUMAN.
 

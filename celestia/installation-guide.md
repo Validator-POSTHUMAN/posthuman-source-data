@@ -5,17 +5,19 @@ chain ID `celestia`.
 
 ## Current Versions
 
-- Recommended consensus multiplexer: `v10.5.0`, commit
-  `6013e758d5dceb75827ad191c8d739d7c43cfa04`.
-- Live mainnet protocol app: `10` (checked 2026-10-28); app v10 activated at
-  height `15116658`.
-- Go for source builds: `1.26.6`.
-- POSTHUMAN's PebbleDB snapshot was stale at the 2026-10-28 check. Verify
-  `snapshot.json` against the live chain before use; see [Snapshots](snapshots.md).
+- Recommended consensus multiplexer: `v11.0.0`, commit
+  `58be8ae90d00518800df5506b3a1e988f009c1c6`.
+- Live mainnet protocol app: `10` (checked 2026-11-25), served by embedded
+  `v10.6.0`; app v10 activated at height `15116658`. Installing the v11
+  multiplexer does not activate protocol app 11. Query the pending plan before
+  any separately approved signaling action; do not invent an activation date.
+- Go for source builds: `1.26.10`.
+- POSTHUMAN PebbleDB snapshot publication has resumed; the current archive has
+  no end-to-end restore proof. Verify metadata and follow [Snapshots](/chains/celestia?tab=snapshots).
 
-Use the official `v10.5.0` multiplexer for new installs and recoveries, not a
+Use the official `v11.0.0` multiplexer for new installs and recoveries, not a
 v9-only binary. For an existing node, preserve its home and signing state.
-See the [official v10.5.0 release](https://github.com/celestiaorg/celestia-app/releases/tag/v10.5.0).
+See the [official v11.0.0 release](https://github.com/celestiaorg/celestia-app/releases/tag/v11.0.0).
 
 Check live network state before choosing the binary:
 
@@ -49,7 +51,8 @@ Stage and checksum-verify the official multiplexer archive. This example is
 for a new, non-running node; do not reinitialize an existing signer.
 
 ```bash
-APP_VERSION="v10.5.0"
+set -eu
+APP_VERSION="v11.0.0"
 
 STAGE_DIR="$(mktemp -d -p /tmp celestia-app-release.XXXXXX)"
 cd "$STAGE_DIR"
@@ -57,7 +60,10 @@ cd "$STAGE_DIR"
 curl -fLO "https://github.com/celestiaorg/celestia-app/releases/download/${APP_VERSION}/celestia-app_Linux_x86_64.tar.gz"
 curl -fLO "https://github.com/celestiaorg/celestia-app/releases/download/${APP_VERSION}/checksums.txt"
 
-sha256sum --ignore-missing --check checksums.txt
+awk '$2 == "celestia-app_Linux_x86_64.tar.gz" || $2 == "*celestia-app_Linux_x86_64.tar.gz" {print}' \
+  checksums.txt > selected-checksum.txt
+test "$(wc -l < selected-checksum.txt)" -eq 1
+sha256sum --check selected-checksum.txt
 tar -xzf celestia-app_Linux_x86_64.tar.gz
 
 ./celestia-appd version --long
@@ -65,10 +71,10 @@ sudo install -m 0755 celestia-appd /usr/local/bin/celestia-appd
 celestia-appd version --long
 ```
 
-Require version `10.5.0`, commit
-`6013e758d5dceb75827ad191c8d739d7c43cfa04` and the multiplexer build
+Require version `11.0.0`, commit
+`58be8ae90d00518800df5506b3a1e988f009c1c6` and the multiplexer build
 tag. Published Linux x86_64 archive SHA-256:
-`3a200f501a59406cb7de9134b7ce229409b4095e8dcaa492b88238cef73d4445`.
+`838fe33955eab14ac6ff666fced29c851e5f5d8083528cf7f71b7e0a06dda32f`.
 Verify the executable path before starting a service.
 
 ## 3. Initialize
@@ -133,10 +139,9 @@ sed -i -e "/^\\[p2p\\]/,/^\\[/{s|^[[:space:]]*persistent_peers *=.*|persistent_p
   "$CELESTIA_HOME/config/config.toml"
 ```
 
-<!-- The POSTHUMAN archive is withdrawn from the restore path; see celestia/snapshots.md -->
-The restore procedure lives in one place now: **[Celestia Mainnet Snapshot](snapshots.md)**.
-It uses our own archive, which was restore-verified end to end on 2026-09-27, and
-names a third-party alternative. Do not copy the old one-line
+The restore procedure lives in one place now: **[Celestia Mainnet Snapshot](/chains/celestia?tab=snapshots)**.
+Publication has resumed, but the current archive has not been restore-tested.
+The linked page distinguishes current metadata from historical restore evidence. Do not copy the old one-line
 `curl | lz4 | tar` restore from earlier revisions of this document: it neither
 resumes nor verifies a checksum.
 

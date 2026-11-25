@@ -1,14 +1,14 @@
 # Celestia Testnet (Mocha-5) — Installation Guide
 
 For a **new non-running** Mocha-5 app node. Existing nodes must follow
-[App upgrade and multiplexer](multiplexer.md), not reinitialize their home.
+[App upgrade and multiplexer](/chains/celestia-testnet?tab=multiplexer), not reinitialize their home.
 
-**Checked 2026-10-28:** live Mocha-5 reports app version `10` and binary
-`10.5.0-mocha`. The official `v10.5.0-mocha` tag is marked pre-release but is
-running on POSTHUMAN's validator and zero-power RPC. It resolves to commit
-`6013e758d5dceb75827ad191c8d739d7c43cfa04`. Use the **Mocha** archive,
-not the mainnet archive. The historical app-v10 activation was height
-`1082619`; never reuse Mocha-4 data or snapshots.
+**Checked 2026-11-25:** live Mocha-5 reports app version `11` and binary
+`11.0.0-mocha`. The official `v11.0.0-mocha` tag is marked pre-release and is
+verified on the public zero-power RPC. It resolves to commit
+`58be8ae90d00518800df5506b3a1e988f009c1c6`. Use the **Mocha** archive,
+not the mainnet archive. App v11 activated at height `2760281`; the historical
+app-v10 activation was height `1082619`. Never reuse Mocha-4 data or snapshots.
 
 The separately versioned DA-node guides are informational; verify their
 current upstream release before installation. Fibre/escrow transactions
@@ -19,7 +19,7 @@ require a separate decision.
 ## Prerequisites
 
 **For Validator/Consensus Node** (official requirements):
-- **Hardware**: 32 cores, 32 GB RAM, 12 TiB NVMe planning envelope, 1 Gbps bandwidth; see [capacity assumptions](full-node-setup.md)
+- **Hardware**: 32 cores, 32 GB RAM, 12 TiB NVMe planning envelope, 1 Gbps bandwidth; see [capacity assumptions](/chains/celestia-testnet?tab=full-node-setup)
 - **OS**: Ubuntu 24.04 or equivalent with glibc >= 2.38; Ubuntu 22.04 and older unsupported
 - **Network**: Stable internet connection
 
@@ -39,10 +39,10 @@ sudo apt install -y curl tar wget clang pkg-config libssl-dev jq build-essential
 ## 2. Select the verified multiplexer artifact or toolchain
 
 Prefer the checksum-verified official **Mocha** multiplexer archive and staging
-commands in [App upgrade and multiplexer](multiplexer.md). Do not substitute
+commands in [App upgrade and multiplexer](/chains/celestia-testnet?tab=multiplexer). Do not substitute
 the mainnet archive or Cosmovisor for this app upgrade.
 
-If building from source, install Go **1.26.6** through trusted distribution
+If building from source, install Go **1.26.10** through trusted distribution
 channels and verify `go version`. Do not reuse the old v9 toolchain assumption.
 
 ## 3. Build from the pinned source (alternative to the official archive)
@@ -51,9 +51,9 @@ Use a new staging directory without deleting or replacing another checkout:
 
 ```bash
 set -eu
-VERSION="v10.5.0-mocha"
-APP_COMMIT="6013e758d5dceb75827ad191c8d739d7c43cfa04"
-test "$(go env GOVERSION)" = "go1.26.6"
+VERSION="v11.0.0-mocha"
+APP_COMMIT="58be8ae90d00518800df5506b3a1e988f009c1c6"
+test "$(go env GOVERSION)" = "go1.26.10"
 BUILD_ROOT="$(mktemp -d -p /tmp celestia-app-build.XXXXXX)"
 git clone --filter=blob:none --depth 1 --branch "$VERSION" \
   https://github.com/celestiaorg/celestia-app.git "$BUILD_ROOT/src"
@@ -62,7 +62,7 @@ make -C "$BUILD_ROOT/src" build
 "$BUILD_ROOT/src/build/celestia-appd" version --long
 ```
 
-Require `10.5.0-mocha`, the pinned commit and the `multiplexer` build tag.
+Require `11.0.0-mocha`, the pinned commit and the `multiplexer` build tag.
 Review the embedded historical assets as described in the upgrade guide.
 Only after review, install the binary for this **new non-running** node;
 existing nodes use the controlled upgrade workflow instead of this command:
@@ -161,9 +161,9 @@ sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peer
 
 ---
 
-### 6.6 v10 configuration preflight
+### 6.6 Multiplexer configuration preflight
 
-Before startup, follow [Configuration preflight](multiplexer.md#configuration-preflight):
+Before startup, follow [Configuration preflight](/chains/celestia-testnet?tab=multiplexer#configuration-preflight):
 ensure the top-level app ABCI `address` matches `proxy_app`, preserve loopback
 binds and keep `priv_validator_grpc_laddr = ""` when Fibre is not operated.
 Do not blindly apply `config sync` or change ports to resolve a mismatch.
@@ -346,7 +346,7 @@ celestia-appd status --home "$HOME/.celestia-app-mocha-5" 2>&1 | jq
    sudo ufw enable
    ```
 
-2. **Signer custody**: Follow [Keys and signer boundaries](keys.md); preserve the existing key and newest signer state without exposing or moving them.
+2. **Signer custody**: Follow [Keys and signer boundaries](/chains/celestia-testnet?tab=keys); preserve the existing key and newest signer state without exposing or moving them.
 3. **SSH Key Auth**: Disable password authentication
 4. **Monitoring**: Setup Prometheus/Grafana
 
@@ -370,4 +370,4 @@ installation or retirement steps as a database or signer-state rollback.
 
 ---
 
-**Last checked**: 2026-10-28 | v10.5.0-mocha | App v10 height: 1082619 (historical) | Chain ID: mocha-5
+**Last checked**: 2026-11-25 | v11.0.0-mocha | Active app: 11 | App v11 height: 2760281 | App v10 height: 1082619 (historical) | Chain ID: mocha-5

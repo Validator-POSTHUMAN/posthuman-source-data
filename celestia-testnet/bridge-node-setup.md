@@ -19,8 +19,8 @@ Fibre needs a configured Mocha core endpoint running **celestia-app v10** with
 `x/fibre` and `x/valaddr`; it is unavailable without a core endpoint. Installing
 a v10 wrapper before activation does not mean these v10 modules are active.
 
-The Mocha-5 app runs `v10.5.0-mocha`; activation height **1082619** is historical. See
-[App upgrade and rollback boundaries](multiplexer.md). This is not a mainnet
+The Mocha-5 app runs `v11.0.0-mocha`; app v11 activated at **2760281**; app v10 height **1082619** is historical. See
+[App upgrade and rollback boundaries](/chains/celestia-testnet?tab=multiplexer). This is not a mainnet
 version recommendation. Fibre/escrow activation requires a **separate operator
 decision** covering custody, funding, exposure and provider dependencies.
 Do not call Submit/Upload/Deposit/Withdraw, fund escrow, enable signer gRPC,
@@ -116,7 +116,7 @@ celestia-appd status --node <consensus-rpc-url> | \
 
 Add `--core.tls` only for a TLS endpoint. Initialization creates the new DA
 store and local keyring. Do not copy any Mocha-4 directory into this store.
-Follow [Keys and signer boundaries](keys.md) for custody rules.
+Follow [Keys and signer boundaries](/chains/celestia-testnet?tab=keys) for custody rules.
 
 Review the generated config and confirm `mocha`, the Mocha-5 upstream, and the
 loopback JSON-RPC bind before starting.

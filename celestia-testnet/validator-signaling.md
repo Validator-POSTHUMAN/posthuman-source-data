@@ -10,12 +10,13 @@ that transaction's height (approximately 2 days at the source's assumed
 cadence). Mocha is the proving ground: test and observe the release here before
 any mainnet signal.
 
-## Historical v10 plan — checked 2026-10-28
+## Activated v11 and historical v10 — checked 2026-11-25
 
-The v10 activation at height **1082619** has passed. Live Mocha-5 already
-reports app version **10** and binary `v10.5.0-mocha`. The original activation
+App v11 activated at height **2760281**. Live Mocha-5 reports app version
+**11** and binary `v11.0.0-mocha`; do not send a new v11 signal. The earlier
+v10 activation at height **1082619** is historical. The original activation
 target was `v10.2.0-mocha`; it is not the current install target. Follow
-[App upgrade and multiplexer](multiplexer.md) for the current patch procedure.
+[App upgrade and multiplexer](/chains/celestia-testnet?tab=multiplexer) for the current patch procedure.
 Check `query signal upgrade` **before** considering a transaction. Once an
 upgrade is pending, do not signal or try-upgrade again: a rejected transaction
 can still consume fees. The activation applies to all validators regardless

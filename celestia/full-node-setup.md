@@ -16,11 +16,11 @@ consensus signer.
 
 Current celestia-app mainnet reference:
 
-- Version: `v10.5.0` multiplexer (checked 2026-10-28)
-- Commit: `6013e758d5dceb75827ad191c8d739d7c43cfa04`
+- Version: `v11.0.0` multiplexer (checked 2026-11-25)
+- Commit: `58be8ae90d00518800df5506b3a1e988f009c1c6`
 - Chain ID: `celestia`
 
-See the [current consensus installation guide](installation-guide.md) before
+See the [current consensus installation guide](/chains/celestia?tab=installation-guide) before
 using an app binary or snapshot. The old v9-only build is not a recovery
 target after app-v10 activation.
 
@@ -44,8 +44,8 @@ A DA node runs **celestia-node**. Choose one of the current roles:
 
 | Need | Current role | Guide |
 | --- | --- | --- |
-| Import, erasure-code, retain, and serve blocks | Bridge | [Bridge node setup](bridge-node-setup.md) |
-| Verify availability through DAS with low resources | Light | [Light node setup](light-node-setup.md) |
+| Import, erasure-code, retain, and serve blocks | Bridge | [Bridge node setup](/chains/celestia?tab=bridge-node-setup) |
+| Verify availability through DAS with low resources | Light | [Light node setup](/chains/celestia?tab=light-node-setup) |
 
 Do not relabel an old DA “full” store as a bridge store. Reinitialize the chosen
 current role and apply the correct key-custody and network checks.

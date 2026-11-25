@@ -10,11 +10,11 @@ endpoint, register a Fibre provider, or send a transaction.
 `celestia-node` is the DA plane. The supported DA roles are **Bridge** and
 **Light**; the old “DA Full” role is retired and is not a runnable target.
 
-- Consensus node or validator: [Installation](installation-guide.md).
-- DA role selection and Mocha-4 isolation: [Node roles](full-node-setup.md).
-- Bridge or Light service: [DA bridge](bridge-node-setup.md) or
-  [DA light](light-node-setup.md).
-- Validator-side Fibre provider after app v10: [Fibre](fibre.md).
+- Consensus node or validator: [Installation](/chains/celestia-testnet?tab=installation-guide).
+- DA role selection and Mocha-4 isolation: [Node roles](/chains/celestia-testnet?tab=full-node-setup).
+- Bridge or Light service: [DA bridge](/chains/celestia-testnet?tab=bridge-node-setup) or
+  [DA light](/chains/celestia-testnet?tab=light-node-setup).
+- Validator-side Fibre provider after app v10: [Fibre](/chains/celestia-testnet?tab=fibre).
 
 Mocha-5 is a distinct chain. Never reuse Mocha-4 consensus data, DA stores, or
 signer state.
@@ -37,7 +37,7 @@ configuration, and rollback evidence; do not mix a partial public registry with
 private topology.
 
 The consensus signer and its state remain one live pair. Follow
-[Keys](keys.md) before any recovery, migration, or key-bearing action. No
+[Keys](/chains/celestia-testnet?tab=keys) before any recovery, migration, or key-bearing action. No
 remote-signer, KMS, or Horcrux procedure is published here without first-party
 evidence for the exact celestia-app and CometBFT combination; generic Cosmos
 templates are not runnable for Mocha-5.
@@ -58,4 +58,4 @@ history](https://status.celestia.dev/status/mocha); neither a green status page
 nor host reachability proves that a local node is correct.
 
 For alerting, Fibre registration completion, and recovery evidence, use
-[Monitoring](monitoring.md) and [Fibre](fibre.md).
+[Monitoring](/chains/celestia-testnet?tab=monitoring) and [Fibre](/chains/celestia-testnet?tab=fibre).

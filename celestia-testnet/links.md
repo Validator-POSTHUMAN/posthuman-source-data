@@ -1,19 +1,19 @@
 # Celestia Mocha-5 — Node Operations Index
 
-**Checked 2026-10-28:** live Mocha-5 app `v10.5.0-mocha`, protocol app `10`.
+**Checked 2026-11-25:** live Mocha-5 app `v11.0.0-mocha`, protocol app `11`.
 The app-v10 activation at height **1082619** is historical. DA-node guides
 have separately pinned releases; verify them against current upstream before
 installing. Mainnet and retired Mocha-4 are separate networks.
 
-- [App upgrade, verification and rollback boundaries](multiplexer.md)
-- [New app-node installation](installation-guide.md)
-- [Consensus full node versus DA roles](full-node-setup.md)
-- [Bridge informational guide](bridge-node-setup.md)
-- [Light informational guide](light-node-setup.md)
-- [Monitoring and activation checks](monitoring.md)
-- [Signaling and pending-plan gate](validator-signaling.md)
-- [Keys and signer boundaries](keys.md)
-- [Snapshots and Mocha-4 exclusions](snapshots.md)
+- [App upgrade, verification and rollback boundaries](/chains/celestia-testnet?tab=multiplexer)
+- [New app-node installation](/chains/celestia-testnet?tab=installation-guide)
+- [Consensus full node versus DA roles](/chains/celestia-testnet?tab=full-node-setup)
+- [Bridge informational guide](/chains/celestia-testnet?tab=bridge-node-setup)
+- [Light informational guide](/chains/celestia-testnet?tab=light-node-setup)
+- [Monitoring and activation checks](/chains/celestia-testnet?tab=monitoring)
+- [Signaling and pending-plan gate](/chains/celestia-testnet?tab=validator-signaling)
+- [Keys and signer boundaries](/chains/celestia-testnet?tab=keys)
+- [Snapshots and Mocha-4 exclusions](/chains/celestia-testnet?tab=snapshots)
 
 POSTHUMAN operates neither Bridge nor Light, but does operate a Mocha-5 Fibre
 server. Its signer link, service and escrow actions require their own checks;

@@ -353,7 +353,7 @@ restore `~/.celestia-app/data`; bridge/full/light snapshots restore their own
 
 ## Fibre Server Workflow
 
-For a release-matched, step-by-step same-host installation, read the [mainnet Fibre guide](fibre.md) before changing a validator. The [public skill reference](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/main/celestia/references/fibre-install.md) covers both mainnet and Mocha-5.
+For a release-matched, step-by-step same-host installation, read the [mainnet Fibre guide](/chains/celestia?tab=fibre) before changing a validator. The [public skill reference](https://github.com/Validator-POSTHUMAN/AI-skills-for-networks/blob/main/celestia/references/fibre-install.md) covers both mainnet and Mocha-5.
 
 Use this workflow only with the exact Celestia app release and network that
 upstream documents as Fibre-compatible. Fibre is a validator-operated data

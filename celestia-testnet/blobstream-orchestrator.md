@@ -8,11 +8,13 @@ current Mocha-5 deployment status is blocked by the compatibility gate below.
 
 ## Current app context — deployment still blocked
 
-Mocha-5 runs app `v10.5.0-mocha`; activation height **1082619** is historical. See
-[App upgrade](multiplexer.md). The v9 source analysis below is historical and
-is **not** proof of v10 compatibility. No compatible legacy orchestrator
-release has been established here, so the existing blocked gate remains.
-Fibre in DA `v0.34.2-mocha` does not supply that missing compatibility proof.
+Mocha-5 runs protocol app `11` via the `v11.0.0-mocha` multiplexer. App v11
+activated at **2760281**; the app v10 height **1082619** is historical. See
+[App upgrade](/chains/celestia-testnet?tab=multiplexer). The v9 source analysis
+below is historical and is **not** proof of current-app compatibility. No
+compatible legacy orchestrator release has been established here, so the
+existing blocked gate remains. A Fibre DA node does not supply that missing
+compatibility proof.
 
 ## Mocha-5 and binary gates
 

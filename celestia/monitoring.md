@@ -3,7 +3,7 @@
 Monitor consensus/validator and data availability as separate systems. Monitor
 Blobstream only for an existing deployment whose release, compatibility, and
 network configuration have passed the blocked gate in
-[the orchestrator guide](blobstream-orchestrator.md). A healthy process is not
+[the orchestrator guide](/chains/celestia?tab=blobstream-orchestrator). A healthy process is not
 enough: each role needs fresh external network evidence.
 
 ## Authoritative context

@@ -33,4 +33,4 @@ declaring registration complete.
 It never accepts or stores keyring passphrases, private keys, mnemonics, or
 private endpoints in chat, guide files, service units, or environment files.
 
-See the [Fibre guide](fibre.md) for the current Mocha-5 installation and registration procedure.
+See the [Fibre guide](/chains/celestia-testnet?tab=fibre) for the current Mocha-5 installation and registration procedure.

@@ -3,17 +3,17 @@
 Monitor consensus/validator and data availability as separate systems. Monitor
 Blobstream only for an existing deployment whose release, current-app compatibility,
 and Mocha-5 network configuration passed the blocked gate in
-[the orchestrator guide](blobstream-orchestrator.md). Every sample must identify
+[the orchestrator guide](/chains/celestia-testnet?tab=blobstream-orchestrator). Every sample must identify
 consensus chain ID `mocha-5`, DA P2P network `mocha`, and a dedicated
 `-mocha-5` home or store. Any Mocha-4 identity is a hard failure.
 
-## Current v10 watch — checked 2026-10-28
+## Current v11 watch — checked 2026-11-25
 
-The Mocha app already passed activation height **1082619** and runs protocol
-app version `10` with binary `v10.5.0-mocha`. A current node reporting app `9`
+The Mocha app passed v11 activation height **2760281** and runs protocol
+app version `11` with binary `v11.0.0-mocha`. A current node reporting app `10` or older
 is not healthy. Check process binary, block/AppHash parity, fresh external
 signatures, and the separately operated Fibre server; see
-[Upgrade and rollback](multiplexer.md). POSTHUMAN runs neither Bridge nor
+[Upgrade and rollback](/chains/celestia-testnet?tab=multiplexer). POSTHUMAN runs neither Bridge nor
 Light; app health alone does not establish DA-node or Fibre readiness.
 
 ## Authoritative context
@@ -22,7 +22,7 @@ Light; app health alone does not establish DA-node or Fibre readiness.
 - [Celestia status and incident history](https://status.celestia.org)
 - [Mocha-5 restart incident](https://status.celestia.org/incidents/nc1nkb54)
 - [Mocha explorer](https://mocha.celenium.io)
-- [Mocha upgrade signaling](https://mocha.celenium.io/upgrade/10?tab=signals&page=1)
+- [Mocha upgrade signaling](https://mocha.celenium.io/upgrade/11?tab=signals&page=1)
 
 Status pages provide incident context, not node-local health. Record URL and
 observation time in incidents.

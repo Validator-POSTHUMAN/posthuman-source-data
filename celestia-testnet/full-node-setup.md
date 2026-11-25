@@ -22,10 +22,10 @@ validator is a consensus full node with an active consensus signer.
 
 Current Mocha reference:
 
-- celestia-app: `v10.5.0-mocha` (checked 2026-10-28)
-- Commit: `6013e758d5dceb75827ad191c8d739d7c43cfa04`
-- App v10 activated at **1082619**; current protocol app version is `10`.
-- [Upgrade order, checks and fork/migration rollback boundaries](multiplexer.md).
+- celestia-app: `v11.0.0-mocha` (checked 2026-11-25)
+- Commit: `58be8ae90d00518800df5506b3a1e988f009c1c6`
+- App v10 activated at **1082619**; current protocol app version is `11`.
+- [Upgrade order, checks and fork/migration rollback boundaries](/chains/celestia-testnet?tab=multiplexer).
 - Home must be a dedicated Mocha-5 path, such as
   `$HOME/.celestia-app-mocha-5`.
 
@@ -53,8 +53,8 @@ Fibre/escrow activation needs a separate decision. Choose a current role:
 
 | Need | Current role | Guide | Mocha-5 store |
 | --- | --- | --- | --- |
-| Import, erasure-code, retain, and serve blocks | Bridge | [Bridge node setup](bridge-node-setup.md) | `$HOME/.celestia-bridge-mocha-5` |
-| Verify availability through DAS | Light | [Light node setup](light-node-setup.md) | `$HOME/.celestia-light-mocha-5` |
+| Import, erasure-code, retain, and serve blocks | Bridge | [Bridge node setup](/chains/celestia-testnet?tab=bridge-node-setup) | `$HOME/.celestia-bridge-mocha-5` |
+| Verify availability through DAS | Light | [Light node setup](/chains/celestia-testnet?tab=light-node-setup) | `$HOME/.celestia-light-mocha-5` |
 
 Do not relabel or copy a legacy DA store. Initialize a separate current-role
 store with `--p2p.network mocha` and independently verify Mocha-5 freshness.

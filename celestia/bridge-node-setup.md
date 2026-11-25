@@ -90,7 +90,7 @@ Select and verify an archival consensus gRPC service. For TLS endpoints, add
 ```
 
 Initialization creates the DA store and its local keyring. Follow the separate
-[key custody guide](keys.md); never copy secret material into terminal history,
+[key custody guide](/chains/celestia?tab=keys); never copy secret material into terminal history,
 documentation, tickets, or logs.
 
 Review `$HOME/.celestia-bridge/config.toml`, confirm the selected network and
