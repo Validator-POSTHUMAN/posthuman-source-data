@@ -3,9 +3,19 @@
 **Publication resumed — checked 2026-11-25.** Current metadata identifies
 chain `celestia`, height `16219577`, `created_at = 2026-11-25T12:39:47Z`,
 and size `13995807021` bytes. The archive responds to full and range requests.
-These checks establish publication/availability, **not** current-archive
-restore compatibility. The current archive has not passed an end-to-end
-restore test; validate it on an isolated non-signing node before recovery.
+The complete 13,995,807,021-byte archive independently matched the published
+SHA-256, passed `lz4 -t`, and its tar listing contained 7,315 members under
+`data/` with no links or unexpected paths (checked 2026-11-25 UTC). These
+integrity checks do **not** prove current-archive restore compatibility. The
+current archive has not passed an end-to-end restore test; validate it on an
+isolated non-signing node before recovery.
+
+**Validator-state hazard:** the archive includes `data/priv_validator_state.json`
+reset to height/round/step zero for a disposable zero-power snapshot source.
+Never install that file on a signing validator or overwrite its current state.
+A validator restore must exclude the archive's copy and preserve the newest
+local signer state after stopping and fencing the signer. The historical recipe
+below is disabled; it must not be treated as a safe validator restore procedure.
 
 Historical restore evidence: an earlier archive passed an end-to-end restore
 on 2026-09-27 (height `14445450`, 371 advancing blocks), and a separate
