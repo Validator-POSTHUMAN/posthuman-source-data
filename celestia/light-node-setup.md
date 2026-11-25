@@ -74,7 +74,7 @@ TLS.
 ```
 
 Initialization creates the DA store and local keyring. Follow [Keys and signer
-boundaries](keys.md) for custody rules.
+boundaries](/chains/celestia?tab=keys) for custody rules.
 
 Keep JSON-RPC `26658` on loopback unless an authenticated, TLS-protected,
 rate-limited access layer is intentionally designed and reviewed.

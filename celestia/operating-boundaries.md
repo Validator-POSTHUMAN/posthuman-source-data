@@ -10,10 +10,10 @@ network endpoint.
 is the data-availability plane. The supported DA roles are **Bridge** and
 **Light**; the old “DA Full” role is retired and is not a runnable target.
 
-- Consensus node or validator: [Installation](installation-guide.md).
-- DA role selection and legacy-store retirement: [Node roles](full-node-setup.md).
-- Bridge or Light service: [DA bridge](bridge-node-setup.md) or
-  [DA light](light-node-setup.md).
+- Consensus node or validator: [Installation](/chains/celestia?tab=installation-guide).
+- DA role selection and legacy-store retirement: [Node roles](/chains/celestia?tab=full-node-setup).
+- Bridge or Light service: [DA bridge](/chains/celestia?tab=bridge-node-setup) or
+  [DA light](/chains/celestia?tab=light-node-setup).
 
 ## Evidence does not establish trust
 
@@ -33,7 +33,7 @@ configuration, and rollback evidence; do not mix a partial public registry with
 private topology.
 
 The consensus signer and its state remain one live pair. Follow
-[Keys](keys.md) before any recovery, migration, or key-bearing action. No
+[Keys](/chains/celestia?tab=keys) before any recovery, migration, or key-bearing action. No
 remote-signer, KMS, or Horcrux procedure is published here without first-party
 evidence for the exact celestia-app and CometBFT combination; generic Cosmos
 templates are not runnable for Celestia.
@@ -53,4 +53,4 @@ before provisioning. Correlate local evidence with the [official mainnet status
 history](https://status.celestia.dev/status/mainnet); neither a green status page
 nor host reachability proves that a local node is correct.
 
-For alerting and recovery evidence, use [Monitoring](monitoring.md).
+For alerting and recovery evidence, use [Monitoring](/chains/celestia?tab=monitoring).

@@ -1,43 +1,31 @@
 # Celestia Mainnet Snapshot
 
-> **Publication degraded — checked 2026-10-28 22:37 UTC.** POSTHUMAN's
-> `snapshot.json` still reports `2026-10-16T14:55:27Z`, height `15010220`,
-> while the live mainnet was above `15382800` and running app version `10`.
-> The 93,533,764,040-byte archive responds to HEAD, but its age and
-> post-upgrade restore compatibility have **not** been validated. Do not use
-> this archive for a fresh restore until publication resumes and a current
-> build passes a new end-to-end restore test. The 2026-09-27 proof below
-> applies only to the earlier archive tested then.
+**Publication resumed — checked 2026-11-25.** Current metadata identifies
+chain `celestia`, height `16219577`, `created_at = 2026-11-25T12:39:47Z`,
+and size `13995807021` bytes. The archive responds to full and range requests.
+These checks establish publication/availability, **not** current-archive
+restore compatibility. The current archive has not passed an end-to-end
+restore test; validate it on an isolated non-signing node before recovery.
 
-The publisher is still scheduled every four hours, but its preflight rejects
-the source database: the 2026-10-28 20:45 UTC log reported
-`source_bytes=190700234505` above its `120GiB` limit. The RPC itself remains
-active. Raising the guard or replacing the non-signing source database needs a
-separate capacity and recovery review; neither happened in this page audit.
-
-
-> **Restore-verified on 2026-09-27.** This archive was restored end to end on a
-> throwaway node: it reached the chain tip, ran 371 blocks past the snapshot
-> height with `catching_up=false`, and logged no app-hash divergence. That test
-> exists because the previous pipeline pruned the copy offline with `cosmprund`,
-> which rewrote the application state and produced an archive that stalled a
-> restored node with `APP HASH MISMATCH` at height `14443346`. The publisher no
-> longer rewrites anything: the archive is a copy of the node's own pruned data.
+Historical restore evidence: an earlier archive passed an end-to-end restore
+on 2026-09-27 (height `14445450`, 371 advancing blocks), and a separate
+2026-11-08 publisher archive passed a restore check (379 advancing blocks).
+Neither result proves the bytes published today. The publisher copies the
+node's pruned data without offline application-state rewriting.
 
 POSTHUMAN provides a pruned Celestia consensus-node snapshot for chain ID
 `celestia`.
 
 - DB backend: PebbleDB
-- Intended publication cadence: every four hours; currently not meeting it.
-  Read `snapshot_time` from `snapshot.json` rather than assuming freshness.
+- Intended publication cadence: twice daily, around 01:20 and 13:20 CET
+  (Europe/Berlin), with timer jitter. Read `created_at` from `snapshot.json` rather than assuming freshness.
 - Archive format: `snapshot-latest.tar.lz4`; read `snapshot_size_bytes` from
   `snapshot.json` before download because its size changes with the source data.
 - Resumable: yes. The host answers byte-range requests, so an interrupted
   download continues instead of starting over.
-- Restore-verified: **yes**, 2026-09-27, at height `14445450`. See the notice
-  above for what the test actually proved.
+- Current archive restore-verified: **no**. Historical tests are scoped above.
 - Node parameters behind it: `pruning = custom` / `keep-recent = 100` /
-  `interval = 19`, `min-retain-blocks = 300000` (about ten days of blocks),
+  `interval = 10`, `min-retain-blocks = 30000`,
   `indexer = null`, PebbleDB. The archive inherits exactly those, so it is not an
   archive node and carries no transaction index.
 
@@ -56,7 +44,7 @@ PebbleDB before starting from this snapshot.
 ### An alternative source
 
 ITRocket publishes a PebbleDB Celestia snapshot with a machine-readable index.
-Its metadata at the 2026-10-28 check reported height `15377714` (live chain
+Historical example only: its metadata at the 2026-10-28 check reported height `15377714` (live chain
 above `15382800`), size `3.3G`, and a four-hour interval. It was not downloaded
 or restore-tested in this check. POSTHUMAN restored its own node from that
 provider twice in September; that historical proof is not proof of this
@@ -70,12 +58,15 @@ and stop the node only after the download and decompression have succeeded.
 
 Always compare snapshot metadata with a trusted live RPC before restore:
 
-**The POSTHUMAN Quick Restore below is suspended while the publication notice
-above applies.** Do not run it against the stale archive.
+**The Quick Restore below remains a non-executable historical reference until
+the current archive passes an isolated non-signing restore test and the
+validator-state handling is separately reviewed.** Publication resuming alone
+does not re-enable this recipe. Use the v11 multiplexer with embedded v10.6.0
+while mainnet is on protocol app 10.
 
 ```bash
-# The candidate you are about to restore, from the source named above.
-curl -fsS https://server-1.itrocket.net/mainnet/celestia/.current_state.json | jq .
+# The POSTHUMAN candidate you are about to restore.
+curl -fsS https://snapshots-celestia-mainnet.posthuman.digital/snapshot.json | jq .
 
 # Two independent views of the live chain: ours and somebody else's.
 curl -fsS https://rpc-celestia-mainnet.posthuman.digital/status | \
@@ -87,7 +78,7 @@ curl -fsS https://celestia-rpc.publicnode.com/status | \
 Stop if:
 
 - `chain_id` is not `celestia`;
-- `snapshot_time` is stale relative to the expected four-hour cadence;
+- `created_at` is stale relative to the twice-daily publication cadence;
 - metadata height is far ahead of or inconsistent with trusted RPC height;
 - snapshot file size is unexpectedly small;
 - you cannot preserve keys and validator state.
@@ -96,11 +87,11 @@ Stop if:
 
 Requires `aria2`, `jq` and `lz4`:
 
-```bash
+```text
 sudo apt update && sudo apt install -y aria2 jq lz4
 ```
 
-```bash
+```text
 export CELESTIA_HOME="$HOME/.celestia-app"
 export SERVICE_NAME="celestia-appd"
 export SNAP_DIR="$HOME/celestia-mainnet-snapshot-restore"

@@ -5,13 +5,13 @@ as historical data, not as Mocha-5 infrastructure or a current health source.
 Do not relabel its records, combine them with Mocha-5, or run the legacy
 collector/deploy wrapper as part of an app upgrade.
 
-Current Mocha-5 app: **v10.5.0-mocha**; activation height **1082619** is historical.
-See the [node-ops index](links.md) and [app upgrade guide](multiplexer.md).
+Current Mocha-5 app: **v11.0.0-mocha**; app v11 activated at **2760281**; app v10 height **1082619** is historical.
+See the [node-ops index](https://github.com/Validator-POSTHUMAN/posthuman-source-data/blob/main/celestia-testnet/links.md) and [app upgrade guide](/chains/celestia-testnet?tab=multiplexer).
 
 ## Historical artifacts
 
 - `decentralize-map.json`: archived Mocha-4 point inventory.
-- [Map description](decentralize-map.md): public data and privacy boundaries.
+- [Map description](https://github.com/Validator-POSTHUMAN/posthuman-source-data/blob/main/celestia-testnet/decentralize-map.md): public data and privacy boundaries.
 - The repository's legacy map generator and deployment wrapper are not
   validated or recommended for Mocha-5. No current deployment procedure is
   published here.

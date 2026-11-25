@@ -1,8 +1,8 @@
 # Celestia Mocha-5 Fibre Server
 
-For **Mocha-5 chain ID `mocha-5`**. Use this with the [Celestia skill](skill.md), [consensus-node installation guide](installation-guide.md), and [official Fibre guide](https://docs.celestia.org/operate/consensus-validators/fibre/). This is a same-host, local-disk procedure for an existing bonded validator, not a validator-key migration or a Bridge/Light node install. The release below was checked on 2026-10-29; refresh official release and chain state before acting.
+For **Mocha-5 chain ID `mocha-5`**. Use this with the [Celestia skill](/chains/celestia-testnet?tab=skill), [consensus-node installation guide](/chains/celestia-testnet?tab=installation-guide), and [official Fibre guide](https://docs.celestia.org/operate/consensus-validators/fibre/). This is a same-host, local-disk procedure for an existing bonded validator, not a validator-key migration or a Bridge/Light node install. The release below was checked on 2026-11-25; refresh official release and chain state before acting.
 
-The matching Mocha-5 app/Fibre release is **`v10.5.0-mocha`**. Active app version must be 10 or later before Fibre starts or a provider is registered. Do not use the mainnet archive for Mocha-5.
+The matching Mocha-5 app/Fibre release is **`v11.0.0-mocha`**. Active app version must be 10 or later before Fibre starts or a provider is registered. Do not use the mainnet archive for Mocha-5.
 
 ## 1. Preflight
 
@@ -18,7 +18,7 @@ Select the version for the exact chain above. The host must meet the published r
 
 ```bash
 # Recheck the current Mocha-5 release before use.
-FIBRE_VERSION=v10.5.0-mocha
+FIBRE_VERSION=v11.0.0-mocha
 STAGE_DIR=$(mktemp -d -p /tmp celestia-fibre.XXXXXX)
 cd "$STAGE_DIR"
 curl -fLO "https://github.com/celestiaorg/celestia-app/releases/download/${FIBRE_VERSION}/fibre_Linux_x86_64.tar.gz"
@@ -92,4 +92,4 @@ The readiness signer check proves signer reachability and key continuity, not a 
 
 Prove app sync/height advance, bonded/unjailed state, fresh independent signatures, stable app/Fibre restart counts, private control listeners, external Fibre TLS reachability, matching on-chain provider, free disk, memory/I/O/thermal headroom, and actual upload/readiness when available. Monitor Fibre liveness/restarts, public port, shard storage, signing, and the guard; only claim metrics coverage if a collector is verified. If Fibre overloads a shared signer, stop *Fibre only* and preserve the validator. Before registration, revert the listener/firewall and Fibre service separately; after registration, update the on-chain record only through a separately approved transaction. Never roll signer state back.
 
-Sources: [official Fibre guide](https://docs.celestia.org/operate/consensus-validators/fibre/), [v10.5.0-mocha release](https://github.com/celestiaorg/celestia-app/releases/tag/v10.5.0-mocha), and [Fibre CLI reference](https://github.com/celestiaorg/celestia-app/blob/v10.5.0-mocha/fibre/cmd/README.md).
+Sources: [official Fibre guide](https://docs.celestia.org/operate/consensus-validators/fibre/), [v11.0.0-mocha release](https://github.com/celestiaorg/celestia-app/releases/tag/v11.0.0-mocha), and [Fibre CLI reference](https://github.com/celestiaorg/celestia-app/blob/v11.0.0-mocha/fibre/cmd/README.md).

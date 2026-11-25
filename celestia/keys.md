@@ -57,7 +57,7 @@ stat -c '%n %a %U:%G' \
 
 The pinned celestia-app v9 source has no legacy `blobstream` module, and the
 archived orchestrator binary lacks a reconciled current release pin. Only after
-the gate in [the Blobstream guide](blobstream-orchestrator.md) is resolved may
+the gate in [the Blobstream guide](/chains/celestia?tab=blobstream-orchestrator) is resolved may
 an operator use the selected binary's read-only key-list interface. The shape
 below is intentionally non-runnable:
 
